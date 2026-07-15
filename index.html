@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Code Quest Lab is an interactive browser-based practice experience for building problem-solving, planning, and keyboard skills.">
+<meta name="theme-color" content="#0b0b10">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Code Quest Lab">
+<link rel="canonical" href="https://code-quest-lab.gov8661682.com/">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; media-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
 <title>Code Quest Lab</title>
 <style>
@@ -373,8 +376,9 @@ html, body {
 .difficultyCard.diff-infernal.selected, .difficultyCard.diff-infernal:not(.locked):hover { border-color:#ff3a4a; }
 #difficultySelectSub { color:#8a8170; font-size:0.72em; letter-spacing:0.1em; margin-bottom:16px; text-transform:uppercase; }
 #difficultyBadge { position:absolute; top:50px; left:10px; font-size:0.62em; letter-spacing:0.12em; text-transform:uppercase; padding:3px 10px; border-radius:2px; border:1px solid #3a342a; background:rgba(11,11,16,0.75); z-index:5; pointer-events:none; white-space:nowrap; font-weight:bold; }
-.classCard { background:#13111a; border:2px solid #3a342a; border-radius:8px; padding:18px 14px; text-align:center; cursor:pointer; transition:border-color 0.15s, background 0.15s, transform 0.15s; touch-action:manipulation; width:140px; }
+.classCard { appearance:none; -webkit-appearance:none; background:#13111a; border:2px solid #3a342a; border-radius:8px; padding:18px 14px; text-align:center; color:inherit; font:inherit; cursor:pointer; transition:border-color 0.15s, background 0.15s, transform 0.15s; touch-action:manipulation; width:140px; }
 .classCard:active { background:#1c1a22; }
+.classCard:hover,.classCard:focus-visible { border-color:#8a6d3b; outline:2px solid transparent; }
 .classCard.selected { border-color:#ffd98a; background:#241f12; box-shadow:0 0 12px rgba(216,162,58,0.35); }
 .classCard .ccIcon { font-size:2.4em; margin-bottom:8px; display:block; }
 .classCard .ccName { font-size:1.0em; color:#ffd98a; font-weight:bold; letter-spacing:0.1em; margin-bottom:5px; text-transform:uppercase; }
@@ -422,7 +426,6 @@ html, body {
 .cfcConfirmBtn:disabled { opacity:0.4; cursor:not-allowed; }
 .cfcCancelBtn { padding:11px 28px; font-size:0.9em; letter-spacing:0.1em; background:#1c1a22; border:1px solid #4a4338; color:#cfc4ae; border-radius:4px; cursor:pointer; text-transform:uppercase; font-family:Georgia,serif; touch-action:manipulation; }
 .cfcCancelBtn:hover { background:#2a2530; border-color:#8a8170; color:#e8ddc8; }
-.joyBase { position:absolute; bottom:24px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.18); z-index:10; touch-action:none; }
 .joyBase { position:absolute; bottom:24px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.18); z-index:10; touch-action:none; }
 .joyBase.left { left:20px; }
 .joyBase.right { right:20px; }
@@ -912,7 +915,7 @@ html, body {
 <div id="stPathRow" style="display:none;"></div>
   <div class="stResetBox">
     <div class="stResetDesc">Reset all Skill Tree investments. Returns all Skill Tree Points.<br>Removes all Skill Tree bonuses.</div>
-    <button class="stResetBtn" id="stResetBtn" onclick="resetSkillTree()">↺ Reset Skill Tree — 50 Souls</button>
+    <button class="stResetBtn" id="stResetBtn">↺ Reset Skill Tree — 50 Souls</button>
   </div>
 <button class="menuBtnSecondary" id="skillTreeBackBtn" style="margin-top:4px;">← Return to Character Menu</button>
 </div>
@@ -985,8 +988,8 @@ html, body {
      showPureCorruptionChoiceButtons / hidePureCorruptionChoiceButtons and
      the pcChoiceStage==='waiting' branch in updatePureCorruptionChoice. -->
 <div id="pcChoiceButtons" style="display:none;position:absolute;bottom:14%;left:50%;transform:translateX(-50%);z-index:998;flex-direction:row;gap:22px;">
-  <button id="pcChoiceAcceptBtn" onclick="onPureCorruptionChoiceButton('accept')" style="padding:14px 34px;background:linear-gradient(160deg,#2a1030 0%,#160818 100%);border:2px solid #8a2be2;border-radius:5px;color:#e8c8ff;font-family:Georgia,'Times New Roman',serif;font-size:1em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(138,43,226,0.2);box-shadow:0 0 14px rgba(138,43,226,0.4);">Accept</button>
-  <button id="pcChoiceDeclineBtn" onclick="onPureCorruptionChoiceButton('decline')" style="padding:14px 34px;background:linear-gradient(160deg,#10201a 0%,#08120e 100%);border:2px solid #4a9a6a;border-radius:5px;color:#c8ffd8;font-family:Georgia,'Times New Roman',serif;font-size:1em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(74,154,106,0.2);box-shadow:0 0 14px rgba(74,154,106,0.35);">Decline</button>
+  <button id="pcChoiceAcceptBtn" style="padding:14px 34px;background:linear-gradient(160deg,#2a1030 0%,#160818 100%);border:2px solid #8a2be2;border-radius:5px;color:#e8c8ff;font-family:Georgia,'Times New Roman',serif;font-size:1em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(138,43,226,0.2);box-shadow:0 0 14px rgba(138,43,226,0.4);">Accept</button>
+  <button id="pcChoiceDeclineBtn" style="padding:14px 34px;background:linear-gradient(160deg,#10201a 0%,#08120e 100%);border:2px solid #4a9a6a;border-radius:5px;color:#c8ffd8;font-family:Georgia,'Times New Roman',serif;font-size:1em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:rgba(74,154,106,0.2);box-shadow:0 0 14px rgba(74,154,106,0.35);">Decline</button>
 </div>
 
 
@@ -1177,7 +1180,7 @@ html, body {
     <div class="fpBody">Select a material above to view its properties. (Coming soon)</div>
   </div>
   <button class="forgeDisabledBtn" disabled>⚒️ Smelt</button>
-  <button class="menuBtnSecondary" id="smelterBackBtn" style="margin-top:12px;">← Return to Forge</button>
+  <button class="menuBtnSecondary" id="smelterInitialBackBtn" style="margin-top:12px;">← Return to Forge</button>
 </div>
 
 <div id="craftEquipmentScreen" class="screen" style="background:radial-gradient(ellipse at 50% 20%,#1c0f08 0%,#0b0604 70%);overflow-y:auto;justify-content:flex-start;padding:18px 0 30px;">
@@ -22531,6 +22534,9 @@ function safeClick(id,label,fn) {
 }
 
 safeClick('waypointMenuCloseBtn','Waypoint Menu Close',function(){closeWaypointMenu();});
+safeClick('stResetBtn','Reset Skill Tree',function(){resetSkillTree();});
+safeClick('pcChoiceAcceptBtn','Accept Pure Corruption Choice',function(){onPureCorruptionChoiceButton('accept');});
+safeClick('pcChoiceDeclineBtn','Decline Pure Corruption Choice',function(){onPureCorruptionChoiceButton('decline');});
 
 safeClick('mainNewRunBtn','New Run',function(){
   openDungeonSelectScreen();
@@ -22628,8 +22634,8 @@ function setSaveManageMode(enabled){
   var newBtn=document.getElementById('newCharacterBtn');
   var manageBtn=document.getElementById('manageSavesBtn');
   var doneBtn=document.getElementById('manageSavesDoneBtn');
-  if(title)title.textContent=enabled?'Manage Saves':'Your Characters';
-  if(hint)hint.textContent=enabled?'Review and delete save files':'Select a character to continue, or create a new one';
+  if(title)title.textContent=enabled?'Manage Data':'Your Profiles';
+  if(hint)hint.textContent=enabled?'Review or remove locally stored profile data':'Select a profile to continue, or create a new one';
   if(newBtn)newBtn.style.display=enabled?'none':'block';
   if(manageBtn)manageBtn.style.display=enabled?'none':'block';
   if(doneBtn)doneBtn.style.display=enabled?'block':'none';
@@ -22644,7 +22650,7 @@ function renderCharacterSelectGrid(){
   var idx=loadCharacterIndex();
 
   if(idx.length===0){
-    grid.innerHTML='<div style="color:#8a8170;font-size:0.85em;letter-spacing:0.1em;text-align:center;width:100%;padding:20px 0;">No characters yet. Create one below.</div>';
+    grid.innerHTML='<div style="color:#8a8170;font-size:0.85em;letter-spacing:0.1em;text-align:center;width:100%;padding:20px 0;">No profiles yet. Create one below.</div>';
     return;
   }
 
@@ -22656,8 +22662,10 @@ function renderCharacterSelectGrid(){
     grid.style.gap='14px';
     idx.slice().sort(function(a,b){return(b.lastPlayed||0)-(a.lastPlayed||0);}).forEach(function(c){
       var cd=getClassData(c.className);
-      var card=document.createElement('div');
+      var card=document.createElement('button');
+      card.type='button';
       card.className='classCard';card.style.width='160px';card.style.cursor='pointer';
+      card.setAttribute('aria-label','Open '+cd.name+' profile, level '+(c.level||1));
       card.innerHTML='<span class="ccIcon">'+cd.icon+'</span><div class="ccName">'+cd.name+'</div><div class="ccDesc">Level '+(c.level||1)+' · '+(c.souls||0)+' Souls</div>';
       card.addEventListener('click',function(){
         activeCharacterId=c.id;
@@ -22744,8 +22752,11 @@ function renderClassSelectGrid(){
   grid.innerHTML='';
   CLASS_ORDER.forEach(function(cid){
     var c=CLASS_DATA[cid];
-    var card=document.createElement('div');
+    var card=document.createElement('button');
+    card.type='button';
     card.className='classCard'+(_pendingNewCharacterClass===cid?' selected':'');
+    card.setAttribute('aria-pressed',_pendingNewCharacterClass===cid?'true':'false');
+    card.setAttribute('aria-label','Choose '+c.name+': '+c.shortDesc);
     card.innerHTML='<span class="ccIcon">'+c.icon+'</span><div class="ccName">'+c.name+'</div><div class="ccDesc">'+c.shortDesc+'</div>';
     card.addEventListener('click',function(){_pendingNewCharacterClass=cid;renderClassSelectGrid();});
     grid.appendChild(card);
@@ -22985,7 +22996,7 @@ safeClick('ceqCraftBtn','Craft Equipment',function(){attemptCraftEquipment();});
 safeClick('ceqResetBtn','CEQ Reset',function(){ceqReset();renderCraftEquipmentScreen();});
 safeClick('forgeMenuBlessingsBtn','Open Blessings & Curses',function(){openBlessingsScreen();});
 safeClick('salvageBackBtn','Salvage Back',function(){openForgeMenuScreen();});
-// smelterBackBtn is rendered dynamically inside renderSmelterScreen via inline onclick
+safeClick('smelterInitialBackBtn','Smelter Back',function(){openForgeMenuScreen();});
 safeClick('craftEquipmentBackBtn','Craft Equipment Back',function(){openForgeMenuScreen();});
 
 function openSalvageScreen(){
@@ -23095,7 +23106,7 @@ function renderSmelterScreen(){
     var active=_smelterActiveTier===t;
     var tierNames=['Basic','Refined','Advanced','Masterwork','Mythic'];
     var tierColors=['#8a8170','#27ae60','#2980b9','#8e44ad','#e67e22'];
-    html+='<button onclick="setSmelterTier('+t+')" style="flex:1;min-width:70px;padding:7px 4px;background:'+(active?'#1c1a22':'#13111a')+';border:2px solid '+(active?tierColors[t-1]:'#3a342a')+';border-radius:4px;color:'+(active?tierColors[t-1]:'#6a6050')+';font-family:Georgia,serif;font-size:0.72em;cursor:pointer;letter-spacing:0.05em;">Tier '+t+'<br><span style="font-size:0.85em;opacity:0.7;">'+tierNames[t-1]+'</span></button>';
+    html+='<button type="button" data-smelter-tier="'+t+'" aria-pressed="'+(active?'true':'false')+'" style="flex:1;min-width:70px;padding:7px 4px;background:'+(active?'#1c1a22':'#13111a')+';border:2px solid '+(active?tierColors[t-1]:'#3a342a')+';border-radius:4px;color:'+(active?tierColors[t-1]:'#6a6050')+';font-family:Georgia,serif;font-size:0.72em;cursor:pointer;letter-spacing:0.05em;">Tier '+t+'<br><span style="font-size:0.85em;opacity:0.7;">'+tierNames[t-1]+'</span></button>';
   });
   html+='</div>';
 
@@ -23109,12 +23120,12 @@ function renderSmelterScreen(){
     var canDo=canSmelt(r);
     var owned=fm[r.id]||0;
     var isSelected=_smelterSelectedId===r.id;
-    html+='<div onclick="selectSmelterRecipe(\''+r.id+'\')" style="background:'+(isSelected?'#1c1a22':'#13111a')+';border:2px solid '+(isSelected?'#d8a23a':(canDo?'#3a7a3a':'#2a2428'))+';border-radius:5px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:border-color 0.12s;">';
+    html+='<button type="button" data-smelter-recipe="'+r.id+'" aria-pressed="'+(isSelected?'true':'false')+'" style="width:100%;text-align:left;color:inherit;font-family:inherit;background:'+(isSelected?'#1c1a22':'#13111a')+';border:2px solid '+(isSelected?'#d8a23a':(canDo?'#3a7a3a':'#2a2428'))+';border-radius:5px;padding:8px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:border-color 0.12s;">';
     html+='<span style="font-size:1.4em;">'+r.icon+'</span>';
     html+='<div style="flex:1;"><div style="font-size:0.82em;font-weight:bold;color:'+(canDo?'#ffd98a':(isSelected?'#8a6d3b':'#5a5040'))+';">'+r.name+'</div>';
     html+='<div style="font-size:0.62em;color:#6a6050;margin-top:1px;">'+r.category+' · '+r.soulCost+' Souls'+(owned>0?' · <span style="color:#7ec87e;">Have: '+owned+'</span>':'')+'</div></div>';
     if(canDo)html+='<div style="font-size:0.65em;color:#7ec87e;border:1px solid #2a5a2a;background:#0a1a0a;border-radius:3px;padding:2px 6px;">SMELT</div>';
-    html+='</div>';
+    html+='</button>';
   });
   html+='</div>';
 
@@ -23151,7 +23162,7 @@ function renderSmelterScreen(){
       html+='</div>';
 
       // Smelt button
-      html+='<button onclick="doSmelt()" style="margin-top:10px;width:100%;padding:10px 0;font-family:Georgia,serif;font-size:0.9em;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;cursor:'+(canDoSel?'pointer':'not-allowed')+';background:'+(canDoSel?'linear-gradient(160deg,#2a1a10 0%,#160c08 100%)':'#0e0c14')+';border:2px solid '+(canDoSel?'#d8a23a':'#2a2428')+';color:'+(canDoSel?'#ffd98a':'#4a4338')+';opacity:'+(canDoSel?'1':'0.55')+';">⚒️ Smelt</button>';
+      html+='<button type="button" id="smelterDoBtn" '+(canDoSel?'':'disabled')+' style="margin-top:10px;width:100%;padding:10px 0;font-family:Georgia,serif;font-size:0.9em;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;cursor:'+(canDoSel?'pointer':'not-allowed')+';background:'+(canDoSel?'linear-gradient(160deg,#2a1a10 0%,#160c08 100%)':'#0e0c14')+';border:2px solid '+(canDoSel?'#d8a23a':'#2a2428')+';color:'+(canDoSel?'#ffd98a':'#4a4338')+';opacity:'+(canDoSel?'1':'0.55')+';">⚒️ Smelt</button>';
 
       html+='</div>';
     }
@@ -23162,9 +23173,19 @@ function renderSmelterScreen(){
   html+='</div>';
 
   // Back button
-  html+='<button class="menuBtnSecondary" id="smelterBackBtn" onclick="openForgeMenuScreen()" style="margin-top:4px;">← Return to Forge</button>';
+  html+='<button type="button" class="menuBtnSecondary" id="smelterBackBtn" style="margin-top:4px;">← Return to Forge</button>';
 
   screen.innerHTML=html;
+  screen.querySelectorAll('[data-smelter-tier]').forEach(function(button){
+    button.addEventListener('click',function(){setSmelterTier(parseInt(button.getAttribute('data-smelter-tier'),10));});
+  });
+  screen.querySelectorAll('[data-smelter-recipe]').forEach(function(button){
+    button.addEventListener('click',function(){selectSmelterRecipe(button.getAttribute('data-smelter-recipe'));});
+  });
+  var smeltButton=document.getElementById('smelterDoBtn');
+  if(smeltButton)smeltButton.addEventListener('click',function(){doSmelt();});
+  var smelterBackButton=document.getElementById('smelterBackBtn');
+  if(smelterBackButton)smelterBackButton.addEventListener('click',function(){openForgeMenuScreen();});
 }
 
 function setSmelterTier(t){
@@ -40511,8 +40532,8 @@ function updateHUD(){
   }
   document.getElementById('xpBar').style.width=(playerXP/xpToNextLevel*100)+'%';
   document.getElementById('hudLevel').textContent=playerLevel;
-  var def=ROOM_DEFS[currentRoomId];var roomLabel=def?getRoomTypeLabel(def.type):'';
-  document.getElementById('hudRoom').textContent=roomLabel+' '+(MAIN_PATH.indexOf(currentRoomId)+1||'?');
+  var def=ROOM_DEFS[currentRoomId];var isTownRoom=(activeDungeonId==='town');var roomLabel=def?getRoomTypeLabel(def.type):'';
+  document.getElementById('hudRoom').textContent=isTownRoom?'Town':(roomLabel+' '+(MAIN_PATH.indexOf(currentRoomId)+1||'?'));
   document.getElementById('hudKills').textContent=totalKills;
   document.getElementById('hudSouls').textContent=runSoulsEarned;
   var enemyStr='';
@@ -40521,8 +40542,8 @@ function updateHUD(){
   document.getElementById('enemyCount').textContent=enemyStr;
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){
-    var isTownObjective=(def&&def.type===RT.START&&typeof _isTownRoom!=='undefined'&&_isTownRoom);
-    var objectiveText=isTownObjective?'Prepare in town and choose your next dungeon':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
+    var isTownObjective=(def&&def.type===RT.START&&isTownRoom);
+    var objectiveText=isTownObjective?'Prepare in town, then use the north portal to choose a practice module':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
     objectiveEl.textContent='Objective: '+objectiveText;
   }
 }

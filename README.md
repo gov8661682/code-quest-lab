@@ -4,7 +4,9 @@
 
 ## Play
 
-Code Quest Lab: https://code-quest-lab.pages.dev
+Live site: https://code-quest-lab.gov8661682.com/
+
+Cloudflare Pages fallback: https://code-quest-lab.pages.dev/
 
 On iPad, open the link in Safari and use the on-screen movement and skill controls. On a desktop browser, use:
 
