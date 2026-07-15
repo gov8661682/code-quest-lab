@@ -157,6 +157,7 @@ html, body {
 #pauseOverlay h2 { font-size:1.6em; letter-spacing:0.22em; color:#d8c08a; text-transform:uppercase; margin-bottom:10px; }
 #enemyCount { position:absolute; bottom:160px; left:50%; transform:translateX(-50%); font-size:0.75em; color:#cfc4ae; letter-spacing:0.15em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:4px 12px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #roomInfo { position:absolute; top:50px; left:50%; transform:translateX(-50%); font-size:0.7em; color:#a98f5c; letter-spacing:0.2em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:3px 10px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
+#objectiveInfo { position:absolute; top:74px; left:50%; transform:translateX(-50%); font-size:0.62em; color:#cfc4ae; letter-spacing:0.12em; background:rgba(11,11,16,0.62); padding:3px 10px; border-radius:2px; border:1px solid rgba(58,52,42,0.8); z-index:5; pointer-events:none; white-space:nowrap; max-width:min(92vw,560px); text-overflow:ellipsis; overflow:hidden; }
 #doorStatus { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1em; color:#d8a23a; letter-spacing:0.2em; text-transform:uppercase; text-align:center; z-index:5; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #doorStatus.visible { opacity:1; }
 #waveBanner { position:absolute; top:56px; left:50%; transform:translateX(-50%); text-align:center; z-index:15; pointer-events:none; opacity:0; transition:opacity 0.3s; }
@@ -762,8 +763,9 @@ html, body {
   </div>
 <button id="pauseBtn">⏸</button>
 <button id="autoRushBtn" style="display:none;position:absolute;bottom:158px;left:50%;transform:translateX(-50%);width:90px;height:36px;background:rgba(10,28,40,0.95);border:2px solid #3ab8e8;border-radius:4px;color:#b8e8ff;font-size:0.65em;cursor:pointer;z-index:12;letter-spacing:0.05em;text-align:center;touch-action:manipulation;">AUTO RUSH<br>✓ ON</button>
-<button id="npcInteractBtn" style="display:none;position:absolute;bottom:210px;left:50%;transform:translateX(-50%);padding:10px 24px;background:rgba(20,16,10,0.92);border:2px solid #d8a23a;border-radius:6px;color:#ffd98a;font-size:0.75em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;z-index:13;touch-action:manipulation;font-family:Georgia,'Times New Roman',serif;white-space:nowrap;">Press <span id="npcInteractLabel">Interact</span> to <span id="npcInteractVerb">talk</span></button>
+  <button id="npcInteractBtn" style="display:none;position:absolute;bottom:210px;left:50%;transform:translateX(-50%);padding:10px 24px;background:rgba(20,16,10,0.92);border:2px solid #d8a23a;border-radius:6px;color:#ffd98a;font-size:0.75em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;z-index:13;touch-action:manipulation;font-family:Georgia,'Times New Roman',serif;white-space:nowrap;">Press <span id="npcInteractLabel">Interact</span> to <span id="npcInteractVerb">talk</span></button>
   <div id="roomInfo">Start Room</div>
+  <div id="objectiveInfo"></div>
   <div id="difficultyBadge">Normal</div>
   <div id="enemyCount">Enemies: 0</div>
   <div id="waveBanner">
@@ -22463,10 +22465,12 @@ function teleportToWaypoint(id){
   for(var i=0;i<known.length;i++)if(known[i].id===id){target=known[i];break;}
   if(!target)return;
   closeWaypointMenu();
+  resetWaypointHold();
   waypointTeleportFade.target=target;
   waypointTeleportFade.active=true;
   waypointTeleportFade.dir=1;
   waypointTeleportFade.alpha=0;
+  waypointState.justActivatedId=id;
 }
 function updateWaypointTeleportFade(dt){
   if(!waypointTeleportFade.active)return;
@@ -22488,6 +22492,11 @@ function updateWaypointTeleportFade(dt){
           player.x=target.x;player.y=target.y;
           centerCameraOnPlayer();camera.x=camera.targetX;camera.y=camera.targetY;
         }
+      }
+      if(target){
+        waypointState.insideId=target.id;
+        waypointState.mode='menu';
+        waypointState.timer=0;
       }
       waypointTeleportFade.dir=-1;
     }
@@ -25315,6 +25324,12 @@ if(window.visualViewport)window.visualViewport.addEventListener('resize',functio
 // Desktop controls complement the touch joysticks. They are intentionally kept
 // separate so iPad play continues to use the existing pointer controls.
 var desktopInput={keys:{},mouseDown:false,mouseX:0,mouseY:0,mouseSeen:false};
+var touchAttackState={pointerId:null,startX:0,startY:0,startTime:0,moved:false,queued:false};
+function resetTouchAttackState(){
+  touchAttackState.pointerId=null;
+  touchAttackState.moved=false;
+  touchAttackState.queued=false;
+}
 function desktopGameIsActive(){
   var screen=document.getElementById('gameScreen');
   return !!(screen&&screen.classList.contains('active'));
@@ -25339,16 +25354,86 @@ function desktopAimAngle(){
   return Math.atan2(wy-player.y,wx-player.x);
 }
 function clearDesktopInput(){desktopInput.keys={};desktopInput.mouseDown=false;}
+function clearAllInputState(){
+  clearDesktopInput();
+  resetTouchAttackState();
+  if(leftStick){
+    leftStick.active=false;
+    leftStick.dx=0;
+    leftStick.dy=0;
+    leftStick.knob.style.transform='translate(0px,0px)';
+  }
+  if(rightStick){
+    rightStick.active=false;
+    rightStick.dx=0;
+    rightStick.dy=0;
+    rightStick.knob.style.transform='translate(0px,0px)';
+  }
+}
 function updateDesktopPointer(event){desktopInput.mouseX=event.clientX;desktopInput.mouseY=event.clientY;desktopInput.mouseSeen=true;}
-canvas.addEventListener('pointermove',function(event){if(event.pointerType==='mouse')updateDesktopPointer(event);});
-canvas.addEventListener('pointerdown',function(event){
-  if(event.pointerType!=='mouse'||event.button!==0)return;
-  updateDesktopPointer(event);desktopInput.mouseDown=true;event.preventDefault();
+canvas.addEventListener('pointermove',function(event){
+  if(event.pointerType==='mouse')updateDesktopPointer(event);
+  if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
+    updateDesktopPointer(event);
+    if(Math.abs(event.clientX-touchAttackState.startX)>18||Math.abs(event.clientY-touchAttackState.startY)>18){
+      touchAttackState.moved=true;
+    }
+  }
 });
-canvas.addEventListener('pointerup',function(event){if(event.pointerType==='mouse'&&event.button===0)desktopInput.mouseDown=false;});
-canvas.addEventListener('pointerleave',function(event){if(event.pointerType==='mouse')desktopInput.mouseDown=false;});
+canvas.addEventListener('pointerdown',function(event){
+  if(event.pointerType==='mouse'&&event.button===0){
+    updateDesktopPointer(event);
+    desktopInput.mouseDown=true;
+    if(canvas.setPointerCapture){
+      try{canvas.setPointerCapture(event.pointerId);}catch(err){}
+    }
+    event.preventDefault();
+    return;
+  }
+  if(event.pointerType==='touch'){
+    updateDesktopPointer(event);
+    touchAttackState.pointerId=event.pointerId;
+    touchAttackState.startX=event.clientX;
+    touchAttackState.startY=event.clientY;
+    touchAttackState.startTime=performance.now();
+    touchAttackState.moved=false;
+    if(canvas.setPointerCapture){
+      try{canvas.setPointerCapture(event.pointerId);}catch(err){}
+    }
+    event.preventDefault();
+  }
+});
+canvas.addEventListener('pointerup',function(event){
+  if(event.pointerType==='mouse'&&event.button===0)desktopInput.mouseDown=false;
+  if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
+    var heldMs=performance.now()-touchAttackState.startTime;
+    if(!touchAttackState.moved&&heldMs<320){
+      touchAttackState.queued=true;
+    }
+    touchAttackState.pointerId=null;
+  }
+  if(canvas.releasePointerCapture){
+    try{canvas.releasePointerCapture(event.pointerId);}catch(err){}
+  }
+});
+canvas.addEventListener('pointercancel',function(event){
+  if(event.pointerType==='mouse')desktopInput.mouseDown=false;
+  if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
+    resetTouchAttackState();
+  }
+  if(canvas.releasePointerCapture){
+    try{canvas.releasePointerCapture(event.pointerId);}catch(err){}
+  }
+});
+canvas.addEventListener('pointerleave',function(event){
+  if(event.pointerType==='mouse'){
+    var hasCapture=canvas.hasPointerCapture&&canvas.hasPointerCapture(event.pointerId);
+    if(!hasCapture)desktopInput.mouseDown=false;
+  }
+});
 canvas.addEventListener('contextmenu',function(event){event.preventDefault();});
-window.addEventListener('blur',clearDesktopInput);
+window.addEventListener('blur',clearAllInputState);
+document.addEventListener('visibilitychange',function(){if(document.hidden)clearAllInputState();});
 document.addEventListener('keydown',function(event){
   if(!desktopGameIsActive()||isTextEntryTarget(event.target))return;
   var key=event.key.toLowerCase();
@@ -32872,6 +32957,15 @@ function updatePlayerAttack(dt){
   }
   if(druidBurrowActive)return;// cannot attack while underground
   if(druidSpiritWalkActive)return;// cannot attack or cast while spirit-walking
+  if(touchAttackState.queued){
+    touchAttackState.queued=false;
+    var touchAngle=desktopAimAngle();
+    if(touchAngle!==null){
+      player.facingAngle=touchAngle;
+      if(player.attackTimer<=0)performAttack(player.facingAngle);
+    }
+    return;
+  }
   var mouseAngle=desktopInput.mouseDown?desktopAimAngle():null;
   if(mouseAngle!==null){player.facingAngle=mouseAngle;if(player.attackTimer<=0)performAttack(player.facingAngle);return;}
   if(!rightStick)return;
@@ -40405,6 +40499,12 @@ function updateHUD(){
   if(def&&def.type===RT.BOSS&&boss)enemyStr='Stone Guardian: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' ⚠P2':'');
   else if(enemies.length>0)enemyStr='Enemies: '+enemies.length;
   document.getElementById('enemyCount').textContent=enemyStr;
+  var objectiveEl=document.getElementById('objectiveInfo');
+  if(objectiveEl){
+    var isTownObjective=(def&&def.type===RT.START&&typeof _isTownRoom!=='undefined'&&_isTownRoom);
+    var objectiveText=isTownObjective?'Prepare in town and choose your next dungeon':getCurrentDungeonObjective();
+    objectiveEl.textContent='Objective: '+objectiveText;
+  }
 }
 
 // ============================================================
