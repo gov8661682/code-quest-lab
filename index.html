@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Infinite Dungeon">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; media-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
 <title>Infinite Dungeon</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
@@ -143,6 +144,13 @@ html, body {
 .hudStat .statLbl { font-size:0.55em; letter-spacing:0.12em; color:#8a8170; text-transform:uppercase; }
 #pauseBtn { position:absolute; top:calc(6px + env(safe-area-inset-top)); right:max(10px,env(safe-area-inset-right)); width:32px; height:32px; background:rgba(20,16,30,0.9); border:1px solid #4a4338; border-radius:4px; color:#cfc4ae; font-size:1.1em; cursor:pointer; z-index:8; display:flex; align-items:center; justify-content:center; touch-action:manipulation; }
 #pauseBtn:active { background:#2a2530; }
+#desktopControlsHint { display:none; position:absolute; left:12px; bottom:12px; z-index:12; padding:7px 10px; border:1px solid rgba(216,192,138,0.45); border-radius:5px; background:rgba(11,11,16,0.78); color:#cfc4ae; font:0.68em/1.4 Georgia,'Times New Roman',serif; pointer-events:none; }
+@media (hover:hover) and (pointer:fine) {
+  .joyBase { display:none; }
+  #desktopControlsHint { display:block; }
+  #skillButtons-left,#skillButtons-right { bottom:18px; width:126px; }
+  #enemyCount { bottom:18px; }
+}
 #minimapCanvas { position:absolute; top:50px; right:10px; width:120px; height:90px; z-index:6; border:1px solid #3a342a; border-radius:3px; background:rgba(11,11,16,0.85); pointer-events:none; }
 #pauseOverlay { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.82); z-index:50; flex-direction:column; align-items:center; justify-content:flex-start; overflow-y:auto; padding:26px 0 30px; box-sizing:border-box; }
 #pauseOverlay.visible { display:flex; }
@@ -719,6 +727,7 @@ html, body {
 
 <div id="gameScreen" class="screen">
   <canvas id="gameCanvas"></canvas>
+  <div id="desktopControlsHint">Move: <b>WASD / Arrows</b> &nbsp; Aim/Attack: <b>Mouse</b><br>Skills: <b>Q</b> Core · <b>E</b> Move · <b>R</b> Ultimate · <b>F</b> Potion · <b>G</b> Interact · <b>Esc</b> Pause</div>
   <canvas id="minimapCanvas" width="120" height="90"></canvas>
 <div id="hud">
     <div class="hudSection">
@@ -1405,6 +1414,22 @@ var SAVE_KEY_CHAR_INDEX='idg_char_index';
 var SAVE_KEY_ACTIVE_CHAR='idg_active_char';
 
 function charDataKey(id){return'idg_char_'+id;}
+function sanitizeStoredText(value,maxLength){
+  return String(value==null?'':value).replace(/[\u0000-\u001f\u007f]/g,'').replace(/[<>&]/g,'').slice(0,maxLength||500);
+}
+function sanitizeStoredItem(item){
+  if(!item||typeof item!=='object'||Array.isArray(item))return null;
+  var safe={};
+  Object.keys(item).forEach(function(key){
+    if(key==='__proto__'||key==='constructor'||key==='prototype')return;
+    var value=item[key];
+    safe[key]=typeof value==='string'?sanitizeStoredText(value,500):value;
+  });
+  return safe;
+}
+function sanitizeStoredItems(items){
+  return Array.isArray(items)?items.map(sanitizeStoredItem).filter(Boolean):[];
+}
 
 function loadCharacterIndex(){
   try{var idx=JSON.parse(localStorage.getItem(SAVE_KEY_CHAR_INDEX)||'[]');return Array.isArray(idx)?idx:[];}catch(e){return[];}
@@ -1608,13 +1633,14 @@ function loadPermanentData() {
     if(!merged.dungeons.difficulty)merged.dungeons.difficulty={};
     merged.achievements=parsed.achievements||{};
     merged.equipped=Object.assign(defaultEquipped(),parsed.equipped||{});
-    merged.inventory=Array.isArray(parsed.inventory)?parsed.inventory:[];
+    Object.keys(merged.equipped).forEach(function(slot){merged.equipped[slot]=sanitizeStoredItem(merged.equipped[slot]);});
+    merged.inventory=sanitizeStoredItems(parsed.inventory);
     merged.mageData=parsed.mageData||{mana:MAX_MANA,maxMana:MAX_MANA,manaRegen:MANA_REGEN_PER_SECOND};
     merged.mageBuild=parsed.mageBuild||{base:'Fire Bolt',core:'Fireball',movement:'Blink',ultimate:'Meteor'};
     merged.rogueBuild=parsed.rogueBuild||{base:'Shadow Slash',core:'Fan of Knives',movement:'Shadowstep',ultimate:"Assassin's Fury"};
     merged.druidBuild=parsed.druidBuild||{base:'Thorn Lash',core:'Pulverize',movement:'Spirit Walk',ultimate:'Avatar of Nature'};
     merged.craftingMaterials=Object.assign(defaultCraftingMaterials(),parsed.craftingMaterials||{});
-    merged.merchantStock=Array.isArray(parsed.merchantStock)?parsed.merchantStock:null;
+    merged.merchantStock=Array.isArray(parsed.merchantStock)?sanitizeStoredItems(parsed.merchantStock):null;
     merged.merchantPotionStock=Array.isArray(parsed.merchantPotionStock)?parsed.merchantPotionStock:[];
     merged.forgeMaterials=Object.assign(defaultForgeMaterials(),parsed.forgeMaterials||{});
     merged.forgeUnlocked=parsed.forgeUnlocked||false;
@@ -1700,7 +1726,10 @@ function savePermanentData() {
     }
     if(!found)idx.push({id:activeCharacterId,className:permanentData.selectedClass,level:permanentData.mastery.level,souls:permanentData.souls,createdAt:Date.now(),lastPlayed:Date.now()});
     saveCharacterIndex(idx);
-  }catch(e){}
+  }catch(e){
+    window.__lastSaveError=String(e&&e.message||e);
+    console.warn('Unable to save game progress.',e);
+  }
 }
 
 var activeCharacterId=null;
@@ -25264,6 +25293,64 @@ function resizeCanvas(){
 window.addEventListener('resize',function(){resizeCanvas();if(gameRunning){initWorldRoom();clampPlayerToRoom(getRoomGeometry());}});
 if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){resizeCanvas();});
 
+// Desktop controls complement the touch joysticks. They are intentionally kept
+// separate so iPad play continues to use the existing pointer controls.
+var desktopInput={keys:{},mouseDown:false,mouseX:0,mouseY:0,mouseSeen:false};
+function desktopGameIsActive(){
+  var screen=document.getElementById('gameScreen');
+  return !!(screen&&screen.classList.contains('active'));
+}
+function isTextEntryTarget(target){
+  return !!(target&&target.closest&&target.closest('input,textarea,select,[contenteditable="true"]'));
+}
+function desktopMoveVector(){
+  var k=desktopInput.keys;
+  var x=(k.d||k.arrowright?1:0)-(k.a||k.arrowleft?1:0);
+  var y=(k.s||k.arrowdown?1:0)-(k.w||k.arrowup?1:0);
+  var mag=Math.hypot(x,y);
+  return mag?{x:x/mag,y:y/mag,mag:1}:{x:0,y:0,mag:0};
+}
+function desktopAimAngle(){
+  if(!desktopInput.mouseSeen)return null;
+  var rect=canvas.getBoundingClientRect();
+  if(!rect.width||!rect.height)return null;
+  var sx=(desktopInput.mouseX-rect.left)*canvas.width/rect.width;
+  var sy=(desktopInput.mouseY-rect.top)*canvas.height/rect.height;
+  var wx=sx+((camera&&camera.x)||0),wy=sy+((camera&&camera.y)||0);
+  return Math.atan2(wy-player.y,wx-player.x);
+}
+function clearDesktopInput(){desktopInput.keys={};desktopInput.mouseDown=false;}
+function updateDesktopPointer(event){desktopInput.mouseX=event.clientX;desktopInput.mouseY=event.clientY;desktopInput.mouseSeen=true;}
+canvas.addEventListener('pointermove',function(event){if(event.pointerType==='mouse')updateDesktopPointer(event);});
+canvas.addEventListener('pointerdown',function(event){
+  if(event.pointerType!=='mouse'||event.button!==0)return;
+  updateDesktopPointer(event);desktopInput.mouseDown=true;event.preventDefault();
+});
+canvas.addEventListener('pointerup',function(event){if(event.pointerType==='mouse'&&event.button===0)desktopInput.mouseDown=false;});
+canvas.addEventListener('pointerleave',function(event){if(event.pointerType==='mouse')desktopInput.mouseDown=false;});
+canvas.addEventListener('contextmenu',function(event){event.preventDefault();});
+window.addEventListener('blur',clearDesktopInput);
+document.addEventListener('keydown',function(event){
+  if(!desktopGameIsActive()||isTextEntryTarget(event.target))return;
+  var key=event.key.toLowerCase();
+  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){desktopInput.keys[key]=true;event.preventDefault();return;}
+  if(event.repeat)return;
+  if(key==='escape'){
+    if(gameRunning)openPauseMenu();else if(gamePaused)closePauseMenu();
+    event.preventDefault();return;
+  }
+  if(!gameRunning)return;
+  if(key==='q'){activateSkill('core');event.preventDefault();}
+  else if(key==='e'){activateSkill('movement');event.preventDefault();}
+  else if(key==='r'){activateSkill('ultimate');event.preventDefault();}
+  else if(key==='f'){usePotion();event.preventDefault();}
+  else if(key==='g'){handleNpcInteractPress();event.preventDefault();}
+});
+document.addEventListener('keyup',function(event){
+  var key=event.key.toLowerCase();
+  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){delete desktopInput.keys[key];event.preventDefault();}
+});
+
 // ============================================================
 // JOYSTICK
 // ============================================================
@@ -32545,7 +32632,8 @@ function updatePlayerMovement(dt,geo){
     // counts as one attempt toward the restoration order — see
     // pc5RegisterAttempt. Movement itself stays locked until it's this
     // ability's turn to come back (b.pc5MovementUnlocked).
-    if(boss.pc5Stage==='restoring'&&leftStick&&Math.hypot(leftStick.dx,leftStick.dy)>0.1)pc5RegisterAttempt();
+    var _pc5Move=desktopMoveVector();
+    if(boss.pc5Stage==='restoring'&&((_pc5Move.mag>0)||(leftStick&&Math.hypot(leftStick.dx,leftStick.dy)>0.1)))pc5RegisterAttempt();
     if(!boss.pc5MovementUnlocked)return;
   }
   if(druidBurrowActive)return;// movement handled by updateDruidBurrow while burrowed
@@ -32559,8 +32647,10 @@ function updatePlayerMovement(dt,geo){
     playerKnockbackVx*=(1-dt*8);playerKnockbackVy*=(1-dt*8);
     if(playerKnockbackTime<=0){playerKnockbackVx=0;playerKnockbackVy=0;}
   }
-  if(!leftStick)return;
-  var mx=leftStick.dx,my=leftStick.dy,mag=Math.sqrt(mx*mx+my*my);
+  var desktopMove=desktopMoveVector();
+  var mx=desktopMove.mag?desktopMove.x:(leftStick?leftStick.dx:0);
+  var my=desktopMove.mag?desktopMove.y:(leftStick?leftStick.dy:0);
+  var mag=Math.sqrt(mx*mx+my*my);
   if(mag>0.1){
     var nx=mx/mag,ny=my/mag;
     var _pursuitMult=1;
@@ -32758,11 +32848,13 @@ function updatePlayerAttack(dt){
   if(boss&&boss.isPureCorruption&&boss.pc5Active){
     // Dungeon 16 5% HP — THE PLAYER IS CONSUMED: same attempt-detection/
     // gating pattern as updatePlayerMovement above, for Basic Attack.
-    if(boss.pc5Stage==='restoring'&&rightStick&&rightStick.magnitude()>0.3)pc5RegisterAttempt();
+    if(boss.pc5Stage==='restoring'&&((desktopInput.mouseDown&&desktopAimAngle()!==null)||(rightStick&&rightStick.magnitude()>0.3)))pc5RegisterAttempt();
     if(!boss.pc5AttackUnlocked)return;
   }
   if(druidBurrowActive)return;// cannot attack while underground
   if(druidSpiritWalkActive)return;// cannot attack or cast while spirit-walking
+  var mouseAngle=desktopInput.mouseDown?desktopAimAngle():null;
+  if(mouseAngle!==null){player.facingAngle=mouseAngle;if(player.attackTimer<=0)performAttack(player.facingAngle);return;}
   if(!rightStick)return;
   var mag=rightStick.magnitude();
   if(mag>0.3){player.facingAngle=Math.atan2(rightStick.dy,rightStick.dx);if(player.attackTimer<=0)performAttack(player.facingAngle);}
