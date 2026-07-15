@@ -40323,19 +40323,15 @@ function updateDoorInteraction(geo){
     // they're excluded here — the `&&!boss` check below already covers it.
     (def._isDungeon12&&def.type!==RT.START&&!def._isNecromancerAltar));
 
-// Safety valve: if room should require clearing but no non-librarian enemies remain, mark cleared
-  if(!roomCleared&&(def.type===RT.COMBAT||(def.type===RT.SIDE&&def._sideRoomType===RT.COMBAT))&&enemies.length===1){
-    spawnComposition([{kind:'warrior'}],geo,depth);
-  }
+// Room generation happens in loadRoom. Once the final enemy is defeated,
+// finish the encounter here; attempting to spawn a replacement from this
+// per-frame interaction check previously referenced loadRoom's local `depth`
+// variable and stopped the animation loop with a ReferenceError.
   if(requiresClear&&!roomCleared&&enemies.length===0&&!boss){
-    var _fallbackKind=def._isDungeon4?'shadow_beast':(def._isDungeon7?'corrupted_wolf':(def._isDungeon9?'broken_knight':(def._isDungeon10?'failed_subject':'warrior')));
-    if(def.type===RT.MINIBOSS){
-      spawnMiniBoss(geo,def.miniBossType||pickMiniBossType());
-    }else if(def.type===RT.ELITE||(def.type===RT.SIDE&&def._sideRoomType===RT.ELITE)){
-      spawnEliteComposition([{kind:_fallbackKind}],geo,depth);
-    }else{
-      spawnComposition([{kind:_fallbackKind}],geo,depth);
-    }
+    roomCleared=true;
+    if(roomStates[currentRoomId])roomStates[currentRoomId].cleared=true;
+    if(def.forward)openForwardDoor(geo);
+    sideDoorOpen=(def.side!==null);
   }
 
 // Forward door (bottom wall)
