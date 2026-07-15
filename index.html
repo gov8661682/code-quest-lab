@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Infinite Dungeon">
+<meta name="apple-mobile-web-app-title" content="Code Quest Lab">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; media-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
-<title>Infinite Dungeon</title>
+<title>Code Quest Lab</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
 html, body {
@@ -566,8 +566,8 @@ html, body {
   <canvas id="menuBgCanvas"></canvas>
   <div id="mainMenuContent">
     <div class="mmLogo">
-      <h1>Infinite Dungeon</h1>
-      <div class="mmSubtitle">Ancient Ruins</div>
+      <h1>Code Quest Lab</h1>
+      <div class="mmSubtitle">Coding Practice and Learning Support</div>
       <div class="mmLogoRule"></div>
     </div>
     <div class="mmCharPanel">
@@ -591,56 +591,56 @@ html, body {
       </div>
     </div>
     <div class="mmBtnGroup">
-      <button class="mmBtn mmBtnPrimary" id="mainNewRunBtn">⚔ Enter the Dungeon</button>
-      <div class="mmDungeonLabel" id="menuSelectedDungeonLabel">Dungeon 1 · The Forgotten Depths</div>
+      <button class="mmBtn mmBtnPrimary" id="mainNewRunBtn">⚔ Start Practice Session</button>
+      <div class="mmDungeonLabel" id="menuSelectedDungeonLabel">Module 1 · Foundations</div>
       <div class="mmSectionRule"></div>
-      <button class="mmBtn mmBtnMastery" id="mainMasteryBtn">⚔ Character Mastery</button>
-      <button class="mmBtn mmBtnMastery" id="mainSkillTreeBtn">⚔ Choose Build</button>
-      <button class="mmBtn mmBtnGreen" id="mainSkillTreeNodesBtn">🌳 Skill Tree</button>
+      <button class="mmBtn mmBtnMastery" id="mainMasteryBtn">⚔ Progress Tracker</button>
+      <button class="mmBtn mmBtnMastery" id="mainSkillTreeBtn">⚔ Learning Path</button>
+      <button class="mmBtn mmBtnGreen" id="mainSkillTreeNodesBtn">🌳 Practice Tree</button>
       <div class="mmSectionRule"></div>
-      <button class="mmBtn" id="mainHeroesBtn">🏛 Hall of Heroes</button>
-      <button class="mmBtn" id="mainAchBtn">🏆 Achievements</button>
-<button class="mmBtn" id="mainEquipmentBtn">⚔ Equipment</button>
-      <button class="mmBtn" id="mainLibraryBtn" style="border-color:#2a4a6a;border-top-color:#4a8acc;color:#a8d4f8;">📚 Library</button>
-      <button class="mmBtn" id="switchCharacterBtn">🧍 Switch Character</button>
+      <button class="mmBtn" id="mainHeroesBtn">🏛 Progress Archive</button>
+      <button class="mmBtn" id="mainAchBtn">🏆 Milestones</button>
+<button class="mmBtn" id="mainEquipmentBtn">⚔ Tools & Setup</button>
+      <button class="mmBtn" id="mainLibraryBtn" style="border-color:#2a4a6a;border-top-color:#4a8acc;color:#a8d4f8;">📚 Learning Library</button>
+      <button class="mmBtn" id="switchCharacterBtn">🧍 Switch Profile</button>
     </div>
     <div style="height:24px;flex-shrink:0;"></div>
   </div>
 </div>
 
 <div id="modifierScreen" class="screen">
-  <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Dungeon Modifier</h2>
-  <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This run is affected by</div>
+  <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Learning Mode</h2>
+  <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This session uses</div>
   <div id="modifierCard" style="background:#13111a;border:2px solid #8a6d3b;border-radius:8px;padding:24px 32px;max-width:320px;width:88%;text-align:center;margin-bottom:24px;">
     <div id="modifierIcon" style="font-size:2.8em;margin-bottom:10px;"></div>
     <div id="modifierName" style="font-size:1.4em;color:#ffd98a;font-weight:bold;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;"></div>
     <div id="modifierShortDesc" style="font-size:0.8em;color:#cfc4ae;letter-spacing:0.06em;line-height:1.7;margin-bottom:12px;"></div>
     <div id="modifierReward" style="font-size:0.75em;color:#d8a23a;letter-spacing:0.08em;border-top:1px solid #3a342a;padding-top:10px;margin-top:4px;"></div>
   </div>
-  <button class="menuBtn" id="modifierContinueBtn">Enter Dungeon</button>
+  <button class="menuBtn" id="modifierContinueBtn">Start Session</button>
 </div>
 <div id="dungeonSelectScreen" class="screen" style="justify-content:flex-start;padding-top:20px;overflow-y:auto;">
-  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Dungeon Selection</h1>
-  <div style="color:#8a8170;font-size:0.75em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;">Choose your destination</div>
+  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Practice Modules</h1>
+  <div style="color:#8a8170;font-size:0.75em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;">Choose your lesson path</div>
   <div id="dungeonSelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;"></div>
-<button class="menuBtnSecondary" id="dungeonSelectBackBtn">← Return to Main Menu</button>
+<button class="menuBtnSecondary" id="dungeonSelectBackBtn">← Return to Dashboard</button>
 </div>
 
 <div id="difficultySelectScreen" class="screen" style="justify-content:flex-start;padding-top:20px;overflow-y:auto;">
-  <h1 id="difficultySelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Select Difficulty</h1>
-  <div id="difficultySelectSub">Choose your trial</div>
+  <h1 id="difficultySelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Select Pace</h1>
+  <div id="difficultySelectSub">Choose your practice speed</div>
   <div id="difficultySelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
-<button class="menuBtnSecondary" id="difficultySelectBackBtn">← Back to Dungeon Selection</button>
+<button class="menuBtnSecondary" id="difficultySelectBackBtn">← Back to Practice Modules</button>
 </div>
 
 <div id="characterSelectScreen" class="screen active" style="justify-content:flex-start;padding-top:30px;overflow-y:auto;">
-  <h1 id="charSelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Your Characters</h1>
-  <div class="csHint" id="charSelectHint">Select a character to continue, or create a new one</div>
+  <h1 id="charSelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Your Profiles</h1>
+  <div class="csHint" id="charSelectHint">Select a profile to continue, or create a new one</div>
   <div id="characterSelectGrid" style="display:flex;flex-direction:column;gap:0;align-items:center;width:100%;max-width:520px;margin-bottom:18px;"></div>
   <div id="charSelectBtns" style="display:flex;flex-direction:column;align-items:center;gap:0;">
-    <button class="menuBtn" id="newCharacterBtn">+ New Character</button>
-    <button class="menuBtnSecondary" id="manageSavesBtn" style="margin-top:10px;">🗂 Manage Saves</button>
-    <button class="menuBtnSecondary" id="manageSavesDoneBtn" style="display:none;margin-top:10px;border-color:#4a6a4a;color:#7ec87e;">← Back to Characters</button>
+    <button class="menuBtn" id="newCharacterBtn">+ New Profile</button>
+    <button class="menuBtnSecondary" id="manageSavesBtn" style="margin-top:10px;">🗂 Manage Data</button>
+    <button class="menuBtnSecondary" id="manageSavesDoneBtn" style="display:none;margin-top:10px;border-color:#4a6a4a;color:#7ec87e;">← Back to Profiles</button>
   </div>
 </div>
 
@@ -844,7 +844,7 @@ html, body {
     <button class="menuBtnMastery" id="charMenuMasteryBtn">⚔ Character Mastery</button>
     <button class="menuBtnSecondary" id="charMenuSwitchBtn">🧍 Switch Character</button>
     <button class="menuBtnSecondary" id="charMenuSettingsBtn">⚙ Settings</button>
-    <button class="menuBtn" id="pauseResumeBtn" style="margin-top:22px;">▶ Resume Game</button>
+    <button class="menuBtn" id="pauseResumeBtn" style="margin-top:22px;">▶ Resume Session</button>
   </div>
   <div id="waypointMenuOverlay">
     <h2>🧭 Waypoints</h2>
@@ -855,8 +855,8 @@ html, body {
 </div>
 
 <div id="gameOverScreen" class="screen">
-  <h1 id="goTitle">YOU HAVE FALLEN</h1>
-  <div class="goSub" id="goSub">The dungeon claims another soul.</div>
+  <h1 id="goTitle">SESSION ENDED</h1>
+  <div class="goSub" id="goSub">The session closes and progress is saved.</div>
   <div class="goStatsBox">
     <div class="goStatRow"><span class="goStatLabel">Difficulty</span><span class="goStatValue" id="goDifficulty">Normal</span></div>
     <div class="goStatRow"><span class="goStatLabel">Room Reached</span><span class="goStatValue" id="goRoom">—</span></div>
@@ -4274,6 +4274,12 @@ function applyAbilityFrequencyScaling(obj,mult){
 function getCurrentDungeonObjective(){
   var d=getActiveDungeon();
   return(d&&d.objective)?d.objective:'Defeat the Dungeon Boss';
+}
+
+function getCurrentRunObjective(){
+  var d=getActiveDungeon();
+  if(!d)return'Defeat the Dungeon Boss';
+  return d.objective?('Clear rooms to reach the boss: '+d.objective):'Clear rooms to reach the boss';
 }
 
 var activeDungeonId='dungeon1';
@@ -24526,13 +24532,13 @@ function showGameOverScreen(isVictory) {
     var def=ROOM_DEFS[currentRoomId];
     var roomName=def?def.name:'—';
     if(isVictory){
-      document.getElementById('goTitle').textContent='THE ANCIENT RUINS HAVE FALLEN';
+      document.getElementById('goTitle').textContent='THE SESSION IS COMPLETE';
       document.getElementById('goTitle').style.color='#ffd98a';
-      document.getElementById('goSub').textContent='The Stone Guardian crumbles to dust.';
+      document.getElementById('goSub').textContent='The final challenge is complete.';
     }else{
-      document.getElementById('goTitle').textContent='YOU HAVE FALLEN';
+      document.getElementById('goTitle').textContent='SESSION ENDED';
       document.getElementById('goTitle').style.color='';
-      document.getElementById('goSub').textContent='The dungeon claims another soul.';
+      document.getElementById('goSub').textContent='Your progress is saved.';
     }
     document.getElementById('goRoom').textContent=isVictory?"Guardian's Sanctum":roomName;
     var _goDiff=getActiveDifficulty();
@@ -27482,7 +27488,7 @@ try{
     // spawned with a partially-empty HP bar.
     player.hp=player.hpMax;
     if(!_isStatic){
-      showBanner('ENTER THE DUNGEON',getCurrentDungeonObjective()+' · Clear rooms to open the exits',2.5);
+      showBanner('ENTER THE DUNGEON',getCurrentRunObjective()+' · Clear rooms to open the exits',2.5);
     }
 if(permanentData.selectedClass==='mage'){
       var _md=permanentData.mageData||{};
@@ -40516,7 +40522,7 @@ function updateHUD(){
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){
     var isTownObjective=(def&&def.type===RT.START&&typeof _isTownRoom!=='undefined'&&_isTownRoom);
-    var objectiveText=isTownObjective?'Prepare in town and choose your next dungeon':getCurrentDungeonObjective();
+    var objectiveText=isTownObjective?'Prepare in town and choose your next dungeon':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
     objectiveEl.textContent='Objective: '+objectiveText;
   }
 }
