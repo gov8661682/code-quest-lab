@@ -24033,11 +24033,13 @@ function attemptForgeWeapon(){
 
 // Toast
   try{
-    var _slotLabel=slotId.charAt(0).toUpperCase()+slotId.slice(1);
+    var _forgeSlot=item.slot||'weapon';
+    var _slotLabel=_forgeSlot.charAt(0).toUpperCase()+_forgeSlot.slice(1);
+    var _forgeRarity=RARITY[(rarity||'common').toUpperCase()]||RARITY.COMMON;
     var toast=document.getElementById('masteryToast');
-    document.getElementById('masteryToastTitle').textContent=ceqGetIcon()+' '+customName+' Crafted!';
-    document.getElementById('masteryToastSub').textContent=rarObj.name+' '+_slotLabel+' added to inventory';
-    toast.style.borderColor=rarObj.color||'#d8a23a';
+    document.getElementById('masteryToastTitle').textContent=(item.icon||'⚒️')+' '+item.name+' Crafted!';
+    document.getElementById('masteryToastSub').textContent=_forgeRarity.name+' '+_slotLabel+' added to inventory';
+    toast.style.borderColor=_forgeRarity.color||'#d8a23a';
     toast.classList.add('show');
     setTimeout(function(){toast.classList.remove('show');toast.style.borderColor='';},3500);
   }catch(e){}
@@ -26786,8 +26788,8 @@ if(legBlizzardPermafrost){blizzardSlowMultActive=Math.min(blizzardSlowMultActive
         addFloatie(_novaFloatX,_novaFloatY-_novaR-10,'❄ FROZEN!','#aaeeff',1.2);
       }
     }
-    if(boss&&Math.hypot(boss.x-player.x,boss.y-player.y)<novaRadius+boss.radius){dealDamageToBoss(computeMageDamage(20));addFloatie(boss.x,boss.y-50,'❄ SLOWED!','#aaeeff',1.0);}
-    if(miniBoss&&Math.hypot(miniBoss.x-player.x,miniBoss.y-player.y)<novaRadius+miniBoss.radius){dealDamageToMiniBoss(computeMageDamage(20));addFloatie(miniBoss.x,miniBoss.y-50,'❄ SLOWED!','#aaeeff',1.0);}
+    if(boss&&Math.hypot(boss.x-player.x,boss.y-player.y)<novaRadius+boss.radius){var _novaBossX=boss.x,_novaBossY=boss.y;dealDamageToBoss(computeMageDamage(20));addFloatie(_novaBossX,_novaBossY-50,'❄ SLOWED!','#aaeeff',1.0);}
+    if(miniBoss&&Math.hypot(miniBoss.x-player.x,miniBoss.y-player.y)<novaRadius+miniBoss.radius){var _novaMiniX=miniBoss.x,_novaMiniY=miniBoss.y;dealDamageToMiniBoss(computeMageDamage(20));addFloatie(_novaMiniX,_novaMiniY-50,'❄ SLOWED!','#aaeeff',1.0);}
     mageEffects.push({type:'frostnova',x:player.x,y:player.y,radius:novaRadius,life:0.7,maxLife:0.7});
     addFloatie(player.x,player.y-50,'FROST NOVA!','#aaeeff',1.4);screenShakeTimer=0.15;
   },
@@ -28846,24 +28848,47 @@ function updateMeteors(dt){
 // ============================================================
 function gameLoop(now){
   if(!gameRunning)return;
-  var dt=Math.min((now-lastTime)/1000,0.05);
-  lastTime=now;timeSurvived+=dt;
-  if(permanentData&&permanentData.stats){
-    permanentData.stats.timePlayed=(permanentData.stats.timePlayed||0)+dt;
-    _playTimeSaveTimer+=dt;
-    if(_playTimeSaveTimer>=30){_playTimeSaveTimer=0;savePermanentData();}
-  }
-  // Update room transition fade
-  if(roomFadeDir!==0){
-    roomFadeAlpha+=roomFadeDir*roomFadeSpeed*dt;
-    if(roomFadeDir===1&&roomFadeAlpha>=1){roomFadeAlpha=1;}
-    if(roomFadeDir===-1&&roomFadeAlpha<=0){roomFadeAlpha=0;roomFadeDir=0;}
-  }
-  try{update(dt);}catch(e){console.error('UPDATE ERROR:',e);gameRunning=false;return;}
-  // Smooth camera update (after player movement)
-  updateCamera(dt);
-  try{draw();}catch(e){console.error('DRAW ERROR:',e);}
+  // Schedule first so an unexpected exception anywhere in this frame cannot
+  // permanently stop the browser's animation callback chain.
   requestAnimationFrame(gameLoop);
+  var elapsed=(now-lastTime)/1000;
+  var dt=(isFinite(elapsed)&&elapsed>=0)?Math.min(elapsed,0.05):0;
+  lastTime=now;
+  try{
+    timeSurvived+=dt;
+    if(permanentData&&permanentData.stats){
+      permanentData.stats.timePlayed=(permanentData.stats.timePlayed||0)+dt;
+      _playTimeSaveTimer+=dt;
+      if(_playTimeSaveTimer>=30){_playTimeSaveTimer=0;savePermanentData();}
+    }
+    // Update room transition fade
+    if(roomFadeDir!==0){
+      roomFadeAlpha+=roomFadeDir*roomFadeSpeed*dt;
+      if(roomFadeDir===1&&roomFadeAlpha>=1){roomFadeAlpha=1;}
+      if(roomFadeDir===-1&&roomFadeAlpha<=0){roomFadeAlpha=0;roomFadeDir=0;}
+    }
+    update(dt);
+    // Smooth camera update (after player movement)
+    updateCamera(dt);
+    _runtimeFrameErrorStreak=0;
+  }catch(e){reportRuntimeFrameError('update',e);}
+  try{draw();}catch(e){reportRuntimeFrameError('draw',e);}
+}
+var _runtimeFrameErrorStreak=0;
+var _runtimeLastErrorKey='';
+var _runtimeLastErrorAt=0;
+function reportRuntimeFrameError(stage,error){
+  _runtimeFrameErrorStreak++;
+  var message=String(error&&error.message||error||'Unknown error');
+  var key=stage+':'+message;
+  var now=Date.now();
+  window.__lastRuntimeError={stage:stage,message:message,time:now,count:_runtimeFrameErrorStreak};
+  // Avoid flooding slower iPads if the same optional effect fails repeatedly.
+  if(key!==_runtimeLastErrorKey||now-_runtimeLastErrorAt>3000){
+    _runtimeLastErrorKey=key;_runtimeLastErrorAt=now;
+    console.error(stage.toUpperCase()+' ERROR:',error);
+    try{showBanner('RECOVERED','An effect was skipped so the session can continue',2.2);}catch(ignore){}
+  }
 }
 var _townSaveTimer=0;
 var _playTimeSaveTimer=0;
@@ -29219,7 +29244,7 @@ var tp=iceTrailPatches[it];tp.life-=dt;tp.tickTimer-=dt;
 if(tp.tickTimer<=0){
 tp.tickTimer=0.3;
 var _iceSlow=(typeof iceSlideSlowMultActive!=='undefined'&&iceSlideSlowMultActive)?iceSlideSlowMultActive:0.7;
-for(var j=0;j<enemies.length;j++){if(Math.hypot(enemies[j].x-tp.x,enemies[j].y-tp.y)<tp.radius+enemies[j].radius){dealDamageToEnemy(enemies[j],computeMageDamage(4));enemies[j].speed*=_iceSlow;}}
+for(var j=enemies.length-1;j>=0;j--){var _iceTrailEnemy=enemies[j];if(_iceTrailEnemy&&Math.hypot(_iceTrailEnemy.x-tp.x,_iceTrailEnemy.y-tp.y)<tp.radius+_iceTrailEnemy.radius){_iceTrailEnemy.speed*=_iceSlow;dealDamageToEnemy(_iceTrailEnemy,computeMageDamage(4));}}
 if(boss&&Math.hypot(boss.x-tp.x,boss.y-tp.y)<tp.radius+boss.radius)dealDamageToBoss(computeMageDamage(4));
 if(miniBoss&&Math.hypot(miniBoss.x-tp.x,miniBoss.y-tp.y)<tp.radius+miniBoss.radius)dealDamageToMiniBoss(computeMageDamage(4));
 }
@@ -33205,8 +33230,9 @@ function updateSkillEffects(dt){
         var bbalong=bbdx*Math.cos(bbAng)+bbdy*Math.sin(bbAng);
         var bbperp=-bbdx*Math.sin(bbAng)+bbdy*Math.cos(bbAng);
         if(bbalong>=0&&Math.abs(bbperp)<=70+boss.radius){
+          var _beamBossX=boss.x,_beamBossY=boss.y,_beamBossR=boss.radius;
           se.hitBoss=true;dealDamageToBoss(BOB_SET_BEAM_DAMAGE);
-          addFloatie(boss.x,boss.y-boss.radius-10,'-'+BOB_SET_BEAM_DAMAGE+' DEMON BEAM!','#c8a8f8',1.1);
+          addFloatie(_beamBossX,_beamBossY-_beamBossR-10,'-'+BOB_SET_BEAM_DAMAGE+' DEMON BEAM!','#c8a8f8',1.1);
         }
       }
       if(miniBoss&&!se.hitMiniBoss){
@@ -33214,8 +33240,9 @@ function updateSkillEffects(dt){
         var mbalong=mbdx*Math.cos(bbAng)+mbdy*Math.sin(bbAng);
         var mbperp=-mbdx*Math.sin(bbAng)+mbdy*Math.cos(bbAng);
         if(mbalong>=0&&Math.abs(mbperp)<=70+miniBoss.radius){
+          var _beamMiniX=miniBoss.x,_beamMiniY=miniBoss.y,_beamMiniR=miniBoss.radius;
           se.hitMiniBoss=true;dealDamageToMiniBoss(BOB_SET_BEAM_DAMAGE);
-          addFloatie(miniBoss.x,miniBoss.y-miniBoss.radius-10,'-'+BOB_SET_BEAM_DAMAGE+' DEMON BEAM!','#c8a8f8',1.1);
+          addFloatie(_beamMiniX,_beamMiniY-_beamMiniR-10,'-'+BOB_SET_BEAM_DAMAGE+' DEMON BEAM!','#c8a8f8',1.1);
         }
       }
     }
