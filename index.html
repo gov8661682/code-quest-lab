@@ -1414,6 +1414,12 @@ var SAVE_KEY_CHAR_INDEX='idg_char_index';
 var SAVE_KEY_ACTIVE_CHAR='idg_active_char';
 
 function charDataKey(id){return'idg_char_'+id;}
+function charBackupKey(id){return charDataKey(id)+'_backup';}
+function parseCharacterSave(raw){
+  if(!raw)return null;
+  var parsed=JSON.parse(raw);
+  return parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:null;
+}
 function sanitizeStoredText(value,maxLength){
   return String(value==null?'':value).replace(/[\u0000-\u001f\u007f]/g,'').replace(/[<>&]/g,'').slice(0,maxLength||500);
 }
@@ -1604,8 +1610,12 @@ function loadPermanentData() {
   if(!activeCharacterId)return defaultCharacterData('barbarian');
   try{
     var raw=localStorage.getItem(charDataKey(activeCharacterId));
-    if(!raw)return defaultCharacterData('barbarian');
-    var parsed=JSON.parse(raw);
+    var parsed;
+    try{parsed=parseCharacterSave(raw);}catch(primaryError){parsed=null;}
+    if(!parsed){
+      try{parsed=parseCharacterSave(localStorage.getItem(charBackupKey(activeCharacterId)));}catch(backupError){parsed=null;}
+    }
+    if(!parsed)return defaultCharacterData('barbarian');
     var defaults=defaultCharacterData(parsed.selectedClass||'barbarian');
     var merged=Object.assign({},defaults,parsed);
     merged.stats=Object.assign({},defaults.stats,parsed.stats||{});
@@ -1715,7 +1725,15 @@ function savePermanentData() {
       bobArmor:permanentData.bobArmor||{hood:0,tunic:0,gloves:0,boots:0},
       secondJourney:permanentData.secondJourney||{active:false,purifiedBosses:{},d16UnlockedAgain:false,bobRecognizes:false,bobRecognitionShown:false}
     };
-    localStorage.setItem(charDataKey(activeCharacterId),JSON.stringify(blob));
+    var saveKey=charDataKey(activeCharacterId);
+    var serialized=JSON.stringify(blob);
+    // Keep one known-good earlier save. This gives a character a recovery path
+    // if a browser closes during a later write or a save becomes malformed.
+    var previous=localStorage.getItem(saveKey);
+    if(previous){
+      try{parseCharacterSave(previous);localStorage.setItem(charBackupKey(activeCharacterId),previous);}catch(backupError){}
+    }
+    localStorage.setItem(saveKey,serialized);
     var idx=loadCharacterIndex();
     var found=false;
     for(var i=0;i<idx.length;i++){
@@ -22553,6 +22571,7 @@ function deleteCharacter(charId){
   try{
     // Remove character data blob
     localStorage.removeItem(charDataKey(charId));
+    localStorage.removeItem(charBackupKey(charId));
     // Remove from character index
     var idx=loadCharacterIndex();
     idx=idx.filter(function(c){return c.id!==charId;});
