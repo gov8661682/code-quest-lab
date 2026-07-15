@@ -27481,6 +27481,9 @@ try{
     // to hpMax (Math.min), never topped UP to match a higher hpMax, so buffed characters
     // spawned with a partially-empty HP bar.
     player.hp=player.hpMax;
+    if(!_isStatic){
+      showBanner('ENTER THE DUNGEON',getCurrentDungeonObjective()+' · Clear rooms to open the exits',2.5);
+    }
 if(permanentData.selectedClass==='mage'){
       var _md=permanentData.mageData||{};
       player.maxMana=_md.maxMana||MAX_MANA;
@@ -28008,7 +28011,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
           else spawnComposition(comp,geo,depth);
           if(def._isDungeon9)d9ApplyFormationClustering(geo);
           if(enemies.length===0)enemies.push(spawnEnemyByKind(def._isDungeon4?'shadow_beast':(def._isDungeon7?'corrupted_wolf':(def._isDungeon9?'broken_knight':(def._isDungeon10?'failed_subject':'warrior'))),geo,depth,isEliteSpawn));
-          showBanner(typeLabel+' '+def.name,buildCompositionLabel(comp),2.2);
+          showBanner(typeLabel+' '+def.name,(effectiveType===RT.COMBAT?'Clear the room':buildCompositionLabel(comp)),2.2);
         }
       }
     }
@@ -28065,6 +28068,7 @@ function buildCompositionLabel(comp){
 
 var cursedLibrarians=[];
 function spawnComposition(comp,geo,depth){
+  if(!comp||comp.length===0)comp=[{kind:'warrior'}];
   var _scEliteBonus=(getActiveDifficulty().eliteChanceBonus||0)+(getActiveDungeonScaling().eliteChanceBonus||0);
   for(var i=0;i<comp.length;i++){
     // ── DIFFICULTY SYSTEM: Nightmare/Infernal occasionally upgrade a normal spawn to Elite ──
@@ -28076,7 +28080,10 @@ function spawnComposition(comp,geo,depth){
     if(_spE.isCursedLibrarian)cursedLibrarians.push(_spE);else enemies.push(_spE);
   }
 }
-function spawnEliteComposition(comp,geo,depth){for(var i=0;i<comp.length;i++){var _spE=spawnEnemyByKind(comp[i].kind,geo,depth,true);if(_spE.isCursedLibrarian)cursedLibrarians.push(_spE);else enemies.push(_spE);}}
+function spawnEliteComposition(comp,geo,depth){
+  if(!comp||comp.length===0)comp=[{kind:'warrior'}];
+  for(var i=0;i<comp.length;i++){var _spE=spawnEnemyByKind(comp[i].kind,geo,depth,true);if(_spE.isCursedLibrarian)cursedLibrarians.push(_spE);else enemies.push(_spE);}
+}
 function spawnEnemyByKind(kind,geo,depth,isElite){
   var def=ENEMY_KINDS[kind]||ENEMY_KINDS.warrior;
   depth=depth||0;var scale=1+depth*0.12;if(isElite)scale*=1.6;
@@ -40290,11 +40297,18 @@ function updateDoorInteraction(geo){
     (def._isDungeon12&&def.type!==RT.START&&!def._isNecromancerAltar));
 
 // Safety valve: if room should require clearing but no non-librarian enemies remain, mark cleared
+  if(!roomCleared&&(def.type===RT.COMBAT||(def.type===RT.SIDE&&def._sideRoomType===RT.COMBAT))&&enemies.length===1){
+    spawnComposition([{kind:'warrior'}],geo,depth);
+  }
   if(requiresClear&&!roomCleared&&enemies.length===0&&!boss){
-    roomCleared=true;
-    if(roomStates[currentRoomId])roomStates[currentRoomId].cleared=true;
-    if(def.forward)openForwardDoor(geo);
-    sideDoorOpen=(def.side!==null);
+    var _fallbackKind=def._isDungeon4?'shadow_beast':(def._isDungeon7?'corrupted_wolf':(def._isDungeon9?'broken_knight':(def._isDungeon10?'failed_subject':'warrior')));
+    if(def.type===RT.MINIBOSS){
+      spawnMiniBoss(geo,def.miniBossType||pickMiniBossType());
+    }else if(def.type===RT.ELITE||(def.type===RT.SIDE&&def._sideRoomType===RT.ELITE)){
+      spawnEliteComposition([{kind:_fallbackKind}],geo,depth);
+    }else{
+      spawnComposition([{kind:_fallbackKind}],geo,depth);
+    }
   }
 
 // Forward door (bottom wall)
