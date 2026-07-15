@@ -18410,8 +18410,11 @@ function getTownLayout(geo){
   if(_townLayoutCache&&_townLayoutCache.W===W&&_townLayoutCache.H===H)return _townLayoutCache.data;
   var inner=geo.inner;
   var cx=inner.x+inner.w/2,cy=inner.y+inner.h/2;
+  // Keep the starting Town waypoint compact at every viewport size. The old
+  // 15% radius became oversized on tall phones because Town is a large world.
+  var townWaypointRadius=Math.max(48,Math.min(72,Math.min(inner.w,inner.h)*0.08));
   var data={
-    plaza:{x:cx,y:cy,r:Math.min(inner.w,inner.h)*0.15},
+    plaza:{x:cx,y:cy,r:townWaypointRadius},
     portalArea:{x:cx,y:inner.y+inner.h*0.15,r:64},
     pond:{x:inner.x+inner.w*0.14,y:inner.y+inner.h*0.78,rx:95,ry:56},
     buildings:[
@@ -18451,7 +18454,7 @@ function getTownLayout(geo){
       {id:'npc_bob',name:'Bob',x:cx+inner.w*0.20,y:cy+inner.h*0.16,color:'#e0c090'}
     ],
     waypoints:[
-      {id:'wp_town',name:'Town',region:'Town',x:cx,y:cy,r:Math.min(inner.w,inner.h)*0.15}
+      {id:'wp_town',name:'Town',region:'Town',x:cx,y:cy,r:townWaypointRadius}
     ],
     spawn:{x:cx,y:cy+Math.min(inner.w,inner.h)*0.06}
   };
