@@ -40567,12 +40567,61 @@ function playerDied(){
     player.hp=1;
     return;
   }
+  // Damage sources can converge in the same frame; only process and score one
+  // death, and only start one defeat jingle.
+  if(player.dead)return;
   player.dead=true;player.hp=0;player.rage=0;gameRunning=false;dungeonRunEnded=true;
+  playOriginalDefeatJingle();
   // Spirit Guardian does not survive the Druid's death.
   druidSummons=druidSummons.filter(function(s){return s.type!=='spirit_guardian';});
   if(playerLevel>(permanentData.stats.bestPlayerLevel||1))permanentData.stats.bestPlayerLevel=playerLevel;
   permanentData.souls+=runSoulsEarned;gainMasteryXP(5);savePermanentData();checkAchievements();
   setTimeout(function(){showGameOverScreen(false);},600);
+}
+
+// Original self-contained defeat jingle. It is synthesized at runtime so the
+// site ships no recording, media file, request, or third-party dependency.
+// The first player interaction primes Web Audio for Safari/iOS; audio failure
+// is always non-fatal and leaves gameplay unchanged.
+var _defeatAudioCtx=null;
+function getDefeatAudioContext(){
+  try{
+    if(!_defeatAudioCtx){
+      var Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx)return null;
+      _defeatAudioCtx=new Ctx();
+    }
+    return _defeatAudioCtx;
+  }catch(e){return null;}
+}
+function primeDefeatAudio(){
+  try{
+    var ac=getDefeatAudioContext();
+    if(ac&&ac.state==='suspended')ac.resume();
+  }catch(e){}
+}
+window.addEventListener('pointerdown',primeDefeatAudio,{once:true,passive:true});
+window.addEventListener('keydown',primeDefeatAudio,{once:true,passive:true});
+function playOriginalDefeatJingle(){
+  try{
+    var ac=getDefeatAudioContext();if(!ac)return;
+    if(ac.state==='suspended')ac.resume();
+    var start=ac.currentTime+0.03;
+    var notes=[
+      {at:0.00,f:523.25,d:0.18},{at:0.20,f:659.25,d:0.18},
+      {at:0.40,f:587.33,d:0.24},{at:0.68,f:440.00,d:0.22},
+      {at:0.94,f:392.00,d:0.28},{at:1.27,f:261.63,d:0.55}
+    ];
+    notes.forEach(function(note,index){
+      var osc=ac.createOscillator();var gain=ac.createGain();
+      osc.type=index<3?'triangle':'sine';osc.frequency.setValueAtTime(note.f,start+note.at);
+      osc.connect(gain);gain.connect(ac.destination);
+      gain.gain.setValueAtTime(0.0001,start+note.at);
+      gain.gain.exponentialRampToValueAtTime(0.075,start+note.at+0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001,start+note.at+note.d);
+      osc.start(start+note.at);osc.stop(start+note.at+note.d+0.02);
+    });
+  }catch(e){}
 }
 
 function addFloatie(x,y,text,color,duration){
