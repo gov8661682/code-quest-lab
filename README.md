@@ -1,6 +1,8 @@
 # Code Quest Lab
 
-`index.html` is the learning portal. `text 2.txt` is the untouched original copy.
+`index.html` is the learning portal. `code-quest-lab-source.txt` is an exact,
+downloadable text copy of the current HTML for easy editing. `text 2.txt` is the
+untouched original copy.
 
 ## Play
 
@@ -15,11 +17,21 @@ On iPad, open the link in Safari and use the on-screen movement and skill contro
 - Skills: `Q` core, `E` movement, `R` ultimate, `F` potion, `G` interact
 - Pause: `Esc`
 
+Phones use the same touch controls with a compact HUD, smaller skill buttons,
+safe-area spacing, and joysticks that adapt to the available screen size.
+
 If Safari offers **Share > Add to Home Screen** and the school allows that feature, the site can launch more like an app. Progress is stored in Safari on that iPad, so clearing website data or changing browsers removes the local save.
 
 This project does not attempt to bypass device-management or school web restrictions. If the published page is blocked, the school's administrator must allow the site.
 
 ## Update and publish
+
+After every edit to `index.html`, refresh the downloadable text copy before
+committing. The GitHub check will reject a change if the two files differ:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\sync-source.ps1
+```
 
 `index.html` is the site and `_headers` contains the Cloudflare security headers. After testing a change, publish the two files to the `code-quest-lab` Cloudflare Pages project:
 

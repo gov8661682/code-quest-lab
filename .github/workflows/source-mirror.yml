@@ -1,0 +1,13 @@
+name: Verify downloadable HTML copy
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify-source-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure the text download matches index.html
+        run: cmp --silent index.html code-quest-lab-source.txt || (echo "Run .\\sync-source.ps1 before committing." && exit 1)
