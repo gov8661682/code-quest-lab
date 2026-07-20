@@ -615,6 +615,7 @@ html, body {
 </style>
 </head>
 <body>
+<main id="app" aria-label="Code Quest Lab game">
 
 <div id="mainMenuScreen" class="screen" style="justify-content:flex-start;padding-top:0;overflow-y:auto;">
   <canvas id="menuBgCanvas"></canvas>
@@ -674,21 +675,21 @@ html, body {
   <button class="menuBtn" id="modifierContinueBtn">Start Session</button>
 </div>
 <div id="dungeonSelectScreen" class="screen" style="justify-content:flex-start;padding-top:20px;overflow-y:auto;">
-  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Practice Modules</h1>
+  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Practice Modules</h1>
   <div style="color:#8a8170;font-size:0.75em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;">Choose your lesson path</div>
   <div id="dungeonSelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;"></div>
 <button class="menuBtnSecondary" id="dungeonSelectBackBtn">← Return to Dashboard</button>
 </div>
 
 <div id="difficultySelectScreen" class="screen" style="justify-content:flex-start;padding-top:20px;overflow-y:auto;">
-  <h1 id="difficultySelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Select Pace</h1>
+  <h1 id="difficultySelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Select Pace</h1>
   <div id="difficultySelectSub">Choose your practice speed</div>
   <div id="difficultySelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
 <button class="menuBtnSecondary" id="difficultySelectBackBtn">← Back to Practice Modules</button>
 </div>
 
 <div id="characterSelectScreen" class="screen active" style="justify-content:flex-start;padding-top:30px;overflow-y:auto;">
-  <h1 id="charSelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Your Profiles</h1>
+  <h1 id="charSelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Your Profiles</h1>
   <div class="csHint" id="charSelectHint">Select a profile to continue, or create a new one</div>
   <div id="characterSelectGrid" style="display:flex;flex-direction:column;gap:0;align-items:center;width:100%;max-width:520px;margin-bottom:18px;"></div>
   <div id="charSelectBtns" style="display:flex;flex-direction:column;align-items:center;gap:0;">
@@ -729,7 +730,7 @@ html, body {
 </div>
 
 <div id="classSelectScreen" class="screen" style="justify-content:flex-start;padding-top:30px;">
-  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Choose Your Class</h1>
+  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Choose Your Class</h1>
   <div class="csHint">This choice is permanent for this character</div>
   <div id="classSelectGrid" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;"></div>
   <button class="menuBtn" id="classConfirmBtn" disabled style="opacity:0.4;cursor:not-allowed;margin-bottom:10px;">Confirm</button>
@@ -909,7 +910,7 @@ html, body {
 </div>
 
 <div id="gameOverScreen" class="screen">
-  <h1 id="goTitle">SESSION ENDED</h1>
+  <h1 id="goTitle" role="heading" aria-level="2">SESSION ENDED</h1>
   <div class="goSub" id="goSub">The session closes and progress is saved.</div>
   <div class="goStatsBox">
     <div class="goStatRow"><span class="goStatLabel">Difficulty</span><span class="goStatValue" id="goDifficulty">Normal</span></div>
@@ -933,21 +934,21 @@ html, body {
 </div>
 
 <div id="heroesScreen" class="screen">
-  <h1>🏛 HALL OF HEROES</h1>
+  <h1 role="heading" aria-level="2">🏛 HALL OF HEROES</h1>
   <div class="heroesSub">Your legacy in the dungeon</div>
   <div class="heroesGrid" id="heroesGrid"></div>
   <button class="menuBtnSecondary" id="heroesBackBtn">← Return to Main Menu</button>
 </div>
 
 <div id="achievementsScreen" class="screen">
-  <h1>🏆 ACHIEVEMENTS</h1>
+  <h1 role="heading" aria-level="2">🏆 ACHIEVEMENTS</h1>
   <div class="achSub">Deeds of legend</div>
   <div class="achievementsList" id="achievementsList"></div>
   <button class="menuBtnSecondary" id="achBackBtn">← Return to Main Menu</button>
 </div>
 
 <div id="skillTreeScreen" class="screen">
-  <h1>🌳 SKILL TREE</h1>
+  <h1 role="heading" aria-level="2">🌳 SKILL TREE</h1>
   <div class="stSub">Spend skill tree points to specialize your warrior</div>
   <div class="stHeader" id="stHeader">
     <div class="stHeaderCell"><span class="sthVal" id="sthPoints">0</span><span class="sthLabel">Skill Tree Points</span></div>
@@ -972,7 +973,7 @@ html, body {
 </div>
 
 <div id="masteryScreen" class="screen">
-  <h1>⚔ BARBARIAN MASTERY</h1>
+  <h1 role="heading" aria-level="2">⚔ BARBARIAN MASTERY</h1>
   <div class="masterySub">The warrior grows stronger with every run</div>
   <div class="masteryHeader" id="masteryHeader">
     <div class="masteryHeaderCell"><span class="mhVal" id="mhLevel">1</span><span class="mhLabel">Barb Level</span></div>
@@ -1002,7 +1003,7 @@ html, body {
 </div>
 
 <div id="settingsScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">⚙ SETTINGS</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">⚙ SETTINGS</h1>
   <div style="color:#8a8170;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;">Adjust your experience</div>
   <div style="width:90%;max-width:420px;background:#13111a;border:1px solid #3a342a;border-radius:6px;padding:14px 18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
     <div style="text-align:left;">
@@ -1045,7 +1046,7 @@ html, body {
 
 
 <div id="equipmentScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">⚔ EQUIPMENT</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">⚔ EQUIPMENT</h1>
   <div style="color:#8a8170;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Manage your gear</div>
   <!-- Stat Summary -->
   <div id="equipStatSummary" style="background:#13111a;border:1px solid #3a342a;border-radius:6px;padding:12px 18px;width:90%;max-width:420px;margin-bottom:12px;display:flex;justify-content:space-around;align-items:center;"></div>
@@ -1059,7 +1060,7 @@ html, body {
   <button class="menuBtnSecondary" id="equipBackBtn">← Return to Character Menu</button>
 </div>
 <div id="forgeScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8a23a;text-shadow:0 0 14px rgba(216,162,58,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">🔥 THE FORGE</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#d8a23a;text-shadow:0 0 14px rgba(216,162,58,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">🔥 THE FORGE</h1>
   <div style="color:#8a6d3b;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Craft powerful weapons from salvaged materials</div>
 
   <!-- Materials Display -->
@@ -1098,7 +1099,7 @@ html, body {
   <!-- Step 5: Name -->
   <div id="forgeStep5" style="width:90%;max-width:420px;display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
     <div style="color:#ffd98a;font-size:0.72em;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:4px;border-bottom:1px solid #3a342a;padding-bottom:4px;">Step 5 — Name Your Weapon</div>
-    <input id="forgeWeaponNameInput" type="text" maxlength="30" placeholder="Enter weapon name..."
+    <input id="forgeWeaponNameInput" type="text" aria-label="Weapon name" maxlength="30" placeholder="Enter weapon name..."
       style="width:100%;padding:10px 12px;background:#1c1a22;border:1px solid #4a4338;border-radius:4px;color:#ffd98a;font-size:0.9em;font-family:Georgia,serif;box-sizing:border-box;outline:none;"/>
   </div>
 
@@ -1130,7 +1131,7 @@ html, body {
 </div>
 
 <div id="forgeMenuScreen" class="screen">
-  <h1>🔥 THE FORGE</h1>
+  <h1 role="heading" aria-level="2">🔥 THE FORGE</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">An ancient crafting sanctum</div>
   <div class="forgeRuneRow">ᚱ ᚠ ᚢ ᚦ ᚷ</div>
   <button class="forgeHubBtn" id="forgeMenuSalvageBtn"><span class="fhIcon">🔨</span><span class="fhText"><span class="fhTitle">Salvage</span><span class="fhSub">Break down items into materials</span></span></button>
@@ -1141,7 +1142,7 @@ html, body {
 </div>
 
 <div id="merchantScreen" class="screen">
-  <h1>🏪 MERCHANT</h1>
+  <h1 role="heading" aria-level="2">🏪 MERCHANT</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Buy supplies, sell your spoils</div>
 
   <!-- Souls Display (Ancient Souls is the game's existing currency — reused as-is) -->
@@ -1208,7 +1209,7 @@ html, body {
 </div>
 
 <div id="salvageScreen" class="screen">
-  <h1>🔨 SALVAGE</h1>
+  <h1 role="heading" aria-level="2">🔨 SALVAGE</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Break down items into crafting materials</div>
   <div style="width:90%;max-width:420px;color:#a98f5c;font-size:0.70em;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;border-bottom:1px solid #3a2010;padding-bottom:4px;">Inventory (<span id="salvageInvCount">0</span>/30)</div>
   <div id="salvageInventoryGrid" style="width:90%;max-width:420px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;"></div>
@@ -1216,7 +1217,7 @@ html, body {
 </div>
 
 <div id="smelterScreen" class="screen">
-  <h1>⚒️ SMELTER</h1>
+  <h1 role="heading" aria-level="2">⚒️ SMELTER</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Refine raw materials into crafting components</div>
   <div class="forgePlaceholderBox">
     <div class="fpTitle">Materials Inventory</div>
@@ -1235,7 +1236,7 @@ html, body {
 </div>
 
 <div id="craftEquipmentScreen" class="screen" style="background:radial-gradient(ellipse at 50% 20%,#1c0f08 0%,#0b0604 70%);overflow-y:auto;justify-content:flex-start;padding:18px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#ffae42;text-shadow:0 0 16px rgba(255,140,30,0.5);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">⚔️ CRAFT EQUIPMENT</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#ffae42;text-shadow:0 0 16px rgba(255,140,30,0.5);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">⚔️ CRAFT EQUIPMENT</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Forge weapons and armor from Forge Materials</div>
 
   <!-- Souls Display -->
@@ -1281,7 +1282,7 @@ html, body {
   <!-- Step 5: Name -->
   <div style="width:90%;max-width:500px;margin-bottom:10px;" id="ceqNameSection">
     <div style="color:#ffd98a;font-size:0.72em;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;border-bottom:1px solid #3a342a;padding-bottom:4px;">Step 5 — Name Your Equipment</div>
-    <input id="ceqNameInput" type="text" maxlength="30" placeholder="Enter equipment name..."
+    <input id="ceqNameInput" type="text" aria-label="Equipment name" maxlength="30" placeholder="Enter equipment name..."
       style="width:100%;padding:10px 12px;background:#1c1a22;border:1px solid #4a4338;border-radius:4px;color:#ffd98a;font-size:0.9em;font-family:Georgia,serif;box-sizing:border-box;outline:none;"/>
   </div>
 
@@ -1312,7 +1313,7 @@ html, body {
   <button class="menuBtnSecondary" id="craftEquipmentBackBtn" style="margin-top:8px;">← Return to Forge</button>
 </div>
 <div id="libraryScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">📚 LIBRARY</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">📚 LIBRARY</h1>
   <div style="color:#4a6a8a;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Ancient knowledge permanently unlocked</div>
   <div style="width:90%;max-width:420px;display:flex;gap:10px;margin-bottom:12px;">
     <button id="libraryTabBlessings" style="flex:1;padding:8px;background:#0e1a2a;border:2px solid #4a8acc;border-radius:4px;color:#a8d4f8;cursor:pointer;font-family:Georgia,serif;font-size:0.85em;letter-spacing:0.1em;">✨ Blessings</button>
@@ -1342,7 +1343,7 @@ html, body {
   <button class="menuBtn" id="bookRewardCloseBtn">Continue</button>
 </div>
 <div id="blessingsScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">✨ BLESSINGS &amp; CURSES</h1>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;" role="heading" aria-level="2">✨ BLESSINGS &amp; CURSES</h1>
   <div style="color:#4a6a8a;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Apply ancient knowledge to forged equipment</div>
 
   <!-- Souls display -->
@@ -1410,6 +1411,7 @@ html, body {
   <div class="mtSub" id="masteryToastSub"></div>
 </div>
 
+</main>
 <script>
 
 // ============================================================
@@ -23123,7 +23125,7 @@ function renderSmelterScreen(){
   var fm=permanentData.forgeMaterials||defaultForgeMaterials();
   var souls=permanentData.souls||0;
 
-  var html='<h1>⚒️ SMELTER</h1>';
+  var html='<h1 role="heading" aria-level="2">⚒️ SMELTER</h1>';
   html+='<div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Refine raw materials into Forge Materials</div>';
 
   // Souls display
