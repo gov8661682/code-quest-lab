@@ -22,6 +22,8 @@ safe-area spacing, and joysticks that adapt to the available screen size.
 
 If Safari offers **Share > Add to Home Screen** and the school allows that feature, the site can launch more like an app. Progress is stored in Safari on that iPad, so clearing website data or changing browsers removes the local save.
 
+The release shell includes a relative web manifest and a first-party service worker for the static app shell. It caches same-origin pages and uses the cached game entry only for offline document navigation; local save data is still device/browser-local.
+
 This project does not attempt to bypass device-management or school web restrictions. If the published page is blocked, the school's administrator must allow the site.
 
 ## Update and publish
@@ -33,12 +35,52 @@ committing. The GitHub check will reject a change if the two files differ:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\sync-source.ps1
 ```
 
-`index.html` is the site and `_headers` contains the Cloudflare security headers. After testing a change, publish the two files to the `code-quest-lab` Cloudflare Pages project:
+`index.html` is the game entry point, `site.css` and the page directories are
+the public review surface, and `_headers` contains the Cloudflare security
+headers. Build the complete static deployment package before publishing to the
+`code-quest-lab` Cloudflare Pages project:
 
 ```powershell
-$deployDir=Join-Path $env:TEMP 'code-quest-lab-pages-deploy'
-New-Item -ItemType Directory -Force -Path $deployDir | Out-Null
-Copy-Item -LiteralPath 'index.html' -Destination (Join-Path $deployDir 'index.html') -Force
-Copy-Item -LiteralPath '_headers' -Destination (Join-Path $deployDir '_headers') -Force
-npx.cmd --yes wrangler pages deploy $deployDir --project-name code-quest-lab --branch main --commit-dirty=true
+npm.cmd run build
+npx.cmd --yes wrangler pages deploy .\dist --project-name code-quest-lab --branch main --commit-dirty=true
 ```
+
+The deployment package includes the game, manifest, service worker, original
+vector assets, generated PWA install icons, and same-origin `/about/`, `/education/`, `/privacy/`,
+`/support/`, `/contact/`, and `/schools/` pages. Do not run the publish command
+until the owner approves public deployment.
+
+## Local release checks
+
+The repository has a dependency-free Node check/test/build loop:
+
+```powershell
+npm.cmd run release:verify
+```
+
+The build copies the static release surface to `dist\`. It does not publish or create native store builds.
+
+## Native packaging scaffold
+
+The repository includes generated Capacitor Android and iOS projects. The
+branded native and PWA raster assets are regenerated from `assets/icon.svg`
+with the development-only Pillow helper, then synchronized into the native
+projects:
+
+```powershell
+npm.cmd run assets:generate
+npm.cmd run native:sync
+```
+
+The helper is deterministic and requires Pillow only on the machine generating
+assets. It is not a runtime dependency.
+
+Android build evidence requires a supported JDK, Android SDK, and Gradle setup:
+
+```powershell
+npm.cmd run native:android:build
+```
+
+iOS builds require macOS and Xcode. Open `ios\App\App.xcworkspace` after
+syncing, then perform the owner-controlled signing and device checks. These
+commands do not publish, submit, or purchase anything.

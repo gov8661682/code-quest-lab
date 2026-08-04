@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">Code Quest Lab</title>
+  <desc id="desc">Original gold Code Quest Lab wordmark with a compass sigil.</desc>
+  <rect width="1200" height="400" rx="28" fill="#0b0b10"/>
+  <g transform="translate(100 64)">
+    <circle cx="136" cy="136" r="112" fill="#243b25" stroke="#d8a23a" stroke-width="8"/>
+    <path d="M136 26v220M26 136h220" stroke="#a98f5c" stroke-width="3" opacity=".55"/>
+    <path d="m136 32 34 104-34 104-34-104Z" fill="#d8a23a"/>
+    <path d="m136 56 14 80-14 80-14-80Z" fill="#ffe9a0"/>
+    <circle cx="136" cy="136" r="18" fill="#0b0b10" stroke="#ffd98a" stroke-width="5"/>
+  </g>
+  <text x="360" y="178" fill="#ffe9a0" font-family="Georgia, serif" font-size="76" letter-spacing="10">CODE QUEST</text>
+  <text x="366" y="248" fill="#a98f5c" font-family="Georgia, serif" font-size="32" letter-spacing="14">LAB</text>
+  <path d="M366 280h622" stroke="#8a6d3b" stroke-width="2"/>
+  <text x="366" y="322" fill="#6a5a40" font-family="Georgia, serif" font-size="20" letter-spacing="5">AN OFFLINE FANTASY PRACTICE LAB</text>
+</svg>

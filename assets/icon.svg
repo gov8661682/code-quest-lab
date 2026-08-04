@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Code Quest Lab app icon</title>
+  <desc id="desc">A gold compass sigil over a deep green dungeon field.</desc>
+  <rect width="512" height="512" rx="96" fill="#0b0b10"/>
+  <rect x="26" y="26" width="460" height="460" rx="78" fill="#172819" stroke="#8a6d3b" stroke-width="8"/>
+  <circle cx="256" cy="250" r="142" fill="#243b25" stroke="#d8a23a" stroke-width="10"/>
+  <path d="M256 92v316M98 250h316" stroke="#a98f5c" stroke-width="4" opacity=".55"/>
+  <path d="M256 112 298 250 256 388 214 250Z" fill="#d8a23a"/>
+  <path d="m256 140 18 110-18 110-18-110Z" fill="#ffe9a0"/>
+  <circle cx="256" cy="250" r="22" fill="#0b0b10" stroke="#ffd98a" stroke-width="6"/>
+  <path d="M134 430h244" stroke="#d8a23a" stroke-width="8" stroke-linecap="round"/>
+</svg>

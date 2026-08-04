@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b10">
+  <meta name="description" content="The current privacy design for Code Quest Lab, including local saves, network boundaries, and owner review items.">
+  <link rel="canonical" href="https://code-quest-lab.gov8661682.com/privacy/">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="stylesheet" href="../site.css">
+  <title>Privacy | Code Quest Lab</title>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="../"><img src="../assets/icon.svg" alt=""><span>Code Quest Lab<small>Privacy design</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../">Play</a><a href="../about/">About</a><a href="../education/">Educational Purpose</a><a href="../schools/">School Review</a><a href="../support/">Support</a></nav></header>
+  <main class="site-main">
+    <section class="site-hero"><p class="eyebrow">Privacy</p><h1>Local by design, transparent about the boundary.</h1><p class="lead">This page describes the current product design. It is not a substitute for the owner-approved legal privacy policy, store disclosures, or hosting-provider terms.</p></section>
+    <section class="page-grid">
+      <article class="card accent"><h2>What the game stores</h2><p>Profiles, class choice, progression, inventory, equipment, settings, achievements, and interrupted-run recovery data are stored locally in browser or native storage. A profile can be deleted from Manage Data.</p></article>
+      <article class="card note"><h2>What normal play does not need</h2><p>No account, login, email address, real name, classroom identity, chat, social profile, camera, microphone, precise location, contacts, advertising ID, or cloud save is required for core play.</p></article>
+      <article class="card"><h2>Network boundary</h2><p>The web shell may be downloaded from the project host and cached for offline play. The game does not intentionally send save data to a server or open external websites during gameplay. The native shells do not need external network access for the core game.</p></article>
+      <article class="card"><h2>Infrastructure logs</h2><p>A hosting or CDN provider may create ordinary request logs. Retention, fields, and legal treatment must be confirmed by the project owner before store or school distribution. The product must not claim zero data collection until that review is complete.</p></article>
+      <article class="card full"><h2>Release review still required</h2><ul><li>Approve the public privacy-policy text and support contact.</li><li>Review Apple App Privacy and Google Play Data Safety declarations against the final native dependencies.</li><li>Review the generated Android permission set, including the default Capacitor <code>INTERNET</code> declaration.</li><li>Confirm hosting/CDN retention and any school deployment consent or filtering requirements.</li></ul></article>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-links"><a href="../about/">About</a><a href="../education/">Educational Purpose</a><a href="../schools/">School Review</a><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="../contact/">Contact</a></div><div>Last product-design update: 2026-08-04. Owner approval is required before this becomes a legal policy.</div></footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "appId": "com.gov8661682.codequestlab",
+  "appName": "Code Quest Lab",
+  "webDir": "dist",
+  "loggingBehavior": "none",
+  "backgroundColor": "#0b0b10",
+  "plugins": {
+    "App": {
+      "disableBackButtonHandler": true
+    }
+  }
+}

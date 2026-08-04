@@ -6,8 +6,10 @@
 <meta name="description" content="Code Quest Lab is an interactive browser-based practice experience for building problem-solving, planning, and keyboard skills.">
 <meta name="theme-color" content="#0b0b10">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Code Quest Lab">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="canonical" href="https://code-quest-lab.gov8661682.com/">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; media-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
 <title>Code Quest Lab</title>
@@ -116,6 +118,19 @@ html, body {
 .mmBtn.mmBtnGreen:active { background:linear-gradient(160deg,#1e3024 0%,#102018 100%); }
 .mmDungeonLabel { font-size:0.65em; color:#6a5a40; letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; }
 .mmSectionRule { width:200px; height:1px; background:linear-gradient(90deg,transparent,#2a2418,transparent); margin:10px auto 0; }
+.publicInfoLinks { display:flex; flex-wrap:wrap; justify-content:center; gap:6px 12px; max-width:330px; margin:16px auto 4px; text-align:center; }
+.publicInfoLinks a { color:#8a8170; font-size:0.66em; letter-spacing:0.08em; text-decoration:none; text-transform:uppercase; }
+.publicInfoLinks a:hover,.publicInfoLinks a:focus-visible { color:#d8c08a; }
+.entitlementCard { width:min(92%,390px); background:linear-gradient(160deg,#171523 0%,#0f1118 100%); border:1px solid #4a3f62; border-top:2px solid #8a70b8; border-radius:8px; padding:22px 24px; text-align:left; box-shadow:0 10px 30px rgba(0,0,0,0.35); }
+.entitlementCard h2 { color:#d8c08a; font-size:1.25em; letter-spacing:0.12em; text-align:center; text-transform:uppercase; margin-bottom:10px; }
+.entitlementCard p { color:#b8b0a2; font-size:0.82em; line-height:1.6; margin-bottom:12px; }
+.entitlementStatus { min-height:42px; padding:10px 12px; margin:12px 0; background:#101017; border:1px solid #302a3a; border-radius:5px; color:#9bc8dc; font-size:0.76em; line-height:1.5; }
+.parentGateLabel { display:flex; gap:9px; align-items:flex-start; color:#d0c8b9; font-size:0.76em; line-height:1.45; margin:12px 0; }
+.parentGateLabel input { margin-top:3px; accent-color:#d8a23a; }
+.entitlementActions { display:flex; flex-direction:column; gap:8px; }
+.entitlementActions button { width:100%; margin:0; }
+.entitlementActions button:disabled { opacity:0.42; cursor:not-allowed; }
+.entitlementNote { color:#81796c !important; font-size:0.68em !important; text-align:center; }
 .menuBtnMastery { margin-top:10px; padding:12px 40px; font-size:0.95em; letter-spacing:0.1em; background:#13111a; border:1px solid #4a3f62; color:#c8a8f8; border-radius:4px; cursor:pointer; text-transform:uppercase; display:block; width:220px; text-align:center; position:relative; z-index:10; touch-action:manipulation; }
 .menuBtnMastery:active { background:#1c1a22; }
 #skillScreen h2 { color:#d8c08a; letter-spacing:0.15em; margin-bottom:6px; text-transform:uppercase; }
@@ -130,7 +145,7 @@ html, body {
 .skillBtn.locked:active { background:#0e0c14; }
 .lockHint { font-size:0.65em; color:#5a5050; letter-spacing:0.1em; display:block; margin-top:2px; }
 #gameScreen { padding:0; }
-#gameCanvas { display:block; width:100%; height:100%; background:#16141c; touch-action:none; }
+#gameCanvas { display:block; width:100%; height:100%; background:#16141c; touch-action:none; outline:none; }
 #hud { position:absolute; top:0; left:0; right:0; height:calc(44px + env(safe-area-inset-top)); background:rgba(11,11,16,0.88); border-bottom:1px solid #3a342a; display:flex; align-items:center; padding-top:env(safe-area-inset-top); padding-left:max(12px,env(safe-area-inset-left)); padding-right:max(52px,env(safe-area-inset-right)); gap:10px; z-index:5; }
 .hudSection { display:flex; align-items:center; gap:5px; }
 .hudSection + .hudSection { margin-left:6px; }
@@ -230,6 +245,16 @@ html, body {
 .goSoulsTotal { font-size:1.1em; color:#ffd98a; font-weight:bold; letter-spacing:0.1em; }
 .goMasteryBox { background:#0e0c18; border:1px solid #4a3f62; border-radius:6px; padding:10px 20px; margin-bottom:12px; text-align:center; width:90%; max-width:320px; color:#c8a8f8; font-size:0.85em; }
 .goMasteryBox .goMasteryLabel { color:#7a6898; font-size:0.75em; text-transform:uppercase; letter-spacing:0.15em; }
+.goSupportBox { background:#0e1720; border:1px solid #2a5a72; border-radius:6px; padding:10px 14px; margin-bottom:10px; text-align:left; width:90%; max-width:360px; color:#b8d8e8; font-size:0.78em; line-height:1.45; }
+.goSupportBox .goSupportLabel { color:#7fc5e5; font-size:0.72em; text-transform:uppercase; letter-spacing:0.14em; margin-bottom:4px; }
+.goSupportBox .goSupportConcept { color:#ffd98a; font-size:0.76em; letter-spacing:0.08em; margin-bottom:3px; }
+.goNextStep { color:#8a8170; font-size:0.74em; line-height:1.4; width:90%; max-width:360px; margin:0 0 8px; }
+#resumeSessionScreen { background:#0b0b10; padding:20px; }
+#resumeSessionScreen h1 { font-size:2em; letter-spacing:0.18em; color:#ffd98a; text-shadow:0 0 18px rgba(255,217,138,0.4); text-transform:uppercase; margin-bottom:8px; }
+.resumeSub { color:#8a8170; font-size:0.8em; letter-spacing:0.1em; line-height:1.5; max-width:360px; margin-bottom:16px; }
+.resumeDetails { background:#13111a; border:1px solid #3a342a; border-radius:6px; padding:12px 18px; width:90%; max-width:340px; color:#cfc4ae; font-size:0.82em; line-height:1.7; text-align:left; margin-bottom:10px; }
+.resumeDetails strong { color:#ffd98a; }
+.resumeLocalNote { color:#6f8c82; font-size:0.68em; letter-spacing:0.08em; line-height:1.4; max-width:340px; margin-bottom:10px; }
 #heroesScreen { background:#0b0b10; overflow-y:auto; justify-content:flex-start; padding:20px 0 30px; }
 #heroesScreen h1 { font-size:1.8em; letter-spacing:0.2em; color:#d8c08a; text-shadow:0 0 12px rgba(216,192,138,0.35); text-transform:uppercase; margin-bottom:4px; margin-top:10px; }
 #heroesScreen .heroesSub { color:#8a8170; font-size:0.75em; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:16px; }
@@ -341,6 +366,8 @@ html, body {
 .dungeonCard.unlocked { border-color:#8a6d3b; }
 .dungeonCard.unlocked:hover, .dungeonCard.unlocked:active { border-color:#d8a23a; background:#1c1a22; }
 .dungeonCard.locked { opacity:0.55; cursor:not-allowed; border-color:#3a342a; }
+.dungeonCard.premiumLocked { opacity:0.92; cursor:pointer; border-color:#4a3f62; background:#15121e; }
+.dungeonCard.premiumLocked:hover, .dungeonCard.premiumLocked:active { border-color:#8a70b8; background:#1d1828; }
 .dungeonCard.selected { border-color:#ffd98a; background:#241f12; box-shadow:0 0 10px rgba(216,162,58,0.3); }
 .dungeonCard .dcIcon { font-size:2.2em; flex-shrink:0; }
 .dungeonCard .dcInfo { flex:1; }
@@ -350,6 +377,7 @@ html, body {
 .dungeonCard.locked .dcSub { color:#5a5040; }
 .dungeonCard .dcReward { font-size:0.68em; color:#7ec87e; letter-spacing:0.05em; margin-top:4px; }
 .dungeonCard .dcLockedBadge { font-size:0.7em; color:#c07070; letter-spacing:0.15em; text-transform:uppercase; font-weight:bold; margin-top:4px; }
+.dungeonCard .dcPremiumBadge { font-size:0.68em; color:#c8a8f8; letter-spacing:0.1em; text-transform:uppercase; font-weight:bold; margin-top:4px; }
 .dungeonCard .dcSelectedBadge { font-size:0.68em; color:#ffd98a; letter-spacing:0.1em; text-transform:uppercase; margin-top:4px; }
 .dungeonCard .dcBestBadge { font-size:0.65em; color:#7ec8c0; letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
 
@@ -579,7 +607,7 @@ html, body {
   #pauseBtn { width:34px; height:34px; right:max(5px,env(safe-area-inset-right)); }
   #minimapCanvas { top:48px; right:max(6px,env(safe-area-inset-right)); width:84px; height:63px; }
   #roomInfo { top:48px; max-width:calc(100vw - 110px); overflow:hidden; text-overflow:ellipsis; }
-  #objectiveInfo { top:70px; max-width:calc(100vw - 20px); font-size:0.56em; }
+  #objectiveInfo { top:70px; left:max(10px,env(safe-area-inset-left)); transform:none; max-width:calc(100vw - 118px); white-space:normal; text-align:left; line-height:1.25; font-size:0.56em; }
   #waveBanner { top:92px; max-width:90vw; }
   #waveBanner .bannerTitle { font-size:1.05em; }
   .joyBase { display:block; bottom:max(12px,env(safe-area-inset-bottom)); width:94px; height:94px; }
@@ -612,6 +640,11 @@ html, body {
   #shb-ultimate { height:50px; }
   #enemyCount { bottom:92px; }
 }
+@media (min-width:601px) and (max-width:1100px) and (orientation:landscape) {
+  #objectiveInfo { max-width:calc(100vw - 250px); }
+  #waveBanner { top:108px; max-width:68vw; }
+  #waveBanner .bannerTitle { font-size:1.25em; }
+}
 </style>
 </head>
 <body>
@@ -621,7 +654,7 @@ html, body {
   <div id="mainMenuContent">
     <div class="mmLogo">
       <h1>Code Quest Lab</h1>
-      <div class="mmSubtitle">Coding Practice and Learning Support</div>
+      <div class="mmSubtitle">Fantasy Adventure · Optional Learning Support</div>
       <div class="mmLogoRule"></div>
     </div>
     <div class="mmCharPanel">
@@ -644,8 +677,9 @@ html, body {
         </div>
       </div>
     </div>
-    <div class="mmBtnGroup">
-      <button class="mmBtn mmBtnPrimary" id="mainNewRunBtn">⚔ Start Practice Session</button>
+      <div class="mmBtnGroup">
+      <button class="mmBtn mmBtnPrimary" id="mainNewRunBtn">⚔ Start Adventure</button>
+      <button class="mmBtn" id="mainResumeSessionBtn" style="display:none;border-color:#2a5a72;border-top-color:#7fc5e5;color:#b8d8e8;">↩ Resume Session</button>
       <div class="mmDungeonLabel" id="menuSelectedDungeonLabel">Module 1 · Foundations</div>
       <div class="mmSectionRule"></div>
       <button class="mmBtn mmBtnMastery" id="mainMasteryBtn">⚔ Progress Tracker</button>
@@ -655,16 +689,29 @@ html, body {
       <button class="mmBtn" id="mainHeroesBtn">🏛 Progress Archive</button>
       <button class="mmBtn" id="mainAchBtn">🏆 Milestones</button>
 <button class="mmBtn" id="mainEquipmentBtn">⚔ Tools & Setup</button>
-      <button class="mmBtn" id="mainLibraryBtn" style="border-color:#2a4a6a;border-top-color:#4a8acc;color:#a8d4f8;">📚 Learning Library</button>
+      <button class="mmBtn" id="mainLibraryBtn" style="border-color:#2a4a6a;border-top-color:#4a8acc;color:#a8d4f8;">📚 Play Notes &amp; Library</button>
       <button class="mmBtn" id="switchCharacterBtn">🧍 Switch Profile</button>
+      <button class="mmBtn" id="mainUnlockBtn" style="border-color:#4a3f62;border-top-color:#8a70b8;color:#c8a8f8;">Full Adventure Unlock</button>
     </div>
+    <nav class="publicInfoLinks" aria-label="Game information">
+      <a href="./about/">About</a><a href="./education/">Educational Purpose</a><a href="./schools/">School Review</a><a href="./privacy/">Privacy</a><a href="./support/">Support</a><a href="./contact/">Contact</a>
+    </nav>
     <div style="height:24px;flex-shrink:0;"></div>
   </div>
 </div>
 
+<div id="resumeSessionScreen" class="screen">
+  <h1>SESSION RECOVERED</h1>
+  <div class="resumeSub">A local checkpoint was found for this profile. Continue from the latest safe room checkpoint when you are ready.</div>
+  <div class="resumeDetails" id="resumeSessionDetails"></div>
+  <div class="resumeLocalNote">Saved on this device only. No account, network connection, or personal information is needed to recover play.</div>
+  <button class="menuBtn" id="resumeSessionBtn">↩ Resume Session</button>
+  <button class="menuBtnSecondary" id="discardResumeSessionBtn">Return to Town</button>
+</div>
+
 <div id="modifierScreen" class="screen">
-  <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Learning Mode</h2>
-  <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This session uses</div>
+  <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Session Modifier</h2>
+  <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This adventure includes</div>
   <div id="modifierCard" style="background:#13111a;border:2px solid #8a6d3b;border-radius:8px;padding:24px 32px;max-width:320px;width:88%;text-align:center;margin-bottom:24px;">
     <div id="modifierIcon" style="font-size:2.8em;margin-bottom:10px;"></div>
     <div id="modifierName" style="font-size:1.4em;color:#ffd98a;font-weight:bold;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;"></div>
@@ -673,9 +720,23 @@ html, body {
   </div>
   <button class="menuBtn" id="modifierContinueBtn">Start Session</button>
 </div>
+<div id="entitlementScreen" class="screen" style="justify-content:flex-start;padding-top:24px;overflow-y:auto;">
+  <div class="entitlementCard">
+    <h2>Full Adventure Unlock</h2>
+    <p>One permanent unlock gives access to the completed adventure scope on this platform. The free introduction remains playable without paying.</p>
+    <div class="entitlementStatus" id="entitlementStatus" role="status" aria-live="polite">Checking the available store connection...</div>
+    <label class="parentGateLabel" for="parentGateCheck"><input id="parentGateCheck" type="checkbox"> <span>I am a parent or guardian, and I understand that any purchase is a one-time platform-store transaction.</span></label>
+    <div class="entitlementActions">
+      <button class="menuBtn" id="entitlementPurchaseBtn" disabled>Purchase One-Time Unlock</button>
+      <button class="menuBtnSecondary" id="entitlementRestoreBtn" disabled>Restore Purchase</button>
+      <button class="menuBtnSecondary" id="entitlementBackBtn">Back to Dashboard</button>
+    </div>
+    <p class="entitlementNote">No browser payment is requested in this build. Store adapters must return a verified entitlement before premium access is granted.</p>
+  </div>
+</div>
 <div id="dungeonSelectScreen" class="screen" style="justify-content:flex-start;padding-top:20px;overflow-y:auto;">
-  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Practice Modules</h1>
-  <div style="color:#8a8170;font-size:0.75em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;">Choose your lesson path</div>
+  <h1 style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;">Adventure Routes</h1>
+  <div style="color:#8a8170;font-size:0.75em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;">Choose an adventure route</div>
   <div id="dungeonSelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:14px;margin-bottom:20px;"></div>
 <button class="menuBtnSecondary" id="dungeonSelectBackBtn">← Return to Dashboard</button>
 </div>
@@ -696,9 +757,12 @@ html, body {
     <button class="menuBtnSecondary" id="manageSavesBtn" style="margin-top:10px;">🗂 Manage Data</button>
     <button class="menuBtnSecondary" id="manageSavesDoneBtn" style="display:none;margin-top:10px;border-color:#4a6a4a;color:#7ec87e;">← Back to Profiles</button>
   </div>
-</div>
+  <nav class="publicInfoLinks" aria-label="Game information">
+    <a href="./about/">About</a><a href="./education/">Educational Purpose</a><a href="./schools/">School Review</a><a href="./privacy/">Privacy</a><a href="./support/">Support</a><a href="./contact/">Contact</a>
+  </nav>
+ </div>
 
-<!-- Save Delete Confirmation Overlay -->
+ <!-- Save Delete Confirmation Overlay -->
 <div id="saveDeleteConfirmOverlay">
   <div class="sdcBox">
     <div class="sdcIcon">⚠️</div>
@@ -781,8 +845,8 @@ html, body {
 </div>
 
 <div id="gameScreen" class="screen">
-  <canvas id="gameCanvas"></canvas>
-  <div id="desktopControlsHint">Move: <b>WASD / Arrows</b> &nbsp; Aim/Attack: <b>Mouse</b><br>Skills: <b>Q</b> Core · <b>E</b> Move · <b>R</b> Ultimate · <b>F</b> Potion · <b>G</b> Interact · <b>Esc</b> Pause</div>
+  <canvas id="gameCanvas" tabindex="0" role="application" aria-label="Code Quest Lab game area"></canvas>
+  <div id="desktopControlsHint">Move: <b>WASD / Arrows</b> &nbsp; Aim/Attack: <b>Mouse click / hold</b><br>Skills: <b>Q</b> Core · <b>E</b> Move · <b>R</b> Ultimate · <b>F</b> Potion · <b>G</b> Interact · <b>Esc</b> Pause</div>
   <canvas id="minimapCanvas" width="120" height="90"></canvas>
 <div id="hud">
     <div class="hudSection">
@@ -898,6 +962,7 @@ html, body {
     <button class="menuBtnMastery" id="charMenuMasteryBtn">⚔ Character Mastery</button>
     <button class="menuBtnSecondary" id="charMenuSwitchBtn">🧍 Switch Character</button>
     <button class="menuBtnSecondary" id="charMenuSettingsBtn">⚙ Settings</button>
+    <button class="menuBtnSecondary" id="pauseMenuBtn">Finish and Return to Dashboard</button>
     <button class="menuBtn" id="pauseResumeBtn" style="margin-top:22px;">▶ Resume Session</button>
   </div>
   <div id="waypointMenuOverlay">
@@ -929,7 +994,14 @@ html, body {
     <div id="goMasteryGained" style="font-size:1.1em;margin-top:2px;">+0 Mastery XP</div>
     <div id="goMasteryLevel" style="margin-top:2px;font-size:0.85em;color:#9b59b6;">Barbarian Level 1</div>
   </div>
+  <div class="goSupportBox">
+    <div class="goSupportLabel">Optional play note</div>
+    <div class="goSupportConcept" id="goSupportConcept">Concept: Observe and respond</div>
+    <div id="goLearningSupport">Observe the room and enemy signals, then choose your next move.</div>
+  </div>
+  <div class="goNextStep" id="goNextStep">Next: return to the waypoint when you are ready, or finish for now.</div>
   <button class="menuBtnSecondary" id="goMenuBtn">Return to Waypoint</button>
+  <button class="menuBtnSecondary" id="goFinishBtn">Finish for Now</button>
 </div>
 
 <div id="heroesScreen" class="screen">
@@ -1134,7 +1206,6 @@ html, body {
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">An ancient crafting sanctum</div>
   <div class="forgeRuneRow">ᚱ ᚠ ᚢ ᚦ ᚷ</div>
   <button class="forgeHubBtn" id="forgeMenuSalvageBtn"><span class="fhIcon">🔨</span><span class="fhText"><span class="fhTitle">Salvage</span><span class="fhSub">Break down items into materials</span></span></button>
-  <button class="forgeHubBtn" id="forgeMenuSmelterBtn"><span class="fhIcon">⚒️</span><span class="fhText"><span class="fhTitle">Smelter</span><span class="fhSub">Refine raw materials</span></span></button>
   <button class="forgeHubBtn" id="forgeMenuCraftBtn"><span class="fhIcon">⚔️</span><span class="fhText"><span class="fhTitle">Craft Equipment</span><span class="fhSub">Forge weapons & armor</span></span></button>
   <button class="forgeHubBtn" id="forgeMenuBlessingsBtn"><span class="fhIcon">📚</span><span class="fhText"><span class="fhTitle">Blessings & Curses</span><span class="fhSub">Apply Library knowledge</span></span></button>
   <button class="menuBtnSecondary" id="forgeMenuBackBtn" style="margin-top:18px;">← Return to Main Menu</button>
@@ -1215,25 +1286,6 @@ html, body {
   <button class="menuBtnSecondary" id="salvageBackBtn">← Return to Forge</button>
 </div>
 
-<div id="smelterScreen" class="screen">
-  <h1>⚒️ SMELTER</h1>
-  <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Refine raw materials into crafting components</div>
-  <div class="forgePlaceholderBox">
-    <div class="fpTitle">Materials Inventory</div>
-    <div id="smelterMaterialsList" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-  </div>
-  <div class="forgePlaceholderBox">
-    <div class="fpTitle">Recipe List</div>
-    <div class="fpBody">No smelting recipes are known yet. New recipes will appear here as they are discovered.</div>
-  </div>
-  <div class="forgePlaceholderBox">
-    <div class="fpTitle">Material Information</div>
-    <div class="fpBody">Select a material above to view its properties. (Coming soon)</div>
-  </div>
-  <button class="forgeDisabledBtn" disabled>⚒️ Smelt</button>
-  <button class="menuBtnSecondary" id="smelterInitialBackBtn" style="margin-top:12px;">← Return to Forge</button>
-</div>
-
 <div id="craftEquipmentScreen" class="screen" style="background:radial-gradient(ellipse at 50% 20%,#1c0f08 0%,#0b0604 70%);overflow-y:auto;justify-content:flex-start;padding:18px 0 30px;">
   <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#ffae42;text-shadow:0 0 16px rgba(255,140,30,0.5);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">⚔️ CRAFT EQUIPMENT</h1>
   <div style="color:#a9805c;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Forge weapons and armor from Forge Materials</div>
@@ -1312,8 +1364,12 @@ html, body {
   <button class="menuBtnSecondary" id="craftEquipmentBackBtn" style="margin-top:8px;">← Return to Forge</button>
 </div>
 <div id="libraryScreen" class="screen" style="background:#0b0b10;overflow-y:auto;justify-content:flex-start;padding:16px 0 30px;">
-  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">📚 LIBRARY</h1>
-  <div style="color:#4a6a8a;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Ancient knowledge permanently unlocked</div>
+  <h1 style="font-size:1.7em;letter-spacing:0.18em;color:#a8d4f8;text-shadow:0 0 14px rgba(168,212,248,0.4);text-transform:uppercase;margin-bottom:3px;margin-top:8px;">📚 PLAY NOTES &amp; LIBRARY</h1>
+  <div style="color:#4a6a8a;font-size:0.72em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;">Optional notes for your next adventure</div>
+  <div style="width:90%;max-width:420px;background:#0e1720;border:1px solid #2a5a72;border-radius:6px;padding:10px 14px;margin-bottom:12px;text-align:left;color:#b8d8e8;font-size:0.74em;line-height:1.5;">
+    <div style="color:#7fc5e5;font-size:0.82em;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;">Computational thinking through play</div>
+    <div>Notice patterns in enemy signals, break a route into room-sized goals, sequence your skills, and change one choice when a plan needs debugging. There are no quizzes or required lessons.</div>
+  </div>
   <div style="width:90%;max-width:420px;display:flex;gap:10px;margin-bottom:12px;">
     <button id="libraryTabBlessings" style="flex:1;padding:8px;background:#0e1a2a;border:2px solid #4a8acc;border-radius:4px;color:#a8d4f8;cursor:pointer;font-family:Georgia,serif;font-size:0.85em;letter-spacing:0.1em;">✨ Blessings</button>
     <button id="libraryTabCurses" style="flex:1;padding:8px;background:#0a0e1a;border:1px solid #2a2a4a;border-radius:4px;color:#6a6a9a;cursor:pointer;font-family:Georgia,serif;font-size:0.85em;letter-spacing:0.1em;">💀 Curses</button>
@@ -1468,13 +1524,23 @@ var SAVE_KEY_BUILD='idg_build_config';
 var SAVE_KEY_DUNGEONS='idg_dungeon_progress';
 var SAVE_KEY_CHAR_INDEX='idg_char_index';
 var SAVE_KEY_ACTIVE_CHAR='idg_active_char';
+var CHARACTER_SAVE_VERSION=2;
 
 function charDataKey(id){return'idg_char_'+id;}
 function charBackupKey(id){return charDataKey(id)+'_backup';}
 function parseCharacterSave(raw){
   if(!raw)return null;
   var parsed=JSON.parse(raw);
-  return parsed&&typeof parsed==='object'&&!Array.isArray(parsed)?parsed:null;
+  if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))return null;
+  if(parsed.saveVersion!==undefined&&(!Number.isInteger(parsed.saveVersion)||parsed.saveVersion>CHARACTER_SAVE_VERSION))return null;
+  var recognized=0;
+  ['souls','stats','mastery','dungeons','selectedClass','inventory','equipped'].forEach(function(key){if(Object.prototype.hasOwnProperty.call(parsed,key))recognized++;});
+  if(recognized<2)return null;
+  if(parsed.stats!==undefined&&(!parsed.stats||typeof parsed.stats!=='object'||Array.isArray(parsed.stats)))return null;
+  if(parsed.mastery!==undefined&&(!parsed.mastery||typeof parsed.mastery!=='object'||Array.isArray(parsed.mastery)))return null;
+  if(parsed.dungeons!==undefined&&(!parsed.dungeons||typeof parsed.dungeons!=='object'||Array.isArray(parsed.dungeons)))return null;
+  if(parsed.selectedClass!==undefined&&typeof parsed.selectedClass!=='string')return null;
+  return parsed;
 }
 function sanitizeStoredText(value,maxLength){
   return String(value==null?'':value).replace(/[\u0000-\u001f\u007f]/g,'').replace(/[<>&]/g,'').slice(0,maxLength||500);
@@ -1664,14 +1730,23 @@ function createNewCharacter(className){
 
 function loadPermanentData() {
   if(!activeCharacterId)return defaultCharacterData('barbarian');
+  window.__lastSaveRecovery=null;
   try{
     var raw=localStorage.getItem(charDataKey(activeCharacterId));
     var parsed;
     try{parsed=parseCharacterSave(raw);}catch(primaryError){parsed=null;}
     if(!parsed){
-      try{parsed=parseCharacterSave(localStorage.getItem(charBackupKey(activeCharacterId)));}catch(backupError){parsed=null;}
+      var backupRaw=null;
+      try{backupRaw=localStorage.getItem(charBackupKey(activeCharacterId));parsed=parseCharacterSave(backupRaw);}catch(backupError){parsed=null;}
+      if(parsed){
+        window.__lastSaveRecovery={characterId:activeCharacterId,source:'backup',at:Date.now()};
+        try{localStorage.setItem(charDataKey(activeCharacterId),backupRaw);}catch(repairError){}
+      }
     }
-    if(!parsed)return defaultCharacterData('barbarian');
+    if(!parsed){
+      window.__lastSaveRecovery={characterId:activeCharacterId,source:'defaults',at:Date.now()};
+      return defaultCharacterData('barbarian');
+    }
     var defaults=defaultCharacterData(parsed.selectedClass||'barbarian');
     var merged=Object.assign({},defaults,parsed);
     merged.stats=Object.assign({},defaults.stats,parsed.stats||{});
@@ -1747,7 +1822,7 @@ function loadPermanentData() {
     merged.secondJourney.bobRecognizes=merged.secondJourney.bobRecognizes===true;
     merged.secondJourney.bobRecognitionShown=merged.secondJourney.bobRecognitionShown===true;
     return merged;
-  }catch(e){return defaultCharacterData('barbarian');}
+  }catch(e){window.__lastSaveRecovery={characterId:activeCharacterId,source:'defaults',at:Date.now()};return defaultCharacterData('barbarian');}
 }
 
 function savePermanentData() {
@@ -1758,7 +1833,7 @@ function savePermanentData() {
       _savedMageData={mana:player.mana,maxMana:player.maxMana,manaRegen:player.manaRegen};
     }
     var blob={
-      souls:permanentData.souls,stats:permanentData.stats,
+       saveVersion:CHARACTER_SAVE_VERSION,souls:permanentData.souls,stats:permanentData.stats,
       achievements:permanentData.achievements,mastery:permanentData.mastery,skillTree:permanentData.skillTree,
       build:{base:chosenSkills.base,core:chosenSkills.core,movement:chosenSkills.movement,ultimate:chosenSkills.ultimate},
       dungeons:permanentData.dungeons,selectedClass:permanentData.selectedClass,
@@ -1804,6 +1879,134 @@ function savePermanentData() {
     window.__lastSaveError=String(e&&e.message||e);
     console.warn('Unable to save game progress.',e);
   }
+}
+
+// ── RUN CHECKPOINTS ──
+// Profile data is durable progression. A run checkpoint is a separate,
+// recoverable local snapshot used only for an interrupted dungeon session.
+// It never contains an account, contact detail, or network identifier, and it
+// is cleared when the player deliberately finishes or abandons the run.
+var RUN_CHECKPOINT_VERSION=1;
+var pendingRunCheckpoint=null;
+function runCheckpointKey(id){return charDataKey(id)+'_run_checkpoint';}
+function isStaticSessionZone(zoneId){return zoneId==='town'||isEntranceZone(zoneId)||zoneId==='bob_arena';}
+function parseRunCheckpoint(raw){
+  try{
+    var cp=typeof raw==='string'?JSON.parse(raw):raw;
+    if(!cp||cp.version!==RUN_CHECKPOINT_VERSION||typeof cp.activeDungeonId!=='string'||!isReleaseDungeon(cp.activeDungeonId)||isStaticSessionZone(cp.activeDungeonId)||
+       typeof cp.currentRoomId!=='string'||!cp.roomStates||typeof cp.roomStates!=='object'||Array.isArray(cp.roomStates)||
+       !Array.isArray(cp.mainPath)||cp.mainPath.length<1||cp.mainPath.some(function(roomId){return typeof roomId!=='string';})||
+       !cp.roomDefs||typeof cp.roomDefs!=='object'||Array.isArray(cp.roomDefs))return null;
+    if(cp.mainPath.indexOf(cp.currentRoomId)<0)return null;
+    for(var checkpointPathIndex=0;checkpointPathIndex<cp.mainPath.length;checkpointPathIndex++){
+      if(!cp.roomDefs[cp.mainPath[checkpointPathIndex]])return null;
+    }
+    for(var checkpointRoomId in cp.roomStates){
+      if(!cp.roomStates[checkpointRoomId]||typeof cp.roomStates[checkpointRoomId]!=='object'||Array.isArray(cp.roomStates[checkpointRoomId]))return null;
+    }
+    if(!cp.roomDefs[cp.currentRoomId]||typeof cp.roomDefs[cp.currentRoomId]!=='object'||Array.isArray(cp.roomDefs[cp.currentRoomId]))return null;
+    return cp;
+  }catch(e){return null;}
+}
+function loadRunCheckpoint(){
+  if(!activeCharacterId)return null;
+  try{return parseRunCheckpoint(localStorage.getItem(runCheckpointKey(activeCharacterId)));}catch(e){return null;}
+}
+function clearRunCheckpoint(){
+  if(!activeCharacterId)return;
+  try{localStorage.removeItem(runCheckpointKey(activeCharacterId));}catch(e){}
+}
+function formatCheckpointTime(ts){
+  if(!ts)return'Unknown time';
+  var diff=Math.max(0,Date.now()-ts),minutes=Math.floor(diff/60000);
+  if(minutes<1)return'just now';
+  if(minutes<60)return minutes+' min ago';
+  var hours=Math.floor(minutes/60);
+  if(hours<24)return hours+' hr ago';
+  return Math.floor(hours/24)+' days ago';
+}
+function getRunCheckpointDetails(cp){
+  if(!cp)return'';
+  var dungeonName=getDungeonName(cp.activeDungeonId);
+  var roomDef=cp.roomDefs&&cp.roomDefs[cp.currentRoomId];
+  var roomName=roomDef&&roomDef.name?roomDef.name:cp.currentRoomId;
+  var level=cp.player&&cp.player.level?cp.player.level:1;
+  return'<strong>'+dungeonName+'</strong><br>'+
+    'Checkpoint: <strong>'+roomName+'</strong><br>'+
+    'Adventure level: <strong>'+level+'</strong><br>'+
+    'Saved: <strong>'+formatCheckpointTime(cp.savedAt)+'</strong>';
+}
+function saveRunCheckpoint(reason){
+  if(!activeCharacterId||dungeonRunEnded||isStaticSessionZone(activeDungeonId)||!currentRoomId||!ROOM_DEFS[currentRoomId])return false;
+  var gameScreenEl=document.getElementById('gameScreen');
+  var gameScreenActive=!!(gameScreenEl&&gameScreenEl.classList.contains('active'));
+  if(!gameRunning&&!gamePaused&&!gameScreenActive)return false;
+  try{
+    // Capture the current room before serializing it. Normal rooms retain the
+    // live enemy state; boss and mini-boss rooms intentionally resume at the
+    // start of that encounter rather than pretending to restore a frame.
+    saveRoomState(currentRoomId);
+    var checkpoint={
+      version:RUN_CHECKPOINT_VERSION,
+      savedAt:Date.now(),
+      reason:String(reason||'autosave').slice(0,40),
+      activeDungeonId:activeDungeonId,
+      activeDifficultyId:activeDifficultyId||'normal',
+      modifierId:activeModifier&&activeModifier.id||null,
+      currentRoomId:currentRoomId,
+      mainPath:MAIN_PATH.slice(),
+      roomDefs:JSON.parse(JSON.stringify(ROOM_DEFS)),
+      roomStates:JSON.parse(JSON.stringify(roomStates)),
+      player:{
+        x:player.x,y:player.y,hp:player.hp,hpMax:player.hpMax,rage:player.rage,rageMax:player.rageMax,
+        mana:player.mana,maxMana:player.maxMana,manaRegen:player.manaRegen,energy:player.energy,
+        maxEnergy:player.maxEnergy,energyRegen:player.energyRegen,facingAngle:player.facingAngle,
+        potions:player.potions,potionQueue:Array.isArray(player.potionQueue)?player.potionQueue.slice():[],level:playerLevel
+      },
+      playerXP:playerXP,
+      xpToNextLevel:xpToNextLevel,
+      totalKills:totalKills,
+      timeSurvived:timeSurvived,
+      runSoulsEarned:runSoulsEarned,
+      runMasteryXpEarned:runMasteryXpEarned,
+      runXpEarned:runXpEarned,
+      runEliteKills:runEliteKills,
+      upgrades:JSON.parse(JSON.stringify(upgrades||{})),
+      runTempBuffs:JSON.parse(JSON.stringify(runTempBuffs||{})),
+      skillCooldownTimers:JSON.parse(JSON.stringify(skillCooldownTimers||{}))
+    };
+    localStorage.setItem(runCheckpointKey(activeCharacterId),JSON.stringify(checkpoint));
+    return true;
+  }catch(e){
+    window.__lastRunCheckpointError=String(e&&e.message||e);
+    return false;
+  }
+}
+function restoreRunCheckpointState(cp){
+  if(!cp)return;
+  try{
+    var savedPlayer=cp.player||{};
+    ['x','y','hp','hpMax','rage','rageMax','mana','maxMana','manaRegen','energy','maxEnergy','energyRegen','facingAngle','potions'].forEach(function(key){
+      if(typeof savedPlayer[key]==='number'&&isFinite(savedPlayer[key]))player[key]=savedPlayer[key];
+    });
+    player.potionQueue=Array.isArray(savedPlayer.potionQueue)?savedPlayer.potionQueue.slice():[];
+    player.dead=false;
+    playerLevel=Math.max(1,Math.floor(cp.player&&cp.player.level||1));
+    playerXP=Math.max(0,Number(cp.playerXP)||0);
+    xpToNextLevel=Math.max(1,Number(cp.xpToNextLevel)||xpForLevel(playerLevel));
+    totalKills=Math.max(0,Number(cp.totalKills)||0);
+    timeSurvived=Math.max(0,Number(cp.timeSurvived)||0);
+    runSoulsEarned=Math.max(0,Number(cp.runSoulsEarned)||0);
+    runMasteryXpEarned=Math.max(0,Number(cp.runMasteryXpEarned)||0);
+    runXpEarned=Math.max(0,Number(cp.runXpEarned)||0);
+    runEliteKills=Math.max(0,Number(cp.runEliteKills)||0);
+    if(cp.upgrades&&typeof cp.upgrades==='object')upgrades=Object.assign({},upgrades,cp.upgrades);
+    if(cp.runTempBuffs&&typeof cp.runTempBuffs==='object')runTempBuffs=Object.assign({},runTempBuffs,cp.runTempBuffs);
+    if(cp.skillCooldownTimers&&typeof cp.skillCooldownTimers==='object')skillCooldownTimers=Object.assign({},skillCooldownTimers,cp.skillCooldownTimers);
+    clampPlayerToRoom(getRoomGeometry());
+    centerCameraOnPlayer();camera.x=camera.targetX;camera.y=camera.targetY;
+    updateHUD();drawMinimap();
+  }catch(e){window.__lastRunRestoreError=String(e&&e.message||e);}
 }
 
 var activeCharacterId=null;
@@ -3991,11 +4194,11 @@ var DUNGEON_DEFS={
     },
     unlockHint:'Reach Level 170 or defeat the Hollow World Tree'
   },
-  // Main-path rooms now spawn standard-enemy compositions (see
-  // d9BuildComposition/updateD9EnemyBehaviors) — the Throne Room
-  // (room_boss) still has none since there is no boss yet.
-  // objective text stays exploration-flavored rather than "Defeat X"
-  // until a boss exists.
+  // Main-path rooms spawn standard-enemy compositions (see
+  // d9BuildComposition/updateD9EnemyBehaviors). The Throne Room
+  // (room_boss) hosts The Oathbreaker King through the source-resident
+  // boss dispatch below. The V1 release guard may still hide this route
+  // until its full reward, progression, and hands-on evidence is complete.
   dungeon9:{
     id:'dungeon9',name:"Vow Breaker's Castle",icon:'🏰',
     soulMult:10.5,mxpMult:10.5,
@@ -4010,12 +4213,11 @@ var DUNGEON_DEFS={
   // lifted so the Dungeon Gate lets players in (see openDungeonGate), and
   // its room-graph generator exists (see generateDungeon10 below). Its
   // Entrance Area and Waypoint work automatically off REGION_ORDER/
-  // DUNGEON_DEFS. Standard-enemy roster build in progress (see
-  // d10BuildComposition/updateD10EnemyBehaviors) — Phase 1 (Failed
-  // Subject, Alchemical Slime, Plague Doctor) is live on every main-path
-  // COMBAT room; room_boss (Central Containment Chamber) stays reserved/
-  // empty until a boss exists, same convention D9's Throne Room used.
-  // objective text stays exploration-flavored until a boss exists.
+  // DUNGEON_DEFS. Standard-enemy roster work is source-resident (see
+  // d10BuildComposition/updateD10EnemyBehaviors), and room_boss (Central
+  // Containment Chamber) hosts The Alchemist through the boss dispatch
+  // below. The V1 release guard may still hide this route until complete
+  // reward, progression, and hands-on evidence exists.
   dungeon10:{
     id:'dungeon10',name:'The Abandoned Laboratory',icon:'🧪',
     soulMult:10.5,mxpMult:10.5,
@@ -4026,16 +4228,11 @@ var DUNGEON_DEFS={
     },
     unlockHint:'Reach Level 230 or defeat the Oathbreaker King'
   },
-  // Ranger Watchtowers — environment-only pass. An abandoned mountain
-  // border network of watchtowers beyond The Abandoned Laboratory. No
-  // combat exists yet (see generateDungeon11 below): the dungeon is built
-  // purely to explore, building suspense rather than fighting. The final
-  // room (Shattered Signal Tower) exists as an empty arena reserved for a
-  // future boss, same "reserved room" convention D9's Throne Room and
-  // D10's Central Containment Chamber used before their bosses existed.
-  // No boss has been defeated here yet, so isUnlocked stays level-only
-  // (dungeon10 has no boss of its own to gate on either, for the same
-  // reason).
+  // Ranger Watchtowers use an exploration-heavy middle path with no normal
+  // enemy waves, but the final Shattered Signal Tower hosts the source-
+  // resident Corrupted Ranger Captain boss. Its release surface remains
+  // gated until the route, rewards, progression, and hands-on evidence are
+  // complete; isUnlocked therefore remains level-only.
   dungeon11:{
     id:'dungeon11',name:'Ranger Watchtowers',icon:'🏹',
     soulMult:10.5,mxpMult:10.5,
@@ -4046,15 +4243,12 @@ var DUNGEON_DEFS={
     },
     unlockHint:'Reach Level 260'
   },
-  // Necromancer's Stolen Graveyard — environment-only pass, same convention
-  // D11 (Ranger Watchtowers) used: no normal enemies, no minibosses, no
-  // boss yet. The kingdom's largest cemetery, stolen overnight by a
-  // Necromancer's forbidden magic, now sits in a corrupted realm where the
-  // dead can never rest. Corruption (black vines, purple crystals) spreads
-  // deeper along the main path — see the _isDungeon12 branch in loadRoom
-  // (always spawns zero enemies) and drawD12RoomDecoration/
-  // drawD12AmbientAtmosphere below. The final room (The Ritual Altar) is a
-  // reserved empty arena for a future Necromancer boss.
+  // Necromancer's Stolen Graveyard uses corrupted horde rooms and a
+  // source-resident Corrupted Necromancer boss in The Ritual Altar. The
+  // cemetery, black vines, purple crystals, and escalating corruption are
+  // preserved by the _isDungeon12 room and atmosphere branches below. The
+  // V1 release guard still withholds this route until its full evidence is
+  // complete.
   dungeon12:{
     id:'dungeon12',name:"Necromancer's Stolen Graveyard",icon:'🪦',
     soulMult:12.0,mxpMult:12.0,
@@ -4354,7 +4548,12 @@ function isDungeonUnlocked(dungeonId){
 // waypoints, the Dungeon Gate flow, and save/load all key off this single
 // list plus DUNGEON_DEFS, so nothing dungeon-specific needs to be added
 // elsewhere for future regions.
-var REGION_ORDER=['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8','dungeon9','dungeon10','dungeon11','dungeon12','dungeon13','dungeon14','dungeon15','dungeon16'];
+// Release surface: only regions with a complete V1 route are reachable from
+// the shipped navigation and boss-exit chain. Dungeons 9-16 remain in the
+// source for future content work, but are intentionally post-release until
+// their routes, bosses, rewards, and device evidence are complete.
+var REGION_ORDER=['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8'];
+function isReleaseDungeon(dungeonId){return REGION_ORDER.indexOf(dungeonId)>=0;}
 function getNextDungeonId(currentId){
   var idx=REGION_ORDER.indexOf(currentId);
   if(idx<0||idx>=REGION_ORDER.length-1)return null;
@@ -4372,6 +4571,10 @@ function isStaticHubZone(zoneId){return zoneId==='town'||isEntranceZone(zoneId);
 function refreshDungeonUnlocks(){
   if(!permanentData.dungeons)permanentData.dungeons={unlocked:{dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false},selected:'dungeon1',dungeon2FirstUnlockShown:false,dungeon4FirstUnlockShown:false,dungeon5FirstUnlockShown:false,dungeon6FirstUnlockShown:false,dungeon7FirstUnlockShown:false,dungeon8FirstUnlockShown:false,dungeon9FirstUnlockShown:false,dungeon10FirstUnlockShown:false,difficulty:{}};
   if(!permanentData.dungeons.unlocked)permanentData.dungeons.unlocked={dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false};
+  if(!isReleaseDungeon(permanentData.dungeons.selected)){
+    permanentData.dungeons.selected='dungeon1';
+    savePermanentData();
+  }
   if(permanentData.dungeons.unlocked.dungeon4===undefined)permanentData.dungeons.unlocked.dungeon4=false;
   if(permanentData.dungeons.unlocked.dungeon5===undefined)permanentData.dungeons.unlocked.dungeon5=false;
   if(permanentData.dungeons.unlocked.dungeon6===undefined)permanentData.dungeons.unlocked.dungeon6=false;
@@ -4469,36 +4672,39 @@ function refreshDungeonUnlocks(){
   }else if(nowD8&&!permanentData.dungeons.unlocked.dungeon8){
     permanentData.dungeons.unlocked.dungeon8=true;savePermanentData();
   }
-  // ── DUNGEON 9 UNLOCK (all classes) ──
-  var wasD9=!!permanentData.dungeons.unlocked.dungeon9;
-  var nowD9=isDungeonUnlocked('dungeon9');
-  if(nowD9&&!wasD9){
-    permanentData.dungeons.unlocked.dungeon9=true;
-    savePermanentData();
-    if(!permanentData.dungeons.dungeon9FirstUnlockShown){
-      permanentData.dungeons.dungeon9FirstUnlockShown=true;
+  // Dungeons 9 and 10 remain in the save schema for forward compatibility,
+  // but their unlock notifications stay dormant while those regions are
+  // outside the V1 release surface. Re-adding either id to REGION_ORDER will
+  // re-enable the existing progression logic for a future release.
+  if(isReleaseDungeon('dungeon9')){
+    var wasD9=!!permanentData.dungeons.unlocked.dungeon9;
+    var nowD9=isDungeonUnlocked('dungeon9');
+    if(nowD9&&!wasD9){
+      permanentData.dungeons.unlocked.dungeon9=true;
       savePermanentData();
-      showMasteryToast('🔓 Dungeon 9 Unlocked',"Vow Breaker's Castle looms beyond the Black Market");
+      if(!permanentData.dungeons.dungeon9FirstUnlockShown){
+        permanentData.dungeons.dungeon9FirstUnlockShown=true;
+        savePermanentData();
+        showMasteryToast('🔓 Dungeon 9 Unlocked',"Vow Breaker's Castle looms beyond the Black Market");
+      }
+    }else if(nowD9&&!permanentData.dungeons.unlocked.dungeon9){
+      permanentData.dungeons.unlocked.dungeon9=true;savePermanentData();
     }
-  }else if(nowD9&&!permanentData.dungeons.unlocked.dungeon9){
-    permanentData.dungeons.unlocked.dungeon9=true;savePermanentData();
   }
-  // ── DUNGEON 10 UNLOCK (all classes) — entrance-only stub, see
-  // DUNGEON_DEFS.dungeon10.comingSoon. Unlocking only opens the Entrance
-  // Area/Waypoint/pathway; the Dungeon Gate itself still refuses entry
-  // until the dungeon is actually built (see openDungeonGate). ──
-  var wasD10=!!permanentData.dungeons.unlocked.dungeon10;
-  var nowD10=isDungeonUnlocked('dungeon10');
-  if(nowD10&&!wasD10){
-    permanentData.dungeons.unlocked.dungeon10=true;
-    savePermanentData();
-    if(!permanentData.dungeons.dungeon10FirstUnlockShown){
-      permanentData.dungeons.dungeon10FirstUnlockShown=true;
+  if(isReleaseDungeon('dungeon10')){
+    var wasD10=!!permanentData.dungeons.unlocked.dungeon10;
+    var nowD10=isDungeonUnlocked('dungeon10');
+    if(nowD10&&!wasD10){
+      permanentData.dungeons.unlocked.dungeon10=true;
       savePermanentData();
-      showMasteryToast('🔓 New Pathway Discovered','A road leads out through the castle\'s rear gate');
+      if(!permanentData.dungeons.dungeon10FirstUnlockShown){
+        permanentData.dungeons.dungeon10FirstUnlockShown=true;
+        savePermanentData();
+        showMasteryToast('🔓 New Pathway Discovered','A road leads out through the castle\'s rear gate');
+      }
+    }else if(nowD10&&!permanentData.dungeons.unlocked.dungeon10){
+      permanentData.dungeons.unlocked.dungeon10=true;savePermanentData();
     }
-  }else if(nowD10&&!permanentData.dungeons.unlocked.dungeon10){
-    permanentData.dungeons.unlocked.dungeon10=true;savePermanentData();
   }
 }
 
@@ -16570,10 +16776,10 @@ function stopD14Ambience(){
 // mixed together at random per room (see D15_HORDE_POOL/
 // d15BuildComposition below), corrupted in appearance, and rescaled via
 // the dungeon15 entry in DUNGEON_SCALING — no new enemy type is added.
-// The final room (Heart of the Realm) is a colossal living tree whose
-// roots cover the whole arena — reserved purely as the arena for a
-// future boss, Corruption of Life; no boss/rewards/materials/dialogue
-// are implemented here (see the _isLifeTreeArena branch in loadRoom).
+  // The final room (Heart of the Realm) is a colossal living tree whose
+  // roots cover the whole arena and hosts the source-resident Corruption of
+  // Life boss. The current boss pass still needs complete rewards, dialogue,
+  // progression, and release evidence before this route can be promoted.
 
 // Middle rooms are drawn from this pool in random order each run, same
 // "randomized interior sequence, fixed bookend rooms" approach as
@@ -18200,6 +18406,39 @@ function _updateMenuCharPanel(){
   }catch(e){}
 }
 
+function updateMainMenuResumeButton(){
+  var btn=document.getElementById('mainResumeSessionBtn');
+  if(!btn)return;
+  var cp=loadRunCheckpoint();
+  if(cp){
+    btn.style.display='block';
+    btn.textContent='↩ Resume '+(cp.roomDefs&&cp.roomDefs[cp.currentRoomId]&&cp.roomDefs[cp.currentRoomId].name?cp.roomDefs[cp.currentRoomId].name:'Session');
+  }else{
+    btn.style.display='none';
+  }
+}
+function showRunResumeScreen(cp){
+  var details=document.getElementById('resumeSessionDetails');
+  if(details)details.innerHTML=getRunCheckpointDetails(cp);
+  showScreen('resumeSessionScreen');
+}
+function resumeSavedRun(){
+  var cp=loadRunCheckpoint();
+  if(!cp){clearRunCheckpoint();spawnCharacterIntoWorld();return;}
+  pendingRunCheckpoint=cp;
+  activeDungeonId=cp.activeDungeonId;
+  activeDifficultyId=cp.activeDifficultyId||'normal';
+  _pendingModifierId=cp.modifierId||null;
+  showScreen('gameScreen');
+  requestAnimationFrame(function(){requestAnimationFrame(startGame);});
+}
+function discardSavedRun(){
+  pendingRunCheckpoint=null;
+  _pendingModifierId=null;
+  clearRunCheckpoint();
+  enterTown();
+}
+
 function openMainMenu() {
   try{
     if(!activeCharacterId){openCharacterSelectScreen();return;}
@@ -18221,8 +18460,10 @@ function openMainMenu() {
     }
     activeDungeonId=(permanentData.dungeons&&permanentData.dungeons.selected)||'dungeon1';
     refreshDungeonUnlocks();
+    activeDungeonId=(permanentData.dungeons&&isReleaseDungeon(permanentData.dungeons.selected))?permanentData.dungeons.selected:'dungeon1';
     updateMenuSelectedDungeonLabel();
     _updateMenuCharPanel();
+    updateMainMenuResumeButton();
     showScreen('mainMenuScreen');
     _startMenuBgAnim();
   }catch(e){showScreen('mainMenuScreen');}
@@ -18254,8 +18495,11 @@ function spawnCharacterIntoWorld(){
       mageChosenSkills.movement=permanentData.mageBuild.movement||'Blink';
       mageChosenSkills.ultimate=permanentData.mageBuild.ultimate||'Meteor';
     }
-    activeDungeonId=(permanentData.dungeons&&permanentData.dungeons.selected)||'dungeon1';
-    refreshDungeonUnlocks();
+     activeDungeonId=(permanentData.dungeons&&permanentData.dungeons.selected)||'dungeon1';
+     refreshDungeonUnlocks();
+     var _runCheckpoint=loadRunCheckpoint();
+     if(_runCheckpoint){showRunResumeScreen(_runCheckpoint);return;}
+     var _saveRecoveryNotice=window.__lastSaveRecovery;
     // Saved world location: {type:'town'} or {type:'entrance',dungeonId}.
     // Any other/missing value falls back to Town, exactly as before.
     if(!permanentData.worldLocation||!permanentData.worldLocation.type){
@@ -18263,11 +18507,13 @@ function spawnCharacterIntoWorld(){
       savePermanentData();
     }
     var _spawnWl=permanentData.worldLocation;
-    if(_spawnWl.type==='entrance'&&_spawnWl.dungeonId&&DUNGEON_DEFS[_spawnWl.dungeonId]){
-      enterEntrance(_spawnWl.dungeonId);
-    }else{
-      enterTown();
-    }
+     if(_spawnWl.type==='entrance'&&_spawnWl.dungeonId&&isReleaseDungeon(_spawnWl.dungeonId)&&DUNGEON_DEFS[_spawnWl.dungeonId]){
+       enterEntrance(_spawnWl.dungeonId);
+     }else{
+       enterTown();
+     }
+     if(_saveRecoveryNotice&&_saveRecoveryNotice.source==='backup')showBanner('SAVE RECOVERED','A verified local backup restored this profile.',5);
+     else if(_saveRecoveryNotice&&_saveRecoveryNotice.source==='defaults')showBanner('SAVE NEEDS ATTENTION','The stored profile could not be read and no valid backup was found.',7);
   }catch(e){
     console.log('spawnCharacterIntoWorld FATAL: '+e);
     enterTown();
@@ -18290,6 +18536,7 @@ function buildTownDungeon(){
 }
 
 function enterTown(){
+  clearRunCheckpoint();
   activeDungeonId='town';
   _pendingModifierId=null;
   _gateInsideFlag=false;
@@ -18315,6 +18562,11 @@ function buildEntranceDungeon(zoneId){
 }
 
 function enterEntrance(dungeonId){
+  if(!isReleaseDungeon(dungeonId)){
+    enterTown();
+    return;
+  }
+  clearRunCheckpoint();
   activeDungeonId='entrance_'+dungeonId;
   _pendingModifierId=null;
   _gateInsideFlag=false;
@@ -18364,9 +18616,10 @@ function enterBobArena(){
 // through the Main Menu screen.
 function returnToDungeonWaypoint(){
   try{
+    clearRunCheckpoint();
     permanentData=loadPermanentData();
     var dungeonId=isEntranceZone(activeDungeonId)?getEntranceDungeonId(activeDungeonId):activeDungeonId;
-    if(!DUNGEON_DEFS[dungeonId])dungeonId=(permanentData.dungeons&&permanentData.dungeons.selected)||'dungeon1';
+    if(!DUNGEON_DEFS[dungeonId]||!isReleaseDungeon(dungeonId))dungeonId=(permanentData.dungeons&&isReleaseDungeon(permanentData.dungeons.selected))?permanentData.dungeons.selected:'dungeon1';
     _gateReturnZone=null;
     permanentData.worldLocation={type:'entrance',dungeonId:dungeonId};
     savePermanentData();
@@ -22347,7 +22600,7 @@ var WAYPOINT_HOLD_TIME=2.0; // seconds — used for both activation and menu-hol
 
 // Per-visit interaction state (which waypoint the player is standing in,
 // how long they've been standing there, and which mode that hold is for).
-var waypointState={insideId:null,timer:0,mode:null,justActivatedId:null,ringPct:0,ringWaypoint:null};
+var waypointState={insideId:null,timer:0,mode:null,justActivatedId:null,justClosedId:null,menuWaypointId:null,menuClosedNeedsExit:false,ringPct:0,ringWaypoint:null};
 var waypointMenuOpen=false;
 
 function getWaypointsForZone(zone,geo){
@@ -22397,12 +22650,15 @@ function updateWaypoints(dt,geo){
     // "just activated" gate, so re-entering starts a fresh interaction.
     if(waypointState.insideId||waypointState.justActivatedId)resetWaypointHold();
     waypointState.justActivatedId=null;
+    waypointState.justClosedId=null;
+    waypointState.menuWaypointId=null;
+    waypointState.menuClosedNeedsExit=false;
     return;
   }
   var unlocked=isWaypointUnlocked(found.id);
   // Right after activating, standing in the same waypoint must NOT immediately
   // start counting toward the menu — the player has to leave and come back.
-  if(unlocked&&waypointState.justActivatedId===found.id){
+  if(unlocked&&(waypointState.justActivatedId===found.id||waypointState.justClosedId===found.id||waypointState.menuClosedNeedsExit)){
     hideWaypointStatus();
     return;
   }
@@ -22416,7 +22672,7 @@ function updateWaypoints(dt,geo){
   showWaypointStatus(desiredMode==='activate'?'Activating Waypoint...':'Opening Waypoint Menu...');
   if(pct>=1){
     if(desiredMode==='activate')completeWaypointActivation(found);
-    else openWaypointMenu();
+    else{waypointState.menuWaypointId=found.id;openWaypointMenu();}
     resetWaypointHold();
   }
 }
@@ -22476,6 +22732,12 @@ function openWaypointMenu(){
   document.getElementById('waypointMenuOverlay').classList.add('visible');
 }
 function closeWaypointMenu(){
+  // Closing while still inside the hold radius must not immediately reopen
+  // the menu on the next frame. Require the player to leave and re-enter so
+  // the Close action is reliable on keyboard, touch, and managed webviews.
+  waypointState.justClosedId=waypointState.menuWaypointId;
+  waypointState.menuWaypointId=null;
+  waypointState.menuClosedNeedsExit=true;
   waypointMenuOpen=false;
   document.getElementById('waypointMenuOverlay').classList.remove('visible');
 }
@@ -22595,6 +22857,29 @@ safeClick('pcChoiceDeclineBtn','Decline Pure Corruption Choice',function(){onPur
 safeClick('mainNewRunBtn','New Run',function(){
   openDungeonSelectScreen();
 });
+safeClick('mainResumeSessionBtn','Resume Session From Dashboard',function(){
+  resumeSavedRun();
+});
+safeClick('mainUnlockBtn','Full Adventure Unlock',function(){
+  openEntitlementScreen();
+});
+safeClick('entitlementPurchaseBtn','Purchase Full Adventure',function(){
+  runEntitlementAction('purchase');
+});
+safeClick('entitlementRestoreBtn','Restore Full Adventure',function(){
+  runEntitlementAction('restore');
+});
+safeClick('entitlementBackBtn','Entitlement Back',function(){
+  openMainMenu();
+});
+var parentGateCheck=document.getElementById('parentGateCheck');
+if(parentGateCheck)parentGateCheck.addEventListener('change',updateEntitlementActions);
+safeClick('resumeSessionBtn','Resume Recovered Session',function(){
+  resumeSavedRun();
+});
+safeClick('discardResumeSessionBtn','Discard Recovered Session',function(){
+  discardSavedRun();
+});
 safeClick('dungeonSelectBackBtn','Dungeon Select Back',function(){
   openMainMenu();
 });
@@ -22647,6 +22932,7 @@ function deleteCharacter(charId){
     // Remove character data blob
     localStorage.removeItem(charDataKey(charId));
     localStorage.removeItem(charBackupKey(charId));
+    localStorage.removeItem(runCheckpointKey(charId));
     // Remove from character index
     var idx=loadCharacterIndex();
     idx=idx.filter(function(c){return c.id!==charId;});
@@ -22845,6 +23131,188 @@ function initGameBoot(){
   try{openCharacterSelectScreen();}catch(e){openMainMenu();}
 }
 
+function initNativeEntitlementBridge(){
+  try{
+    var capacitor=window.Capacitor;
+    if(!capacitor||typeof capacitor.getPlatform!=='function'||typeof capacitor.isPluginAvailable!=='function'||typeof capacitor.registerPlugin!=='function')return;
+    var platform=String(capacitor.getPlatform()||'').toLowerCase();
+    var source=platform==='ios'?'storekit':(platform==='android'?'googleplay':'');
+    if(!source||!capacitor.isPluginAvailable('CodeQuestEntitlements'))return;
+    var existing=window.CodeQuestPlatform&&window.CodeQuestPlatform.entitlements;
+    if(existing&&typeof existing.getEntitlementState==='function')return;
+    var nativePlugin=capacitor.registerPlugin('CodeQuestEntitlements');
+    if(!nativePlugin||typeof nativePlugin.getEntitlementState!=='function'||typeof nativePlugin.purchase!=='function'||typeof nativePlugin.restore!=='function')return;
+    window.CodeQuestPlatform=window.CodeQuestPlatform||{};
+    window.CodeQuestPlatform.entitlements={
+      source:source,
+      enforceProductionEntitlement:true,
+      getEntitlementState:function(request){return nativePlugin.getEntitlementState(request||{});},
+      purchase:function(request){return nativePlugin.purchase(request||{});},
+      restore:function(request){return nativePlugin.restore(request||{});}
+    };
+  }catch(e){}
+}
+
+function initNativeLifecycleBridge(){
+  try{
+    var capacitor=window.Capacitor;
+    var appPlugin=capacitor&&capacitor.Plugins&&capacitor.Plugins.App;
+    if(!appPlugin||typeof appPlugin.addListener!=='function')return;
+    function handleNativeBackground(){
+      try{saveForPageBackgrounding();}catch(e){}
+      try{
+        var gameScreen=document.getElementById('gameScreen');
+        if(gameScreen&&gameScreen.classList.contains('active')&&gameRunning&&!gamePaused)openPauseMenu();
+      }catch(e){}
+    }
+    // Capacitor exposes both the legacy pause event and the cross-platform
+    // appStateChange event. Register both because iOS and Android can deliver
+    // them in different orders around suspension or an activity interruption.
+    appPlugin.addListener('pause',handleNativeBackground);
+    appPlugin.addListener('appStateChange',function(state){
+      if(state&&state.isActive===false)handleNativeBackground();
+    });
+    appPlugin.addListener('resume',function(){
+      try{refreshEntitlementFromPlatform();}catch(e){}
+    });
+    appPlugin.addListener('backButton',function(){
+      try{
+        var gameScreen=document.getElementById('gameScreen');
+        if(gameScreen&&gameScreen.classList.contains('active')){
+          if(gamePaused)closePauseMenu();else openPauseMenu();
+        }else if(typeof openMainMenu==='function')openMainMenu();
+      }catch(e){}
+    });
+  }catch(e){}
+}
+
+// ---- PLATFORM ENTITLEMENT BRIDGE -----------------------------------------
+// The game core never imports StoreKit or Google Play Billing. A native or
+// approved web adapter may register window.CodeQuestPlatform.entitlements with
+// the contract documented in platform/ENTITLEMENT_CONTRACT.md. The core only
+// accepts a verified result from that adapter; a local flag or URL parameter
+// cannot grant production access.
+var FULL_UNLOCK_PRODUCT_ID='codequestlab.full_unlock';
+var ENTITLEMENT_CACHE_KEY='codeQuestLab_entitlement_v1';
+var ENTITLEMENT_CACHE_VERSION=1;
+var FREE_DUNGEON_IDS={dungeon1:true};
+var _entitlementTargetDungeonId=null;
+
+function getEntitlementAdapter(){
+  try{
+    var platform=window.CodeQuestPlatform;
+    var adapter=platform&&platform.entitlements;
+    if(adapter&&(
+      typeof adapter.getEntitlementState==='function'||
+      typeof adapter.purchase==='function'||
+      typeof adapter.restore==='function'))return adapter;
+  }catch(e){}
+  return null;
+}
+function isVerifiedEntitlementSource(source){
+  return ['storekit','googleplay','web'].indexOf(String(source||'').toLowerCase())>=0;
+}
+function loadVerifiedEntitlement(){
+  try{
+    var parsed=JSON.parse(localStorage.getItem(ENTITLEMENT_CACHE_KEY)||'null');
+    if(!parsed||parsed.version!==ENTITLEMENT_CACHE_VERSION||parsed.productId!==FULL_UNLOCK_PRODUCT_ID)return null;
+    if(parsed.verified!==true||parsed.status!=='owned'||!isVerifiedEntitlementSource(parsed.source))return null;
+    return parsed;
+  }catch(e){return null;}
+}
+function hasVerifiedPremiumEntitlement(){return !!loadVerifiedEntitlement();}
+function saveVerifiedEntitlement(result){
+  try{localStorage.setItem(ENTITLEMENT_CACHE_KEY,JSON.stringify({
+    version:ENTITLEMENT_CACHE_VERSION,productId:FULL_UNLOCK_PRODUCT_ID,status:'owned',
+    verified:true,source:String(result.source).toLowerCase(),verifiedAt:Date.now()
+  }));}catch(e){}
+}
+function clearVerifiedEntitlement(){try{localStorage.removeItem(ENTITLEMENT_CACHE_KEY);}catch(e){}}
+function applyVerifiedEntitlementResult(result){
+  if(!result||String(result.productId||'')!==FULL_UNLOCK_PRODUCT_ID||result.verified!==true||!isVerifiedEntitlementSource(result.source))return false;
+  var state=String(result.status||'').toLowerCase();
+  if(state==='owned'||state==='active'){saveVerifiedEntitlement(result);return true;}
+  if(state==='revoked'||state==='not_owned'||state==='none'){clearVerifiedEntitlement();return true;}
+  return false;
+}
+function isPremiumDungeon(dungeonId){return !!dungeonId&&!FREE_DUNGEON_IDS[dungeonId];}
+function shouldEnforcePremiumEntitlement(){
+  var adapter=getEntitlementAdapter();
+  return !!(adapter&&adapter.enforceProductionEntitlement===true);
+}
+function premiumDungeonAccessAllowed(dungeonId){
+  return !isPremiumDungeon(dungeonId)||!shouldEnforcePremiumEntitlement()||hasVerifiedPremiumEntitlement();
+}
+function updateEntitlementMenuButton(){
+  var button=document.getElementById('mainUnlockBtn');
+  if(button)button.textContent=hasVerifiedPremiumEntitlement()?'Full Adventure Unlocked':'Full Adventure Unlock';
+}
+function setEntitlementStatus(message){
+  var status=document.getElementById('entitlementStatus');
+  if(status)status.textContent=message;
+}
+function updateEntitlementActions(){
+  var adapter=getEntitlementAdapter();
+  var checkbox=document.getElementById('parentGateCheck');
+  var checked=!!(checkbox&&checkbox.checked);
+  var purchase=document.getElementById('entitlementPurchaseBtn');
+  var restore=document.getElementById('entitlementRestoreBtn');
+  var storeReady=!!(adapter&&typeof adapter.purchase==='function');
+  if(purchase)purchase.disabled=!storeReady||!checked||hasVerifiedPremiumEntitlement();
+  if(restore)restore.disabled=!(adapter&&typeof adapter.restore==='function')||!checked;
+}
+async function refreshEntitlementFromPlatform(){
+  var adapter=getEntitlementAdapter();
+  if(!adapter||typeof adapter.getEntitlementState!=='function')return;
+  try{
+    var result=await adapter.getEntitlementState({productId:FULL_UNLOCK_PRODUCT_ID});
+    if(!applyVerifiedEntitlementResult(result)&&result&&result.verified===true){
+      setEntitlementStatus('The platform returned an unrecognised entitlement result. Premium access remains unchanged.');
+    }
+    renderEntitlementStatus();
+  }catch(e){
+    setEntitlementStatus('The store could not be checked. Existing verified access remains available offline.');
+    updateEntitlementActions();
+  }
+}
+function renderEntitlementStatus(){
+  var adapter=getEntitlementAdapter();
+  var owned=hasVerifiedPremiumEntitlement();
+  if(owned)setEntitlementStatus('Full Adventure is unlocked on this platform. Restore remains safe to repeat.');
+  else if(adapter&&typeof adapter.purchase==='function')setEntitlementStatus('A platform store connection is available. A parent or guardian must confirm before any store action.');
+  else setEntitlementStatus('This browser build is free-preview mode. No browser payment is requested; a native or approved web store adapter is required for a verified unlock.');
+  updateEntitlementMenuButton();
+  updateEntitlementActions();
+}
+function openEntitlementScreen(targetDungeonId){
+  _entitlementTargetDungeonId=targetDungeonId||null;
+  var checkbox=document.getElementById('parentGateCheck');
+  if(checkbox)checkbox.checked=false;
+  renderEntitlementStatus();
+  showScreen('entitlementScreen');
+  refreshEntitlementFromPlatform();
+}
+async function runEntitlementAction(actionName){
+  var checkbox=document.getElementById('parentGateCheck');
+  if(!checkbox||!checkbox.checked){setEntitlementStatus('A parent or guardian must confirm before a store action.');return;}
+  var adapter=getEntitlementAdapter();
+  if(!adapter||typeof adapter[actionName]!=='function'){setEntitlementStatus('No approved store connection is available in this build.');return;}
+  setEntitlementStatus(actionName==='purchase'?'Contacting the platform store...':'Checking for a previous purchase...');
+  updateEntitlementActions();
+  try{
+    var result=await adapter[actionName]({productId:FULL_UNLOCK_PRODUCT_ID});
+    if(!applyVerifiedEntitlementResult(result)){
+      setEntitlementStatus('The store did not return a verified completed entitlement. No access or charge was recorded by the game.');
+      updateEntitlementActions();
+      return;
+    }
+    renderEntitlementStatus();
+  }catch(e){
+    setEntitlementStatus('The store action was not completed. Existing progress is unchanged.');
+    updateEntitlementActions();
+  }
+}
+
 function openDungeonSelectScreen(){
   permanentData=loadPermanentData();
   refreshDungeonUnlocks();
@@ -22855,12 +23323,13 @@ function openDungeonSelectScreen(){
 function renderDungeonSelectGrid(){
   var grid=document.getElementById('dungeonSelectGrid');if(!grid)return;
   grid.innerHTML='';
-['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8','dungeon9','dungeon10'].forEach(function(did){
+  REGION_ORDER.forEach(function(did){
     var d=DUNGEON_DEFS[did];if(!d)return;
-    var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
-    var isSelected=(permanentData.dungeons&&permanentData.dungeons.selected===did);
-    var card=document.createElement('div');
-    card.className='dungeonCard '+(unlocked?'unlocked':'locked')+(isSelected&&unlocked?' selected':'');
+     var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
+     var premiumLocked=unlocked&&isPremiumDungeon(did)&&shouldEnforcePremiumEntitlement()&&!hasVerifiedPremiumEntitlement();
+     var isSelected=(permanentData.dungeons&&permanentData.dungeons.selected===did);
+     var card=document.createElement('div');
+     card.className='dungeonCard '+(unlocked&&!premiumLocked?'unlocked':'locked')+(isSelected&&unlocked&&!premiumLocked?' selected':'')+(premiumLocked?' premiumLocked':'');
     var rewardLine=(d.soulMult>1||d.mxpMult>1)?('Rewards: +'+Math.round((d.soulMult-1)*100)+'% Souls · +'+Math.round((d.mxpMult-1)*100)+'% Mastery XP'):'Standard Rewards';
     var bodyHtml='<span class="dcIcon">'+d.icon+'</span><div class="dcInfo">'+
       '<div class="dcName">'+d.name+'</div>'+
@@ -22872,10 +23341,11 @@ function renderDungeonSelectGrid(){
     }
     if(!unlocked)bodyHtml+='<div class="dcLockedBadge">🔒 LOCKED</div>';
     else if(isSelected)bodyHtml+='<div class="dcSelectedBadge">✓ Selected</div>';
-    bodyHtml+='</div>';
-    card.innerHTML=bodyHtml;
-    if(unlocked){
-      card.addEventListener('click',function(dungeonId){
+     bodyHtml+='</div>';
+     if(premiumLocked)bodyHtml+='<div class="dcPremiumBadge">FULL ADVENTURE UNLOCK REQUIRED</div>';
+     card.innerHTML=bodyHtml;
+     if(unlocked&&!premiumLocked){
+       card.addEventListener('click',function(dungeonId){
         return function(){
           permanentData.dungeons.selected=dungeonId;
           savePermanentData();
@@ -22884,8 +23354,11 @@ function renderDungeonSelectGrid(){
           updateMenuSelectedDungeonLabel();
           openDifficultySelectScreen(dungeonId);
         };
-      }(did));
-    }
+       }(did));
+     }
+     else if(premiumLocked){
+       card.addEventListener('click',function(dungeonId){return function(){openEntitlementScreen(dungeonId);};}(did));
+     }
     grid.appendChild(card);
   });
 }
@@ -22927,11 +23400,19 @@ function updateDungeonGateInteraction(dt,geo){
 }
 function openDungeonGate(dungeonId){
   if(!DUNGEON_DEFS[dungeonId])return;
+  if(!isReleaseDungeon(dungeonId)){
+    showBanner('SEALED ROAD','This region is planned for a future release.',2.5);
+    return;
+  }
   if(DUNGEON_DEFS[dungeonId].comingSoon){
     showBanner('🌫️ SEALED ROAD','This path has not yet been charted',2.5);
     return;
   }
-  _gateReturnZone='entrance_'+dungeonId;
+   if(!premiumDungeonAccessAllowed(dungeonId)){
+     openEntitlementScreen(dungeonId);
+     return;
+   }
+   _gateReturnZone='entrance_'+dungeonId;
   gameRunning=false;
   activeDungeonId=dungeonId;
   if(!permanentData.dungeons)permanentData.dungeons={unlocked:{dungeon1:true},selected:'dungeon1',difficulty:{}};
@@ -23038,7 +23519,6 @@ safeClick('merchantTabSell','Merchant Tab Sell',function(){setMerchantTab('sell'
 safeClick('bobDialogueContinueBtn','Bob Dialogue Continue',function(){advanceBobDialogue();});
 safeClick('bobDialogueCloseBtn','Bob Dialogue Close',function(){closeBobDialogue();});
 safeClick('forgeMenuSalvageBtn','Open Salvage',function(){openSalvageScreen();});
-safeClick('forgeMenuSmelterBtn','Open Smelter',function(){openSmelterScreen();});
 safeClick('forgeMenuCraftBtn','Open Craft Equipment',function(){
   permanentData=loadPermanentData();
   if(!permanentData.forgeMaterials)permanentData.forgeMaterials=defaultForgeMaterials();
@@ -23050,7 +23530,6 @@ safeClick('ceqCraftBtn','Craft Equipment',function(){attemptCraftEquipment();});
 safeClick('ceqResetBtn','CEQ Reset',function(){ceqReset();renderCraftEquipmentScreen();});
 safeClick('forgeMenuBlessingsBtn','Open Blessings & Curses',function(){openBlessingsScreen();});
 safeClick('salvageBackBtn','Salvage Back',function(){openForgeMenuScreen();});
-safeClick('smelterInitialBackBtn','Smelter Back',function(){openForgeMenuScreen();});
 safeClick('craftEquipmentBackBtn','Craft Equipment Back',function(){openForgeMenuScreen();});
 
 function openSalvageScreen(){
@@ -24125,6 +24604,7 @@ safeClick('modifierContinueBtn','Modifier Continue',function(){
   requestAnimationFrame(function(){requestAnimationFrame(startGame);});
 });
 safeClick('goMenuBtn','GO Menu',function(){returnToDungeonWaypoint();});
+safeClick('goFinishBtn','Finish For Now',function(){finishSessionForNow();});
 safeClick('heroesBackBtn','Heroes Back',function(){openMainMenu();});
   function renderEquipmentScreen(){
   permanentData=loadPermanentData();
@@ -24329,6 +24809,7 @@ function openPauseMenu() {
   if(!gameRunning&&!gamePaused)return;
   gameRunning=false;gamePaused=true;
   saveTownWorldPosition();
+  saveRunCheckpoint('pause');
   var po=document.getElementById('pauseOverlay');
   po.style.display='flex';po.classList.add('visible');
 }
@@ -24347,6 +24828,7 @@ function returnToMainMenuFromGame() {
   if(runSoulsEarned>0){permanentData.souls+=runSoulsEarned;runSoulsEarned=0;}
   saveTownWorldPosition();
   gainMasteryXP(2);savePermanentData();
+  clearRunCheckpoint();
   enemies=[];projectiles=[];enemyProjectiles=[];floaties=[];skillEffects=[];deathParticles=[];cursedLibrarians=[];
   boss=null;miniBoss=null;levelUpPending=false;levelUpQueue=[];whirlwindActive=false;
   // Spirit Guardian (and any other Druid summon) does not persist between
@@ -24603,6 +25085,65 @@ document.querySelectorAll('.skillOptions').forEach(function(group){
 // ============================================================
 // GAME OVER SCREEN
 // ============================================================
+function getSessionLearningSupport(isVictory,session){
+  session=session||{};
+  var roomType=String(session.roomType||'').toLowerCase();
+  var roomName=String(session.roomName||'the room');
+  var totalKills=Math.max(0,Number(session.totalKills)||0);
+  var eliteKills=Math.max(0,Number(session.eliteKills)||0);
+  if(isVictory){
+    return{
+      concept:'Pattern recognition',
+      note:'You finished the final challenge by reading signals as a sequence: observe, move, then respond. That same loop helps with tricky problems.'
+    };
+  }
+  if(roomType==='boss'||roomType==='miniboss'){
+    return{
+      concept:'Pattern recognition',
+      note:'In '+roomName+', watch the warning before the hit, move out of the marked space, then use the recovery moment to respond.'
+    };
+  }
+  if(roomType==='treasure'||roomType==='shrine'||roomType==='event'){
+    return{
+      concept:'Planning',
+      note:'You reached '+roomName+'. Before the next commitment, check your health, abilities, and route so your choice matches the risk.'
+    };
+  }
+  if(eliteKills>0){
+    return{
+      concept:'Decomposition',
+      note:'You cleared '+eliteKills+' tougher threat'+(eliteKills===1?'':'s')+' before the run ended. Break the next room into one target, one signal, and one response.'
+    };
+  }
+  if(totalKills===0){
+    return{
+      concept:'Debugging',
+      note:'No enemies were defeated this run. Change one thing—position, timing, or ability choice—then test that idea on the next attempt when you want.'
+    };
+  }
+  return{
+    concept:'Debugging',
+    note:'You defeated '+totalKills+' enem'+(totalKills===1?'y':'ies')+'. Keep one useful observation, change one decision, and test the next attempt step by step.'
+  };
+}
+function renderSessionLearningSupport(isVictory,session){
+  var support=document.getElementById('goLearningSupport');
+  if(!support)return;
+  var result=getSessionLearningSupport(isVictory,session);
+  var concept=document.getElementById('goSupportConcept');
+  if(concept)concept.textContent='Concept: '+result.concept;
+  support.textContent=result.note;
+}
+function finishSessionForNow(){
+  clearRunCheckpoint();
+  gameRunning=false;gamePaused=false;dungeonRunEnded=true;
+  try{
+    permanentData=loadPermanentData();
+    permanentData.worldLocation={type:'town'};
+    savePermanentData();
+  }catch(e){}
+  enterTown();
+}
 function showGameOverScreen(isVictory) {
   try{
     permanentData=loadPermanentData();
@@ -24617,7 +25158,7 @@ function showGameOverScreen(isVictory) {
       document.getElementById('goTitle').style.color='';
       document.getElementById('goSub').textContent='Your progress is saved.';
     }
-    document.getElementById('goRoom').textContent=isVictory?"Guardian's Sanctum":roomName;
+    document.getElementById('goRoom').textContent=roomName;
     var _goDiff=getActiveDifficulty();
     var _goDiffEl=document.getElementById('goDifficulty');
     if(_goDiffEl){_goDiffEl.textContent=_goDiff.name;_goDiffEl.style.color=_goDiff.color||'#ffd98a';}
@@ -24628,6 +25169,15 @@ function showGameOverScreen(isVictory) {
     document.getElementById('goMasteryGained').textContent='+'+runMasteryXpEarned+' Mastery XP';
     var _goClassName=getClassData(permanentData.selectedClass||'barbarian').name;
     document.getElementById('goMasteryLevel').textContent=_goClassName+' Level '+permanentData.mastery.level;
+    renderSessionLearningSupport(isVictory,{
+      roomType:def?def.type:'',
+      roomName:roomName,
+      totalKills:totalKills,
+      eliteKills:runEliteKills,
+      playerLevel:playerLevel
+    });
+    var nextStep=document.getElementById('goNextStep');
+    if(nextStep)nextStep.textContent=isVictory?'Next: explore the next gateway when you are ready, or finish for now.':'Next: return to the waypoint to prepare another run, or finish for now.';
     showScreen('gameOverScreen');
   }catch(e){openMainMenu();}
 }
@@ -25406,7 +25956,13 @@ if(window.visualViewport)window.visualViewport.addEventListener('resize',functio
 
 // Desktop controls complement the touch joysticks. They are intentionally kept
 // separate so iPad play continues to use the existing pointer controls.
-var desktopInput={keys:{},mouseDown:false,mouseX:0,mouseY:0,mouseSeen:false};
+var desktopInput={keys:{},tapUntil:{},mouseDown:false,mouseX:0,mouseY:0,mouseSeen:false};
+var DESKTOP_TAP_NUDGE_MS=120;
+// A short desktop click should still produce one basic attack. Held mouse
+// input remains the continuous path; this bounded tap fallback keeps the
+// control usable in managed browsers that deliver clicks more reliably than
+// a sustained pointer hold.
+var desktopAttackTapState={pointerId:null,startX:0,startY:0,startTime:0,moved:false,queued:false};
 var touchAttackState={pointerId:null,startX:0,startY:0,startTime:0,moved:false,queued:false};
 function resetTouchAttackState(){
   touchAttackState.pointerId=null;
@@ -25420,10 +25976,13 @@ function desktopGameIsActive(){
 function isTextEntryTarget(target){
   return !!(target&&target.closest&&target.closest('input,textarea,select,[contenteditable="true"]'));
 }
+function desktopKeyActive(key,now){
+  return!!desktopInput.keys[key]||(desktopInput.tapUntil[key]||0)>now;
+}
 function desktopMoveVector(){
-  var k=desktopInput.keys;
-  var x=(k.d||k.arrowright?1:0)-(k.a||k.arrowleft?1:0);
-  var y=(k.s||k.arrowdown?1:0)-(k.w||k.arrowup?1:0);
+  var now=performance.now();
+  var x=(desktopKeyActive('d',now)||desktopKeyActive('arrowright',now)?1:0)-(desktopKeyActive('a',now)||desktopKeyActive('arrowleft',now)?1:0);
+  var y=(desktopKeyActive('s',now)||desktopKeyActive('arrowdown',now)?1:0)-(desktopKeyActive('w',now)||desktopKeyActive('arrowup',now)?1:0);
   var mag=Math.hypot(x,y);
   return mag?{x:x/mag,y:y/mag,mag:1}:{x:0,y:0,mag:0};
 }
@@ -25434,9 +25993,37 @@ function desktopAimAngle(){
   var sx=(desktopInput.mouseX-rect.left)*canvas.width/rect.width;
   var sy=(desktopInput.mouseY-rect.top)*canvas.height/rect.height;
   var wx=sx+((camera&&camera.x)||0),wy=sy+((camera&&camera.y)||0);
-  return Math.atan2(wy-player.y,wx-player.x);
+  var angle=Math.atan2(wy-player.y,wx-player.x);
+  return isFinite(angle)?angle:null;
 }
-function clearDesktopInput(){desktopInput.keys={};desktopInput.mouseDown=false;}
+function nearestAttackAngle(){
+  var target=null,targetDist=Infinity;
+  for(var i=0;i<enemies.length;i++){
+    var e=enemies[i];
+    if(!e||e.hp<=0)continue;
+    var d=Math.hypot(e.x-player.x,e.y-player.y);
+    if(d<targetDist){target=e;targetDist=d;}
+  }
+  if(boss&&boss.hp>0){
+    var bd=Math.hypot(boss.x-player.x,boss.y-player.y);
+    if(bd<targetDist){target=boss;targetDist=bd;}
+  }
+  if(miniBoss&&miniBoss.hp>0){
+    var md=Math.hypot(miniBoss.x-player.x,miniBoss.y-player.y);
+    if(md<targetDist){target=miniBoss;targetDist=md;}
+  }
+  return target?Math.atan2(target.y-player.y,target.x-player.x):null;
+}
+function queueNearestAttack(){
+  if(!desktopGameIsActive())return;
+  // A center tap on the touch Attack joystick has no meaningful aim vector.
+  // Clear stale pointer coordinates so the shared attack update selects the
+  // nearest live target instead of firing at an old canvas position.
+  desktopInput.mouseSeen=false;
+  desktopInput.mouseDown=false;
+  desktopAttackTapState.queued=true;
+}
+function clearDesktopInput(){desktopInput.keys={};desktopInput.tapUntil={};desktopInput.mouseDown=false;desktopAttackTapState.pointerId=null;desktopAttackTapState.startX=0;desktopAttackTapState.startY=0;desktopAttackTapState.startTime=0;desktopAttackTapState.moved=false;desktopAttackTapState.queued=false;}
 function clearAllInputState(){
   clearDesktopInput();
   resetTouchAttackState();
@@ -25455,7 +26042,12 @@ function clearAllInputState(){
 }
 function updateDesktopPointer(event){desktopInput.mouseX=event.clientX;desktopInput.mouseY=event.clientY;desktopInput.mouseSeen=true;}
 canvas.addEventListener('pointermove',function(event){
-  if(event.pointerType==='mouse')updateDesktopPointer(event);
+  if(event.pointerType==='mouse'){
+    updateDesktopPointer(event);
+    if(desktopAttackTapState.pointerId===event.pointerId&&(Math.abs(event.clientX-desktopAttackTapState.startX)>18||Math.abs(event.clientY-desktopAttackTapState.startY)>18)){
+      desktopAttackTapState.moved=true;
+    }
+  }
   if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
     updateDesktopPointer(event);
     if(Math.abs(event.clientX-touchAttackState.startX)>18||Math.abs(event.clientY-touchAttackState.startY)>18){
@@ -25464,9 +26056,19 @@ canvas.addEventListener('pointermove',function(event){
   }
 });
 canvas.addEventListener('pointerdown',function(event){
+  if(canvas.focus)canvas.focus();
   if(event.pointerType==='mouse'&&event.button===0){
     updateDesktopPointer(event);
     desktopInput.mouseDown=true;
+    desktopAttackTapState.pointerId=event.pointerId;
+    desktopAttackTapState.startX=event.clientX;
+    desktopAttackTapState.startY=event.clientY;
+    desktopAttackTapState.startTime=performance.now();
+    desktopAttackTapState.moved=false;
+    // Queue the first shot immediately so a managed browser that coalesces a
+    // very short click still gives the player a responsive attack. The held
+    // mouse path below continues firing while the button remains down.
+    desktopAttackTapState.queued=true;
     if(canvas.setPointerCapture){
       try{canvas.setPointerCapture(event.pointerId);}catch(err){}
     }
@@ -25487,7 +26089,15 @@ canvas.addEventListener('pointerdown',function(event){
   }
 });
 canvas.addEventListener('pointerup',function(event){
-  if(event.pointerType==='mouse'&&event.button===0)desktopInput.mouseDown=false;
+  if(event.pointerType==='mouse'&&event.button===0){
+    desktopInput.mouseDown=false;
+    if(desktopAttackTapState.pointerId===event.pointerId){
+      var desktopHeldMs=performance.now()-desktopAttackTapState.startTime;
+      if(!desktopAttackTapState.moved&&desktopHeldMs<320)desktopAttackTapState.queued=true;
+      desktopAttackTapState.pointerId=null;
+      desktopAttackTapState.startX=0;desktopAttackTapState.startY=0;desktopAttackTapState.startTime=0;desktopAttackTapState.moved=false;
+    }
+  }
   if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
     var heldMs=performance.now()-touchAttackState.startTime;
     if(!touchAttackState.moved&&heldMs<320){
@@ -25500,13 +26110,24 @@ canvas.addEventListener('pointerup',function(event){
   }
 });
 canvas.addEventListener('pointercancel',function(event){
-  if(event.pointerType==='mouse')desktopInput.mouseDown=false;
+  if(event.pointerType==='mouse'){desktopInput.mouseDown=false;desktopAttackTapState.pointerId=null;desktopAttackTapState.startX=0;desktopAttackTapState.startY=0;desktopAttackTapState.startTime=0;desktopAttackTapState.moved=false;desktopAttackTapState.queued=false;}
   if(event.pointerType==='touch'&&touchAttackState.pointerId===event.pointerId){
     resetTouchAttackState();
   }
   if(canvas.releasePointerCapture){
     try{canvas.releasePointerCapture(event.pointerId);}catch(err){}
   }
+});
+// Some managed or embedded browsers deliver a DOM click more reliably than
+// the full pointerdown/pointerup sequence. Keep that click as a one-shot
+// fallback, while the existing held-mouse path remains continuous input.
+canvas.addEventListener('click',function(event){
+  // A few managed/embedded browser bridges omit MouseEvent.button on a
+  // synthesized click; treat the missing value as the primary left click.
+  if(!desktopGameIsActive()||(typeof event.button==='number'&&event.button!==0))return;
+  if(canvas.focus)canvas.focus();
+  updateDesktopPointer(event);
+  desktopAttackTapState.queued=true;
 });
 canvas.addEventListener('pointerleave',function(event){
   if(event.pointerType==='mouse'){
@@ -25520,7 +26141,7 @@ document.addEventListener('visibilitychange',function(){if(document.hidden)clear
 document.addEventListener('keydown',function(event){
   if(!desktopGameIsActive()||isTextEntryTarget(event.target))return;
   var key=event.key.toLowerCase();
-  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){desktopInput.keys[key]=true;event.preventDefault();return;}
+  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){desktopInput.keys[key]=true;delete desktopInput.tapUntil[key];event.preventDefault();return;}
   if(event.repeat)return;
   if(key==='escape'){
     if(gameRunning)openPauseMenu();else if(gamePaused)closePauseMenu();
@@ -25535,15 +26156,15 @@ document.addEventListener('keydown',function(event){
 });
 document.addEventListener('keyup',function(event){
   var key=event.key.toLowerCase();
-  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){delete desktopInput.keys[key];event.preventDefault();}
+  if(['w','a','s','d','arrowup','arrowleft','arrowdown','arrowright'].indexOf(key)>=0){delete desktopInput.keys[key];desktopInput.tapUntil[key]=performance.now()+DESKTOP_TAP_NUDGE_MS;event.preventDefault();}
 });
 
 // ============================================================
 // JOYSTICK
 // ============================================================
-function Joystick(baseEl,knobEl){
-  this.base=baseEl;this.knob=knobEl;this.active=false;this.dx=0;this.dy=0;
-  this.maxDist=38;this.pointerId=null;
+function Joystick(baseEl,knobEl,onTap){
+  this.base=baseEl;this.knob=knobEl;this.onTap=onTap||null;this.active=false;this.dx=0;this.dy=0;
+  this.maxDist=38;this.pointerId=null;this.startX=0;this.startY=0;this.startTime=0;this.moved=false;
   var self=this;
   this.base.addEventListener('pointerdown',  function(e){self.onStart(e);});
   this.base.addEventListener('pointermove',  function(e){self.onMove(e);});
@@ -25551,9 +26172,9 @@ function Joystick(baseEl,knobEl){
   this.base.addEventListener('pointercancel',function(e){self.onEnd(e);});
   this.base.addEventListener('pointerleave', function(e){self.onEnd(e);});
 }
-Joystick.prototype.onStart=function(e){e.preventDefault();this.active=true;this.pointerId=e.pointerId;this.base.setPointerCapture(e.pointerId);this.update(e);};
-Joystick.prototype.onMove=function(e){if(!this.active||e.pointerId!==this.pointerId)return;e.preventDefault();this.update(e);};
-Joystick.prototype.onEnd=function(e){if(e.pointerId!==this.pointerId)return;this.active=false;this.dx=0;this.dy=0;this.knob.style.transform='translate(0px,0px)';};
+Joystick.prototype.onStart=function(e){e.preventDefault();this.active=true;this.pointerId=e.pointerId;this.startX=e.clientX;this.startY=e.clientY;this.startTime=performance.now();this.moved=false;this.base.setPointerCapture(e.pointerId);this.update(e);};
+Joystick.prototype.onMove=function(e){if(!this.active||e.pointerId!==this.pointerId)return;e.preventDefault();if(Math.abs(e.clientX-this.startX)>18||Math.abs(e.clientY-this.startY)>18)this.moved=true;this.update(e);};
+Joystick.prototype.onEnd=function(e){if(e.pointerId!=null&&e.pointerId!==this.pointerId)return;var wasTap=this.active&&!this.moved&&(performance.now()-this.startTime<320)&&(e.type==='pointerup'||e.type==='touchend');if(wasTap&&this.onTap)this.onTap();this.active=false;this.pointerId=null;this.startX=0;this.startY=0;this.startTime=0;this.moved=false;this.dx=0;this.dy=0;this.knob.style.transform='translate(0px,0px)';};
 Joystick.prototype.update=function(e){
   var rect=this.base.getBoundingClientRect();
   // Scale travel to the rendered control so phones get the same normalized
@@ -25569,6 +26190,23 @@ Joystick.prototype.update=function(e){
 };
 Joystick.prototype.magnitude=function(){return Math.sqrt(this.dx*this.dx+this.dy*this.dy);};
 var leftStick,rightStick;
+// A pointer can be released just outside the joystick base on restricted
+// browsers or embedded webviews that do not fully honour pointer capture.
+// Keep a document-level release fallback so a failed capture cannot leave
+// movement or attack input latched until the next pause/visibility change.
+function releaseJoysticksFromGlobal(event){
+  var pointerId=event&&event.pointerId;
+  if(leftStick&&leftStick.active&&(pointerId==null||leftStick.pointerId===pointerId))leftStick.onEnd(event||{});
+  if(rightStick&&rightStick.active&&(pointerId==null||rightStick.pointerId===pointerId))rightStick.onEnd(event||{});
+}
+window.addEventListener('pointerup',releaseJoysticksFromGlobal);
+window.addEventListener('pointercancel',releaseJoysticksFromGlobal);
+window.addEventListener('mouseup',function(){releaseJoysticksFromGlobal({pointerId:null});});
+window.addEventListener('touchend',function(event){releaseJoysticksFromGlobal(event);});
+document.addEventListener('pointerup',releaseJoysticksFromGlobal,true);
+document.addEventListener('pointercancel',releaseJoysticksFromGlobal,true);
+document.addEventListener('mouseup',function(){releaseJoysticksFromGlobal({pointerId:null});},true);
+document.addEventListener('touchend',function(event){releaseJoysticksFromGlobal(event);},true);
 
 // ============================================================
 // BASE SKILL DATA
@@ -27358,6 +27996,13 @@ function updatePotionButton(){
   if(!player.potions||player.potions<=0)btn.classList.add('no-rage');else btn.classList.remove('no-rage');
 }
 var exitDoor=null,backDoorOpen=false,sideDoorOpen=false,roomTransitioning=false;
+var combatIntroTimer=0;
+// Give a new player enough time to orient, aim, and deliver the first attack
+// on a touch tablet or managed browser before hostile simulation resumes.
+var COMBAT_INTRO_DURATION=10.0;
+function updateCombatIntro(dt){
+  if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
+}
 // Exit Portal — Phase 8 (Dungeon Exit & Region Progression). Spawned in the
 // boss room a moment after the boss dies (see unlockBossExit/spawnExitPortal
 // below); walking into it is the player's own choice to leave, unlike the
@@ -27408,6 +28053,8 @@ function openShrineRoom(){
 // ============================================================
 function startGame(){
   try{
+    var _resumeCheckpoint=parseRunCheckpoint(pendingRunCheckpoint);
+    pendingRunCheckpoint=null;
     // Phase 1 — Town is a real destination now (spawnCharacterIntoWorld/enterTown);
     // this flag lets the rest of startGame() skip run-tracking/difficulty/modifier
     // bookkeeping that only makes sense for an actual dungeon run. Phase 8 adds
@@ -27416,6 +28063,8 @@ function startGame(){
     var _isEntrance=isEntranceZone(activeDungeonId);
     var _isArena=(activeDungeonId==='bob_arena');
     var _isStatic=_isTown||_isEntrance||_isArena;
+    if(_resumeCheckpoint&&_resumeCheckpoint.activeDungeonId!==activeDungeonId)_resumeCheckpoint=null;
+    if(!_resumeCheckpoint&&!_isStatic)clearRunCheckpoint();
     if(!_isArena)stopBobArenaAmbience();
     resizeCanvas();
     if(canvas.width<50||canvas.height<50){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
@@ -27468,6 +28117,21 @@ function startGame(){
     levelUpPending=false;levelUpQueue=[];
     enemies=[];projectiles=[];enemyProjectiles=[];floaties=[];skillEffects=[];deathParticles=[];
     totalKills=0;timeSurvived=0;lastFightTimer=0;gameRunning=false;gamePaused=false;
+    // A new Town, entrance, arena, or dungeon session must never inherit a
+    // movement lock or ending cutscene state from the previous session. Most
+    // effects naturally expire in the game loop, but these fields can survive
+    // a deliberate stop, profile switch, or lifecycle resume and otherwise
+    // leave a fresh session looking playable while refusing movement.
+    playerRootTimer=0;
+    playerKnockbackVx=0;playerKnockbackVy=0;playerKnockbackTime=0;
+    druidBurrowActive=false;druidBurrowTimer=0;druidBurrowEarlyRequested=false;
+    druidSpiritWalkActive=false;druidSpiritWalkTimer=0;druidSpiritWalkEarlyRequested=false;
+    rogueRollActive=false;rogueRollTimer=0;rogueRollInvuln=false;rogueRollVx=0;rogueRollVy=0;
+    rogueUltActive=false;rogueUltTimer=0;rogueUltType='';rogueUltTickTimer=0;
+    pcChoiceActive=false;pcChoiceStage=null;pcChoiceRefuseSub=null;pcChoiceStageTimer=0;pcChoiceLineIdx=-1;pcChoiceLocked=false;pcChoiceBlob=null;
+    pcRefuseCollapseAlpha=0;pcRefuseWhiteAlpha=0;pcRefuseCracks=[];
+    pcRematchBurstActive=false;pcRematchBurstStage=null;pcRematchBurstStageTimer=0;pcRematchBurstRadius=0;pcRematchWhiteAlpha=0;
+    if(pcEndingLineTimeout){clearTimeout(pcEndingLineTimeout);pcEndingLineTimeout=null;}
     runSoulsEarned=0;runMasteryXpEarned=0;runXpEarned=0;runEliteKills=0;pendingLootDrops=[];equipmentArmor=0;equipmentDamageMult=1.0;equipmentAttackSpeedMult=1.0;
     resetActiveModifier();
     if(_pendingModifierId&&!_isStatic){
@@ -27480,6 +28144,7 @@ function startGame(){
     if(!_isStatic)try{
       var _diffState=getDungeonDifficultyState(activeDungeonId);
       activeDifficultyId=_diffState.selected||'normal';
+      if(_resumeCheckpoint&&_resumeCheckpoint.activeDifficultyId)activeDifficultyId=_resumeCheckpoint.activeDifficultyId;
       var _diffBadge=document.getElementById('difficultyBadge');
       if(_diffBadge){
         var _diffInfo=getActiveDifficulty();
@@ -27556,9 +28221,28 @@ try{
       buildMinimapPositions(ROOM_DEFS,MAIN_PATH);
       currentRoomId=MAIN_PATH[0];
     }
+    // Reuse the saved generated route when recovering a run. This keeps room
+    // names, side paths, modifiers, and procedural choices stable across a
+    // browser restart instead of silently generating a different dungeon.
+    if(_resumeCheckpoint&&_resumeCheckpoint.roomDefs&&_resumeCheckpoint.mainPath){
+      try{
+        var _savedRoomDefs=JSON.parse(JSON.stringify(_resumeCheckpoint.roomDefs));
+        var _savedMainPath=_resumeCheckpoint.mainPath.slice();
+        if(_savedMainPath.length>1&&_savedRoomDefs[_resumeCheckpoint.currentRoomId]){
+          genResult={defs:_savedRoomDefs,mainPath:_savedMainPath};
+        }
+      }catch(_resumeLayoutError){}
+    }
     initRoomStates();
+    if(_resumeCheckpoint&&_resumeCheckpoint.roomStates){
+      for(var _savedRoomId in _resumeCheckpoint.roomStates){
+        if(!ROOM_DEFS[_savedRoomId])continue;
+        var _freshRoomState=roomStates[_savedRoomId]||{cleared:false,visited:false,chestOpened:false,bossDefeated:false,treasureCollected:false,shrineUsed:false,savedEnemies:null,eventCompleted:false,eventResult:''};
+        roomStates[_savedRoomId]=Object.assign(_freshRoomState,_resumeCheckpoint.roomStates[_savedRoomId]);
+      }
+    }
     prevHighestRoom=permanentData.stats.highestRoom||0;
-    if(!_isStatic){
+    if(!_isStatic&&!_resumeCheckpoint){
       permanentData.stats.totalRuns=(permanentData.stats.totalRuns||0)+1;
       savePermanentData();
     }
@@ -27600,14 +28284,17 @@ if(permanentData.selectedClass==='mage'){
     }
     if(!leftStick){
       leftStick=new Joystick(document.getElementById('joyLeft'),document.getElementById('knobLeft'));
-      rightStick=new Joystick(document.getElementById('joyRight'),document.getElementById('knobRight'));
+      rightStick=new Joystick(document.getElementById('joyRight'),document.getElementById('knobRight'),queueNearestAttack);
       wireSkillButtons();
     }
     updateSkillButtons();
     dungeonRunEnded=false;
     runSeq++;
-    loadRoom(MAIN_PATH[0]);
+    var _resumeRoomId=_resumeCheckpoint&&ROOM_DEFS[_resumeCheckpoint.currentRoomId]?_resumeCheckpoint.currentRoomId:MAIN_PATH[0];
+    loadRoom(_resumeRoomId);
     gameRunning=true;
+    if(_resumeCheckpoint)restoreRunCheckpointState(_resumeCheckpoint);
+    else if(!_isStatic)saveRunCheckpoint('session-start');
     lastTime=performance.now();requestAnimationFrame(gameLoop);
   }catch(e){
     console.log('startGame FATAL: '+e);
@@ -27620,6 +28307,7 @@ if(permanentData.selectedClass==='mage'){
 function loadRoom(roomId){
   // TRANSITION COMPLETED: reset flag at entry so a new transition can begin
   roomTransitioning=false;
+  combatIntroTimer=0;
   roomFadeDir=-1; // start fading back in (clear)
   // Reset D3 ambient so it reinitializes for the new room
   d3Ambient.initialized=false;d3Ambient.roomId=null;
@@ -28098,7 +28786,13 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
           else spawnComposition(comp,geo,depth);
           if(def._isDungeon9)d9ApplyFormationClustering(geo);
           if(enemies.length===0)enemies.push(spawnEnemyByKind(def._isDungeon4?'shadow_beast':(def._isDungeon7?'corrupted_wolf':(def._isDungeon9?'broken_knight':(def._isDungeon10?'failed_subject':'warrior'))),geo,depth,isEliteSpawn));
-          showBanner(typeLabel+' '+def.name,(effectiveType===RT.COMBAT?'Clear the room':buildCompositionLabel(comp)),2.2);
+          var _isFirstCombatIntro=activeDungeonId==='dungeon1'&&def.type===RT.COMBAT&&roomId===MAIN_PATH[1];
+          if(_isFirstCombatIntro){
+            combatIntroTimer=COMBAT_INTRO_DURATION;
+            showBanner(typeLabel+' '+def.name,'Read the room â€” move or attack',COMBAT_INTRO_DURATION);
+          }else{
+            showBanner(typeLabel+' '+def.name,(effectiveType===RT.COMBAT?'Clear the room':buildCompositionLabel(comp)),2.2);
+          }
         }
       }
     }
@@ -28123,6 +28817,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
 
   updateHUD();
   drawMinimap();
+  if(gameRunning&&!dungeonRunEnded&&!isStaticSessionZone(activeDungeonId))saveRunCheckpoint('room-entry');
 }
 
 function getDoorSymbol(roomId){
@@ -28991,8 +29686,18 @@ function update(dt){
   updateWaypoints(dt,geo);updateWaypointAnim(dt);updateWaypointTeleportFade(dt);
   updateExitPortalInteraction(dt,geo);updateExitPortalFade(dt);
   updatePlayerMovement(dt,geo);updatePlayerAttack(dt);
-  updateProjectiles(dt,geo);updateEnemyProjectiles(dt,geo);
-  updateEnemies(dt,geo);updateCursedLibrarians(dt,geo);updateBoss(dt,geo);updateMiniBoss(dt,geo);
+  var _combatIntroActive=combatIntroTimer>0;
+  updateCombatIntro(dt);
+  updateProjectiles(dt,geo);
+  if(_combatIntroActive){
+    // The first room gives a new player time to read the enemy count and
+    // discover movement/attack input. Player movement and attacks still run;
+    // only hostile simulation is paused for this bounded introduction.
+    enemyProjectiles=[];
+  }else{
+    updateEnemyProjectiles(dt,geo);
+    updateEnemies(dt,geo);updateCursedLibrarians(dt,geo);updateBoss(dt,geo);updateMiniBoss(dt,geo);
+  }
   updateMeteors(dt);
   updatePureCorruptionChoice(dt);
   updateBadEndingCinematic(dt);
@@ -33077,8 +33782,19 @@ function updatePlayerAttack(dt){
   if(touchAttackState.queued){
     touchAttackState.queued=false;
     var touchAngle=desktopAimAngle();
+    if(touchAngle===null)touchAngle=nearestAttackAngle();
     if(touchAngle!==null){
       player.facingAngle=touchAngle;
+      if(player.attackTimer<=0)performAttack(player.facingAngle);
+    }
+    return;
+  }
+  if(desktopAttackTapState.queued){
+    desktopAttackTapState.queued=false;
+    var desktopTapAngle=desktopAimAngle();
+    if(desktopTapAngle===null)desktopTapAngle=nearestAttackAngle();
+    if(desktopTapAngle!==null){
+      player.facingAngle=desktopTapAngle;
       if(player.attackTimer<=0)performAttack(player.facingAngle);
     }
     return;
@@ -33790,6 +34506,7 @@ function computeMageDamage(base){
 function finalizeDungeonVictory(){
   gameRunning=false;
   dungeonRunEnded=true;
+  clearRunCheckpoint();
   permanentData.souls+=runSoulsEarned;
   savePermanentData();
   showGameOverScreen(true);
@@ -33890,20 +34607,25 @@ function drawExitPortalFade(){
 // old completion screen), then hands off to the next region's Entrance Area
 // — or Town if REGION_ORDER has no further dungeon after this one.
 function completeExitPortalTravel(){
+  clearRunCheckpoint();
   permanentData.souls+=runSoulsEarned;
-  runSoulsEarned=0;
   savePermanentData();
   var finishedDungeonId=activeDungeonId;
   var nextId=getNextDungeonId(finishedDungeonId);
   exitPortal=null;exitPortalActive=false;_exitPortalInsideFlag=false;
   if(nextId){
+    runSoulsEarned=0;
     enterEntrance(nextId);
     try{
       var _eLayout=getEntranceLayout(activeDungeonId,getRoomGeometry());
       if(_eLayout&&_eLayout.spawn){player.x=_eLayout.spawn.x;player.y=_eLayout.spawn.y;}
     }catch(e){}
   }else{
-    enterTown();
+    // V1 ends at the last validated dungeon. Keep the run totals available to
+    // the existing summary screen so the player gets a real stopping point;
+    // Return to Waypoint and Finish for Now then provide the two safe exits.
+    gameRunning=false;gamePaused=false;dungeonRunEnded=true;
+    showGameOverScreen(true);
   }
   centerCameraOnPlayer();camera.x=camera.targetX;camera.y=camera.targetY;
 }
@@ -40571,6 +41293,7 @@ function playerDied(){
   // death, and only start one defeat jingle.
   if(player.dead)return;
   player.dead=true;player.hp=0;player.rage=0;gameRunning=false;dungeonRunEnded=true;
+  clearRunCheckpoint();
   playOriginalDefeatJingle();
   // Spirit Guardian does not survive the Druid's death.
   druidSummons=druidSummons.filter(function(s){return s.type!=='spirit_guardian';});
@@ -55940,13 +56663,24 @@ function drawPureCorruption(){
 function saveForPageBackgrounding(){
   try{
     if(activeDungeonId==='town'||isEntranceZone(activeDungeonId))saveTownWorldPosition();
+    else saveRunCheckpoint('background');
     savePermanentData();
   }catch(e){console.error('Background save failed:',e);}
 }
 document.addEventListener('visibilitychange',function(){if(document.hidden)saveForPageBackgrounding();});
 window.addEventListener('pagehide',saveForPageBackgrounding);
 
+initNativeEntitlementBridge();
 initGameBoot();
+initNativeLifecycleBridge();
+
+if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.protocol === 'https:')) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('./service-worker.js').catch(function(error){
+      window.__serviceWorkerError=String(error&&error.message||error);
+    });
+  });
+}
 
 </script>
 </body>

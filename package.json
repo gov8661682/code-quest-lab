@@ -1,0 +1,31 @@
+{
+  "name": "code-quest-lab",
+  "version": "0.1.0-rc.0",
+  "private": true,
+  "description": "Offline-first Code Quest Lab browser game release foundation",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check-release-contracts.mjs",
+    "test": "node --test",
+    "build": "node scripts/build-static.mjs",
+    "package:check": "node scripts/check-static-package.mjs",
+    "assets:generate": "python scripts/generate-native-assets.py",
+    "production:check": "node scripts/check-production.mjs",
+    "release:verify": "npm run check && npm test && npm run build && npm run package:check",
+    "native:sync": "npm run build && npx cap sync",
+    "native:doctor": "npx cap doctor",
+    "native:android:build": "npm run build && npx cap sync android && npx cap build android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.4.2",
+    "@capacitor/app": "8.1.1",
+    "@capacitor/core": "8.4.2",
+    "@capacitor/ios": "8.4.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.4.2"
+  }
+}
