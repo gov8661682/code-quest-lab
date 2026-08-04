@@ -17,7 +17,7 @@ State: pre-release hardening; not a Release Candidate
 ## Checkpoint process status
 
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
-- Current checkpoint: pending final release verification, a clear milestone commit, GitHub push, Cloudflare Pages deployment, and live desktop/tablet verification.
+- Current checkpoint: local release verification is green; GitHub push, Cloudflare Pages deployment, live desktop/tablet verification, and the final status record remain pending.
 - Public deployment is not yet claimed. The existing hostname still requires a tested `dist\` publish and clean-host verification before production PWA, route, and game-flow evidence can be marked green.
 
 ## Baseline evidence
@@ -59,7 +59,7 @@ State: pre-release hardening; not a Release Candidate
 
 ## Current audit
 
-The game is a 54,547-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
+The game is a 56,689-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
 
 ## Release blockers
 
@@ -85,7 +85,8 @@ Complete Phase 1 tablet-session hardening: validate a full clean-profile path, 1
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 56 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; all five shipped web copies share SHA-256 `7BBCDE4F4815F3CAEF0C03C8786C5ED8E3FCA7402C61914E560C97E9E492FFB0`; a fresh-origin selector pass showed only Dungeons 1-8 with no browser logs.
+- Latest local verification: `npm.cmd run release:verify` passed with 56 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; all five shipped web copies share SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`; a fresh-origin selector pass showed only Dungeons 1-8 with no browser logs.
+- Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - The service-worker contract harness now covers v6 cache installation and stale-cache cleanup, same-origin request isolation, and navigation-only offline fallback; this is deterministic package evidence, not deployed-HTTPS/offline-soak evidence.
 - The session-lifecycle contract harness now covers Return to Main Menu banking/cleanup, Finish For Now Town persistence, and active-profile deletion across all local save keys; browser/device suspension, forced-closure, and cross-platform evidence remain open.
 - Repeated generation contracts now execute every shipped V1 dungeon generator (Dungeon 1, 2, and 4-8), validating connected paths, aligned room IDs, and boss endpoints; player-completed progression remains open.

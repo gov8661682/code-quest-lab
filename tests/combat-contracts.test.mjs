@@ -10,7 +10,10 @@ const SOURCE = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
 function extractBetween(startMarker, endMarker, label) {
   const start = SOURCE.indexOf(startMarker);
-  const end = SOURCE.indexOf(endMarker, start + startMarker.length);
+  let end = SOURCE.indexOf(endMarker, start + startMarker.length);
+  if (end === -1 && endMarker.includes('\n')) {
+    end = SOURCE.indexOf(endMarker.replace(/\n/g, '\r\n'), start + startMarker.length);
+  }
   assert.notEqual(start, -1, `${label} start is present`);
   assert.notEqual(end, -1, `${label} end is present`);
   return SOURCE.slice(start, end);

@@ -11,7 +11,7 @@ Reviewed: 2026-08-04
 - Reference SHA-256: `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`
 - Current repository source: `index.html`
 - Current source SHA-256 at review: `1F7B0ED475419ABD0E05829BF2D11C241DC30746EF18A6993BCAABE43969C503`
-- Post-audit source SHA-256 after the non-behavioral comment correction: `7BBCDE4F4815F3CAEF0C03C8786C5ED8E3FCA7402C61914E560C97E9E492FFB0`
+- Post-audit source SHA-256 after the non-behavioral comment correction and upstream accessibility merge: `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`
 - Current repository baseline: `052a517` / `code-quest-lab-baseline-2026-08-04`
 
 The reference is newer and substantially larger than the current release-working tree. It is therefore the authoritative creative reference for Joey's ideas in this audit, but it is not merged wholesale into the current source. The reference itself contains comments such as `backbone-only`, phased implementation notes, and intentionally unfinished surfaces; code presence is not treated as proof of a tested playable feature.

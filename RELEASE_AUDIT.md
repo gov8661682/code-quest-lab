@@ -9,7 +9,7 @@ not approve deployment, store submission, purchase, or legal wording.
 ## Passing evidence
 
 - Baseline was preserved in `C:\Users\vlsf\Desktop\Codex\backups\Joey's Game\baseline-2026-08-04` and tagged `code-quest-lab-baseline-2026-08-04`.
-- `index.html`, `code-quest-lab-source.txt`, `dist\index.html`, and the synced Android/iOS web copies match byte-for-byte; current SHA-256: `7BBCDE4F4815F3CAEF0C03C8786C5ED8E3FCA7402C61914E560C97E9E492FFB0`.
+- `index.html`, `code-quest-lab-source.txt`, `dist\index.html`, and the synced Android/iOS web copies match byte-for-byte; current SHA-256: `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Inline JavaScript syntax check passed with Node.
 - `npm.cmd run release:verify` passed: release contracts, 56 Node tests, a 17-file static build, and the static-package audit.
 - The static-package audit passed against `dist\` and both native public bundles: the expected 17 files, including deterministic `build-info.json`, are present with no stale extras, every native web asset matches `dist\`, review pages remain script-free, and no source-map reference, credential-like string, or external runtime resource was found.

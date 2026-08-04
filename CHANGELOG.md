@@ -2,6 +2,7 @@
 
 ## Unreleased - 2026-08-04
 
+- Merged the upstream accessibility and pinned-CI checkpoint while preserving Joey's Adventure Routes, Learning Support direction, and intentionally unreleased Smelter boundary; made the joystick release contract tolerant of Windows line endings and revalidated the five synchronized web copies at SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Preserved and tagged the playable baseline before release-candidate work.
 - Added the initial product vision, V1 scope lock, roadmap, release criteria, status, QA plan, store-readiness, policy-source, asset, license, owner-action, known-issue, decision, and backlog documents.
 - Recorded baseline browser evidence at desktop and phone viewports.
