@@ -41,6 +41,8 @@ A current clean-origin touch-layout pass on 2026-08-04 verified the in-world Tow
 
 A fresh touch-only 390x844 pass on 2026-08-04 repeated the Town-to-Dungeon-1 entrance, Normal trial/modifier selection, active `Ashen Pit` combat, and normal defeat/session-summary recovery flow. The temporary profile was deleted through Manage Data and the browser log was empty; this remains traversal/recovery evidence rather than a full V1 playthrough.
 
+The deployed checkpoint was smoke-tested on 2026-08-04 at desktop 1280x720 and tablet 1024x768. A fresh desktop profile reached class selection, Town, the route/trial/modifier screens, and a first combat room; the tablet run reached the same first-combat surface, then used Finish and Manage Data to confirm the temporary profile's local run summary and delete it. Both live sessions reported zero browser diagnostics. This is deployed-flow evidence, not touch-only hardware, full-combat, 10-30 minute, suspension, forced-closure, boss, or ending evidence.
+
 ## Required automated coverage
 
 - Save creation, serialization, loading, backup recovery, corruption recovery, migration, and deletion.
