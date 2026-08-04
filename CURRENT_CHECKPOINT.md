@@ -4,7 +4,7 @@ Updated: 2026-08-05
 
 ## Current checkpoint
 
-**Checkpoint 1 - Core game stability and complete V1 path**  
+**Checkpoint 1 - Core game stability and complete V1 path**
 Status: **Active; not complete**
 
 ## Current objective

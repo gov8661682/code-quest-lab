@@ -1,7 +1,7 @@
 # Code Quest Lab - Project Progress Report
 
-Reviewed: 2026-08-05  
-Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path  
+Reviewed: 2026-08-05
+Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; not a Release Candidate
 
 ## Review basis
