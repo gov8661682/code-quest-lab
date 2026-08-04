@@ -82,7 +82,7 @@ The deployed checkpoint was smoke-tested on 2026-08-04 at desktop 1280x720 and t
 
 ## Available local commands
 
-The repository now has a dependency-free Node check/test/build loop. `npm.cmd run release:verify` passed on 2026-08-04 with 56 Node tests and copies the complete static release surface to `dist\`. After the local server was stopped, the cached game and all six public review routes loaded with no browser logs. The source-mirror check remains in `.github/workflows/source-mirror.yml`. Native projects exist and sync successfully; native builds remain unavailable until the owner provides the required Android/JDK or Mac/Xcode environment.
+The repository now has a dependency-free Node check/test/build loop. `npm.cmd run release:verify` passed on 2026-08-04 with 57 Node tests and copies the complete static release surface to `dist\`. After the local server was stopped, the cached game and all six public review routes loaded with no browser logs. The source-mirror check remains in `.github/workflows/source-mirror.yml`. Native projects exist and sync successfully; native builds remain unavailable until the owner provides the required Android/JDK or Mac/Xcode environment.
 
 Dependency security checks on 2026-08-04 passed with zero known vulnerabilities from both `npm.cmd audit` and `npm.cmd audit --omit=dev`.
 

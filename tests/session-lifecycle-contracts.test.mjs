@@ -147,3 +147,31 @@ test('deleting the active profile removes its primary, backup, checkpoint, index
   assert.equal(context.activeCharacterId, null);
   assert.deepEqual(JSON.parse(JSON.stringify(savedIndex)), [{ id: 'char_b' }]);
 });
+
+test('page backgrounding saves static-world position or active-run checkpoint before permanent data', () => {
+  const start = SOURCE.indexOf('function saveForPageBackgrounding(){');
+  const end = SOURCE.indexOf("document.addEventListener('visibilitychange'", start);
+  assert.notEqual(start, -1, 'page-background save function is present');
+  assert.notEqual(end, -1, 'page-background save function boundary is present');
+
+  for (const [zone, expected] of [
+    ['town', ['saveTownWorldPosition', 'savePermanentData']],
+    ['entrance_dungeon1', ['saveTownWorldPosition', 'savePermanentData']],
+    ['dungeon1', ['saveRunCheckpoint:background', 'savePermanentData']]
+  ]) {
+    const calls = [];
+    const context = {
+      activeDungeonId: zone,
+      isEntranceZone(value) { return value === 'entrance_dungeon1'; },
+      saveTownWorldPosition() { calls.push('saveTownWorldPosition'); },
+      saveRunCheckpoint(reason) { calls.push(`saveRunCheckpoint:${reason}`); },
+      savePermanentData() { calls.push('savePermanentData'); },
+      console
+    };
+    vm.runInNewContext(`${SOURCE.slice(start, end)}\nthis.__saveForPageBackgrounding = saveForPageBackgrounding;`, context, {
+      filename: `index.html#background-save-${zone}`
+    });
+    context.__saveForPageBackgrounding();
+    assert.deepEqual(calls, expected, `${zone} uses the correct background-save path`);
+  }
+});

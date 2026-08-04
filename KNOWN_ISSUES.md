@@ -4,7 +4,7 @@ Updated: 2026-08-04
 
 ## P1 - release blocking
 
-- The current public hostname is serving an older shell: the manifest, service worker, and review routes fall back to HTML. The prepared `dist\` package has not been owner-approved or redeployed.
+- The current checkpoint's public hostname and Pages preview now serve the verified shell, manifest, service worker, assets, build identity, and review routes. Repeat the production check after each later major-milestone deployment.
 - Android/iOS projects are generated and synced, but no native build evidence exists. `native:android:build` stops because `JAVA_HOME`/`java` are absent; `cap build ios` stops because `xcodebuild` is unavailable. iOS requires Mac/Xcode.
 - The generated iOS Swift Package manifest contains the Windows-side local App-plugin path; rerun `npx cap sync` on the Mac checkout so Capacitor regenerates a valid Mac-side package path before opening Xcode.
 - Live StoreKit/Google Play purchase and restore adapters and sandbox transaction
@@ -18,7 +18,7 @@ Updated: 2026-08-04
 
 - Store screenshots, feature graphics, and final platform metadata are still not prepared or owner-approved; the PWA and Capacitor icon/splash raster set is now generated from the local branded SVG source.
 - Boss and mini-boss fights are checkpointed at room level; an interrupted encounter restarts from the beginning of that room instead of restoring an exact combat frame.
-- The existing source is a 56,419-line HTML file, which makes isolated testing and future maintenance difficult.
+- The existing source is a 56,689-line HTML file, which makes isolated testing and future maintenance difficult.
 
 ## P3 - backlog
 

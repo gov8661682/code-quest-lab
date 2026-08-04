@@ -14,7 +14,7 @@ not approve deployment, store submission, purchase, or legal wording.
 - `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` and the same check against the Pages preview passed after deployment, including root shell, manifest, service worker, build identity, assets, headers, and public review routes.
 - Live browser smoke passed at desktop 1280x720 and tablet 1024x768: profile/class/Town, route/trial/modifier selection, session start, first combat, and the read-and-respond prompt were reached with zero browser diagnostics in both sessions.
 - Inline JavaScript syntax check passed with Node.
-- `npm.cmd run release:verify` passed: release contracts, 56 Node tests, a 17-file static build, and the static-package audit.
+- `npm.cmd run release:verify` passed: release contracts, 57 Node tests, a 17-file static build, and the static-package audit.
 - The static-package audit passed against `dist\` and both native public bundles: the expected 17 files, including deterministic `build-info.json`, are present with no stale extras, every native web asset matches `dist\`, review pages remain script-free, and no source-map reference, credential-like string, or external runtime resource was found.
 - `STORAGE_BOUNDARIES.md` documents the shared origin-scoped web/WebView storage model, local recovery keys, entitlement separation, and absence of cross-device sync; physical lifecycle and cross-version evidence remain open.
 - A fresh touch-only 390x844 browser pass traversed Town, the Dungeon 1 entrance, Normal trial/modifier selection, active `Ashen Pit` combat, and the normal defeat/session-summary recovery flow; the temporary profile was removed through the visible Manage Data flow and browser logs were empty. This is traversal/recovery evidence, not full combat, boss, ending, or device evidence.
@@ -45,7 +45,7 @@ not approve deployment, store submission, purchase, or legal wording.
 
 The shared `gameCanvas` now has a labelled keyboard-focus target and pointer-focus handoff; the release contract and combat test pass. A bounded touch joystick probe showed movement without the earlier neighboring Potion activation, but this remains browser input evidence rather than physical-device evidence.
 
-Desktop WASD/arrow handling also preserves a bounded 120 ms release nudge for short key pulses in managed or embedded browser surfaces; held-key state is still cleared on blur/visibility changes and the contract is covered by the 56-test run.
+Desktop WASD/arrow handling also preserves a bounded 120 ms release nudge for short key pulses in managed or embedded browser surfaces; held-key state is still cleared on blur/visibility changes and the contract is covered by the 57-test run.
 
 The V1 progression contracts now execute every shipped Dungeon 1, 2, and 4-8 generator repeatedly, verify each route's intended boss marker, and assert that generic and Dungeon 4 special defeat paths mark the final room cleared before unlocking the shared exit portal. This is procedural regression evidence, not a substitute for full player-completed combat and ending evidence.
 
@@ -71,7 +71,7 @@ build rather than an RC.
 - Repeated route-generation contracts now execute every shipped V1 generator (Dungeon 1, 2, and 4-8), validating connected paths, aligned room IDs, and boss endpoints; this does not replace player-completed progression evidence.
 - Product-safety contracts now check account-free/local-first normal play, permission-light browser behavior, same-origin public navigation, script-free review pages, and bounded educational claims; owner age, privacy, and school review remain open.
 - Session initialization now clears inherited movement locks, class mobility states, and final-ending cutscene state before loading a new route; the focused regression contract passes, but hands-on progression evidence remains required.
-- Desktop mouse input now queues one bounded first shot for a pointer or managed-browser DOM click, retains continuous held-mouse attacks, and falls back to the nearest live target when click coordinates are unavailable; blur and pointer cancellation clear pending state. The focused combat contracts pass in the 56-test run, but the current browser probe still stops before full combat completion.
+- Desktop mouse input now queues one bounded first shot for a pointer or managed-browser DOM click, retains continuous held-mouse attacks, and falls back to the nearest live target when click coordinates are unavailable; blur and pointer cancellation clear pending state. The focused combat contracts pass in the 57-test run, but the current browser probe still stops before full combat completion.
 - Waypoint Close now records a leave-before-reopen guard. The fresh-origin reproduction showed that the patched menu stays dismissed beyond one hold interval; the player must leave and re-enter before opening it again.
 - `npm.cmd audit` and `npm.cmd audit --omit=dev` both report zero known vulnerabilities for the locked dependency tree; this does not replace code review or native-store security review.
 - A fresh local PWA check cached the shell, stopped the local HTTP server, reloaded the root, and opened the retained local Barbarian save into Town with empty browser logs; deployed-HTTPS is verified for this checkpoint, while device offline-soak evidence remains open.
