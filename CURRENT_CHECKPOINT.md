@@ -96,8 +96,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Local and remote: `32e6a47` (`Record project checkpoint controls and QA gap`)
-- Worktree: clean; `main` matches `origin/main`
+- Runtime: `32d83d0` (`Harden page-background save coverage`)
+- Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
+- Worktree: clean; `main` matches `origin/main` after the metadata-only follow-up
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment

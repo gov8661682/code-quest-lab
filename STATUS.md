@@ -19,7 +19,7 @@ State: pre-release hardening; not a Release Candidate
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest local commit: `32e6a47` (`Record project checkpoint controls and QA gap`), clean `main` matching `origin/main`; the latest local change records checkpoint controls, dated QA evidence, and documentation only.
+- Latest verified runtime commit: `32d83d0` (`Harden page-background save coverage`); control-record commit `194bcc5` (`Record project checkpoint controls and QA gap`) and the current metadata follow-up are documentation-only, with clean `main` matching `origin/main`.
 - Checkpoint record: commit `bf07810` (`Finalize creative-reference release checkpoint`), deployed 2026-08-04 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://4489e0ec.code-quest-lab.pages.dev/`), build SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; live browser smoke reached profile/class/Town, route/trial/modifier selection, and first combat at desktop 1280x720 and tablet 1024x768, with zero browser diagnostics in both sessions.
 

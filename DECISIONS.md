@@ -56,8 +56,9 @@ criterion remains open unless a verified blocker or regression requires it.
 
 ## D-012 - Deployment evidence is separated from local verification
 
-`32e6a47` is the latest locally verified Git commit. `bf07810` is the last
-website checkpoint because the changes after it are documentation and test
+`32d83d0` is the latest locally verified runtime commit; control-record commit
+`194bcc5` records the project controls. `bf07810` is the last website checkpoint
+because the changes after it are documentation and test
 coverage only and do not change the shipped shell. A later major milestone must
 repeat tests, build, push, deploy, live verification, and status recording. A
 minor documentation or test-only change does not trigger a deployment.

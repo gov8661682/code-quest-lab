@@ -6,8 +6,10 @@
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey
   creative audit must not be repeated.
-- Recorded the current verification state: local `32e6a47` is clean and matches
-  `origin/main`, `npm.cmd run release:verify` passes 57 tests and the 17-file
+- Recorded the current verification state: runtime commit `32d83d0` remains
+  verified, control-record commit `194bcc5` is on `main`, and the
+  documentation-only follow-up is clean; `npm.cmd run release:verify` passes 57
+  tests and the 17-file
   package audit, and the configured production check passes. The last deployed
   web checkpoint remains `bf07810` because the intervening changes do not alter
   the shipped shell.

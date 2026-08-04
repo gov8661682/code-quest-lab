@@ -10,8 +10,9 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: clean `main`, `HEAD` and `origin/main` at `32e6a47`
-  (`Record project checkpoint controls and QA gap`)
+- Git state: clean `main`; control-record commit `194bcc5` (`Record project
+  checkpoint controls and QA gap`) is on the branch, and the current metadata
+  follow-up remains documentation only
 - Canonical game: `index.html`, 56,689 lines, SHA-256
   `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
