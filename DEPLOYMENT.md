@@ -1,6 +1,6 @@
 # Code Quest Lab - Web Deployment Package
 
-Status: prepared, not published by Codex (2026-08-04)
+Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-05)
 
 ## Intended deployment
 
@@ -73,9 +73,14 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-On 2026-08-04, a read-only request to the existing hostname returned HTTP 200
-from Cloudflare, but the deployed root hash did not match the local build and
-`/manifest.webmanifest`, `/service-worker.js`, `/build-info.json`, assets, and
-the public review routes returned the old HTML shell. Treat production PWA and
-school-review behavior as unverified until the owner redeploys the complete
-`dist\` directory and repeats the post-deployment checks above.
+The 2026-08-04 checkpoint was published to the configured Cloudflare Pages
+project `code-quest-lab` at commit `bf07810`, with primary hostname
+`https://code-quest-lab.gov8661682.com/` and preview
+`https://4489e0ec.code-quest-lab.pages.dev/`. The deployed shell hash is
+`F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
+
+`npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` passed
+again on 2026-08-05. The commits after `bf07810` are documentation and test
+coverage only, so the current control-file review does not require a new
+publish. Repeat the owner-approved publish and live checks after the next
+substantial tested milestone.

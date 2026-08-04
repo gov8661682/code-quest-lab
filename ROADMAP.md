@@ -1,6 +1,11 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-04
+Updated: 2026-08-05
+
+The numbered checkpoint sequence and evidence-backed progress report are
+canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
+defines the one active work boundary; read it with `COMPLETED_WORK.md` and
+`DECISIONS.md` before selecting a task.
 
 ## Phase 0 - Baseline, direction, and release foundation (complete for this session)
 
@@ -92,4 +97,4 @@ For each major milestone:
 
 Deployment must not interrupt autonomous development. After a checkpoint is verified, continue immediately with the highest-priority unfinished item in the existing Goal. The working order is: creative reference audit -> scoped implementation -> tests/build/playability -> GitHub and website checkpoint -> next unfinished Goal item.
 
-Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Next priority is Phase 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.
+Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Local `32e6a47` records the checkpoint controls and QA evidence; the post-deployment changes remain documentation/test coverage only. The active next priority is Checkpoint 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.

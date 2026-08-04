@@ -1,6 +1,6 @@
 # Code Quest Lab - Known Issues
 
-Updated: 2026-08-04
+Updated: 2026-08-05
 
 ## P1 - release blocking
 
@@ -12,6 +12,7 @@ Updated: 2026-08-04
   discovery seam, and a non-purchasing development adapter is available for
   deterministic CI/reviewer harnesses but is excluded from `dist\`.
 - Full V1 combat progression, boss fights, and ending are not fully executed by a player; route/boss handoff contracts and save-parser/loader matrices are automated, while browser/device migration and corruption-recovery evidence remain open.
+- A fresh live 1024x768 QA run on 2026-08-05 reached three first-combat rooms but did not establish an enemy defeat through the tested touch Attack-joystick and desktop canvas-click inputs. No browser errors or warnings were recorded. Reproduce on another supported browser/device or isolate event delivery before changing combat code; this remains an active Checkpoint 1 evidence gap, not a confirmed root-cause diagnosis.
 - Dungeons 9-16 remain source-resident for future work but are now intentionally hidden from the V1 selection, waypoint, saved-world resume, and boss-exit chain. Their completion, balance, rewards, and device evidence remain post-release backlog work.
 
 ## P2 - important but currently workaroundable

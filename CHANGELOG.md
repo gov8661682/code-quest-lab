@@ -1,5 +1,25 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-05
+
+- Added the evidence-backed project control record: `PROJECT_PROGRESS.md`,
+  `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
+  `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey
+  creative audit must not be repeated.
+- Recorded the current verification state: local `32e6a47` is clean and matches
+  `origin/main`, `npm.cmd run release:verify` passes 57 tests and the 17-file
+  package audit, and the configured production check passes. The last deployed
+  web checkpoint remains `bf07810` because the intervening changes do not alter
+  the shipped shell.
+- Reconciled deployment and store-readiness records with the verified current
+  Cloudflare Pages checkpoint; no new website deployment was performed for this
+  documentation/test-only update.
+- Recorded the latest active Checkpoint 1 QA result: a fresh 1024x768 live run
+  reached three first-combat rooms with no browser diagnostics, but did not
+  establish an enemy defeat through the tested touch/click inputs. The result is
+  retained as an evidence gap for reproduction on another supported surface;
+  no combat code or website deployment was changed.
+
 ## Unreleased - 2026-08-04
 
 - Completed the major-milestone GitHub and website checkpoint for the creative-reference audit plus release-foundation/first tablet-session hardening: pushed `bf07810`, deployed the tested build on 2026-08-04 to `https://code-quest-lab.gov8661682.com/`, passed the production contract, and verified desktop 1280x720/tablet 1024x768 flows through first combat with zero browser diagnostics.

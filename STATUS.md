@@ -1,6 +1,6 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-04
+Date: 2026-08-05
 State: pre-release hardening; not a Release Candidate
 
 ## Creative reference audit
@@ -17,7 +17,9 @@ State: pre-release hardening; not a Release Candidate
 ## Checkpoint process status
 
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
-- Current checkpoint: verified for the creative-reference audit plus release-foundation/first tablet-session hardening milestone; continue with the highest-priority unfinished Phase 1 item.
+- Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
+- Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
+- Latest local commit: `32e6a47` (`Record project checkpoint controls and QA gap`), clean `main` matching `origin/main`; the latest local change records checkpoint controls, dated QA evidence, and documentation only.
 - Checkpoint record: commit `bf07810` (`Finalize creative-reference release checkpoint`), deployed 2026-08-04 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://4489e0ec.code-quest-lab.pages.dev/`), build SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; live browser smoke reached profile/class/Town, route/trial/modifier selection, and first combat at desktop 1280x720 and tablet 1024x768, with zero browser diagnostics in both sessions.
 
@@ -55,6 +57,7 @@ State: pre-release hardening; not a Release Candidate
 - Isolated clean-origin touch journey passed through the free dungeon entrance into multiple first combat rooms (`Burial Hall`, `Dark Corridor`, `Ashen Pit`, and `Forsaken Vault`); the normal defeat summary, saved-progress notice, Return to Waypoint path, and no-browser-log result were observed. A current 540x720 touch-layout pass additionally verified Town portal -> Dungeon Entrance gate -> Normal trial -> first procedural combat. Combat completion, boss progression, and the final V1 ending remain unvalidated.
 - Fresh touch QA after the first-combat hardening reached the in-world entrance, Normal trial, modifier, clean active session, and normal defeat/recovery flow; the browser recorded no error or warning entries. This confirms the release path remains runnable after the combat-intro change, not that full combat or boss progression is complete.
 - A bounded fresh Mage attack probe reached randomized first combat rooms and reduced one live room from `Enemies: 2` to `Enemies: 1`; the profile then persisted `First Blood — Defeat one enemy`. The run still ended before the room cleared, so this is partial attack evidence rather than full combat completion.
+- Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
 - Product direction was updated to teen-first (approximately 13-17), landscape tablet touch-first, 10-30 minute sessions, restricted-device compatibility, optional authentic Learning Support, and non-manipulative monetisation. The updated direction is reflected in `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `ROADMAP.md`, `RELEASE_CRITERIA.md`, `STORE_READINESS.md`, `TEST_PLAN.md`, `MONETISATION.md`, `PRIVACY.md`, and `OWNER_ACTIONS.md`.
 
 ## Current audit
@@ -78,7 +81,15 @@ Built the release foundation and first tablet-session hardening slice: added sta
 
 ## Next task
 
-Continue Phase 1 tablet-session hardening: validate a full clean-profile path, 10-30 minute play, suspension, save compatibility, and summary behavior on representative devices. The current GitHub/website checkpoint is verified; next prioritize the clean-profile session and lifecycle evidence. In parallel, run the owner-only Android/JDK and Mac/Xcode build checks against the generated native projects.
+Reproduce the first-combat attack-response gap from the 2026-08-05 live
+1024x768 QA run on another supported browser/device or isolate the event
+delivery cause, then resume the clean-profile touch-first completion attempt
+through the bounded Dungeon 1-8 path. Continue with dated evidence for
+room/boss/ending progress, session duration, pause/reload/finish behavior, and
+browser diagnostics. The current GitHub/website checkpoint is already
+verified; do not deploy this documentation/test-only update. Native Android/JDK
+and Mac/Xcode actions remain owner/environment blockers recorded in
+`BLOCKERS.md`.
 
 ## Latest local hardening
 

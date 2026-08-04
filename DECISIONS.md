@@ -1,6 +1,6 @@
 # Code Quest Lab - Decisions
 
-Updated: 2026-08-04
+Updated: 2026-08-05
 
 ## D-001 - Preserve the existing game
 
@@ -37,3 +37,51 @@ The game remains a fantasy action RPG first. Learning Support may explain patter
 ## D-009 - Tablet session design
 
 Landscape tablet touch is the primary path. V1 targets natural 10-30 minute sessions with checkpoints, autosave, pause/resume, suspension recovery, session summaries, next-step suggestions, and explicit stopping points. Engagement comes from mastery and fun, not streaks, energy, scarcity, or pressure.
+
+## D-010 - Checkpoint control files are canonical
+
+`CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `DECISIONS.md`, `CHECKPOINTS.md`,
+`PROJECT_PROGRESS.md`, `BLOCKERS.md`, `BACKLOG.md`, and `CHANGELOG.md` are the
+control record for autonomous progression. At the beginning of a work cycle,
+read the current checkpoint, completed ledger, and decisions before selecting a
+task. Only one checkpoint may be active.
+
+## D-011 - Checkpoint 1 is the active work boundary
+
+The active checkpoint is `Checkpoint 1 - Core game stability and complete V1
+path`. The highest-priority unmet criterion is a fresh-profile, player-completed
+D1-8 path plus meaningful session/lifecycle evidence. Do not start creative
+parity, monetisation, native integration, or broad refactoring while this
+criterion remains open unless a verified blocker or regression requires it.
+
+## D-012 - Deployment evidence is separated from local verification
+
+`32e6a47` is the latest locally verified Git commit. `bf07810` is the last
+website checkpoint because the changes after it are documentation and test
+coverage only and do not change the shipped shell. A later major milestone must
+repeat tests, build, push, deploy, live verification, and status recording. A
+minor documentation or test-only change does not trigger a deployment.
+
+## D-013 - Joey parity remains protected but does not silently expand V1
+
+Joey's named story, characters, classes, skills, dungeons, bosses, dialogue,
+endings, and distinctive mechanics remain the creative reference. Ranger,
+Necromancer, Alchemist, Paladin, D9-16, D16 Phase 4, and Smelter work stay in
+the documented parity backlog unless the owner explicitly changes the V1 scope.
+The D1-8 release guard remains in force.
+
+## D-014 - Evidence outranks representation
+
+Code presence, comments, route generators, or a source-resident boss function
+does not prove a feature is release-ready. A feature is complete only when its
+acceptance criteria, automated contracts, relevant manual play, documentation,
+and required milestone checkpoint are evidenced. Stale comments may be fixed;
+creative behavior must not be removed merely to simplify the code.
+
+## D-015 - Owner blockers are recorded once and worked around safely
+
+Missing JDK/Android SDK, Mac/Xcode, store products/access, physical devices,
+legal approvals, and publication approval are recorded in `BLOCKERS.md` and
+`OWNER_ACTIONS.md`. Codex should prepare exact commands and all independent
+work, then stop retrying the same blocked action until the owner changes the
+external state.

@@ -1,6 +1,6 @@
 # Code Quest Lab - Owner Actions
 
-Updated: 2026-08-04
+Updated: 2026-08-05
 
 These are human-only or account/legal actions. The development work should continue around them.
 
@@ -10,8 +10,8 @@ These are human-only or account/legal actions. The development work should conti
 - Confirm whether any school deployment requires allowlisting, additional consent, filtering, accessibility, or device-management documentation. Codex will not bypass those controls.
 - Confirm commercial rights to the existing repository code and any owner-supplied assets; provide a project license decision.
 - Approve the final public support URL and privacy-policy URL/text. Draft same-origin Support and Privacy pages are present in the repository, but their final wording and hosting/log disclosures require owner review.
-- Approve the static web deployment, DNS/HTTPS certificate, hosting/CDN log treatment, and clean-host verification for `code-quest-lab.gov8661682.com`; Codex has prepared `dist\` and will not publish it without approval.
-- Redeploy the complete `dist\` package to the existing Cloudflare Pages project. The read-only audit found the current hostname serving the older HTML shell for `/manifest.webmanifest`, `/service-worker.js`, and the public review routes; verify their content types and bodies after redeployment.
+- Confirm the static web deployment, DNS/HTTPS certificate, hosting/CDN log treatment, and clean-host verification for `code-quest-lab.gov8661682.com`. The current 2026-08-04 checkpoint is already deployed and `production:check` passed on 2026-08-05; owner approval is still required for each future milestone publish.
+- For the next substantial, tested milestone, approve publishing the complete `dist\` package to the existing Cloudflare Pages project and repeat the post-deployment checks. Do not treat the documentation/test-only `32e6a47` update as a deployment milestone.
 - Provide Apple Developer and Google Play Console access when native submission work is ready. Do not put credentials in the repository.
 - Confirm the final application/bundle identifier; the provisional recommendation is `com.gov8661682.codequestlab`.
 - Provide signing certificates, provisioning profiles, Android keystore, and release account configuration.

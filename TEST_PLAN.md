@@ -1,6 +1,6 @@
 # Code Quest Lab - Test Plan
 
-Updated: 2026-08-04
+Updated: 2026-08-05
 
 ## Test rules
 
@@ -42,6 +42,18 @@ A current clean-origin touch-layout pass on 2026-08-04 verified the in-world Tow
 A fresh touch-only 390x844 pass on 2026-08-04 repeated the Town-to-Dungeon-1 entrance, Normal trial/modifier selection, active `Ashen Pit` combat, and normal defeat/session-summary recovery flow. The temporary profile was deleted through Manage Data and the browser log was empty; this remains traversal/recovery evidence rather than a full V1 playthrough.
 
 The deployed checkpoint was smoke-tested on 2026-08-04 at desktop 1280x720 and tablet 1024x768. A fresh desktop profile reached class selection, Town, the route/trial/modifier screens, and a first combat room; the tablet run reached the same first-combat surface, then used Finish and Manage Data to confirm the temporary profile's local run summary and delete it. Both live sessions reported zero browser diagnostics. This is deployed-flow evidence, not touch-only hardware, full-combat, 10-30 minute, suspension, forced-closure, boss, or ending evidence.
+
+The latest live QA pass on 2026-08-05 used the configured production hostname at
+1024x768 with a fresh Barbarian profile. It reached Town, the Dungeon 1
+entrance, Normal trial, modifier selection, and three randomized first-combat
+rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`). The bounded onboarding
+prompt and normal defeat/recovery flow appeared with no browser error or warning
+diagnostics. A touch Attack-joystick drag, a touch tap plus movement, and
+repeated desktop canvas clicks did not produce an observed enemy defeat in this
+harness. This is a failed/incomplete combat-evidence attempt, not enough to
+attribute the result to a product defect; repeat on another supported
+browser/device or isolate event delivery before changing the attack path. The
+temporary profile was removed through the in-game Manage Data confirmation.
 
 ## Required automated coverage
 

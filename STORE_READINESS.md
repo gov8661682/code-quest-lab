@@ -4,7 +4,7 @@ Status: draft; do not submit (2026-08-04)
 
 ## Current release surfaces
 
-- Web deployment package: prepared in `dist\`; not publicly deployed or verified from the production hostname.
+- Web deployment package: prepared in `dist\`; the 2026-08-04 checkpoint is deployed and verified from `https://code-quest-lab.gov8661682.com/`. Repeat the publish/check sequence for each later major milestone.
 - PWA shell: manifest, service worker, and same-origin public review pages are included and locally cached successfully.
 - Native shells: Capacitor Android/iOS projects are generated at app version `0.1.0`, but platform build and device evidence remain pending.
 - Monetisation: shared verified-entitlement contract, fail-closed native discovery seam, parent-gated UI, and test-only non-purchasing adapter are present; no live product, payment adapter, or sandbox transaction exists.
