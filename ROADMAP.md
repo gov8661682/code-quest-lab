@@ -91,3 +91,5 @@ For each major milestone:
 8. Record the Git commit, deployment date, and milestone in project status.
 
 Deployment must not interrupt autonomous development. After a checkpoint is verified, continue immediately with the highest-priority unfinished item in the existing Goal. The working order is: creative reference audit -> scoped implementation -> tests/build/playability -> GitHub and website checkpoint -> next unfinished Goal item.
+
+Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Next priority is Phase 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.

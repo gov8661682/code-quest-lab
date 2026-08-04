@@ -17,8 +17,9 @@ State: pre-release hardening; not a Release Candidate
 ## Checkpoint process status
 
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
-- Current checkpoint: local release verification is green; GitHub push, Cloudflare Pages deployment, live desktop/tablet verification, and the final status record remain pending.
-- Public deployment is not yet claimed. The existing hostname still requires a tested `dist\` publish and clean-host verification before production PWA, route, and game-flow evidence can be marked green.
+- Current checkpoint: verified for the creative-reference audit plus release-foundation/first tablet-session hardening milestone; continue with the highest-priority unfinished Phase 1 item.
+- Checkpoint record: commit `bf07810` (`Finalize creative-reference release checkpoint`), deployed 2026-08-04 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://4489e0ec.code-quest-lab.pages.dev/`), build SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
+- Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; live browser smoke reached profile/class/Town, route/trial/modifier selection, and first combat at desktop 1280x720 and tablet 1024x768, with zero browser diagnostics in both sessions.
 
 ## Baseline evidence
 
@@ -37,10 +38,9 @@ State: pre-release hardening; not a Release Candidate
 - `npm.cmd run native:sync` passed and registered `@capacitor/app@8.1.1` for both generated platforms.
 - `npm.cmd run assets:generate` passed: branded 192/512px PWA icons, Android density/foreground icon resources, Android splash resources, and iOS AppIcon/Splash resources were generated from `assets/icon.svg`; representative dimensions and local/dist/native web-copy hashes matched.
 - `npm.cmd run native:doctor` confirmed Android configuration but reported that Xcode is not installed; `npm.cmd run native:android:build` stopped because `JAVA_HOME` and `java` are absent; `npx.cmd cap build ios` stopped because `xcodebuild` is unavailable.
-- Public same-origin About, Educational Purpose, Privacy, Support, Contact, and School Review pages are prepared and included in the static build/service-worker shell; public HTTPS deployment has not been performed.
+- Public same-origin About, Educational Purpose, Privacy, Support, Contact, and School Review pages are prepared, included in the static build/service-worker shell, and verified by the current deployed production check.
 - After the local HTTP test server was stopped, the cached web app and all six public review routes loaded in the browser with no console errors.
-- Read-only production audit of `https://code-quest-lab.gov8661682.com/` on 2026-08-04 returned Cloudflare HTTP 200, but the live root hash differed from the local build; `/manifest.webmanifest`, `/service-worker.js`, `/build-info.json`, stylesheet, assets, and the six review routes returned the old HTML shell instead of their intended file/page content. The owner must redeploy `dist\` before treating production PWA or school-review criteria as verified.
-- `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` reproduced that failure with invalid HTML content types/bodies for the manifest, service worker, build identity, stylesheet, assets, and public pages.
+- The pre-deployment production audit on 2026-08-04 returned the old HTML shell for asset and review routes; after the authorized Pages publish, the current primary hostname and preview deployment both pass the production contract.
 - The non-RC evidence and owner/environment gates are consolidated in `RELEASE_AUDIT.md`.
 - Profile-save reliability was strengthened with versioned structural validation, valid-backup promotion, and an explicit user-facing recovery notice; full migration/corruption matrix coverage remains open.
 - An automated compatibility matrix now executes the shipped `parseCharacterSave` validator against current and legacy-compatible shapes, malformed JSON, future versions, and invalid field types; browser storage backup-promotion and cross-platform migration evidence remain open.
@@ -65,7 +65,7 @@ The game is a 56,689-line self-contained HTML file with Canvas rendering, DOM ov
 
 - P1: native Android/iOS build evidence is absent. The projects are generated, but this Windows environment has no Android SDK/JDK or Xcode.
 - P1: live StoreKit/Google Play/web payment adapters and sandbox entitlement tests are absent; the shared verified-entitlement boundary, product identity check, parent-gated unlock surface, and mocked core matrix are implemented.
-- P1: production HTTPS deployment and clean-host verification are absent; the complete `dist\` deployment package and owner-controlled publish instructions are prepared.
+- Resolved for this checkpoint: production HTTPS deployment and clean-host verification pass at `https://code-quest-lab.gov8661682.com/`; redeploy remains part of every later major-milestone checkpoint.
 - P1: full progression and browser/device storage, suspension, forced-closure, and cross-platform save-compatibility coverage remains open; automated parser and production-loader matrices now cover the validator/recovery boundary.
 - P1: the clean-profile touch path reaches first combat and the defeat/recovery summary, but full combat completion, boss progression, and the V1 end-state have not yet been validated.
 - P1: the Dungeon 1-8 route endpoint is now bounded and source-resident Dungeons 9-16 are hidden until completed; clean-profile completion of the bounded V1 path and ending remains unvalidated.
@@ -78,7 +78,7 @@ Built the release foundation and first tablet-session hardening slice: added sta
 
 ## Next task
 
-Complete Phase 1 tablet-session hardening: validate a full clean-profile path, 10-30 minute play, suspension, save compatibility, and summary behavior on representative devices. First complete the current stable checkpoint's release verification and owner-controlled web publish/live verification, then continue with the highest-priority unfinished hardening item. In parallel, run the owner-only Android/JDK and Mac/Xcode build checks against the generated native projects.
+Continue Phase 1 tablet-session hardening: validate a full clean-profile path, 10-30 minute play, suspension, save compatibility, and summary behavior on representative devices. The current GitHub/website checkpoint is verified; next prioritize the clean-profile session and lifecycle evidence. In parallel, run the owner-only Android/JDK and Mac/Xcode build checks against the generated native projects.
 
 ## Latest local hardening
 
@@ -87,6 +87,7 @@ Complete Phase 1 tablet-session hardening: validate a full clean-profile path, 1
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
 - Latest local verification: `npm.cmd run release:verify` passed with 56 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; all five shipped web copies share SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`; a fresh-origin selector pass showed only Dungeons 1-8 with no browser logs.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
+- Completed the major-milestone checkpoint: commit `bf07810` was pushed and deployed to the configured domain on 2026-08-04; production contracts passed, and desktop 1280x720/tablet 1024x768 live flows reached first combat with zero browser diagnostics.
 - The service-worker contract harness now covers v6 cache installation and stale-cache cleanup, same-origin request isolation, and navigation-only offline fallback; this is deterministic package evidence, not deployed-HTTPS/offline-soak evidence.
 - The session-lifecycle contract harness now covers Return to Main Menu banking/cleanup, Finish For Now Town persistence, and active-profile deletion across all local save keys; browser/device suspension, forced-closure, and cross-platform evidence remain open.
 - Repeated generation contracts now execute every shipped V1 dungeon generator (Dungeon 1, 2, and 4-8), validating connected paths, aligned room IDs, and boss endpoints; player-completed progression remains open.

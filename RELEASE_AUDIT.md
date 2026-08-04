@@ -10,6 +10,9 @@ not approve deployment, store submission, purchase, or legal wording.
 
 - Baseline was preserved in `C:\Users\vlsf\Desktop\Codex\backups\Joey's Game\baseline-2026-08-04` and tagged `code-quest-lab-baseline-2026-08-04`.
 - `index.html`, `code-quest-lab-source.txt`, `dist\index.html`, and the synced Android/iOS web copies match byte-for-byte; current SHA-256: `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
+- GitHub checkpoint commit `bf07810` was pushed to `main`; the tested `dist\` package was deployed to `https://code-quest-lab.gov8661682.com/` on 2026-08-04, with preview URL `https://4489e0ec.code-quest-lab.pages.dev/`.
+- `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` and the same check against the Pages preview passed after deployment, including root shell, manifest, service worker, build identity, assets, headers, and public review routes.
+- Live browser smoke passed at desktop 1280x720 and tablet 1024x768: profile/class/Town, route/trial/modifier selection, session start, first combat, and the read-and-respond prompt were reached with zero browser diagnostics in both sessions.
 - Inline JavaScript syntax check passed with Node.
 - `npm.cmd run release:verify` passed: release contracts, 56 Node tests, a 17-file static build, and the static-package audit.
 - The static-package audit passed against `dist\` and both native public bundles: the expected 17 files, including deterministic `build-info.json`, are present with no stale extras, every native web asset matches `dist\`, review pages remain script-free, and no source-map reference, credential-like string, or external runtime resource was found.
@@ -48,7 +51,7 @@ The V1 progression contracts now execute every shipped Dungeon 1, 2, and 4-8 gen
 
 ## Remaining owner or environment gates
 
-1. Redeploy and verify the complete `dist\` package at the owner-approved HTTPS domain. The current Cloudflare host returns the older HTML shell for the manifest, service worker, build identity, assets, and public review routes; `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` fails accordingly. Codex has not published it.
+1. Resolved for the current checkpoint: the complete `dist\` package is deployed and verified at `https://code-quest-lab.gov8661682.com/`; repeat the same publish and live checks after each later major milestone.
 2. Provide JDK, Android SDK, and Gradle tooling, then run and record an Android build. The current failure is `JAVA_HOME is not set and no 'java' command could be found in your PATH.`
 3. Provide a Mac/Xcode environment, rerun Capacitor sync there, and build/test iOS. The current Windows failure is `xcodebuild is not recognized`.
 4. Perform physical iPhone/iPad and Android phone/tablet tests, including safe areas, orientation, audio, suspension, offline launch, and storage.
@@ -71,6 +74,6 @@ build rather than an RC.
 - Desktop mouse input now queues one bounded first shot for a pointer or managed-browser DOM click, retains continuous held-mouse attacks, and falls back to the nearest live target when click coordinates are unavailable; blur and pointer cancellation clear pending state. The focused combat contracts pass in the 56-test run, but the current browser probe still stops before full combat completion.
 - Waypoint Close now records a leave-before-reopen guard. The fresh-origin reproduction showed that the patched menu stays dismissed beyond one hold interval; the player must leave and re-enter before opening it again.
 - `npm.cmd audit` and `npm.cmd audit --omit=dev` both report zero known vulnerabilities for the locked dependency tree; this does not replace code review or native-store security review.
-- A fresh local PWA check cached the shell, stopped the local HTTP server, reloaded the root, and opened the retained local Barbarian save into Town with empty browser logs; deployed-HTTPS and device offline-soak evidence remain open.
+- A fresh local PWA check cached the shell, stopped the local HTTP server, reloaded the root, and opened the retained local Barbarian save into Town with empty browser logs; deployed-HTTPS is verified for this checkpoint, while device offline-soak evidence remains open.
 - A fresh local-origin browser pass created and later deleted a temporary Mage profile through the visible UI, reached Town, confirmed only Dungeons 1-8 in Adventure Routes, selected Dungeon 1 Normal plus a modifier, and reached the start room with empty browser logs. The in-app keyboard bridge did not yield a visible movement/door transition, so this run is recorded as navigation/start-room evidence rather than full progression evidence.
 - The native lifecycle contract covers `pause`, inactive `appStateChange`, `resume` entitlement refresh, and back-button routing; it does not replace signed builds or physical-device suspension/forced-close evidence.
