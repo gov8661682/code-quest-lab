@@ -56,12 +56,13 @@ criterion remains open unless a verified blocker or regression requires it.
 
 ## D-012 - Deployment evidence is separated from local verification
 
-`32d83d0` is the latest locally verified runtime commit; control-record commit
-`194bcc5` records the project controls. `bf07810` is the last website checkpoint
-because the changes after it are documentation and test
-coverage only and do not change the shipped shell. A later major milestone must
-repeat tests, build, push, deploy, live verification, and status recording. A
-minor documentation or test-only change does not trigger a deployment.
+`32d83d0` is the prior stable runtime base; control-record commit `194bcc5`
+records the project controls. `bf07810` is the last website checkpoint because
+the current follow-up contains an incomplete open-world/design review and
+copy-only usability fixes, not a stable major milestone. A later major
+milestone must repeat tests, build, push, deploy, live verification, and status
+recording. Minor documentation, test-only, or incomplete usability changes do
+not trigger a deployment.
 
 ## D-013 - Joey parity remains protected but does not silently expand V1
 
@@ -86,3 +87,18 @@ legal approvals, and publication approval are recorded in `BLOCKERS.md` and
 `OWNER_ACTIONS.md`. Codex should prepare exact commands and all independent
 work, then stop retrying the same blocked action until the owner changes the
 external state.
+
+## D-016 - Explicit open-world direction, staged behind evidence
+
+The owner has explicitly chosen an open-world direction for Code Quest Lab.
+The target is a compact, connected, hand-authored world with Town as a home
+region, discoverable landmarks and waypoints, meaningful destination choices,
+and authored dungeons as regional landmarks. It is not an infinite map,
+multiplayer service, cloud world, or live-service pressure system.
+
+`OPEN_WORLD_DIRECTION.md` is the canonical design and technical target. Town,
+entrance hubs, `worldLocation`, waypoints, region registries, save migrations,
+and the current room engine should be extended toward that target. The V1 D1-8
+release guard remains in force, and Checkpoint 1 remains active: open-world
+design is allowed now, but new regions, broad refactors, and untested
+exploration systems do not interrupt the current player-completion evidence.

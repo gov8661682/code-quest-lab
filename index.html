@@ -28791,7 +28791,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
           var _isFirstCombatIntro=activeDungeonId==='dungeon1'&&def.type===RT.COMBAT&&roomId===MAIN_PATH[1];
           if(_isFirstCombatIntro){
             combatIntroTimer=COMBAT_INTRO_DURATION;
-            showBanner(typeLabel+' '+def.name,'Read the room â€” move or attack',COMBAT_INTRO_DURATION);
+            showBanner(typeLabel+' '+def.name,'Read the room - move or attack',COMBAT_INTRO_DURATION);
           }else{
             showBanner(typeLabel+' '+def.name,(effectiveType===RT.COMBAT?'Clear the room':buildCompositionLabel(comp)),2.2);
           }
@@ -41398,7 +41398,7 @@ function updateHUD(){
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){
     var isTownObjective=(def&&def.type===RT.START&&isTownRoom);
-    var objectiveText=isTownObjective?'Prepare in town, then use the north portal to choose a practice module':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
+    var objectiveText=isTownObjective?'Prepare in Town, then follow the northern road to the Forgotten Depths':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
     objectiveEl.textContent='Objective: '+objectiveText;
   }
 }

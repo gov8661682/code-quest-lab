@@ -10,11 +10,11 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: clean `main`; control-record commit `194bcc5` (`Record project
-  checkpoint controls and QA gap`) is on the branch, and the current metadata
-  follow-up remains documentation only
+- Git state: `main` contains control-record commit `194bcc5` (`Record project
+  checkpoint controls and QA gap`); this change set adds the open-world
+  direction, AI expert evidence, and synchronized copy-only usability fixes
 - Canonical game: `index.html`, 56,689 lines, SHA-256
-  `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`
+  `56BD21461F55FE29FF177BFACC40B13C78DA830D430C17D06A503A3FBCBE32C8`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
@@ -24,8 +24,9 @@ Git history, and current deployment—not only on comments or planning files.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
   passed
 - Last website checkpoint: commit `bf07810`, deployed and live-verified on
-  2026-08-04 at `https://code-quest-lab.gov8661682.com/`; the later local
-  commits are documentation/test coverage and do not change the shipped shell
+  2026-08-04 at `https://code-quest-lab.gov8661682.com/`; the current local
+  shell includes copy-only fixes but is not yet a stable major milestone for
+  publication
 
 ## Completed
 
@@ -41,7 +42,9 @@ Git history, and current deployment—not only on comments or planning files.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-04 milestone | Cloudflare Pages project `code-quest-lab`; primary hostname and preview passed production checks and live desktop/tablet first-combat smoke | Repeat only after a later major tested milestone; current documentation/test-only `32e6a47` does not require redeployment | Owner-approved hosting access for future publishes | Yes | Do not deploy minor documentation or test-only changes |
+| Current web deployment checkpoint | Complete for the 2026-08-04 milestone | Cloudflare Pages project `code-quest-lab`; primary hostname and preview passed production checks and live desktop/tablet first-combat smoke | Repeat only after a later major tested milestone; current open-world/design review and incomplete copy/usability fixes do not require redeployment | Owner-approved hosting access for future publishes | Yes | Do not deploy incomplete or minor changes |
+| Open-world product and architecture direction | Complete as a design decision; runtime implementation is intentionally staged | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; `DECISIONS.md` records the explicit owner direction | Implement and test the first World Atlas/region graph only after C1 playability and relevant save/input evidence are stable | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
+| AI expert playtest and first usability fixes | Playtest complete; one verified copy defect fixed locally, gameplay/UI improvements remain | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; the onboarding dash and Town objective wording are now encoding-safe/local | Re-test the updated copy in a supported build; reproduce attack response; then group confirmed enemy/door readability changes into the next meaningful C1 milestone | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Use the report to guide the next C1 QA cycle; do not deploy the incomplete fix alone |
 
 ## Partially completed
 
@@ -77,7 +80,7 @@ Git history, and current deployment—not only on comments or planning files.
 | iOS build | Blocked by the current machine | `native:doctor` reports Xcode is not installed; Windows cannot run `xcodebuild` | On Mac, rerun native sync, open `ios\App\App.xcworkspace`, build and test | Owner provides Mac/Xcode, signing configuration, and regenerates the Mac-side Swift package path | Yes for iOS release | Hand off the exact Mac steps in `OWNER_ACTIONS.md` |
 | Live monetisation | Blocked by owner/platform access | No StoreKit/Play products, IDs, sandbox accounts, or credentials are present; current adapter is intentionally fail-closed | Implement platform adapters and run sandbox purchase/restore/revocation tests | Owner creates products, supplies IDs/sandbox instructions, and approves price/refund policy; credentials must stay out of Git | Yes for monetised native release | Keep the development adapter test-only |
 | Legal, commercial, age, privacy, and school decisions | Blocked by owner decisions | `LICENSES.md`, `PRIVACY.md`, `STORE_READINESS.md`, and `OWNER_ACTIONS.md` explicitly mark rights, ratings, log treatment, support/privacy wording, and school requirements as open | Obtain approvals and update the records | Owner confirms code/asset rights, final name/rating, hosting logs, privacy/support text, and school allowlisting requirements | Yes for public/store release | Resolve before calling the project RC |
-| Future major-milestone publication | Gated, not currently blocking local work | The current deployment is already verified; no runtime change was made after the deployed shell, and the user requires stable tested checkpoints | Publish only the next substantial tested milestone and verify its live package | Owner-approved Cloudflare/GitHub publication access for that milestone | Yes for each release checkpoint | Do not deploy this documentation/test-only review |
+| Future major-milestone publication | Gated, not currently blocking local work | The current deployment is already verified; the local copy/usability fixes are incomplete, and the user requires stable tested checkpoints | Publish only the next substantial tested milestone and verify its live package | Owner-approved Cloudflare/GitHub publication access for that milestone | Yes for each release checkpoint | Do not deploy this incomplete review alone |
 
 ## Deferred from Version 1
 

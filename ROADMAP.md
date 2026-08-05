@@ -33,6 +33,24 @@ Joey's latest output is preserved as a creative reference in `CREATIVE_REFERENCE
 
 Creative parity acceptance: the exact named content is represented, the relevant pure contracts pass, a fresh-profile desktop/tablet play path is verified, the V1 boundary and privacy/offline rules remain intact, and the milestone checkpoint protocol below is completed.
 
+## Open-world direction lane - explicit design target, staged implementation
+
+The product now deliberately aims toward a compact, connected open world.
+`OPEN_WORLD_DIRECTION.md` defines the player experience, region/landmark/dungeon
+layers, world-state model, save boundaries, and acceptance bar.
+
+- Treat the existing Town, entrance hubs, waypoints, `worldLocation`, dungeon
+  registries, and room engine as the first open-world-compatible foundation.
+- Keep the current V1 route guard and finish the D1-8 evidence before adding
+  broad exploration or promoting D9-16.
+- After the current path is playable, build a tested World Atlas, region graph,
+  discovered destinations, optional landmarks, and persistent return state.
+- Promote Joey's later classes, regions, Pure Corruption, Smelter, and story
+  threads into the connected world only through complete content milestones.
+- Do not simulate an infinite world, live-service pressure, or a second
+  untestable engine. Every visible destination needs a tested travel, save,
+  reward, and return path.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 - Extract pure save, progression, combat, entitlement, and configuration logic behind tests.
@@ -40,6 +58,7 @@ Creative parity acceptance: the exact named content is represented, the relevant
 - Validate one complete release path from onboarding through the current Dungeon 1-8 endpoint and intended ending; keep later incomplete regions out of the V1 surface.
 - Make touch the primary input path on iPad/Android tablet landscape layouts; test safe areas, muted devices, headphones, suspension, forced closure, and restricted-network conditions.
 - Shape 10-30 minute sessions with clear objectives, checkpoints, autosave, session summary, next-step suggestions, and a satisfying stop point.
+- Keep the C1 implementation compatible with the open-world direction: preserve explorable hub/waypoint seams and truthful destination context without expanding the tested D1-8 content boundary.
 - Add optional Learning Support to the library/after-action surfaces: pattern, sequence, planning, decomposition, optimization, condition, loop, cause-and-effect, and debugging explanations without forced quizzes.
 - Keep active-run checkpoints separate from profile progression: recover the latest safe room locally after suspension or forced closure, while deliberately finishing a run clears the checkpoint.
 - Review dialogue, combat presentation, difficulty, humour, and monetisation for 13-17-year-old users; remove graphic, shocking, childish, or manipulative presentation.
@@ -97,4 +116,4 @@ For each major milestone:
 
 Deployment must not interrupt autonomous development. After a checkpoint is verified, continue immediately with the highest-priority unfinished item in the existing Goal. The working order is: creative reference audit -> scoped implementation -> tests/build/playability -> GitHub and website checkpoint -> next unfinished Goal item.
 
-Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Control-record commit `194bcc5` records the checkpoint controls and QA evidence; the current metadata follow-up remains documentation/test coverage only. The active next priority is Checkpoint 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.
+Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Control-record commit `194bcc5` records the checkpoint controls and QA evidence; the current follow-up adds the open-world direction, AI expert evidence, and copy-only usability fixes. The active next priority is Checkpoint 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.

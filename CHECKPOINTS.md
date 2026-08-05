@@ -280,6 +280,17 @@ Status: Pending.
   and store evidence, owner approvals, and final status.
 - Next checkpoint: none; post-RC parity/content work returns to the backlog.
 
+## Open-world design gate (cross-cutting, not an active checkpoint)
+
+The explicit open-world direction is a product constraint that shapes later
+implementation; it does not create a second active checkpoint or bypass C1.
+Before an open-world foundation milestone can be accepted, it must provide a
+tested World Atlas/region graph, at least one optional landmark, persistent
+discovery and safe return, honest unavailable-content states, save migration,
+offline behavior, and a playable 10-30 minute touch path. It must then follow
+the same GitHub and website checkpoint protocol as every other major milestone.
+The canonical design target is `OPEN_WORLD_DIRECTION.md`.
+
 ## Progression rule
 
 The active checkpoint is Checkpoint 1. Complete its highest-priority unmet

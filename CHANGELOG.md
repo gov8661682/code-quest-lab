@@ -6,21 +6,29 @@
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey
   creative audit must not be repeated.
-- Recorded the current verification state: runtime commit `32d83d0` remains
-  verified, control-record commit `194bcc5` is on `main`, and the
-  documentation-only follow-up is clean; `npm.cmd run release:verify` passes 57
-  tests and the 17-file
-  package audit, and the configured production check passes. The last deployed
-  web checkpoint remains `bf07810` because the intervening changes do not alter
-  the shipped shell.
+- Recorded the current verification state: runtime commit `32d83d0` remains the
+  prior stable runtime base, control-record commit `194bcc5` is on `main`, and
+  this follow-up records the open-world direction, AI expert playtest, and two
+  copy-only usability fixes. `npm.cmd run release:verify` passes 57 tests and
+  the 17-file package audit, and the configured production check passes. The
+  last deployed web checkpoint remains `bf07810`; the local copy fixes are not
+  yet a stable major milestone.
 - Reconciled deployment and store-readiness records with the verified current
   Cloudflare Pages checkpoint; no new website deployment was performed for this
-  documentation/test-only update.
+  incomplete C1 usability pass.
 - Recorded the latest active Checkpoint 1 QA result: a fresh 1024x768 live run
   reached three first-combat rooms with no browser diagnostics, but did not
   establish an enemy defeat through the tested touch/click inputs. The result is
   retained as an evidence gap for reproduction on another supported surface;
   no combat code or website deployment was changed.
+- Recorded Joey's explicit open-world direction: a compact connected world with
+  Town, discoverable regions, landmarks, waypoints, and authored dungeons. Added
+  the staged player/technical target in `OPEN_WORLD_DIRECTION.md` while keeping
+  the tested D1-8 release guard and active Checkpoint 1 unchanged.
+- Added `AI_EXPERT_PLAYTEST.md` with a dated live 1024x768 first-run review and
+  prioritized improvements. Fixed the corrupted first-combat onboarding dash
+  and replaced the school-like Town objective wording in the local source; no
+  website deployment was made for these incomplete usability fixes.
 
 ## Unreleased - 2026-08-04
 

@@ -1,12 +1,18 @@
 # Code Quest Lab - Product Vision
 
-Status: provisional product direction, 2026-08-04
+Status: provisional product direction, updated 2026-08-05
 
 ## Player promise
 
-Code Quest Lab is a self-contained, offline-first fantasy action RPG for secondary-school students. A player creates a hero, learns movement and combat through short dungeon runs, earns permanent progression, and returns to Town to improve their build. The game should be enjoyable first, with subtle computational-thinking support available when it helps a player understand a challenge, build, or outcome.
+Code Quest Lab is a self-contained, offline-first fantasy action RPG for secondary-school students. A player creates a hero, lives in an explorable Town, discovers connected regions and landmarks, chooses authored dungeon adventures, earns permanent progression, and returns home to improve their build. The game should grow into a compact, hand-authored open world rather than remain a menu of disconnected routes. It should be enjoyable first, with subtle computational-thinking support available when it helps a player understand a challenge, build, or outcome.
 
 The primary experience is designed for 10-30 minute landscape tablet sessions, with reliable pause, automatic saving, checkpoints, a useful session summary, and a clear stopping point. It must remain usable on a keyboard when one is available, but touch is the primary input.
+
+The first release is an open-world-compatible prologue: Town, connected
+entrances, waypoints, discovered destinations, and safe return paths establish
+the structure, while the tested V1 content boundary remains Dungeons 1-8.
+Future regions and Joey's later content are added as complete world milestones,
+not as untested placeholders.
 
 ## Audience and environment
 
@@ -30,6 +36,11 @@ Do not rename every fantasy feature with coding jargon, force quizzes, or make u
 - Offline-first and private by default.
 - Touch-first tablet usability and managed-device compatibility are core requirements.
 - One coherent core loop is more valuable than unreleased menu promises.
+- The world should feel connected and discoverable: Town, roads, landmarks,
+  waypoints, NPC threads, and dungeons should form a readable geography rather
+  than a sequence of opaque menu selections.
+- Open-world scope means meaningful choice and persistent places, not an
+  infinite map, live-service pressure, or a giant untestable scene.
 - Local progress must be recoverable and backward compatible.
 - Touch controls, safe areas, readable text, pause/resume, and reduced-motion options are release features, not polish extras.
 - Monetisation must unlock content transparently and never sell power, random rewards, or pressure.
@@ -38,7 +49,7 @@ Do not rename every fantasy feature with coding jargon, force quizzes, or make u
 
 ## Version 1 success
 
-A new player can launch the browser or native shell on a restricted tablet, create a hero, understand touch controls, complete a meaningful 10-30 minute session, pause or stop safely, resume after suspension, and see a clear summary and next suggestion. Over time, the player can complete the intended V1 dungeon path and ending. A parent or school can use the product without ads, chat, tracking, redirects, accounts, or unnecessary permissions. A reviewer can test the full game in a documented development mode without making a real purchase.
+A new player can launch the browser or native shell on a restricted tablet, create a hero, understand touch controls, leave Town for a clearly explained destination, complete a meaningful 10-30 minute session, pause or stop safely, resume after suspension, and see a clear summary and next suggestion. Over time, the player can complete the intended V1 dungeon path and ending, while the world structure leaves room for optional discovery and later regions. A parent or school can use the product without ads, chat, tracking, redirects, accounts, or unnecessary permissions. A reviewer can test the full game in a documented development mode without making a real purchase.
 
 ## Business direction
 

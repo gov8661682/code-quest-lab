@@ -15,6 +15,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Reviewed Joey's latest self-contained output as a creative reference | `CREATIVE_REFERENCE_AUDIT.md`; reference hash `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB` | Only if a new reference or a specific parity discrepancy is supplied |
 | Recorded preserved story, Bob dialogue, classes, dungeons, bosses, endings, and missing parity content | Creative audit comparisons and exact named-content ledger | Only if implementation contradicts the ledger or a scope decision promotes content |
 | Locked the teen-first, tablet-first, offline, privacy-minimal, optional-learning, and non-manipulative V1 direction | `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `DECISIONS.md` | Only by an explicit product decision recorded in `DECISIONS.md` |
+| Recorded Joey's explicit open-world product direction and staged technical target | `OPEN_WORLD_DIRECTION.md`, `PRODUCT_VISION.md`, `V1_SCOPE.md`, `DECISIONS.md`, and `ROADMAP.md`; no runtime open-world completion is claimed | Only when the owner changes the direction or a future open-world milestone is promoted |
 
 ## Completed release foundation
 

@@ -19,7 +19,7 @@ State: pre-release hardening; not a Release Candidate
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest verified runtime commit: `32d83d0` (`Harden page-background save coverage`); control-record commit `194bcc5` (`Record project checkpoint controls and QA gap`) and the current metadata follow-up are documentation-only, with clean `main` matching `origin/main`.
+- Latest stable runtime base: `32d83d0` (`Harden page-background save coverage`); control-record commit `194bcc5` (`Record project checkpoint controls and QA gap`) is retained, and the current follow-up contains the open-world direction, AI expert evidence, and copy-only usability fixes.
 - Checkpoint record: commit `bf07810` (`Finalize creative-reference release checkpoint`), deployed 2026-08-04 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://4489e0ec.code-quest-lab.pages.dev/`), build SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; live browser smoke reached profile/class/Town, route/trial/modifier selection, and first combat at desktop 1280x720 and tablet 1024x768, with zero browser diagnostics in both sessions.
 
@@ -59,6 +59,8 @@ State: pre-release hardening; not a Release Candidate
 - A bounded fresh Mage attack probe reached randomized first combat rooms and reduced one live room from `Enemies: 2` to `Enemies: 1`; the profile then persisted `First Blood — Defeat one enemy`. The run still ended before the room cleared, so this is partial attack evidence rather than full combat completion.
 - Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
 - Product direction was updated to teen-first (approximately 13-17), landscape tablet touch-first, 10-30 minute sessions, restricted-device compatibility, optional authentic Learning Support, and non-manipulative monetisation. The updated direction is reflected in `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `ROADMAP.md`, `RELEASE_CRITERIA.md`, `STORE_READINESS.md`, `TEST_PLAN.md`, `MONETISATION.md`, `PRIVACY.md`, and `OWNER_ACTIONS.md`.
+- Joey's explicit open-world preference is now recorded as a staged product and architecture direction in `OPEN_WORLD_DIRECTION.md`: Town, connected regions, landmarks, waypoints, and authored dungeons should form a compact discovery-led world. The runtime remains honestly bounded at the tested D1-8 surface until C1 evidence is complete; no future destination is presented as playable by this decision alone.
+- The AI expert playtest is recorded in `AI_EXPERT_PLAYTEST.md`: Town is a promising hub foundation, but the current flow still feels route-menu-driven; the Town objective uses “practice module” language, the minimap/landmarks are not informative, the first modifier may be too aggressive for level 1, and first-combat enemy/door feedback needs stronger readability. The source onboarding punctuation fix is local and awaits the next major tested deployment.
 
 ## Current audit
 
@@ -87,7 +89,7 @@ delivery cause, then resume the clean-profile touch-first completion attempt
 through the bounded Dungeon 1-8 path. Continue with dated evidence for
 room/boss/ending progress, session duration, pause/reload/finish behavior, and
 browser diagnostics. The current GitHub/website checkpoint is already
-verified; do not deploy this documentation/test-only update. Native Android/JDK
+verified; do not deploy this incomplete open-world/usability update alone. Native Android/JDK
 and Mac/Xcode actions remain owner/environment blockers recorded in
 `BLOCKERS.md`.
 
@@ -96,7 +98,7 @@ and Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 57 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; all five shipped web copies share SHA-256 `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`; a fresh-origin selector pass showed only Dungeons 1-8 with no browser logs.
+- Latest local verification: `npm.cmd run release:verify` passed with 57 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; the synchronized local web copies share SHA-256 `56BD21461F55FE29FF177BFACC40B13C78DA830D430C17D06A503A3FBCBE32C8`; the last deployed shell remains `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `bf07810` was pushed and deployed to the configured domain on 2026-08-04; production contracts passed, and desktop 1280x720/tablet 1024x768 live flows reached first combat with zero browser diagnostics.
 - The service-worker contract harness now covers v6 cache installation and stale-cache cleanup, same-origin request isolation, and navigation-only offline fallback; this is deterministic package evidence, not deployed-HTTPS/offline-soak evidence.

@@ -6,6 +6,24 @@ These items are intentionally outside the active checkpoint and the locked V1
 route unless a release-critical defect or an explicit scope decision promotes
 one. They must not be used to reopen completed work.
 
+## Open-world foundation (explicit direction, staged)
+
+- Replace the route-only presentation with a tested touch-friendly World Atlas
+  that shows Town, discovered regions, safe return points, objectives, and
+  honest post-release previews.
+- Introduce a data-driven `WorldRegion`/`WorldConnection` registry backed by
+  migrated `WorldState`; connect Town, regional hubs, landmarks, and dungeon
+  instances without creating a second game engine.
+- Add short optional landmarks, NPC threads, gathering, lore, and route-choice
+  activities that can be completed or safely abandoned in a 10-30 minute
+  session.
+- Make Joey's later classes, D9-16, Bob's wider story, Pure Corruption, and
+  the Smelter part of a connected world only after isolated save, balance,
+  reward, accessibility, and device milestones.
+- Add world-state regression fixtures for discovered regions, opened
+  connections, cleared landmarks, safe return, migration, corruption recovery,
+  and offline resume.
+
 ## Joey creative parity (preserved, not silently simplified)
 
 - Complete, balance, and device-test Dungeons 9-16 and their source-resident
