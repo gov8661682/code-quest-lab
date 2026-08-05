@@ -10,7 +10,9 @@
   entrance area. Added the developer-only boss-summon escape sequence
   `F8`, `F7`, `F6`, `F4`, gated behind local `?cql-dev=1` and already-enabled
   invincibility; it is session-only and excluded from exports/public builds.
-  The synchronized package passes 68 tests, build, and static-package audit.
+  The synchronized package passes 69 tests, build, and static-package audit.
+  Commit `e1380c4` records this local hardening; it is not a website
+  deployment checkpoint.
 - Cleared browser blocker `B-007` for loopback QA after the initial permission
   denial: the current shell loaded in the in-app browser and the recovered
   portal travel smoke completed without browser diagnostics. Full D1-8,

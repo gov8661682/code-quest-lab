@@ -230,10 +230,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Unreleased local hardening: `5db6db5` (`Fix stale session status cleanup`),
   pushed to `origin/main` on 2026-08-05; tests and package sync pass, but this
   minor follow-up is intentionally not a separate website deployment.
-- Unreleased local hardening: the current working change restores recovered
-  boss-room exit portals and adds a gated local summons-clear QA sequence;
-  source contracts, package sync, and browser recovery smoke pass. It is not a
-  website deployment checkpoint because full Checkpoint 1 remains incomplete.
+- Unreleased local hardening: `e1380c4` (`Harden recovered boss progression QA`)
+  restores recovered boss-room exit portals, corrects entrance objectives, and
+  adds a gated local summons-clear QA sequence; source contracts, package
+  sync, and browser recovery smoke pass. It is not a website deployment
+  checkpoint because full Checkpoint 1 remains incomplete.
 - Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)

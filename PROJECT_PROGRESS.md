@@ -20,7 +20,8 @@ Git history, and current deployment—not only on comments or planning files.
   pushed local final-enemy status-refresh follow-up `3106820` (`Refresh combat
   status after final enemy defeat`); the current local follow-up restores a
   defeated boss-room exit portal after recovery and adds a gated summons-clear
-  QA sequence;
+  QA sequence in pushed commit `e1380c4` (`Harden recovered boss progression
+  QA`);
   the deployment record for `9da1d0e` is maintained below and these follow-ups
   are intentionally not deployed as separate minor checkpoints
 - Canonical game: `index.html`, 57,085 lines, SHA-256
