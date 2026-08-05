@@ -52,6 +52,10 @@ one. They must not be used to reopen completed work.
   review approves the data model; no cloud identity is planned for V1.
 - Add full input remapping, high-contrast presets, and further accessibility
   options after the current release-critical accessibility pass.
+- Validate the plain-text profile transfer with preserved Joey/current-profile
+  fixtures across browser origins and supported versions; expand class
+  migration only when Ranger, Necromancer, Alchemist, or Paladin are promoted.
+  Do not turn this convenience format into implicit cloud sync.
 - Add post-release content only after V1 audits remain stable.
 
 ## Guardrail

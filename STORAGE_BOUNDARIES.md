@@ -1,6 +1,6 @@
 # Code Quest Lab - Storage Boundaries
 
-Status: documented; device and cross-version evidence remain open (2026-08-04)
+Status: documented; device and cross-version evidence remain open (2026-08-05)
 
 This document describes where the current release stores data. It does not
 claim cloud backup, cross-device sync, or platform-store purchase verification.
@@ -25,12 +25,21 @@ claim cloud backup, cross-device sync, or platform-store purchase verification.
 - The entitlement cache is separate from character progression. A local flag,
   URL parameter, DOM edit, or unverified adapter result cannot grant premium
   access in the production core.
+- Manage Data provides a versioned, plain-text profile transfer. The `.txt`
+  envelope contains durable profile data, a valid local backup, and any valid
+  active-run checkpoint; import creates a new local profile and does not
+  overwrite the current profile. It performs no network or cloud sync and
+  currently accepts only the four runtime classes.
 
 ## Website
 
 - Web saves are scoped to the browser origin and the local browser profile.
   Clearing site data, using a different browser profile, or an unsupported
   browser storage eviction can remove access to local saves.
+- A user may manually move an exported `.txt` file between devices or storage
+  locations, but the browser still imports it into the destination origin's
+  local storage. Export is a convenience backup/transfer, not a guarantee of
+  cross-version compatibility, cross-device sync, or future-class migration.
 - The website has no login, account database, save API, analytics service, or
   cross-device sync endpoint. The public build intentionally remains a
   local-only free preview until an owner-approved web entitlement adapter is

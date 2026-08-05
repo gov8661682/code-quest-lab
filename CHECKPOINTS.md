@@ -45,8 +45,9 @@ Status: **Active**
 - Included work: clean-profile onboarding; four current classes; combat rooms,
   bosses, rewards, progression, final V1 endpoint and intended ending;
   10-30 minute session shape; pause/resume; Finish For Now; session summary;
-  optional Learning Support; touch-first and desktop fallback behavior; fixes
-  for verified P0/P1 gameplay defects.
+  optional Learning Support; touch-first and desktop fallback behavior; a
+  versioned local plain-text profile transfer; fixes for verified P0/P1
+  gameplay defects.
 - Excluded work: Ranger/Necromancer/Alchemist/Paladin, D9-16, D16 Phase 4,
   Smelter activation, live billing, native signing, and non-critical refactors.
 - Dependencies: current web build, clean browser storage, stable input, and
@@ -60,9 +61,12 @@ Status: **Active**
      deliberate finish clears the active-run checkpoint and preserves Town
      progression.
   4. Keyboard/mouse and touch paths remain usable and no P0/P1 issue is open.
-  5. Automated tests, status records, and the checkpoint changelog are green.
+  5. The profile-transfer contract preserves durable data, a valid backup, and
+     any active-run checkpoint; import never overwrites the current profile.
+  6. Automated tests, status records, and the checkpoint changelog are green.
 - Required tests: `npm.cmd run release:verify`; targeted progression, combat,
-  save, session-lifecycle, and learning-support tests; clean-profile browser
+  save, profile-transfer, session-lifecycle, and learning-support tests;
+  clean-profile browser
   playthrough; touch-only session; pause/reload/finish/recovery; browser log
   capture; and a fresh production build.
 - GitHub and website deployment: required only after all criteria are met and
@@ -71,6 +75,10 @@ Status: **Active**
 - Completion evidence: dated manual records with viewport/device, profile,
   route, boss/ending result, session duration, save/recovery result, browser
   diagnostics, test output, commit, deployment URL/hash, and status update.
+- The save-portability/readability work may form a stable sub-milestone within
+  C1 and must follow the GitHub/website checkpoint protocol when locally and
+  live verified; that checkpoint does not complete C1 without the full D1-8
+  player-completion evidence above.
 - Next checkpoint: Checkpoint 2 after all criteria are met.
 
 ## Checkpoint 2 - Tablet, browser, PWA, and offline readiness

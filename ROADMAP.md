@@ -55,6 +55,10 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 - Extract pure save, progression, combat, entitlement, and configuration logic behind tests.
 - Validate save creation, load, backup recovery, migration, profile deletion, settings, pause/resume, and lifecycle behavior.
+- Provide a versioned local plain-text profile transfer that preserves durable
+  progression, a valid backup, and any active-run checkpoint; import must
+  create a new profile without overwriting the current one and remain outside
+  cloud/account sync.
 - Validate one complete release path from onboarding through the current Dungeon 1-8 endpoint and intended ending; keep later incomplete regions out of the V1 surface.
 - Make touch the primary input path on iPad/Android tablet landscape layouts; test safe areas, muted devices, headphones, suspension, forced closure, and restricted-network conditions.
 - Shape 10-30 minute sessions with clear objectives, checkpoints, autosave, session summary, next-step suggestions, and a satisfying stop point.
@@ -116,4 +120,4 @@ For each major milestone:
 
 Deployment must not interrupt autonomous development. After a checkpoint is verified, continue immediately with the highest-priority unfinished item in the existing Goal. The working order is: creative reference audit -> scoped implementation -> tests/build/playability -> GitHub and website checkpoint -> next unfinished Goal item.
 
-Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Control-record commit `194bcc5` records the checkpoint controls and QA evidence; the current follow-up adds the open-world direction, AI expert evidence, and copy-only usability fixes. The active next priority is Checkpoint 1 clean-profile session and lifecycle evidence; later milestones must repeat the same test, push, deploy, and live-verification sequence.
+Latest verified checkpoint (2026-08-04): creative-reference audit plus release-foundation/first tablet-session hardening, commit `bf07810`, deployed and live-verified at `https://code-quest-lab.gov8661682.com/`. Control-record commit `194bcc5` records the checkpoint controls and QA evidence; the current follow-up adds the open-world direction, AI expert evidence, copy-only usability fixes, versioned profile transfer, and grouped combat-readability changes. The current save-portability/readability milestone has passed local release verification and local UI smoke; its next step is the GitHub/website checkpoint, followed immediately by the active Checkpoint 1 clean-profile session and lifecycle evidence. Later milestones must repeat the same test, push, deploy, and live-verification sequence.

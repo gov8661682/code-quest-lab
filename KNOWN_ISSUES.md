@@ -13,14 +13,14 @@ Updated: 2026-08-05
   deterministic CI/reviewer harnesses but is excluded from `dist\`.
 - Full V1 combat progression, boss fights, and ending are not fully executed by a player; route/boss handoff contracts and save-parser/loader matrices are automated, while browser/device migration and corruption-recovery evidence remain open.
 - A fresh live 1024x768 QA run on 2026-08-05 reached three first-combat rooms but did not establish an enemy defeat through the tested touch Attack-joystick and desktop canvas-click inputs. No browser errors or warnings were recorded. Reproduce on another supported browser/device or isolate event delivery before changing combat code; this remains an active Checkpoint 1 evidence gap, not a confirmed root-cause diagnosis.
-- The 2026-08-05 AI expert playtest also found low enemy/UI contrast and door-lock feedback close to the player at 1024x768. The same run exposed a corrupted dash in the first-combat onboarding prompt. The local follow-up now has encoding-safe combat/Town copy and a schematic Town minimap, but those local changes are not live until the next tested deployment; enemy/door readability still needs a supported-surface confirmation. See `AI_EXPERT_PLAYTEST.md`.
+- The 2026-08-05 AI expert playtest also found low enemy/UI contrast and door-lock feedback close to the player at 1024x768. The same run exposed a corrupted dash in the first-combat onboarding prompt. The local follow-up now has encoding-safe combat/Town copy, a schematic Town minimap, a stable lock banner, stronger enemy silhouettes, and outlined HP bars; these changes are not live until the next tested deployment and still need supported-surface confirmation. See `AI_EXPERT_PLAYTEST.md`.
 - Dungeons 9-16 remain source-resident for future work but are now intentionally hidden from the V1 selection, waypoint, saved-world resume, and boss-exit chain. Their completion, balance, rewards, and device evidence remain post-release backlog work.
 
 ## P2 - important but currently workaroundable
 
 - Store screenshots, feature graphics, and final platform metadata are still not prepared or owner-approved; the PWA and Capacitor icon/splash raster set is now generated from the local branded SVG source.
 - Boss and mini-boss fights are checkpointed at room level; an interrupted encounter restarts from the beginning of that room instead of restoring an exact combat frame.
-- The existing source is a 56,689-line HTML file, which makes isolated testing and future maintenance difficult.
+- The existing source is a 56,957-line HTML file, which makes isolated testing and future maintenance difficult.
 
 ## P3 - backlog
 

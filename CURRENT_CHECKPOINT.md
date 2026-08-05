@@ -29,8 +29,12 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 57 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 58 Node
   tests, a 17-file static build, and the static-package audit.
+- The versioned local profile-transfer contract preserves durable profile data,
+  a valid backup, and an active-run checkpoint; import creates a new profile
+  without overwriting the current profile. The local Manage Data export smoke
+  also passed for a synthetic Mage profile, which was deleted afterward.
 - The last major web checkpoint is live-verified at
   `https://code-quest-lab.gov8661682.com/` and the current production check
   passes.
@@ -59,11 +63,12 @@ expanding the untested V1 content boundary.
    isolate the event-delivery cause before changing combat code.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
    recovery paths around the clean run.
-3. Add or fix only evidence-driven defects, then run the focused and full
-   verification suite. The expert playtest identified an encoding-safe
-   onboarding prompt fix and a follow-up enemy/door readability review.
-4. Update the manual evidence, `PROJECT_PROGRESS.md`, `STATUS.md`, and
-   `CHANGELOG.md`; do not deploy until a substantial stable milestone exists.
+3. Complete the supported-surface check for the local profile-transfer and
+   grouped enemy/door readability follow-up; combat calculations remain
+   unchanged while attack response is still an evidence gap.
+4. Run the focused/full verification suite and, if the grouped save/readability
+   milestone remains playable, create its GitHub + website checkpoint. Keep C1
+   active; this checkpoint does not by itself prove D1-8 completion.
 
 The open-world design is now recorded in `OPEN_WORLD_DIRECTION.md`. It is a
 product/architecture constraint for future implementation, not permission to
@@ -110,8 +115,8 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
 - Branch: `main`; this change set records the open-world direction, AI expert
-  playtest, and synchronized copy-only usability fixes; no release checkpoint is
-  claimed for it
+  playtest, synchronized copy-only usability fixes, profile transfer, and
+  grouped readability changes; its release checkpoint is still pending
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
@@ -124,13 +129,14 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Current read-only production check: passed on 2026-08-05
 
 The local change set after `bf07810` includes documentation, AI playtest
-evidence, synchronized copy-only runtime fixes, and the existing-Town minimap
-foundation. The tested local shell is SHA-256
-`7205260DC77D0A7BFDFE1AB5C0BDBE80F220545AE06F4865ADA97EFCF11C903C`,
-while the live shell remains `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
-These local usability/open-world-slice changes are not yet a stable major
-milestone, so they are recorded for the next tested checkpoint rather than
-deployed alone.
+evidence, synchronized copy-only runtime fixes, the existing-Town minimap
+foundation, versioned profile transfer, and grouped readability fixes. The
+tested local shell is 56,957 lines with SHA-256
+`3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`,
+while the live shell remains
+`F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
+The local UI smoke and release verification are green; the next step is the
+major-milestone GitHub/website checkpoint and live verification.
 
 ## Exact condition required to advance
 

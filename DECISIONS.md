@@ -102,3 +102,16 @@ and the current room engine should be extended toward that target. The V1 D1-8
 release guard remains in force, and Checkpoint 1 remains active: open-world
 design is allowed now, but new regions, broad refactors, and untested
 exploration systems do not interrupt the current player-completion evidence.
+
+## D-017 - Plain-text profile transfer preserves local progress without overwrite
+
+The game now exports a versioned `CODE QUEST LAB PROFILE EXPORT` text envelope
+from Manage Data. It includes the current durable profile, a valid local backup,
+and any valid active-run checkpoint. Import creates a new local profile, leaves
+the current profile untouched, and performs no network or cloud synchronization.
+
+The current runtime class whitelist is enforced during import so unsupported
+future Joey classes are rejected safely rather than silently mapped to another
+class. This is a convenience transfer/backup format, not account sync, cloud
+backup, or evidence that the full cross-version/device save milestone is
+complete.

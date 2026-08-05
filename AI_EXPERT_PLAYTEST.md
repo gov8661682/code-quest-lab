@@ -105,14 +105,33 @@ The playtest followed a first-time player journey:
 - Review all visible punctuation and symbols for encoding corruption in a
   clean browser, especially banners and contextual prompts.
 
+## Follow-up status (2026-08-05)
+
+- The local source and package retain the recommended world-facing Town copy
+  and the schematic minimap with existing roads, landmarks, the player marker,
+  and the northern `DEPTHS` destination.
+- The grouped low-risk readability follow-up is implemented locally: normal
+  locked-door feedback uses a stable top banner, enemies have stronger dark
+  contrast rings, and enemy HP bars are thicker and outlined. Combat formulas,
+  damage, targeting, and room progression were not changed.
+- A local Manage Data smoke exported a synthetic Mage profile as `.txt`, showed
+  that the current profile was unchanged, and then removed the test profile.
+  The versioned transfer contracts preserve durable data, a valid backup, and
+  a valid active-run checkpoint; upload round-trip and cross-version/device
+  evidence remain open.
+- The recommendation to reproduce attack response on a supported touch/mouse
+  surface remains the highest gameplay QA priority. No combat calculation was
+  changed merely because the managed-browser playtest did not establish a
+  defeat.
+
 ## Recommended order
 
-1. Ship and live-verify the encoding-safe combat prompt with the next major
-   tested web milestone.
+1. Ship and live-verify the encoding-safe combat prompt, profile transfer, and
+   grouped readability follow-up with the next major tested web milestone.
 2. Reproduce first-combat attack response on a supported touch/mouse surface;
    do not infer a combat-code defect from this harness alone.
-3. Improve enemy readability and door-lock placement as a grouped C1 usability
-   fix if the supported-surface test confirms the need.
+3. Confirm the local enemy readability and door-lock placement changes on the
+   live supported surface, then keep or adjust them only from evidence.
 4. Keep the local Town minimap foundation aligned with `OPEN_WORLD_DIRECTION.md`,
    then add a tested first Town breadcrumb and World Atlas only after the C1
    route evidence is stable.

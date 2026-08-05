@@ -9,10 +9,11 @@
 - Recorded the current verification state: runtime commit `32d83d0` remains the
   prior stable runtime base, control-record commit `194bcc5` is on `main`, and
   this follow-up records the open-world direction, AI expert playtest, and two
-  copy-only usability fixes. `npm.cmd run release:verify` passes 57 tests and
-  the 17-file package audit, and the configured production check passes. The
-  last deployed web checkpoint remains `bf07810`; the local copy fixes are not
-  yet a stable major milestone.
+  copy-only usability fixes, versioned plain-text profile transfer, and grouped
+  first-combat readability refinements. `npm.cmd run release:verify` passes 58
+  tests and the 17-file package audit, and the configured production check
+  passes. The last deployed web checkpoint remains `bf07810`; this local save
+  portability/readability milestone still needs its live verification.
 - Reconciled deployment and store-readiness records with the verified current
   Cloudflare Pages checkpoint; no new website deployment was performed for this
   incomplete C1 usability pass.
@@ -33,6 +34,14 @@
   safe-hub landmarks, the player, Waypoint Plaza, and the northern dungeon
   destination. The static package is verified; this incomplete C1/open-world
   slice is not deployed alone.
+- Added a versioned `CODE QUEST LAB PROFILE EXPORT` plain-text envelope. It
+  exports the durable profile, valid backup, and active-run checkpoint; import
+  creates a new local profile without overwriting the current one. The format
+  is local-only and accepts only the four current runtime classes.
+- Applied grouped, low-risk first-combat readability fixes in the local source:
+  the locked-door message is anchored in a stable top banner and enemies have
+  stronger silhouettes and outlined HP bars. Combat calculations were not
+  changed; supported-surface attack evidence remains open.
 
 ## Unreleased - 2026-08-04
 

@@ -177,6 +177,7 @@ html, body {
 #roomInfo { position:absolute; top:50px; left:50%; transform:translateX(-50%); font-size:0.7em; color:#a98f5c; letter-spacing:0.2em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:3px 10px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #objectiveInfo { position:absolute; top:74px; left:50%; transform:translateX(-50%); font-size:0.62em; color:#cfc4ae; letter-spacing:0.12em; background:rgba(11,11,16,0.62); padding:3px 10px; border-radius:2px; border:1px solid rgba(58,52,42,0.8); z-index:5; pointer-events:none; white-space:nowrap; max-width:min(92vw,560px); text-overflow:ellipsis; overflow:hidden; }
 #doorStatus { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1em; color:#d8a23a; letter-spacing:0.2em; text-transform:uppercase; text-align:center; z-index:5; pointer-events:none; opacity:0; transition:opacity 0.3s; }
+#doorStatus.doorStatusLocked { top:112px; transform:translateX(-50%); width:min(88vw,560px); padding:6px 12px; color:#ffe6a6; background:rgba(10,8,14,0.9); border:1px solid rgba(216,162,58,0.85); box-shadow:0 3px 12px rgba(0,0,0,0.42); font-size:0.82em; line-height:1.35; letter-spacing:0.14em; text-shadow:0 1px 2px #050509; }
 #doorStatus.visible { opacity:1; }
 #waveBanner { position:absolute; top:56px; left:50%; transform:translateX(-50%); text-align:center; z-index:15; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #waveBanner.visible { opacity:1; }
@@ -427,6 +428,15 @@ html, body {
 .smcSelectBtn:hover { border-color:#d8a23a; color:#ffd98a; background:linear-gradient(160deg,#352a1a 0%,#251e10 100%); }
 .smcDeleteBtn { padding:8px 16px; font-size:0.82em; letter-spacing:0.08em; background:#1a0808; border:1px solid #6a2020; border-top:1px solid #9a3030; color:#c07070; border-radius:3px; cursor:pointer; text-transform:uppercase; font-family:Georgia,'Times New Roman',serif; touch-action:manipulation; white-space:nowrap; }
 .smcDeleteBtn:hover { background:#2a0a0a; border-color:#c0392b; color:#e07070; }
+.smcExportBtn { padding:8px 8px; font-size:0.74em; letter-spacing:0.05em; background:#101a20; border:1px solid #386070; border-top:1px solid #5b9ab0; color:#a8d8e8; border-radius:3px; cursor:pointer; text-transform:uppercase; font-family:Georgia,'Times New Roman',serif; touch-action:manipulation; white-space:nowrap; flex:1; }
+.smcExportBtn:hover { background:#142630; border-color:#72c8e0; color:#d0f4ff; }
+#saveTransferPanel { display:none; width:90%; max-width:360px; margin:0 auto 16px; padding:12px 14px; box-sizing:border-box; border:1px solid #3a342a; border-radius:5px; background:rgba(20,18,26,0.8); text-align:center; }
+#saveTransferPanel .stpTitle { color:#d8c08a; font-size:0.78em; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:5px; }
+#saveTransferPanel .stpHint { color:#8a8170; font-size:0.68em; line-height:1.45; letter-spacing:0.04em; margin-bottom:9px; }
+#saveTransferPanel .stpImportBtn { width:100%; padding:8px 10px; font-size:0.76em; letter-spacing:0.08em; background:#18242a; border:1px solid #386070; border-top:1px solid #5b9ab0; color:#a8d8e8; border-radius:3px; cursor:pointer; text-transform:uppercase; font-family:Georgia,'Times New Roman',serif; touch-action:manipulation; }
+#saveTransferPanel .stpImportBtn:hover { background:#1d3038; border-color:#72c8e0; color:#d0f4ff; }
+#saveTransferStatus { min-height:1.2em; color:#7ec87e; font-size:0.68em; line-height:1.35; margin-top:8px; }
+#saveTransferStatus.error { color:#e07070; }
 #saveDeleteConfirmOverlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); z-index:200; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; box-sizing:border-box; }
 #saveDeleteConfirmOverlay.visible { display:flex; }
 .sdcBox { background:linear-gradient(160deg,#1a1420 0%,#110e18 100%); border:2px solid #6a2020; border-top:2px solid #c0392b; border-radius:8px; padding:28px 28px 22px; max-width:340px; width:100%; box-shadow:0 0 40px rgba(192,57,43,0.3); }
@@ -757,6 +767,13 @@ html, body {
     <button class="menuBtn" id="newCharacterBtn">+ New Profile</button>
     <button class="menuBtnSecondary" id="manageSavesBtn" style="margin-top:10px;">🗂 Manage Data</button>
     <button class="menuBtnSecondary" id="manageSavesDoneBtn" style="display:none;margin-top:10px;border-color:#4a6a4a;color:#7ec87e;">← Back to Profiles</button>
+  </div>
+  <div id="saveTransferPanel" aria-label="Profile transfer">
+    <div class="stpTitle">Profile Transfer</div>
+    <div class="stpHint">Export a profile card to a plain-text file. Import creates a new local profile, preserving the current one and any interrupted-run checkpoint.</div>
+    <button class="stpImportBtn" id="importProfileBtn">Import Profile (.txt)</button>
+    <input id="profileImportInput" type="file" accept=".txt,text/plain,.json,application/json" style="display:none;">
+    <div id="saveTransferStatus" role="status" aria-live="polite"></div>
   </div>
   <nav class="publicInfoLinks" aria-label="Game information">
     <a href="./about/">About</a><a href="./education/">Educational Purpose</a><a href="./schools/">School Review</a><a href="./privacy/">Privacy</a><a href="./support/">Support</a><a href="./contact/">Contact</a>
@@ -22976,12 +22993,165 @@ function setSaveManageMode(enabled){
   var newBtn=document.getElementById('newCharacterBtn');
   var manageBtn=document.getElementById('manageSavesBtn');
   var doneBtn=document.getElementById('manageSavesDoneBtn');
+  var transferPanel=document.getElementById('saveTransferPanel');
   if(title)title.textContent=enabled?'Manage Data':'Your Profiles';
   if(hint)hint.textContent=enabled?'Review or remove locally stored profile data':'Select a profile to continue, or create a new one';
   if(newBtn)newBtn.style.display=enabled?'none':'block';
   if(manageBtn)manageBtn.style.display=enabled?'none':'block';
   if(doneBtn)doneBtn.style.display=enabled?'block':'none';
+  if(transferPanel)transferPanel.style.display=enabled?'block':'none';
+  if(!enabled)showSaveTransferStatus('',false);
   renderCharacterSelectGrid();
+}
+
+// ============================================================
+// PLAIN-TEXT PROFILE TRANSFER
+// The game source mirror is intentionally separate from player data. This
+// versioned envelope makes a profile portable without overwriting the current
+// browser profile, and carries both the verified backup and any valid
+// interrupted-run checkpoint when they exist.
+// ============================================================
+var PROFILE_EXPORT_FORMAT='code-quest-lab-profile';
+var PROFILE_EXPORT_VERSION=1;
+
+function showSaveTransferStatus(message,isError){
+  var el=document.getElementById('saveTransferStatus');
+  if(!el)return;
+  el.textContent=String(message||'');
+  el.classList.toggle('error',!!isError);
+}
+
+function getCharacterIndexEntry(charId){
+  var idx=loadCharacterIndex();
+  for(var i=0;i<idx.length;i++)if(idx[i]&&idx[i].id===charId)return idx[i];
+  return null;
+}
+
+function getProfileExportPayload(charId){
+  if(!charId)return null;
+  // Flush the active profile first so an export made from the Manage Data
+  // surface includes the latest durable progress and interrupted-run state.
+  if(charId===activeCharacterId){
+    try{savePermanentData();}catch(e){}
+    try{if(gameRunning||gamePaused)saveRunCheckpoint('manual export');}catch(e2){}
+  }
+  var raw=null;
+  try{raw=localStorage.getItem(charDataKey(charId));}catch(e3){}
+  var data=null;
+  try{data=parseCharacterSave(raw);}catch(e4){data=null;}
+  if(!data)return null;
+  var entry=getCharacterIndexEntry(charId);
+  var backup=null;
+  try{
+    var backupRaw=localStorage.getItem(charBackupKey(charId));
+    if(backupRaw)backup=parseCharacterSave(backupRaw);
+  }catch(e5){backup=null;}
+  var checkpoint=null;
+  try{
+    var checkpointRaw=localStorage.getItem(runCheckpointKey(charId));
+    if(checkpointRaw)checkpoint=parseRunCheckpoint(checkpointRaw);
+  }catch(e6){checkpoint=null;}
+  return{
+    format:PROFILE_EXPORT_FORMAT,
+    formatVersion:PROFILE_EXPORT_VERSION,
+    exportedAt:Date.now(),
+    character:{
+      sourceId:String(charId),
+      className:data.selectedClass||(entry&&entry.className)||'barbarian',
+      index:entry,
+      data:data
+    },
+    backup:backup,
+    runCheckpoint:checkpoint
+  };
+}
+
+function exportCharacterProfile(charId){
+  var payload=getProfileExportPayload(charId);
+  if(!payload){showSaveTransferStatus('This profile could not be read safely.',true);return false;}
+  try{
+    var classSlug=String(payload.character.className||'profile').replace(/[^a-z0-9_-]/gi,'-').toLowerCase()||'profile';
+    var dateSlug=new Date(payload.exportedAt).toISOString().slice(0,10);
+    var text='CODE QUEST LAB PROFILE EXPORT\n'+JSON.stringify(payload,null,2)+'\n';
+    var blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var link=document.createElement('a');
+    link.href=url;link.download='code-quest-lab-'+classSlug+'-'+dateSlug+'.txt';
+    link.style.display='none';document.body.appendChild(link);link.click();link.remove();
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    showSaveTransferStatus('Profile exported. The current local profile was not changed.',false);
+    return true;
+  }catch(e){
+    showSaveTransferStatus('Export could not be created on this device.',true);
+    return false;
+  }
+}
+
+function parseProfileExportText(rawText){
+  var source=String(rawText||'').replace(/^\uFEFF/,'').trim();
+  if(!source)return null;
+  var marker='CODE QUEST LAB PROFILE EXPORT';
+  if(source.indexOf(marker)===0){
+    var firstNewline=source.indexOf('\n');
+    if(firstNewline<0)return null;
+    source=source.slice(firstNewline+1).trim();
+  }
+  var envelope=null;
+  try{envelope=JSON.parse(source);}catch(e){return null;}
+  if(envelope&&envelope.format===PROFILE_EXPORT_FORMAT){
+    if(envelope.formatVersion!==PROFILE_EXPORT_VERSION||!envelope.character||typeof envelope.character!=='object'||!envelope.character.data)return null;
+  }else{
+    // A raw character JSON blob from an earlier local build remains importable.
+    var legacyData=null;
+    try{legacyData=parseCharacterSave(source);}catch(e2){legacyData=null;}
+    if(!legacyData)return null;
+    envelope={character:{data:legacyData},backup:null,runCheckpoint:null};
+  }
+  var data=null;
+  try{data=parseCharacterSave(JSON.stringify(envelope.character.data));}catch(e3){data=null;}
+  if(!data)return null;
+  var className=data.selectedClass||envelope.character.className||'barbarian';
+  if(!CLASS_DATA[className])return null;
+  var backup=null;
+  if(envelope.backup){try{backup=parseCharacterSave(JSON.stringify(envelope.backup));}catch(e4){backup=null;}}
+  var checkpoint=null;
+  if(envelope.runCheckpoint){try{checkpoint=parseRunCheckpoint(envelope.runCheckpoint);}catch(e5){checkpoint=null;}}
+  return{data:data,backup:backup,checkpoint:checkpoint,className:className,sourceId:String(envelope.character.sourceId||'').slice(0,120)};
+}
+
+function importCharacterProfileText(rawText){
+  var imported=parseProfileExportText(rawText);
+  if(!imported){showSaveTransferStatus('Import rejected: incompatible or damaged profile text.',true);return false;}
+  var now=Date.now();
+  var id='char_import_'+now+'_'+Math.floor(Math.random()*10000);
+  var entry={id:id,className:imported.className,level:imported.data.mastery&&imported.data.mastery.level||1,souls:imported.data.souls||0,createdAt:now,lastPlayed:now};
+  try{
+    localStorage.setItem(charDataKey(id),JSON.stringify(imported.data));
+    if(imported.backup)localStorage.setItem(charBackupKey(id),JSON.stringify(imported.backup));
+    if(imported.checkpoint)localStorage.setItem(runCheckpointKey(id),JSON.stringify(imported.checkpoint));
+    var idx=loadCharacterIndex();idx.push(entry);saveCharacterIndex(idx);
+    renderCharacterSelectGrid();
+    showSaveTransferStatus('Imported as a new '+getClassData(imported.className).name+' profile. Your current profile was preserved.',false);
+    return true;
+  }catch(e){
+    try{localStorage.removeItem(charDataKey(id));localStorage.removeItem(charBackupKey(id));localStorage.removeItem(runCheckpointKey(id));}catch(cleanupError){}
+    showSaveTransferStatus('Import could not be saved on this device.',true);
+    return false;
+  }
+}
+
+function readProfileImportFile(file,done){
+  if(!file)return;
+  if(typeof file.text==='function'){
+    file.text().then(done).catch(function(){showSaveTransferStatus('The selected file could not be read.',true);});
+    return;
+  }
+  try{
+    var reader=new FileReader();
+    reader.onload=function(){done(String(reader.result||''));};
+    reader.onerror=function(){showSaveTransferStatus('The selected file could not be read.',true);};
+    reader.readAsText(file);
+  }catch(e){showSaveTransferStatus('This device cannot read profile text files.',true);}
 }
 
 function renderCharacterSelectGrid(){
@@ -23053,6 +23223,7 @@ function renderCharacterSelectGrid(){
           '<div class="smcDetail">💾 Play Time: <span>'+timePlayed+'</span></div>'+
         '</div>'+
         '<div class="smcActions">'+
+          '<button class="smcExportBtn">Export .txt</button>'+
           '<button class="smcSelectBtn">▶ Select</button>'+
           '<button class="smcDeleteBtn">🗑 Delete</button>'+
         '</div>';
@@ -23068,7 +23239,12 @@ function renderCharacterSelectGrid(){
         spawnCharacterIntoWorld();
       });
 
-      // Delete button
+       card.querySelector('.smcExportBtn').addEventListener('click',function(e){
+         e.stopPropagation();
+         exportCharacterProfile(c.id);
+       });
+
+       // Delete button
       (function(charEntry){
         card.querySelector('.smcDeleteBtn').addEventListener('click',function(e){
           e.stopPropagation();
@@ -23122,6 +23298,16 @@ function confirmNewCharacter(){
 
 safeClick('manageSavesBtn','Manage Saves',function(){setSaveManageMode(true);});
 safeClick('manageSavesDoneBtn','Manage Saves Done',function(){setSaveManageMode(false);});
+safeClick('importProfileBtn','Import Profile',function(){
+  var input=document.getElementById('profileImportInput');
+  if(input)input.click();
+});
+var profileImportInput=document.getElementById('profileImportInput');
+if(profileImportInput)profileImportInput.addEventListener('change',function(){
+  var file=this.files&&this.files[0];
+  this.value='';
+  if(file)readProfileImportFile(file,importCharacterProfileText);
+});
 safeClick('sdcConfirmDeleteBtn','Confirm Delete Save',function(){confirmDeleteSave();});
 safeClick('sdcCancelBtn','Cancel Delete Save',function(){closeSaveDeleteConfirm();});
 safeClick('newCharacterBtn','New Character',function(){openClassSelectScreen();});
@@ -41216,8 +41402,11 @@ function updateDoorInteraction(geo){
 // ============================================================
 function updateRoomProgress(geo){
   var def=ROOM_DEFS[currentRoomId];if(!def)return;
+  var doorStatus=document.getElementById('doorStatus');
+  if(!doorStatus)return;
+  doorStatus.classList.remove('doorStatusLocked');
   if(def.type===RT.START||def.type===RT.TREASURE||def.type===RT.SHRINE){
-    document.getElementById('doorStatus').classList.remove('visible');return;
+    doorStatus.classList.remove('visible');return;
   }
   if(def.type===RT_D3_PUZZLE){
     if(!d3PuzzleState.solved){
@@ -41278,9 +41467,10 @@ function updateRoomProgress(geo){
     showBanner('ROOM CLEARED',def.type===RT.SIDE?'Bonus rewards earned!':def.type===RT.ELITE?'Elite Bounty Collected!':'Proceed through the exit',2.0);
   }
   if(!roomCleared&&livingEnemies>0){
-    document.getElementById('doorStatus').innerHTML='🔒 DOOR LOCKED  ('+livingEnemies+' remaining)';
-    document.getElementById('doorStatus').classList.add('visible');
-  }else if(roomCleared){document.getElementById('doorStatus').classList.remove('visible');}
+    doorStatus.innerHTML='🔒 DOOR LOCKED  ('+livingEnemies+' remaining)';
+    doorStatus.classList.add('doorStatusLocked');
+    doorStatus.classList.add('visible');
+  }else if(roomCleared){doorStatus.classList.remove('visible');}
 }
 
 function playerDied(){
@@ -48101,10 +48291,21 @@ function drawEnemy(e){
     ctx.restore();
   }
 
+  // Contrast ring keeps enemy silhouettes readable against dark room backgrounds.
+  ctx.save();
+  ctx.globalAlpha=e.kind==='ghost'?(0.72+Math.sin(now*0.003)*0.1):0.96;
+  ctx.strokeStyle='rgba(5,5,10,0.98)';ctx.lineWidth=Math.max(4,e.radius*0.22);
+  ctx.beginPath();ctx.arc(e.x,e.y,e.radius+1.5,0,Math.PI*2);ctx.stroke();
+  ctx.strokeStyle=e.isElite?'rgba(255,215,0,0.78)':'rgba(232,221,200,0.34)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.arc(e.x,e.y,e.radius+2.5,0,Math.PI*2);ctx.stroke();
+  ctx.restore();
+
   // HP bar
   var bw=e.radius*2.4,bx2=e.x-bw/2,by2=e.y-e.radius-(e.isElite?18:14);
+  var hpBarHeight=e.isElite||e.isChampion?8:7;
+  var hpFillHeight=hpBarHeight-1;
   ctx.globalAlpha=e.kind==='ghost'?(0.55+Math.sin(now*0.003)*0.12):1;
-  ctx.fillStyle='#1a1020';ctx.fillRect(bx2,by2,bw,5);
+  ctx.fillStyle='rgba(5,5,10,0.96)';ctx.fillRect(bx2,by2,bw,hpBarHeight);
   var hpFrac=Math.max(0,e.hp/e.hpMax);
   var hpColor=e.isElite?'#daa520':
     e.kind==='zombie'?'#27ae60':
@@ -48138,19 +48339,21 @@ function drawEnemy(e){
     e.kind==='grand_spellcaster'?'#c060ff':
     e.kind==='soul_collector'?'#c86bff':
     '#c0392b';
-  ctx.fillStyle=hpColor;ctx.fillRect(bx2,by2,bw*hpFrac,5);
+  ctx.fillStyle=hpColor;ctx.fillRect(bx2,by2,bw*hpFrac,hpFillHeight);
   if(e.isElite){
-    ctx.fillStyle='rgba(218,165,32,0.25)';ctx.fillRect(bx2-1,by2-1,bw+2,7);
-    ctx.fillStyle='#daa520';ctx.fillRect(bx2,by2,bw*hpFrac,5);
+    ctx.fillStyle='rgba(218,165,32,0.25)';ctx.fillRect(bx2-1,by2-1,bw+2,hpBarHeight+2);
+    ctx.fillStyle='#daa520';ctx.fillRect(bx2,by2,bw*hpFrac,hpFillHeight);
   }
   // Champion: special golden bar — brighter, thicker, with a shimmer highlight
   if(e.isChampion){
-    ctx.fillStyle='rgba(255,215,0,0.35)';ctx.fillRect(bx2-2,by2-2,bw+4,9);
-    ctx.fillStyle='#ffd700';ctx.fillRect(bx2,by2,bw*hpFrac,5);
+    ctx.fillStyle='rgba(255,215,0,0.35)';ctx.fillRect(bx2-2,by2-2,bw+4,hpBarHeight+4);
+    ctx.fillStyle='#ffd700';ctx.fillRect(bx2,by2,bw*hpFrac,hpFillHeight);
     ctx.globalAlpha=0.5+0.4*Math.sin(now*0.006);
-    ctx.fillStyle='#fff6c8';ctx.fillRect(bx2,by2,bw*hpFrac,1.5);
+    ctx.fillStyle='#fff6c8';ctx.fillRect(bx2,by2,bw*hpFrac,Math.min(1.5,hpFillHeight));
     ctx.globalAlpha=1;
   }
+  ctx.strokeStyle='rgba(232,221,200,0.74)';ctx.lineWidth=1;
+  ctx.strokeRect(bx2-0.5,by2-0.5,bw+1,hpBarHeight+1);
   ctx.globalAlpha=1;
 
   // ── ELITE MODIFIER TAGS — displayed below the health bar ──

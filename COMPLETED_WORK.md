@@ -25,6 +25,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Static/offline web foundation | Relative manifest, v6 service worker, local assets, public review pages, headers, deterministic `build-info.json` | A failing package/service-worker contract or changed release requirement |
 | V1 route boundary | `REGION_ORDER` and progression contracts expose D1-8 only and reject post-release checkpoint bypasses | A route guard regression or explicit scope promotion |
 | Save and active-run contract layer | Save parser/loader matrices, backup promotion/default fallback, checkpoint parser, lifecycle tests, and deletion coverage | A failing test or real data-loss/unsafe-resume evidence |
+| Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; Manage Data export smoke confirmed the current profile remained unchanged; import contract creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces | A reproducible input, freeze, recovery, or P1 usability defect |
 | Public safety/review surface | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin/static/package safety contracts | A product-safety regression or owner-approved policy change |
 | Capacitor/native scaffolding | Android/iOS projects, `dist` sync, landscape config, App lifecycle/back-button bridge, native entitlement seam | Native sync/contract failure or platform requirement change |
@@ -39,8 +40,10 @@ documented acceptance-criterion failure. Optional improvements belong in
 - The local follow-up commit `32d83d0` added page-background save-order test
   coverage and documentation/status corrections; it is not a new website
   milestone because the shipped shell did not change.
-- On 2026-08-05, `npm.cmd run release:verify` passed 57 tests, a 17-file build,
-  and the static-package audit; the production check also passed.
+- On 2026-08-05, `npm.cmd run release:verify` passed 58 tests, a 17-file build,
+  and the static-package audit; the production check also passed. The local
+  profile-transfer UI smoke passed, while the next major GitHub/website
+  checkpoint remains required for the changed shell.
 
 ## Explicitly not completed by these records
 
