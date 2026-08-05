@@ -6,7 +6,7 @@
   requires the loopback `?cql-dev=1` gate plus `F8`, `F7`, `F6`, `F3`; the same
   sequence toggles it off. It is session-scoped, excluded from profile export
   and save data, and cannot activate on the configured public hostname or
-  Capacitor protocol. This is not deployed.
+  Capacitor protocol. Commit `3e33470` is pushed; this is not deployed.
 - Hardened Dungeon 1's first combat onboarding locally so its initial enemies
   spawn in a readable viewport band instead of anywhere in the enlarged room;
   normal procedural placement and combat calculations remain unchanged. Added

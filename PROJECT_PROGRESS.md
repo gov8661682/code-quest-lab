@@ -12,9 +12,10 @@ Git history, and current deployment—not only on comments or planning files.
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
   profile transfer and combat readability`) and pushed hardening commit
-  `5db6db5` (`Fix stale session status cleanup`); the deployment record for
-  `9da1d0e` is maintained below and `5db6db5` is intentionally not deployed as
-  a separate minor checkpoint
+  `5db6db5` (`Fix stale session status cleanup`) plus local QA commit
+  `3e33470` (`Add gated developer invincibility cheat`); the deployment record
+  for `9da1d0e` is maintained below and both follow-ups are intentionally not
+  deployed as separate minor checkpoints
 - Canonical game: `index.html`, 57,002 lines, SHA-256
   `8168D9973A05946D49AF7FB53454FD9584C25C25CE22DA2C10F07661BF6498E7`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`

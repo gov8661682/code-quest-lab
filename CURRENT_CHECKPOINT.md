@@ -135,6 +135,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
+- Unreleased local QA hardening: `3e33470` (`Add gated developer invincibility
+  cheat`), pushed to `origin/main` on 2026-08-05; it is intentionally not a
+  website deployment checkpoint.
 - Unreleased local hardening: `5db6db5` (`Fix stale session status cleanup`),
   pushed to `origin/main` on 2026-08-05; tests and package sync pass, but this
   minor follow-up is intentionally not a separate website deployment.

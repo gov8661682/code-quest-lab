@@ -52,6 +52,10 @@ documented acceptance-criterion failure. Optional improvements belong in
   production check and deployed profile-transfer UI smoke remain valid for
   `9da1d0e`; hardening commit `5db6db5` is pushed to `origin/main`, while the
   stale-status follow-up is tested locally but is not deployed.
+- Commit `3e33470` (`Add gated developer invincibility cheat`) is pushed to
+  `origin/main`. It groups the local first-combat spawn hardening, developer
+  cheat contract, and current control-record updates; it is intentionally not
+  a website checkpoint or deployment.
 
 ## Explicitly not completed by these records
 
