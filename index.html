@@ -28454,14 +28454,29 @@ try{
     // Reuse the saved generated route when recovering a run. This keeps room
     // names, side paths, modifiers, and procedural choices stable across a
     // browser restart instead of silently generating a different dungeon.
+    var _resumeLayoutLoaded=false;
     if(_resumeCheckpoint&&_resumeCheckpoint.roomDefs&&_resumeCheckpoint.mainPath){
       try{
         var _savedRoomDefs=JSON.parse(JSON.stringify(_resumeCheckpoint.roomDefs));
         var _savedMainPath=_resumeCheckpoint.mainPath.slice();
         if(_savedMainPath.length>1&&_savedRoomDefs[_resumeCheckpoint.currentRoomId]){
           genResult={defs:_savedRoomDefs,mainPath:_savedMainPath};
+          _resumeLayoutLoaded=true;
         }
       }catch(_resumeLayoutError){}
+    }
+    // A recovered run must use the exact generated route that was checkpointed.
+    // The normal path is generated above, so replacing only `genResult` is not
+    // enough: ROOM_DEFS/MAIN_PATH had already been copied from the fresh route.
+    // Without this second copy, room ids can resolve to different names/types
+    // after reload and saved cleared/enemy state can be applied to the wrong
+    // procedural room.
+    if(_resumeLayoutLoaded){
+      ROOM_DEFS={};
+      for(var _resumeRoomId in genResult.defs)ROOM_DEFS[_resumeRoomId]=genResult.defs[_resumeRoomId];
+      MAIN_PATH=genResult.mainPath.slice();
+      _minimapPositions={};
+      buildMinimapPositions(ROOM_DEFS,MAIN_PATH);
     }
     initRoomStates();
     if(_resumeCheckpoint&&_resumeCheckpoint.roomStates){
@@ -29124,7 +29139,8 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   // in the 1.75x room, leaving a new player taking damage without a readable
   // target. Keep this one encounter in a visible band below the spawn while
   // preserving the normal procedural placement everywhere else.
-  var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH.length>1&&currentRoomId===MAIN_PATH[1]&&def.type===RT.COMBAT;
+  var _firstRoomDef=ROOM_DEFS&&ROOM_DEFS[currentRoomId];
+  var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH.length>1&&currentRoomId===MAIN_PATH[1]&&_firstRoomDef&&_firstRoomDef.type===RT.COMBAT;
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;

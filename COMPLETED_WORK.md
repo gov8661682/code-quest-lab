@@ -47,7 +47,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 - The local follow-up commit `32d83d0` added page-background save-order test
   coverage and documentation/status corrections; it is not a new website
   milestone because the shipped shell did not change.
-- On 2026-08-05, `npm.cmd run release:verify` passed 63 tests, a 17-file build,
+- On 2026-08-05, `npm.cmd run release:verify` passed 65 tests, a 17-file build,
   and the static-package audit; `npm.cmd run native:sync` passed. The earlier
   production check and deployed profile-transfer UI smoke remain valid for
   `9da1d0e`; hardening commit `5db6db5` is pushed to `origin/main`, while the
@@ -56,6 +56,12 @@ documented acceptance-criterion failure. Optional improvements belong in
   `origin/main`. It groups the local first-combat spawn hardening, developer
   cheat contract, and current control-record updates; it is intentionally not
   a website checkpoint or deployment.
+- The current local follow-up adds exact generated-route restoration before
+  checkpoint room-state application and corrects the first-combat room guard;
+  focused contracts, the 65-test release verification, source-mirror equality,
+  native sync, and a clean same-room resume smoke pass. It is intentionally not
+  a website checkpoint or deployment; the bounded off-viewport target finding
+  remains open for future route/playability work.
 
 ## Explicitly not completed by these records
 

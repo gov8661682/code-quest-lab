@@ -22,13 +22,28 @@
   defeated, with progression reaching the shrine, treasure, and Elite rooms
   before the run ended. Full D1-8 completion remains open.
 - Rebuilt and re-synced the package after the follow-up. `npm.cmd run
-  release:verify` now passes 64 Node tests, the 17-file static package audit,
+  release:verify` now passes 65 Node tests, the 17-file static package audit,
   and the native web-copy sync.
 - Fixed a verified regenerating-elite combat defect: every successful hit now
   resets the elite's recovery timer, so sustained player pressure interrupts
   regeneration as intended. The canonical HTML and source mirror remain
   synchronized; focused and full release verification pass. This minor local
   follow-up is not a website deployment checkpoint.
+- Fixed a verified active-run recovery defect: resuming after reload now
+  restores the checkpointed generated dungeon route before rebuilding room
+  state, preventing a saved room from being interpreted against a different
+  procedural layout. Added a contract and verified a clean Mage resume in the
+  same room with the same enemies and locked-door state. This minor local
+  follow-up is not a website deployment checkpoint.
+- Corrected the first-combat onboarding guard so it checks the current room
+  definition rather than the enemy definition when deciding whether to use the
+  readable spawn band. Added the regression assertion and re-ran the full
+  release verification. This minor local follow-up is not a website
+  deployment checkpoint.
+- Bounded local route QA at D1 `Crypt Passage`: one remaining normal enemy
+  could not be located within the visible tablet viewport after two kills, so
+  the run was paused and retained as an open playtest finding. No further
+  repeated target-search attempts were made.
 - Added the evidence-backed project control record: `PROJECT_PROGRESS.md`,
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey

@@ -77,3 +77,18 @@ test('production checkpoint parser rejects malformed, static-zone, and incomplet
 
   for (const checkpoint of invalidCheckpoints) assert.equal(parseRunCheckpoint(checkpoint), null);
 });
+
+test('resume restores the checkpointed route before applying room state', () => {
+  const start = SOURCE.indexOf('var _resumeLayoutLoaded=false;');
+  const end = SOURCE.indexOf('initRoomStates();', start);
+  assert.notEqual(start, -1, 'resume route restoration guard is present');
+  assert.notEqual(end, -1, 'resume route restoration completes before room states');
+  const restoreBlock = SOURCE.slice(start, end);
+
+  assert.match(restoreBlock, /genResult=\{defs:_savedRoomDefs,mainPath:_savedMainPath\};/);
+  assert.match(restoreBlock, /_resumeLayoutLoaded=true;/);
+  assert.match(
+    restoreBlock,
+    /if\(_resumeLayoutLoaded\)\{[\s\S]*?ROOM_DEFS=\{\};[\s\S]*?for\(var _resumeRoomId in genResult\.defs\)ROOM_DEFS\[_resumeRoomId\]=genResult\.defs\[_resumeRoomId\];[\s\S]*?MAIN_PATH=genResult\.mainPath\.slice\(\);/
+  );
+});

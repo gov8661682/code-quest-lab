@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 64 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 65 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI and no-waypoint cleanup contracts are included.
 - The versioned local profile-transfer contract preserves durable profile data,
@@ -71,7 +71,9 @@ expanding the untested V1 content boundary.
   developer invincibility aid and the first-combat visible-spawn hardening are
   local QA tools only and are not part of the deployed checkpoint. The local
   follow-up also resets a regenerating elite's recovery timer after every
-  successful hit; this is a combat correctness fix, not a new gameplay system.
+  successful hit and restores the exact generated route before applying a
+  saved room checkpoint; these are combat/recovery correctness fixes, not new
+  gameplay systems.
 4. Continue the clean-profile D1-8 route on a representative supported
    surface. Initial attack response is now reproduced on the Pages preview;
    the save/readability milestone has passed its tests, GitHub push, deployment,
@@ -127,7 +129,16 @@ skip the active C1 route, save, input, and session acceptance criteria.
 - The same local verification reproduced and covered the regenerating-elite
   recovery-timer defect: successful damage now resets the timer, the canonical
   source/mirror hashes remain identical, and `npm.cmd run release:verify`
-  passed all 64 tests after build and native web-copy sync.
+  passed all 65 tests after build and native web-copy sync.
+- A clean local Mage profile paused in D1 `COMBAT Ashen Pit`, was reloaded,
+  and resumed in the same generated room with the same two remaining Zombies
+  and locked door. This confirms the saved route is restored before room state
+  is applied; the full D1-8 route and tablet lifecycle evidence remain open.
+- A separate clean local Mage profile reached D1 `COMBAT Crypt Passage` with
+  the loopback-only invincibility aid enabled for QA. After two visible enemy
+  defeats, one normal enemy remained outside the 1024x768 visible viewport and
+  the door stayed locked. The run was paused and preserved as an evidence gap;
+  no indefinite target-search loop or unverified gameplay workaround was added.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open

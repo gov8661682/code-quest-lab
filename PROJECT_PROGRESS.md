@@ -11,18 +11,18 @@ Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
-  profile transfer and combat readability`) and pushed hardening commit
-  `5db6db5` (`Fix stale session status cleanup`) plus local QA commit
-  `3e33470` (`Add gated developer invincibility cheat`); the deployment record
-  for `9da1d0e` is maintained below and both follow-ups are intentionally not
-  deployed as separate minor checkpoints
+  profile transfer and combat readability`) and pushed hardening commits
+  `5db6db5` (`Fix stale session status cleanup`) and `3e33470` (`Add gated
+  developer invincibility cheat`), plus this local route-recovery/first-combat
+  follow-up; the deployment record for `9da1d0e` is maintained below and these
+  follow-ups are intentionally not deployed as separate minor checkpoints
 - Canonical game: `index.html`, 57,002 lines, SHA-256
-  `8168D9973A05946D49AF7FB53454FD9584C25C25CE22DA2C10F07661BF6498E7`
+  `E19FAB3F2F868554E00BA37C298790D534E990CCAA8D7DED4F375F572D517E31`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passed 63 tests,
+- Current local verification: `npm.cmd run release:verify` passed 65 tests,
   release contracts, the 17-file build, and the static-package audit; the
   session-transient UI regression contracts are included
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
@@ -41,9 +41,9 @@ Git history, and current deployment—not only on comments or planning files.
 | Joey creative-reference audit | Complete as an audit and content ledger | `CREATIVE_REFERENCE_AUDIT.md` records the reference hash, preserved story/dialogue/endings, missing classes, later content, D16 Phase 4 gap, and Smelter contradiction | Implement only through isolated parity milestones; do not replace the current source wholesale | Product decision if any audited content is promoted into V1 | The audit is V1 governance; most parity content is deferred | Preserve the ledger and work from the active checkpoint |
 | Product direction and V1 scope lock | Complete | `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `MONETISATION.md`, and `DECISIONS.md` define teen-first, touch-first, offline, privacy-minimal, optional-learning, and fair-monetisation boundaries | Owner review and final release decisions remain | Owner approval of ratings, privacy, and commercial position | Yes | Keep new ideas in `BACKLOG.md` unless release-critical |
 | Source mirror, release contracts, build and static package | Complete for the current checkpoint | `npm.cmd run release:verify` passed; `index.html` and the downloadable mirror match; `dist\` contains 17 expected files and matches native web bundles | Repeat after each major milestone and before RC | Node/npm environment | Yes | Keep the verification command green |
-| Versioned plain-text profile transfer | Complete at deployed web/package boundary | Manage Data exports a `CODE QUEST LAB PROFILE EXPORT` `.txt` envelope containing durable data, a valid backup, and any valid active-run checkpoint; import creates a new local profile and leaves the current profile untouched; 63 tests and live export smoke pass | Real browser upload round trip, cross-device/cross-version fixtures, and current-class migration evidence remain open | Clean storage profiles and representative supported surfaces | No; supports save portability | Keep the format stable while completing the later migration evidence |
+| Versioned plain-text profile transfer | Complete at deployed web/package boundary | Manage Data exports a `CODE QUEST LAB PROFILE EXPORT` `.txt` envelope containing durable data, a valid backup, and any valid active-run checkpoint; import creates a new local profile and leaves the current profile untouched; 65 tests and live export smoke pass | Real browser upload round trip, cross-device/cross-version fixtures, and current-class migration evidence remain open | Clean storage profiles and representative supported surfaces | No; supports save portability | Keep the format stable while completing the later migration evidence |
 | V1 navigation boundary and procedural route contracts | Complete as a release guard | `REGION_ORDER` exposes Dungeons 1, 2, and 4-8; automated contracts cover every shipped generator, route validation, boss endpoints, legacy checkpoint rejection, and the Dungeon 8 summary endpoint | Manually complete the bounded route before calling gameplay complete | Stable combat and manual QA | Yes | Validate the path in a clean profile; do not promote D9-16 yet |
-| Core save parser/loader contracts | Complete at the tested code boundary | `parseCharacterSave`, `loadPermanentData`, backup promotion, defaults fallback, legacy mastery migration, checkpoint parsing, session lifecycle, and profile-transfer contracts are executable; 63 tests pass | Manual browser/device migration, corruption, suspension, forced-close, import upload, and cross-version evidence | Clean profiles and representative devices | Yes | Execute the remaining lifecycle evidence in Checkpoint 1/3 |
+| Core save parser/loader contracts | Complete at the tested code boundary | `parseCharacterSave`, `loadPermanentData`, backup promotion, defaults fallback, legacy mastery migration, checkpoint parsing, session lifecycle, and profile-transfer contracts are executable; 65 tests pass | Manual browser/device migration, corruption, suspension, forced-close, import upload, and cross-version evidence | Clean profiles and representative devices | Yes | Execute the remaining lifecycle evidence in Checkpoint 1/3 |
 | Session recovery, pause/stop surfaces, and input hardening | Complete at the implemented browser contract boundary | Active-run checkpoint, Resume Session, Return to Town, Finish For Now, page-background save order, keyboard focus, touch/mouse attack paths, joystick release, and first-room onboarding are implemented and covered | Prove a complete 10-30 minute touch session and device behavior | Browser/device QA | Yes | Continue with clean-profile playthrough and lifecycle QA |
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
