@@ -63,12 +63,13 @@ expanding the untested V1 content boundary.
    isolate the event-delivery cause before changing combat code.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
    recovery paths around the clean run.
-3. Complete the supported-surface check for the local profile-transfer and
-   grouped enemy/door readability follow-up; combat calculations remain
-   unchanged while attack response is still an evidence gap.
-4. Run the focused/full verification suite and, if the grouped save/readability
-   milestone remains playable, create its GitHub + website checkpoint. Keep C1
-   active; this checkpoint does not by itself prove D1-8 completion.
+3. Keep the deployed profile-transfer and grouped enemy/door readability
+   changes under regression coverage; combat calculations remain unchanged
+   while attack response is still an evidence gap.
+4. Reproduce attack response on another supported browser/device, then resume
+   the clean-profile D1-8 route. The save/readability milestone has already
+   passed its tests, GitHub push, deployment, and live verification; keep C1
+   active because this checkpoint does not prove D1-8 completion.
 
 The open-world design is now recorded in `OPEN_WORLD_DIRECTION.md`. It is a
 product/architecture constraint for future implementation, not permission to
@@ -112,31 +113,30 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Runtime: `32d83d0` (`Harden page-background save coverage`)
+- Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
+- Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; this change set records the open-world direction, AI expert
-  playtest, synchronized copy-only usability fixes, profile transfer, and
-  grouped readability changes; its release checkpoint is still pending
+- Branch: `main`; milestone commit `9da1d0e` records the open-world direction,
+  AI expert playtest, synchronized copy-only usability fixes, profile transfer,
+  and grouped readability changes; its GitHub/website checkpoint is verified
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `bf07810` (`Finalize creative-reference release checkpoint`)
-- Deployment date: 2026-08-04
+- Commit: `9da1d0e` (`Add local profile transfer and combat readability`)
+- Deployment date: 2026-08-05
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://4489e0ec.code-quest-lab.pages.dev/`
-- Shell SHA-256: `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`
+- Preview: `https://8d5f404a.code-quest-lab.pages.dev/`
+- Shell SHA-256: `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`
 - Current read-only production check: passed on 2026-08-05
 
-The local change set after `bf07810` includes documentation, AI playtest
-evidence, synchronized copy-only runtime fixes, the existing-Town minimap
-foundation, versioned profile transfer, and grouped readability fixes. The
-tested local shell is 56,957 lines with SHA-256
-`3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`,
-while the live shell remains
-`F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
-The local UI smoke and release verification are green; the next step is the
-major-milestone GitHub/website checkpoint and live verification.
+The verified milestone shell includes the existing-Town minimap, copy-only
+fixes, versioned profile transfer, and grouped readability fixes. The preview
+live smoke reached profile creation, Town, pause/finish, Manage Data export,
+and cleanup; the configured hostname loaded with no browser diagnostics and
+the existing primary-origin Mage profile was left untouched. The next step is
+to resume the active Checkpoint 1 attack-response and clean-profile route
+evidence.
 
 ## Exact condition required to advance
 

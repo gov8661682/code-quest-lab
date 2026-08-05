@@ -6,17 +6,21 @@
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey
   creative audit must not be repeated.
-- Recorded the current verification state: runtime commit `32d83d0` remains the
-  prior stable runtime base, control-record commit `194bcc5` is on `main`, and
-  this follow-up records the open-world direction, AI expert playtest, and two
-  copy-only usability fixes, versioned plain-text profile transfer, and grouped
-  first-combat readability refinements. `npm.cmd run release:verify` passes 58
-  tests and the 17-file package audit, and the configured production check
-  passes. The last deployed web checkpoint remains `bf07810`; this local save
-  portability/readability milestone still needs its live verification.
+- Recorded the current verification state: milestone commit `9da1d0e` is on
+  `main` alongside the prior control records; this follow-up records the
+  open-world direction, AI expert playtest, copy-only usability fixes, versioned
+  plain-text profile transfer, and grouped first-combat readability refinements.
+  `npm.cmd run release:verify` passes 58 tests, the 17-file package audit and
+  native sync pass, and the configured production check passes.
+- Completed the major-milestone GitHub and website checkpoint for local save
+  portability and first-combat readability: pushed `9da1d0e`, deployed on
+  2026-08-05 to `https://code-quest-lab.gov8661682.com/`, preview
+  `https://8d5f404a.code-quest-lab.pages.dev/`, and live-verified the new shell
+  hash `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
 - Reconciled deployment and store-readiness records with the verified current
-  Cloudflare Pages checkpoint; no new website deployment was performed for this
-  incomplete C1 usability pass.
+  Cloudflare Pages checkpoint. Checkpoint 1 remains active because full D1-8
+  player completion and the first-combat attack-response evidence are still
+  open.
 - Recorded the latest active Checkpoint 1 QA result: a fresh 1024x768 live run
   reached three first-combat rooms with no browser diagnostics, but did not
   establish an enemy defeat through the tested touch/click inputs. The result is
@@ -27,18 +31,19 @@
   the staged player/technical target in `OPEN_WORLD_DIRECTION.md` while keeping
   the tested D1-8 release guard and active Checkpoint 1 unchanged.
 - Added `AI_EXPERT_PLAYTEST.md` with a dated live 1024x768 first-run review and
-  prioritized improvements. Fixed the corrupted first-combat onboarding dash
-  and replaced the school-like Town objective wording in the local source; no
-  website deployment was made for these incomplete usability fixes.
+  prioritized improvements. Fixed the corrupted first-combat onboarding dash,
+  replaced the school-like Town objective wording, and live-verified the
+  resulting profile/Town/Manage Data surface in the new deployment.
 - Added a local Town minimap using the existing world layout, showing roads,
   safe-hub landmarks, the player, Waypoint Plaza, and the northern dungeon
-  destination. The static package is verified; this incomplete C1/open-world
-  slice is not deployed alone.
+  destination. The static package and the major-milestone deployment are
+  verified; this does not claim full open-world completion.
 - Added a versioned `CODE QUEST LAB PROFILE EXPORT` plain-text envelope. It
   exports the durable profile, valid backup, and active-run checkpoint; import
   creates a new local profile without overwriting the current one. The format
   is local-only and accepts only the four current runtime classes.
-- Applied grouped, low-risk first-combat readability fixes in the local source:
+- Applied grouped, low-risk first-combat readability fixes in the source and
+  deployed shell:
   the locked-door message is anchored in a stable top banner and enemies have
   stronger silhouettes and outlined HP bars. Combat calculations were not
   changed; supported-surface attack evidence remains open.

@@ -72,10 +72,10 @@ The playtest followed a first-time player journey:
 - The upper-right minimap was visually blank or nearly blank during Town play.
   It should show roads, the player, the Waypoint Plaza, the north destination,
   and discovered landmarks with a simple legend/compass.
-- The local follow-up now renders those existing Town landmarks, roads, the
-  player marker, and the northern `DEPTHS` destination in the Town minimap. It
-  is verified in the static package, but is not yet live until a later tested
-  deployment.
+- The follow-up now renders those existing Town landmarks, roads, the player
+  marker, and the northern `DEPTHS` destination in the Town minimap. It is
+  included in the 2026-08-05 tested deployment, but is not claimed as a full
+  World Atlas.
 - The starting Town view showed very little NPC/landmark storytelling. Add one
   clear first breadcrumb: an NPC, signpost, shrine, road marker, or visible
   landmark that explains what the northern destination is and why it matters.
@@ -107,13 +107,13 @@ The playtest followed a first-time player journey:
 
 ## Follow-up status (2026-08-05)
 
-- The local source and package retain the recommended world-facing Town copy
-  and the schematic minimap with existing roads, landmarks, the player marker,
-  and the northern `DEPTHS` destination.
-- The grouped low-risk readability follow-up is implemented locally: normal
-  locked-door feedback uses a stable top banner, enemies have stronger dark
-  contrast rings, and enemy HP bars are thicker and outlined. Combat formulas,
-  damage, targeting, and room progression were not changed.
+- The deployed source and package retain the recommended world-facing Town
+  copy and the schematic minimap with existing roads, landmarks, the player
+  marker, and the northern `DEPTHS` destination.
+- The grouped low-risk readability follow-up is deployed: normal locked-door
+  feedback uses a stable top banner, enemies have stronger dark contrast rings,
+  and enemy HP bars are thicker and outlined. Combat formulas, damage,
+  targeting, and room progression were not changed.
 - A local Manage Data smoke exported a synthetic Mage profile as `.txt`, showed
   that the current profile was unchanged, and then removed the test profile.
   The versioned transfer contracts preserve durable data, a valid backup, and
@@ -126,8 +126,8 @@ The playtest followed a first-time player journey:
 
 ## Recommended order
 
-1. Ship and live-verify the encoding-safe combat prompt, profile transfer, and
-   grouped readability follow-up with the next major tested web milestone.
+1. Keep the encoding-safe combat prompt, profile transfer, and grouped
+   readability follow-up under live regression coverage.
 2. Reproduce first-combat attack response on a supported touch/mouse surface;
    do not infer a combat-code defect from this harness alone.
 3. Confirm the local enemy readability and door-lock placement changes on the

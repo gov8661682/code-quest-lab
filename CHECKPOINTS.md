@@ -75,9 +75,9 @@ Status: **Active**
 - Completion evidence: dated manual records with viewport/device, profile,
   route, boss/ending result, session duration, save/recovery result, browser
   diagnostics, test output, commit, deployment URL/hash, and status update.
-- The save-portability/readability work may form a stable sub-milestone within
-  C1 and must follow the GitHub/website checkpoint protocol when locally and
-  live verified; that checkpoint does not complete C1 without the full D1-8
+- The save-portability/readability work was accepted as a stable sub-milestone
+  within C1: commit `9da1d0e` was tested, pushed, deployed, and live-verified on
+  2026-08-05. That checkpoint does not complete C1 without the full D1-8
   player-completion evidence above.
 - Next checkpoint: Checkpoint 2 after all criteria are met.
 

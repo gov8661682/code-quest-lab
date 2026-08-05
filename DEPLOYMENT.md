@@ -73,14 +73,15 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-04 checkpoint was published to the configured Cloudflare Pages
-project `code-quest-lab` at commit `bf07810`, with primary hostname
+The 2026-08-05 checkpoint was published to the configured Cloudflare Pages
+project `code-quest-lab` at commit `9da1d0e`, with primary hostname
 `https://code-quest-lab.gov8661682.com/` and preview
-`https://4489e0ec.code-quest-lab.pages.dev/`. The deployed shell hash is
-`F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
+`https://8d5f404a.code-quest-lab.pages.dev/`. The deployed shell hash is
+`3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
 
 `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` passed
-again on 2026-08-05. The commits after `bf07810` are documentation and test
-coverage only, so the current control-file review does not require a new
-publish. Repeat the owner-approved publish and live checks after the next
-substantial tested milestone.
+on 2026-08-05. The preview live smoke reached profile creation, Town,
+pause/finish, Manage Data export, and cleanup at 1024x768 with no browser
+diagnostics; the primary hostname loaded with no diagnostics and its existing
+Mage profile was left untouched. Repeat the owner-approved publish and live
+checks after the next substantial tested milestone.

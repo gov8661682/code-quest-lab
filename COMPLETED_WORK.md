@@ -37,13 +37,18 @@ documented acceptance-criterion failure. Optional improvements belong in
 - Checkpoint 0 was completed and recorded in commit `bf07810`, pushed to
   `origin/main`, deployed on 2026-08-04, and live-verified at the configured
   domain.
+- The save-portability/readability major milestone was recorded in commit
+  `9da1d0e`, pushed to `origin/main`, deployed on 2026-08-05, and live-verified
+  at the configured domain and Pages preview. It does not complete Checkpoint
+  1 because full D1-8 player completion and attack-response evidence remain
+  open.
 - The local follow-up commit `32d83d0` added page-background save-order test
   coverage and documentation/status corrections; it is not a new website
   milestone because the shipped shell did not change.
 - On 2026-08-05, `npm.cmd run release:verify` passed 58 tests, a 17-file build,
-  and the static-package audit; the production check also passed. The local
-  profile-transfer UI smoke passed, while the next major GitHub/website
-  checkpoint remains required for the changed shell.
+  and the static-package audit; `npm.cmd run native:sync` and the production
+  check also passed. The profile-transfer UI smoke passed locally and in the
+  deployed preview.
 
 ## Explicitly not completed by these records
 
