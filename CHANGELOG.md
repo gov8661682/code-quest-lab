@@ -2,6 +2,20 @@
 
 ## Unreleased - 2026-08-05
 
+- Reproduced a bounded local Dungeon 1 playability gap in enlarged rooms: a
+  hidden/offscreen Soul Wraith could remain alive while the door stayed locked
+  after visible enemies were defeated. Added a restrained screen-space cue that
+  labels the nearest hidden threat `THREAT` without revealing its body or
+  changing movement, attack calculations, or authored room layout. Added a
+  focused source contract. Commit `4747413` is pushed to GitHub; this minor QA
+  hardening is not a website deployment checkpoint.
+- Paused, reloaded, recovered, and resumed the same local `Burial Hall`
+  checkpoint without browser diagnostics or data loss. The run remains partial:
+  full D1-8 completion, the live indicator screenshot, and meaningful touch/
+  tablet lifecycle evidence are still open.
+- Rebuilt and re-synced the package after the fix. `npm.cmd run
+  release:verify` passes 66 Node tests, the 17-file static package audit, and
+  the build; `npm.cmd run native:sync` also passes.
 - Added a hidden developer-only invincibility aid for local playtesting. It
   requires the loopback `?cql-dev=1` gate plus `F8`, `F7`, `F6`, `F3`; the same
   sequence toggles it off. It is session-scoped, excluded from profile export

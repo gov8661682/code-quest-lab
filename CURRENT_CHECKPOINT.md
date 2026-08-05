@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 65 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 66 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI and no-waypoint cleanup contracts are included.
 - The versioned local profile-transfer contract preserves durable profile data,
@@ -60,7 +60,9 @@ expanding the untested V1 content boundary.
    record the first failing room/system if the run cannot complete. A fresh
    1024x768 Pages-preview Mage run now produced visible first-hit feedback,
    defeated enemies, cleared the opening route rooms, and reached the Elite
-   room before ending; the full D1-8 route is still unproven.
+   room before ending; a later bounded local run reached `Burial Hall`, where
+   one hidden/offscreen Soul Wraith remained. The full D1-8 route is still
+   unproven.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
    recovery paths around the clean run, including a meaningful 10-30 minute
    touch-first session.
@@ -139,6 +141,23 @@ skip the active C1 route, save, input, and session acceptance criteria.
   defeats, one normal enemy remained outside the 1024x768 visible viewport and
   the door stayed locked. The run was paused and preserved as an evidence gap;
   no indefinite target-search loop or unverified gameplay workaround was added.
+- On 2026-08-05, a fresh local Mage QA profile progressed through D1 `Crypt
+  Passage`, `Mystic Sanctum`, `Hidden Cache`, and `Burial Hall` with the
+  loopback-only developer aid enabled. Visible combat, shrine interaction,
+  treasure rewards, and level-up/gear surfaces were observed. `Burial Hall`
+  then retained one hidden/offscreen Soul Wraith after the visible enemies were
+  defeated, reproducing the target-location playability gap without further
+  repeated search attempts.
+- Added a restrained screen-space locator for the nearest live offscreen enemy;
+  hidden Soul Wraiths are marked `THREAT` rather than exposed visually. The
+  canonical HTML, downloadable mirror, and focused source contract are recorded
+  in pushed commit `4747413`; this is local QA hardening and is not deployed.
+- The same profile was paused, reloaded, recovered from the saved `Burial Hall`
+  checkpoint, and resumed without data loss or browser diagnostics. The
+  indicator-specific live screenshot remains unrecorded, so this evidence does
+  not complete the room, D1-8, or tablet lifecycle criteria.
+- After the fix, `npm.cmd run release:verify` passed all 66 tests, the 17-file
+  static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open
@@ -160,6 +179,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
+- Current local QA follow-up: `4747413` (`Point toward hidden offscreen combat
+  threats`), pushed to `origin/main` on 2026-08-05; it is intentionally not a
+  website deployment checkpoint.
 - Current local QA follow-up: `8e165e1` (`Fix route restoration and first
   combat onboarding`), pushed to `origin/main` on 2026-08-05; it records the
   exact-route recovery fix, corrected first-combat guard, and bounded
