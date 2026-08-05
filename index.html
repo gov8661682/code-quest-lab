@@ -34951,6 +34951,10 @@ function dealDamageToEnemy(e,amount,isCrit,ignoreArmorPct){
     addFloatie(e.x,e.y-e.radius-22,'✦ WARDED','#e8a8ff',0.7);
   }
   e.hp-=amount;e.hitFlash=e.isElite?0.28:0.18;
+  // Regenerating elites must treat every successful hit as renewed pressure.
+  // Without this reset, the timer keeps running while the player is attacking
+  // and the elite can recover at full rate during sustained combat.
+  if(e.isElite&&e.eliteRegenerating)e.eliteRegenTimer=0;
   // ── Shadowstep — Dark Pursuit: Endless Hunt. Killing an enemy within 4s of
   // Shadowstep completely refreshes Shadowstep's cooldown (works from any source). ──
   if(e.hp<=0&&rogueShadowstepEndlessHuntTimer>0&&permanentData&&permanentData.selectedClass==='rogue'){

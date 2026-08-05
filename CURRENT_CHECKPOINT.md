@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 63 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 64 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI and no-waypoint cleanup contracts are included.
 - The versioned local profile-transfer contract preserves durable profile data,
@@ -69,7 +69,9 @@ expanding the untested V1 content boundary.
   dungeon lock and waypoint messages when a session returns to Town; combat
   calculations remain unchanged. A separate loopback-gated, session-only
   developer invincibility aid and the first-combat visible-spawn hardening are
-  local QA tools only and are not part of the deployed checkpoint.
+  local QA tools only and are not part of the deployed checkpoint. The local
+  follow-up also resets a regenerating elite's recovery timer after every
+  successful hit; this is a combat correctness fix, not a new gameplay system.
 4. Continue the clean-profile D1-8 route on a representative supported
    surface. Initial attack response is now reproduced on the Pages preview;
    the save/readability milestone has passed its tests, GitHub push, deployment,
@@ -114,6 +116,18 @@ skip the active C1 route, save, input, and session acceptance criteria.
   was visually free of the old dungeon lock/waypoint messages; the known
   synthetic Mage profile was deleted afterward, while an unrelated existing
   Barbarian profile was left untouched.
+- On 2026-08-05, a resumed local QA profile traversed its saved D2 route from
+  `START Castle Gatehouse` through `COMBAT 2`, `SHRINE 3`, `TREASURE 4`, and
+  `ELITE 5` into `BOSS 6 The Fallen King's Throne Room`. With the loopback-only
+  developer invincibility aid enabled, bounded desktop click probes reduced
+  the Stone Guardian from `3675/3675` to `2715/3675` and the Fallen King
+  guardian from `100%` to `74%`, then the run was paused safely. This is
+  resumed-session combat evidence, not fresh-profile D1-8 completion or direct
+  regenerating-elite manual evidence.
+- The same local verification reproduced and covered the regenerating-elite
+  recovery-timer defect: successful damage now resets the timer, the canonical
+  source/mirror hashes remain identical, and `npm.cmd run release:verify`
+  passed all 64 tests after build and native web-copy sync.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open
@@ -137,6 +151,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 - Unreleased local QA hardening: `3e33470` (`Add gated developer invincibility
   cheat`), pushed to `origin/main` on 2026-08-05; it is intentionally not a
+  website deployment checkpoint.
+- Unreleased local combat fix: regenerating-elite recovery-timer reset;
+  committed and pushed to `origin/main` on 2026-08-05 after the focused
+  regression and full release verification passed. It is intentionally not a
   website deployment checkpoint.
 - Unreleased local hardening: `5db6db5` (`Fix stale session status cleanup`),
   pushed to `origin/main` on 2026-08-05; tests and package sync pass, but this

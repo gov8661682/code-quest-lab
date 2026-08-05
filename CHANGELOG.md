@@ -22,8 +22,13 @@
   defeated, with progression reaching the shrine, treasure, and Elite rooms
   before the run ended. Full D1-8 completion remains open.
 - Rebuilt and re-synced the package after the follow-up. `npm.cmd run
-  release:verify` now passes 63 Node tests, the 17-file static package audit,
+  release:verify` now passes 64 Node tests, the 17-file static package audit,
   and the native web-copy sync.
+- Fixed a verified regenerating-elite combat defect: every successful hit now
+  resets the elite's recovery timer, so sustained player pressure interrupts
+  regeneration as intended. The canonical HTML and source mirror remain
+  synchronized; focused and full release verification pass. This minor local
+  follow-up is not a website deployment checkpoint.
 - Added the evidence-backed project control record: `PROJECT_PROGRESS.md`,
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey

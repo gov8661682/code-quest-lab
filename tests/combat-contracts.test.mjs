@@ -61,6 +61,14 @@ test('desktop click attack fallback queues a bounded first shot', () => {
   assert.match(SOURCE, /desktopAttackTapState\.queued=true/);
 });
 
+test('regenerating elites reset their recovery timer when hit', () => {
+  assert.match(
+    SOURCE,
+    /e\.hp-=amount;e\.hitFlash=e\.isElite\?0\.28:0\.18;[\s\S]*?if\(e\.isElite&&e\.eliteRegenerating\)e\.eliteRegenTimer=0;/,
+    'successful enemy damage interrupts regenerating-elite recovery'
+  );
+});
+
 test('desktop play surface exposes a focusable keyboard target', () => {
   assert.match(SOURCE, /<canvas id="gameCanvas"[^>]*tabindex="0"[^>]*role="application"/, 'game canvas is keyboard-focusable');
   assert.match(SOURCE, /canvas\.addEventListener\('pointerdown',[\s\S]*?canvas\.focus\(\)/, 'pointer input focuses the play surface');
