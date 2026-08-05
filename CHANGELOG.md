@@ -27,7 +27,7 @@
   local replay no longer emitted the unintended `NO POTIONS` action, and the
   focused/full release verification now passes 70 tests. The temporary route
   did not complete Town navigation, so this remains local QA hardening rather
-  than a deployment checkpoint.
+  than a deployment checkpoint. Commit `90f4f36` records the change.
 - Fixed a reproducible stale combat-status edge case: when the final enemy
   defeat triggers a level-up pause, room progress and the HUD now refresh
   immediately so a cleared room cannot retain a locked-door message. Added a

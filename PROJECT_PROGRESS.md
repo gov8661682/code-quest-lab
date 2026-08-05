@@ -21,7 +21,8 @@ Git history, and current deployment—not only on comments or planning files.
   status after final enemy defeat`); the current local follow-up restores a
   defeated boss-room exit portal after recovery and adds a gated summons-clear
   QA sequence in pushed commit `e1380c4` (`Harden recovered boss progression
-  QA`);
+  QA`); touch pointer ownership is hardened in pushed follow-up `90f4f36`
+  (`Protect touch joystick releases`);
   the deployment record for `9da1d0e` is maintained below and these follow-ups
   are intentionally not deployed as separate minor checkpoints
 - Canonical game: `index.html`, 57,085 lines, SHA-256

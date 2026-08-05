@@ -241,6 +241,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
   adds a gated local summons-clear QA sequence; source contracts, package
   sync, and browser recovery smoke pass. It is not a website deployment
   checkpoint because full Checkpoint 1 remains incomplete.
+- Touch-control follow-up `90f4f36` (`Protect touch joystick releases`) records
+  the 600x700 overlap fix, its contract, and the bounded local replay. It is
+  also not a website deployment checkpoint.
 - Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
