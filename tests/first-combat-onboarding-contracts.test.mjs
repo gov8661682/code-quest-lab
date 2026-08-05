@@ -24,3 +24,7 @@ test('larger combat rooms point toward a live enemy outside the viewport', () =>
   assert.match(SOURCE, /var _indicatorLabel=bestHidden\?'THREAT':'TARGET';/);
   assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s+drawOffscreenEnemyIndicators\(\);/);
 });
+
+test('last enemy defeat refreshes progress before a level-up pause can leave a stale lock', () => {
+  assert.match(SOURCE, /if\(enemies\.length===0\)\{\s*updateRoomProgress\(getRoomGeometry\(\)\);\s*updateHUD\(\);\s*\}/);
+});

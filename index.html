@@ -35384,6 +35384,14 @@ function dealDamageToEnemy(e,amount,isCrit,ignoreArmorPct){
     if(e.isPrototypeTitan){
       spawnEliteChest(e.x,e.y);
     }
+    // A kill can trigger a level-up, which pauses the game loop before the
+    // next normal progress pass. Refresh the room state at the exact point
+    // the final enemy leaves the array so the lock cannot remain stale while
+    // the upgrade overlay is open.
+    if(enemies.length===0){
+      updateRoomProgress(getRoomGeometry());
+      updateHUD();
+    }
   }
 }
 
