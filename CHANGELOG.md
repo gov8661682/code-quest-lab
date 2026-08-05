@@ -28,6 +28,11 @@
   focused/full release verification now passes 70 tests. The temporary route
   did not complete Town navigation, so this remains local QA hardening rather
   than a deployment checkpoint. Commit `90f4f36` records the change.
+- Added a compact screen-edge direction arrow for the existing Town-to-Depths
+  portal when it is outside the camera. This supports open-world discovery on
+  tablet-sized surfaces without replacing free movement or the minimap. A
+  local 600x700 smoke rendered the cue; commit `c8b50c8` records it, and the
+  full release verification passes 71 tests.
 - Fixed a reproducible stale combat-status edge case: when the final enemy
   defeat triggers a level-up pause, room progress and the HUD now refresh
   immediately so a cleared room cannot retain a locked-door message. Added a

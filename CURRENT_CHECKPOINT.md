@@ -191,7 +191,7 @@ skip the active C1 route, save, input, and session acceptance criteria.
   recovery path was manually verified, and manual route/lifecycle evidence
   can continue locally. Pages-preview and physical-device evidence remain
   separate open acceptance items.
-- After the latest fix, `npm.cmd run release:verify` passed all 70 tests, the 17-file
+- After the latest fix, `npm.cmd run release:verify` passed all 71 tests, the 17-file
   static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
@@ -244,6 +244,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Touch-control follow-up `90f4f36` (`Protect touch joystick releases`) records
   the 600x700 overlap fix, its contract, and the bounded local replay. It is
   also not a website deployment checkpoint.
+- Open-world discoverability follow-up `c8b50c8` (`Guide Town portal discovery`)
+  adds a screen-edge direction arrow for the off-screen Town portal. The
+  compact-viewport smoke rendered the cue without adding a menu shortcut; it
+  is not a website deployment checkpoint.
 - Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
