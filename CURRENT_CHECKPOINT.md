@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 67 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 69 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -163,14 +163,29 @@ skip the active C1 route, save, input, and session acceptance criteria.
   67 tests, the 17-file package audit, and native sync; a local resumed
   `Ruined Archway` smoke showed an active game screen with empty door status
   and no enemy count. This minor local follow-up is not deployed.
-- On 2026-08-05, clean-profile touch-first runs were prepared at 1024x768 on
-  both the local QA surface and the designated Pages preview, but in-app
-  browser navigation was denied before either game page loaded. No alternate
-  browser, policy workaround, or gameplay claim was made. `npm.cmd run
-  release:verify` independently passed all 67 tests, the 17-file package
-  audit, and the build; resume manual D1-8 and lifecycle evidence after owner
-  action `B-007` allows the designated QA surfaces.
-- After the fix, `npm.cmd run release:verify` passed all 66 tests, the 17-file
+- After local browser access was restored, a fresh cache-busting loopback QA
+  URL loaded the current shell. The saved Mage level 10 session reopened at
+  the defeated D1 Guardian room, rendered a visible `EXIT PORTAL`, and walking
+  into it completed the handoff to the next entrance area without browser
+  diagnostics. This proves recovered boss-room exit behavior, not full D1-8
+  completion.
+- The recovered boss-room load path now restores the forward door and exit
+  portal after reload/background recovery, and the loopback-only developer QA
+  aid has an additional gated `F8`, `F7`, `F6`, `F4` sequence for clearing live
+  boss summons during local debugging. Neither behavior is enabled on the
+  deployed/public shell or included in profile export.
+- The portal handoff QA also found and corrected a stale entrance objective:
+  each entrance now resolves its objective from the underlying dungeon, so the
+  Fallen Kingdom entrance correctly names the Fallen King rather than the
+  previous Stone Guardian objective. The browser smoke verified both the HUD
+  objective and entrance banner.
+- On 2026-08-05, clean-profile touch-first runs were initially stopped by
+  in-app browser permission denial on both QA surfaces; this was recorded as
+  blocker `B-007`. Loopback access was subsequently restored, the saved boss
+  recovery path was manually verified, and manual route/lifecycle evidence
+  can continue locally. Pages-preview and physical-device evidence remain
+  separate open acceptance items.
+- After the latest fix, `npm.cmd run release:verify` passed all 69 tests, the 17-file
   static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
@@ -215,6 +230,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Unreleased local hardening: `5db6db5` (`Fix stale session status cleanup`),
   pushed to `origin/main` on 2026-08-05; tests and package sync pass, but this
   minor follow-up is intentionally not a separate website deployment.
+- Unreleased local hardening: the current working change restores recovered
+  boss-room exit portals and adds a gated local summons-clear QA sequence;
+  source contracts, package sync, and browser recovery smoke pass. It is not a
+  website deployment checkpoint because full Checkpoint 1 remains incomplete.
 - Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)

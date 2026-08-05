@@ -147,6 +147,10 @@ test('production region order advances through an entrance and ends safely', () 
   }
 });
 
+test('entrance objectives resolve from the underlying dungeon definition', () => {
+  assert.match(SOURCE, /function getActiveDungeon\(\)\{[\s\S]*?isEntranceZone\(activeDungeonId\)\?getEntranceDungeonId\(activeDungeonId\):activeDungeonId[\s\S]*?return DUNGEON_DEFS\[dungeonId\]\|\|DUNGEON_DEFS\.dungeon1;/);
+});
+
 test('production navigation hides post-release dungeon entries and blocks legacy resume bypasses', () => {
   assert.match(SOURCE, /REGION_ORDER\.forEach\(function\(did\)\{/);
   assert.match(SOURCE, /function isReleaseDungeon\(dungeonId\)\{return REGION_ORDER\.indexOf\(dungeonId\)>=0;\}/);
@@ -222,5 +226,7 @@ test('every shipped V1 boss uses the shared room-clear and exit handoff', () => 
   }
   assert.match(genericBossDefeat, /roomStates\[bossRoomId\]\.bossDefeated=true;roomStates\[bossRoomId\]\.cleared=true;/, 'generic boss defeat clears the final room');
   assert.match(genericBossDefeat, /unlockBossExit\(1\.6\);/, 'generic boss defeat unlocks the shared exit portal');
+  const recoveredBossRoom = extractBetween("}else if(def.type===RT.BOSS){", '// ---- MINI BOSS ROOM ----', 'recovered boss-room load flow');
+  assert.match(recoveredBossRoom, /if\(rs\.bossDefeated\)\{[\s\S]*?openForwardDoor\(geo\);sideDoorOpen=\(def\.side!==null\);[\s\S]*?spawnExitPortal\(\);/, 'reloaded boss victories restore the exit portal');
   assert.match(SOURCE, /function voidMonarchDefeated\(\)[\s\S]*?roomStates\[bossRoomId\]\.bossDefeated=true;roomStates\[bossRoomId\]\.cleared=true;[\s\S]*?unlockBossExit\(2\.2\);/, 'Dungeon 4 special defeat also clears the room and unlocks the exit');
 });

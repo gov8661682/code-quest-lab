@@ -2,6 +2,24 @@
 
 ## Unreleased - 2026-08-05
 
+- Fixed recovered boss-room progression: when a defeated boss room is restored
+  after reload or background recovery, the forward door and deliberate exit
+  portal are recreated instead of leaving the player in a portal-less cleared
+  room. A local cache-busting browser smoke reopened the saved Mage level 10
+  Guardian room, showed `EXIT PORTAL`, and completed travel into the next
+  entrance area. Added the developer-only boss-summon escape sequence
+  `F8`, `F7`, `F6`, `F4`, gated behind local `?cql-dev=1` and already-enabled
+  invincibility; it is session-only and excluded from exports/public builds.
+  The synchronized package passes 68 tests, build, and static-package audit.
+- Cleared browser blocker `B-007` for loopback QA after the initial permission
+  denial: the current shell loaded in the in-app browser and the recovered
+  portal travel smoke completed without browser diagnostics. Full D1-8,
+  touch-duration, tablet, and physical-device evidence remain open, so this is
+  not a website deployment checkpoint.
+- Corrected entrance-area objective resolution so a portal handoff into the
+  Fallen Kingdom names the Fallen King in the HUD and entrance banner instead
+  of retaining Dungeon 1's Stone Guardian text. Added a progression contract;
+  the synchronized package now passes 69 tests.
 - Fixed a reproducible stale combat-status edge case: when the final enemy
   defeat triggers a level-up pause, room progress and the HUD now refresh
   immediately so a cleared room cannot retain a locked-door message. Added a
@@ -11,12 +29,11 @@
   screen with no door lock or enemy count. Commit `3106820` is pushed to
   GitHub as local QA hardening and is intentionally not a website deployment
   checkpoint.
-- A new clean-profile touch-first D1-8 run was prepared at 1024x768 on both
-  the local QA surface and the designated Pages preview, but the in-app browser
-  denied access before either game loaded. No alternate browser or policy
-  workaround was used; this is recorded as blocker `B-007`. The release gate
-  remains green at 67 tests, but manual route and lifecycle evidence stays
-  open until designated QA-surface access is approved.
+- A new clean-profile touch-first D1-8 run was initially prepared at 1024x768
+  on both the local QA surface and the designated Pages preview, but the
+  in-app browser denied access before either game loaded. No alternate browser
+  or policy workaround was used; this was recorded as blocker `B-007` and was
+  later cleared for loopback QA in the latest entry above.
 - Reproduced a bounded local Dungeon 1 playability gap in enlarged rooms: a
   hidden/offscreen Soul Wraith could remain alive while the door stayed locked
   after visible enemies were defeated. Added a restrained screen-space cue that

@@ -19,9 +19,10 @@ State: pre-release hardening; not a Release Candidate
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `9da1d0e` (`Add local profile transfer and combat readability`); local hardening commits `5db6db5`, `3e33470`, `8e165e1`, `4747413`, and `3106820` are pushed to `origin/main` but not deployed because they are minor follow-ups. Prior stable runtime `32d83d0` and control-record commit `194bcc5` remain in history. `8e165e1` adds exact generated-route restoration on resume, corrects the first-combat room guard, and records the bounded off-viewport target finding; `4747413` adds a restrained `THREAT` locator for hidden live targets outside the viewport; `3106820` refreshes room/HUD status as the final enemy is removed.
+- Latest deployed milestone runtime: `9da1d0e` (`Add local profile transfer and combat readability`); local hardening commits `5db6db5`, `3e33470`, `8e165e1`, `4747413`, and `3106820` plus the current boss-recovery/QA-control follow-up are pushed or being recorded on `origin/main` but not deployed because they are minor follow-ups. Prior stable runtime `32d83d0` and control-record commit `194bcc5` remain in history. `8e165e1` adds exact generated-route restoration on resume, corrects the first-combat room guard, and records the bounded off-viewport target finding; `4747413` adds a restrained `THREAT` locator for hidden live targets outside the viewport; `3106820` refreshes room/HUD status as the final enemy is removed; the current follow-up restores a recovered boss-room portal and adds a gated local summons-clear aid.
 - Checkpoint record: commit `9da1d0e`, deployed 2026-08-05 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://8d5f404a.code-quest-lab.pages.dev/`), build SHA-256 `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; the new preview live smoke reached profile/class/Town, pause/finish, Manage Data export, and cleanup at 1024x768, with zero browser diagnostics. The configured hostname loaded with no diagnostics; an existing primary-origin Mage profile was preserved and not modified.
+- Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This is local evidence only; the latest deployed site remains the prior stable checkpoint.
 
 ## Baseline evidence
 
@@ -46,9 +47,11 @@ State: pre-release hardening; not a Release Candidate
 - The non-RC evidence and owner/environment gates are consolidated in `RELEASE_AUDIT.md`.
 - Local QA tooling added after the deployed checkpoint: `?cql-dev=1` on a
   loopback HTTP/HTTPS URL plus the hidden `F8 F7 F6 F3` sequence toggles a
-  session-only developer invincibility mode. It is not serialized, exported,
-  deployed, or available on the native protocol; the local runtime smoke kept
-  the player at full HP through enemy damage and toggled the mode off.
+  session-only developer invincibility mode. With invincibility already
+  enabled, `F8 F7 F6 F4` clears live boss summons for local debugging. Neither
+  sequence is serialized, exported, deployed, or available on the native
+  protocol; the local runtime smoke kept the player at full HP through enemy
+  damage and toggled the mode off.
 - Profile-save reliability was strengthened with versioned structural validation, valid-backup promotion, and an explicit user-facing recovery notice; full migration/corruption matrix coverage remains open.
 - An automated compatibility matrix now executes the shipped `parseCharacterSave` validator against current and legacy-compatible shapes, malformed JSON, future versions, and invalid field types; browser storage backup-promotion and cross-platform migration evidence remain open.
 - An automated mocked-storage matrix now executes the shipped `loadPermanentData` path for valid primary data, backup promotion, unsafe primary/backup fallback, and retired legacy mastery-stat migration; browser/device storage, suspension, forced-closure, and cross-platform migration evidence remain open.
@@ -130,7 +133,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 67 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `B83C3DD67C88F50C5C4CC44A17FF1030FB76437F27F95A518CED6E5ECC4DEE32`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
+- Latest local verification: `npm.cmd run release:verify` passed with 69 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `C5114ACB91E6FA98AC9DA50B61A7CE903CDC559D79655559CD5276C5D903E35B`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.
@@ -157,9 +160,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - A fresh local-origin browser pass created a Mage profile, entered Town, confirmed the Adventure Routes boundary exposes only Dungeons 1-8, selected Dungeon 1 Normal with a session modifier, reached the Dungeon 1 start room, and then removed the temporary profile through Manage Data; browser logs were empty. The in-app keyboard bridge did not produce an observable movement/door transition during this run, so no full progression claim is made from it; clean-browser/device confirmation remains open.
 - A bounded 2026-08-05 local Mage run reached D1 `Crypt Passage`, `Mystic Sanctum`, `Hidden Cache`, and `Burial Hall` with the loopback developer aid enabled. It observed visible combat, shrine/treasure interaction, rewards, and level-up/gear surfaces, then reproduced one hidden/offscreen Soul Wraith retaining the Burial Hall lock after visible enemies were defeated. Commit `4747413` adds a contract-tested `THREAT` edge cue for that case; the run was paused, reloaded, recovered from the saved Burial Hall checkpoint, and resumed without browser diagnostics. Full room-clear, D1-8, touch-duration, and tablet lifecycle evidence remain open.
 - Commit `3106820` refreshes room progress and the HUD immediately when the final normal enemy is removed, so a level-up pause cannot leave a stale locked-door message. Focused and full release verification passed all 67 tests, the 17-file package audit, and native sync; the local resumed `Ruined Archway` smoke showed no stale lock or enemy count. This minor follow-up is not deployed; full D1-8 remains open.
-- The next clean-profile touch-first D1-8 run was not started because the
-  in-app browser denied access to both the loopback QA page and the designated
-  Pages preview before load. No alternate browser or policy bypass was used.
-  This is recorded as blocker `B-007`; the exact owner action is to approve
-  Codex browser access to the designated QA surfaces, after which manual route
-  and lifecycle evidence can resume.
+- The next clean-profile touch-first D1-8 run was initially stopped by the
+  in-app browser permission denial recorded as `B-007`. Loopback access has
+  since been restored and local recovery QA has resumed; Pages-preview and
+  physical-device route/lifecycle evidence remain open.

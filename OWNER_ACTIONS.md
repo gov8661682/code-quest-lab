@@ -28,9 +28,8 @@ These are human-only or account/legal actions. The development work should conti
 - The Windows-generated iOS Swift Package manifest points at the local Windows-side `node_modules` path; the Mac-side `native:sync` step must regenerate it before the Xcode build.
 - Review the generated Android manifest's default `INTERNET` declaration during the native permission audit; remove it only after an Android smoke build proves the local Capacitor shell still loads without it.
 - Approve any store submission, publication, legal agreement, purchase, or external distribution action. Codex will not perform those actions.
-- Re-enable or approve Codex in-app browser access to the designated QA pages,
-  including `http://127.0.0.1:4175/` and
-  `https://8d5f404a.code-quest-lab.pages.dev/`. On 2026-08-05, both the local
-  and Pages clean-profile Checkpoint 1 attempts were stopped before page access
-  when browser security permission was denied; once access is allowed, ask
-  Codex to resume the 1024x768 touch-first D1-8 and recovery evidence run.
+- The earlier in-app browser permission issue for the local QA surface was
+  cleared on 2026-08-05; the recovered local boss-room path was verified and
+  Checkpoint 1 work can continue. Approve Pages-preview access only if a
+  future live-preview QA pass requires it; physical-device evidence remains an
+  owner action under `BLOCKERS.md`.

@@ -4551,7 +4551,10 @@ function getCurrentRunObjective(){
 
 var activeDungeonId='dungeon1';
 
-function getActiveDungeon(){return DUNGEON_DEFS[activeDungeonId]||DUNGEON_DEFS.dungeon1;}
+function getActiveDungeon(){
+  var dungeonId=isEntranceZone(activeDungeonId)?getEntranceDungeonId(activeDungeonId):activeDungeonId;
+  return DUNGEON_DEFS[dungeonId]||DUNGEON_DEFS.dungeon1;
+}
 
 function isDungeonUnlocked(dungeonId){
   var d=DUNGEON_DEFS[dungeonId];if(!d)return false;
@@ -26165,6 +26168,8 @@ var DESKTOP_TAP_NUDGE_MS=120;
 var developerInvincibilityEnabled=false;
 var developerCheatSequence=['F8','F7','F6','F3'];
 var developerCheatProgress=0;
+var developerClearSummonsSequence=['F8','F7','F6','F4'];
+var developerClearSummonsProgress=0;
 var developerCheatLastKeyAt=0;
 function developerCheatAllowed(){
   var host=String(location.hostname||'').toLowerCase();
@@ -26172,20 +26177,49 @@ function developerCheatAllowed(){
   var isLocalWebProtocol=location.protocol==='http:'||location.protocol==='https:';
   return isLocalWebProtocol&&isLoopback&&new URLSearchParams(location.search).get('cql-dev')==='1';
 }
+function clearDeveloperBossSummons(){
+  if(!developerInvincibilityEnabled)return false;
+  var def=(typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS)?ROOM_DEFS[currentRoomId]:null;
+  if(!def||def.type!==RT.BOSS||boss||!enemies.length){
+    if(typeof showBanner==='function')showBanner('DEV TEST MODE','No live boss summons to clear',1.4);
+    return true;
+  }
+  var clearedCount=enemies.length;
+  enemies=[];
+  roomCleared=true;
+  if(roomStates[currentRoomId]){
+    roomStates[currentRoomId].cleared=true;
+    roomStates[currentRoomId].savedEnemies=[];
+  }
+  var geo=getRoomGeometry();
+  openForwardDoor(geo);
+  sideDoorOpen=(def.side!==null);
+  updateRoomProgress(geo);updateHUD();
+  if(typeof showBanner==='function')showBanner('DEV TEST MODE',clearedCount+' boss summon(s) cleared',1.6);
+  return true;
+}
 function handleDeveloperCheatKey(event){
   if(!developerCheatAllowed()||!desktopGameIsActive()||event.repeat)return false;
   var now=performance.now();
-  if(now-developerCheatLastKeyAt>4000)developerCheatProgress=0;
+  if(now-developerCheatLastKeyAt>4000){developerCheatProgress=0;developerClearSummonsProgress=0;}
   developerCheatLastKeyAt=now;
   var key=event.key;
   if(key===developerCheatSequence[developerCheatProgress])developerCheatProgress++;
   else developerCheatProgress=key===developerCheatSequence[0]?1:0;
-  if(developerCheatProgress!==developerCheatSequence.length)return false;
-  developerCheatProgress=0;
-  developerInvincibilityEnabled=!developerInvincibilityEnabled;
-  if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
-  if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
-  return true;
+  if(key===developerClearSummonsSequence[developerClearSummonsProgress])developerClearSummonsProgress++;
+  else developerClearSummonsProgress=key===developerClearSummonsSequence[0]?1:0;
+  if(developerCheatProgress===developerCheatSequence.length){
+    developerCheatProgress=0;
+    developerInvincibilityEnabled=!developerInvincibilityEnabled;
+    if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
+    if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
+    return true;
+  }
+  if(developerClearSummonsProgress===developerClearSummonsSequence.length){
+    developerClearSummonsProgress=0;
+    return clearDeveloperBossSummons();
+  }
+  return false;
 }
 // A short desktop click should still produce one basic attack. Held mouse
 // input remains the continuous path; this bounded tap fallback keeps the
@@ -28865,6 +28899,12 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
 }else if(def.type===RT.BOSS){
     if(rs.bossDefeated){
       roomCleared=true;enemies=[];
+      openForwardDoor(geo);sideDoorOpen=(def.side!==null);
+      // A defeated boss room can be restored after a reload or background
+      // recovery. Recreate the deliberate exit handoff so the victory remains
+      // completable instead of leaving the player in a cleared but portal-less
+      // room after the transient unlock timer has expired.
+      spawnExitPortal();
       var _bossSlainMsg=def._isVoidMonarchBoss?'The Void Monarch has been defeated.':(def._isDungeon2?'The Fallen King has been slain.':(def._isChieftainBoss?'The Corrupted High Chieftain has been slain.':(def._isArchmageBoss?'Archmage Valen has been slain.':(def._isHollowTreeBoss?'The Hollow World Tree has been destroyed.':(def._isBrokerBoss?'The Broker has been destroyed.':(def._isOathbreakerKingBoss?'The Oathbreaker King has been slain.':(def._isAlchemistBoss?'The Alchemist has been destroyed.':(def._isRangerCaptainBoss?'The watch has been reclaimed. The beacon burns once more.':(def._isLifeTreeArena?'The corruption has left the World Tree. It blooms once more.':(def._isCorruptionArena?'Pure Corruption has faded from this place.':'The Guardian has been slain.'))))))))));
       showBanner(def.name,_bossSlainMsg,2.0);
     }else if(def._isCorruptionArena){
