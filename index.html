@@ -22651,12 +22651,25 @@ function resetWaypointHold(){
   hideWaypointStatus();
 }
 
+// A dungeon session can end while a room lock or waypoint activation is still
+// on screen. Clear both transient messages before Town, an Entrance Area, or
+// a new run is presented so stale dungeon state never makes a safe world look
+// blocked.
+function resetSessionTransientUi(){
+  var doorStatus=document.getElementById('doorStatus');
+  if(doorStatus){doorStatus.classList.remove('visible','doorStatusLocked');doorStatus.textContent='';}
+  resetWaypointHold();
+}
+
 function updateWaypoints(dt,geo){
   // Frozen while the menu is open or a teleport is in progress.
   if(waypointMenuOpen||(waypointTeleportFade&&waypointTeleportFade.active))return;
   var zoneWaypoints=getWaypointsForZone(activeDungeonId,geo);
   if(!zoneWaypoints||zoneWaypoints.length===0){
-    if(waypointState.insideId)resetWaypointHold();
+    // Dungeon rooms do not expose a waypoint. Always clear the status when
+    // moving from an Entrance Area or Town so an old activation message cannot
+    // survive into a zone that has no waypoint at all.
+    resetWaypointHold();
     return;
   }
   var found=null;
@@ -28261,7 +28274,7 @@ function startGame(){
       var el=document.getElementById(id);if(el){el.classList.remove('visible');el.style.display='none';}
     });
     document.getElementById('waveBanner').classList.remove('visible');
-    document.getElementById('doorStatus').classList.remove('visible');
+    resetSessionTransientUi();
     document.getElementById('rageNotify').classList.remove('show');
     if(bannerTimeout){clearTimeout(bannerTimeout);bannerTimeout=null;}
     player.x=(worldRoomW||canvas.width)/2;player.y=(worldRoomH||canvas.height)/2;

@@ -19,7 +19,7 @@ State: pre-release hardening; not a Release Candidate
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest milestone runtime: `9da1d0e` (`Add local profile transfer and combat readability`); prior stable runtime `32d83d0` and control-record commit `194bcc5` remain in history. The current follow-up contains the open-world direction, AI expert evidence, copy-only usability fixes, versioned profile transfer, and grouped readability refinements.
+- Latest deployed milestone runtime: `9da1d0e` (`Add local profile transfer and combat readability`); prior stable runtime `32d83d0` and control-record commit `194bcc5` remain in history. The current local follow-up adds verified session-transient UI cleanup and supported-surface combat evidence; it is tested but not deployed.
 - Checkpoint record: commit `9da1d0e`, deployed 2026-08-05 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://8d5f404a.code-quest-lab.pages.dev/`), build SHA-256 `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; the new preview live smoke reached profile/class/Town, pause/finish, Manage Data export, and cleanup at 1024x768, with zero browser diagnostics. The configured hostname loaded with no diagnostics; an existing primary-origin Mage profile was preserved and not modified.
 
@@ -67,16 +67,18 @@ State: pre-release hardening; not a Release Candidate
   input/route evidence, not a combat-calculation diagnosis.
 - Product direction was updated to teen-first (approximately 13-17), landscape tablet touch-first, 10-30 minute sessions, restricted-device compatibility, optional authentic Learning Support, and non-manipulative monetisation. The updated direction is reflected in `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `ROADMAP.md`, `RELEASE_CRITERIA.md`, `STORE_READINESS.md`, `TEST_PLAN.md`, `MONETISATION.md`, `PRIVACY.md`, and `OWNER_ACTIONS.md`.
 - Joey's explicit open-world preference is now recorded as a staged product and architecture direction in `OPEN_WORLD_DIRECTION.md`: Town, connected regions, landmarks, waypoints, and authored dungeons should form a compact discovery-led world. The runtime remains honestly bounded at the tested D1-8 surface until C1 evidence is complete; no future destination is presented as playable by this decision alone.
-- The AI expert playtest is recorded in `AI_EXPERT_PLAYTEST.md`: Town is a promising hub foundation, but the current flow still feels route-menu-driven; the Town objective uses “practice module” language, the minimap/landmarks are not informative, the first modifier may be too aggressive for level 1, and first-combat enemy/door feedback needs stronger readability. The 2026-08-05 checkpoint now includes encoding-safe copy, Town orientation, a stable lock banner, stronger enemy silhouettes, and outlined HP bars; full attack-response evidence remains open.
+- The AI expert playtest is recorded in `AI_EXPERT_PLAYTEST.md`: Town is a promising hub foundation, but the current flow still feels route-menu-driven; the Town objective uses “practice module” language, the minimap/landmarks are not informative, the first modifier may be too aggressive for level 1, and first-combat enemy/door feedback needs stronger readability. The 2026-08-05 checkpoint includes encoding-safe copy, Town orientation, a stable lock banner, stronger enemy silhouettes, outlined HP bars, and a locally tested session-status reset; a first click-to-damage response is now reproduced, while full attack/progression evidence remains open.
 
 The deployed AI-follow-up implementation includes a stable lock banner,
-stronger enemy silhouettes, and outlined HP bars; combat calculations were not
-changed. The preview live smoke passed; full attack-response evidence remains
-open for the next supported-surface run.
+stronger enemy silhouettes, and outlined HP bars; the unreleased local
+follow-up also clears stale dungeon/waypoint status on Town recovery. Combat
+calculations were not changed. The preview live smoke passed, and a later
+1024x768 Mage run produced visible click damage and enemy defeats; full
+attack/progression evidence remains open.
 
 ## Current audit
 
-The game is a 56,957-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, versioned plain-text profile transfer, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
+The game is a 56,970-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, versioned plain-text profile transfer, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
 
 ## Release blockers
 
@@ -84,7 +86,7 @@ The game is a 56,957-line self-contained HTML file with Canvas rendering, DOM ov
 - P1: live StoreKit/Google Play/web payment adapters and sandbox entitlement tests are absent; the shared verified-entitlement boundary, product identity check, parent-gated unlock surface, and mocked core matrix are implemented.
 - Resolved for this checkpoint: production HTTPS deployment and clean-host verification pass at `https://code-quest-lab.gov8661682.com/`; redeploy remains part of every later major-milestone checkpoint.
 - P1: full progression and browser/device storage, suspension, forced-closure, and cross-platform save-compatibility coverage remains open; automated parser and production-loader matrices now cover the validator/recovery boundary.
-- P1: the clean-profile touch path reaches first combat and the defeat/recovery summary, but full combat completion, boss progression, and the V1 end-state have not yet been validated.
+- P1: the clean-profile path now has a reproduced click-to-damage response and partial enemy defeat/progression evidence on a 1024x768 Pages preview, but full combat completion, boss progression, touch-device behavior, and the V1 end-state have not yet been validated.
 - P1: the Dungeon 1-8 route endpoint is now bounded and source-resident Dungeons 9-16 are hidden until completed; clean-profile completion of the bounded V1 path and ending remains unvalidated.
 - P2: store screenshots, feature graphics, and final platform metadata are not prepared or owner-approved; native icon/splash rasters are generated but still need native build and device verification.
 - P2: an interrupted boss or mini-boss encounter resumes at the room checkpoint and restarts that encounter rather than restoring an exact combat frame.
@@ -96,7 +98,10 @@ completed milestone `9da1d0e`: added versioned plain-text profile transfer that
 preserves durable data, backup, and active-run checkpoint without overwriting
 the current profile; added grouped enemy/door readability refinements without
 changing combat calculations; and pushed/deployed/live-verified the tested
-package. The earlier slice added static/offline web shell metadata,
+package. The unreleased local follow-up clears stale dungeon lock and waypoint
+status after session exit, adds two lifecycle contracts, and records a preview
+Mage run that reached the Elite room with visible attack feedback. The earlier
+slice added static/offline web shell metadata,
 deterministic QA contracts, a bounded first-combat read-and-respond window,
 draft original vector assets, local run checkpoint recovery, optional
 after-session play notes, a clear finish-for-now path, and removed the
@@ -107,8 +112,8 @@ v8 dependency set, and prepared the public web/school-review surface.
 ## Next task
 
 Resume the highest-priority clean-profile touch-first attempt through the
-bounded Dungeon 1-8 path, reproducing attack response on a supported surface
-before changing combat code. The save-portability/readability milestone was
+bounded Dungeon 1-8 path, using the now-reproduced attack response before
+changing combat code. The save-portability/readability milestone was
 committed as `9da1d0e`, pushed, deployed, and live-verified on 2026-08-05.
 Continue with dated evidence for room/boss/ending progress, session duration,
 pause/reload/finish behavior, and browser diagnostics. Native Android/JDK and
@@ -120,7 +125,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 58 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed; the synchronized local web copies share SHA-256 `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`; the deployed shell reports the same hash.
+- Latest local verification: `npm.cmd run release:verify` passed with 60 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `D8E526F4BE13DC5098A02A3195D9601A086AF5494999BDA7B2C74855B015FBAA4`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.

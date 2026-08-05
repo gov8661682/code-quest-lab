@@ -119,19 +119,28 @@ The playtest followed a first-time player journey:
   The versioned transfer contracts preserve durable data, a valid backup, and
   a valid active-run checkpoint; upload round-trip and cross-version/device
   evidence remain open.
-- The recommendation to reproduce attack response on a supported touch/mouse
-  surface remains the highest gameplay QA priority. No combat calculation was
-  changed merely because the managed-browser playtest did not establish a
-  defeat.
+- A subsequent 1024x768 Pages-preview Mage run reproduced a visible click
+  damage response, defeated enemies, and progressed through a shrine, treasure
+  chamber, and Elite room before the session ended. The original production
+  host harness result remains a separate incomplete input attempt; no combat
+  calculation was changed.
+- A local defeat-to-Town regression run found that dungeon lock and waypoint
+  activation messages could remain in the DOM after a safe stop. The follow-up
+  now clears the transient state and a screenshot check shows a clean Town;
+  the fix is tested locally but waits for the next substantial deployment.
+- The initial attack-response reproduction is therefore no longer the top
+  blocker. The highest gameplay QA priority is now a complete clean D1-8 run,
+  followed by touch/tablet lifecycle evidence and a 10-30 minute session.
 
 ## Recommended order
 
 1. Keep the encoding-safe combat prompt, profile transfer, and grouped
    readability follow-up under live regression coverage.
-2. Reproduce first-combat attack response on a supported touch/mouse surface;
-   do not infer a combat-code defect from this harness alone.
-3. Confirm the local enemy readability and door-lock placement changes on the
-   live supported surface, then keep or adjust them only from evidence.
+2. Continue the clean D1-8 route on the supported surface now that initial
+   attack response and enemy defeat are evidenced; do not change combat math
+   without a new reproducible defect.
+3. Confirm the local enemy readability, door-lock placement, and session-status
+   cleanup together on the next tested deployment.
 4. Keep the local Town minimap foundation aligned with `OPEN_WORLD_DIRECTION.md`,
    then add a tested first Town breadcrumb and World Atlas only after the C1
    route evidence is stable.

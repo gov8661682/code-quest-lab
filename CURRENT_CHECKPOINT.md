@@ -29,8 +29,9 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 58 Node
-  tests, a 17-file static build, and the static-package audit.
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 60 Node
+  tests, a 17-file static build, and the static-package audit. The new
+  session-transient UI and no-waypoint cleanup contracts are included.
 - The versioned local profile-transfer contract preserves durable profile data,
   a valid backup, and an active-run checkpoint; import creates a new profile
   without overwriting the current profile. The local Manage Data export smoke
@@ -55,21 +56,23 @@ expanding the untested V1 content boundary.
 
 ## Active tasks
 
-1. Execute the highest-priority clean-profile, touch-first D1-8 playthrough;
-   record the first failing room/system if the run cannot complete. The
-   2026-08-05 primary-hostname harness reached three randomized first-combat
-   rooms, but did not establish an enemy defeat with touch Attack-joystick or
-   desktop click input; reproduce this on another supported browser/device or
-   isolate the event-delivery cause before changing combat code.
+1. Continue the highest-priority clean-profile, touch-first D1-8 playthrough;
+   record the first failing room/system if the run cannot complete. A fresh
+   1024x768 Pages-preview Mage run now produced visible first-hit feedback,
+   defeated enemies, cleared the opening route rooms, and reached the Elite
+   room before ending; the full D1-8 route is still unproven.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
-   recovery paths around the clean run.
+   recovery paths around the clean run, including a meaningful 10-30 minute
+   touch-first session.
 3. Keep the deployed profile-transfer and grouped enemy/door readability
-   changes under regression coverage; combat calculations remain unchanged
-   while attack response is still an evidence gap.
-4. Reproduce attack response on another supported browser/device, then resume
-   the clean-profile D1-8 route. The save/readability milestone has already
-   passed its tests, GitHub push, deployment, and live verification; keep C1
-   active because this checkpoint does not prove D1-8 completion.
+   changes under regression coverage. The local follow-up also clears stale
+   dungeon lock and waypoint messages when a session returns to Town; combat
+   calculations remain unchanged.
+4. Continue the clean-profile D1-8 route on a representative supported
+   surface. Initial attack response is now reproduced on the Pages preview;
+   the save/readability milestone has passed its tests, GitHub push, deployment,
+   and live verification, while C1 remains active because D1-8 completion and
+   tablet/lifecycle evidence are still open.
 
 The open-world design is now recorded in `OPEN_WORLD_DIRECTION.md`. It is a
 product/architecture constraint for future implementation, not permission to
@@ -98,6 +101,17 @@ skip the active C1 route, save, input, and session acceptance criteria.
   managed-browser movement/interaction inputs. The temporary profile was
   deleted; this is additional input/route evidence, not a confirmed combat
   calculation defect.
+- A subsequent fresh Mage run on the same 1024x768 Pages-preview surface
+  entered `Burial Hall`, showed a visible damage response and HP change after
+  a canvas click, defeated enemies, progressed through a shrine and treasure
+  room, and reached `Gladiator Pit` before the session ended. No browser
+  diagnostics were recorded; the controlled run did not complete the full
+  D1-8 route.
+- A local fresh-Mage regression run reached `Shadow Hall`, displayed the
+  normal defeat summary, and used `Finish For Now`. The returned Town screenshot
+  was visually free of the old dungeon lock/waypoint messages; the known
+  synthetic Mage profile was deleted afterward, while an unrelated existing
+  Barbarian profile was left untouched.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open

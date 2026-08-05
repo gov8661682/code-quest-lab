@@ -2,6 +2,18 @@
 
 ## Unreleased - 2026-08-05
 
+- Fixed a verified session-exit UI regression: returning to Town now clears
+  stale dungeon lock text, lock styling, and waypoint activation status, and
+  rooms without waypoints always hide an old activation message. Added two
+  executable lifecycle contracts. A local fresh-Mage defeat-to-Town screenshot
+  pass is clean; this follow-up is not yet deployed.
+- Reproduced first-combat attack response on the 1024x768 Pages preview with a
+  fresh Mage: a canvas click produced visible damage feedback and enemies were
+  defeated, with progression reaching the shrine, treasure, and Elite rooms
+  before the run ended. Full D1-8 completion remains open.
+- Rebuilt and re-synced the package after the follow-up. `npm.cmd run
+  release:verify` now passes 60 Node tests, the 17-file static package audit,
+  and the native web-copy sync.
 - Added the evidence-backed project control record: `PROJECT_PROGRESS.md`,
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and
   `BLOCKERS.md`; clarified that Checkpoint 1 is active and the completed Joey

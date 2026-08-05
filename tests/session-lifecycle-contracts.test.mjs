@@ -109,6 +109,96 @@ test('finish-for-now clears the run checkpoint and persists a Town resume locati
   assert.deepEqual(calls, ['clearRunCheckpoint', 'loadPermanentData', 'savePermanentData', 'enterTown']);
 });
 
+test('new sessions clear stale dungeon door and waypoint status messages', () => {
+  const elements = new Map([
+    ['doorStatus', {
+      textContent: '🔒 DOOR LOCKED (4 remaining)',
+      classList: {
+        removed: [],
+        remove(...names) { this.removed.push(...names); }
+      }
+    }],
+    ['waypointStatus', {
+      classList: {
+        removed: [],
+        remove(...names) { this.removed.push(...names); }
+      }
+    }]
+  ]);
+  const context = {
+    waypointState: {
+      insideId: 'town_waypoint',
+      timer: 1.2,
+      mode: 'activate',
+      ringWaypoint: { id: 'town_waypoint' },
+      ringPct: 0.5
+    },
+    document: {
+      getElementById(id) { return elements.get(id) || null; }
+    }
+  };
+  const start = SOURCE.indexOf('function showWaypointStatus(text)');
+  const end = SOURCE.indexOf('function updateWaypoints', start);
+  assert.notEqual(start, -1, 'session transient UI reset is present');
+  assert.notEqual(end, -1, 'session transient UI reset boundary is present');
+
+  vm.runInNewContext(`${SOURCE.slice(start, end)}\nthis.__resetSessionTransientUi = resetSessionTransientUi;`, context, {
+    filename: 'index.html#session-transient-ui-contract'
+  });
+  context.__resetSessionTransientUi();
+
+  assert.equal(elements.get('doorStatus').textContent, '');
+  assert.deepEqual(elements.get('doorStatus').classList.removed, ['visible', 'doorStatusLocked']);
+  assert.deepEqual(elements.get('waypointStatus').classList.removed, ['visible']);
+  assert.deepEqual(context.waypointState, {
+    insideId: null,
+    timer: 0,
+    mode: null,
+    ringWaypoint: null,
+    ringPct: 0
+  });
+});
+
+test('zones without waypoints hide an old activation message', () => {
+  const elements = new Map([
+    ['waypointStatus', {
+      classList: {
+        removed: [],
+        remove(...names) { this.removed.push(...names); }
+      }
+    }]
+  ]);
+  const context = {
+    activeDungeonId: 'dungeon1',
+    waypointMenuOpen: false,
+    waypointTeleportFade: { active: false },
+    waypointState: {
+      insideId: null,
+      timer: 0,
+      mode: null,
+      justActivatedId: 'depths_waypoint',
+      ringWaypoint: null,
+      ringPct: 0
+    },
+    getWaypointsForZone() { return []; },
+    document: {
+      getElementById(id) { return elements.get(id) || null; }
+    }
+  };
+  const start = SOURCE.indexOf('function showWaypointStatus(text)');
+  const end = SOURCE.indexOf('function completeWaypointActivation', start);
+  assert.notEqual(start, -1, 'waypoint helpers are present');
+  assert.notEqual(end, -1, 'waypoint update boundary is present');
+
+  vm.runInNewContext(`${SOURCE.slice(start, end)}\nthis.__updateWaypoints = updateWaypoints;`, context, {
+    filename: 'index.html#waypoint-zone-contract'
+  });
+  context.__updateWaypoints(0.2, {});
+
+  assert.deepEqual(elements.get('waypointStatus').classList.removed, ['visible']);
+  assert.equal(context.waypointState.insideId, null);
+});
+
 test('deleting the active profile removes its primary, backup, checkpoint, index entry, and active pointer', () => {
   const values = new Map([
     ['idg_char_char_a', '{primary}'],

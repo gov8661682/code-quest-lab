@@ -12,9 +12,18 @@ Updated: 2026-08-05
   discovery seam, and a non-purchasing development adapter is available for
   deterministic CI/reviewer harnesses but is excluded from `dist\`.
 - Full V1 combat progression, boss fights, and ending are not fully executed by a player; route/boss handoff contracts and save-parser/loader matrices are automated, while browser/device migration and corruption-recovery evidence remain open.
-- A fresh live 1024x768 QA run on 2026-08-05 reached three first-combat rooms but did not establish an enemy defeat through the tested touch Attack-joystick and desktop canvas-click inputs. No browser errors or warnings were recorded. Reproduce on another supported browser/device or isolate event delivery before changing combat code; this remains an active Checkpoint 1 evidence gap, not a confirmed root-cause diagnosis.
-- The 2026-08-05 AI expert playtest found low enemy/UI contrast and door-lock feedback close to the player at 1024x768, plus a corrupted dash in the first-combat onboarding prompt. The grouped follow-up is now in the verified 2026-08-05 deployment: encoding-safe combat/Town copy, a schematic Town minimap, a stable lock banner, stronger enemy silhouettes, and outlined HP bars. The live shell/profile/Town/Manage Data smoke passed; full attack-response evidence still needs a supported-surface reproduction. See `AI_EXPERT_PLAYTEST.md`.
+- The first production-host 1024x768 QA run on 2026-08-05 reached three
+  first-combat rooms but did not establish an enemy defeat through the tested
+  touch Attack-joystick and desktop canvas-click inputs. A subsequent fresh
+  Mage run on the 1024x768 Pages preview did establish visible click damage,
+  enemy defeats, and progression through shrine, treasure, and Elite rooms,
+  with no browser diagnostics. Full D1-8 completion and touch-device evidence
+  remain active Checkpoint 1 gaps; no combat calculation change is justified.
+- The 2026-08-05 AI expert playtest found low enemy/UI contrast and door-lock feedback close to the player at 1024x768, plus a corrupted dash in the first-combat onboarding prompt. The grouped follow-up is now in the verified 2026-08-05 deployment: encoding-safe combat/Town copy, a schematic Town minimap, a stable lock banner, stronger enemy silhouettes, and outlined HP bars. The live shell/profile/Town/Manage Data smoke passed; initial click-to-damage response is now reproduced on the Pages preview, while full route and touch-device evidence remain open. See `AI_EXPERT_PLAYTEST.md`.
 - Dungeons 9-16 remain source-resident for future work but are now intentionally hidden from the V1 selection, waypoint, saved-world resume, and boss-exit chain. Their completion, balance, rewards, and device evidence remain post-release backlog work.
+- A local session-exit follow-up clears stale dungeon lock and waypoint
+  messages when returning to Town and is covered by two new contracts, but the
+  fix is not in the deployed shell until the next substantial tested milestone.
 
 ## P2 - important but currently workaroundable
 
