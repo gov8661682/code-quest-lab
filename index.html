@@ -26439,6 +26439,18 @@ function Joystick(baseEl,knobEl,onTap){
 Joystick.prototype.onStart=function(e){e.preventDefault();this.active=true;this.pointerId=e.pointerId;this.startX=e.clientX;this.startY=e.clientY;this.startTime=performance.now();this.moved=false;this.base.setPointerCapture(e.pointerId);this.update(e);};
 Joystick.prototype.onMove=function(e){if(!this.active||e.pointerId!==this.pointerId)return;e.preventDefault();if(Math.abs(e.clientX-this.startX)>18||Math.abs(e.clientY-this.startY)>18)this.moved=true;this.update(e);};
 Joystick.prototype.onEnd=function(e){if(e.pointerId!=null&&e.pointerId!==this.pointerId)return;var wasTap=this.active&&!this.moved&&(performance.now()-this.startTime<320)&&(e.type==='pointerup'||e.type==='touchend');if(wasTap&&this.onTap)this.onTap();this.active=false;this.pointerId=null;this.startX=0;this.startY=0;this.startTime=0;this.moved=false;this.dx=0;this.dy=0;this.knob.style.transform='translate(0px,0px)';};
+function releaseJoystickBeforeSkillAction(event){
+  if(!event||event.pointerId==null)return false;
+  var sticks=[leftStick,rightStick];
+  for(var i=0;i<sticks.length;i++){
+    var stick=sticks[i];
+    if(stick&&stick.active&&stick.pointerId===event.pointerId){
+      stick.onEnd(event);
+      return true;
+    }
+  }
+  return false;
+}
 Joystick.prototype.update=function(e){
   var rect=this.base.getBoundingClientRect();
   // Scale travel to the rendered control so phones get the same normalized
@@ -28119,6 +28131,7 @@ function wireSkillButtons(){
       if(isAimedGroundSkill(tier))druidAimingTier=tier;
     });
     el.addEventListener('pointerup',function(e){
+      if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}
       e.preventDefault();e.stopPropagation();
       if(druidAimingTier===tier){druidAimingTier=null;activateSkill(tier);return;}
       if(isAimedGroundSkill(tier))return;// was started elsewhere; ignore stray release
@@ -28126,19 +28139,19 @@ function wireSkillButtons(){
     });
     el.addEventListener('pointercancel',function(e){if(druidAimingTier===tier)druidAimingTier=null;});
   });
-var potEl=document.getElementById('potionBtn');
+  var potEl=document.getElementById('potionBtn');
   if(potEl){
-    potEl.addEventListener('pointerup',function(e){e.preventDefault();e.stopPropagation();usePotion();});
+    potEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();usePotion();});
     potEl.addEventListener('pointerdown',function(e){e.preventDefault();});
   }
   var bobBeamEl=document.getElementById('shb-bobbeam');
   if(bobBeamEl){
-    bobBeamEl.addEventListener('pointerup',function(e){e.preventDefault();e.stopPropagation();activateBobSetDemonBeam();});
+    bobBeamEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();activateBobSetDemonBeam();});
     bobBeamEl.addEventListener('pointerdown',function(e){e.preventDefault();});
   }
   var autoRushEl=document.getElementById('autoRushBtn');
   if(autoRushEl){
-    autoRushEl.addEventListener('pointerup',function(e){e.preventDefault();e.stopPropagation();legAutoBullRushEnabled=!legAutoBullRushEnabled;updateAutoRushButton();});
+    autoRushEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();legAutoBullRushEnabled=!legAutoBullRushEnabled;updateAutoRushButton();});
     autoRushEl.addEventListener('pointerdown',function(e){e.preventDefault();});
   }
 }

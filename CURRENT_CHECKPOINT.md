@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 69 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 70 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -179,13 +179,19 @@ skip the active C1 route, save, input, and session acceptance criteria.
   Fallen Kingdom entrance correctly names the Fallen King rather than the
   previous Stone Guardian objective. The browser smoke verified both the HUD
   objective and entrance banner.
+- A 600x700 touch-layout replay found that an upward movement-joystick drag
+  could release over the adjacent Potion control in the managed browser
+  harness. Joystick pointer ownership now cancels the overlapping skill
+  release instead of activating Potion; the replay no longer showed the
+  unintended `NO POTIONS` action. The temporary route remained in Town after
+  bounded navigation attempts, so full touch-first D1-8 evidence remains open.
 - On 2026-08-05, clean-profile touch-first runs were initially stopped by
   in-app browser permission denial on both QA surfaces; this was recorded as
   blocker `B-007`. Loopback access was subsequently restored, the saved boss
   recovery path was manually verified, and manual route/lifecycle evidence
   can continue locally. Pages-preview and physical-device evidence remain
   separate open acceptance items.
-- After the latest fix, `npm.cmd run release:verify` passed all 69 tests, the 17-file
+- After the latest fix, `npm.cmd run release:verify` passed all 70 tests, the 17-file
   static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow

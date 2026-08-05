@@ -111,6 +111,12 @@ test('production joystick release fallback neutralizes movement and attack input
   assert.match(SOURCE, /document\.addEventListener\('touchend',function\(event\)\{releaseJoysticksFromGlobal\(event\);\},true\)/, 'touch-end fallback is wired');
 });
 
+test('joystick-owned touch releases cannot trigger overlapping skill buttons', () => {
+  assert.match(SOURCE, /function releaseJoystickBeforeSkillAction\(event\)\{[\s\S]*?stick\.active&&stick\.pointerId===event\.pointerId[\s\S]*?stick\.onEnd\(event\);/);
+  assert.match(SOURCE, /el\.addEventListener\('pointerup',function\(e\)\{\s*if\(releaseJoystickBeforeSkillAction\(e\)\)\{e\.preventDefault\(\);e\.stopPropagation\(\);return;\}/);
+  assert.match(SOURCE, /potEl\.addEventListener\('pointerup',function\(e\)\{if\(releaseJoystickBeforeSkillAction\(e\)\)/);
+});
+
 test('touch attack joystick supports a bounded nearest-target tap', () => {
   assert.match(SOURCE, /function Joystick\(baseEl,knobEl,onTap\)/, 'joystick accepts an optional tap action');
   assert.match(SOURCE, /e\.pointerId!=null&&e\.pointerId!==this\.pointerId/, 'global releases can neutralize a captured joystick');

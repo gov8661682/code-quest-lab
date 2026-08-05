@@ -22,6 +22,12 @@
   Fallen Kingdom names the Fallen King in the HUD and entrance banner instead
   of retaining Dungeon 1's Stone Guardian text. Added a progression contract;
   the synchronized package now passes 69 tests.
+- Hardened touch pointer ownership: a movement-joystick release that crosses
+  the adjacent Potion control no longer activates that skill. The 600x700
+  local replay no longer emitted the unintended `NO POTIONS` action, and the
+  focused/full release verification now passes 70 tests. The temporary route
+  did not complete Town navigation, so this remains local QA hardening rather
+  than a deployment checkpoint.
 - Fixed a reproducible stale combat-status edge case: when the final enemy
   defeat triggers a level-up pause, room progress and the HUD now refresh
   immediately so a cleared room cannot retain a locked-door message. Added a
