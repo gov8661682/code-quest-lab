@@ -27,6 +27,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Save and active-run contract layer | Save parser/loader matrices, backup promotion/default fallback, checkpoint parser, lifecycle tests, and deletion coverage | A failing test or real data-loss/unsafe-resume evidence |
 | Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; Manage Data export smoke confirmed the current profile remained unchanged; import contract creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces | A reproducible input, freeze, recovery, or P1 usability defect |
+| Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
 | Session transient-status cleanup | New sessions clear stale dungeon door text, lock styling, and waypoint activation state; no-waypoint zones also hide leftover activation status. Focused contracts and a local defeat-to-Town screenshot pass cover the regression. | A reproduced stale status in a new Town/Entrance session |
 | Public safety/review surface | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin/static/package safety contracts | A product-safety regression or owner-approved policy change |
 | Capacitor/native scaffolding | Android/iOS projects, `dist` sync, landscape config, App lifecycle/back-button bridge, native entitlement seam | Native sync/contract failure or platform requirement change |
@@ -46,7 +47,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 - The local follow-up commit `32d83d0` added page-background save-order test
   coverage and documentation/status corrections; it is not a new website
   milestone because the shipped shell did not change.
-- On 2026-08-05, `npm.cmd run release:verify` passed 60 tests, a 17-file build,
+- On 2026-08-05, `npm.cmd run release:verify` passed 63 tests, a 17-file build,
   and the static-package audit; `npm.cmd run native:sync` passed. The earlier
   production check and deployed profile-transfer UI smoke remain valid for
   `9da1d0e`; hardening commit `5db6db5` is pushed to `origin/main`, while the

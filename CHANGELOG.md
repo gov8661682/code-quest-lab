@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-05
 
+- Added a hidden developer-only invincibility aid for local playtesting. It
+  requires the loopback `?cql-dev=1` gate plus `F8`, `F7`, `F6`, `F3`; the same
+  sequence toggles it off. It is session-scoped, excluded from profile export
+  and save data, and cannot activate on the configured public hostname or
+  Capacitor protocol. This is not deployed.
+- Hardened Dungeon 1's first combat onboarding locally so its initial enemies
+  spawn in a readable viewport band instead of anywhere in the enlarged room;
+  normal procedural placement and combat calculations remain unchanged. Added
+  a focused source contract. This is not deployed.
 - Fixed a verified session-exit UI regression: returning to Town now clears
   stale dungeon lock text, lock styling, and waypoint activation status, and
   rooms without waypoints always hide an old activation message. Added two
@@ -13,7 +22,7 @@
   defeated, with progression reaching the shrine, treasure, and Elite rooms
   before the run ended. Full D1-8 completion remains open.
 - Rebuilt and re-synced the package after the follow-up. `npm.cmd run
-  release:verify` now passes 60 Node tests, the 17-file static package audit,
+  release:verify` now passes 63 Node tests, the 17-file static package audit,
   and the native web-copy sync.
 - Added the evidence-backed project control record: `PROJECT_PROGRESS.md`,
   `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, and

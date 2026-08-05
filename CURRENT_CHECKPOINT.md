@@ -29,7 +29,7 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 60 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 63 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI and no-waypoint cleanup contracts are included.
 - The versioned local profile-transfer contract preserves durable profile data,
@@ -65,9 +65,11 @@ expanding the untested V1 content boundary.
    recovery paths around the clean run, including a meaningful 10-30 minute
    touch-first session.
 3. Keep the deployed profile-transfer and grouped enemy/door readability
-   changes under regression coverage. The local follow-up also clears stale
-   dungeon lock and waypoint messages when a session returns to Town; combat
-   calculations remain unchanged.
+  changes under regression coverage. The local follow-up also clears stale
+  dungeon lock and waypoint messages when a session returns to Town; combat
+  calculations remain unchanged. A separate loopback-gated, session-only
+  developer invincibility aid and the first-combat visible-spawn hardening are
+  local QA tools only and are not part of the deployed checkpoint.
 4. Continue the clean-profile D1-8 route on a representative supported
    surface. Initial attack response is now reproduced on the Pages preview;
    the save/readability milestone has passed its tests, GitHub push, deployment,

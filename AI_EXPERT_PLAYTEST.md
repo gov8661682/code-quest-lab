@@ -131,6 +131,15 @@ The playtest followed a first-time player journey:
 - The initial attack-response reproduction is therefore no longer the top
   blocker. The highest gameplay QA priority is now a complete clean D1-8 run,
   followed by touch/tablet lifecycle evidence and a 10-30 minute session.
+- A subsequent local 1024x768 probe found that the first D1 combat could place
+  both onboarding enemies outside the visible portion of the enlarged room.
+  The local follow-up now places only that first encounter in a readable band;
+  later rooms retain their normal procedural placement. The focused contract,
+  native/web package sync, and 63-test release verification pass. This fix is
+  unreleased pending a major stable checkpoint.
+- A separate loopback-only developer playtest aid now prevents death without
+  changing combat math or profile/export data. It is deliberately excluded
+  from public-host/native activation and is not a player-facing feature.
 
 ## Recommended order
 
