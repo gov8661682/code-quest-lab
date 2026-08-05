@@ -29,9 +29,10 @@ expanding the untested V1 content boundary.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 66 Node
+- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 67 Node
   tests, a 17-file static build, and the static-package audit. The new
-  session-transient UI and no-waypoint cleanup contracts are included.
+  session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
+  contracts are included; `npm.cmd run native:sync` also passed.
 - The versioned local profile-transfer contract preserves durable profile data,
   a valid backup, and an active-run checkpoint; import creates a new profile
   without overwriting the current profile. The local Manage Data export smoke
@@ -156,6 +157,12 @@ skip the active C1 route, save, input, and session acceptance criteria.
   checkpoint, and resumed without data loss or browser diagnostics. The
   indicator-specific live screenshot remains unrecorded, so this evidence does
   not complete the room, D1-8, or tablet lifecycle criteria.
+- Commit `3106820` refreshes room progress and the HUD immediately after the
+  final enemy leaves the array, covering the level-up pause boundary that had
+  left a stale lock message. Focused and full release verification passed all
+  67 tests, the 17-file package audit, and native sync; a local resumed
+  `Ruined Archway` smoke showed an active game screen with empty door status
+  and no enemy count. This minor local follow-up is not deployed.
 - After the fix, `npm.cmd run release:verify` passed all 66 tests, the 17-file
   static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
@@ -179,6 +186,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
+- Current local QA follow-up: `3106820` (`Refresh combat status after final
+  enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
+  release verification; it is intentionally not a website deployment
+  checkpoint.
 - Current local QA follow-up: `4747413` (`Point toward hidden offscreen combat
   threats`), pushed to `origin/main` on 2026-08-05; it is intentionally not a
   website deployment checkpoint.

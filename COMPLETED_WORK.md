@@ -26,7 +26,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | V1 route boundary | `REGION_ORDER` and progression contracts expose D1-8 only and reject post-release checkpoint bypasses | A route guard regression or explicit scope promotion |
 | Save and active-run contract layer | Save parser/loader matrices, backup promotion/default fallback, checkpoint parser, lifecycle tests, and deletion coverage | A failing test or real data-loss/unsafe-resume evidence |
 | Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; Manage Data export smoke confirmed the current profile remained unchanged; import contract creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
-| Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue | A reproducible input, freeze, recovery, or P1 usability defect |
+| Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue; immediate final-enemy room/HUD refresh | A reproducible input, freeze, recovery, or P1 usability defect |
 | Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
 | Session transient-status cleanup | New sessions clear stale dungeon door text, lock styling, and waypoint activation state; no-waypoint zones also hide leftover activation status. Focused contracts and a local defeat-to-Town screenshot pass cover the regression. | A reproduced stale status in a new Town/Entrance session |
 | Public safety/review surface | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin/static/package safety contracts | A product-safety regression or owner-approved policy change |
@@ -69,6 +69,11 @@ documented acceptance-criterion failure. Optional improvements belong in
   remain open. The 66-test release verification, 17-file package audit, and
   native sync pass; this is intentionally not a website checkpoint or
   deployment.
+- Commit `3106820` (`Refresh combat status after final enemy defeat`) adds the
+  evidence-driven final-enemy room/HUD refresh for level-up pause timing.
+  Focused and full release verification passed all 67 tests, the 17-file
+  package audit, and native sync; a local recovered-room smoke showed no stale
+  lock. It is intentionally not a website checkpoint or deployment.
 
 ## Explicitly not completed by these records
 

@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-05
 
+- Fixed a reproducible stale combat-status edge case: when the final enemy
+  defeat triggers a level-up pause, room progress and the HUD now refresh
+  immediately so a cleared room cannot retain a locked-door message. Added a
+  focused source contract. Full `npm.cmd run release:verify` passes 67 tests,
+  the 17-file static package audit, and the build; `npm.cmd run native:sync`
+  also passes. A local recovered `Ruined Archway` smoke showed an active game
+  screen with no door lock or enemy count. Commit `3106820` is pushed to
+  GitHub as local QA hardening and is intentionally not a website deployment
+  checkpoint.
 - Reproduced a bounded local Dungeon 1 playability gap in enlarged rooms: a
   hidden/offscreen Soul Wraith could remain alive while the door stayed locked
   after visible enemies were defeated. Added a restrained screen-space cue that
