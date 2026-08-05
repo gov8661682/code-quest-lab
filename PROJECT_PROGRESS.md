@@ -14,8 +14,9 @@ Git history, and current deployment—not only on comments or planning files.
   profile transfer and combat readability`) and pushed hardening commits
   `5db6db5` (`Fix stale session status cleanup`) and `3e33470` (`Add gated
   developer invincibility cheat`), plus this local route-recovery/first-combat
-  follow-up; the deployment record for `9da1d0e` is maintained below and these
-  follow-ups are intentionally not deployed as separate minor checkpoints
+  follow-up `8e165e1` (`Fix route restoration and first combat onboarding`);
+  the deployment record for `9da1d0e` is maintained below and these follow-ups
+  are intentionally not deployed as separate minor checkpoints
 - Canonical game: `index.html`, 57,002 lines, SHA-256
   `E19FAB3F2F868554E00BA37C298790D534E990CCAA8D7DED4F375F572D517E31`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`

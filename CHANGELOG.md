@@ -34,7 +34,8 @@
   state, preventing a saved room from being interpreted against a different
   procedural layout. Added a contract and verified a clean Mage resume in the
   same room with the same enemies and locked-door state. This minor local
-  follow-up is not a website deployment checkpoint.
+  follow-up is not a website deployment checkpoint. Commit `8e165e1` is
+  pushed to GitHub.
 - Corrected the first-combat onboarding guard so it checks the current room
   definition rather than the enemy definition when deciding whether to use the
   readable spawn band. Added the regression assertion and re-ran the full

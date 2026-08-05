@@ -160,6 +160,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
+- Current local QA follow-up: `8e165e1` (`Fix route restoration and first
+  combat onboarding`), pushed to `origin/main` on 2026-08-05; it records the
+  exact-route recovery fix, corrected first-combat guard, and bounded
+  off-viewport target finding. It is intentionally not a website deployment
+  checkpoint.
 - Unreleased local QA hardening: `3e33470` (`Add gated developer invincibility
   cheat`), pushed to `origin/main` on 2026-08-05; it is intentionally not a
   website deployment checkpoint.

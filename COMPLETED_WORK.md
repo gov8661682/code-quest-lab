@@ -56,7 +56,7 @@ documented acceptance-criterion failure. Optional improvements belong in
   `origin/main`. It groups the local first-combat spawn hardening, developer
   cheat contract, and current control-record updates; it is intentionally not
   a website checkpoint or deployment.
-- The current local follow-up adds exact generated-route restoration before
+- Commit `8e165e1` adds exact generated-route restoration before
   checkpoint room-state application and corrects the first-combat room guard;
   focused contracts, the 65-test release verification, source-mirror equality,
   native sync, and a clean same-room resume smoke pass. It is intentionally not
