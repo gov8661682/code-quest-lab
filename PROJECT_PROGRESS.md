@@ -10,9 +10,11 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` contains milestone commit `9da1d0e` (`Add local profile
-  transfer and combat readability`), pushed to `origin/main`; the deployment
-  record for this milestone is being maintained below
+- Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
+  profile transfer and combat readability`) and pushed hardening commit
+  `5db6db5` (`Fix stale session status cleanup`); the deployment record for
+  `9da1d0e` is maintained below and `5db6db5` is intentionally not deployed as
+  a separate minor checkpoint
 - Canonical game: `index.html`, 56,970 lines, SHA-256
   `D8E526F4BE13DC5098A02A3195D9601A086AF5494999BDA7B2C74855B015FBAA4`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`

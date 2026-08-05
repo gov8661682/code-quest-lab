@@ -6,7 +6,8 @@
   stale dungeon lock text, lock styling, and waypoint activation status, and
   rooms without waypoints always hide an old activation message. Added two
   executable lifecycle contracts. A local fresh-Mage defeat-to-Town screenshot
-  pass is clean; this follow-up is not yet deployed.
+  pass is clean. Commit `5db6db5` is pushed to GitHub; this follow-up is not
+  yet deployed.
 - Reproduced first-combat attack response on the 1024x768 Pages preview with a
   fresh Mage: a canvas click produced visible damage feedback and enemies were
   defeated, with progression reaching the shrine, treasure, and Elite rooms

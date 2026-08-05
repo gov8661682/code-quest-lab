@@ -49,7 +49,8 @@ documented acceptance-criterion failure. Optional improvements belong in
 - On 2026-08-05, `npm.cmd run release:verify` passed 60 tests, a 17-file build,
   and the static-package audit; `npm.cmd run native:sync` passed. The earlier
   production check and deployed profile-transfer UI smoke remain valid for
-  `9da1d0e`; the stale-status follow-up is tested locally but is not deployed.
+  `9da1d0e`; hardening commit `5db6db5` is pushed to `origin/main`, while the
+  stale-status follow-up is tested locally but is not deployed.
 
 ## Explicitly not completed by these records
 

@@ -133,6 +133,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
+- Unreleased local hardening: `5db6db5` (`Fix stale session status cleanup`),
+  pushed to `origin/main` on 2026-08-05; tests and package sync pass, but this
+  minor follow-up is intentionally not a separate website deployment.
 - Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
