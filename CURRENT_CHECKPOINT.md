@@ -163,6 +163,13 @@ skip the active C1 route, save, input, and session acceptance criteria.
   67 tests, the 17-file package audit, and native sync; a local resumed
   `Ruined Archway` smoke showed an active game screen with empty door status
   and no enemy count. This minor local follow-up is not deployed.
+- On 2026-08-05, clean-profile touch-first runs were prepared at 1024x768 on
+  both the local QA surface and the designated Pages preview, but in-app
+  browser navigation was denied before either game page loaded. No alternate
+  browser, policy workaround, or gameplay claim was made. `npm.cmd run
+  release:verify` independently passed all 67 tests, the 17-file package
+  audit, and the build; resume manual D1-8 and lifecycle evidence after owner
+  action `B-007` allows the designated QA surfaces.
 - After the fix, `npm.cmd run release:verify` passed all 66 tests, the 17-file
   static package audit, and the build; `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms

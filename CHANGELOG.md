@@ -11,6 +11,12 @@
   screen with no door lock or enemy count. Commit `3106820` is pushed to
   GitHub as local QA hardening and is intentionally not a website deployment
   checkpoint.
+- A new clean-profile touch-first D1-8 run was prepared at 1024x768 on both
+  the local QA surface and the designated Pages preview, but the in-app browser
+  denied access before either game loaded. No alternate browser or policy
+  workaround was used; this is recorded as blocker `B-007`. The release gate
+  remains green at 67 tests, but manual route and lifecycle evidence stays
+  open until designated QA-surface access is approved.
 - Reproduced a bounded local Dungeon 1 playability gap in enlarged rooms: a
   hidden/offscreen Soul Wraith could remain alive while the door stayed locked
   after visible enemies were defeated. Added a restrained screen-space cue that
