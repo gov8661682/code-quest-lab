@@ -13,8 +13,8 @@ Git history, and current deployment—not only on comments or planning files.
 - Git state: `main` contains control-record commit `194bcc5` (`Record project
   checkpoint controls and QA gap`); this change set adds the open-world
   direction, AI expert evidence, and synchronized copy-only usability fixes
-- Canonical game: `index.html`, 56,689 lines, SHA-256
-  `56BD21461F55FE29FF177BFACC40B13C78DA830D430C17D06A503A3FBCBE32C8`
+- Canonical game: `index.html`, 56,754 lines, SHA-256
+  `7205260DC77D0A7BFDFE1AB5C0BDBE80F220545AE06F4865ADA97EFCF11C903C`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
@@ -25,8 +25,8 @@ Git history, and current deployment—not only on comments or planning files.
   passed
 - Last website checkpoint: commit `bf07810`, deployed and live-verified on
   2026-08-04 at `https://code-quest-lab.gov8661682.com/`; the current local
-  shell includes copy-only fixes but is not yet a stable major milestone for
-  publication
+  shell includes the Town minimap and copy-only fixes but is not yet a stable
+  major milestone for publication
 
 ## Completed
 
@@ -43,8 +43,8 @@ Git history, and current deployment—not only on comments or planning files.
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
 | Current web deployment checkpoint | Complete for the 2026-08-04 milestone | Cloudflare Pages project `code-quest-lab`; primary hostname and preview passed production checks and live desktop/tablet first-combat smoke | Repeat only after a later major tested milestone; current open-world/design review and incomplete copy/usability fixes do not require redeployment | Owner-approved hosting access for future publishes | Yes | Do not deploy incomplete or minor changes |
-| Open-world product and architecture direction | Complete as a design decision; runtime implementation is intentionally staged | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; `DECISIONS.md` records the explicit owner direction | Implement and test the first World Atlas/region graph only after C1 playability and relevant save/input evidence are stable | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
-| AI expert playtest and first usability fixes | Playtest complete; one verified copy defect fixed locally, gameplay/UI improvements remain | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; the onboarding dash and Town objective wording are now encoding-safe/local | Re-test the updated copy in a supported build; reproduce attack response; then group confirmed enemy/door readability changes into the next meaningful C1 milestone | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Use the report to guide the next C1 QA cycle; do not deploy the incomplete fix alone |
+| Open-world product and architecture direction | Complete as a design decision; runtime implementation is intentionally staged | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; the existing Town layout now also feeds a local schematic minimap; `DECISIONS.md` records the explicit owner direction | Implement and test the first World Atlas/region graph only after C1 playability and relevant save/input evidence are stable | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
+| AI expert playtest and first usability fixes | Playtest complete; copy and Town orientation fixes are local, gameplay/UI improvements remain | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy is encoding-safe/local and the Town minimap now shows existing geography | Re-test the updated local build on a supported surface; reproduce attack response; then group confirmed enemy/door readability changes into the next meaningful C1 milestone | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Use the report to guide the next C1 QA cycle; do not deploy the incomplete fix alone |
 
 ## Partially completed
 

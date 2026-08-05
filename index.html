@@ -41412,6 +41412,10 @@ var minimapCtx=minimapCanvas.getContext('2d');
 function drawMinimap(){
   var mc=minimapCtx;var mw=minimapCanvas.width,mh=minimapCanvas.height;
   mc.clearRect(0,0,mw,mh);mc.fillStyle='rgba(11,11,16,0.9)';mc.fillRect(0,0,mw,mh);
+  if(activeDungeonId==='town'){
+    drawTownMinimap(mc,mw,mh);
+    return;
+  }
   var roomPositions=_minimapPositions;
   var rw=8,rh=6;
   mc.strokeStyle='#3a342a';mc.lineWidth=1;
@@ -41456,6 +41460,67 @@ function drawMinimap(){
     mc.fillText(icon,pos.mx*mw,pos.my*mh);
   }
   mc.textAlign='left';mc.textBaseline='alphabetic';
+}
+
+// Town is the first authored open-world region. Its minimap uses the same
+// layout registry as the world renderer so the player can read the plaza,
+// roads, buildings, pond, and northern dungeon portal while exploring. It is
+// deliberately compact and schematic: the main canvas remains the place for
+// detailed discovery, while this surface answers "where am I going?" at a
+// glance on desktop and tablet screens.
+function drawTownMinimap(mc,mw,mh){
+  var geo=getRoomGeometry();
+  if(!geo||!geo.inner||!geo.inner.w||!geo.inner.h)return;
+  var inner=geo.inner, pad=7, sx=(mw-pad*2)/inner.w, sy=(mh-pad*2)/inner.h;
+  var point=function(x,y){return{x:pad+(x-inner.x)*sx,y:pad+(y-inner.y)*sy};};
+  var plaza=getTownLayout(geo).plaza;
+  var portal=getTownLayout(geo).portalArea;
+  var layout=getTownLayout(geo);
+  var mapPoint=point;
+  var lineWidth=Math.max(1.5,Math.min(4,Math.min(sx,sy)*18));
+  var plazaPoint=mapPoint(plaza.x,plaza.y);
+
+  mc.save();
+  mc.font='bold 7px Arial';mc.textAlign='left';mc.textBaseline='alphabetic';
+  mc.fillStyle='rgba(232,221,200,0.9)';mc.fillText('TOWN',4,8);
+  mc.font='6px Arial';mc.fillStyle='rgba(200,168,248,0.9)';mc.textAlign='right';mc.fillText('N',mw-4,8);
+
+  // Roads preserve the authored hub shape without implying a tested seamless
+  // world beyond the current Town boundary.
+  mc.strokeStyle='rgba(138,112,80,0.75)';mc.lineWidth=lineWidth;mc.lineCap='round';
+  layout.buildings.concat([portal]).forEach(function(destination){
+    var target=destination.h?mapPoint(destination.x,destination.y+destination.h/2+10):mapPoint(destination.x,destination.y+60);
+    mc.beginPath();mc.moveTo(plazaPoint.x,plazaPoint.y);mc.lineTo(target.x,target.y);mc.stroke();
+  });
+
+  // Landmarks are intentionally distinct from combat-room colors: Town is a
+  // safe place, while the portal is the one forward adventure route.
+  var pondPoint=mapPoint(layout.pond.x,layout.pond.y);
+  mc.fillStyle='rgba(60,120,160,0.85)';mc.beginPath();
+  mc.ellipse(pondPoint.x,pondPoint.y,layout.pond.rx*sx,layout.pond.ry*sy,0,0,Math.PI*2);mc.fill();
+  layout.buildings.forEach(function(building){
+    var bp=mapPoint(building.x,building.y);
+    mc.fillStyle='rgba(90,74,58,0.95)';
+    mc.fillRect(bp.x-building.w*sx/2,bp.y-building.h*sy/2,building.w*sx,building.h*sy);
+  });
+  layout.trees.forEach(function(tree){
+    var tp=mapPoint(tree.x,tree.y);mc.fillStyle='rgba(74,125,58,0.95)';
+    mc.beginPath();mc.arc(tp.x,tp.y,Math.max(1.5,3*Math.min(sx,sy)),0,Math.PI*2);mc.fill();
+  });
+
+  mc.fillStyle='rgba(216,192,138,0.95)';mc.beginPath();
+  mc.arc(plazaPoint.x,plazaPoint.y,Math.max(3,5*Math.min(sx,sy)),0,Math.PI*2);mc.fill();
+  var portalPoint=mapPoint(portal.x,portal.y);
+  mc.fillStyle='rgba(200,168,248,0.95)';mc.strokeStyle='#e0c8ff';mc.lineWidth=1;
+  mc.beginPath();mc.arc(portalPoint.x,portalPoint.y,Math.max(3,5*Math.min(sx,sy)),0,Math.PI*2);mc.fill();mc.stroke();
+  mc.fillStyle='#ffd98a';mc.strokeStyle='#fff0b0';mc.lineWidth=1.2;
+  var playerPoint=mapPoint(player.x,player.y);
+  mc.beginPath();mc.arc(playerPoint.x,playerPoint.y,Math.max(2,4*Math.min(sx,sy)),0,Math.PI*2);mc.fill();mc.stroke();
+
+  mc.font='5px Arial';mc.textAlign='center';mc.fillStyle='rgba(232,221,200,0.9)';
+  mc.fillText('WAYPOINT',plazaPoint.x,plazaPoint.y+10);
+  mc.fillStyle='rgba(200,168,248,0.95)';mc.fillText('DEPTHS',portalPoint.x,portalPoint.y+10);
+  mc.restore();
 }
 
 // ============================================================

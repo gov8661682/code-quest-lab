@@ -29,6 +29,10 @@
   prioritized improvements. Fixed the corrupted first-combat onboarding dash
   and replaced the school-like Town objective wording in the local source; no
   website deployment was made for these incomplete usability fixes.
+- Added a local Town minimap using the existing world layout, showing roads,
+  safe-hub landmarks, the player, Waypoint Plaza, and the northern dungeon
+  destination. The static package is verified; this incomplete C1/open-world
+  slice is not deployed alone.
 
 ## Unreleased - 2026-08-04
 

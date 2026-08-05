@@ -72,6 +72,10 @@ The playtest followed a first-time player journey:
 - The upper-right minimap was visually blank or nearly blank during Town play.
   It should show roads, the player, the Waypoint Plaza, the north destination,
   and discovered landmarks with a simple legend/compass.
+- The local follow-up now renders those existing Town landmarks, roads, the
+  player marker, and the northern `DEPTHS` destination in the Town minimap. It
+  is verified in the static package, but is not yet live until a later tested
+  deployment.
 - The starting Town view showed very little NPC/landmark storytelling. Add one
   clear first breadcrumb: an NPC, signpost, shrine, road marker, or visible
   landmark that explains what the northern destination is and why it matters.
@@ -109,8 +113,9 @@ The playtest followed a first-time player journey:
    do not infer a combat-code defect from this harness alone.
 3. Improve enemy readability and door-lock placement as a grouped C1 usability
    fix if the supported-surface test confirms the need.
-4. Add the first open-world-facing Town breadcrumb and minimap/atlas foundation
-   only after the C1 route evidence is stable, using `OPEN_WORLD_DIRECTION.md`.
+4. Keep the local Town minimap foundation aligned with `OPEN_WORLD_DIRECTION.md`,
+   then add a tested first Town breadcrumb and World Atlas only after the C1
+   route evidence is stable.
 5. Replace route-only progression with a tested World Atlas/region graph in a
    later major milestone; keep D9-16 and other incomplete content honestly
    unavailable until complete.

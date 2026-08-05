@@ -124,11 +124,13 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Current read-only production check: passed on 2026-08-05
 
 The local change set after `bf07810` includes documentation, AI playtest
-evidence, and synchronized copy-only runtime fixes. The tested local shell is
-SHA-256 `56BD21461F55FE29FF177BFACC40B13C78DA830D430C17D06A503A3FBCBE32C8`,
+evidence, synchronized copy-only runtime fixes, and the existing-Town minimap
+foundation. The tested local shell is SHA-256
+`7205260DC77D0A7BFDFE1AB5C0BDBE80F220545AE06F4865ADA97EFCF11C903C`,
 while the live shell remains `F4A12AD085F8AF3E7272CFDB03AEAC82DFA6F6205836270A192D2A8B1D085FD3`.
-The copy fixes are not yet a stable major milestone, so they are recorded for
-the next tested checkpoint rather than deployed alone.
+These local usability/open-world-slice changes are not yet a stable major
+milestone, so they are recorded for the next tested checkpoint rather than
+deployed alone.
 
 ## Exact condition required to advance
 
