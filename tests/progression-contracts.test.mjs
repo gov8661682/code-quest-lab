@@ -151,6 +151,11 @@ test('entrance objectives resolve from the underlying dungeon definition', () =>
   assert.match(SOURCE, /function getActiveDungeon\(\)\{[\s\S]*?isEntranceZone\(activeDungeonId\)\?getEntranceDungeonId\(activeDungeonId\):activeDungeonId[\s\S]*?return DUNGEON_DEFS\[dungeonId\]\|\|DUNGEON_DEFS\.dungeon1;/);
 });
 
+test('Town keeps the open-world portal discoverable off-screen', () => {
+  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?activeDungeonId!==\'town\'[\s\S]*?portalArea/);
+  assert.match(SOURCE, /drawOffscreenEnemyIndicators\(\);\s*drawTownPortalIndicator\(\);/);
+});
+
 test('production navigation hides post-release dungeon entries and blocks legacy resume bypasses', () => {
   assert.match(SOURCE, /REGION_ORDER\.forEach\(function\(did\)\{/);
   assert.match(SOURCE, /function isReleaseDungeon\(dungeonId\)\{return REGION_ORDER\.indexOf\(dungeonId\)>=0;\}/);

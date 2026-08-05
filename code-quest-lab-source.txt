@@ -41893,6 +41893,28 @@ function drawOffscreenEnemyIndicators(){
   ctx.fillText(_indicatorLabel,labelX,labelY);ctx.restore();
 }
 
+// Town is intentionally free-roaming, but the first authored destination can
+// sit outside the camera on a compact tablet viewport. Keep discovery honest
+// by pointing toward the existing portal only when it is off-screen; the
+// player still has to walk there and the minimap remains the detailed map.
+function drawTownPortalIndicator(){
+  if(!gameRunning||activeDungeonId!=='town')return;
+  var geo=getRoomGeometry(),layout=getTownLayout(geo),portal=layout&&layout.portalArea;
+  if(!portal)return;
+  var sx=portal.x-camera.x,sy=portal.y-camera.y,pad=48,topPad=104;
+  if(sx>=pad&&sx<=canvas.width-pad&&sy>=pad&&sy<=canvas.height-pad)return;
+  var cx=canvas.width/2,cy=canvas.height/2,dx=sx-cx,dy=sy-cy;
+  if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
+  var tx=dx>0?(canvas.width-pad-cx)/dx:(pad-cx)/dx;
+  var ty=dy>0?(canvas.height-pad-cy)/dy:(topPad-cy)/dy;
+  var t=Math.min(tx>0?tx:Infinity,ty>0?ty:Infinity);
+  if(!isFinite(t))return;
+  var ix=clamp(cx+dx*t,pad,canvas.width-pad),iy=clamp(cy+dy*t,topPad,canvas.height-pad),angle=Math.atan2(dy,dx);
+  ctx.save();ctx.translate(ix,iy);ctx.rotate(angle);ctx.globalAlpha=0.94;ctx.shadowColor='rgba(200,168,248,0.85)';ctx.shadowBlur=8;
+  ctx.fillStyle='rgba(42,24,62,0.9)';ctx.strokeStyle='#e0c8ff';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(-9,-10);ctx.lineTo(-5,0);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+}
+
 // ============================================================
 // DRAW
 // ============================================================
@@ -42006,6 +42028,7 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
   drawOffscreenEnemyIndicators();
+  drawTownPortalIndicator();
   // HUD elements drawn in screen space (no camera offset)
   drawXPBarCanvas();
   // Blighted Raven blind debuff — dark vignette closing in around the edges
