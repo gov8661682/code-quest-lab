@@ -92,6 +92,12 @@ skip the active C1 route, save, input, and session acceptance criteria.
 - The temporary QA profile was deleted through the in-game Manage Data
   confirmation. No pre-existing profile data was present at the start of this
   run.
+- After the 2026-08-05 deployment checkpoint, a fresh Mage probe on the Pages
+  preview at 1024x768 reached Dungeon 1 `START Ancient Entrance` with no
+  browser diagnostics but did not transition from room 0 after the tested
+  managed-browser movement/interaction inputs. The temporary profile was
+  deleted; this is additional input/route evidence, not a confirmed combat
+  calculation defect.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open

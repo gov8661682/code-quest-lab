@@ -47,6 +47,11 @@
   the locked-door message is anchored in a stable top banner and enemies have
   stronger silhouettes and outlined HP bars. Combat calculations were not
   changed; supported-surface attack evidence remains open.
+- Continued Checkpoint 1 QA after deployment with a fresh Mage preview probe:
+  Dungeon 1 reached `START Ancient Entrance` at 1024x768 with no browser
+  diagnostics, but the managed-browser movement/interaction sequence did not
+  enter room 1. The synthetic profile was removed and no combat math was
+  changed from this evidence gap.
 
 ## Unreleased - 2026-08-04
 
