@@ -15,3 +15,12 @@ test('first combat keeps initial enemies inside a readable onboarding band', () 
   assert.match(SOURCE, /ey=clamp\(player\.y\+250\+_firstCombatSlot\*70,minY,maxY\);/);
   assert.match(SOURCE, /preserving the normal procedural placement everywhere else/);
 });
+
+test('larger combat rooms point toward a live enemy outside the viewport', () => {
+  assert.match(SOURCE, /function drawOffscreenEnemyIndicators\(\)/);
+  assert.match(SOURCE, /var cx=canvas\.width\/2,cy=canvas\.height\/2,pad=44,best=null,bestDist=Infinity,bestHidden=false;/);
+  assert.match(SOURCE, /if\(!oe\|\|oe\.hp<=0\|\|oe\.destroyed\|\|oe\.bkaInvisible\|\|oe\.buried\)continue;/);
+  assert.match(SOURCE, /var _isHiddenThreat=!!\(oe\.wraithing&&!oe\.wraith_visible\);/);
+  assert.match(SOURCE, /var _indicatorLabel=bestHidden\?'THREAT':'TARGET';/);
+  assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s+drawOffscreenEnemyIndicators\(\);/);
+});

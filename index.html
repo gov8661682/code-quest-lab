@@ -41796,6 +41796,42 @@ function drawTownMinimap(mc,mw,mh){
   mc.restore();
 }
 
+// When a room is larger than the viewport, a live enemy can legitimately
+// remain outside the camera while the door is still locked. Give the player a
+// restrained screen-space cue to locate the nearest target without changing
+// enemy movement, attack calculations, or the authored room layout.
+function drawOffscreenEnemyIndicators(){
+  if(!gameRunning||!activeDungeonId||activeDungeonId==='town'||!enemies.length||canvas.width<10||canvas.height<10)return;
+  var cx=canvas.width/2,cy=canvas.height/2,pad=44,best=null,bestDist=Infinity,bestHidden=false;
+  for(var oi=0;oi<enemies.length;oi++){
+    var oe=enemies[oi];
+    if(!oe||oe.hp<=0||oe.destroyed||oe.bkaInvisible||oe.buried)continue;
+    var _isHiddenThreat=!!(oe.wraithing&&!oe.wraith_visible);
+    var osx=oe.x-camera.x,osy=oe.y-camera.y;
+    if(osx>=pad&&osx<=canvas.width-pad&&osy>=pad&&osy<=canvas.height-pad)continue;
+    var od=Math.hypot(osx-cx,osy-cy);
+    if(od<bestDist){best=oe;bestDist=od;bestHidden=_isHiddenThreat;}
+  }
+  if(!best)return;
+  var sx=best.x-camera.x,sy=best.y-camera.y,dx=sx-cx,dy=sy-cy;
+  if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
+  var tx=dx>0?(canvas.width-pad-cx)/dx:(pad-cx)/dx;
+  var ty=dy>0?(canvas.height-pad-cy)/dy:(pad-cy)/dy;
+  var t=Math.min(tx>0?tx:Infinity,ty>0?ty:Infinity);
+  if(!isFinite(t))return;
+  var ix=clamp(cx+dx*t,pad,canvas.width-pad),iy=clamp(cy+dy*t,pad,canvas.height-pad);
+  var angle=Math.atan2(dy,dx);
+  ctx.save();ctx.translate(ix,iy);ctx.rotate(angle);ctx.globalAlpha=0.95;
+  ctx.fillStyle=bestHidden?'rgba(38,24,58,0.9)':'rgba(35,18,18,0.88)';ctx.strokeStyle=bestHidden?'#c8a8f8':'#ffd98a';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(14,0);ctx.lineTo(-8,-9);ctx.lineTo(-4,0);ctx.lineTo(-8,9);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
+  ctx.save();ctx.fillStyle='rgba(255,217,138,0.95)';ctx.font='bold 10px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+  var labelX=clamp(ix-Math.cos(angle)*22,48,canvas.width-48),labelY=clamp(iy-Math.sin(angle)*22,18,canvas.height-18);
+  var _indicatorLabel=bestHidden?'THREAT':'TARGET';
+  ctx.fillStyle=bestHidden?'rgba(200,168,248,0.95)':'rgba(255,217,138,0.95)';
+  ctx.fillText(_indicatorLabel,labelX,labelY);ctx.restore();
+}
+
 // ============================================================
 // DRAW
 // ============================================================
@@ -41908,6 +41944,7 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawPlayer();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
+  drawOffscreenEnemyIndicators();
   // HUD elements drawn in screen space (no camera offset)
   drawXPBarCanvas();
   // Blighted Raven blind debuff — dark vignette closing in around the edges
