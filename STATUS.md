@@ -1,6 +1,6 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-05
+Date: 2026-08-07
 State: pre-release hardening; not a Release Candidate
 
 ## Creative reference audit
@@ -16,6 +16,14 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
+- Evidence-scored progress: Checkpoint 1 is **54%** complete and overall
+  project progress is **15%** using the ten-checkpoint formula in
+  `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
+  and verifies the three/five-attempt loop breaker.
+- Autonomous work protocol: `AUTORUN.md` requires a concrete progress delta per
+  cycle, a strategy change after three materially identical technical
+  failures, and a hard stop after five materially identical gameplay/manual
+  attempts. Independent checkpoint work continues around external blockers.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
@@ -133,7 +141,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 71 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `D2D5351A749E9905FA93211BAD0705EABDCBE99C2B812827D4F6058457931E9F`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
+- Latest local verification: `npm.cmd run release:verify` passed with 74 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; the prior `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `D2D5351A749E9905FA93211BAD0705EABDCBE99C2B812827D4F6058457931E9F`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.

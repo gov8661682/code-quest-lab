@@ -115,3 +115,18 @@ future Joey classes are rejected safely rather than silently mapped to another
 class. This is a convenience transfer/backup format, not account sync, cloud
 backup, or evidence that the full cross-version/device save milestone is
 complete.
+
+## D-018 - Autonomous work is bounded and progress is evidence-scored
+
+`AUTORUN.md` is the canonical autonomous work protocol. Every work cycle must
+produce a concrete progress delta against the active checkpoint. Three
+materially identical technical failures require a strategy change; five
+materially identical gameplay/manual attempts require the route to stop and
+the evidence to be recorded. Small variations do not reset either count.
+
+`CURRENT_CHECKPOINT.md` displays the main active-checkpoint and overall-project
+percentages. The active score is the sum of earned points in its 100-point
+acceptance table. Overall progress is the completed-checkpoint count plus the
+earned share of the active checkpoint across the ten documented checkpoints.
+Scores change only when named evidence changes and never replace acceptance
+criteria or release gates.

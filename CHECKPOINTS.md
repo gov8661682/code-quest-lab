@@ -1,11 +1,16 @@
 # Code Quest Lab - Major Checkpoints to Release Candidate
 
-Updated: 2026-08-05
+Updated: 2026-08-07
 
 Only one checkpoint may be active. A checkpoint is complete only when its
 acceptance criteria, tests, manual evidence, documentation, and required
 GitHub/website checkpoint are complete. Minor fixes are grouped into the next
 meaningful milestone and do not trigger a deployment by themselves.
+
+The main evidence-scored display is in `CURRENT_CHECKPOINT.md`; Checkpoint 1 is
+currently 54% complete and overall project progress is 15%. `AUTORUN.md`
+defines the bounded autonomous cycle and prevents repeated failed work from
+being counted as progress.
 
 ## Checkpoint 0 - Baseline, creative direction, and release foundation
 

@@ -1,5 +1,16 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-07
+
+- Added the canonical bounded autonomous-work protocol in `AUTORUN.md`.
+  Every cycle must produce new checkpoint evidence; three materially identical
+  technical failures force a strategy change, and five materially identical
+  gameplay/manual attempts force that route to stop and be recorded.
+- Added the main evidence-scored progress display to `CURRENT_CHECKPOINT.md`:
+  Checkpoint 1 is 54% complete and the ten-checkpoint project is 15% complete.
+  An executable project-control contract validates the scoring arithmetic,
+  retry limits, and status consistency during release verification.
+
 ## Unreleased - 2026-08-05
 
 - Fixed recovered boss-room progression: when a defeated boss room is restored

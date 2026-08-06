@@ -1,11 +1,31 @@
 # Code Quest Lab - Current Checkpoint
 
-Updated: 2026-08-05
+Updated: 2026-08-07
 
 ## Current checkpoint
 
 **Checkpoint 1 - Core game stability and complete V1 path**
 Status: **Active; not complete**
+
+## Main progress checkpoint
+
+<!-- checkpoint-progress:start -->
+Active checkpoint completion: **54%**
+
+Overall project completion: **15%**
+
+Scoring date: 2026-08-07. Overall progress is rounded from one completed
+checkpoint plus 54% of the active checkpoint across ten checkpoints.
+
+| Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
+|---|---:|---:|---|---|
+| Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 10 | Fresh D1 partial rooms; resumed D2 boss; recovered D1 boss portal; automated D1-8 route contracts | One fresh player-completed D1-8 route and intended ending |
+| Meaningful 10-30 minute touch-first session | 20 | 8 | Touch Town/entrance/combat flow, objective, pause/summary/finish surfaces, and compact-layout control evidence | One dated 10-30 minute touch-first session with the full safe-stop sequence |
+| Reload, background, forced-close, and deliberate-finish recovery | 15 | 10 | Page-background and lifecycle contracts; same-room reload recovery; boss-room recovery; deliberate Finish For Now evidence | Real-storage forced-close simulation and a complete lifecycle sequence |
+| Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
+| Versioned plain-text profile transfer | 10 | 8 | Export smoke plus export/import validation, active-run preservation, and non-overwrite contracts | Real upload round trip and cross-version/device evidence |
+| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 74-test release verification, build/package audit, prior native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
+<!-- checkpoint-progress:end -->
 
 ## Current objective
 
@@ -16,6 +36,10 @@ dungeon, boss, dialogue, and ending direction while fixing only verified
 defects. Shape the implementation so Town, entrances, waypoints, and saved
 world locations can grow into the explicit compact open-world direction without
 expanding the untested V1 content boundary.
+
+Autonomous continuation follows `AUTORUN.md`. The score above changes only
+when its table gains or loses named evidence; retries and effort alone do not
+change it.
 
 ## Completed acceptance criteria
 
@@ -63,7 +87,9 @@ expanding the untested V1 content boundary.
    defeated enemies, cleared the opening route rooms, and reached the Elite
    room before ending; a later bounded local run reached `Burial Hall`, where
    one hidden/offscreen Soul Wraith remained. The full D1-8 route is still
-   unproven.
+   unproven. Apply the `AUTORUN.md` failure fingerprint: switch strategy after
+   three materially identical technical failures and stop the same manual
+   route after five materially identical attempts.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
    recovery paths around the clean run, including a meaningful 10-30 minute
    touch-first session.
@@ -191,8 +217,9 @@ skip the active C1 route, save, input, and session acceptance criteria.
   recovery path was manually verified, and manual route/lifecycle evidence
   can continue locally. Pages-preview and physical-device evidence remain
   separate open acceptance items.
-- After the latest fix, `npm.cmd run release:verify` passed all 71 tests, the 17-file
-  static package audit, and the build; `npm.cmd run native:sync` also passed.
+- After the latest control update, `npm.cmd run release:verify` passed all 74
+  tests, the 17-file static package audit, and the build; the prior
+  `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open
@@ -213,6 +240,11 @@ skip the active C1 route, save, input, and session acceptance criteria.
 These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
+
+- Current repository head: `35f26c0` (`Record Town discovery QA`), pushed to
+  `origin/main`; the worktree was clean on 2026-08-07 before this control
+  update. It records bounded Town discovery evidence and is intentionally not
+  a website deployment checkpoint.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full

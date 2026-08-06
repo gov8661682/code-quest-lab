@@ -120,4 +120,11 @@ For each major milestone:
 
 Deployment must not interrupt autonomous development. After a checkpoint is verified, continue immediately with the highest-priority unfinished item in the existing Goal. The working order is: creative reference audit -> scoped implementation -> tests/build/playability -> GitHub and website checkpoint -> next unfinished Goal item.
 
+Autonomous continuation follows `AUTORUN.md`: every cycle must produce a
+concrete progress delta, three materially identical technical failures force a
+strategy change, and five materially identical manual/gameplay attempts force
+that route to stop and be recorded. `CURRENT_CHECKPOINT.md` is the canonical
+percentage display; percentages are earned from named evidence and do not
+replace acceptance criteria.
+
 Latest verified checkpoint (2026-08-05): save-portability and grouped first-combat readability milestone, commit `9da1d0e`, pushed to GitHub and deployed/live-verified at `https://code-quest-lab.gov8661682.com/` with preview `https://8d5f404a.code-quest-lab.pages.dev/`. The shell hash is `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`. Control-record commit `194bcc5` remains in history; the active next priority is Checkpoint 1 clean-profile attack-response, session, and lifecycle evidence. Later milestones must repeat the same test, push, deploy, and live-verification sequence.
