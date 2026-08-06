@@ -4,8 +4,8 @@ Reviewed: 2026-08-07
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; not a Release Candidate
 
-Main checkpoint completion: **54%**
-Overall project completion: **15%**
+Main checkpoint completion: **59%**
+Overall project completion: **16%**
 
 The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
@@ -19,7 +19,7 @@ Git history, and current deployment—not only on comments or planning files.
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
   profile transfer and combat readability`) and pushed follow-ups through
-  `de5b448` (`Clear stale static room status text`). Control baseline
+  `aa1d224` (`Record latest checkpoint hardening state`). Control baseline
   `944c8c3` (`Add bounded autonomous progress controls`) and the route/input/
   recovery hardening commits between them are also pushed. The deployment
   record for `9da1d0e` is maintained below; these incomplete or minor
@@ -53,7 +53,7 @@ Git history, and current deployment—not only on comments or planning files.
 | Source mirror, release contracts, build and static package | Complete for the current checkpoint | `npm.cmd run release:verify` passed; `index.html` and the downloadable mirror match; `dist\` contains 17 expected files and matches native web bundles | Repeat after each major milestone and before RC | Node/npm environment | Yes | Keep the verification command green |
 | Versioned plain-text profile transfer | Complete at deployed web/package boundary | Manage Data exports a `CODE QUEST LAB PROFILE EXPORT` `.txt` envelope containing durable data, a valid backup, and any valid active-run checkpoint; import creates a new local profile and leaves the current profile untouched; 75 tests and live export smoke pass | Real browser upload round trip, cross-device/cross-version fixtures, and current-class migration evidence remain open | Clean storage profiles and representative supported surfaces | No; supports save portability | Keep the format stable while completing the later migration evidence |
 | V1 navigation boundary and procedural route contracts | Complete as a release guard | `REGION_ORDER` exposes Dungeons 1, 2, and 4-8; automated contracts cover every shipped generator, route validation, boss endpoints, legacy checkpoint rejection, and the Dungeon 8 summary endpoint | Manually complete the bounded route before calling gameplay complete | Stable combat and manual QA | Yes | Validate the path in a clean profile; do not promote D9-16 yet |
-| Core save parser/loader contracts | Complete at the tested code boundary | `parseCharacterSave`, `loadPermanentData`, backup promotion, defaults fallback, legacy mastery migration, checkpoint parsing, session lifecycle, and profile-transfer contracts are executable; 75 tests pass | Manual browser/device migration, corruption, suspension, forced-close, import upload, and cross-version evidence | Clean profiles and representative devices | Yes | Execute the remaining lifecycle evidence in Checkpoint 1/3 |
+| Core save parser/loader contracts | Complete at the tested code boundary | `parseCharacterSave`, `loadPermanentData`, backup promotion, defaults fallback, legacy mastery migration, checkpoint parsing, session lifecycle, and profile-transfer contracts are executable; 75 tests pass; a fresh local Mage survived page close/reopen, resumed the visible checkpoint, and finished safely | Native/device migration, corruption, suspension, import upload, and cross-version evidence | Clean profiles and representative devices | Yes | Continue the remaining native/device and migration evidence in Checkpoint 1/3 |
 | Session recovery, pause/stop surfaces, and input hardening | Complete at the implemented browser contract boundary | Active-run checkpoint, Resume Session, Return to Town, Finish For Now, page-background save order, keyboard focus, touch/mouse attack paths, joystick release, and first-room onboarding are implemented and covered | Prove a complete 10-30 minute touch session and device behavior | Browser/device QA | Yes | Continue with clean-profile playthrough and lifecycle QA |
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |

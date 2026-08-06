@@ -5,6 +5,12 @@
 - Cleared stale lock-message text from static Town, Entrance, Shrine, and
   Treasure room status elements, not only their visual state. Added a focused
   lifecycle contract and verified the packaged local Town surface.
+- Completed a real local-storage lifecycle smoke with an isolated Mage:
+  page-close/reopen recovered the Dungeon 1 combat checkpoint, Resume Session
+  restored it, Pause exposed the safe-stop menu, and Finish and Return to
+  Dashboard banked the run. The temporary profile was deleted afterward and
+  no existing profile was changed. Native/device lifecycle evidence remains
+  open.
 - Recorded two bounded fresh-Mage route attempts: both reached Dungeon 1 first
   combat without browser diagnostics but neither established a defeat through
   the managed browser input surface. The approved loopback QA cheat remains
@@ -15,7 +21,7 @@
   technical failures force a strategy change, and five materially identical
   gameplay/manual attempts force that route to stop and be recorded.
 - Added the main evidence-scored progress display to `CURRENT_CHECKPOINT.md`:
-  Checkpoint 1 is 54% complete and the ten-checkpoint project is 15% complete.
+  Checkpoint 1 is 59% complete and the ten-checkpoint project is 16% complete.
   An executable project-control contract validates the scoring arithmetic,
   retry limits, and status consistency during release verification.
 

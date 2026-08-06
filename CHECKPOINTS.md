@@ -8,7 +8,7 @@ GitHub/website checkpoint are complete. Minor fixes are grouped into the next
 meaningful milestone and do not trigger a deployment by themselves.
 
 The main evidence-scored display is in `CURRENT_CHECKPOINT.md`; Checkpoint 1 is
-currently 54% complete and overall project progress is 15%. `AUTORUN.md`
+currently 59% complete and overall project progress is 16%. `AUTORUN.md`
 defines the bounded autonomous cycle and prevents repeated failed work from
 being counted as progress.
 

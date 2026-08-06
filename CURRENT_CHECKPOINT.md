@@ -10,18 +10,18 @@ Status: **Active; not complete**
 ## Main progress checkpoint
 
 <!-- checkpoint-progress:start -->
-Active checkpoint completion: **54%**
+Active checkpoint completion: **59%**
 
-Overall project completion: **15%**
+Overall project completion: **16%**
 
 Scoring date: 2026-08-07. Overall progress is rounded from one completed
-checkpoint plus 54% of the active checkpoint across ten checkpoints.
+checkpoint plus 59% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
 |---|---:|---:|---|---|
 | Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 10 | Fresh D1 partial rooms; resumed D2 boss; recovered D1 boss portal; automated D1-8 route contracts | One fresh player-completed D1-8 route and intended ending |
 | Meaningful 10-30 minute touch-first session | 20 | 8 | Touch Town/entrance/combat flow, objective, pause/summary/finish surfaces, and compact-layout control evidence | One dated 10-30 minute touch-first session with the full safe-stop sequence |
-| Reload, background, forced-close, and deliberate-finish recovery | 15 | 10 | Page-background and lifecycle contracts; same-room reload recovery; boss-room recovery; deliberate Finish For Now evidence | Real-storage forced-close simulation and a complete lifecycle sequence |
+| Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
 | Versioned plain-text profile transfer | 10 | 8 | Export smoke plus export/import validation, active-run preservation, and non-overwrite contracts | Real upload round trip and cross-version/device evidence |
 | Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 75-test release verification, build/package audit, prior native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
@@ -53,7 +53,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-05: release contracts, 70 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 75 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -71,11 +71,9 @@ change it.
    rooms, bosses, rewards, final portal, and intended session ending.
 2. Record a meaningful 10-30 minute touch-first session with a clear objective,
    checkpoint/autosave, pause/resume, summary, next step, and safe stop.
-3. Demonstrate reload/background/forced-close recovery and deliberate finish in
-   real browser storage without data loss or unsafe resume.
-4. Verify the current route and recovery behavior on representative
+3. Verify the current route and recovery behavior on representative
    tablet-sized browser surfaces, with no P0/P1 defect or browser diagnostics.
-5. Run the relevant tests/build again after any evidence-driven fixes, update
+4. Run the relevant tests/build again after any evidence-driven fixes, update
    status/changelog, and complete the GitHub + website checkpoint before
    marking this checkpoint complete.
 
@@ -236,6 +234,14 @@ skip the active C1 route, save, input, and session acceptance criteria.
   shrine/treasure rooms now clear stale lock text as well as hiding the status
   element. The focused lifecycle contracts and packaged local Town smoke pass;
   this is a minor local hardening change, not a deployment checkpoint.
+- On 2026-08-07, a fresh temporary Mage profile survived a real local-storage
+  page-close/reopen simulation from Dungeon 1 combat. Reopening the profile
+  showed `SESSION RECOVERED`; Resume Session restored the saved combat
+  checkpoint, Pause exposed the safe-stop menu, and Finish and Return to
+  Dashboard banked the run. The temporary profile was deleted through Manage
+  Data; the existing Barbarian profile was untouched. This completes the
+  browser-storage lifecycle lane, while native/physical-device lifecycle
+  evidence remains open.
 
 ## Known blockers
 
@@ -253,9 +259,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current repository head: `de5b448` (`Clear stale static room status text`),
-  pushed to `origin/main` after 75-test release verification and native web
-  asset sync. The preceding control baseline is `944c8c3` (`Add bounded
+- Current verified code head: `aa1d224` (`Record latest checkpoint hardening
+  state`), pushed to `origin/main` after 75-test release verification and
+  native web asset sync. The preceding control baseline is `944c8c3` (`Add bounded
   autonomous progress controls`). Both are local hardening/control commits,
   intentionally not website deployment checkpoints.
 

@@ -16,16 +16,16 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **54%** complete and overall
-  project progress is **15%** using the ten-checkpoint formula in
+- Evidence-scored progress: Checkpoint 1 is **59%** complete and overall
+  project progress is **16%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
 - Autonomous work protocol: `AUTORUN.md` requires a concrete progress delta per
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current local head: `de5b448` (`Clear stale static room status text`), pushed
-  after 75-test release verification and native web-asset synchronization;
+- Current verified code head: `aa1d224` (`Record latest checkpoint hardening state`),
+  pushed after 75-test release verification and native web-asset synchronization;
   control baseline `944c8c3` is also pushed. Neither is a website deployment
   checkpoint because Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -66,8 +66,8 @@ State: pre-release hardening; not a Release Candidate
   damage and toggled the mode off.
 - Profile-save reliability was strengthened with versioned structural validation, valid-backup promotion, and an explicit user-facing recovery notice; full migration/corruption matrix coverage remains open.
 - An automated compatibility matrix now executes the shipped `parseCharacterSave` validator against current and legacy-compatible shapes, malformed JSON, future versions, and invalid field types; browser storage backup-promotion and cross-platform migration evidence remain open.
-- An automated mocked-storage matrix now executes the shipped `loadPermanentData` path for valid primary data, backup promotion, unsafe primary/backup fallback, and retired legacy mastery-stat migration; browser/device storage, suspension, forced-closure, and cross-platform migration evidence remain open.
-- An automated checkpoint-parser matrix now rejects future versions, static zones, missing route definitions, incomplete paths, array/object shape confusion, and malformed room state before recovery; full browser/device lifecycle evidence remains open.
+- An automated mocked-storage matrix now executes the shipped `loadPermanentData` path for valid primary data, backup promotion, unsafe primary/backup fallback, and retired legacy mastery-stat migration; native/device storage, suspension, and cross-platform migration evidence remain open after the local browser lifecycle smoke.
+- An automated checkpoint-parser matrix now rejects future versions, static zones, missing route definitions, incomplete paths, array/object shape confusion, and malformed room state before recovery; native/device and cross-version lifecycle evidence remains open.
 - The checkpoint parser also rejects post-release Dungeon 9-16 IDs, preventing an older active-run snapshot from reopening hidden content.
 - An automated progression matrix now exercises every shipped V1 generator (Dungeon 1, 2, and 4-8), the validator, broken route shapes, the shared boss-room clear/exit handoff, and the full region-order handoff; it does not replace a player-completed dungeon and ending.
 - An automated combat contract matrix now checks starter attack data, shared touch/mouse/joystick attack routing, bounded desktop click/hold attack fallback, and pointer/touch joystick release fallbacks; it does not replace hands-on combat completion evidence.
@@ -79,6 +79,7 @@ State: pre-release hardening; not a Release Candidate
 - A bounded fresh Mage attack probe reached randomized first combat rooms and reduced one live room from `Enemies: 2` to `Enemies: 1`; the profile then persisted `First Blood — Defeat one enemy`. The run still ended before the room cleared, so this is partial attack evidence rather than full combat completion.
 - Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
 - Local save-transfer smoke on 2026-08-05 created a synthetic Mage profile, exported it from Manage Data as `.txt`, confirmed the visible status that the current profile was unchanged, and then deleted the test profile. The focused transfer contracts preserve durable data, a valid backup, and a valid active-run checkpoint; real upload round-trip and cross-device/cross-version evidence remain open.
+- Local storage lifecycle smoke on 2026-08-07 created an isolated Mage profile, entered Dungeon 1 combat, simulated page close/reopen, resumed the visible `SESSION RECOVERED` checkpoint, paused, and finished to the dashboard without loss. The temporary profile was deleted afterward; the retained Barbarian profile was untouched. Native/physical-device and cross-platform lifecycle evidence remain open.
 - Post-checkpoint attack probe on the deployed Pages preview used a fresh Mage
   at 1024x768, selected Dungeon 1 Normal with the `Blessed Journey` modifier,
   reached `START Ancient Entrance`, and then stopped at the room-0 entry after
@@ -105,7 +106,7 @@ The game is a 57,085-line self-contained HTML file with Canvas rendering, DOM ov
 - P1: native Android/iOS build evidence is absent. The projects are generated, but this Windows environment has no Android SDK/JDK or Xcode.
 - P1: live StoreKit/Google Play/web payment adapters and sandbox entitlement tests are absent; the shared verified-entitlement boundary, product identity check, parent-gated unlock surface, and mocked core matrix are implemented.
 - Resolved for this checkpoint: production HTTPS deployment and clean-host verification pass at `https://code-quest-lab.gov8661682.com/`; redeploy remains part of every later major-milestone checkpoint.
-- P1: full progression and browser/device storage, suspension, forced-closure, and cross-platform save-compatibility coverage remains open; automated parser and production-loader matrices now cover the validator/recovery boundary.
+- P1: full progression and native/device storage, suspension, and cross-platform save-compatibility coverage remains open; browser local-storage recovery has now passed a page-close/reopen simulation, while automated parser and production-loader matrices cover the validator/recovery boundary.
 - P1: the clean-profile path now has a reproduced click-to-damage response and partial enemy defeat/progression evidence on a 1024x768 Pages preview, but full combat completion, boss progression, touch-device behavior, and the V1 end-state have not yet been validated.
 - P1: the Dungeon 1-8 route endpoint is now bounded and source-resident Dungeons 9-16 are hidden until completed; clean-profile completion of the bounded V1 path and ending remains unvalidated.
 - P2: store screenshots, feature graphics, and final platform metadata are not prepared or owner-approved; native icon/splash rasters are generated but still need native build and device verification.
@@ -135,8 +136,8 @@ Resume the highest-priority clean-profile touch-first attempt through the
 bounded Dungeon 1-8 path, using the now-reproduced attack response before
 changing combat code. The save-portability/readability milestone was
 committed as `9da1d0e`, pushed, deployed, and live-verified on 2026-08-05.
-Continue with dated evidence for room/boss/ending progress, session duration,
-pause/reload/finish behavior, and browser diagnostics. Native Android/JDK and
+Continue with dated evidence for room/boss/ending progress, a meaningful
+10-30 minute touch-first session, tablet behavior, and browser diagnostics. Native Android/JDK and
 Mac/Xcode actions remain owner/environment blockers recorded in
 `BLOCKERS.md`.
 
