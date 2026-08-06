@@ -253,10 +253,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current repository head: `35f26c0` (`Record Town discovery QA`), pushed to
-  `origin/main`; the worktree was clean on 2026-08-07 before this control
-  update. It records bounded Town discovery evidence and is intentionally not
-  a website deployment checkpoint.
+- Current repository head: `de5b448` (`Clear stale static room status text`),
+  pushed to `origin/main` after 75-test release verification and native web
+  asset sync. The preceding control baseline is `944c8c3` (`Add bounded
+  autonomous progress controls`). Both are local hardening/control commits,
+  intentionally not website deployment checkpoints.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full

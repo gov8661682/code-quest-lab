@@ -18,21 +18,12 @@ Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
-  profile transfer and combat readability`) and pushed hardening commits
-  `5db6db5` (`Fix stale session status cleanup`) and `3e33470` (`Add gated
-  developer invincibility cheat`), plus this local route-recovery/first-combat
-  follow-up `8e165e1` (`Fix route restoration and first combat onboarding`) and
-  pushed local offscreen-threat follow-up `4747413` (`Point toward hidden
-  offscreen combat threats`);
-  pushed local final-enemy status-refresh follow-up `3106820` (`Refresh combat
-  status after final enemy defeat`); the current local follow-up restores a
-  defeated boss-room exit portal after recovery and adds a gated summons-clear
-  QA sequence in pushed commit `e1380c4` (`Harden recovered boss progression
-  QA`); touch pointer ownership is hardened in pushed follow-up `90f4f36`
-  (`Protect touch joystick releases`); open-world Town discovery is improved
-  by pushed follow-up `c8b50c8` (`Guide Town portal discovery`);
-  the deployment record for `9da1d0e` is maintained below and these follow-ups
-  are intentionally not deployed as separate minor checkpoints
+  profile transfer and combat readability`) and pushed follow-ups through
+  `de5b448` (`Clear stale static room status text`). Control baseline
+  `944c8c3` (`Add bounded autonomous progress controls`) and the route/input/
+  recovery hardening commits between them are also pushed. The deployment
+  record for `9da1d0e` is maintained below; these incomplete or minor
+  follow-ups are intentionally not deployed as separate checkpoints.
 - Canonical game: `index.html`, 57,085 lines, SHA-256
   `D2D5351A749E9905FA93211BAD0705EABDCBE99C2B812827D4F6058457931E9F`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
