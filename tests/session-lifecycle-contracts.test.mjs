@@ -159,6 +159,18 @@ test('new sessions clear stale dungeon door and waypoint status messages', () =>
   });
 });
 
+test('static rooms clear stale door text as well as hiding the status element', () => {
+  const start = SOURCE.indexOf('function updateRoomProgress(geo)');
+  const end = SOURCE.indexOf('function playerDied()', start);
+  assert.notEqual(start, -1, 'room progress function is present');
+  assert.notEqual(end, -1, 'room progress function boundary is present');
+  const progress = SOURCE.slice(start, end);
+  assert.match(
+    progress,
+    /if\(def\.type===RT\.START\|\|def\.type===RT\.TREASURE\|\|def\.type===RT\.SHRINE\)\{\s*doorStatus\.textContent='';\s*doorStatus\.classList\.remove\('visible'\);/
+  );
+});
+
 test('zones without waypoints hide an old activation message', () => {
   const elements = new Map([
     ['waypointStatus', {

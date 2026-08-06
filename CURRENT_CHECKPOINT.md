@@ -24,7 +24,7 @@ checkpoint plus 54% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 10 | Page-background and lifecycle contracts; same-room reload recovery; boss-room recovery; deliberate Finish For Now evidence | Real-storage forced-close simulation and a complete lifecycle sequence |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
 | Versioned plain-text profile transfer | 10 | 8 | Export smoke plus export/import validation, active-run preservation, and non-overwrite contracts | Real upload round trip and cross-version/device evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 74-test release verification, build/package audit, prior native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
+| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 75-test release verification, build/package audit, prior native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -217,13 +217,25 @@ skip the active C1 route, save, input, and session acceptance criteria.
   recovery path was manually verified, and manual route/lifecycle evidence
   can continue locally. Pages-preview and physical-device evidence remain
   separate open acceptance items.
-- After the latest control update, `npm.cmd run release:verify` passed all 74
+- After the latest control update, `npm.cmd run release:verify` passed all 75
   tests, the 17-file static package audit, and the build; the prior
   `npm.cmd run native:sync` also passed.
 - The AI expert review is recorded in `AI_EXPERT_PLAYTEST.md`. It confirms
   Town's useful hub foundation but finds that the current dashboard/route flow
   still feels menu-driven, the minimap/landmarks do not yet communicate an open
   world, and first-combat enemy/lock feedback needs improvement.
+- On 2026-08-07, two bounded fresh-Mage loopback attempts completed Town,
+  Entrance, Normal trial, session modifier, start room, and first combat. The
+  first reached `Forsaken Vault` and the second reached `Crypt Passage`; both
+  ended before an enemy defeat in the managed browser surface, with no browser
+  diagnostics. The loopback-only developer key sequence did not register in
+  this input surface, so no further identical combat attempts were made. Both
+  synthetic profiles were deleted; the existing Barbarian profile was not
+  changed.
+- A verified status-polish defect was fixed locally: static Town/Entrance/
+  shrine/treasure rooms now clear stale lock text as well as hiding the status
+  element. The focused lifecycle contracts and packaged local Town smoke pass;
+  this is a minor local hardening change, not a deployment checkpoint.
 
 ## Known blockers
 

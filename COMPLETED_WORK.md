@@ -16,7 +16,8 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Recorded preserved story, Bob dialogue, classes, dungeons, bosses, endings, and missing parity content | Creative audit comparisons and exact named-content ledger | Only if implementation contradicts the ledger or a scope decision promotes content |
 | Locked the teen-first, tablet-first, offline, privacy-minimal, optional-learning, and non-manipulative V1 direction | `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `DECISIONS.md` | Only by an explicit product decision recorded in `DECISIONS.md` |
 | Recorded Joey's explicit open-world product direction and staged technical target | `OPEN_WORLD_DIRECTION.md`, `PRODUCT_VISION.md`, `V1_SCOPE.md`, `DECISIONS.md`, and `ROADMAP.md`; no runtime open-world completion is claimed | Only when the owner changes the direction or a future open-world milestone is promoted |
-| Established bounded autonomous work and evidence-scored progress | `AUTORUN.md`, `CURRENT_CHECKPOINT.md`, D-018, and `tests/project-control-contracts.test.mjs`; 74-test release verification passes | Only if the control contract fails or the owner changes the working policy |
+| Established bounded autonomous work and evidence-scored progress | `AUTORUN.md`, `CURRENT_CHECKPOINT.md`, D-018, and `tests/project-control-contracts.test.mjs`; 75-test release verification passes | Only if the control contract fails or the owner changes the working policy |
+| Cleared stale static-room door status text | `updateRoomProgress` now clears `doorStatus.textContent` for Town/Entrance/Shrine/Treasure; focused lifecycle test and packaged local smoke pass | Reopen only if a supported surface still exposes stale status text |
 
 ## Completed release foundation
 

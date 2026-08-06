@@ -2,6 +2,14 @@
 
 ## Unreleased - 2026-08-07
 
+- Cleared stale lock-message text from static Town, Entrance, Shrine, and
+  Treasure room status elements, not only their visual state. Added a focused
+  lifecycle contract and verified the packaged local Town surface.
+- Recorded two bounded fresh-Mage route attempts: both reached Dungeon 1 first
+  combat without browser diagnostics but neither established a defeat through
+  the managed browser input surface. The approved loopback QA cheat remains
+  unchanged; no further identical combat retries or deployment were made.
+
 - Added the canonical bounded autonomous-work protocol in `AUTORUN.md`.
   Every cycle must produce new checkpoint evidence; three materially identical
   technical failures force a strategy change, and five materially identical

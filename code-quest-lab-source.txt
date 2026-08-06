@@ -41546,6 +41546,7 @@ function updateRoomProgress(geo){
   if(!doorStatus)return;
   doorStatus.classList.remove('doorStatusLocked');
   if(def.type===RT.START||def.type===RT.TREASURE||def.type===RT.SHRINE){
+    doorStatus.textContent='';
     doorStatus.classList.remove('visible');return;
   }
   if(def.type===RT_D3_PUZZLE){
