@@ -24,7 +24,7 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 80-test release verification, build/package audit, native sync, commit `0c960fc` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 81-test release verification, build/package audit, native sync, source commit `9c451af` and control record `6dd1a44` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, Dungeon 1 start, a combat room, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -327,6 +327,14 @@ skip the active C1 route, save, input, and session acceptance criteria.
   choices now retain their earned level and show how many choices remain;
   the focused contract and 81-test release gate cover the fix in commit
   `9c451af`.
+- Milestone commit `9c451af` was pushed with control record `6dd1a44` and
+  deployed on 2026-08-07. The preview
+  `https://3edbf5d2.code-quest-lab.pages.dev/` and configured hostname both
+  passed production checks; live smoke reached a new Mage, Town, Dungeon 1
+  start, `COMBAT Cursed Gallery`, pause/finish, and temporary-profile cleanup
+  at the 1078x912 managed browser surface with no error or warning diagnostics.
+  The deployed shell SHA-256 is
+  `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`.
 
 ## Known blockers
 
@@ -344,10 +352,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `0c960fc` (`Prove touch-first D1 boss route`),
-  pushed to `origin/main` after 80-test release verification, build/package
+- Current verified code head: `9c451af` (`Clarify queued level-up choices`),
+  pushed to `origin/main` after 81-test release verification, build/package
   audit, native asset sync, and live browser smoke. This is the verified
-  touch-route/boss-handoff website checkpoint; Checkpoint 1 remains active.
+  Dungeon 2 progression/level-up website checkpoint; Checkpoint 1 remains
+  active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -383,30 +392,30 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
   adds a screen-edge direction arrow for the off-screen Town portal. The
   compact-viewport smoke rendered the cue without adding a menu shortcut; it
   is not a website deployment checkpoint.
-- Runtime/milestone: `0c960fc` (`Prove touch-first D1 boss route`)
+- Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; milestone commit `0c960fc` records the fresh touch-first D1
-  boss/portal proof, target assist, dead-summon handoff, and the GitHub/website
-  checkpoint; its GitHub/website checkpoint is verified
+- Branch: `main`; milestone commit `9c451af` records the Dungeon 2 QA
+  progression route, queued level-up clarity fix, and the GitHub/website
+  checkpoint; control record `6dd1a44` carries the evidence and status updates
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `0c960fc` (`Prove touch-first D1 boss route`)
+- Commit: `9c451af` (`Clarify queued level-up choices`)
 - Deployment date: 2026-08-07
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://88bd6ae9.code-quest-lab.pages.dev/`
-- Shell SHA-256: `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`
+- Preview: `https://3edbf5d2.code-quest-lab.pages.dev/`
+- Shell SHA-256: `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`
 - Current read-only production check: passed on 2026-08-07 for primary and preview
 
 The verified milestone shell includes the existing-Town minimap, versioned
 profile transfer, grouped readability fixes, session-only touch target assist,
-and dead-summon boss handoff correction. The live preview smoke reached profile
-creation, Mage selection, Town, target assist, pause/finish, dashboard return,
-and cleanup; the configured hostname loaded with no browser diagnostics and
-the existing primary-origin Mage profile was left untouched. The next step is
-to resume the active Checkpoint 1 D1-8 route and safe-stop evidence.
+dead-summon boss handoff correction, and queued level-up clarity. The live
+preview smoke reached profile creation, Mage selection, Town, Dungeon 1 start,
+`COMBAT Cursed Gallery`, pause/finish, and cleanup; both production checks
+passed with no browser diagnostics. The next step is to resume the active
+Checkpoint 1 D4-8 route and safe-stop evidence.
 
 ## Exact condition required to advance
 

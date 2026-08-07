@@ -73,16 +73,19 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-07 touch-route/boss-handoff checkpoint was published to the
-configured Cloudflare Pages project `code-quest-lab` at commit `0c960fc`, with
-primary hostname `https://code-quest-lab.gov8661682.com/` and preview
-`https://88bd6ae9.code-quest-lab.pages.dev/`. The deployed shell hash is
-`975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+The 2026-08-07 Dungeon 2 progression/level-up checkpoint was published to the
+configured Cloudflare Pages project `code-quest-lab` at source commit
+`9c451af`, with primary hostname `https://code-quest-lab.gov8661682.com/` and
+preview `https://3edbf5d2.code-quest-lab.pages.dev/`. The deployed shell hash
+is `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`.
 
 `npm.cmd run production:check` passed on 2026-08-07 for both the configured
 hostname and the preview. The live browser smoke reached profile creation,
 Mage selection, Town, visible target assist, pause/finish, dashboard return,
 and temporary-profile cleanup at the current 1078x912 managed browser surface
 with no diagnostics; the primary-origin Mage profile was left untouched.
-Repeat the owner-approved publish and live checks after the next substantial
-tested milestone.
+The 1078x912 live smoke created a Mage, reached Town, started Dungeon 1,
+entered `COMBAT Cursed Gallery`, paused, finished, returned to the dashboard,
+and removed only the temporary profile. Both production checks passed and no
+browser error or warning diagnostics were recorded. Repeat the owner-approved
+publish and live checks after the next substantial tested milestone.

@@ -31,17 +31,18 @@ State: pre-release hardening; not a Release Candidate
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `0c960fc` (`Prove touch-first D1 boss route`),
+- Latest deployed milestone runtime: `9c451af` (`Clarify queued level-up choices`),
   deployed on 2026-08-07 to the configured Cloudflare Pages project. The
-  earlier deployed runtime `9da1d0e` and all preceding hardening commits remain
-  in history. The milestone includes the session-only touch target lock, boss
-  dead-summon handoff fix, and the corresponding evidence records.
-- Checkpoint record: commit `0c960fc`, deployed 2026-08-07 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://88bd6ae9.code-quest-lab.pages.dev/`), build SHA-256 `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+  earlier deployed runtime `0c960fc` and all preceding hardening commits remain
+  in history. This milestone includes the Dungeon 2 QA route evidence, queued
+  level-up clarity fix, and the corresponding control records.
+- Checkpoint record: commit `9c451af`, deployed 2026-08-07 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://3edbf5d2.code-quest-lab.pages.dev/`), build SHA-256 `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`.
 - Production verification passed for both the configured hostname and preview;
   the live browser smoke reached profile/class/Town, visible target assist,
-  pause/finish, dashboard return, and temporary-profile cleanup at the current
-  1078x912 managed browser surface with zero browser diagnostics. The existing
-  primary-origin Mage profile was preserved and not modified.
+  Dungeon 1 start, `COMBAT Cursed Gallery`, pause/finish, dashboard return,
+  and temporary-profile cleanup at the current 1078x912 managed browser
+  surface with zero browser diagnostics. The existing primary-origin Mage
+  profile was preserved and not modified.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This is local evidence only; the latest deployed site remains the prior stable checkpoint.
 - A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
   start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and
