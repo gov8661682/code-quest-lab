@@ -8885,6 +8885,8 @@ function saveRoomState(roomId) {
       eliteCorrupted:e.eliteCorrupted||false,eliteArcane:e.eliteArcane||false,
       eliteRegenerating:e.eliteRegenerating||false,eliteRegenTimer:e.eliteRegenTimer||0,
       eliteCorruptedTimer:e.eliteCorruptedTimer!==undefined?e.eliteCorruptedTimer:5.0,
+      eliteCorruptedSummonCount:e.eliteCorruptedSummonCount||0,
+      eliteCorruptedSummonMax:e.eliteCorruptedSummonMax||2,
       eliteArcaneTimer:e.eliteArcaneTimer!==undefined?e.eliteArcaneTimer:3.0};
   });
   if(rs.cleared)rs.savedEnemies=[];
@@ -29452,6 +29454,8 @@ var eliteRadius=isElite?Math.round(def.radius*1.3):def.radius;
     // Runtime timers/state used by modifier behaviors (safe no-ops if modifier absent)
     spawned.eliteRegenTimer=0;          // Regenerating: time since last hit
     spawned.eliteCorruptedTimer=3.0+Math.random()*2.0; // Corrupted: summon cooldown
+    spawned.eliteCorruptedSummonCount=0; // Corrupted: bounded room summon budget
+    spawned.eliteCorruptedSummonMax=2;
     spawned.eliteArcaneTimer=2.0+Math.random()*1.5;    // Arcane: projectile cooldown
     spawned.eliteExplodeTriggered=false; // Explosive: prevents double-trigger
     var _emMods=spawned.eliteModifiers;
@@ -41133,9 +41137,13 @@ function updateEnemies(dt,geo){
       // Corrupted: periodically summons Shadow (ghost) minions nearby
       if(e.eliteCorrupted){
         e.eliteCorruptedTimer=(e.eliteCorruptedTimer||0)-dt;
-        if(e.eliteCorruptedTimer<=0&&enemies.length<14){
+        var _ecUsed=e.eliteCorruptedSummonCount||0;
+        var _ecMax=e.eliteCorruptedSummonMax||2;
+        if(e.eliteCorruptedTimer<=0&&_ecUsed<_ecMax&&enemies.length<12){
           e.eliteCorruptedTimer=8.0+Math.random()*3.0;
-          for(var _ecs=0;_ecs<2;_ecs++){
+          var _ecCount=Math.min(2,_ecMax-_ecUsed);
+          e.eliteCorruptedSummonCount=_ecUsed+_ecCount;
+          for(var _ecs=0;_ecs<_ecCount;_ecs++){
             var _ecMinion=spawnEnemyByKind('ghost',geo,getRoomDepth(currentRoomId),false);
             _ecMinion.x=clamp(e.x+(Math.random()-0.5)*70,geo.inner.x+_ecMinion.radius,geo.inner.x+geo.inner.w-_ecMinion.radius);
             _ecMinion.y=clamp(e.y+(Math.random()-0.5)*70,geo.inner.y+_ecMinion.radius,geo.inner.y+geo.inner.h-_ecMinion.radius);

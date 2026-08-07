@@ -69,6 +69,17 @@ test('regenerating elites reset their recovery timer when hit', () => {
   );
 });
 
+test('corrupted elites have a finite summon budget', () => {
+  assert.match(SOURCE, /spawned\.eliteCorruptedSummonCount=0;/, 'new elites start with a summon budget counter');
+  assert.match(SOURCE, /spawned\.eliteCorruptedSummonMax=2;/, 'the summon budget is bounded per elite');
+  assert.match(
+    SOURCE,
+    /var _ecUsed=e\.eliteCorruptedSummonCount\|\|0;[\s\S]*?if\(e\.eliteCorruptedTimer<=0&&_ecUsed<_ecMax&&enemies\.length<12\)[\s\S]*?e\.eliteCorruptedSummonCount=_ecUsed\+_ecCount;/,
+    'corrupted summons stop after the finite budget and room safety cap'
+  );
+  assert.match(SOURCE, /eliteCorruptedSummonCount:e\.eliteCorruptedSummonCount\|\|0/, 'the budget survives room save and restore');
+});
+
 test('desktop play surface exposes a focusable keyboard target', () => {
   assert.match(SOURCE, /<canvas id="gameCanvas"[^>]*tabindex="0"[^>]*role="application"/, 'game canvas is keyboard-focusable');
   assert.match(SOURCE, /canvas\.addEventListener\('pointerdown',[\s\S]*?canvas\.focus\(\)/, 'pointer input focuses the play surface');
