@@ -2,6 +2,13 @@
 
 ## Unreleased - 2026-08-07
 
+- Recorded a bounded local Dungeon 1 route pass with the loopback-only developer
+  invincibility aid: the run cleared the shrine, treasure, and combat rooms,
+  defeated the Stone Guardian through the normal touch attack control, and
+  reached The Fallen Kingdom Entrance through the exit portal. This is partial
+  route evidence only because it used the existing Mage profile and did not
+  complete D1-8, touch-first session, or ending acceptance; no deployment was
+  created and no saved profile was deleted.
 - Completed the real local `.txt` profile-transfer round trip: exported the
   retained Level 4 Barbarian, uploaded it through the browser file chooser,
   confirmed the imported copy matched its dungeon, highest room, run count,

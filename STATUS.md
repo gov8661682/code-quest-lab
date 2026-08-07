@@ -24,8 +24,8 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head before this follow-up: `cb32ee0` (`Add managed-browser
-  developer cheat fallback`), pushed after 76-test release verification;
+- Current verified code head before this follow-up: `544fd7b` (`Record profile
+  transfer round-trip evidence`), pushed after 76-test release verification;
   control baseline `944c8c3` is also pushed. Neither is a website deployment
   checkpoint because Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -35,6 +35,16 @@ State: pre-release hardening; not a Release Candidate
 - Checkpoint record: commit `9da1d0e`, deployed 2026-08-05 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://8d5f404a.code-quest-lab.pages.dev/`), build SHA-256 `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
 - Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; the new preview live smoke reached profile/class/Town, pause/finish, Manage Data export, and cleanup at 1024x768, with zero browser diagnostics. The configured hostname loaded with no diagnostics; an existing primary-origin Mage profile was preserved and not modified.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This is local evidence only; the latest deployed site remains the prior stable checkpoint.
+- A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
+  start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and
+  `Ashen Pit` to `Guardian's Sanctum`, then used the unlocked exit portal to
+  reach `The Fallen Kingdom Entrance`. The Stone Guardian reached zero from
+  `750/750` through the normal touch attack control while the session-scoped
+  developer invincibility aid was enabled. This advances D1 route evidence but
+  is not a clean-profile D1-8, touch-first, or ending result. The run used the
+  existing Mage profile; Manage Data showed the retained Mage and Level 4
+  Barbarian profiles afterward, and no profile was deleted. No deployment was
+  made because Checkpoint 1 remains incomplete.
 
 ## Baseline evidence
 

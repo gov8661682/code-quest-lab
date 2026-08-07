@@ -257,6 +257,16 @@ skip the active C1 route, save, input, and session acceptance criteria.
   hidden. The source mirror, focused lifecycle contract, 76-test release
   verification, static package, and native web-asset sync all pass. This is
   local hardening, not a deployment checkpoint.
+- On 2026-08-07, a bounded local Mage run used the loopback-only developer
+  invincibility aid and completed the observable Dungeon 1 route: `Burial Hall`,
+  `Ancient Shrine`, `Sunken Treasury`, `Ashen Pit`, `Guardian's Sanctum`, and
+  the exit portal into `The Fallen Kingdom Entrance`. The Stone Guardian was
+  reduced from `750/750` to zero through the normal touch attack control, and
+  the next-region entrance was observed. This is valid D1 boss/portal evidence,
+  but it used the existing Mage profile rather than a clean profile and does
+  not establish D1-8, touch-first, or ending completion. The Manage Data
+  surface retained both Mage and Level 4 Barbarian profiles; no profile was
+  deleted. Checkpoint and overall scores therefore remain 61% and 16%.
 
 ## Known blockers
 
@@ -274,9 +284,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head before this follow-up: `edb7896` (`Fix stale Town
-  lock status after Finish for Now`), pushed to `origin/main` after 76-test
-  release verification. The preceding control baseline is `944c8c3` (`Add bounded
+- Current verified code head before this follow-up: `544fd7b` (`Record profile
+  transfer round-trip evidence`), pushed to `origin/main` after 76-test release
+  verification. The preceding control baseline is `944c8c3` (`Add bounded
   autonomous progress controls`). Both are local hardening/control commits,
   intentionally not website deployment checkpoints.
 
