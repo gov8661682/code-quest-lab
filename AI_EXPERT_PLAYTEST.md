@@ -184,9 +184,10 @@ The playtest followed a first-time player journey:
 - The same route exposed a small input-responsiveness risk: taps arriving
   during an attack cooldown could be discarded. Touch and desktop attack taps
   now remain queued until the normal cooldown is ready, with focused contracts
-  covering both paths. This is local hardening pending the full release gate;
-  the next expert recommendation remains a complete clean D1-8 run and a
-  deliberate 10-30 minute touch-first stop/resume session.
+  covering both paths. The fix is included in the 83-test release gate and the
+  verified 2026-08-07 deployment. The next expert recommendation remains a
+  complete clean D1-8 run and a deliberate 10-30 minute touch-first stop/resume
+  session.
 
 ## Recommended order
 

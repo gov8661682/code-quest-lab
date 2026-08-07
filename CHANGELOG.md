@@ -8,8 +8,9 @@
   elite health budget so depth, dungeon, elite, and Giant scaling cannot create
   multi-minute damage sponges while the modifier identities remain intact.
   Attack taps received during cooldown now wait for readiness on touch and
-  desktop paths. Two focused combat contracts pass; the full release gate and
-  major GitHub/website checkpoint are next.
+  desktop paths. The 83-test release gate, 17-file package audit, native sync,
+  GitHub commit `5cbe80c`, Cloudflare preview `cfe817cd`, configured-hostname
+  production check, and desktop/tablet live smoke all passed.
 - Completed a disposable Mage QA route through all observable Dungeon 2
   rooms, the Prison Warden mini-boss, the Fallen King through Phase 3, and
   the exit portal into The Shadow Realm Entrance using the requested local

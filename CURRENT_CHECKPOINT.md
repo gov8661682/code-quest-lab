@@ -24,7 +24,7 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 83-test release verification, build/package audit, native sync, source commit `9c451af` and control record `6dd1a44` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, Dungeon 1 start, a combat room, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 83-test release verification, build/package audit, native sync, milestone commit `5cbe80c` pushed to GitHub, Cloudflare Pages preview `cfe817cd` and configured hostname both passed production checks, and live browser smoke passed at desktop and 1024x768 tablet landscape | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-07)
@@ -40,6 +40,10 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   does not close a new acceptance lane: the evidence score remains **79%** for
   Checkpoint 1 and **18%** overall until D4-8, the ending, and the full
   safe-stop session are evidenced.
+- The major checkpoint is verified as commit `5cbe80c`, pushed on 2026-08-07 and
+  deployed to `https://code-quest-lab.gov8661682.com/` with preview
+  `https://cfe817cd.code-quest-lab.pages.dev/`. The deployed shell hash is
+  `4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`.
 
 ## Current objective
 
@@ -367,11 +371,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `9c451af` (`Clarify queued level-up choices`),
-  pushed to `origin/main` after 81-test release verification, build/package
-  audit, native asset sync, and live browser smoke. This is the verified
-  Dungeon 2 progression/level-up website checkpoint; Checkpoint 1 remains
-  active.
+- Current verified code head: `5cbe80c` (`Bound elite pacing and queued attack
+  input`), pushed to `origin/main` after 83-test release verification,
+  build/package audit, native asset sync, and live browser smoke. This is the
+  verified elite-pacing/input website checkpoint; Checkpoint 1 remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
