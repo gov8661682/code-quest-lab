@@ -26125,7 +26125,7 @@ function gainXP(amount){
   runXpEarned+=amount;
   playerXP+=amount;
   while(playerXP>=xpToNextLevel){
-    playerXP-=xpToNextLevel;playerLevel++;xpToNextLevel=xpForLevel(playerLevel);triggerLevelUp();
+    playerXP-=xpToNextLevel;playerLevel++;xpToNextLevel=xpForLevel(playerLevel);triggerLevelUp(playerLevel);
   }
 }
 
@@ -26147,13 +26147,19 @@ var ALL_UPGRADES=[
 // ============================================================
 var levelUpPending=false,levelUpQueue=[];
 
-function triggerLevelUp(){levelUpQueue.push(true);if(!levelUpPending)processNextLevelUp();refreshMerchantInventory();}
+function triggerLevelUp(level){
+  var queuedLevel=Math.max(1,Math.floor(Number(level)||playerLevel));
+  levelUpQueue.push(queuedLevel);
+  if(!levelUpPending)processNextLevelUp();
+  refreshMerchantInventory();
+}
 
 function processNextLevelUp(){
   if(levelUpQueue.length===0)return;
-  levelUpQueue.shift();levelUpPending=true;gameRunning=false;
-  document.getElementById('lvlTitle').textContent='LEVEL '+playerLevel;
-  document.getElementById('lvlSub').textContent='Choose one upgrade';
+  var queuedLevel=levelUpQueue.shift();
+  levelUpPending=true;gameRunning=false;
+  document.getElementById('lvlTitle').textContent='LEVEL '+queuedLevel;
+  document.getElementById('lvlSub').textContent=levelUpQueue.length>0?'Choose one upgrade · '+levelUpQueue.length+' more queued':'Choose one upgrade';
   var pool=ALL_UPGRADES.slice();var choices=[];
   while(choices.length<3&&pool.length>0)choices.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);
   var cardsEl=document.getElementById('upgradeCards');cardsEl.innerHTML='';

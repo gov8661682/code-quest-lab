@@ -147,6 +147,13 @@ test('production region order advances through an entrance and ends safely', () 
   }
 });
 
+test('queued level-ups preserve their earned level and show remaining choices', () => {
+  assert.match(SOURCE, /function gainXP\(amount\)\{[\s\S]*?triggerLevelUp\(playerLevel\);/);
+  assert.match(SOURCE, /function triggerLevelUp\(level\)\{[\s\S]*?levelUpQueue\.push\(queuedLevel\);/);
+  assert.match(SOURCE, /var queuedLevel=levelUpQueue\.shift\(\);[\s\S]*?textContent='LEVEL '\+queuedLevel;/);
+  assert.match(SOURCE, /textContent=levelUpQueue\.length>0\?'Choose one upgrade · '\+levelUpQueue\.length\+' more queued':'Choose one upgrade';/);
+});
+
 test('entrance objectives resolve from the underlying dungeon definition', () => {
   assert.match(SOURCE, /function getActiveDungeon\(\)\{[\s\S]*?isEntranceZone\(activeDungeonId\)\?getEntranceDungeonId\(activeDungeonId\):activeDungeonId[\s\S]*?return DUNGEON_DEFS\[dungeonId\]\|\|DUNGEON_DEFS\.dungeon1;/);
 });
