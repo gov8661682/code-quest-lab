@@ -24,8 +24,22 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 81-test release verification, build/package audit, native sync, source commit `9c451af` and control record `6dd1a44` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, Dungeon 1 start, a combat room, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 83-test release verification, build/package audit, native sync, source commit `9c451af` and control record `6dd1a44` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, Dungeon 1 start, a combat room, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
+
+### Latest evidence update (2026-08-07)
+
+- A disposable Mage completed the patched Dungeon 2 Normal route from shrine
+  through treasure, a two-elite room, and the three-phase Fallen King. The
+  elite room cleared in a bounded paced encounter after the combined scaling
+  budget was applied; the exit portal then advanced the run into The Shadow
+  Realm Entrance. Veteran difficulty unlocked as expected.
+- Queued touch and desktop attack taps now wait for the ordinary attack
+  cooldown instead of being discarded. Focused contracts and the fresh local
+  route both cover the fix. This is a meaningful hardening milestone, but it
+  does not close a new acceptance lane: the evidence score remains **79%** for
+  Checkpoint 1 and **18%** overall until D4-8, the ending, and the full
+  safe-stop session are evidenced.
 
 ## Current objective
 
@@ -53,7 +67,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 81 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 83 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -83,12 +97,13 @@ change it.
 
 1. Continue the highest-priority clean-profile, touch-first D1-8 playthrough;
    record the first failing room/system if the run cannot complete. The latest
-   disposable Mage QA route completed D1 and D2 through the Fallen King and
-   entered The Shadow Realm Entrance with the local invincibility aid; the next
-   route target is D4-8 and the intended ending. The full D1-8 route is still
-   unproven. Apply the `AUTORUN.md` failure fingerprint: switch strategy after
-   three materially identical technical failures and stop the same manual
-   route after five materially identical attempts.
+   disposable Mage QA route completed D1 and the patched D2 route through the
+   Fallen King, including the bounded elite room, and entered The Shadow Realm
+   Entrance with the local invincibility aid; the next route target is D4-8 and
+   the intended ending. The full D1-8 route is still unproven. Apply the
+   `AUTORUN.md` failure fingerprint: switch strategy after three materially
+   identical technical failures and stop the same manual route after five
+   materially identical attempts.
 2. Exercise the existing pause, page-background, reload, Finish For Now, and
    recovery paths around the clean run, including a meaningful 10-30 minute
    touch-first session.

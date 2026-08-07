@@ -173,6 +173,20 @@ The playtest followed a first-time player journey:
   elite a finite two-minion summon budget and persists that budget across room
   checkpoints; 77 release tests pass. This directly applies the playtest
   recommendation to make difficulty variation bounded and readable.
+- A second 2026-08-07 disposable Mage route re-tested the next D2 pressure
+  point, `ELITE Executioner's Court`, after the additional hardening. Two
+  modifier-stacked elites cleared in a bounded paced encounter rather than a
+  multi-minute starter-attack wall. The three-phase Fallen King then completed
+  and the exit portal advanced into The Shadow Realm Entrance. The shared
+  elite health budget preserves each modifier's visual and behavior identity
+  while preventing depth, dungeon, elite, and Giant scaling from compounding
+  beyond the intended session shape.
+- The same route exposed a small input-responsiveness risk: taps arriving
+  during an attack cooldown could be discarded. Touch and desktop attack taps
+  now remain queued until the normal cooldown is ready, with focused contracts
+  covering both paths. This is local hardening pending the full release gate;
+  the next expert recommendation remains a complete clean D1-8 run and a
+  deliberate 10-30 minute touch-first stop/resume session.
 
 ## Recommended order
 

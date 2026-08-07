@@ -71,6 +71,11 @@ layers, world-state model, save boundaries, and acceptance bar.
   and Regenerating recovery must have finite per-encounter limits, and every
   fix requires a fresh-room rerun before it receives checkpoint or deployment
   credit.
+- Keep combined elite scaling bounded as well: the shared health budget must be
+  applied after depth, dungeon, elite, and Giant modifiers so stacked rooms do
+  not become multi-minute damage sponges. Attack taps received during cooldown
+  must remain queued. Both behaviors require focused contracts and a fresh-room
+  playthrough before the next major deployment.
 
 Acceptance: a clean profile can complete a meaningful 10-30 minute tablet session and the locked V1 path in supported browser viewports; active-run recovery and optional play-support checks pass; remaining save-compatibility and full-path evidence is recorded.
 

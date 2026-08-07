@@ -1521,6 +1521,10 @@ var TEST_MASTERY_XP_MULTIPLIER = 1;
 var DUNGEON2_HP_MULTIPLIER = 2;
 var DUNGEON2_SPAWN_MULTIPLIER = 2;
 var DUNGEON2_ATTACK_SPEED_MULTIPLIER = 1.5;
+// Bound combined elite scaling so modifier stacks remain a challenge rather
+// than becoming multi-minute damage sponges. Modifiers still keep their
+// readable size, damage, defense, and behavior changes.
+var ELITE_HEALTH_BUDGET_MULTIPLIER = 4.0;
 var DUNGEON2_ENEMY_KINDS_SET = {
   corrupted_soldier:true, royal_guard:true, dark_mage:true,
   executioner:true, phantom_knight_d2:true
@@ -4904,7 +4908,7 @@ var ELITE_MODIFIER_DEFS={
   corrupted:   {id:'corrupted',   label:'Corrupted',      tag:'☠ Corrupted',    color:'#6a0dad',desc:'Periodically summons Shadow minions'},
   arcane:      {id:'arcane',      label:'Arcane',          tag:'✦ Arcane',       color:'#5390d9',desc:'Periodically fires magic projectiles'},
   regenerating:{id:'regenerating',label:'Regenerating',   tag:'✚ Regenerating',color:'#52b788',desc:'Regenerates HP when not taking damage'},
-  giant:       {id:'giant',       label:'Giant',           tag:'⬆ Giant',        color:'#b08968',desc:'Larger size, +100% HP, +20% Damage'}
+  giant:       {id:'giant',       label:'Giant',           tag:'⬆ Giant',        color:'#b08968',desc:'Larger size, up to +100% HP, +20% Damage'}
 };
 var ELITE_MODIFIER_IDS=['berserker','armored','vampiric','swift','explosive','frozen','burning','corrupted','arcane','regenerating','giant'];
 var CHAMPION_CHANCE=0.12; // chance an elite becomes a rare Champion instead of rolling 1-3 normal modifiers
@@ -29583,6 +29587,15 @@ var eliteRadius=isElite?Math.round(def.radius*1.3):def.radius;
         spawned.damage=Math.round(spawned.damage*1.20);
       }
     }
+    // Apply the pacing budget after every modifier so depth, dungeon, elite,
+    // and Giant scaling cannot compound into an encounter that exceeds the
+    // intended session shape. The modifier itself remains active; this only
+    // bounds its total health consequence.
+    var _eliteHealthBudget=Math.max(1,Math.round(def.hp*ELITE_HEALTH_BUDGET_MULTIPLIER));
+    if(spawned.hpMax>_eliteHealthBudget){
+      spawned.hpMax=_eliteHealthBudget;
+      spawned.hp=Math.min(spawned.hp,spawned.hpMax);
+    }
     if(spawned.eliteRegenerating){
       // A Regenerating elite may recover up to 25% of its maximum health once
       // during the encounter. This keeps the modifier meaningful after a
@@ -34227,22 +34240,29 @@ function updatePlayerAttack(dt){
   if(druidBurrowActive)return;// cannot attack while underground
   if(druidSpiritWalkActive)return;// cannot attack or cast while spirit-walking
   if(touchAttackState.queued){
+    // A tap during cooldown is still a valid player intention. Keep it queued
+    // until the normal class cooldown is ready instead of silently dropping
+    // the input on managed browsers and touch surfaces.
+    if(player.attackTimer>0)return;
     touchAttackState.queued=false;
     var touchAngle=desktopAimAngle();
     if(touchAngle===null)touchAngle=nearestAttackAngle();
     if(touchAngle!==null){
       player.facingAngle=touchAngle;
-      if(player.attackTimer<=0)performAttack(player.facingAngle);
+      performAttack(player.facingAngle);
     }
     return;
   }
   if(desktopAttackTapState.queued){
+    // Match the touch queue: a short click remains responsive even when it
+    // lands inside the previous shot's cooldown window.
+    if(player.attackTimer>0)return;
     desktopAttackTapState.queued=false;
     var desktopTapAngle=desktopAimAngle();
     if(desktopTapAngle===null)desktopTapAngle=nearestAttackAngle();
     if(desktopTapAngle!==null){
       player.facingAngle=desktopTapAngle;
-      if(player.attackTimer<=0)performAttack(player.facingAngle);
+      performAttack(player.facingAngle);
     }
     return;
   }

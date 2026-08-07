@@ -160,6 +160,22 @@ test('touch-first combat offers a visible, session-only target lock', () => {
   assert.match(SOURCE, /touchAimAssistEnabled=true;touchCombatTarget=null;touchCombatTargetTimer=0;/, 'the assist resets per session instead of entering profile data');
 });
 
+test('elite modifier stacks stay within a playable health budget', () => {
+  assert.match(SOURCE, /var ELITE_HEALTH_BUDGET_MULTIPLIER = 4\.0;/, 'elite pacing budget is explicit');
+  assert.match(
+    SOURCE,
+    /var _eliteHealthBudget=Math\.max\(1,Math\.round\(def\.hp\*ELITE_HEALTH_BUDGET_MULTIPLIER\)\);[\s\S]*?if\(spawned\.hpMax>_eliteHealthBudget\)\{[\s\S]*?spawned\.hpMax=_eliteHealthBudget;/,
+    'combined depth, dungeon, and modifier scaling is capped after modifiers apply'
+  );
+  assert.match(SOURCE, /desc:'Larger size, up to \+100% HP, \+20% Damage'/, 'Giant remains readable when the shared budget applies');
+});
+
+test('queued attack taps survive an active cooldown', () => {
+  const source = extractBetween('function updatePlayerAttack(dt){', 'function updateRogueCooldowns', 'attack update');
+  assert.match(source, /if\(touchAttackState\.queued\)\{[\s\S]*?if\(player\.attackTimer>0\)return;[\s\S]*?touchAttackState\.queued=false;/, 'touch taps wait for readiness');
+  assert.match(source, /if\(desktopAttackTapState\.queued\)\{[\s\S]*?if\(player\.attackTimer>0\)return;[\s\S]*?desktopAttackTapState\.queued=false;/, 'desktop taps wait for readiness');
+});
+
 test('boss rooms clear dead summon state before the exit handoff', () => {
   const source = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'boss room progress');
   assert.match(source, /var liveBossSummons=enemies\.filter\(function\(e\)\{return !!\(e&&e\.hp>0&&!e\.dead\);\}\)\.length;/, 'boss lock counts only live summons');

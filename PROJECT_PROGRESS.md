@@ -29,11 +29,11 @@ Git history, and current deployment—not only on comments or planning files.
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passed 81 tests,
-  release contracts, the 17-file build, and the static-package audit; the
-  session-transient UI and final-enemy status-refresh contracts are included.
-  `npm.cmd run native:sync` also passed after the Finish for Now status-cleanup
-  fix.
+- Current local verification before the next release gate: focused combat and
+  progression contracts pass after the elite pacing/input hardening; the full
+  `npm.cmd run release:verify` gate now passes 83 tests, the 17-file build, and
+  the static-package audit; `npm.cmd run native:sync` also passes. Publication
+  still requires the milestone commit and live verification below.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
   passed; the preview and configured hostname report shell SHA-256
   `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`
@@ -43,12 +43,18 @@ Git history, and current deployment—not only on comments or planning files.
   surface
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit
-  portal, then completed Dungeon 2 Normal through the Fallen King and exit
+  portal, then completed the patched Dungeon 2 Normal route through shrine,
+  treasure, a bounded two-elite room, the three-phase Fallen King, and the exit
   portal into The Shadow Realm Entrance with the loopback developer aid
   enabled. The disposable profile was deleted after the run and the retained
-  Mage/Barbarian profiles were verified unchanged. This advances the evidence
-  score to 79% / 18%; D4-8, the ending, and the full safe-stop session remain
+  Mage/Barbarian profiles were verified unchanged. This maintains the evidence
+  score at 79% / 18%; D4-8, the ending, and the full safe-stop session remain
   open.
+- The elite pacing follow-up caps the combined health consequence of depth,
+  dungeon, elite, and Giant modifiers while leaving their size, damage,
+  defense, and behavior identities intact. Touch and desktop attack taps also
+  wait for cooldown readiness. The two new focused contracts must be included
+  in the full release gate before this milestone is published.
 - Latest isolated QA evidence: a temporary Mage profile completed Dungeon 1
   through the Stone Guardian and portal, then reached the D2 `Dark Inquisition
   Chamber` elite room. `Elite Invasion` plus a Corrupted elite reproduced an

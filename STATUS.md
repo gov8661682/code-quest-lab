@@ -3,6 +3,21 @@
 Date: 2026-08-07
 State: pre-release hardening; not a Release Candidate
 
+## Current milestone in verification
+
+On 2026-08-07, local QA completed the patched Dungeon 2 Normal route through
+the shrine, treasure room, two-elite Executioner's Court, three-phase Fallen
+King, and exit portal into The Shadow Realm Entrance with the loopback-only
+developer invincibility aid. The elite room cleared in a bounded paced
+encounter after the combined health budget was applied. Queued touch and
+desktop attack taps now survive an active cooldown. The release gate, GitHub
+checkpoint, deployment, and live verification are still pending for this
+milestone; no incomplete build is being published.
+
+The evidence-scored progress remains **79%** for Checkpoint 1 and **18%**
+overall because this hardening result does not by itself close D4-8, the
+intended ending, or the full safe-stop session acceptance lanes.
+
 ## Creative reference audit
 
 - Reviewed `F:\Downloads\20260804_latest output.txt` on 2026-08-04 as Joey's latest creative/gameplay reference. Size: 4,785,331 bytes; 80,806 lines; SHA-256: `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`.

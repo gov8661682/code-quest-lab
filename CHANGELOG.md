@@ -2,6 +2,14 @@
 
 ## Unreleased - 2026-08-07
 
+- Completed the next bounded D2 playthrough with a disposable Mage: shrine,
+  treasure, the two-elite Executioner's Court, all three Fallen King phases,
+  and the exit portal into The Shadow Realm Entrance. Added a post-modifier
+  elite health budget so depth, dungeon, elite, and Giant scaling cannot create
+  multi-minute damage sponges while the modifier identities remain intact.
+  Attack taps received during cooldown now wait for readiness on touch and
+  desktop paths. Two focused combat contracts pass; the full release gate and
+  major GitHub/website checkpoint are next.
 - Completed a disposable Mage QA route through all observable Dungeon 2
   rooms, the Prison Warden mini-boss, the Fallen King through Phase 3, and
   the exit portal into The Shadow Realm Entrance using the requested local
