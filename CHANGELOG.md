@@ -2,6 +2,18 @@
 
 ## Unreleased - 2026-08-07
 
+- Tightened the shared elite health budget from 4x to 2.5x authored base health
+  after a Dungeon 2 calculation showed that depth and dungeon scaling could
+  still create a starter-damage wall for fully stacked elites. Modifier size,
+  damage, defense, and behavior remain intact. A fresh disposable Mage
+  regression route re-entered Dungeon 2 Normal, cleared early rooms, shrine,
+  treasure, later combat, and the Prison Warden route segment, then stopped
+  safely. Release verification passed 83 tests, the 17-file package audit,
+  native sync, and live production checks. Source commit `944675b` was pushed
+  and deployed at `https://code-quest-lab.gov8661682.com/` with preview
+  `https://52fc1d32.code-quest-lab.pages.dev/`; deployed shell hash is
+  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
+
 - Completed the next bounded D2 playthrough with a disposable Mage: shrine,
   treasure, the two-elite Executioner's Court, all three Fallen King phases,
   and the exit portal into The Shadow Realm Entrance. Added a post-modifier

@@ -5,20 +5,21 @@ State: pre-release hardening; not a Release Candidate
 
 ## Latest verified milestone
 
-On 2026-08-07, local QA completed the patched Dungeon 2 Normal route through
-the shrine, treasure room, two-elite Executioner's Court, three-phase Fallen
-King, and exit portal into The Shadow Realm Entrance with the loopback-only
-developer invincibility aid. The elite room cleared in a bounded paced
-encounter after the combined health budget was applied. Queued touch and
-desktop attack taps now survive an active cooldown. The 83-test release gate,
+On 2026-08-07, the elite pacing budget was tightened after a bounded Dungeon 2
+playtest showed that Dungeon 2's 2x enemy-health multiplier could still make a
+fully stacked Royal Guard elite a starter-damage wall. The shared post-modifier
+health budget is now 2.5x the authored base health instead of 4x; size, damage,
+defense, and behavior modifiers remain intact. The 83-test release gate,
 17-file build/package audit, native sync, GitHub push, Cloudflare deployment,
-and live browser smoke all passed for this milestone.
+and live browser smoke all passed for this milestone. A fresh disposable Mage
+also re-entered Dungeon 2 Normal after the fix, cleared the early rooms,
+shrine, treasure, later combat, and Prison Warden route segment, and was then
+safely stopped without changing retained profiles.
 
-Milestone commit: `5cbe80c` (`Bound elite pacing and queued attack input`),
-pushed on 2026-08-07. Pages preview:
-`https://cfe817cd.code-quest-lab.pages.dev/`. Configured hostname:
-`https://code-quest-lab.gov8661682.com/`. Deployed shell SHA-256:
-`4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`.
+Milestone commit: `944675b` (`Tighten Dungeon 2 elite pacing budget`), pushed
+on 2026-08-07. Pages preview: `https://52fc1d32.code-quest-lab.pages.dev/`.
+Configured hostname: `https://code-quest-lab.gov8661682.com/`. Deployed shell
+SHA-256: `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
 
 The evidence-scored progress remains **79%** for Checkpoint 1 and **18%**
 overall because this hardening result does not by itself close D4-8, the
@@ -45,22 +46,22 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `5cbe80c` (`Bound elite pacing and queued attack
-  input`), after the 83-test release verification, build/package audit, native
+- Current verified code head: `944675b` (`Tighten Dungeon 2 elite pacing
+  budget`), after the 83-test release verification, build/package audit, native
   asset sync, GitHub push, and live browser smoke. Checkpoint 1 remains active
   because D1-8 and the ending are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `5cbe80c` (`Bound elite pacing and queued
-  attack input`), deployed on 2026-08-07 to the configured Cloudflare Pages
+- Latest deployed milestone runtime: `944675b` (`Tighten Dungeon 2 elite
+  pacing budget`), deployed on 2026-08-07 to the configured Cloudflare Pages
   project. The earlier deployed runtime `9c451af` and all preceding hardening
   commits remain in history. This milestone includes the bounded D2 elite
   route, queued attack-input fix, and the corresponding control records.
-- Checkpoint record: commit `5cbe80c`, deployed 2026-08-07 to
+- Checkpoint record: commit `944675b`, deployed 2026-08-07 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://cfe817cd.code-quest-lab.pages.dev/`), build SHA-256
-  `4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`.
+  `https://52fc1d32.code-quest-lab.pages.dev/`), build SHA-256
+  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
 - Production verification passed for both the configured hostname and preview;
   the live browser smoke reached the profile screen and playable entrance with
   visible target assist at the default desktop viewport and at 1024x768 tablet

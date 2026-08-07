@@ -11,6 +11,23 @@ Diagnostics: no browser error or warning entries
 
 ## Follow-up against the recommendations
 
+The latest bounded follow-up found and fixed a second elite-pacing edge case.
+Dungeon 2 applies a 2x health multiplier before elite and Giant modifiers, so
+the previous 4x post-modifier budget could still leave a fully stacked Royal
+Guard elite at roughly the same health as the unbounded calculation. The
+shared budget is now 2.5x authored base health, after all scaling, while the
+elite's size, damage, defense, and behavior identity remain unchanged.
+
+The 83-test release gate, 17-file static build/package audit, native sync, and
+the GitHub/Cloudflare checkpoint `944675b` all passed. The configured hostname
+and Pages preview `https://52fc1d32.code-quest-lab.pages.dev/` both report shell
+SHA-256 `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
+A fresh disposable Mage re-entered Dungeon 2 Normal after the change and
+cleared early combat, shrine, treasure, later combat, and the Prison Warden
+route segment before a deliberate safe stop. This did not use the `Elite
+Invasion` modifier, so it is a post-fix regression signal rather than a new
+full Elite Invasion acceptance run.
+
 The follow-up used the loopback developer invincibility aid and stopped after
 the autonomous gameplay-attempt limit rather than repeating an unchanged
 combat loop. It reached Dungeon 4's `ELITE The Long Fall`: five elites were
@@ -185,7 +202,7 @@ The playtest followed a first-time player journey:
   during an attack cooldown could be discarded. Touch and desktop attack taps
   now remain queued until the normal cooldown is ready, with focused contracts
   covering both paths. The fix is included in the 83-test release gate and the
-  verified 2026-08-07 deployment. The next expert recommendation remains a
+  verified 2026-08-07 deployment `944675b`. The next expert recommendation remains a
   complete clean D1-8 run and a deliberate 10-30 minute touch-first stop/resume
   session.
 

@@ -29,21 +29,21 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-07)
 
-- A disposable Mage completed the patched Dungeon 2 Normal route from shrine
-  through treasure, a two-elite room, and the three-phase Fallen King. The
-  elite room cleared in a bounded paced encounter after the combined scaling
-  budget was applied; the exit portal then advanced the run into The Shadow
-  Realm Entrance. Veteran difficulty unlocked as expected.
+- The Dungeon 2 elite budget was tightened from 4x to 2.5x authored base
+  health after accounting for depth and Dungeon 2 scaling. Modifier identity
+  and behavior remain intact. A fresh disposable Mage re-entered Dungeon 2
+  Normal after the fix and cleared early combat, shrine, treasure, later
+  combat, and the Prison Warden route segment before a deliberate safe stop.
 - Queued touch and desktop attack taps now wait for the ordinary attack
-  cooldown instead of being discarded. Focused contracts and the fresh local
-  route both cover the fix. This is a meaningful hardening milestone, but it
-  does not close a new acceptance lane: the evidence score remains **79%** for
-  Checkpoint 1 and **18%** overall until D4-8, the ending, and the full
-  safe-stop session are evidenced.
-- The major checkpoint is verified as commit `5cbe80c`, pushed on 2026-08-07 and
-  deployed to `https://code-quest-lab.gov8661682.com/` with preview
-  `https://cfe817cd.code-quest-lab.pages.dev/`. The deployed shell hash is
-  `4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`.
+  cooldown instead of being discarded. Focused contracts, the earlier bounded
+  elite route, and the new source build cover the hardening. This is a
+  meaningful milestone, but it does not close a new acceptance lane: the
+  evidence score remains **79%** for Checkpoint 1 and **18%** overall until
+  D4-8, the ending, and the full safe-stop session are evidenced.
+- The major checkpoint is verified as commit `944675b`, pushed on 2026-08-07
+  and deployed to `https://code-quest-lab.gov8661682.com/` with preview
+  `https://52fc1d32.code-quest-lab.pages.dev/`. The deployed shell hash is
+  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
 
 ## Current objective
 

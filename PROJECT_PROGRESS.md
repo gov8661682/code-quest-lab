@@ -17,14 +17,14 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` contains source milestone commit `5cbe80c` (`Bound elite
-  pacing and queued attack input`) plus the earlier deployed checkpoint history.
+- Git state: `main` contains source milestone commit `944675b` (`Tighten
+  Dungeon 2 elite pacing budget`) plus the earlier deployed checkpoint history.
   Control baseline `944c8c3` (`Add bounded autonomous progress controls`) and
   the route/input/recovery hardening commits remain in history. The deployment
   record for source commit `5cbe80c` is maintained below; later incomplete work must remain
   grouped into the next meaningful checkpoint.
 - Canonical game: `index.html`, SHA-256
-  `4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`
+  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
@@ -33,12 +33,11 @@ Git history, and current deployment—not only on comments or planning files.
   the 17-file build, and the static-package audit; `npm.cmd run native:sync`
   also passes after the elite pacing/input hardening.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
-  and the matching preview check passed; the preview and configured hostname
-  report shell SHA-256
-  `4134FC9D7DE891F5D890AF59774CC26BB711AAA8BA8277CF967962F7880B9840`
-- Last website checkpoint: source commit `5cbe80c`, deployed and live-verified
+  and the matching preview check passed; both report shell SHA-256
+  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
+- Last website checkpoint: source commit `944675b`, deployed and live-verified
   on 2026-08-07 at `https://code-quest-lab.gov8661682.com/`; preview
-  `https://cfe817cd.code-quest-lab.pages.dev/` also passed the live smoke
+  `https://52fc1d32.code-quest-lab.pages.dev/` also passed the live smoke
   surface
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit
@@ -50,10 +49,11 @@ Git history, and current deployment—not only on comments or planning files.
   score at 79% / 18%; D4-8, the ending, and the full safe-stop session remain
   open.
 - The elite pacing follow-up caps the combined health consequence of depth,
-  dungeon, elite, and Giant modifiers while leaving their size, damage,
-  defense, and behavior identities intact. Touch and desktop attack taps also
-  wait for cooldown readiness. The two new focused contracts are included in
-  the 83-test release gate and the verified deployed milestone.
+  dungeon, elite, and Giant modifiers at 2.5x authored base health while
+  leaving their size, damage, defense, and behavior identities intact. Touch
+  and desktop attack taps also wait for cooldown readiness. The two focused
+  contracts are included in the 83-test release gate and the verified deployed
+  milestone.
 - Latest isolated QA evidence: a temporary Mage profile completed Dungeon 1
   through the Stone Guardian and portal, then reached the D2 `Dark Inquisition
   Chamber` elite room. `Elite Invasion` plus a Corrupted elite reproduced an
