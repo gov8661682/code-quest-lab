@@ -14,6 +14,11 @@
   summons only, clears dead objects, reopens the exit, and removes stale status
   text. Release verification passes 80 tests, build/package audit, and native
   web-asset sync. This milestone is prepared for its GitHub/website checkpoint.
+- Created the GitHub and website checkpoint as commit `0c960fc` on 2026-08-07.
+  Cloudflare Pages preview `88bd6ae9` and `code-quest-lab.gov8661682.com` both
+  passed production checks; the live browser smoke reached profile creation,
+  Town, pause/finish, dashboard return, and cleanup. The deployed shell hash
+  is `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
 
 - Followed up the AI-expert combat recommendations with a bounded Dungeon 4
   route playtest. The route cleared the D4 combat, shrine, ambush/reward, and

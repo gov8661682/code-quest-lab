@@ -1,6 +1,6 @@
 # Code Quest Lab - Web Deployment Package
 
-Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-05)
+Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-07)
 
 ## Intended deployment
 
@@ -73,15 +73,16 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-05 checkpoint was published to the configured Cloudflare Pages
-project `code-quest-lab` at commit `9da1d0e`, with primary hostname
-`https://code-quest-lab.gov8661682.com/` and preview
-`https://8d5f404a.code-quest-lab.pages.dev/`. The deployed shell hash is
-`3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
+The 2026-08-07 touch-route/boss-handoff checkpoint was published to the
+configured Cloudflare Pages project `code-quest-lab` at commit `0c960fc`, with
+primary hostname `https://code-quest-lab.gov8661682.com/` and preview
+`https://88bd6ae9.code-quest-lab.pages.dev/`. The deployed shell hash is
+`975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
 
-`npm.cmd run production:check -- https://code-quest-lab.gov8661682.com` passed
-on 2026-08-05. The preview live smoke reached profile creation, Town,
-pause/finish, Manage Data export, and cleanup at 1024x768 with no browser
-diagnostics; the primary hostname loaded with no diagnostics and its existing
-Mage profile was left untouched. Repeat the owner-approved publish and live
-checks after the next substantial tested milestone.
+`npm.cmd run production:check` passed on 2026-08-07 for both the configured
+hostname and the preview. The live browser smoke reached profile creation,
+Mage selection, Town, visible target assist, pause/finish, dashboard return,
+and temporary-profile cleanup at the current 1078x912 managed browser surface
+with no diagnostics; the primary-origin Mage profile was left untouched.
+Repeat the owner-approved publish and live checks after the next substantial
+tested milestone.

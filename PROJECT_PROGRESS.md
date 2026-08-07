@@ -4,8 +4,8 @@ Reviewed: 2026-08-07
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; not a Release Candidate
 
-Main checkpoint completion: **74%**
-Overall project completion: **17%**
+Main checkpoint completion: **76%**
+Overall project completion: **18%**
 
 The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
@@ -17,14 +17,12 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
-  profile transfer and combat readability`) and pushed follow-ups through
-  `e093cd3` (`Bound Dungeon 4 recovery pressure`), including
-  `6423ecb` (`Bound corrupted elite summons`). Control baseline `944c8c3`
-  (`Add bounded autonomous progress controls`) and the route/input/recovery
-  hardening commits between them are also pushed. The
-  deployment record for `9da1d0e` is maintained below; these incomplete or
-  minor follow-ups are intentionally not deployed as separate checkpoints.
+- Git state: `main` contains deployed milestone commit `0c960fc` (`Prove
+  touch-first D1 boss route`) and its pushed predecessor hardening history.
+  Control baseline `944c8c3` (`Add bounded autonomous progress controls`) and
+  the route/input/recovery hardening commits remain in history. The deployment
+  record for `0c960fc` is maintained below; later incomplete work must remain
+  grouped into the next meaningful checkpoint.
 - Canonical game: `index.html`, SHA-256
   `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
@@ -39,16 +37,17 @@ Git history, and current deployment—not only on comments or planning files.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
   passed; the preview and configured hostname report shell SHA-256
   `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`
-- Last website checkpoint: commit `9da1d0e`, deployed and live-verified on
-  2026-08-05 at `https://code-quest-lab.gov8661682.com/`; preview
-  `https://8d5f404a.code-quest-lab.pages.dev/` also passed the live smoke
+- Last website checkpoint: commit `0c960fc`, deployed and live-verified on
+  2026-08-07 at `https://code-quest-lab.gov8661682.com/`; preview
+  `https://88bd6ae9.code-quest-lab.pages.dev/` also passed the live smoke
   surface
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit
   portal, reaching The Fallen Kingdom Entrance with the loopback developer
   invincibility aid enabled. The two disposable Mage profiles used for this
   QA cycle were deleted after the run and the retained Mage/Barbarian profiles
-  were verified unchanged. This advances the evidence score to 74% / 17%; the
+  were verified unchanged. This advances the evidence score to 76% / 18% after
+  the tested GitHub and website checkpoint; the
   full D1-8 ending and safe-stop session remain open.
 - Latest isolated QA evidence: a temporary Mage profile completed Dungeon 1
   through the Stone Guardian and portal, then reached the D2 `Dark Inquisition
@@ -89,7 +88,7 @@ D1-8 acceptance gates.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-05 save-portability/readability milestone; the 2026-08-07 touch-route milestone is prepared locally | Cloudflare Pages project `code-quest-lab`; commit `9da1d0e` was pushed and live-verified, while the new 80-test touch-route build is ready for the next publication | Repeat the owner-approved publish after this tested milestone; full D1-8 combat/ending evidence remains separate | Owner-approved hosting access for future publishes | Yes | Publish and live-verify the touch-route/boss-handoff milestone, then resume D1-8 |
+| Current web deployment checkpoint | Complete for the 2026-08-07 touch-route/boss-handoff milestone | Cloudflare Pages project `code-quest-lab`; commit `0c960fc` was pushed, preview `88bd6ae9` and the configured hostname passed production checks, and the live browser smoke reached profile creation, Town, pause/finish, and cleanup; shell SHA-256 is `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F` | Repeat the owner-approved publish after the next major tested milestone; full D1-8 combat/ending evidence remains separate | Owner-approved hosting access for future publishes | Yes | Resume the active D1-8 route and safe-stop evidence |
 | Open-world product and architecture direction | Complete as a design decision; runtime implementation is intentionally staged | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; the existing Town layout now also feeds a local schematic minimap; `DECISIONS.md` records the explicit owner direction | Implement and test the first World Atlas/region graph only after C1 playability and relevant save/input evidence are stable | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
 | AI expert playtest and first usability fixes | Playtest complete; grouped copy, Town orientation, and readability follow-up are deployed; initial attack response is reproduced; full progression evidence remains open | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy, minimap, lock banner, enemy silhouettes, and HP-bar treatment are live in the checkpoint shell; the D2 elite playthrough reproduced a Corrupted summon escalation and local commit `6423ecb` bounds it with a finite budget | Continue the clean-profile C1 route and complete the touch/tablet lifecycle evidence; keep the local hardening fix under regression coverage before the next deployment | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Re-test the corrected D2 elite room, then continue D1-8 evidence |
 

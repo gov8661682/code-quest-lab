@@ -16,25 +16,32 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **74%** complete and overall
-  project progress is **17%** using the ten-checkpoint formula in
+- Evidence-scored progress: Checkpoint 1 is **76%** complete and overall
+  project progress is **18%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
 - Autonomous work protocol: `AUTORUN.md` requires a concrete progress delta per
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `e093cd3` (`Bound Dungeon 4 recovery pressure`),
-  pushed after the 78-test release verification, build/package audit, and
-  native asset sync. Control baseline `944c8c3` is also pushed. This is local
-  hardening, not a website deployment checkpoint because Checkpoint 1 remains
-  incomplete.
+- Current verified code head: `0c960fc` (`Prove touch-first D1 boss route`),
+  pushed after the 80-test release verification, build/package audit, native
+  asset sync, and live browser smoke. This is a tested website checkpoint;
+  Checkpoint 1 remains active because D1-8 and the ending are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `9da1d0e` (`Add local profile transfer and combat readability`); local hardening commits `5db6db5`, `3e33470`, `8e165e1`, `4747413`, `3106820`, `e1380c4` (`Harden recovered boss progression QA`), `90f4f36` (`Protect touch joystick releases`), and `c8b50c8` (`Guide Town portal discovery`) are pushed to `origin/main` but not deployed because they are minor follow-ups. Prior stable runtime `32d83d0` and control-record commit `194bcc5` remain in history. `8e165e1` adds exact generated-route restoration on resume, corrects the first-combat room guard, and records the bounded off-viewport target finding; `4747413` adds a restrained `THREAT` locator for hidden live targets outside the viewport; `3106820` refreshes room/HUD status as the final enemy is removed; `e1380c4` restores a recovered boss-room portal, corrects entrance objectives, and adds a gated local summons-clear aid; `90f4f36` protects movement-joystick releases from adjacent skill buttons; `c8b50c8` adds the Town portal direction cue.
-- Checkpoint record: commit `9da1d0e`, deployed 2026-08-05 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://8d5f404a.code-quest-lab.pages.dev/`), build SHA-256 `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`.
-- Production verification passed with `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`; the new preview live smoke reached profile/class/Town, pause/finish, Manage Data export, and cleanup at 1024x768, with zero browser diagnostics. The configured hostname loaded with no diagnostics; an existing primary-origin Mage profile was preserved and not modified.
+- Latest deployed milestone runtime: `0c960fc` (`Prove touch-first D1 boss route`),
+  deployed on 2026-08-07 to the configured Cloudflare Pages project. The
+  earlier deployed runtime `9da1d0e` and all preceding hardening commits remain
+  in history. The milestone includes the session-only touch target lock, boss
+  dead-summon handoff fix, and the corresponding evidence records.
+- Checkpoint record: commit `0c960fc`, deployed 2026-08-07 to `https://code-quest-lab.gov8661682.com/` (Pages preview: `https://88bd6ae9.code-quest-lab.pages.dev/`), build SHA-256 `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+- Production verification passed for both the configured hostname and preview;
+  the live browser smoke reached profile/class/Town, visible target assist,
+  pause/finish, dashboard return, and temporary-profile cleanup at the current
+  1078x912 managed browser surface with zero browser diagnostics. The existing
+  primary-origin Mage profile was preserved and not modified.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This is local evidence only; the latest deployed site remains the prior stable checkpoint.
 - A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
   start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and
@@ -83,7 +90,8 @@ State: pre-release hardening; not a Release Candidate
   session-only target lock made center-hold Attack usable; the developer aid
   was enabled only on the loopback QA URL. Only the two disposable Mage QA
   profiles were deleted; the retained Mage level 12 and Barbarian level 4
-  profiles were verified unchanged. This moves the evidence score to 74% / 17%.
+  profiles were verified unchanged. With the tested GitHub/website checkpoint,
+  the evidence score is now 76% / 18%.
 - The same run exposed a dead-summon handoff edge case. Boss rooms now count
   live summons only, discard dead summon objects, reopen the exit, and clear
   stale `CLEAR SUMMONS` text. The focused contract is included in the 80-test

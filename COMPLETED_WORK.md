@@ -50,6 +50,11 @@ documented acceptance-criterion failure. Optional improvements belong in
   at the configured domain and Pages preview. It does not complete Checkpoint
   1 because full D1-8 player completion and attack-response evidence remain
   open.
+- The fresh touch-first D1 boss/portal milestone was recorded in commit
+  `0c960fc`, pushed to `origin/main`, deployed on 2026-08-07, and live-verified
+  at the configured hostname and preview `88bd6ae9`. Its 80-test release gate,
+  live browser flow, target-assist control, and boss dead-summon handoff are
+  recorded; D1-8, the ending, and the full safe-stop session remain open.
 - The local follow-up commit `32d83d0` added page-background save-order test
   coverage and documentation/status corrections; it is not a new website
   milestone because the shipped shell did not change.

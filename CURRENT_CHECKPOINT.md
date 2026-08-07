@@ -10,12 +10,12 @@ Status: **Active; not complete**
 ## Main progress checkpoint
 
 <!-- checkpoint-progress:start -->
-Active checkpoint completion: **74%**
+Active checkpoint completion: **76%**
 
-Overall project completion: **17%**
+Overall project completion: **18%**
 
 Scoring date: 2026-08-07. Overall progress is rounded from one completed
-checkpoint plus 74% of the active checkpoint across ten checkpoints.
+checkpoint plus 76% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
 |---|---:|---:|---|---|
@@ -24,7 +24,7 @@ checkpoint plus 74% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 8 | The 80-test release verification, build/package audit, native sync, updated records, and pushed milestone preparation are complete; live publication is the final step | Deploy this tested milestone and live-verify desktop/tablet playability |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 80-test release verification, build/package audit, native sync, commit `0c960fc` pushed to GitHub, Cloudflare Pages preview and configured hostname both passed production checks, and live browser smoke reached profile creation, Town, pause/finish, and cleanup | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -298,13 +298,21 @@ skip the active C1 route, save, input, and session acceptance criteria.
   Attack usable throughout the route; the local developer invincibility aid
   was enabled only for QA. The two disposable Mage profiles from this run
   were deleted through Manage Data; the retained Mage and Barbarian profiles
-  were verified unchanged. This advances the evidence score to 74% / 17%,
-  while the D1-8 ending and full safe-stop session remain open.
+  were verified unchanged. This advanced the evidence score to 74% / 17%
+  before the milestone publication; the current score is 76% / 18%, while the
+  D1-8 ending and full safe-stop session remain open.
 - The boss handoff edge case found during that run is now fixed: dead summon
   objects no longer leave `CLEAR SUMMONS` visible or keep a defeated boss room
   locked. The runtime counts only live summons, clears dead objects, reopens
   the exit, and removes stale status text; the focused combat contract and the
   80-test release gate cover the behavior.
+- Milestone checkpoint `0c960fc` was pushed and deployed on 2026-08-07. Both
+  `https://88bd6ae9.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/` passed `production:check`; the live
+  browser smoke reached profile creation, Mage selection, Town, visible target
+  assist, pause, Finish and Return to Dashboard, and temporary-profile cleanup
+  with no browser diagnostics. Shell SHA-256:
+  `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
 
 ## Known blockers
 
@@ -322,10 +330,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `e093cd3` (`Bound Dungeon 4 recovery pressure`),
-  pushed to `origin/main` after 78-test release verification, build/package
-  audit, and native asset sync. This is local hardening, intentionally not a
-  website deployment checkpoint because Checkpoint 1 remains incomplete.
+- Current verified code head: `0c960fc` (`Prove touch-first D1 boss route`),
+  pushed to `origin/main` after 80-test release verification, build/package
+  audit, native asset sync, and live browser smoke. This is the verified
+  touch-route/boss-handoff website checkpoint; Checkpoint 1 remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -361,30 +369,30 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
   adds a screen-edge direction arrow for the off-screen Town portal. The
   compact-viewport smoke rendered the cue without adding a menu shortcut; it
   is not a website deployment checkpoint.
-- Runtime/milestone: `9da1d0e` (`Add local profile transfer and combat readability`)
+- Runtime/milestone: `0c960fc` (`Prove touch-first D1 boss route`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; milestone commit `9da1d0e` records the open-world direction,
-  AI expert playtest, synchronized copy-only usability fixes, profile transfer,
-  and grouped readability changes; its GitHub/website checkpoint is verified
+- Branch: `main`; milestone commit `0c960fc` records the fresh touch-first D1
+  boss/portal proof, target assist, dead-summon handoff, and the GitHub/website
+  checkpoint; its GitHub/website checkpoint is verified
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `9da1d0e` (`Add local profile transfer and combat readability`)
-- Deployment date: 2026-08-05
+- Commit: `0c960fc` (`Prove touch-first D1 boss route`)
+- Deployment date: 2026-08-07
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://8d5f404a.code-quest-lab.pages.dev/`
-- Shell SHA-256: `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA`
-- Current read-only production check: passed on 2026-08-05
+- Preview: `https://88bd6ae9.code-quest-lab.pages.dev/`
+- Shell SHA-256: `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`
+- Current read-only production check: passed on 2026-08-07 for primary and preview
 
-The verified milestone shell includes the existing-Town minimap, copy-only
-fixes, versioned profile transfer, and grouped readability fixes. The preview
-live smoke reached profile creation, Town, pause/finish, Manage Data export,
+The verified milestone shell includes the existing-Town minimap, versioned
+profile transfer, grouped readability fixes, session-only touch target assist,
+and dead-summon boss handoff correction. The live preview smoke reached profile
+creation, Mage selection, Town, target assist, pause/finish, dashboard return,
 and cleanup; the configured hostname loaded with no browser diagnostics and
 the existing primary-origin Mage profile was left untouched. The next step is
-to resume the active Checkpoint 1 attack-response and clean-profile route
-evidence.
+to resume the active Checkpoint 1 D1-8 route and safe-stop evidence.
 
 ## Exact condition required to advance
 
