@@ -93,6 +93,15 @@ test('Dungeon 4 corruption surges are bounded per room', () => {
   assert.match(SOURCE, /else if\(_d4RoomWraithSpent\)\{\s*d4Corruption=0;\s*\}/, 'spent rooms do not keep refilling their corruption meter');
 });
 
+test('Void Monarch summon pressure is finite and phase-aware', () => {
+  assert.match(SOURCE, /vmBeastSummonsRemaining:4/);
+  assert.match(SOURCE, /vmCrystalSummonsRemaining:4/);
+  assert.match(SOURCE, /vm\.vmBeastSummonTimer<=0&&vm\.vmPhase<3&&vm\.vmBeastSummonsRemaining>0/);
+  assert.match(SOURCE, /vm\.vmBeastSummonsRemaining--/);
+  assert.match(SOURCE, /vm\.vmPhase>=2&&vm\.vmCrystalSummonsRemaining>0/);
+  assert.match(SOURCE, /vm\.vmCrystalSummonsRemaining--/);
+});
+
 test('desktop play surface exposes a focusable keyboard target', () => {
   assert.match(SOURCE, /<canvas id="gameCanvas"[^>]*tabindex="0"[^>]*role="application"/, 'game canvas is keyboard-focusable');
   assert.match(SOURCE, /canvas\.addEventListener\('pointerdown',[\s\S]*?canvas\.focus\(\)/, 'pointer input focuses the play surface');

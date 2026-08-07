@@ -10448,10 +10448,15 @@ function spawnVoidMonarch(geo){
     vmBoltTimer:2.5,vmBoltCount:3,
     vmTeleportTimer:5.0,
     vmBeastSummonTimer:10.0,
+    // Summons add pressure, but a boss encounter must still converge. Once
+    // these finite waves are spent, target assist can stay on the monarch and
+    // the player is never trapped in an endless add-clear loop.
+    vmBeastSummonsRemaining:4,
     vmExplosionTimer:7.0,
     vmExplosionWarning:false,vmExplosionWarnTimer:0,vmExplosionX:0,vmExplosionY:0,
     // Phase 2
     vmCrystalSummonTimer:8.0,vmCrystalsSummoned:false,
+    vmCrystalSummonsRemaining:4,
     vmStormTimer:12.0,vmStormActive:false,vmStormParticles:[],
     // Phase 3
     vmTornadoTimer:6.0,vmTornadoes:[],
@@ -10549,7 +10554,7 @@ function updateVoidMonarch(dt,geo){
 
   // ── SUMMON SHADOW BEASTS (Phase 1+2) ──
   vm.vmBeastSummonTimer-=dt;
-  if(vm.vmBeastSummonTimer<=0&&vm.vmPhase<3){
+  if(vm.vmBeastSummonTimer<=0&&vm.vmPhase<3&&vm.vmBeastSummonsRemaining>0){
     vm.vmBeastSummonTimer=(vm.vmPhase===2?5.0:10.0)+Math.random()*3;
     var scount=vm.vmPhase===2?2:1;
     for(var si=0;si<scount;si++){
@@ -10558,6 +10563,7 @@ function updateVoidMonarch(dt,geo){
       se.y=geo.inner.y+40+Math.random()*(geo.inner.h-80);
       enemies.push(se);
     }
+    vm.vmBeastSummonsRemaining--;
     addFloatie(vm.x,vm.y-60,'SHADOW BEASTS RISE!','#4a1a6a',1.3);
   }
 
@@ -10586,7 +10592,7 @@ function updateVoidMonarch(dt,geo){
   }
 
   // ── VOID CRYSTALS SPAWN (Phase 2+) ──
-  if(vm.vmPhase>=2){
+  if(vm.vmPhase>=2&&vm.vmCrystalSummonsRemaining>0){
     vm.vmCrystalSummonTimer-=dt;
     if(vm.vmCrystalSummonTimer<=0){
       vm.vmCrystalSummonTimer=(vm.vmPhase===3?5.0:8.0)+Math.random()*3;
@@ -10594,6 +10600,7 @@ function updateVoidMonarch(dt,geo){
       cce.x=geo.inner.x+60+Math.random()*(geo.inner.w-120);
       cce.y=geo.inner.y+60+Math.random()*(geo.inner.h-120);
       enemies.push(cce);
+      vm.vmCrystalSummonsRemaining--;
       addFloatie(cce.x,cce.y-30,'VOID CRYSTAL!','#9a50da',1.2);
     }
   }
