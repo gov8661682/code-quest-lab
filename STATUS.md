@@ -65,6 +65,11 @@ State: pre-release hardening; not a Release Candidate
   sequence is serialized, exported, deployed, or available on the native
   protocol; a cache-busted loopback smoke showed `DEV TEST MODE` and
   `Invincibility enabled`, then the temporary profile was deleted.
+- A cache-busted loopback combat smoke then used `C Q L I` before entering the
+  first Dungeon 1 combat room. After 12 seconds with two enemies present, the
+  session was still active at `100/100 HP`; the temporary profile was removed
+  afterward. This confirms the aid is usable in the managed browser surface,
+  not that combat progression is complete.
 - Profile-save reliability was strengthened with versioned structural validation, valid-backup promotion, and an explicit user-facing recovery notice; full migration/corruption matrix coverage remains open.
 - An automated compatibility matrix now executes the shipped `parseCharacterSave` validator against current and legacy-compatible shapes, malformed JSON, future versions, and invalid field types; browser storage backup-promotion and cross-platform migration evidence remain open.
 - An automated mocked-storage matrix now executes the shipped `loadPermanentData` path for valid primary data, backup promotion, unsafe primary/backup fallback, and retired legacy mastery-stat migration; native/device storage, suspension, and cross-platform migration evidence remain open after the local browser lifecycle smoke.

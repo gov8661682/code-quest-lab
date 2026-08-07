@@ -201,6 +201,10 @@ skip the active C1 route, save, input, and session acceptance criteria.
   the ordinary-key fallback `C`, `Q`, `L`, `I` when a managed browser reserves
   function keys. Neither behavior is enabled on the deployed/public shell or
   included in profile export.
+- A cache-busted loopback combat smoke used the ordinary-key fallback before
+  entering Dungeon 1's first combat room; after 12 seconds with two enemies
+  present, the session remained active at `100/100 HP`. The temporary profile
+  was deleted afterward, and this remains QA evidence only.
 - The portal handoff QA also found and corrected a stale entrance objective:
   each entrance now resolves its objective from the underlying dungeon, so the
   Fallen Kingdom entrance correctly names the Fallen King rather than the
