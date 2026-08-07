@@ -5,6 +5,24 @@ State: pre-release hardening; not a Release Candidate
 
 ## Latest QA hardening checkpoint
 
+The 2026-08-07 gameplay follow-up bounded the Void Monarch's summon pressure:
+each encounter now has four beast waves and four crystal waves, with crystal
+summons phase-gated. The boss keeps its authored three-phase identity, but the
+target-assist path can converge on the monarch and a player cannot be trapped
+in an endless add-clear loop. The evidence score remains **79%** for
+Checkpoint 1 and **18%** overall because this is balance/playability
+hardening, not D4-8 or ending evidence.
+
+Milestone commit: `9886f50` (`Bound Void Monarch summon pressure`), pushed and
+deployed on 2026-08-07. Pages preview:
+`https://c45c9c7c.code-quest-lab.pages.dev/`. Configured hostname:
+`https://code-quest-lab.gov8661682.com/`. Preview and cache-busted hostname
+production checks passed; the deployed shell SHA-256 is
+`C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`.
+
+`npm.cmd run release:verify` passed all **84 tests**, the 17-file static
+build/package audit, and `npm.cmd run native:sync` passed before deployment.
+
 On 2026-08-07, the local developer summon-clear sequence was corrected so
 `F8 F7 F6 F4` can remove live boss summons without falsely completing the boss
 room or opening its exit. The D4 HUD now identifies the active boss as
@@ -18,14 +36,14 @@ profile. The retained Mage level 12 and Barbarian level 4 profiles remained
 unchanged. This is a QA/readability hardening result, so the evidence score
 remains **79%** for Checkpoint 1 and **18%** overall.
 
-Milestone commit: `cd90db4` (`Harden local boss QA controls`), pushed and
+Earlier milestone commit: `cd90db4` (`Harden local boss QA controls`), pushed and
 deployed on 2026-08-07. Pages preview:
 `https://0db3ee6b.code-quest-lab.pages.dev/`. Configured hostname:
 `https://code-quest-lab.gov8661682.com/`. Cache-busted production checks and
 the live browser smoke passed. Deployed shell SHA-256:
 `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
 
-`npm.cmd run release:verify` passed all **83 tests**, the 17-file static
+That earlier release gate passed all **83 tests**, the 17-file static
 build/package audit, and `npm.cmd run native:sync` passed before deployment.
 
 ## Previous pacing milestone
@@ -71,8 +89,8 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `cd90db4` (`Harden local boss QA controls`),
-  after the 83-test release verification, build/package audit, native asset
+- Current verified code head: `9886f50` (`Bound Void Monarch summon pressure`),
+  after the 84-test release verification, build/package audit, native asset
   sync, GitHub push, and live browser smoke. Checkpoint 1 remains active
   because D1-8 and the ending are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.

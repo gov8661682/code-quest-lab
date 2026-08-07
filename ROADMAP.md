@@ -53,8 +53,9 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
-Latest milestone: `cd90db4` hardens the loopback developer boss QA aid and
-corrects the Void Monarch HUD identity. It passed the 83-test release gate,
+Latest milestone: `9886f50` bounds the Void Monarch to finite, phase-aware
+summon pressure after `cd90db4` hardened the loopback developer boss QA aid and
+corrected the HUD identity. It passed the 84-test release gate,
 static/package/native checks, GitHub push, Cloudflare deployment, production
 checks, and live smoke. This does not count as D4-8 completion; continue with
 the clean-profile route and remaining touch/tablet lifecycle evidence.
@@ -142,4 +143,4 @@ that route to stop and be recorded. `CURRENT_CHECKPOINT.md` is the canonical
 percentage display; percentages are earned from named evidence and do not
 replace acceptance criteria.
 
-Latest verified checkpoint (2026-08-07): source milestone `cd90db4` hardened the loopback developer boss-summon aid and corrected the Void Monarch HUD identity; the Dungeon 2 pacing and queued attack-input hardening remain in the deployed history. The source is pushed to GitHub and deployed to `https://code-quest-lab.gov8661682.com/` with preview `https://0db3ee6b.code-quest-lab.pages.dev/`; both live checks passed with shell hash `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`. The active next priority is Checkpoint 1 D4-8 progression, the intended ending, safe-stop session, and tablet evidence. Later milestones must repeat the same test, push, deploy, and live-verification sequence.
+Latest verified checkpoint (2026-08-07): source milestone `9886f50` bounded Void Monarch summon pressure to four beast waves and four phase-aware crystal waves after `cd90db4` hardened the loopback developer boss-summon aid and corrected the HUD identity; the Dungeon 2 pacing and queued attack-input hardening remain in the deployed history. The source is pushed to GitHub and deployed to `https://code-quest-lab.gov8661682.com/` with preview `https://c45c9c7c.code-quest-lab.pages.dev/`; both live checks passed with shell hash `C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`. The active next priority is Checkpoint 1 D4-8 progression, the intended ending, safe-stop session, and tablet evidence. Later milestones must repeat the same test, push, deploy, and live-verification sequence.

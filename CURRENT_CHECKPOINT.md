@@ -24,11 +24,23 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 83-test release verification, build/package audit, native sync, milestone commit `cd90db4` pushed to GitHub, Cloudflare Pages preview `0db3ee6b` and configured hostname both passed production checks, and live browser smoke passed at the playable profile/entrance surface | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 84-test release verification, build/package audit, native sync, milestone commit `9886f50` pushed to GitHub, Cloudflare Pages preview `c45c9c7c` and configured hostname both passed production checks, and live browser smoke passed at the playable profile/entrance surface | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-07)
 
+- The Void Monarch summon-pressure follow-up is deployed as commit `9886f50`
+  (`Bound Void Monarch summon pressure`) with Pages preview
+  `https://c45c9c7c.code-quest-lab.pages.dev/` and configured hostname
+  `https://code-quest-lab.gov8661682.com/`. Beast summons are limited to four
+  waves, crystal summons to four phase-aware waves, and the live boss remains
+  the encounter target after those finite pressure windows. All 84 tests, the
+  17-file build/package audit, native sync, cache-busted production checks,
+  and live profile smoke passed. The deployed shell hash is
+  `C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`.
+- This is a balance and playability hardening milestone, not new route
+  evidence; the score remains **79%** / **18%** until D4-8, the intended
+  ending, and the full safe-stop session are evidenced.
 - The QA/readability follow-up is deployed as commit `cd90db4` (`Harden local
   boss QA controls`) with Pages preview
   `https://0db3ee6b.code-quest-lab.pages.dev/` and configured hostname
@@ -54,10 +66,10 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   meaningful milestone, but it does not close a new acceptance lane: the
   evidence score remains **79%** for Checkpoint 1 and **18%** overall until
   D4-8, the ending, and the full safe-stop session are evidenced.
-- The latest major checkpoint is verified as commit `cd90db4`, pushed on
+- The latest major checkpoint is verified as commit `9886f50`, pushed on
   2026-08-07 and deployed to `https://code-quest-lab.gov8661682.com/` with
-  preview `https://0db3ee6b.code-quest-lab.pages.dev/`. The deployed shell
-  hash is `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+  preview `https://c45c9c7c.code-quest-lab.pages.dev/`. The deployed shell
+  hash is `C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`.
 
 ## Current objective
 
@@ -385,8 +397,8 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `cd90db4` (`Harden local boss QA controls`),
-  pushed to `origin/main` after 83-test release verification, build/package
+- Current verified code head: `9886f50` (`Bound Void Monarch summon pressure`),
+  pushed to `origin/main` after 84-test release verification, build/package
   audit, native asset sync, and live browser smoke. Checkpoint 1 remains
   active.
 

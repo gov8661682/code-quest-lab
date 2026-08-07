@@ -11,6 +11,20 @@ Diagnostics: no browser error or warning entries
 
 ## Follow-up against the recommendations
 
+The latest D4 follow-up identified a genuine gameplay-loop risk: the Void
+Monarch could keep generating summon waves for the entire encounter, allowing
+target assist to spend the fight on adds instead of the boss. Summon pressure
+is now finite and phase-aware: four beast waves and four crystal waves per
+encounter. This preserves the dramatic three-phase design while guaranteeing
+that the fight converges. The 84-test release gate, static/package/native
+checks, GitHub push, Cloudflare deployment, production checks, and live smoke
+all passed. Source commit `9886f50` is deployed at
+`https://code-quest-lab.gov8661682.com/` with preview
+`https://c45c9c7c.code-quest-lab.pages.dev/` and shell hash
+`C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`.
+This is a balance/playability milestone; the score remains 79% / 18% until
+the full D4-8 route, ending, and touch-first safe-stop session are evidenced.
+
 The 2026-08-07 D4 boss QA follow-up found two concrete usability/tooling
 defects during the invincible playthrough. The developer summon-clear sequence
 was incorrectly refusing to operate while a boss was alive, and the HUD used

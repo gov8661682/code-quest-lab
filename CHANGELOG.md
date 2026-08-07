@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-07
 
+- Bounded Void Monarch summon pressure so each encounter has four finite beast
+  waves and four phase-aware crystal waves. The three-phase boss identity is
+  preserved while target assist and player damage can converge instead of
+  entering an endless add-clear loop. Release verification passed **84 tests**,
+  the 17-file build/package audit, native sync, production checks, and live
+  smoke. Source commit `9886f50` was pushed and deployed to
+  `https://code-quest-lab.gov8661682.com/` with preview
+  `https://c45c9c7c.code-quest-lab.pages.dev/`; deployed shell hash:
+  `C30547C010609B3B05CF3C09BD437092F5BE8496BD48E947791872C86B18CBEC`.
 - Hardened the local developer boss QA aid: `F8 F7 F6 F4` now clears live
   summons without falsely completing a live boss room or opening its exit.
   Corrected the D4 HUD label from the generic Stone Guardian name to Void
