@@ -2,6 +2,20 @@
 
 ## Unreleased - 2026-08-07
 
+- Followed up the AI-expert combat recommendations with a bounded Dungeon 4
+  route playtest. The route cleared the D4 combat, shrine, ambush/reward, and
+  story rooms, then defeated three of five elites in `The Long Fall` before a
+  safe stop under the autonomous five-attempt guard. Bounded the D4 corruption
+  wraith surge to one per room and capped each Regenerating elite at a finite
+  25% maximum-health recovery budget, including room-checkpoint persistence.
+  The local release verification now passes 78 tests, build/package audit, and
+  native asset sync; no deployment was made because C1 remains incomplete.
+- Ran a fresh temporary Mage profile through Dungeon 1 Normal content after
+  the hardening: first combat, shrine, sealed-chest event, treasure vault,
+  elite lair, and a later cleared combat room all advanced; the profile reached
+  Level 7 before the run was safely finished and deleted. Dungeon 4 stayed
+  correctly locked by progression, so this adds D1 evidence without claiming
+  a post-fix D4 rerun, D1-8 completion, or deployment checkpoint.
 - Reproduced a D2 `Dark Inquisition Chamber` progression stall on an isolated
   Mage QA profile: `Elite Invasion` plus a Corrupted elite grew the room to
   `Enemies: 15` and kept the exit locked during bounded attacks. Added a finite

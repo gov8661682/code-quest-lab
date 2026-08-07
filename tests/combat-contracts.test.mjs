@@ -67,6 +67,10 @@ test('regenerating elites reset their recovery timer when hit', () => {
     /e\.hp-=amount;e\.hitFlash=e\.isElite\?0\.28:0\.18;[\s\S]*?if\(e\.isElite&&e\.eliteRegenerating\)e\.eliteRegenTimer=0;/,
     'successful enemy damage interrupts regenerating-elite recovery'
   );
+  assert.match(SOURCE, /var _regenAmount=Math\.min\(e\.eliteRegenRemaining\|\|0,e\.hpMax\*0\.015\*dt\*3,e\.hpMax-e\.hp\);/, 'regeneration remains a recoverable pressure mechanic');
+  assert.match(SOURCE, /if\(_regenAmount>0\)\{e\.hp\+=_regenAmount;e\.eliteRegenRemaining-=_regenAmount;\}/, 'regeneration consumes its finite recovery budget');
+  assert.match(SOURCE, /spawned\.eliteRegenRemaining=Math\.round\(spawned\.hpMax\*0\.25\);/, 'new regenerating elites receive a bounded recovery budget');
+  assert.doesNotMatch(SOURCE, /e\.hp=Math\.min\(e\.hpMax,e\.hp\+e\.hpMax\*0\.015\*dt\*10\);/, 'regeneration cannot erase normal sustained damage');
 });
 
 test('corrupted elites have a finite summon budget', () => {
@@ -78,6 +82,15 @@ test('corrupted elites have a finite summon budget', () => {
     'corrupted summons stop after the finite budget and room safety cap'
   );
   assert.match(SOURCE, /eliteCorruptedSummonCount:e\.eliteCorruptedSummonCount\|\|0/, 'the budget survives room save and restore');
+});
+
+test('Dungeon 4 corruption surges are bounded per room', () => {
+  assert.match(SOURCE, /var d4CorruptionRoomId=null;/, 'the corruption meter tracks its current room');
+  assert.match(SOURCE, /var d4CorruptionWraithRooms=\{\};/, 'spent-room surge state is retained for the run');
+  assert.match(SOURCE, /var _d4RoomWraithSpent=!!d4CorruptionWraithRooms\[_d4RoomKey\];/, 'the current room checks whether its surge was spent');
+  assert.match(SOURCE, /if\(d4Corruption>=d4CorruptionMax&&!d4CorruptionWraithSpawned&&!_d4RoomWraithSpent\)/, 'a room can trigger at most one corruption wraith surge');
+  assert.match(SOURCE, /d4CorruptionWraithRooms\[_d4RoomKey\]=true;/, 'the surge is marked spent before the wraith is spawned');
+  assert.match(SOURCE, /else if\(_d4RoomWraithSpent\)\{\s*d4Corruption=0;\s*\}/, 'spent rooms do not keep refilling their corruption meter');
 });
 
 test('desktop play surface exposes a focusable keyboard target', () => {

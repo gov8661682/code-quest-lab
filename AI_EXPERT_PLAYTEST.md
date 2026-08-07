@@ -1,12 +1,37 @@
 # Code Quest Lab - AI Expert Playtest
 
-Date: 2026-08-05
+Original expert playtest: 2026-08-05
+Follow-up QA: 2026-08-07
 Build tested: configured production hostname,
 `https://code-quest-lab.gov8661682.com/`
 Viewport: 1024x768 landscape
 Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
+
+## Follow-up against the recommendations
+
+The follow-up used the loopback developer invincibility aid and stopped after
+the autonomous gameplay-attempt limit rather than repeating an unchanged
+combat loop. It reached Dungeon 4's `ELITE The Long Fall`: five elites were
+present, three were defeated, and two remained after bounded targeted and
+nearest-target attacks. The run was safely finished and the temporary QA
+profile was deleted without changing the retained profiles.
+
+The resulting hardening bounds corruption to one wraith surge per room and
+gives a Regenerating elite a finite recovery budget of 25% of maximum health,
+while preserving its readable recovery identity. The local 78-test release
+verification, static build/package audit, and native asset sync pass. A fresh
+post-fix D4 rerun remains required before the C1 acceptance score or website
+deployment changes.
+
+A separate fresh temporary Mage profile was also run through the patched local
+shell. It completed Dungeon 1's first combat, shrine, sealed-chest event,
+treasure vault, elite lair, and a later cleared combat room before reaching
+Level 7; Dungeon 4 remained correctly locked by progression. The run was
+finished safely and the temporary profile was deleted, leaving the retained
+profiles unchanged. This strengthens clean-profile D1 evidence but does not
+replace the required post-fix D4 rerun or full D1-8 route.
 
 ## What was tested
 

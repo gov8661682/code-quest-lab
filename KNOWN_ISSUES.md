@@ -29,6 +29,12 @@ Updated: 2026-08-05
   bounds each elite to two summoned minions and preserves that budget in room
   checkpoints; the fix is tested locally but is not in the deployed shell
   until the next major checkpoint.
+- A 2026-08-07 D4 elite-room follow-up reached five elites, defeated three, and
+  then stalled on a fast/regenerating pair during bounded manual attacks. The
+  local hardening now bounds D4 corruption to one surge per room and caps each
+  Regenerating elite's total recovery at 25% of maximum health. The room must
+  be rerun from a fresh post-fix session before this P1 progression risk can be
+  closed or deployed.
 
 ## P2 - important but currently workaroundable
 

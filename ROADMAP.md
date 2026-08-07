@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-05
+Updated: 2026-08-07
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -67,6 +67,10 @@ layers, world-state model, save boundaries, and acceptance bar.
 - Keep active-run checkpoints separate from profile progression: recover the latest safe room locally after suspension or forced closure, while deliberately finishing a run clears the checkpoint.
 - Review dialogue, combat presentation, difficulty, humour, and monetisation for 13-17-year-old users; remove graphic, shocking, childish, or manipulative presentation.
 - Fix P0/P1 usability, progression, mobile layout, and data-loss issues.
+- Keep elite pressure bounded for touch-first progression: Corrupted summons
+  and Regenerating recovery must have finite per-encounter limits, and every
+  fix requires a fresh-room rerun before it receives checkpoint or deployment
+  credit.
 
 Acceptance: a clean profile can complete a meaningful 10-30 minute tablet session and the locked V1 path in supported browser viewports; active-run recovery and optional play-support checks pass; remaining save-compatibility and full-path evidence is recorded.
 

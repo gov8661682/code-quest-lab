@@ -24,8 +24,10 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `6423ecb` (`Bound corrupted elite summons`),
-  pushed after 77-test release verification; control baseline `944c8c3` is also
+- Current verified code head before this cycle: `6423ecb` (`Bound corrupted elite summons`),
+  pushed after 77-test release verification; the finite-regeneration hardening
+  below is verified locally and awaits its next commit. Control baseline
+  `944c8c3` is also
   pushed. This is local hardening, not a website deployment checkpoint because
   Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -53,6 +55,28 @@ State: pre-release hardening; not a Release Candidate
   profile was deleted. Commit `6423ecb` now gives each Corrupted elite a finite
   two-minion summon budget and preserves the budget across room checkpoints;
   the follow-up passes 77 tests. This does not establish D1-8 or the ending.
+- A follow-up isolated Mage QA route on 2026-08-07 reached Dungeon 4's `ELITE
+  The Long Fall` after clearing D4 combat, shrine, ambush, reward-chest, and
+  story rooms. The elite room began with five elites; three were defeated, but
+  two remaining elites did not clear during bounded, invincible playtest
+  attempts, so the run was safely finished and the temporary Level 20/1199
+  Souls profile was deleted. This is a progression-quality finding, not D1-8
+  evidence. D4 corruption surges are now bounded to one per room, and
+  Regenerating elites now have a finite 25% maximum-health recovery budget
+  preserved through room checkpoints; a fresh rerun is required before this
+  fix can receive C1 or deployment credit.
+- A separate fresh temporary Mage profile on 2026-08-07 verified the patched
+  local shell through a real Dungeon 1 Normal route: Town, first combat,
+  shrine, sealed-chest event, treasure vault, elite lair, and a cleared later
+  combat room all advanced with the loopback invincibility aid enabled. The
+  profile reached Level 7, while Dungeon 4 correctly remained locked behind
+  the progression gate; the run was safely finished and only that profile was
+  deleted. This is meaningful D1 touch/progression evidence, not a fresh D4
+  rerun or D1-8 completion.
+- Local verification after that hardening passed `npm.cmd run release:verify`:
+  78 tests, the 17-file build, static-package audit, and native asset sync.
+  Source/mirror/dist shell SHA-256 is
+  `CCD2E75862687E5AF2D15D05168536E6D8F4848BE5867524BAE3B70249FF7161`.
 
 ## Baseline evidence
 
