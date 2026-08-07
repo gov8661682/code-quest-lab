@@ -24,10 +24,10 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head before this follow-up: `544fd7b` (`Record profile
-  transfer round-trip evidence`), pushed after 76-test release verification;
-  control baseline `944c8c3` is also pushed. Neither is a website deployment
-  checkpoint because Checkpoint 1 remains incomplete.
+- Current verified code head: `6423ecb` (`Bound corrupted elite summons`),
+  pushed after 77-test release verification; control baseline `944c8c3` is also
+  pushed. This is local hardening, not a website deployment checkpoint because
+  Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
@@ -45,6 +45,14 @@ State: pre-release hardening; not a Release Candidate
   existing Mage profile; Manage Data showed the retained Mage and Level 4
   Barbarian profiles afterward, and no profile was deleted. No deployment was
   made because Checkpoint 1 remains incomplete.
+- A separate isolated Mage QA profile completed Dungeon 1 through the Stone
+  Guardian and exit portal, then reproduced a D2 `Dark Inquisition Chamber`
+  elite escalation under `Elite Invasion`: the Corrupted modifier drove the
+  room to `Enemies: 15` and kept the exit locked during bounded attack and
+  reposition attempts. The run was safely finished and only that temporary
+  profile was deleted. Commit `6423ecb` now gives each Corrupted elite a finite
+  two-minion summon budget and preserves the budget across room checkpoints;
+  the follow-up passes 77 tests. This does not establish D1-8 or the ending.
 
 ## Baseline evidence
 
@@ -96,7 +104,7 @@ State: pre-release hardening; not a Release Candidate
 - Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
 - Local save-transfer smoke on 2026-08-05 created a synthetic Mage profile, exported it from Manage Data as `.txt`, confirmed the visible status that the current profile was unchanged, and then deleted the test profile. On 2026-08-07, a real browser file-chooser upload imported the retained Level 4 Barbarian as a matching second profile with the same dungeon, highest room, run count, and play time; the original remained unchanged and only the temporary copy was deleted. Cross-device/cross-version and future-class migration evidence remain open.
 - Local storage lifecycle smoke on 2026-08-07 created an isolated Mage profile, entered Dungeon 1 combat, simulated page close/reopen, resumed the visible `SESSION RECOVERED` checkpoint, paused, and finished to the dashboard without loss. The temporary profile was deleted afterward; the retained Barbarian profile was untouched. Native/physical-device and cross-platform lifecycle evidence remain open.
-- A cache-busted local smoke on 2026-08-07 reproduced and verified the Finish for Now status cleanup: the returned Town surface had empty, hidden `#doorStatus` text. The mirror, focused lifecycle contract, 76-test release verification, static package, and native web-asset sync pass; this remains local hardening rather than a website deployment checkpoint.
+- A cache-busted local smoke on 2026-08-07 reproduced and verified the Finish for Now status cleanup: the returned Town surface had empty, hidden `#doorStatus` text. The mirror, focused lifecycle contract, 77-test release verification, static package, and native web-asset sync pass; this remains local hardening rather than a website deployment checkpoint.
 - Post-checkpoint attack probe on the deployed Pages preview used a fresh Mage
   at 1024x768, selected Dungeon 1 Normal with the `Blessed Journey` modifier,
   reached `START Ancient Entrance`, and then stopped at the room-0 entry after
@@ -116,7 +124,7 @@ attack/progression evidence remains open.
 
 ## Current audit
 
-The game is a 57,085-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, versioned plain-text profile transfer, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
+The game is a 57,193-line self-contained HTML file with Canvas rendering, DOM overlays, procedural game logic, localStorage saves, save backup/migration logic, versioned plain-text profile transfer, four selectable classes, progression, equipment/crafting, achievements, Town/NPC systems, dungeon definitions, touch controls, and a procedural audio path. Joey's reference contains four additional class families that are not yet part of this runtime. The project now has a dependency-free package/check/build loop, a relative manifest, a service worker, original vector artwork plus deterministic PWA/Capacitor raster derivatives, and generated Capacitor Android/iOS projects. The v8.1.1 App plugin is wired for lifecycle/back-button handling; live platform purchase integration is still absent.
 
 ## Release blockers
 
@@ -164,7 +172,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 76 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` also passed. The unreleased local shell and mirror share SHA-256 `178D8F774FD4FD9A99848CEF88E848C855C58088B14858330A6875BFC47FF279`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
+- Latest local verification: `npm.cmd run release:verify` passed with 77 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` also passed. The local 57,193-line shell and mirror share SHA-256 `302CF0FDB356FFD669FA9211982B82F1E88F243001137BF72C68390545338A19`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.

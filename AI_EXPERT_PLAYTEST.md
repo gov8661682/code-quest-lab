@@ -140,6 +140,14 @@ The playtest followed a first-time player journey:
 - A separate loopback-only developer playtest aid now prevents death without
   changing combat math or profile/export data. It is deliberately excluded
   from public-host/native activation and is not a player-facing feature.
+- On 2026-08-07, an isolated Mage playthrough reached Dungeon 2 and reproduced
+  a progression risk in `Dark Inquisition Chamber`: the `Elite Invasion`
+  modifier combined with a Corrupted elite allowed shadow summons to grow the
+  room to 15 enemies during a bounded attack test. The run was safely stopped
+  rather than retried indefinitely. The follow-up now gives each Corrupted
+  elite a finite two-minion summon budget and persists that budget across room
+  checkpoints; 77 release tests pass. This directly applies the playtest
+  recommendation to make difficulty variation bounded and readable.
 
 ## Recommended order
 

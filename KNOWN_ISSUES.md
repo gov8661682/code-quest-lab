@@ -24,6 +24,11 @@ Updated: 2026-08-05
 - A local session-exit follow-up clears stale dungeon lock and waypoint
   messages when returning to Town and is covered by two new contracts, but the
   fix is not in the deployed shell until the next substantial tested milestone.
+- Local QA reproduced a D2 Corrupted-elite summon escalation under `Elite
+  Invasion` that reached 15 enemies and held the door closed. Commit `6423ecb`
+  bounds each elite to two summoned minions and preserves that budget in room
+  checkpoints; the fix is tested locally but is not in the deployed shell
+  until the next major checkpoint.
 
 ## P2 - important but currently workaroundable
 

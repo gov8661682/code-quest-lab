@@ -2,6 +2,13 @@
 
 ## Unreleased - 2026-08-07
 
+- Reproduced a D2 `Dark Inquisition Chamber` progression stall on an isolated
+  Mage QA profile: `Elite Invasion` plus a Corrupted elite grew the room to
+  `Enemies: 15` and kept the exit locked during bounded attacks. Added a finite
+  two-minion summon budget per Corrupted elite, saved/restored with the room
+  checkpoint, plus a combat contract. The 77-test release verification,
+  packaged build, and Capacitor web-asset sync pass; this is local hardening,
+  not a deployment checkpoint.
 - Recorded a bounded local Dungeon 1 route pass with the loopback-only developer
   invincibility aid: the run cleared the shrine, treasure, and combat rooms,
   defeated the Stone Guardian through the normal touch attack control, and

@@ -24,7 +24,7 @@ checkpoint plus 61% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 76-test release verification, build/package audit, native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
+| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 77-test release verification, build/package audit, native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -53,7 +53,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 76 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 77 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -254,7 +254,7 @@ skip the active C1 route, save, input, and session acceptance criteria.
 - On 2026-08-07, a cache-busted local smoke reproduced and then verified the
   Finish for Now transition fix: the old dungeon lock text is now cleared both
   before and after Town rebuild, with the returned `#doorStatus` empty and
-  hidden. The source mirror, focused lifecycle contract, 76-test release
+  hidden. The source mirror, focused lifecycle contract, 77-test release
   verification, static package, and native web-asset sync all pass. This is
   local hardening, not a deployment checkpoint.
 - On 2026-08-07, a bounded local Mage run used the loopback-only developer
@@ -267,6 +267,16 @@ skip the active C1 route, save, input, and session acceptance criteria.
   not establish D1-8, touch-first, or ending completion. The Manage Data
   surface retained both Mage and Level 4 Barbarian profiles; no profile was
   deleted. Checkpoint and overall scores therefore remain 61% and 16%.
+- On 2026-08-07, a separate isolated Mage QA profile completed the fresh
+  Dungeon 1 boss-and-portal route, then entered Dungeon 2 with `Elite Invasion`.
+  In `Dark Inquisition Chamber`, the Corrupted elite modifier reproduced an
+  unbounded-feeling escalation to `Enemies: 15` and a locked exit after several
+  distinct, bounded attack/reposition attempts. The run was safely finished;
+  only the temporary QA profile was deleted, while the retained Mage (116
+  Souls) and Barbarian (0 Souls) profiles were preserved. The follow-up fix in
+  `6423ecb` gives each Corrupted elite a finite two-minion summon budget,
+  preserves it through room checkpoints, and adds a 77-test contract. This is
+  local hardening evidence, not D1-8 completion; scores remain 61% and 16%.
 
 ## Known blockers
 
@@ -284,11 +294,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head before this follow-up: `544fd7b` (`Record profile
-  transfer round-trip evidence`), pushed to `origin/main` after 76-test release
-  verification. The preceding control baseline is `944c8c3` (`Add bounded
-  autonomous progress controls`). Both are local hardening/control commits,
-  intentionally not website deployment checkpoints.
+- Current verified code head: `6423ecb` (`Bound corrupted elite summons`),
+  pushed to `origin/main` after 77-test release verification. The preceding
+  control baseline is `944c8c3` (`Add bounded autonomous progress controls`).
+  This is local hardening, intentionally not a website deployment checkpoint.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
