@@ -26226,21 +26226,26 @@ function developerCheatAllowed(){
 function clearDeveloperBossSummons(){
   if(!developerInvincibilityEnabled)return false;
   var def=(typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS)?ROOM_DEFS[currentRoomId]:null;
-  if(!def||def.type!==RT.BOSS||boss||!enemies.length){
+  if(!def||def.type!==RT.BOSS||!enemies.length){
     if(typeof showBanner==='function')showBanner('DEV TEST MODE','No live boss summons to clear',1.4);
     return true;
   }
   var clearedCount=enemies.length;
   enemies=[];
-  roomCleared=true;
   if(roomStates[currentRoomId]){
-    roomStates[currentRoomId].cleared=true;
     roomStates[currentRoomId].savedEnemies=[];
   }
-  var geo=getRoomGeometry();
-  openForwardDoor(geo);
-  sideDoorOpen=(def.side!==null);
-  updateRoomProgress(geo);updateHUD();
+  // A live boss still owns the room. Clearing its summons must not mark the
+  // boss encounter complete or open the dungeon exit; it only gives local QA
+  // a clean arena so the boss phase logic can be tested deterministically.
+  if(!boss&&!miniBoss){
+    roomCleared=true;
+    var geo=getRoomGeometry();
+    openForwardDoor(geo);
+    sideDoorOpen=(def.side!==null);
+    updateRoomProgress(geo);
+  }
+  updateHUD();
   if(typeof showBanner==='function')showBanner('DEV TEST MODE',clearedCount+' boss summon(s) cleared',1.6);
   return true;
 }
@@ -41927,8 +41932,9 @@ function updateHUD(){
   document.getElementById('hudKills').textContent=totalKills;
   document.getElementById('hudSouls').textContent=runSoulsEarned;
   var enemyStr='';
-  if(def&&def.type===RT.BOSS&&boss)enemyStr='Stone Guardian: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' ⚠P2':'');
-  else if(enemies.length>0)enemyStr='Enemies: '+enemies.length;
+  if(def&&def.type===RT.BOSS&&boss&&boss.isVoidMonarch)enemyStr='Void Monarch: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' P2':'');
+  if(def&&def.type===RT.BOSS&&boss&&!boss.isVoidMonarch)enemyStr='Stone Guardian: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' ⚠P2':'');
+  else if(!boss&&enemies.length>0)enemyStr='Enemies: '+enemies.length;
   document.getElementById('enemyCount').textContent=enemyStr;
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){

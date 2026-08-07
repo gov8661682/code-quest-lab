@@ -26,8 +26,10 @@ test('developer invincibility is wired before normal keyboard actions and blocks
   assert.match(SOURCE, /if\(developerInvincibilityEnabled\)\{player\.dead=false;player\.hp=player\.hpMax;\}/);
 });
 
-test('developer summon clearing stays gated and opens the boss exit only for local QA', () => {
+test('developer summon clearing stays gated and preserves live boss encounters', () => {
   assert.match(SOURCE, /function clearDeveloperBossSummons\(\)\{\s*if\(!developerInvincibilityEnabled\)return false;/);
-  assert.match(SOURCE, /clearDeveloperBossSummons\(\)[\s\S]*?enemies=\[\];[\s\S]*?openForwardDoor\(geo\);/);
+  assert.match(SOURCE, /clearDeveloperBossSummons\(\)[\s\S]*?if\(!def\|\|def\.type!==RT\.BOSS\|\|!enemies\.length\)/);
+  assert.match(SOURCE, /if\(!boss&&!miniBoss\)\{[\s\S]*?openForwardDoor\(geo\);/);
+  assert.match(SOURCE, /boss&&boss\.isVoidMonarch\)enemyStr='Void Monarch:/);
   assert.match(SOURCE, /if\(developerClearSummonsProgress===developerClearSummonsSequence\.length\)\{[\s\S]*?return clearDeveloperBossSummons\(\);/);
 });
