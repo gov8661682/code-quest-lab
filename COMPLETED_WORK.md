@@ -27,7 +27,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Static/offline web foundation | Relative manifest, v6 service worker, local assets, public review pages, headers, deterministic `build-info.json` | A failing package/service-worker contract or changed release requirement |
 | V1 route boundary | `REGION_ORDER` and progression contracts expose D1-8 only and reject post-release checkpoint bypasses | A route guard regression or explicit scope promotion |
 | Save and active-run contract layer | Save parser/loader matrices, backup promotion/default fallback, checkpoint parser, lifecycle tests, and deletion coverage | A failing test or real data-loss/unsafe-resume evidence |
-| Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; Manage Data export smoke confirmed the current profile remained unchanged; import contract creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
+| Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; a real browser file-chooser upload imported a matching Level 4 Barbarian copy with the same dungeon, highest room, run count, and play time while leaving the original untouched; import creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue; immediate final-enemy room/HUD refresh | A reproducible input, freeze, recovery, or P1 usability defect |
 | Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
 | Session transient-status cleanup | New sessions clear stale dungeon door text, lock styling, and waypoint activation state; no-waypoint zones also hide leftover activation status. Focused contracts and a local defeat-to-Town screenshot pass cover the regression. | A reproduced stale status in a new Town/Entrance session |
@@ -54,6 +54,11 @@ documented acceptance-criterion failure. Optional improvements belong in
   production check and deployed profile-transfer UI smoke remain valid for
   `9da1d0e`; hardening commit `5db6db5` is pushed to `origin/main`, while the
   stale-status follow-up is tested locally but is not deployed.
+- On 2026-08-07, the retained Barbarian completed a real local export/upload/
+  import round trip. The imported copy matched its visible progress fields,
+  the original remained unchanged, and only the temporary copy was deleted.
+  This closes the local upload evidence lane but not cross-version/device
+  migration.
 - Commit `3e33470` (`Add gated developer invincibility cheat`) is pushed to
   `origin/main`. It groups the local first-combat spawn hardening, developer
   cheat contract, and current control-record updates; it is intentionally not

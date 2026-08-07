@@ -49,7 +49,7 @@ test('main checkpoint percentages match the weighted evidence table', () => {
 test('status and progress report mirror the canonical percentages', () => {
   for (const name of ['STATUS.md', 'PROJECT_PROGRESS.md']) {
     const document = read(name);
-    assert.match(document, /59%/);
+    assert.match(document, /61%/);
     assert.match(document, /16%/);
   }
 });

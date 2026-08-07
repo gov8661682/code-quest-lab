@@ -116,9 +116,9 @@ The playtest followed a first-time player journey:
   targeting, and room progression were not changed.
 - A local Manage Data smoke exported a synthetic Mage profile as `.txt`, showed
   that the current profile was unchanged, and then removed the test profile.
-  The versioned transfer contracts preserve durable data, a valid backup, and
-  a valid active-run checkpoint; upload round-trip and cross-version/device
-  evidence remain open.
+  On 2026-08-07, a real browser file-chooser upload imported the retained Level
+  4 Barbarian as a matching second profile, after which only the temporary copy
+  was removed. The remaining evidence is cross-version/device migration.
 - A subsequent 1024x768 Pages-preview Mage run reproduced a visible click
   damage response, defeated enemies, and progressed through a shrine, treasure
   chamber, and Elite room before the session ended. The original production

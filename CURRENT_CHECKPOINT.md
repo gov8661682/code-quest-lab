@@ -10,12 +10,12 @@ Status: **Active; not complete**
 ## Main progress checkpoint
 
 <!-- checkpoint-progress:start -->
-Active checkpoint completion: **59%**
+Active checkpoint completion: **61%**
 
 Overall project completion: **16%**
 
 Scoring date: 2026-08-07. Overall progress is rounded from one completed
-checkpoint plus 59% of the active checkpoint across ten checkpoints.
+checkpoint plus 61% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
 |---|---:|---:|---|---|
@@ -23,7 +23,7 @@ checkpoint plus 59% of the active checkpoint across ten checkpoints.
 | Meaningful 10-30 minute touch-first session | 20 | 8 | Touch Town/entrance/combat flow, objective, pause/summary/finish surfaces, and compact-layout control evidence | One dated 10-30 minute touch-first session with the full safe-stop sequence |
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
-| Versioned plain-text profile transfer | 10 | 8 | Export smoke plus export/import validation, active-run preservation, and non-overwrite contracts | Real upload round trip and cross-version/device evidence |
+| Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
 | Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 76-test release verification, build/package audit, native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
 <!-- checkpoint-progress:end -->
 
@@ -59,8 +59,10 @@ change it.
   contracts are included; `npm.cmd run native:sync` also passed.
 - The versioned local profile-transfer contract preserves durable profile data,
   a valid backup, and an active-run checkpoint; import creates a new profile
-  without overwriting the current profile. The local Manage Data export smoke
-  also passed for a synthetic Mage profile, which was deleted afterward.
+  without overwriting the current profile. A real local browser upload
+  round-trip on 2026-08-07 matched the retained Barbarian's level, dungeon,
+  highest room, run count, and play time; only the temporary imported copy was
+  deleted afterward.
 - The last major web checkpoint is live-verified at
   `https://code-quest-lab.gov8661682.com/` and the current production check
   passes.

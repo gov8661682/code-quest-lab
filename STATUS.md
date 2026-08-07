@@ -16,7 +16,7 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **59%** complete and overall
+- Evidence-scored progress: Checkpoint 1 is **61%** complete and overall
   project progress is **16%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
@@ -24,8 +24,8 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head before this follow-up: `edb7896` (`Fix stale Town
-  lock status after Finish for Now`), pushed after 76-test release verification;
+- Current verified code head before this follow-up: `cb32ee0` (`Add managed-browser
+  developer cheat fallback`), pushed after 76-test release verification;
   control baseline `944c8c3` is also pushed. Neither is a website deployment
   checkpoint because Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -84,7 +84,7 @@ State: pre-release hardening; not a Release Candidate
 - Fresh touch QA after the first-combat hardening reached the in-world entrance, Normal trial, modifier, clean active session, and normal defeat/recovery flow; the browser recorded no error or warning entries. This confirms the release path remains runnable after the combat-intro change, not that full combat or boss progression is complete.
 - A bounded fresh Mage attack probe reached randomized first combat rooms and reduced one live room from `Enemies: 2` to `Enemies: 1`; the profile then persisted `First Blood — Defeat one enemy`. The run still ended before the room cleared, so this is partial attack evidence rather than full combat completion.
 - Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
-- Local save-transfer smoke on 2026-08-05 created a synthetic Mage profile, exported it from Manage Data as `.txt`, confirmed the visible status that the current profile was unchanged, and then deleted the test profile. The focused transfer contracts preserve durable data, a valid backup, and a valid active-run checkpoint; real upload round-trip and cross-device/cross-version evidence remain open.
+- Local save-transfer smoke on 2026-08-05 created a synthetic Mage profile, exported it from Manage Data as `.txt`, confirmed the visible status that the current profile was unchanged, and then deleted the test profile. On 2026-08-07, a real browser file-chooser upload imported the retained Level 4 Barbarian as a matching second profile with the same dungeon, highest room, run count, and play time; the original remained unchanged and only the temporary copy was deleted. Cross-device/cross-version and future-class migration evidence remain open.
 - Local storage lifecycle smoke on 2026-08-07 created an isolated Mage profile, entered Dungeon 1 combat, simulated page close/reopen, resumed the visible `SESSION RECOVERED` checkpoint, paused, and finished to the dashboard without loss. The temporary profile was deleted afterward; the retained Barbarian profile was untouched. Native/physical-device and cross-platform lifecycle evidence remain open.
 - A cache-busted local smoke on 2026-08-07 reproduced and verified the Finish for Now status cleanup: the returned Town surface had empty, hidden `#doorStatus` text. The mirror, focused lifecycle contract, 76-test release verification, static package, and native web-asset sync pass; this remains local hardening rather than a website deployment checkpoint.
 - Post-checkpoint attack probe on the deployed Pages preview used a fresh Mage

@@ -2,6 +2,12 @@
 
 ## Unreleased - 2026-08-07
 
+- Completed the real local `.txt` profile-transfer round trip: exported the
+  retained Level 4 Barbarian, uploaded it through the browser file chooser,
+  confirmed the imported copy matched its dungeon, highest room, run count,
+  and play time, and verified the original profile stayed unchanged. Deleted
+  only the temporary imported copy; cross-version/device migration remains
+  open.
 - Added a gated ordinary-key fallback `C Q L I` for the developer-only
   invincibility aid because some managed browser surfaces reserve function
   keys. The primary `F8 F7 F6 F3` sequence, loopback query gate, session-only
@@ -35,7 +41,7 @@
   technical failures force a strategy change, and five materially identical
   gameplay/manual attempts force that route to stop and be recorded.
 - Added the main evidence-scored progress display to `CURRENT_CHECKPOINT.md`:
-  Checkpoint 1 is 59% complete and the ten-checkpoint project is 16% complete.
+  Checkpoint 1 is 61% complete and the ten-checkpoint project is 16% complete.
   An executable project-control contract validates the scoring arithmetic,
   retry limits, and status consistency during release verification.
 

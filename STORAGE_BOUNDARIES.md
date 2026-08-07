@@ -1,6 +1,7 @@
 # Code Quest Lab - Storage Boundaries
 
-Status: documented; device and cross-version evidence remain open (2026-08-05)
+Status: documented; local upload round trip verified; device and cross-version
+evidence remain open (2026-08-07)
 
 This document describes where the current release stores data. It does not
 claim cloud backup, cross-device sync, or platform-store purchase verification.
@@ -65,10 +66,11 @@ claim cloud backup, cross-device sync, or platform-store purchase verification.
 
 ## Evidence and open verification
 
-The current automated evidence covers versioned save parsing, backup promotion,
-unsafe-save fallback, legacy mastery migration, checkpoint validation, profile
-deletion, Return to Main Menu cleanup, Finish for Now persistence, and native
-lifecycle callback routing. It does not replace:
+The current automated and browser evidence covers versioned save parsing, backup
+promotion, unsafe-save fallback, legacy mastery migration, checkpoint
+validation, profile deletion, Return to Main Menu cleanup, Finish for Now
+persistence, native lifecycle callback routing, and a real local `.txt` upload
+round trip. It does not replace:
 
 - cross-version loading from the preserved baseline save through the release
   candidate;
