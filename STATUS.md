@@ -24,8 +24,8 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `aa1d224` (`Record latest checkpoint hardening state`),
-  pushed after 75-test release verification and native web-asset synchronization;
+- Current verified code head before this follow-up: `5912218` (`Record browser
+  lifecycle checkpoint evidence`), pushed after 75-test release verification;
   control baseline `944c8c3` is also pushed. Neither is a website deployment
   checkpoint because Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -80,6 +80,7 @@ State: pre-release hardening; not a Release Candidate
 - Latest live QA on 2026-08-05 used a fresh Barbarian profile at 1024x768 and reached three first-combat rooms (`Ashen Pit`, `Crypt Passage`, and `Dark Corridor`) with no browser errors or warnings. A touch Attack-joystick drag, touch tap plus movement, and repeated desktop canvas clicks did not produce an observed enemy defeat in this harness; treat attack response as an evidence gap to reproduce on another supported browser/device, not as a confirmed runtime defect. The temporary QA profile was deleted in Manage Data.
 - Local save-transfer smoke on 2026-08-05 created a synthetic Mage profile, exported it from Manage Data as `.txt`, confirmed the visible status that the current profile was unchanged, and then deleted the test profile. The focused transfer contracts preserve durable data, a valid backup, and a valid active-run checkpoint; real upload round-trip and cross-device/cross-version evidence remain open.
 - Local storage lifecycle smoke on 2026-08-07 created an isolated Mage profile, entered Dungeon 1 combat, simulated page close/reopen, resumed the visible `SESSION RECOVERED` checkpoint, paused, and finished to the dashboard without loss. The temporary profile was deleted afterward; the retained Barbarian profile was untouched. Native/physical-device and cross-platform lifecycle evidence remain open.
+- A cache-busted local smoke on 2026-08-07 reproduced and verified the Finish for Now status cleanup: the returned Town surface had empty, hidden `#doorStatus` text. The mirror, focused lifecycle contract, 76-test release verification, static package, and native web-asset sync pass; this remains local hardening rather than a website deployment checkpoint.
 - Post-checkpoint attack probe on the deployed Pages preview used a fresh Mage
   at 1024x768, selected Dungeon 1 Normal with the `Blessed Journey` modifier,
   reached `START Ancient Entrance`, and then stopped at the room-0 entry after
@@ -120,8 +121,9 @@ preserves durable data, backup, and active-run checkpoint without overwriting
 the current profile; added grouped enemy/door readability refinements without
 changing combat calculations; and pushed/deployed/live-verified the tested
 package. The unreleased local follow-up clears stale dungeon lock and waypoint
-status after session exit, adds two lifecycle contracts, and records a preview
-Mage run that reached the Elite room with visible attack feedback. The earlier
+status after session exit and Finish for Now, adds lifecycle contracts, and
+records a preview Mage run that reached the Elite room with visible attack
+feedback. The earlier
 slice added static/offline web shell metadata,
 deterministic QA contracts, a bounded first-combat read-and-respond window,
 draft original vector assets, local run checkpoint recovery, optional
@@ -146,7 +148,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 75 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; the prior `npm.cmd run native:sync` passed. The unreleased local shell and mirror share SHA-256 `D2D5351A749E9905FA93211BAD0705EABDCBE99C2B812827D4F6058457931E9F`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
+- Latest local verification: `npm.cmd run release:verify` passed with 76 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` also passed. The unreleased local shell and mirror share SHA-256 `ADC17A48EBE9099F133DE6116BB118DA46C4658F482F9BA545C9C291AC8640E3`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.

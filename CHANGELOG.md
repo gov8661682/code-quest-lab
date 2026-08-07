@@ -2,6 +2,12 @@
 
 ## Unreleased - 2026-08-07
 
+- Fixed a verified Finish for Now transition edge case where old dungeon lock
+  text could remain in the Town status element after a stopped run. Town now
+  clears the transient status before and after rebuilding the static room;
+  added a lifecycle contract and cache-busted browser smoke. The synchronized
+  package passes 76 tests, build/package audit, and native web-asset sync. This
+  is local hardening and is not a website deployment checkpoint.
 - Cleared stale lock-message text from static Town, Entrance, Shrine, and
   Treasure room status elements, not only their visual state. Added a focused
   lifecycle contract and verified the packaged local Town surface.

@@ -18563,7 +18563,12 @@ function enterTown(){
   _pendingModifierId=null;
   _gateInsideFlag=false;
   showScreen('gameScreen');
+  // Finish For Now can arrive while the previous dungeon frame still owns
+  // the visible door status. Clear it before and after rebuilding the static
+  // Town room so the old lock message cannot leak into the open-world hub.
+  resetSessionTransientUi();
   startGame();
+  resetSessionTransientUi();
 }
 
 // ── DUNGEON ENTRANCE AREAS — Phase 8 ──

@@ -24,7 +24,7 @@ checkpoint plus 59% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
 | Versioned plain-text profile transfer | 10 | 8 | Export smoke plus export/import validation, active-run preservation, and non-overwrite contracts | Real upload round trip and cross-version/device evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 75-test release verification, build/package audit, prior native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
+| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 76-test release verification, build/package audit, native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -53,7 +53,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 75 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 76 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -93,7 +93,8 @@ change it.
    touch-first session.
 3. Keep the deployed profile-transfer and grouped enemy/door readability
   changes under regression coverage. The local follow-up also clears stale
-  dungeon lock and waypoint messages when a session returns to Town; combat
+  dungeon lock and waypoint messages when a session returns to Town or uses
+  Finish for Now; combat
   calculations remain unchanged. A separate loopback-gated, session-only
   developer invincibility aid and the first-combat visible-spawn hardening are
   local QA tools only and are not part of the deployed checkpoint. The local
@@ -242,6 +243,12 @@ skip the active C1 route, save, input, and session acceptance criteria.
   Data; the existing Barbarian profile was untouched. This completes the
   browser-storage lifecycle lane, while native/physical-device lifecycle
   evidence remains open.
+- On 2026-08-07, a cache-busted local smoke reproduced and then verified the
+  Finish for Now transition fix: the old dungeon lock text is now cleared both
+  before and after Town rebuild, with the returned `#doorStatus` empty and
+  hidden. The source mirror, focused lifecycle contract, 76-test release
+  verification, static package, and native web-asset sync all pass. This is
+  local hardening, not a deployment checkpoint.
 
 ## Known blockers
 
@@ -259,9 +266,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `aa1d224` (`Record latest checkpoint hardening
-  state`), pushed to `origin/main` after 75-test release verification and
-  native web asset sync. The preceding control baseline is `944c8c3` (`Add bounded
+- Current verified code head before this follow-up: `5912218` (`Record browser
+  lifecycle checkpoint evidence`), pushed to `origin/main` after 75-test
+  release verification. The preceding control baseline is `944c8c3` (`Add bounded
   autonomous progress controls`). Both are local hardening/control commits,
   intentionally not website deployment checkpoints.
 

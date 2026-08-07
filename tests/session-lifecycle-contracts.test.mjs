@@ -171,6 +171,47 @@ test('static rooms clear stale door text as well as hiding the status element', 
   );
 });
 
+test('Finish for Now clears the old dungeon status after Town is rebuilt', () => {
+  const status = { textContent: '🔒 DOOR LOCKED (2 remaining)' };
+  const calls = [];
+  const context = {
+    activeDungeonId: 'dungeon1',
+    _pendingModifierId: 'Blessed Journey',
+    _gateInsideFlag: true,
+    clearRunCheckpoint() { calls.push('clearRunCheckpoint'); },
+    showScreen(name) { calls.push(`showScreen:${name}`); },
+    resetSessionTransientUi() {
+      calls.push('resetSessionTransientUi');
+      status.textContent = '';
+    },
+    startGame() {
+      calls.push('startGame');
+      status.textContent = '🔒 DOOR LOCKED (2 remaining)';
+    }
+  };
+  const start = SOURCE.indexOf('function enterTown()');
+  const end = SOURCE.indexOf('// ── DUNGEON ENTRANCE AREAS', start);
+  assert.notEqual(start, -1, 'Town transition function is present');
+  assert.notEqual(end, -1, 'Town transition function boundary is present');
+
+  vm.runInNewContext(`${SOURCE.slice(start, end)}\nthis.__enterTown = enterTown;`, context, {
+    filename: 'index.html#finish-town-status-contract'
+  });
+  context.__enterTown();
+
+  assert.equal(context.activeDungeonId, 'town');
+  assert.equal(context._pendingModifierId, null);
+  assert.equal(context._gateInsideFlag, false);
+  assert.equal(status.textContent, '');
+  assert.deepEqual(calls, [
+    'clearRunCheckpoint',
+    'showScreen:gameScreen',
+    'resetSessionTransientUi',
+    'startGame',
+    'resetSessionTransientUi'
+  ]);
+});
+
 test('zones without waypoints hide an old activation message', () => {
   const elements = new Map([
     ['waypointStatus', {
