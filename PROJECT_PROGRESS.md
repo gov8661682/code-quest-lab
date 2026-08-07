@@ -4,7 +4,7 @@ Reviewed: 2026-08-07
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; not a Release Candidate
 
-Main checkpoint completion: **76%**
+Main checkpoint completion: **79%**
 Overall project completion: **18%**
 
 The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
@@ -17,19 +17,19 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` contains deployed milestone commit `0c960fc` (`Prove
-  touch-first D1 boss route`) and its pushed predecessor hardening history.
+- Git state: `main` contains source milestone commit `9c451af` (`Clarify
+  queued level-up choices`) plus the earlier deployed checkpoint history.
   Control baseline `944c8c3` (`Add bounded autonomous progress controls`) and
   the route/input/recovery hardening commits remain in history. The deployment
   record for `0c960fc` is maintained below; later incomplete work must remain
   grouped into the next meaningful checkpoint.
 - Canonical game: `index.html`, SHA-256
-  `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`
+  `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passed 80 tests,
+- Current local verification: `npm.cmd run release:verify` passed 81 tests,
   release contracts, the 17-file build, and the static-package audit; the
   session-transient UI and final-enemy status-refresh contracts are included.
   `npm.cmd run native:sync` also passed after the Finish for Now status-cleanup
@@ -43,12 +43,12 @@ Git history, and current deployment—not only on comments or planning files.
   surface
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit
-  portal, reaching The Fallen Kingdom Entrance with the loopback developer
-  invincibility aid enabled. The two disposable Mage profiles used for this
-  QA cycle were deleted after the run and the retained Mage/Barbarian profiles
-  were verified unchanged. This advances the evidence score to 76% / 18% after
-  the tested GitHub and website checkpoint; the
-  full D1-8 ending and safe-stop session remain open.
+  portal, then completed Dungeon 2 Normal through the Fallen King and exit
+  portal into The Shadow Realm Entrance with the loopback developer aid
+  enabled. The disposable profile was deleted after the run and the retained
+  Mage/Barbarian profiles were verified unchanged. This advances the evidence
+  score to 79% / 18%; D4-8, the ending, and the full safe-stop session remain
+  open.
 - Latest isolated QA evidence: a temporary Mage profile completed Dungeon 1
   through the Stone Guardian and portal, then reached the D2 `Dark Inquisition
   Chamber` elite room. `Elite Invasion` plus a Corrupted elite reproduced an

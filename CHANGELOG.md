@@ -2,6 +2,16 @@
 
 ## Unreleased - 2026-08-07
 
+- Completed a disposable Mage QA route through all observable Dungeon 2
+  rooms, the Prison Warden mini-boss, the Fallen King through Phase 3, and
+  the exit portal into The Shadow Realm Entrance using the requested local
+  invincibility aid. This advances the evidence score to 79% for Checkpoint 1
+  and 18% overall; D4-8, the ending, and the full safe-stop session remain
+  open.
+- Fixed queued level-up presentation: each reward now shows the level that
+  earned it and reports any remaining queued choices instead of repeatedly
+  displaying the final level. Added a focused progression contract; release
+  verification passes 81 tests, the 17-file package audit, and native sync.
 - Completed a fresh, disposable Mage touch-first Dungeon 1 milestone: Town,
   target-assisted combat, shrine, treasure, elite, later combat, Stone
   Guardian Phase 2, and exit-portal travel into The Fallen Kingdom Entrance

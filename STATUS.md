@@ -16,7 +16,7 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **76%** complete and overall
+- Evidence-scored progress: Checkpoint 1 is **79%** complete and overall
   project progress is **18%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
@@ -24,9 +24,9 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `0c960fc` (`Prove touch-first D1 boss route`),
-  pushed after the 80-test release verification, build/package audit, native
-  asset sync, and live browser smoke. This is a tested website checkpoint;
+- Current verified code head: `9c451af` (`Clarify queued level-up choices`),
+  after the 81-test release verification, build/package audit, and native
+  asset sync. The source is ready for the next website checkpoint;
   Checkpoint 1 remains active because D1-8 and the ending are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
@@ -80,9 +80,9 @@ State: pre-release hardening; not a Release Candidate
   deleted. This is meaningful D1 touch/progression evidence, not a fresh D4
   rerun or D1-8 completion.
 - Local verification after that hardening passed `npm.cmd run release:verify`:
-  80 tests, the 17-file build, static-package audit, and native asset sync.
+  81 tests, the 17-file build, static-package audit, and native asset sync.
   Source/mirror/dist shell SHA-256 is
-  `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+  `404D82FD0AC5DDF612540B28C13BCAE93FDE5CA05798BAA731C433230B793AEA`.
 - A disposable Mage completed the full observable D1 touch-first route on
   2026-08-07: `Shadow Hall`, `Elder Stone`, `Cursed Gallery`, `Relic Chamber`,
   `Dark Corridor`, `Forsaken Vault`, `Guardian's Sanctum`, the Stone Guardian
@@ -96,6 +96,15 @@ State: pre-release hardening; not a Release Candidate
   live summons only, discard dead summon objects, reopen the exit, and clear
   stale `CLEAR SUMMONS` text. The focused contract is included in the 80-test
   release gate; D2-8, ending, full safe-stop, and live publication remain open.
+- A disposable Mage QA route then completed Dungeon 2 Normal from `Castle
+  Gatehouse` through all generated rooms, the Prison Warden mini-boss, and
+  The Fallen King's Throne Room through Phase 3, reaching the exit portal into
+  The Shadow Realm Entrance. Local diagnostics had no errors or warnings. The
+  route used only the loopback developer invincibility aid and the session-only
+  target assist; D4-8, the ending, and full safe-stop evidence remain open.
+- That route also exposed a queued-level-up clarity defect. Commit `9c451af`
+  now labels each queued choice with its earned level and remaining queue;
+  the 81-test release gate covers the behavior.
 
 ## Baseline evidence
 

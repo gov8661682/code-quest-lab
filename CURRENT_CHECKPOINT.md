@@ -10,16 +10,16 @@ Status: **Active; not complete**
 ## Main progress checkpoint
 
 <!-- checkpoint-progress:start -->
-Active checkpoint completion: **76%**
+Active checkpoint completion: **79%**
 
 Overall project completion: **18%**
 
 Scoring date: 2026-08-07. Overall progress is rounded from one completed
-checkpoint plus 76% of the active checkpoint across ten checkpoints.
+checkpoint plus 79% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
 |---|---:|---:|---|---|
-| Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 16 | A disposable clean Mage completed every observable D1 room, the Stone Guardian, and the exit portal into The Fallen Kingdom Entrance through normal touch controls; automated D1-8 route contracts also pass | One fresh player-completed D1-8 route through D2-8, final portal, and intended ending |
+| Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 19 | A disposable Mage QA route completed the observable D1 slice and all D2 rooms, the Prison Warden, the Fallen King through Phase 3, and the exit portal into The Shadow Realm Entrance through the visible target-assisted attack control; automated D1-8 route contracts also pass | One fresh player-completed D1-8 route through D4-8, final portal, and intended ending |
 | Meaningful 10-30 minute touch-first session | 20 | 13 | Dated touch-first play covered Town, D1 combat rooms, shrine, treasure, elite, boss, target lock, and deliberate portal travel; the run's safe-stop/resume/summary sequence is still open | One dated 10-30 minute touch-first session with the full safe-stop sequence |
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
@@ -53,7 +53,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 80 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 81 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -82,11 +82,10 @@ change it.
 ## Active tasks
 
 1. Continue the highest-priority clean-profile, touch-first D1-8 playthrough;
-   record the first failing room/system if the run cannot complete. A fresh
-   1024x768 Pages-preview Mage run now produced visible first-hit feedback,
-   defeated enemies, cleared the opening route rooms, and reached the Elite
-   room before ending; a later bounded local run reached `Burial Hall`, where
-   one hidden/offscreen Soul Wraith remained. The full D1-8 route is still
+   record the first failing room/system if the run cannot complete. The latest
+   disposable Mage QA route completed D1 and D2 through the Fallen King and
+   entered The Shadow Realm Entrance with the local invincibility aid; the next
+   route target is D4-8 and the intended ending. The full D1-8 route is still
    unproven. Apply the `AUTORUN.md` failure fingerprint: switch strategy after
    three materially identical technical failures and stop the same manual
    route after five materially identical attempts.
@@ -313,6 +312,21 @@ skip the active C1 route, save, input, and session acceptance criteria.
   assist, pause, Finish and Return to Dashboard, and temporary-profile cleanup
   with no browser diagnostics. Shell SHA-256:
   `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+
+- On 2026-08-07, a disposable Mage QA route completed Dungeon 2 Normal from
+  `Castle Gatehouse` through `Cracked Courtyard`, `Fallen Watchtower`,
+  `Shattered Altar`, `Broken Strongbox Hall`, `Collapsed Barracks`,
+  `Broken Rampart`, the `Prison Warden` mini-boss, and `The Fallen King's
+  Throne Room`. The Fallen King reached Phase 3 and the exit portal opened
+  into `The Shadow Realm Entrance`; the loopback-only developer invincibility
+  aid was used only for QA, and local diagnostics contained no errors or
+  warnings. This advances the route evidence to 19/30, while D4-8, the final
+  portal, ending, and full safe-stop session remain open.
+- The D2 playthrough found that several queued level-ups displayed the final
+  level number repeatedly, which made the reward flow look stuck. Level-up
+  choices now retain their earned level and show how many choices remain;
+  the focused contract and 81-test release gate cover the fix in commit
+  `9c451af`.
 
 ## Known blockers
 

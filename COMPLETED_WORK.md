@@ -21,6 +21,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 
 | Touch-first D1 boss/portal slice | A disposable Mage completed the observable Dungeon 1 route through the Stone Guardian and exit portal with the session-only target lock; two disposable QA profiles were removed and the retained Mage/Barbarian profiles were verified unchanged | Reopen only for a route regression; full D1-8, ending, and safe-stop-session evidence remains in Checkpoint 1 |
 | Boss dead-summon handoff | Boss-room progress counts live summons, discards dead summon objects after boss defeat, reopens the exit, and clears stale `CLEAR SUMMONS` text; the focused contract is part of the 80-test release gate | Reopen only if a defeated boss room remains locked or displays stale summon status |
+| Dungeon 2 QA route and queued level-up clarity | A disposable Mage QA route completed Dungeon 2 Normal through the Fallen King and portal into The Shadow Realm Entrance; queued level-up cards now display their earned level and remaining choices; commit `9c451af`, 81-test release gate | Reopen only for a route regression, an upgrade overlay dead-end, or full D1-8 acceptance |
 
 ## Completed release foundation
 
