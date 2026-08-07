@@ -302,10 +302,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head before the current local hardening commit:
-  `6423ecb` (`Bound corrupted elite summons`), pushed to `origin/main` after
-  77-test release verification. The current D4 recovery hardening is locally
-  verified but is not yet a website deployment checkpoint.
+- Current verified code head: `e093cd3` (`Bound Dungeon 4 recovery pressure`),
+  pushed to `origin/main` after 78-test release verification, build/package
+  audit, and native asset sync. This is local hardening, intentionally not a
+  website deployment checkpoint because Checkpoint 1 remains incomplete.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full

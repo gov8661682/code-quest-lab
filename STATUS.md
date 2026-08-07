@@ -24,12 +24,11 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head before this cycle: `6423ecb` (`Bound corrupted elite summons`),
-  pushed after 77-test release verification; the finite-regeneration hardening
-  below is verified locally and awaits its next commit. Control baseline
-  `944c8c3` is also
-  pushed. This is local hardening, not a website deployment checkpoint because
-  Checkpoint 1 remains incomplete.
+- Current verified code head: `e093cd3` (`Bound Dungeon 4 recovery pressure`),
+  pushed after the 78-test release verification, build/package audit, and
+  native asset sync. Control baseline `944c8c3` is also pushed. This is local
+  hardening, not a website deployment checkpoint because Checkpoint 1 remains
+  incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.

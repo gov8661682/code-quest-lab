@@ -19,10 +19,10 @@ Git history, and current deployment—not only on comments or planning files.
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
   profile transfer and combat readability`) and pushed follow-ups through
-  `6423ecb` (`Bound corrupted elite summons`). The D4 recovery hardening in
-  this working checkpoint is verified locally and awaiting its Git commit.
-  Control baseline `944c8c3` (`Add bounded autonomous progress controls`) and
-  the route/input/recovery hardening commits between them are also pushed. The
+  `e093cd3` (`Bound Dungeon 4 recovery pressure`), including
+  `6423ecb` (`Bound corrupted elite summons`). Control baseline `944c8c3`
+  (`Add bounded autonomous progress controls`) and the route/input/recovery
+  hardening commits between them are also pushed. The
   deployment record for `9da1d0e` is maintained below; these incomplete or
   minor follow-ups are intentionally not deployed as separate checkpoints.
 - Canonical game: `index.html`, SHA-256
