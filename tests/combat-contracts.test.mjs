@@ -161,7 +161,7 @@ test('touch-first combat offers a visible, session-only target lock', () => {
 });
 
 test('elite modifier stacks stay within a playable health budget', () => {
-  assert.match(SOURCE, /var ELITE_HEALTH_BUDGET_MULTIPLIER = 4\.0;/, 'elite pacing budget is explicit');
+  assert.match(SOURCE, /var ELITE_HEALTH_BUDGET_MULTIPLIER = 2\.5;/, 'elite pacing budget is explicit');
   assert.match(
     SOURCE,
     /var _eliteHealthBudget=Math\.max\(1,Math\.round\(def\.hp\*ELITE_HEALTH_BUDGET_MULTIPLIER\)\);[\s\S]*?if\(spawned\.hpMax>_eliteHealthBudget\)\{[\s\S]*?spawned\.hpMax=_eliteHealthBudget;/,
