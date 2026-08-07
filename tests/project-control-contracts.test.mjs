@@ -47,9 +47,17 @@ test('main checkpoint percentages match the weighted evidence table', () => {
 });
 
 test('status and progress report mirror the canonical percentages', () => {
+  const checkpoint = read('CURRENT_CHECKPOINT.md');
+  const block = checkpoint.match(
+    /<!-- checkpoint-progress:start -->([\s\S]*?)<!-- checkpoint-progress:end -->/
+  );
+  assert.ok(block, 'checkpoint progress block is present');
+  const active = Number(block[1].match(/Active checkpoint completion: \*\*(\d+)%\*\*/)?.[1]);
+  const overall = Number(block[1].match(/Overall project completion: \*\*(\d+)%\*\*/)?.[1]);
+  assert.ok(Number.isInteger(active) && Number.isInteger(overall), 'canonical percentages are numeric');
   for (const name of ['STATUS.md', 'PROJECT_PROGRESS.md']) {
     const document = read(name);
-    assert.match(document, /61%/);
-    assert.match(document, /16%/);
+    assert.match(document, new RegExp(`\\*\\*${active}%\\*\\*`), `${name} mirrors active checkpoint percentage`);
+    assert.match(document, new RegExp(`\\*\\*${overall}%\\*\\*`), `${name} mirrors overall percentage`);
   }
 });

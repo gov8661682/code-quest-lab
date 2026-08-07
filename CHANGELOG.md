@@ -2,6 +2,19 @@
 
 ## Unreleased - 2026-08-07
 
+- Completed a fresh, disposable Mage touch-first Dungeon 1 milestone: Town,
+  target-assisted combat, shrine, treasure, elite, later combat, Stone
+  Guardian Phase 2, and exit-portal travel into The Fallen Kingdom Entrance
+  all worked on the local tablet-sized surface. Removed only the two disposable
+  QA profiles after verifying the retained Mage and Barbarian profiles. The
+  evidence score is now 74% for Checkpoint 1 and 17% overall; D2-8, ending,
+  and the full safe-stop session remain open.
+- Fixed a boss-room handoff edge case where a dead summon object could leave
+  `CLEAR SUMMONS` visible after the boss was defeated. The room now counts live
+  summons only, clears dead objects, reopens the exit, and removes stale status
+  text. Release verification passes 80 tests, build/package audit, and native
+  web-asset sync. This milestone is prepared for its GitHub/website checkpoint.
+
 - Followed up the AI-expert combat recommendations with a bounded Dungeon 4
   route playtest. The route cleared the D4 combat, shrine, ambush/reward, and
   story rooms, then defeated three of five elites in `The Long Fall` before a

@@ -176,6 +176,9 @@ html, body {
 #enemyCount { position:absolute; bottom:160px; left:50%; transform:translateX(-50%); font-size:0.75em; color:#cfc4ae; letter-spacing:0.15em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:4px 12px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #roomInfo { position:absolute; top:50px; left:50%; transform:translateX(-50%); font-size:0.7em; color:#a98f5c; letter-spacing:0.2em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:3px 10px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #objectiveInfo { position:absolute; top:74px; left:50%; transform:translateX(-50%); font-size:0.62em; color:#cfc4ae; letter-spacing:0.12em; background:rgba(11,11,16,0.62); padding:3px 10px; border-radius:2px; border:1px solid rgba(58,52,42,0.8); z-index:5; pointer-events:none; white-space:nowrap; max-width:min(92vw,560px); text-overflow:ellipsis; overflow:hidden; }
+#touchAimAssistBadge { position:absolute; top:154px; right:10px; padding:5px 9px; border:1px solid rgba(58,184,232,0.7); border-radius:4px; background:rgba(8,20,28,0.88); color:#b8e8ff; font-size:0.58em; letter-spacing:0.09em; text-transform:uppercase; z-index:12; cursor:pointer; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(58,184,232,0.25); }
+#touchAimAssistBadge.locked { border-color:#d8a23a; color:#ffd98a; box-shadow:0 0 10px rgba(216,162,58,0.22); }
+#touchAimAssistBadge.off { border-color:#4a4338; color:#8a8170; background:rgba(11,11,16,0.76); }
 #doorStatus { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1em; color:#d8a23a; letter-spacing:0.2em; text-transform:uppercase; text-align:center; z-index:5; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #doorStatus.doorStatusLocked { top:112px; transform:translateX(-50%); width:min(88vw,560px); padding:6px 12px; color:#ffe6a6; background:rgba(10,8,14,0.9); border:1px solid rgba(216,162,58,0.85); box-shadow:0 3px 12px rgba(0,0,0,0.42); font-size:0.82em; line-height:1.35; letter-spacing:0.14em; text-shadow:0 1px 2px #050509; }
 #doorStatus.visible { opacity:1; }
@@ -618,6 +621,7 @@ html, body {
   #minimapCanvas { top:48px; right:max(6px,env(safe-area-inset-right)); width:84px; height:63px; }
   #roomInfo { top:48px; max-width:calc(100vw - 110px); overflow:hidden; text-overflow:ellipsis; }
   #objectiveInfo { top:70px; left:max(10px,env(safe-area-inset-left)); transform:none; max-width:calc(100vw - 118px); white-space:normal; text-align:left; line-height:1.25; font-size:0.56em; }
+  #touchAimAssistBadge { top:116px; right:max(6px,env(safe-area-inset-right)); font-size:0.52em; padding:4px 6px; }
   #waveBanner { top:92px; max-width:90vw; }
   #waveBanner .bannerTitle { font-size:1.05em; }
   .joyBase { display:block; bottom:max(12px,env(safe-area-inset-bottom)); width:94px; height:94px; }
@@ -642,6 +646,7 @@ html, body {
   .screen:not(#gameScreen) { justify-content:flex-start; overflow-y:auto; padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left)); }
   #minimapCanvas { width:72px; height:54px; }
   #objectiveInfo { display:none; }
+  #touchAimAssistBadge { top:116px; }
   .joyBase { width:82px; height:82px; bottom:max(8px,env(safe-area-inset-bottom)); }
   .joyKnob { width:36px; height:36px; margin:-18px 0 0 -18px; }
   #skillButtons-left,#skillButtons-right { bottom:96px; width:90px; }
@@ -902,6 +907,7 @@ html, body {
   <button id="npcInteractBtn" style="display:none;position:absolute;bottom:210px;left:50%;transform:translateX(-50%);padding:10px 24px;background:rgba(20,16,10,0.92);border:2px solid #d8a23a;border-radius:6px;color:#ffd98a;font-size:0.75em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;z-index:13;touch-action:manipulation;font-family:Georgia,'Times New Roman',serif;white-space:nowrap;">Press <span id="npcInteractLabel">Interact</span> to <span id="npcInteractVerb">talk</span></button>
   <div id="roomInfo">Start Room</div>
   <div id="objectiveInfo"></div>
+  <button id="touchAimAssistBadge" type="button" aria-pressed="true" title="Toggle touch target assist. Center-hold the Attack joystick to lock and fire.">TARGET ASSIST: ON</button>
   <div id="difficultyBadge">Normal</div>
   <div id="enemyCount">Enemies: 0</div>
   <div id="waveBanner">
@@ -22672,7 +22678,7 @@ function showWaypointStatus(text){
   document.getElementById('wpStatusTitle').textContent=text;
   el.classList.add('visible');
 }
-function hideWaypointStatus(){var el=document.getElementById('waypointStatus');if(el)el.classList.remove('visible');}
+function hideWaypointStatus(){var el=document.getElementById('waypointStatus');if(el){el.classList.remove('visible');var title=document.getElementById('wpStatusTitle');if(title)title.textContent='';}}
 
 function resetWaypointHold(){
   waypointState.insideId=null;waypointState.timer=0;waypointState.mode=null;
@@ -26271,6 +26277,16 @@ function handleDeveloperCheatKey(event){
 // a sustained pointer hold.
 var desktopAttackTapState={pointerId:null,startX:0,startY:0,startTime:0,moved:false,queued:false};
 var touchAttackState={pointerId:null,startX:0,startY:0,startTime:0,moved:false,queued:false};
+// Touch-first combat assist is a session-only control aid. It never changes
+// damage, cooldowns, enemy behavior, saves, exports, or the developer cheat.
+// A fresh play session starts with it enabled so the Attack joystick remains
+// usable on a tablet without pixel-perfect aim.
+var touchAimAssistEnabled=true;
+var touchCombatTarget=null;
+var touchCombatTargetTimer=0;
+var touchAimAssistUiTimer=0;
+var TOUCH_TARGET_LOCK_DURATION=1.25;
+var TOUCH_TARGET_MAX_DISTANCE=760;
 function resetTouchAttackState(){
   touchAttackState.pointerId=null;
   touchAttackState.moved=false;
@@ -26293,6 +26309,45 @@ function desktopMoveVector(){
   var mag=Math.hypot(x,y);
   return mag?{x:x/mag,y:y/mag,mag:1}:{x:0,y:0,mag:0};
 }
+function combatTargetIsLive(target){
+  return !!(target&&target.hp!==undefined&&target.hp>0&&!target.destroyed);
+}
+function findNearestCombatTarget(aimAngle){
+  var target=null,targetScore=Infinity;
+  function consider(candidate){
+    if(!combatTargetIsLive(candidate))return;
+    var dx=candidate.x-player.x,dy=candidate.y-player.y,dist=Math.hypot(dx,dy);
+    var score=dist;
+    if(aimAngle!==null&&aimAngle!==undefined){
+      var candidateAngle=Math.atan2(dy,dx);
+      var angleGap=Math.abs(Math.atan2(Math.sin(candidateAngle-aimAngle),Math.cos(candidateAngle-aimAngle)));
+      // Keep the nearest target as the default, but reward targets in the
+      // direction of a deliberate joystick deflection.
+      score+=angleGap*120;
+    }
+    if(score<targetScore){targetScore=score;target=candidate;}
+  }
+  for(var i=0;i<enemies.length;i++)consider(enemies[i]);
+  if(boss)consider(boss);
+  if(miniBoss)consider(miniBoss);
+  return target;
+}
+function selectTouchCombatTarget(aimAngle,forceNew){
+  if(!touchAimAssistEnabled)return null;
+  if(!forceNew&&touchCombatTargetTimer>0&&combatTargetIsLive(touchCombatTarget)){
+    var lockedDist=Math.hypot(touchCombatTarget.x-player.x,touchCombatTarget.y-player.y);
+    if(lockedDist<=TOUCH_TARGET_MAX_DISTANCE){
+      if(aimAngle===null||aimAngle===undefined)return touchCombatTarget;
+      var lockedAngle=Math.atan2(touchCombatTarget.y-player.y,touchCombatTarget.x-player.x);
+      var lockedGap=Math.abs(Math.atan2(Math.sin(lockedAngle-aimAngle),Math.cos(lockedAngle-aimAngle)));
+      if(lockedGap<0.9)return touchCombatTarget;
+    }
+  }
+  var selected=findNearestCombatTarget(aimAngle);
+  touchCombatTarget=selected;
+  touchCombatTargetTimer=selected?TOUCH_TARGET_LOCK_DURATION:0;
+  return selected;
+}
 function desktopAimAngle(){
   if(!desktopInput.mouseSeen)return null;
   var rect=canvas.getBoundingClientRect();
@@ -26304,21 +26359,8 @@ function desktopAimAngle(){
   return isFinite(angle)?angle:null;
 }
 function nearestAttackAngle(){
-  var target=null,targetDist=Infinity;
-  for(var i=0;i<enemies.length;i++){
-    var e=enemies[i];
-    if(!e||e.hp<=0)continue;
-    var d=Math.hypot(e.x-player.x,e.y-player.y);
-    if(d<targetDist){target=e;targetDist=d;}
-  }
-  if(boss&&boss.hp>0){
-    var bd=Math.hypot(boss.x-player.x,boss.y-player.y);
-    if(bd<targetDist){target=boss;targetDist=bd;}
-  }
-  if(miniBoss&&miniBoss.hp>0){
-    var md=Math.hypot(miniBoss.x-player.x,miniBoss.y-player.y);
-    if(md<targetDist){target=miniBoss;targetDist=md;}
-  }
+  var target=findNearestCombatTarget(null);
+  if(target&&touchAimAssistEnabled){touchCombatTarget=target;touchCombatTargetTimer=TOUCH_TARGET_LOCK_DURATION;}
   return target?Math.atan2(target.y-player.y,target.x-player.x):null;
 }
 function queueNearestAttack(){
@@ -26328,12 +26370,34 @@ function queueNearestAttack(){
   // nearest live target instead of firing at an old canvas position.
   desktopInput.mouseSeen=false;
   desktopInput.mouseDown=false;
+  selectTouchCombatTarget(null,true);
   desktopAttackTapState.queued=true;
+}
+function updateTouchAimAssistUi(dt){
+  touchAimAssistUiTimer-=dt||0;
+  if(touchAimAssistUiTimer>0)return;
+  touchAimAssistUiTimer=0.12;
+  var badge=document.getElementById('touchAimAssistBadge');
+  if(!badge)return;
+  var locked=touchAimAssistEnabled&&combatTargetIsLive(touchCombatTarget)&&touchCombatTargetTimer>0;
+  badge.textContent=touchAimAssistEnabled?(locked?'TARGET LOCK: ON':'TARGET ASSIST: ON'):'TARGET ASSIST: OFF';
+  badge.classList.toggle('locked',locked);
+  badge.classList.toggle('off',!touchAimAssistEnabled);
+  badge.setAttribute('aria-pressed',touchAimAssistEnabled?'true':'false');
+}
+var touchAimAssistBadge=document.getElementById('touchAimAssistBadge');
+if(touchAimAssistBadge){
+  touchAimAssistBadge.addEventListener('click',function(){
+    touchAimAssistEnabled=!touchAimAssistEnabled;
+    if(!touchAimAssistEnabled){touchCombatTarget=null;touchCombatTargetTimer=0;}
+    updateTouchAimAssistUi(1);
+  });
 }
 function clearDesktopInput(){desktopInput.keys={};desktopInput.tapUntil={};desktopInput.mouseDown=false;desktopAttackTapState.pointerId=null;desktopAttackTapState.startX=0;desktopAttackTapState.startY=0;desktopAttackTapState.startTime=0;desktopAttackTapState.moved=false;desktopAttackTapState.queued=false;}
 function clearAllInputState(){
   clearDesktopInput();
   resetTouchAttackState();
+  touchCombatTargetTimer=0;
   if(leftStick){
     leftStick.active=false;
     leftStick.dx=0;
@@ -28438,6 +28502,10 @@ function startGame(){
     levelUpPending=false;levelUpQueue=[];
     enemies=[];projectiles=[];enemyProjectiles=[];floaties=[];skillEffects=[];deathParticles=[];
     totalKills=0;timeSurvived=0;lastFightTimer=0;gameRunning=false;gamePaused=false;
+    // Touch aim is an in-run accessibility aid, never profile progress or a
+    // persistent preference. Reset it for every new run/destination so a
+    // player always knows the initial control state.
+    touchAimAssistEnabled=true;touchCombatTarget=null;touchCombatTargetTimer=0;touchAimAssistUiTimer=0;
     // A new Town, entrance, arena, or dungeon session must never inherit a
     // movement lock or ending cutscene state from the previous session. Most
     // effects naturally expire in the game loop, but these fields can survive
@@ -34140,6 +34208,9 @@ function spawnLbsHitParticles(e, isDestruction){
 function updatePlayerAttack(dt){
   if(player.attackTimer>0)player.attackTimer-=dt;
   if(player.attackFlash>0)player.attackFlash-=dt;
+  if(touchCombatTargetTimer>0)touchCombatTargetTimer=Math.max(0,touchCombatTargetTimer-dt);
+  if(!combatTargetIsLive(touchCombatTarget))touchCombatTarget=null;
+  updateTouchAimAssistUi(dt);
   if(pcChoiceLocked||pcRematchBurstActive)return;// Dungeon 16 Final Choice / Final Rematch burst: control lost once the offer is accepted, or the world is bursting into white light
   if(boss&&boss.isPureCorruption&&boss.pc5Active){
     // Dungeon 16 5% HP — THE PLAYER IS CONSUMED: same attempt-detection/
@@ -34173,7 +34244,28 @@ function updatePlayerAttack(dt){
   if(mouseAngle!==null){player.facingAngle=mouseAngle;if(player.attackTimer<=0)performAttack(player.facingAngle);return;}
   if(!rightStick)return;
   var mag=rightStick.magnitude();
-  if(mag>0.3){player.facingAngle=Math.atan2(rightStick.dy,rightStick.dx);if(player.attackTimer<=0)performAttack(player.facingAngle);}
+  if(mag>0.3){
+    var stickAngle=Math.atan2(rightStick.dy,rightStick.dx);
+    if(touchAimAssistEnabled){
+      var guidedTarget=selectTouchCombatTarget(stickAngle,false);
+      if(guidedTarget){
+        var guidedAngle=Math.atan2(guidedTarget.y-player.y,guidedTarget.x-player.x);
+        var guidedGap=Math.abs(Math.atan2(Math.sin(guidedAngle-stickAngle),Math.cos(guidedAngle-stickAngle)));
+        if(guidedGap<0.45)stickAngle=guidedAngle;
+      }
+    }
+    player.facingAngle=stickAngle;
+    if(player.attackTimer<=0)performAttack(player.facingAngle);
+  }else if(touchAimAssistEnabled&&rightStick.active){
+    // Center-hold is the tablet-friendly lock-and-fire gesture. A normal
+    // center tap still uses the one-shot queue above; holding keeps firing at
+    // the selected target at the class's normal cooldown.
+    var heldTarget=selectTouchCombatTarget(null,false);
+    if(heldTarget){
+      player.facingAngle=Math.atan2(heldTarget.y-player.y,heldTarget.x-player.x);
+      if(player.attackTimer<=0)performAttack(player.facingAngle);
+    }
+  }
 }
 
 function updateRogueCooldowns(dt){['core','movement','ultimate'].forEach(function(t){if(rogueSkillCooldownTimers[t]>0)rogueSkillCooldownTimers[t]=Math.max(0,rogueSkillCooldownTimers[t]-dt);});}
@@ -41620,16 +41712,35 @@ function updateRoomProgress(geo){
       else if(d3PuzzleState.type==='arcane_seal')_pzHint='Stand near the seal to channel ('+(Math.round((d3PuzzleState.sealProgress||0)/d3PuzzleState.sealRequired*100))+'%)';
       document.getElementById('doorStatus').innerHTML='📖 PUZZLE: '+_pzHint;
       document.getElementById('doorStatus').classList.add('visible');
-    }else{document.getElementById('doorStatus').classList.remove('visible');}
+    }else{document.getElementById('doorStatus').textContent='';document.getElementById('doorStatus').classList.remove('visible');}
     return;
   }
   if(def.type===RT.BOSS){
-    if(boss||enemies.length>0){
+    if(boss){
       var bossHpPct=boss?Math.round((boss.hp/boss.hpMax)*100):0;
       var statusStr=boss?('👑 GUARDIAN: '+bossHpPct+'%'+(bossPhase===2?' ⚠ PHASE 2':'')):('🔒 CLEAR SUMMONS ('+enemies.length+')');
       document.getElementById('doorStatus').innerHTML=statusStr;
       document.getElementById('doorStatus').classList.add('visible');
-    }else if(roomCleared){document.getElementById('doorStatus').classList.remove('visible');}
+    }else{
+      // Boss summons can finish their death animation one frame after the
+      // boss itself. Count only live summons here; a dead object left in the
+      // array must not keep the portal handoff looking locked forever.
+      var liveBossSummons=enemies.filter(function(e){return !!(e&&e.hp>0&&!e.dead);}).length;
+      if(liveBossSummons>0){
+        document.getElementById('doorStatus').innerHTML='CLEAR SUMMONS ('+liveBossSummons+')';
+        document.getElementById('doorStatus').classList.add('visible');
+      }else{
+        if(enemies.length)enemies=[];
+        if(!roomCleared){
+          roomCleared=true;
+          if(roomStates[currentRoomId])roomStates[currentRoomId].cleared=true;
+          if(def.forward)openForwardDoor(geo);
+          sideDoorOpen=(def.side!==null);
+        }
+        document.getElementById('doorStatus').textContent='';
+        document.getElementById('doorStatus').classList.remove('visible');
+      }
+    }
     return;
   }
   if(def.type===RT.MINIBOSS){
@@ -41637,7 +41748,7 @@ function updateRoomProgress(geo){
       var mbPct=Math.round((miniBoss.hp/miniBoss.hpMax)*100);
       document.getElementById('doorStatus').innerHTML='☠ '+miniBoss.label+': '+mbPct+'%';
       document.getElementById('doorStatus').classList.add('visible');
-    }else if(roomCleared){document.getElementById('doorStatus').classList.remove('visible');}
+    }else if(roomCleared){document.getElementById('doorStatus').textContent='';document.getElementById('doorStatus').classList.remove('visible');}
     return;
   }
   var livingEnemies=enemies.length;
@@ -41674,7 +41785,7 @@ function updateRoomProgress(geo){
     doorStatus.innerHTML='🔒 DOOR LOCKED  ('+livingEnemies+' remaining)';
     doorStatus.classList.add('doorStatusLocked');
     doorStatus.classList.add('visible');
-  }else if(roomCleared){doorStatus.classList.remove('visible');}
+  }else if(roomCleared){doorStatus.textContent='';doorStatus.classList.remove('visible');}
 }
 
 function playerDied(){
@@ -41982,6 +42093,25 @@ function drawTownPortalIndicator(){
 // ============================================================
 // DRAW
 // ============================================================
+function drawTouchCombatTarget(){
+  if(!touchAimAssistEnabled||touchCombatTargetTimer<=0||!combatTargetIsLive(touchCombatTarget))return;
+  var target=touchCombatTarget;
+  var radius=Math.max(14,(target.radius||18)+10);
+  var pulse=0.72+Math.sin(Date.now()*0.008)*0.18;
+  ctx.save();
+  ctx.translate(target.x,target.y);
+  ctx.globalAlpha=pulse;
+  ctx.strokeStyle='#9be7ff';ctx.lineWidth=2;
+  ctx.setLineDash([5,4]);ctx.beginPath();ctx.arc(0,0,radius,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+  ctx.lineWidth=2.5;
+  for(var ti=0;ti<4;ti++){
+    var ta=ti*Math.PI/2+Math.PI/4,tx=Math.cos(ta),ty=Math.sin(ta);
+    ctx.beginPath();ctx.moveTo(tx*(radius+4),ty*(radius+4));ctx.lineTo(tx*(radius+11),ty*(radius+11));ctx.stroke();
+  }
+  ctx.fillStyle='#b8e8ff';ctx.font='bold 9px Georgia';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('LOCK',0,-radius-12);
+  ctx.textAlign='left';ctx.textBaseline='alphabetic';ctx.restore();
+}
 function draw(){
   if(canvas.width<10||canvas.height<10)resizeCanvas();
   var geo=getRoomGeometry();
@@ -42088,7 +42218,7 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawMageProjectiles();drawMageEffects();
   drawDruidVineZones();drawDruidStorm();drawDruidSummons();drawDruidRavens();drawRogueEffects();
   drawLbsDebris();
-  drawPlayer();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
+  drawPlayer();drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
   drawOffscreenEnemyIndicators();

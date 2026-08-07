@@ -16,8 +16,8 @@ State: pre-release hardening; not a Release Candidate
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **61%** complete and overall
-  project progress is **16%** using the ten-checkpoint formula in
+- Evidence-scored progress: Checkpoint 1 is **74%** complete and overall
+  project progress is **17%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
 - Autonomous work protocol: `AUTORUN.md` requires a concrete progress delta per
@@ -73,9 +73,21 @@ State: pre-release hardening; not a Release Candidate
   deleted. This is meaningful D1 touch/progression evidence, not a fresh D4
   rerun or D1-8 completion.
 - Local verification after that hardening passed `npm.cmd run release:verify`:
-  78 tests, the 17-file build, static-package audit, and native asset sync.
+  80 tests, the 17-file build, static-package audit, and native asset sync.
   Source/mirror/dist shell SHA-256 is
-  `CCD2E75862687E5AF2D15D05168536E6D8F4848BE5867524BAE3B70249FF7161`.
+  `975FD97E55D2AB013EE63082398519F29722E698DEC32221CE38441B597D6E3F`.
+- A disposable Mage completed the full observable D1 touch-first route on
+  2026-08-07: `Shadow Hall`, `Elder Stone`, `Cursed Gallery`, `Relic Chamber`,
+  `Dark Corridor`, `Forsaken Vault`, `Guardian's Sanctum`, the Stone Guardian
+  through Phase 2, and the exit portal into The Fallen Kingdom Entrance. The
+  session-only target lock made center-hold Attack usable; the developer aid
+  was enabled only on the loopback QA URL. Only the two disposable Mage QA
+  profiles were deleted; the retained Mage level 12 and Barbarian level 4
+  profiles were verified unchanged. This moves the evidence score to 74% / 17%.
+- The same run exposed a dead-summon handoff edge case. Boss rooms now count
+  live summons only, discard dead summon objects, reopen the exit, and clear
+  stale `CLEAR SUMMONS` text. The focused contract is included in the 80-test
+  release gate; D2-8, ending, full safe-stop, and live publication remain open.
 
 ## Baseline evidence
 

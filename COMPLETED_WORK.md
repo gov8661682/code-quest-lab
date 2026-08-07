@@ -19,6 +19,9 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Established bounded autonomous work and evidence-scored progress | `AUTORUN.md`, `CURRENT_CHECKPOINT.md`, D-018, and `tests/project-control-contracts.test.mjs`; 75-test release verification passes | Only if the control contract fails or the owner changes the working policy |
 | Cleared stale static-room door status text | `updateRoomProgress` now clears `doorStatus.textContent` for Town/Entrance/Shrine/Treasure; focused lifecycle test and packaged local smoke pass | Reopen only if a supported surface still exposes stale status text |
 
+| Touch-first D1 boss/portal slice | A disposable Mage completed the observable Dungeon 1 route through the Stone Guardian and exit portal with the session-only target lock; two disposable QA profiles were removed and the retained Mage/Barbarian profiles were verified unchanged | Reopen only for a route regression; full D1-8, ending, and safe-stop-session evidence remains in Checkpoint 1 |
+| Boss dead-summon handoff | Boss-room progress counts live summons, discards dead summon objects after boss defeat, reopens the exit, and clears stale `CLEAR SUMMONS` text; the focused contract is part of the 80-test release gate | Reopen only if a defeated boss room remains locked or displays stale summon status |
+
 ## Completed release foundation
 
 | Work | Evidence | Reopen condition |

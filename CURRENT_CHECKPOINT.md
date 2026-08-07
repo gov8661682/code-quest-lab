@@ -10,21 +10,21 @@ Status: **Active; not complete**
 ## Main progress checkpoint
 
 <!-- checkpoint-progress:start -->
-Active checkpoint completion: **61%**
+Active checkpoint completion: **74%**
 
-Overall project completion: **16%**
+Overall project completion: **17%**
 
 Scoring date: 2026-08-07. Overall progress is rounded from one completed
-checkpoint plus 61% of the active checkpoint across ten checkpoints.
+checkpoint plus 74% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
 |---|---:|---:|---|---|
-| Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 10 | Fresh D1 partial rooms; resumed D2 boss; recovered D1 boss portal; automated D1-8 route contracts | One fresh player-completed D1-8 route and intended ending |
-| Meaningful 10-30 minute touch-first session | 20 | 8 | Touch Town/entrance/combat flow, objective, pause/summary/finish surfaces, and compact-layout control evidence | One dated 10-30 minute touch-first session with the full safe-stop sequence |
+| Fresh-profile D1-8 route, bosses, rewards, final portal, and ending | 30 | 16 | A disposable clean Mage completed every observable D1 room, the Stone Guardian, and the exit portal into The Fallen Kingdom Entrance through normal touch controls; automated D1-8 route contracts also pass | One fresh player-completed D1-8 route through D2-8, final portal, and intended ending |
+| Meaningful 10-30 minute touch-first session | 20 | 13 | Dated touch-first play covered Town, D1 combat rooms, shrine, treasure, elite, boss, target lock, and deliberate portal travel; the run's safe-stop/resume/summary sequence is still open | One dated 10-30 minute touch-first session with the full safe-stop sequence |
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
-| Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 10 | Input contracts and bounded desktop/touch browser smokes; joystick-overlap and offscreen-threat fixes | Representative full-route tablet evidence with no P0/P1 issue or diagnostics |
+| Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 8 | Latest 78-test release verification, build/package audit, native sync, and pushed local hardening | Re-run final milestone verification, deploy the complete checkpoint, and live-verify it |
+| Tests, current records, GitHub, and website milestone | 10 | 8 | The 80-test release verification, build/package audit, native sync, updated records, and pushed milestone preparation are complete; live publication is the final step | Deploy this tested milestone and live-verify desktop/tablet playability |
 <!-- checkpoint-progress:end -->
 
 ## Current objective
@@ -53,7 +53,7 @@ change it.
   save paths exist and are contract-tested.
 - Keyboard/mouse and touch/joystick input contracts, canvas focus, bounded
   first-room onboarding, and safe release fallbacks are covered.
-- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 78 Node
+- `npm.cmd run release:verify` passed on 2026-08-07: release contracts, 80 Node
   tests, a 17-file static build, and the static-package audit. The new
   session-transient UI, no-waypoint cleanup, and final-enemy status-refresh
   contracts are included; `npm.cmd run native:sync` also passed.
@@ -266,7 +266,8 @@ skip the active C1 route, save, input, and session acceptance criteria.
   but it used the existing Mage profile rather than a clean profile and does
   not establish D1-8, touch-first, or ending completion. The Manage Data
   surface retained both Mage and Level 4 Barbarian profiles; no profile was
-  deleted. Checkpoint and overall scores therefore remain 61% and 16%.
+  deleted. At that earlier point, the checkpoint and overall scores were 61%
+  and 16%; the current score is recorded at the top of this file.
 - On 2026-08-07, a separate isolated Mage QA profile completed the fresh
   Dungeon 1 boss-and-portal route, then entered Dungeon 2 with `Elite Invasion`.
   In `Dark Inquisition Chamber`, the Corrupted elite modifier reproduced an
@@ -276,7 +277,8 @@ skip the active C1 route, save, input, and session acceptance criteria.
   Souls) and Barbarian (0 Souls) profiles were preserved. The follow-up fix in
   `6423ecb` gives each Corrupted elite a finite two-minion summon budget,
   preserves it through room checkpoints, and adds a 77-test contract. This is
-  local hardening evidence, not D1-8 completion; scores remain 61% and 16%.
+  local hardening evidence, not D1-8 completion; the then-current scores were
+  61% and 16%, before the later clean D1 touch-route evidence.
 
 - On 2026-08-07, a new disposable Mage profile verified the patched local
   shell through Dungeon 1 Normal's first combat, shrine, sealed-chest event,
@@ -285,6 +287,24 @@ skip the active C1 route, save, input, and session acceptance criteria.
   was finished safely and only that profile was deleted; the retained Mage and
   Barbarian profiles were unchanged. This is clean-profile D1 evidence, not a
   post-fix D4 rerun or D1-8 completion.
+
+## Latest milestone evidence
+
+- On 2026-08-07, a separate disposable Mage completed the full observable
+  Dungeon 1 touch-first slice: `Shadow Hall`, `Elder Stone`, `Cursed Gallery`,
+  `Relic Chamber`, `Dark Corridor`, `Forsaken Vault`, `Guardian's Sanctum`,
+  the Stone Guardian through Phase 2, and the exit portal into `The Fallen
+  Kingdom Entrance`. The visible session-only target lock made center-hold
+  Attack usable throughout the route; the local developer invincibility aid
+  was enabled only for QA. The two disposable Mage profiles from this run
+  were deleted through Manage Data; the retained Mage and Barbarian profiles
+  were verified unchanged. This advances the evidence score to 74% / 17%,
+  while the D1-8 ending and full safe-stop session remain open.
+- The boss handoff edge case found during that run is now fixed: dead summon
+  objects no longer leave `CLEAR SUMMONS` visible or keep a defeated boss room
+  locked. The runtime counts only live summons, clears dead objects, reopens
+  the exit, and removes stale status text; the focused combat contract and the
+  80-test release gate cover the behavior.
 
 ## Known blockers
 

@@ -150,6 +150,24 @@ test('touch attack joystick supports a bounded nearest-target tap', () => {
   assert.match(SOURCE, /rightStick=new Joystick\(document\.getElementById\('joyRight'\),document\.getElementById\('knobRight'\),queueNearestAttack\)/, 'the production Attack joystick uses the tap action');
 });
 
+test('touch-first combat offers a visible, session-only target lock', () => {
+  assert.match(SOURCE, /var touchAimAssistEnabled=true;/, 'touch aim assist starts enabled for a fresh session');
+  assert.match(SOURCE, /function findNearestCombatTarget\(aimAngle\)/, 'combat target selection covers live room targets');
+  assert.match(SOURCE, /function selectTouchCombatTarget\(aimAngle,forceNew\)/, 'target selection supports a short lock window');
+  assert.match(SOURCE, /rightStick\.active\)\{[\s\S]*Center-hold is the tablet-friendly lock-and-fire gesture/, 'center-hold attack input is supported');
+  assert.match(SOURCE, /<button id="touchAimAssistBadge"[^>]*aria-pressed="true"/, 'the assist state is visible and accessible');
+  assert.match(SOURCE, /function drawTouchCombatTarget\(\)/, 'the locked target receives a world-space reticle');
+  assert.match(SOURCE, /touchAimAssistEnabled=true;touchCombatTarget=null;touchCombatTargetTimer=0;/, 'the assist resets per session instead of entering profile data');
+});
+
+test('boss rooms clear dead summon state before the exit handoff', () => {
+  const source = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'boss room progress');
+  assert.match(source, /var liveBossSummons=enemies\.filter\(function\(e\)\{return !!\(e&&e\.hp>0&&!e\.dead\);\}\)\.length;/, 'boss lock counts only live summons');
+  assert.match(source, /if\(enemies\.length\)enemies=\[\];/, 'dead summon objects are discarded after the boss is defeated');
+  assert.match(source, /if\(!roomCleared\)\{[\s\S]*?openForwardDoor\(geo\);/, 'a summon-free boss room reopens its forward exit');
+  assert.match(source, /document\.getElementById\('doorStatus'\)\.textContent='';[\s\S]*?classList\.remove\('visible'\)/, 'stale summon text is cleared');
+});
+
 test('first combat room gives a bounded read-and-respond window', () => {
   assert.match(SOURCE, /var combatIntroTimer=0;/, 'combat introduction timer is declared');
   assert.match(SOURCE, /var COMBAT_INTRO_DURATION=10\.0;/, 'combat introduction duration is bounded');
