@@ -11,6 +11,23 @@ Diagnostics: no browser error or warning entries
 
 ## Follow-up against the recommendations
 
+The 2026-08-07 D4 boss QA follow-up found two concrete usability/tooling
+defects during the invincible playthrough. The developer summon-clear sequence
+was incorrectly refusing to operate while a boss was alive, and the HUD used
+the generic Stone Guardian label for the Void Monarch. The local-only
+`F8 F7 F6 F4` aid now clears summons while leaving the live boss and locked
+exit intact; the HUD identifies `Void Monarch` correctly. The focused
+developer contracts and full 83-test release gate pass.
+
+The patched local run reached D4 room 11, verified pause/resume and deliberate
+Finish and Return to Dashboard, and deleted only its disposable Mage profile.
+The retained Mage level 12 and Barbarian level 4 profiles were unchanged.
+The fix is deployed as `cd90db4` with preview
+`https://0db3ee6b.code-quest-lab.pages.dev/` and configured hostname
+`https://code-quest-lab.gov8661682.com/`; both production checks and the live
+profile-to-entrance smoke passed. It is a QA/readability milestone, not a new
+D4-8 or ending result.
+
 The latest bounded follow-up found and fixed a second elite-pacing edge case.
 Dungeon 2 applies a 2x health multiplier before elite and Giant modifiers, so
 the previous 4x post-modifier budget could still leave a fully stacked Royal

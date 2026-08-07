@@ -2,6 +2,21 @@
 
 ## Unreleased - 2026-08-07
 
+- Hardened the local developer boss QA aid: `F8 F7 F6 F4` now clears live
+  summons without falsely completing a live boss room or opening its exit.
+  Corrected the D4 HUD label from the generic Stone Guardian name to Void
+  Monarch. The change is loopback-gated and session-only. All 83 tests, the
+  17-file build/package audit, native sync, production checks, and live smoke
+  passed. Commit `cd90db4` was pushed and deployed to
+  `https://code-quest-lab.gov8661682.com/` with preview
+  `https://0db3ee6b.code-quest-lab.pages.dev/` and deployed shell hash
+  `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+- A disposable local D4 run reached room 11 and verified pause/resume and
+  deliberate Finish and Return to Dashboard. Only the disposable profile was
+  removed; retained saves were unchanged. Progress remains 79% for Checkpoint
+  1 and 18% overall because D4-8, the intended ending, and the full
+  touch-first safe-stop acceptance lane remain open.
+
 - Tightened the shared elite health budget from 4x to 2.5x authored base health
   after a Dungeon 2 calculation showed that depth and dungeon scaling could
   still create a starter-damage wall for fully stacked elites. Modifier size,

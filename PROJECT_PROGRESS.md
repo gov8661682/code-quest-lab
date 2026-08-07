@@ -11,20 +11,34 @@ The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
 
+## Latest hardening evidence
+
+Commit `cd90db4` (`Harden local boss QA controls`) was pushed and deployed on
+2026-08-07. The loopback-only `F8 F7 F6 F4` aid now preserves live boss
+encounters while clearing summons, and the D4 HUD identifies the Void Monarch
+correctly. The patched disposable run reached D4 room 11, verified
+pause/resume and deliberate finish, and was deleted without changing the
+retained Mage level 12 or Barbarian level 4 records. All 83 tests, the
+17-file build/package audit, native sync, production checks, and live smoke
+passed. Preview: `https://0db3ee6b.code-quest-lab.pages.dev/`; deployed shell
+SHA-256: `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+The evidence score remains **79%** / **18%** because D4-8, the ending, and
+the full touch-first safe-stop acceptance lane are still open.
+
 ## Review basis
 
 This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` contains source milestone commit `944675b` (`Tighten
-  Dungeon 2 elite pacing budget`) plus the earlier deployed checkpoint history.
+- Git state: `main` contains source milestone commit `cd90db4` (`Harden local
+  boss QA controls`) plus the earlier deployed checkpoint history.
   Control baseline `944c8c3` (`Add bounded autonomous progress controls`) and
   the route/input/recovery hardening commits remain in history. The deployment
   record for source commit `5cbe80c` is maintained below; later incomplete work must remain
   grouped into the next meaningful checkpoint.
 - Canonical game: `index.html`, SHA-256
-  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`
+  `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
@@ -34,10 +48,10 @@ Git history, and current deployment—not only on comments or planning files.
   also passes after the elite pacing/input hardening.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
   and the matching preview check passed; both report shell SHA-256
-  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
-- Last website checkpoint: source commit `944675b`, deployed and live-verified
+  `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+- Last website checkpoint: source commit `cd90db4`, deployed and live-verified
   on 2026-08-07 at `https://code-quest-lab.gov8661682.com/`; preview
-  `https://52fc1d32.code-quest-lab.pages.dev/` also passed the live smoke
+  `https://0db3ee6b.code-quest-lab.pages.dev/` also passed the live smoke
   surface
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit

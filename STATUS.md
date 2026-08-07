@@ -3,7 +3,32 @@
 Date: 2026-08-07
 State: pre-release hardening; not a Release Candidate
 
-## Latest verified milestone
+## Latest QA hardening checkpoint
+
+On 2026-08-07, the local developer summon-clear sequence was corrected so
+`F8 F7 F6 F4` can remove live boss summons without falsely completing the boss
+room or opening its exit. The D4 HUD now identifies the active boss as
+`Void Monarch` instead of the generic `Stone Guardian` label. The change is
+loopback-gated, session-only, excluded from profile/export data, and covered
+by the developer-cheat contracts.
+
+The patched local run reached D4 room 11, verified pause/resume and deliberate
+Finish and Return to Dashboard, and removed only the disposable Mage QA
+profile. The retained Mage level 12 and Barbarian level 4 profiles remained
+unchanged. This is a QA/readability hardening result, so the evidence score
+remains **79%** for Checkpoint 1 and **18%** overall.
+
+Milestone commit: `cd90db4` (`Harden local boss QA controls`), pushed and
+deployed on 2026-08-07. Pages preview:
+`https://0db3ee6b.code-quest-lab.pages.dev/`. Configured hostname:
+`https://code-quest-lab.gov8661682.com/`. Cache-busted production checks and
+the live browser smoke passed. Deployed shell SHA-256:
+`C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+
+`npm.cmd run release:verify` passed all **83 tests**, the 17-file static
+build/package audit, and `npm.cmd run native:sync` passed before deployment.
+
+## Previous pacing milestone
 
 On 2026-08-07, the elite pacing budget was tightened after a bounded Dungeon 2
 playtest showed that Dungeon 2's 2x enemy-health multiplier could still make a
@@ -46,22 +71,21 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `944675b` (`Tighten Dungeon 2 elite pacing
-  budget`), after the 83-test release verification, build/package audit, native
-  asset sync, GitHub push, and live browser smoke. Checkpoint 1 remains active
+- Current verified code head: `cd90db4` (`Harden local boss QA controls`),
+  after the 83-test release verification, build/package audit, native asset
+  sync, GitHub push, and live browser smoke. Checkpoint 1 remains active
   because D1-8 and the ending are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `944675b` (`Tighten Dungeon 2 elite
-  pacing budget`), deployed on 2026-08-07 to the configured Cloudflare Pages
-  project. The earlier deployed runtime `9c451af` and all preceding hardening
-  commits remain in history. This milestone includes the bounded D2 elite
-  route, queued attack-input fix, and the corresponding control records.
-- Checkpoint record: commit `944675b`, deployed 2026-08-07 to
+- Latest deployed milestone runtime: `cd90db4` (`Harden local boss QA
+  controls`), deployed on 2026-08-07 to the configured Cloudflare Pages
+  project. The earlier pacing/input runtime `944675b` and all preceding
+  hardening commits remain in history.
+- Checkpoint record: commit `cd90db4`, deployed 2026-08-07 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://52fc1d32.code-quest-lab.pages.dev/`), build SHA-256
-  `408F0CE6E60D3D0A8D526FE337730FFB9A78667E1B5A4D67653349B24AF6F00B`.
+  `https://0db3ee6b.code-quest-lab.pages.dev/`), build SHA-256
+  `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
 - Production verification passed for both the configured hostname and preview;
   the live browser smoke reached the profile screen and playable entrance with
   visible target assist at the default desktop viewport and at 1024x768 tablet
