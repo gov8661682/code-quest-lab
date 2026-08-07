@@ -19,13 +19,13 @@ Git history, and current deployment—not only on comments or planning files.
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` contains deployed milestone commit `9da1d0e` (`Add local
   profile transfer and combat readability`) and pushed follow-ups through
-  `5912218` (`Record browser lifecycle checkpoint evidence`). Control baseline
+  `edb7896` (`Fix stale Town lock status after Finish for Now`). Control baseline
   `944c8c3` (`Add bounded autonomous progress controls`) and the route/input/
   recovery hardening commits between them are also pushed. The deployment
   record for `9da1d0e` is maintained below; these incomplete or minor
   follow-ups are intentionally not deployed as separate checkpoints.
 - Canonical game: `index.html`, 57,085 lines, SHA-256
-  `ADC17A48EBE9099F133DE6116BB118DA46C4658F482F9BA545C9C291AC8640E3`
+  `178D8F774FD4FD9A99848CEF88E848C855C58088B14858330A6875BFC47FF279`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the

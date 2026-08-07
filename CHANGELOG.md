@@ -2,6 +2,12 @@
 
 ## Unreleased - 2026-08-07
 
+- Added a gated ordinary-key fallback `C Q L I` for the developer-only
+  invincibility aid because some managed browser surfaces reserve function
+  keys. The primary `F8 F7 F6 F3` sequence, loopback query gate, session-only
+  scope, export exclusion, and public/native exclusion remain unchanged. A
+  cache-busted local smoke confirmed `DEV TEST MODE` activation, and the
+  temporary profile was removed afterward.
 - Fixed a verified Finish for Now transition edge case where old dungeon lock
   text could remain in the Town status element after a stopped run. Town now
   clears the transient status before and after rebuilding the static room;

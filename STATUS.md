@@ -24,8 +24,8 @@ State: pre-release hardening; not a Release Candidate
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head before this follow-up: `5912218` (`Record browser
-  lifecycle checkpoint evidence`), pushed after 75-test release verification;
+- Current verified code head before this follow-up: `edb7896` (`Fix stale Town
+  lock status after Finish for Now`), pushed after 76-test release verification;
   control baseline `944c8c3` is also pushed. Neither is a website deployment
   checkpoint because Checkpoint 1 remains incomplete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
@@ -59,11 +59,12 @@ State: pre-release hardening; not a Release Candidate
 - The non-RC evidence and owner/environment gates are consolidated in `RELEASE_AUDIT.md`.
 - Local QA tooling added after the deployed checkpoint: `?cql-dev=1` on a
   loopback HTTP/HTTPS URL plus the hidden `F8 F7 F6 F3` sequence toggles a
-  session-only developer invincibility mode. With invincibility already
+  session-only developer invincibility mode. Managed-browser fallback: enter
+  `C Q L I` in the same gated local session. With invincibility already
   enabled, `F8 F7 F6 F4` clears live boss summons for local debugging. Neither
   sequence is serialized, exported, deployed, or available on the native
-  protocol; the local runtime smoke kept the player at full HP through enemy
-  damage and toggled the mode off.
+  protocol; a cache-busted loopback smoke showed `DEV TEST MODE` and
+  `Invincibility enabled`, then the temporary profile was deleted.
 - Profile-save reliability was strengthened with versioned structural validation, valid-backup promotion, and an explicit user-facing recovery notice; full migration/corruption matrix coverage remains open.
 - An automated compatibility matrix now executes the shipped `parseCharacterSave` validator against current and legacy-compatible shapes, malformed JSON, future versions, and invalid field types; browser storage backup-promotion and cross-platform migration evidence remain open.
 - An automated mocked-storage matrix now executes the shipped `loadPermanentData` path for valid primary data, backup promotion, unsafe primary/backup fallback, and retired legacy mastery-stat migration; native/device storage, suspension, and cross-platform migration evidence remain open after the local browser lifecycle smoke.
@@ -148,7 +149,7 @@ Mac/Xcode actions remain owner/environment blockers recorded in
 - The game-over screen now chooses an optional, on-device learning note from outcome context: final challenge and boss signals map to pattern recognition, route/support rooms map to planning, elite evidence maps to decomposition, and early defeats map to debugging. The focused contract suite and full `npm.cmd run release:verify` run pass; age-appropriateness review and hands-on session evidence remain open.
 - The automated learning-support contract matrix covers contextual outcome notes and the optional concept label; it does not replace teen/school review or full-session evidence.
 - The V1 route guard now limits selection, waypoints, saved-world resume, and boss-exit progression to Dungeons 1-8. The final validated portal opens the existing session summary; focused progression tests cover the guard, while hands-on Dungeon 1-8 completion remains open.
-- Latest local verification: `npm.cmd run release:verify` passed with 76 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` also passed. The unreleased local shell and mirror share SHA-256 `ADC17A48EBE9099F133DE6116BB118DA46C4658F482F9BA545C9C291AC8640E3`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
+- Latest local verification: `npm.cmd run release:verify` passed with 76 Node tests, a 17-file build including deterministic `build-info.json`, and the static-package audit; `npm.cmd run native:sync` also passed. The unreleased local shell and mirror share SHA-256 `178D8F774FD4FD9A99848CEF88E848C855C58088B14858330A6875BFC47FF279`; the deployed checkpoint remains `3A39EF4158EA494523FE04323D5D40BAA082E4C09F526A499707C3656EF139DA` until the next major milestone.
 - The Town minimap now exposes the existing hub's roads, Waypoint Plaza, buildings, pond, player marker, and northern `DEPTHS` destination; it is live in the checkpoint shell but is not claimed as a full World Atlas.
 - Merged the upstream accessibility checkpoint while retaining Joey's Adventure Routes and Learning Support direction; the joystick contract test now tolerates Windows CRLF boundaries, and the release package was rebuilt and re-synced after the merge.
 - Completed the major-milestone checkpoint: commit `9da1d0e` was pushed and deployed to the configured domain on 2026-08-05; production contracts passed, and the new preview/primary live smoke verified the shell, profile/Town flow, and Manage Data export with zero browser diagnostics. Full combat completion remains open.

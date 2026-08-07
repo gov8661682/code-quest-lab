@@ -26173,6 +26173,10 @@ var DESKTOP_TAP_NUDGE_MS=120;
 var developerInvincibilityEnabled=false;
 var developerCheatSequence=['F8','F7','F6','F3'];
 var developerCheatProgress=0;
+// Some managed browser surfaces reserve function keys. Keep one ordinary-key
+// fallback for local QA while retaining the less discoverable primary chord.
+var developerCheatFallbackSequence=['C','Q','L','I'];
+var developerCheatFallbackProgress=0;
 var developerClearSummonsSequence=['F8','F7','F6','F4'];
 var developerClearSummonsProgress=0;
 var developerCheatLastKeyAt=0;
@@ -26206,9 +26210,13 @@ function clearDeveloperBossSummons(){
 function handleDeveloperCheatKey(event){
   if(!developerCheatAllowed()||!desktopGameIsActive()||event.repeat)return false;
   var now=performance.now();
-  if(now-developerCheatLastKeyAt>4000){developerCheatProgress=0;developerClearSummonsProgress=0;}
+  if(now-developerCheatLastKeyAt>4000){developerCheatProgress=0;developerCheatFallbackProgress=0;developerClearSummonsProgress=0;}
   developerCheatLastKeyAt=now;
   var key=event.key;
+  var fallbackWasInProgress=developerCheatFallbackProgress>0;
+  var fallbackKey=String(key||'').toUpperCase();
+  if(fallbackKey===developerCheatFallbackSequence[developerCheatFallbackProgress])developerCheatFallbackProgress++;
+  else developerCheatFallbackProgress=fallbackKey===developerCheatFallbackSequence[0]?1:0;
   if(key===developerCheatSequence[developerCheatProgress])developerCheatProgress++;
   else developerCheatProgress=key===developerCheatSequence[0]?1:0;
   if(key===developerClearSummonsSequence[developerClearSummonsProgress])developerClearSummonsProgress++;
@@ -26220,6 +26228,16 @@ function handleDeveloperCheatKey(event){
     if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
     return true;
   }
+  if(developerCheatFallbackProgress===developerCheatFallbackSequence.length){
+    developerCheatFallbackProgress=0;
+    developerInvincibilityEnabled=!developerInvincibilityEnabled;
+    if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
+    if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
+    return true;
+  }
+  // Swallow a partial fallback sequence so Q/C/L do not trigger normal skills
+  // while the developer-only input is being entered.
+  if(fallbackWasInProgress||developerCheatFallbackProgress>0)return true;
   if(developerClearSummonsProgress===developerClearSummonsSequence.length){
     developerClearSummonsProgress=0;
     return clearDeveloperBossSummons();

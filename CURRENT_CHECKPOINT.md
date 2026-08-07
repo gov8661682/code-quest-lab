@@ -197,8 +197,10 @@ skip the active C1 route, save, input, and session acceptance criteria.
 - The recovered boss-room load path now restores the forward door and exit
   portal after reload/background recovery, and the loopback-only developer QA
   aid has an additional gated `F8`, `F7`, `F6`, `F4` sequence for clearing live
-  boss summons during local debugging. Neither behavior is enabled on the
-  deployed/public shell or included in profile export.
+  boss summons during local debugging. The invincibility toggle also accepts
+  the ordinary-key fallback `C`, `Q`, `L`, `I` when a managed browser reserves
+  function keys. Neither behavior is enabled on the deployed/public shell or
+  included in profile export.
 - The portal handoff QA also found and corrected a stale entrance objective:
   each entrance now resolves its objective from the underlying dungeon, so the
   Fallen Kingdom entrance correctly names the Fallen King rather than the
@@ -266,8 +268,8 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head before this follow-up: `5912218` (`Record browser
-  lifecycle checkpoint evidence`), pushed to `origin/main` after 75-test
+- Current verified code head before this follow-up: `edb7896` (`Fix stale Town
+  lock status after Finish for Now`), pushed to `origin/main` after 76-test
   release verification. The preceding control baseline is `944c8c3` (`Add bounded
   autonomous progress controls`). Both are local hardening/control commits,
   intentionally not website deployment checkpoints.
