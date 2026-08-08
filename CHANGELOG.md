@@ -1,5 +1,22 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-08
+
+- Completed a repository-wide architecture review without rewriting the
+  parity-protected inline runtime. Added a shared boss identity registry so
+  HUD, room progress, recovery, and generic rendering use the correct named
+  boss instead of a Stone Guardian fallback.
+- Added a loopback-only developer QA workflow: 1x/10x/25x time scaling,
+  high-damage and enemy-free modes, phase/room/boss stepping, and structured
+  local telemetry. The controls remain session-only and are excluded from
+  saves, text exports, native packages, and public activation.
+- Added fixed-seed deterministic combat simulation for representative early,
+  mid, and late encounters, collision/damage boundaries, finite summons,
+  victory/loss/timeout, and accelerated QA. The focused suite passes 11 tests;
+  the full Node suite passes 92 tests. This is local milestone work pending
+  final release verification and the GitHub/website checkpoint; progress stays
+  at 79% for Checkpoint 1 and 18% overall.
+
 ## Unreleased - 2026-08-07
 
 - Bounded Void Monarch summon pressure so each encounter has four finite beast

@@ -30,6 +30,7 @@ test('developer summon clearing stays gated and preserves live boss encounters',
   assert.match(SOURCE, /function clearDeveloperBossSummons\(\)\{\s*if\(!developerInvincibilityEnabled\)return false;/);
   assert.match(SOURCE, /clearDeveloperBossSummons\(\)[\s\S]*?if\(!def\|\|def\.type!==RT\.BOSS\|\|!enemies\.length\)/);
   assert.match(SOURCE, /if\(!boss&&!miniBoss\)\{[\s\S]*?openForwardDoor\(geo\);/);
-  assert.match(SOURCE, /boss&&boss\.isVoidMonarch\)enemyStr='Void Monarch:/);
+  assert.match(SOURCE, /var _bossIdentity=getBossIdentity\(def,boss\);/);
+  assert.match(SOURCE, /enemyStr=_bossIdentity\.displayName/);
   assert.match(SOURCE, /if\(developerClearSummonsProgress===developerClearSummonsSequence\.length\)\{[\s\S]*?return clearDeveloperBossSummons\(\);/);
 });

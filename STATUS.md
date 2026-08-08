@@ -1,7 +1,37 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-07
+Date: 2026-08-08
 State: pre-release hardening; not a Release Candidate
+
+## Architecture and fast QA milestone (2026-08-08)
+
+The repository-wide review is recorded in `ARCHITECTURE_REVIEW.md`. The
+existing room graph, central enemy factory, difficulty scaling, shared attack
+path, and boss dispatcher were retained; no broad rewrite or creative
+simplification was made.
+
+Implemented locally:
+
+- `BOSS_IDENTITY_DEFS` centralizes named boss display and defeat identity. HUD,
+  boss-room progress, recovery messaging, and generic boss rendering now use
+  the same mapping, so Fallen King, Void Monarch, Chieftain, Valen, and later
+  source-resident bosses cannot be represented as Stone Guardian by fallback.
+- Loopback-only developer QA supports accelerated time, high damage, enemy-free
+  mode, phase stepping, encounter completion, jump-to-boss, and structured
+  overlay telemetry. The existing invincibility and summon-clear sequences are
+  preserved. These flags are session-only and are not saved or exported.
+- `tools/qa/fast-combat-sim.mjs`, `tools/qa/run-fast-qa.mjs`, and
+  `tests/fast-qa.test.mjs` provide deterministic fixed-seed representative
+  combat checks. `npm.cmd run qa:fast` completes the early, mid, late, and loss
+  suite without normal-speed browser play.
+
+Focused tests passed: **11**. Full Node tests passed: **92**. The production
+build, 17-file package audit, inline-runtime parse, and Capacitor native sync
+also passed locally. This work is a substantial architecture/testing
+milestone, but the website checkpoint is recorded only after the final release
+verification, Git push, deployment, and live smoke below. The evidence score
+remains **79%** for Checkpoint 1 and **18%** overall because no D1-8, ending, or
+touch-first safe-stop acceptance lane was newly completed.
 
 ## Latest QA hardening checkpoint
 

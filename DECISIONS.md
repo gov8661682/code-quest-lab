@@ -1,6 +1,6 @@
 # Code Quest Lab - Decisions
 
-Updated: 2026-08-05
+Updated: 2026-08-08
 
 ## D-001 - Preserve the existing game
 
@@ -130,3 +130,15 @@ acceptance table. Overall progress is the completed-checkpoint count plus the
 earned share of the active checkpoint across the ten documented checkpoints.
 Scores change only when named evidence changes and never replace acceptance
 criteria or release gates.
+
+## D-019 - Fast functional QA precedes repeated manual play
+
+The game remains a browser-first, human-feel product, but invariant combat
+checks must not depend on repeated normal-speed Codex playthroughs. The
+fixed-seed `tools/qa/fast-combat-sim.mjs` suite is the first functional gate
+for representative attacks, collision, damage, phases, finite summons,
+victory, loss, timeout, and accelerated modes. Loopback developer controls may
+accelerate the real browser runtime and expose local telemetry, but they are
+session-only, gated, not exported, and not part of player progression. Human
+play remains required for touch, rendering, comprehension, fun, pacing, and
+final balance.

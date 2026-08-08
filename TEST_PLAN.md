@@ -57,6 +57,17 @@ temporary profile was removed through the in-game Manage Data confirmation.
 
 ## Required automated coverage
 
+### Fast logic QA before normal-speed play
+
+Run `npm.cmd run qa:fast` and the focused `tests/fast-qa.test.mjs` suite before
+repeating a manual encounter. The fixed-seed model covers representative
+early, mid, and late bosses plus loss and collision-miss boundaries. It checks
+attack cadence, collision, damage, phase transitions, finite summon budgets,
+victory, loss, timeout, accelerated time, invincibility, high damage, and
+enemy-free mode in seconds. This is functional coverage; it does not replace
+human assessment of fun, pacing, touch responsiveness, visual readability, or
+audio.
+
 - Save creation, serialization, loading, backup recovery, corruption recovery, migration, and deletion.
 - Character creation, selection, switching, and deletion.
 - Combat calculations and damage boundaries.

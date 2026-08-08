@@ -1,6 +1,6 @@
 # Code Quest Lab - Current Checkpoint
 
-Updated: 2026-08-07
+Updated: 2026-08-08
 
 ## Current checkpoint
 
@@ -28,6 +28,19 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-07)
+
+- On 2026-08-08, the holistic architecture review was completed and recorded
+  in `ARCHITECTURE_REVIEW.md`. The shared boss identity registry corrects the
+  generic HUD/room fallback while preserving all named bosses and mechanics.
+  A loopback-only fast QA layer now supports accelerated time, high damage,
+  enemy-free mode, phase stepping, encounter completion, jump-to-boss, and
+  structured telemetry; these controls remain outside saves and text exports.
+  The fixed-seed representative simulator passes early, mid, late, collision,
+  damage, victory, loss, timeout, and finite-summon checks. Full local
+  verification passes **92 tests**, the 17-file build/package audit, inline
+  runtime parsing, and native sync. This changes the workflow and fixes a
+  shared representation defect, but does not add D1-8, ending, or touch-first
+  safe-stop evidence, so the score remains **79%** / **18%**.
 
 - The Void Monarch summon-pressure follow-up is deployed as commit `9886f50`
   (`Bound Void Monarch summon pressure`) with Pages preview

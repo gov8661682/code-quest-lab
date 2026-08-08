@@ -4365,6 +4365,45 @@ var DUNGEON_DEFS={
 };
 
 // ============================================================
+// BOSS IDENTITY REGISTRY
+// ============================================================
+// Boss mechanics remain intentionally bespoke because Joey's named bosses
+// have different attacks, phases, dialogue, and endings. Their player-facing
+// identity is shared here so HUD, recovery, and room messaging cannot fall
+// back to the Stone Guardian merely because a new boss uses the common room
+// pipeline. Adding a future boss should start with one identity record and
+// then wire its mechanics through the existing dispatcher.
+var BOSS_IDENTITY_DEFS=[
+  {id:'stone_guardian',displayName:'Stone Guardian',defeatMessage:'The Guardian has been slain.'},
+  {id:'fallen_king',displayName:'Fallen King',roomFlag:'_isDungeon2',bossFlag:'isFallenKing',defeatMessage:'The Fallen King has been slain.'},
+  {id:'void_monarch',displayName:'Void Monarch',roomFlag:'_isVoidMonarchBoss',bossFlag:'isVoidMonarch',defeatMessage:'The Void Monarch has been defeated.'},
+  {id:'high_chieftain',displayName:'Corrupted High Chieftain',roomFlag:'_isChieftainBoss',bossFlag:'isChieftain',defeatMessage:'The Corrupted High Chieftain has been slain.'},
+  {id:'archmage_valen',displayName:'Archmage Valen',roomFlag:'_isArchmageBoss',bossFlag:'isValen',defeatMessage:'Archmage Valen has been slain.'},
+  {id:'hollow_world_tree',displayName:'Hollow World Tree',roomFlag:'_isHollowTreeBoss',bossFlag:'isHollowTree',defeatMessage:'The Hollow World Tree has been destroyed.'},
+  {id:'broker',displayName:'The Broker',roomFlag:'_isBrokerBoss',bossFlag:'isBroker',defeatMessage:'The Broker has been destroyed.'},
+  {id:'oathbreaker_king',displayName:'Oathbreaker King',roomFlag:'_isOathbreakerKingBoss',bossFlag:'isOathbreakerKing',defeatMessage:'The Oathbreaker King has been slain.'},
+  {id:'alchemist',displayName:'The Alchemist',roomFlag:'_isAlchemistBoss',bossFlag:'isAlchemist',defeatMessage:'The Alchemist has been destroyed.'},
+  {id:'ranger_captain',displayName:'Corrupted Ranger Captain',roomFlag:'_isRangerCaptainBoss',bossFlag:'isRangerCaptain',defeatMessage:'The watch has been reclaimed. The beacon burns once more.'},
+  {id:'corrupted_necromancer',displayName:'Corrupted Necromancer',roomFlag:'_isNecromancerAltar',bossFlag:'isNecromancer',defeatMessage:'The Corrupted Necromancer has fallen.'},
+  {id:'corruption_of_space',displayName:'Corruption of Space',roomFlag:'_isSpaceRiftArena',bossFlag:'isSpaceCorruption',defeatMessage:'Corruption of Space has been unmade.'},
+  {id:'corruption_of_time',displayName:'Corruption of Time',roomFlag:'_isClockworkArena',bossFlag:'isTimeCorruption',defeatMessage:'Corruption of Time has been unmade.'},
+  {id:'corruption_of_life',displayName:'Corruption of Life',roomFlag:'_isLifeTreeArena',bossFlag:'isCorruptionOfLife',defeatMessage:'The corruption has left the World Tree. It blooms once more.'},
+  {id:'pure_corruption',displayName:'Pure Corruption',roomFlag:'_isCorruptionArena',bossFlag:'isPureCorruption',defeatMessage:'Pure Corruption has faded from this place.'},
+  {id:'bob',displayName:'Bob',bossFlag:'isBobBoss',defeatMessage:'Bob has been defeated.'},
+  {id:'demon_bob',displayName:'Demon Bob',bossFlag:'isDemonBob',defeatMessage:'Demon Bob has been defeated.'}
+];
+function getBossIdentity(roomDef,bossObj){
+  for(var i=1;i<BOSS_IDENTITY_DEFS.length;i++){
+    var candidate=BOSS_IDENTITY_DEFS[i];
+    if(candidate.bossFlag&&bossObj&&bossObj[candidate.bossFlag])return candidate;
+    if(candidate.roomFlag&&roomDef&&roomDef[candidate.roomFlag])return candidate;
+  }
+  return BOSS_IDENTITY_DEFS[0];
+}
+function getBossDisplayName(roomDef,bossObj){return getBossIdentity(roomDef,bossObj).displayName;}
+function getBossDefeatMessage(roomDef,bossObj){return getBossIdentity(roomDef,bossObj).defeatMessage;}
+
+// ============================================================
 // PER-DUNGEON DIFFICULTY SCALING (Global Difficulty Scaling Rework)
 // ============================================================
 // Each dungeon targets an overall difficulty multiplier vs. Dungeon 1
@@ -26230,6 +26269,177 @@ function developerCheatAllowed(){
   var isLocalWebProtocol=location.protocol==='http:'||location.protocol==='https:';
   return isLocalWebProtocol&&isLoopback&&new URLSearchParams(location.search).get('cql-dev')==='1';
 }
+// Fast QA controls are deliberately narrower than a general debug menu. They
+// are available only on loopback with ?cql-dev=1, live in memory for one page
+// session, and are never written to a profile, checkpoint, export, native
+// package, or public-host build. The primary function-key chords are useful in
+// a normal desktop browser; the CQL* fallbacks work when a managed browser
+// reserves function keys.
+var developerQATimeScale=1;
+var developerQAHighDamageEnabled=false;
+var developerQAEnemyFreeEnabled=false;
+var developerQAOverlayEnabled=false;
+var developerQAOverlay=null;
+var developerQATelemetry=[];
+var developerQATelemetryTimer=0;
+var developerQASequences=[
+  {action:'speed',primary:['F8','F7','F6','F5'],fallback:['C','Q','L','S'],primaryProgress:0,fallbackProgress:0},
+  {action:'damage',primary:['F8','F7','F6','F2'],fallback:['C','Q','L','D'],primaryProgress:0,fallbackProgress:0},
+  {action:'enemyFree',primary:['F8','F7','F6','F1'],fallback:['C','Q','L','E'],primaryProgress:0,fallbackProgress:0},
+  {action:'phase',primary:['F8','F7','F6','F9'],fallback:['C','Q','L','P'],primaryProgress:0,fallbackProgress:0},
+  {action:'room',primary:['F8','F7','F6','F10'],fallback:['C','Q','L','R'],primaryProgress:0,fallbackProgress:0},
+  {action:'boss',primary:['F8','F7','F6','F11'],fallback:['C','Q','L','B'],primaryProgress:0,fallbackProgress:0},
+  {action:'overlay',primary:['F8','F7','F6','F12'],fallback:['C','Q','L','V'],primaryProgress:0,fallbackProgress:0}
+];
+function resetDeveloperQASequences(){
+  for(var i=0;i<developerQASequences.length;i++){
+    developerQASequences[i].primaryProgress=0;
+    developerQASequences[i].fallbackProgress=0;
+  }
+}
+function developerQaLog(eventName,details){
+  if(!developerCheatAllowed())return;
+  var event={at:Date.now(),event:eventName,
+    dungeon:typeof activeDungeonId!=='undefined'?activeDungeonId:null,
+    room:typeof currentRoomId!=='undefined'?currentRoomId:null,
+    enemies:typeof enemies!=='undefined'?enemies.length:0,
+    bossPhase:typeof bossPhase!=='undefined'?bossPhase:null};
+  if(details)for(var key in details)event[key]=details[key];
+  developerQATelemetry.push(event);
+  if(developerQATelemetry.length>200)developerQATelemetry.shift();
+  window.__cqlDevTelemetry={enabled:true,latest:event,events:developerQATelemetry.slice()};
+}
+function ensureDeveloperQAOverlay(){
+  if(!developerCheatAllowed())return null;
+  if(developerQAOverlay)return developerQAOverlay;
+  var overlay=document.createElement('div');
+  overlay.id='developerQaOverlay';
+  overlay.setAttribute('aria-hidden','true');
+  overlay.style.cssText='position:fixed;left:8px;top:8px;z-index:9999;max-width:320px;padding:7px 9px;border:1px solid rgba(216,192,138,.75);border-radius:4px;background:rgba(8,8,12,.88);color:#d8c08a;font:11px/1.4 monospace;pointer-events:none;white-space:pre-wrap;display:none;';
+  document.body.appendChild(overlay);
+  developerQAOverlay=overlay;
+  return overlay;
+}
+function developerQaSnapshot(){
+  var def=typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS?ROOM_DEFS[currentRoomId]:null;
+  var currentBoss=typeof boss!=='undefined'?boss:null;
+  return 'DEV QA  x'+developerQATimeScale+
+    '  DMG '+(developerQAHighDamageEnabled?'HIGH':'normal')+
+    '  ENEMIES '+(developerQAEnemyFreeEnabled?'OFF':'on')+'\n'+
+    (typeof activeDungeonId!=='undefined'?activeDungeonId:'-')+' / '+
+    (typeof currentRoomId!=='undefined'?currentRoomId:'-')+'\n'+
+    'enemies '+(typeof enemies!=='undefined'?enemies.length:0)+
+    '  boss '+(currentBoss?getBossDisplayName(def,currentBoss)+' P'+(bossPhase||1):'none');
+}
+function updateDeveloperQAOverlay(dt){
+  if(!developerCheatAllowed()||!developerQAOverlayEnabled)return;
+  var overlay=ensureDeveloperQAOverlay();if(!overlay)return;
+  developerQATelemetryTimer-=dt||0;
+  if(developerQATelemetryTimer>0)return;
+  developerQATelemetryTimer=0.25;
+  overlay.textContent=developerQaSnapshot();
+  overlay.style.display='block';
+  window.__cqlDevTelemetry=window.__cqlDevTelemetry||{enabled:true,events:developerQATelemetry.slice()};
+  window.__cqlDevTelemetry.snapshot=developerQaSnapshot();
+}
+function developerQaApplyEnemyFreeMode(){
+  if(!developerCheatAllowed()||!developerQAEnemyFreeEnabled)return;
+  enemies=[];enemyProjectiles=[];cursedLibrarians=[];
+}
+function developerQaToggleSpeed(){
+  developerQATimeScale=developerQATimeScale===1?10:(developerQATimeScale===10?25:1);
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  developerQaLog('time-scale',{scale:developerQATimeScale});
+  showBanner('DEV QA','Simulation speed x'+developerQATimeScale,1.4);
+}
+function developerQaToggleDamage(){
+  developerQAHighDamageEnabled=!developerQAHighDamageEnabled;
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  developerQaLog('damage-mode',{highDamage:developerQAHighDamageEnabled});
+  showBanner('DEV QA',developerQAHighDamageEnabled?'High damage enabled':'High damage disabled',1.4);
+}
+function developerQaToggleEnemyFree(){
+  developerQAEnemyFreeEnabled=!developerQAEnemyFreeEnabled;
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  developerQaApplyEnemyFreeMode();
+  developerQaLog('enemy-mode',{enemyFree:developerQAEnemyFreeEnabled});
+  showBanner('DEV QA',developerQAEnemyFreeEnabled?'Enemy-free mode enabled':'Enemy-free mode disabled',1.4);
+}
+function developerQaAdvanceBossPhase(){
+  if(!boss){showBanner('DEV QA','No live boss in this room',1.3);return true;}
+  var phaseBefore=bossPhase||1;
+  var hpRatio=phaseBefore<=1?0.64:(phaseBefore===2?0.29:0.08);
+  boss.hp=Math.max(1,Math.floor(boss.hpMax*hpRatio));
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  developerQaLog('boss-phase-step',{from:phaseBefore,targetHp:boss.hp});
+  showBanner('DEV QA','Boss phase step queued',1.4);
+  return true;
+}
+function developerQaCompleteCurrentRoom(){
+  var def=typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS?ROOM_DEFS[currentRoomId]:null;
+  if(!def){showBanner('DEV QA','No active room',1.3);return true;}
+  if(boss){
+    dealDamageToBoss(1000000000,false);
+    developerQaLog('boss-skip',{boss:getBossDisplayName(def,boss)});
+  }else if(miniBoss){
+    dealDamageToMiniBoss(1000000000,false);
+    developerQaLog('miniboss-skip');
+  }else{
+    enemies=[];cursedLibrarians=[];enemyProjectiles=[];roomCleared=true;
+    if(roomStates[currentRoomId]){roomStates[currentRoomId].cleared=true;roomStates[currentRoomId].savedEnemies=[];}
+    if(def.forward)openForwardDoor(getRoomGeometry());
+    sideDoorOpen=(def.side!==null);
+    updateRoomProgress(getRoomGeometry());
+    developerQaLog('room-skip');
+  }
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  showBanner('DEV QA','Current encounter completed',1.4);
+  return true;
+}
+function developerQaJumpToBoss(){
+  if(!MAIN_PATH||!MAIN_PATH.length){showBanner('DEV QA','No generated route is active',1.3);return true;}
+  var bossRoomId=MAIN_PATH[MAIN_PATH.length-1];
+  for(var i=0;i<MAIN_PATH.length-1;i++){
+    var state=roomStates[MAIN_PATH[i]]||{};
+    state.visited=true;state.cleared=true;state.savedEnemies=[];roomStates[MAIN_PATH[i]]=state;
+  }
+  roomTransitioning=false;roomFadePendingRoom=null;roomFadeDir=0;roomFadeAlpha=0;
+  window._lastRoomTransitDir='forward';
+  loadRoom(bossRoomId);
+  developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
+  developerQaLog('jump-to-boss',{target:bossRoomId});
+  showBanner('DEV QA','Jumped to '+getBossDisplayName(ROOM_DEFS[bossRoomId],null),1.6);
+  return true;
+}
+function handleDeveloperQASequenceKey(key){
+  if(!developerCheatAllowed())return false;
+  var handled=false;
+  for(var i=0;i<developerQASequences.length;i++){
+    var spec=developerQASequences[i];
+    var primaryWasActive=spec.primaryProgress>0,fallbackWasActive=spec.fallbackProgress>0;
+    if(key===spec.primary[spec.primaryProgress])spec.primaryProgress++;
+    else spec.primaryProgress=key===spec.primary[0]?1:0;
+    var fallbackKey=String(key||'').toUpperCase();
+    if(fallbackKey===spec.fallback[spec.fallbackProgress])spec.fallbackProgress++;
+    else spec.fallbackProgress=fallbackKey===spec.fallback[0]?1:0;
+    if(spec.primaryProgress===spec.primary.length||spec.fallbackProgress===spec.fallback.length){
+      spec.primaryProgress=0;spec.fallbackProgress=0;handled=true;
+      if(spec.action==='speed')developerQaToggleSpeed();
+      else if(spec.action==='damage')developerQaToggleDamage();
+      else if(spec.action==='enemyFree')developerQaToggleEnemyFree();
+      else if(spec.action==='phase')developerQaAdvanceBossPhase();
+      else if(spec.action==='room')developerQaCompleteCurrentRoom();
+      else if(spec.action==='boss')developerQaJumpToBoss();
+      else if(spec.action==='overlay'){
+        developerQAOverlayEnabled=!developerQAOverlayEnabled;ensureDeveloperQAOverlay();
+        developerQaLog('overlay',{visible:developerQAOverlayEnabled});
+        if(!developerQAOverlayEnabled&&developerQAOverlay)developerQAOverlay.style.display='none';
+        else showBanner('DEV QA','Telemetry overlay '+(developerQAOverlayEnabled?'shown':'hidden'),1.4);
+      }
+    }else if(primaryWasActive||fallbackWasActive||spec.primaryProgress>0||spec.fallbackProgress>0){handled=true;}
+  }
+  return handled;
+}
 function clearDeveloperBossSummons(){
   if(!developerInvincibilityEnabled)return false;
   var def=(typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS)?ROOM_DEFS[currentRoomId]:null;
@@ -26259,7 +26469,7 @@ function clearDeveloperBossSummons(){
 function handleDeveloperCheatKey(event){
   if(!developerCheatAllowed()||!desktopGameIsActive()||event.repeat)return false;
   var now=performance.now();
-  if(now-developerCheatLastKeyAt>4000){developerCheatProgress=0;developerCheatFallbackProgress=0;developerClearSummonsProgress=0;}
+  if(now-developerCheatLastKeyAt>4000){developerCheatProgress=0;developerCheatFallbackProgress=0;developerClearSummonsProgress=0;resetDeveloperQASequences();}
   developerCheatLastKeyAt=now;
   var key=event.key;
   var fallbackWasInProgress=developerCheatFallbackProgress>0;
@@ -26272,6 +26482,7 @@ function handleDeveloperCheatKey(event){
   else developerClearSummonsProgress=key===developerClearSummonsSequence[0]?1:0;
   if(developerCheatProgress===developerCheatSequence.length){
     developerCheatProgress=0;
+    resetDeveloperQASequences();
     developerInvincibilityEnabled=!developerInvincibilityEnabled;
     if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
     if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
@@ -26279,16 +26490,19 @@ function handleDeveloperCheatKey(event){
   }
   if(developerCheatFallbackProgress===developerCheatFallbackSequence.length){
     developerCheatFallbackProgress=0;
+    resetDeveloperQASequences();
     developerInvincibilityEnabled=!developerInvincibilityEnabled;
     if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
     if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
     return true;
   }
+  if(handleDeveloperQASequenceKey(key))return true;
   // Swallow a partial fallback sequence so Q/C/L do not trigger normal skills
   // while the developer-only input is being entered.
   if(fallbackWasInProgress||developerCheatFallbackProgress>0)return true;
   if(developerClearSummonsProgress===developerClearSummonsSequence.length){
     developerClearSummonsProgress=0;
+    resetDeveloperQASequences();
     return clearDeveloperBossSummons();
   }
   return false;
@@ -29052,7 +29266,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
       // completable instead of leaving the player in a cleared but portal-less
       // room after the transient unlock timer has expired.
       spawnExitPortal();
-      var _bossSlainMsg=def._isVoidMonarchBoss?'The Void Monarch has been defeated.':(def._isDungeon2?'The Fallen King has been slain.':(def._isChieftainBoss?'The Corrupted High Chieftain has been slain.':(def._isArchmageBoss?'Archmage Valen has been slain.':(def._isHollowTreeBoss?'The Hollow World Tree has been destroyed.':(def._isBrokerBoss?'The Broker has been destroyed.':(def._isOathbreakerKingBoss?'The Oathbreaker King has been slain.':(def._isAlchemistBoss?'The Alchemist has been destroyed.':(def._isRangerCaptainBoss?'The watch has been reclaimed. The beacon burns once more.':(def._isLifeTreeArena?'The corruption has left the World Tree. It blooms once more.':(def._isCorruptionArena?'Pure Corruption has faded from this place.':'The Guardian has been slain.'))))))))));
+      var _bossSlainMsg=getBossDefeatMessage(def,null);
       showBanner(def.name,_bossSlainMsg,2.0);
     }else if(def._isCorruptionArena){
       // ---- THE SILENT CENTER — Dungeon 16 Final Boss: Pure Corruption ----
@@ -30070,7 +30284,9 @@ function gameLoop(now){
   // permanently stop the browser's animation callback chain.
   requestAnimationFrame(gameLoop);
   var elapsed=(now-lastTime)/1000;
-  var dt=(isFinite(elapsed)&&elapsed>=0)?Math.min(elapsed,0.05):0;
+  var _developerScale=developerCheatAllowed()?developerQATimeScale:1;
+  var _developerDtCap=_developerScale>1?0.25:0.05;
+  var dt=(isFinite(elapsed)&&elapsed>=0)?Math.min(elapsed*_developerScale,_developerDtCap):0;
   lastTime=now;
   try{
     timeSurvived+=dt;
@@ -30151,6 +30367,7 @@ function update(dt){
   updateWaypoints(dt,geo);updateWaypointAnim(dt);updateWaypointTeleportFade(dt);
   updateExitPortalInteraction(dt,geo);updateExitPortalFade(dt);
   updatePlayerMovement(dt,geo);updatePlayerAttack(dt);
+  developerQaApplyEnemyFreeMode();
   var _combatIntroActive=combatIntroTimer>0;
   updateCombatIntro(dt);
   updateProjectiles(dt,geo);
@@ -30306,7 +30523,9 @@ updateFissures(dt);
   // damage source remains visible for debugging while the developer test
   // mode prevents a death or a persisted HP change.
   if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
+  developerQaApplyEnemyFreeMode();
   updateDoorInteraction(geo);updateRoomProgress(geo);updateHUD();
+  updateDeveloperQAOverlay(dt);
 }
 function updateMageProjectiles(dt,geo){
   var isMage=(permanentData&&permanentData.selectedClass==='mage');
@@ -34980,10 +35199,11 @@ if(legAutoBullRushProc&&legAutoBullRushEnabled){
     player.rage=clamp(player.rage+Math.round(RAGE_GAIN_ATTACK*rageMult*upgrades.rageGenMult),0,player.rageMax);
   }
 }
-function computeDamage(base){var _dm=upgrades.damageMult;if(druidCoreDamageBonusActive)_dm*=1.2;if(druidPredatorAssaultBonusActive)_dm*=1.3;if(druidGhostStrikeBonusActive)_dm*=1.4;if(rogueSilentExecutionReady&&permanentData&&permanentData.selectedClass==='rogue'){_dm*=1.5;rogueSilentExecutionReady=false;}if(rogueAmbushReady&&permanentData&&permanentData.selectedClass==='rogue'){_dm*=1.6;rogueAmbushReady=false;}return Math.round(base*_dm);}
+function computeDamage(base){var _dm=upgrades.damageMult;if(druidCoreDamageBonusActive)_dm*=1.2;if(druidPredatorAssaultBonusActive)_dm*=1.3;if(druidGhostStrikeBonusActive)_dm*=1.4;if(rogueSilentExecutionReady&&permanentData&&permanentData.selectedClass==='rogue'){_dm*=1.5;rogueSilentExecutionReady=false;}if(rogueAmbushReady&&permanentData&&permanentData.selectedClass==='rogue'){_dm*=1.6;rogueAmbushReady=false;}if(developerCheatAllowed()&&developerQAHighDamageEnabled)_dm*=100;return Math.round(base*_dm);}
 function computeMageDamage(base){
   var mult=upgrades.damageMult||1.0;
   if(arcaneOverloadActive)mult*=arcaneOverloadMult;
+  if(developerCheatAllowed()&&developerQAHighDamageEnabled)mult*=100;
   return Math.round(base*mult);
 }
 
@@ -41756,7 +41976,7 @@ function updateRoomProgress(geo){
   if(def.type===RT.BOSS){
     if(boss){
       var bossHpPct=boss?Math.round((boss.hp/boss.hpMax)*100):0;
-      var statusStr=boss?('👑 GUARDIAN: '+bossHpPct+'%'+(bossPhase===2?' ⚠ PHASE 2':'')):('🔒 CLEAR SUMMONS ('+enemies.length+')');
+      var statusStr=boss?('👑 '+getBossDisplayName(def,boss)+': '+bossHpPct+'%'+(bossPhase>1?' ⚠ PHASE '+bossPhase:'')):('🔒 CLEAR SUMMONS ('+enemies.length+')');
       document.getElementById('doorStatus').innerHTML=statusStr;
       document.getElementById('doorStatus').classList.add('visible');
     }else{
@@ -41939,9 +42159,11 @@ function updateHUD(){
   document.getElementById('hudKills').textContent=totalKills;
   document.getElementById('hudSouls').textContent=runSoulsEarned;
   var enemyStr='';
-  if(def&&def.type===RT.BOSS&&boss&&boss.isVoidMonarch)enemyStr='Void Monarch: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' P2':'');
-  if(def&&def.type===RT.BOSS&&boss&&!boss.isVoidMonarch)enemyStr='Stone Guardian: '+boss.hp+'/'+boss.hpMax+(bossPhase===2?' ⚠P2':'');
-  else if(!boss&&enemies.length>0)enemyStr='Enemies: '+enemies.length;
+  if(def&&def.type===RT.BOSS&&boss){
+    var _bossIdentity=getBossIdentity(def,boss);
+    var _bossPhaseSuffix=bossPhase>1?' P'+bossPhase:'';
+    enemyStr=_bossIdentity.displayName+': '+Math.max(0,Math.round(boss.hp))+'/'+Math.max(1,Math.round(boss.hpMax))+_bossPhaseSuffix;
+  }else if(!boss&&enemies.length>0)enemyStr='Enemies: '+enemies.length;
   document.getElementById('enemyCount').textContent=enemyStr;
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){
@@ -44180,7 +44402,8 @@ function drawBoss(){
   if(bossPhase===1){ctx.strokeStyle='rgba(255,100,0,0.7)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(hbx+hbw*0.5,hby);ctx.lineTo(hbx+hbw*0.5,hby+14);ctx.stroke();}
   ctx.strokeStyle='#c0392b';ctx.lineWidth=1.5;ctx.strokeRect(hbx,hby,hbw,14);
   ctx.fillStyle='#ffd98a';ctx.font='bold 13px Georgia';ctx.textAlign='center';
-  ctx.fillText('🗿 STONE GUARDIAN'+(isP2?' ⚠ ENRAGED':'')+' — '+Math.round(boss.hp)+'/'+boss.hpMax,bx,hby-6);
+  var _genericBossName=getBossDisplayName(ROOM_DEFS[currentRoomId],boss).toUpperCase();
+  ctx.fillText('🗿 '+_genericBossName+(isP2?' ⚠ ENRAGED':'')+' — '+Math.round(boss.hp)+'/'+boss.hpMax,bx,hby-6);
   ctx.textAlign='left';
 }
 // ── BOB BOSS DRAW (Phase 7) ──

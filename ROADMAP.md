@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-07
+Updated: 2026-08-08
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -85,6 +85,27 @@ the clean-profile route and remaining touch/tablet lifecycle evidence.
   playthrough before the next major deployment.
 
 Acceptance: a clean profile can complete a meaningful 10-30 minute tablet session and the locked V1 path in supported browser viewports; active-run recovery and optional play-support checks pass; remaining save-compatibility and full-path evidence is recorded.
+
+### Architecture and fast QA slice (2026-08-08; local verification pending milestone checkpoint)
+
+The holistic review is recorded in `ARCHITECTURE_REVIEW.md`. It preserves the
+single-file parity baseline while improving the reusable seams that already
+exist:
+
+- `BOSS_IDENTITY_DEFS` now supplies one player-facing identity/defeat-message
+  contract for the named bosses, fixing the shared HUD/room-label fallback
+  without changing boss mechanics or Joey's creative content.
+- Loopback-only developer QA now supports 1x/10x/25x time, high damage,
+  enemy-free mode, phase stepping, current-encounter completion, jump-to-boss,
+  and a structured telemetry overlay. All controls remain session-only and
+  excluded from saves, exports, native packages, and public activation.
+- `tools/qa/fast-combat-sim.mjs` and `npm.cmd run qa:fast` provide fixed-seed
+  early/mid/late encounter, collision, damage, phase, summon-budget,
+  victory/loss, timeout, and accelerated-time checks.
+- The next architecture milestone must still pass the full release gate,
+  native sync, production build, and live smoke before its GitHub/website
+  checkpoint. It does not raise the C1 percentage until a named route or
+  tablet acceptance lane gains evidence.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 

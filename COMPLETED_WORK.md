@@ -1,6 +1,6 @@
 # Code Quest Lab - Completed Work Ledger
 
-Updated: 2026-08-07
+Updated: 2026-08-08
 
 This is the canonical record of work that should not be repeated. Reopen an
 item only for a failing test, confirmed regression, changed dependency, or a
@@ -35,6 +35,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; a real browser file-chooser upload imported a matching Level 4 Barbarian copy with the same dungeon, highest room, run count, and play time while leaving the original untouched; import creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue; immediate final-enemy room/HUD refresh | A reproducible input, freeze, recovery, or P1 usability defect |
 | Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
+| Architecture review and deterministic QA workflow | `ARCHITECTURE_REVIEW.md`; shared `BOSS_IDENTITY_DEFS`; loopback-only accelerated/phase/room/boss QA controls; fixed-seed `tools/qa/fast-combat-sim.mjs`; 92-test full suite, build/package audit, and native sync pass locally | Reopen only for a regression in the identity contract, QA gate, simulator invariants, or a promoted architecture migration |
 | Bounded Dungeon 4 recovery pressure | D4 corruption now permits one Shadow Wraith surge per room; Regenerating elites can recover only a finite 25% of maximum health per encounter, with room-checkpoint persistence; focused contracts and the 78-test release gate pass; a fresh local D1 route also clears an elite room under the developer test aid | Fresh post-fix D4 elite-room rerun and full D1-8 route acceptance; do not deploy this hardening alone |
 | Session transient-status cleanup | New sessions clear stale dungeon door text, lock styling, and waypoint activation state; no-waypoint zones also hide leftover activation status. Focused contracts and a local defeat-to-Town screenshot pass cover the regression. | A reproduced stale status in a new Town/Entrance session |
 | Public safety/review surface | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin/static/package safety contracts | A product-safety regression or owner-approved policy change |

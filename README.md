@@ -58,6 +58,18 @@ The repository has a dependency-free Node check/test/build loop:
 npm.cmd run release:verify
 ```
 
+For fast gameplay-logic QA, run the deterministic representative encounter
+suite before starting a long browser route:
+
+```powershell
+npm.cmd run qa:fast
+```
+
+It covers fixed-seed attack/collision/damage cycles, phase transitions, finite
+summons, victory/loss/timeout, accelerated time, invincibility, high damage,
+and enemy-free testing. Browser play remains necessary for input, rendering,
+audio, saves, and tablet feel.
+
 The build copies the static release surface to `dist\`. It does not publish or create native store builds.
 
 ## Native packaging scaffold

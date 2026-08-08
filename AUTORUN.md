@@ -1,6 +1,6 @@
 # Code Quest Lab - Autonomous Work Protocol
 
-Updated: 2026-08-07
+Updated: 2026-08-08
 Status: **Active**
 
 ## Outcome
@@ -22,6 +22,13 @@ bypassing the tested Version 1 boundary.
    changing code.
 5. Implement the smallest coherent slice, verify it, record the result, and
    continue with the next eligible item.
+
+When a proposed route check would repeat a normal-speed encounter, run
+`npm.cmd run qa:fast` and the relevant focused tests first. Use the loopback
+developer QA controls for accelerated browser logic, phase, room, and boss
+checks. Reserve ordinary-speed play for a sufficiently complete route and for
+feel, touch responsiveness, comprehension, balance, and final release
+validation; do not use it as the primary way to prove invariant mechanics.
 
 Every cycle must produce at least one concrete progress delta:
 

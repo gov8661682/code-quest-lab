@@ -1,6 +1,6 @@
 # Code Quest Lab - Project Progress Report
 
-Reviewed: 2026-08-07
+Reviewed: 2026-08-08
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; not a Release Candidate
 
@@ -12,6 +12,18 @@ progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
+
+The 2026-08-08 architecture slice is locally verified but not yet recorded as
+a website checkpoint. `ARCHITECTURE_REVIEW.md` documents the 57,394-line
+runtime audit and the bounded plan. `BOSS_IDENTITY_DEFS` now centralizes named
+boss representation, while loopback-only developer QA provides accelerated
+time, phase/room/boss stepping, enemy-free/high-damage modes, and structured
+telemetry. The fixed-seed representative combat model passes its 11 focused
+tests and `npm.cmd run qa:fast`; the full suite passes 92 tests, the build and
+17-file package audit pass, and `npm.cmd run native:sync` passes. No creative
+content was removed and no acceptance percentage is claimed from this work;
+the active score remains **79%** / **18%** until route, ending, and tablet
+session evidence changes the weighted table.
 
 Commit `9886f50` (`Bound Void Monarch summon pressure`) was pushed and deployed
 on 2026-08-07. The Void Monarch now has four finite beast summon waves and
