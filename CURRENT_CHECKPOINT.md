@@ -29,6 +29,22 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-08)
 
+- A local 540x720 touch-surface probe used a disposable Mage on Normal
+  difficulty and exercised the visible attack control through D1 combat,
+  shrine, treasure, level-up, the Stone Guardian Phase 2 fight, and the portal
+  into the Fallen Kingdom entrance. D2 pause/reload restored the same first
+  combat-room checkpoint and showed `SESSION RECOVERED`. A later fresh-page
+  probe re-enabled the session-scoped invincibility aid, survived a bounded
+  no-input interval and room clear, then paused and used `Finish and Return to
+  Dashboard`. The first resumed attempt had not re-enabled the session-scoped
+  aid and ended, so it is not credited as protected recovery. The managed
+  browser did not reliably deliver joystick drag events; movement used the
+  documented keyboard fallback after bounded diagnosis. The route therefore
+  remains touch-surface evidence, not touch-only 10-30 minute acceptance. The
+  stored harness play time was inflated by analysis waits and is not credited
+  as a meaningful human session. The disposable profile was deleted and the
+  retained profiles were unchanged; the score remains **79%** / **18%**.
+
 - A disposable loopback QA Mage traversed the functional V1 chain through D1,
   D2, D4, D5, D6, D7, and D8 using the developer invincibility aid and 10x
   simulation speed. Every named boss was reached and completed, every portal

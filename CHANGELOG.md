@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-08
 
+- Recorded a local 540x720 touch-surface and recovery probe with a disposable
+  Mage: D1 combat/shrine/treasure/boss/portal progression, D2 checkpoint
+  recovery, protected room play, pause, and deliberate Finish and Return to
+  Dashboard. Joystick drag delivery required the bounded keyboard fallback in
+  the managed harness, so this is not touch-only or 10-30 minute acceptance;
+  harness-inflated duration is excluded. The temporary profile was deleted,
+  retained profiles were unchanged, the score remains 79% / 18%, and no
+  deployment was made.
+
 - Hardened the shared route handoff after an accelerated disposable-profile QA
   run traversed the functional D1, D2, D4, D5, D6, D7, and D8 chain. Developer
   encounter completion now clears leftover boss adds, captures the correct boss

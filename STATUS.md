@@ -38,6 +38,37 @@ D1-8, ending, or touch-first safe-stop acceptance lane was newly completed.
 
 Deployed source SHA-256: `00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
+## Touch-first route and lifecycle probe (2026-08-08; local evidence, no deployment checkpoint)
+
+A disposable Mage profile was tested on the loopback shell at a constrained
+540x720 touch viewport. On Normal difficulty, the visible touch attack control
+queued target-lock attacks through D1 `Ruined Archway`, `Ancient Shrine`,
+`Relic Chamber`, and `Forsaken Vault`; Stone Skin, treasure, level-up, the
+Stone Guardian Phase 2 encounter, and the D1 exit portal into the Fallen
+Kingdom entrance were all observed. This preserves Joey's room, progression,
+class, and boss direction while adding route evidence only.
+
+The run also verified D2 checkpoint behavior: pausing in the first D2 combat
+room, reloading, and reopening the profile showed `SESSION RECOVERED` with the
+same room checkpoint. One resumed attempt ended before the session-scoped
+developer invincibility aid was re-enabled, so it is not credited as protected
+combat recovery. A separate fresh-page probe re-enabled the aid, survived a
+12-second no-input interval in D2 combat, cleared the room through the visible
+attack control, paused, and used `Finish and Return to Dashboard`. The full
+10-30 minute human session, complete summary/next-step review, and physical
+touch-device lifecycle acceptance remain open. Stored play time was inflated by
+the automated harness waiting between actions and is intentionally not counted
+as meaningful session-duration evidence.
+
+The managed browser did not reliably deliver a joystick drag, so movement for
+this probe used the bounded keyboard fallback after repeated diagnosis; center
+tap attack and the touch shrine, treasure, pause, recovery, and finish surfaces
+were exercised. This is therefore not a touch-only acceptance pass and is not a
+confirmed product defect. The disposable profile was deleted through Manage
+Data; the retained Mage and Barbarian profiles were unchanged. The evidence
+score remains **79%** for Checkpoint 1 and **18%** overall. No runtime change or
+website deployment was made from this incomplete evidence slice.
+
 ## Route QA and exit-handoff hardening (2026-08-08; deployed milestone checkpoint)
 
 The loopback QA path was used on a disposable Mage profile with the developer

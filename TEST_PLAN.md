@@ -1,6 +1,6 @@
 # Code Quest Lab - Test Plan
 
-Updated: 2026-08-05
+Updated: 2026-08-08
 
 ## Test rules
 
@@ -54,6 +54,28 @@ harness. This is a failed/incomplete combat-evidence attempt, not enough to
 attribute the result to a product defect; repeat on another supported
 browser/device or isolate event delivery before changing the attack path. The
 temporary profile was removed through the in-game Manage Data confirmation.
+
+### Local touch-surface and recovery probe - 2026-08-08
+
+- URL: loopback shell with the developer QA gate, viewport 540x720, managed
+  in-app browser, disposable Mage, Normal trial.
+- Result: the visible touch attack control completed D1 combat, shrine,
+  treasure, level-up, Stone Guardian Phase 2, and the portal into the Fallen
+  Kingdom entrance. D2 pause/reload restored the same first combat checkpoint
+  and displayed `SESSION RECOVERED`. A separate fresh-page probe re-enabled
+  session-scoped invincibility, survived a bounded idle interval, cleared a
+  D2 room, paused, and used `Finish and Return to Dashboard`.
+- Limitation: the first resumed attempt ended because the session-only aid was
+  not active after reload; a later protected probe verified the aid separately.
+  Joystick drag events were not reliably delivered by this managed browser, so
+  movement used the bounded keyboard fallback after repeated diagnosis. This
+  is touch-surface evidence, not touch-only acceptance. The stored harness
+  duration was inflated by waits and is not evidence of a meaningful 10-30
+  minute human session. The temporary profile was removed through Manage Data;
+  retained profiles were unchanged.
+- Status: no confirmed product defect, no browser deployment, no score change;
+  full touch-only session, summary/next-step review, clean D1-8/ending route,
+  and physical-device lifecycle evidence remain required.
 
 ## Required automated coverage
 

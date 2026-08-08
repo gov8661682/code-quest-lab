@@ -13,6 +13,20 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
 
+On 2026-08-08, a local 540x720 touch-surface probe used a disposable Mage to
+exercise D1 combat, shrine, treasure, level-up, the Stone Guardian Phase 2
+fight, and the portal into the Fallen Kingdom entrance. D2 pause/reload showed
+`SESSION RECOVERED` in the same combat room; a separate protected probe then
+survived a bounded idle interval, cleared a D2 room, paused, and used `Finish
+and Return to Dashboard`. The managed browser did not deliver joystick drags
+reliably, so movement used the bounded keyboard fallback after diagnosis. The
+first resumed attempt also ended before the session-scoped invincibility aid
+was re-enabled. This is not full touch-only, 10-30 minute, summary, ending, or
+physical-device evidence; harness-inflated play time is not credited. The
+temporary profile was deleted and retained profiles were unchanged. The score
+remains **79%** / **18%**, and no deployment was made for this incomplete local
+evidence slice.
+
 The next route QA slice is locally verified and recorded as a GitHub/website
 checkpoint.
 On a disposable loopback Mage profile, the invincibility aid and 10x QA speed

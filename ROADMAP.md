@@ -125,6 +125,22 @@ exist:
   evidence, not clean-player route/ending acceptance, so the C1 percentage is
   unchanged.
 
+### Touch surface and recovery probe (2026-08-08; local evidence only)
+
+- A disposable Mage on a 540x720 loopback surface completed a representative
+  D1 Normal sequence with the visible target-lock attack control, shrine,
+  treasure, level-up, Stone Guardian Phase 2, and portal handoff into D2.
+- Pause, reload, and profile reopen restored the same D2 combat checkpoint with
+  `SESSION RECOVERED`. A separate probe re-enabled session-scoped developer
+  invincibility after reload, survived an idle interval and room clear, and
+  completed a deliberate pause/Finish and Return to Dashboard stop.
+- This did not close C1: one resumed attempt ended before the session aid was
+  re-enabled, joystick drag delivery was unreliable in the managed harness and
+  required the bounded keyboard fallback, and the stored harness duration was
+  not meaningful human-session evidence. The remaining priority is a clean
+  D1-8/ending route plus touch-only tablet/device lifecycle evidence. No
+  runtime change or website checkpoint is warranted for this incomplete slice.
+
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 
 - [x] Package the web build with Capacitor 8.4.2 using `dist` as the web asset directory.
