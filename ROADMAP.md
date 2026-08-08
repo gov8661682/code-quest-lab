@@ -53,12 +53,15 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
-Latest milestone: `9886f50` bounds the Void Monarch to finite, phase-aware
-summon pressure after `cd90db4` hardened the loopback developer boss QA aid and
-corrected the HUD identity. It passed the 84-test release gate,
-static/package/native checks, GitHub push, Cloudflare deployment, production
-checks, and live smoke. This does not count as D4-8 completion; continue with
-the clean-profile route and remaining touch/tablet lifecycle evidence.
+Latest milestone: `2c1d6ba` (`Add deterministic gameplay QA architecture`) bounds
+the architecture/testing workflow after `9886f50` bounded the Void Monarch's
+summon pressure. It passed the 92-test release gate, static/package/native
+checks, GitHub push, Cloudflare deployment, production checks, and live smoke
+at 1024x768 and 1440x900. Pages preview:
+`https://7c154632.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. This does not count as D4-8
+completion; continue with the clean-profile route and remaining touch/tablet
+lifecycle evidence.
 
 - Extract pure save, progression, combat, entitlement, and configuration logic behind tests.
 - Validate save creation, load, backup recovery, migration, profile deletion, settings, pause/resume, and lifecycle behavior.
@@ -86,7 +89,7 @@ the clean-profile route and remaining touch/tablet lifecycle evidence.
 
 Acceptance: a clean profile can complete a meaningful 10-30 minute tablet session and the locked V1 path in supported browser viewports; active-run recovery and optional play-support checks pass; remaining save-compatibility and full-path evidence is recorded.
 
-### Architecture and fast QA slice (2026-08-08; local verification pending milestone checkpoint)
+### Architecture and fast QA slice (2026-08-08; deployed milestone checkpoint)
 
 The holistic review is recorded in `ARCHITECTURE_REVIEW.md`. It preserves the
 single-file parity baseline while improving the reusable seams that already
@@ -102,10 +105,10 @@ exist:
 - `tools/qa/fast-combat-sim.mjs` and `npm.cmd run qa:fast` provide fixed-seed
   early/mid/late encounter, collision, damage, phase, summon-budget,
   victory/loss, timeout, and accelerated-time checks.
-- The next architecture milestone must still pass the full release gate,
-  native sync, production build, and live smoke before its GitHub/website
-  checkpoint. It does not raise the C1 percentage until a named route or
-  tablet acceptance lane gains evidence.
+- This milestone passed the full release gate, native sync, production build,
+  GitHub push, Cloudflare deployment, production checks, and live browser smoke.
+  It does not raise the C1 percentage until a named route or tablet acceptance
+  lane gains evidence.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 

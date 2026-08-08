@@ -24,10 +24,20 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 84-test release verification, build/package audit, native sync, milestone commit `9886f50` pushed to GitHub, Cloudflare Pages preview `c45c9c7c` and configured hostname both passed production checks, and live browser smoke passed at the playable profile/entrance surface | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 92-test release verification, build/package audit, native sync, milestone commit `2c1d6ba` pushed to GitHub, Cloudflare Pages preview `7c154632` and configured hostname both passed production checks, and live browser smoke passed at 1024x768 and 1440x900 on the playable profile/entrance surface | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
-### Latest evidence update (2026-08-07)
+### Latest evidence update (2026-08-08)
+
+- The architecture and fast QA milestone is now a completed deployment
+  checkpoint: commit `2c1d6ba` (`Add deterministic gameplay QA architecture`)
+  was pushed to `origin/main` and deployed on 2026-08-08. Pages preview
+  `https://7c154632.code-quest-lab.pages.dev/` and configured hostname
+  `https://code-quest-lab.gov8661682.com/` both passed production checks. Live
+  browser smoke passed at 1024x768 and 1440x900 with the profile screen,
+  playable game area, first-room objective, no horizontal overflow, and no
+  captured browser warnings/errors. The deployed source SHA-256 is
+  `00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
 - On 2026-08-08, the holistic architecture review was completed and recorded
   in `ARCHITECTURE_REVIEW.md`. The shared boss identity registry corrects the

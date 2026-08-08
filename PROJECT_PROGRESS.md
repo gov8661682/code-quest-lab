@@ -2,7 +2,7 @@
 
 Reviewed: 2026-08-08
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
-Release status: pre-release hardening; not a Release Candidate
+Release status: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
 Main checkpoint completion: **79%**
 Overall project completion: **18%**
@@ -13,8 +13,8 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
 
-The 2026-08-08 architecture slice is locally verified but not yet recorded as
-a website checkpoint. `ARCHITECTURE_REVIEW.md` documents the 57,394-line
+The 2026-08-08 architecture slice is locally verified and recorded as a
+GitHub/website checkpoint. `ARCHITECTURE_REVIEW.md` documents the 57,394-line
 runtime audit and the bounded plan. `BOSS_IDENTITY_DEFS` now centralizes named
 boss representation, while loopback-only developer QA provides accelerated
 time, phase/room/boss stepping, enemy-free/high-damage modes, and structured
@@ -24,6 +24,15 @@ tests and `npm.cmd run qa:fast`; the full suite passes 92 tests, the build and
 content was removed and no acceptance percentage is claimed from this work;
 the active score remains **79%** / **18%** until route, ending, and tablet
 session evidence changes the weighted table.
+
+The checkpoint commit is `2c1d6ba` (`Add deterministic gameplay QA
+architecture`), pushed to `origin/main` and deployed on 2026-08-08. Pages
+preview: `https://7c154632.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. Preview and hostname production
+checks passed, and the live browser smoke passed at 1024x768 and 1440x900 with
+the playable profile/entrance surface and no horizontal overflow. Deployed
+source SHA-256:
+`00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
 Commit `9886f50` (`Bound Void Monarch summon pressure`) was pushed and deployed
 on 2026-08-07. The Void Monarch now has four finite beast summon waves and

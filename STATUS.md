@@ -1,7 +1,7 @@
 # Code Quest Lab - Status
 
 Date: 2026-08-08
-State: pre-release hardening; not a Release Candidate
+State: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
 ## Architecture and fast QA milestone (2026-08-08)
 
@@ -27,11 +27,16 @@ Implemented locally:
 
 Focused tests passed: **11**. Full Node tests passed: **92**. The production
 build, 17-file package audit, inline-runtime parse, and Capacitor native sync
-also passed locally. This work is a substantial architecture/testing
-milestone, but the website checkpoint is recorded only after the final release
-verification, Git push, deployment, and live smoke below. The evidence score
-remains **79%** for Checkpoint 1 and **18%** overall because no D1-8, ending, or
-touch-first safe-stop acceptance lane was newly completed.
+also passed locally. Commit `2c1d6ba` (`Add deterministic gameplay QA
+architecture`) was pushed to `origin/main` and deployed on 2026-08-08. Pages
+preview: `https://7c154632.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. Both production checks passed, and
+the live browser smoke passed at 1024x768 and 1440x900 with the profile screen,
+playable game area, first-room objective, and no horizontal overflow. The
+evidence score remains **79%** for Checkpoint 1 and **18%** overall because no
+D1-8, ending, or touch-first safe-stop acceptance lane was newly completed.
+
+Deployed source SHA-256: `00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
 ## Latest QA hardening checkpoint
 

@@ -13,9 +13,11 @@
 - Added fixed-seed deterministic combat simulation for representative early,
   mid, and late encounters, collision/damage boundaries, finite summons,
   victory/loss/timeout, and accelerated QA. The focused suite passes 11 tests;
-  the full Node suite passes 92 tests. This is local milestone work pending
-  final release verification and the GitHub/website checkpoint; progress stays
-  at 79% for Checkpoint 1 and 18% overall.
+  the full Node suite passes 92 tests. Commit `2c1d6ba` was pushed to GitHub
+  and deployed on 2026-08-08 to the configured domain, with preview
+  `https://7c154632.code-quest-lab.pages.dev/`; production checks and live
+  browser smoke at 1024x768 and 1440x900 passed. Progress stays at 79% for
+  Checkpoint 1 and 18% overall.
 
 ## Unreleased - 2026-08-07
 
