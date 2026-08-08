@@ -155,6 +155,21 @@ exist:
   unchanged retained profiles were confirmed. No runtime change or website
   checkpoint is warranted for this incomplete evidence slice.
 
+### Managed-surface attack-input hardening (2026-08-08; local, not a milestone checkpoint)
+
+- The fresh route probe isolated a resilience gap in managed/embedded input
+  delivery: `#joyRight` received coordinate hits, while the Attack joystick did
+  not reliably complete its tap/drag event sequence. Add only a guarded click
+  fallback for tap actions; preserve the existing nearest-target routing,
+  directional aiming, pointer ownership, and drag semantics.
+- Contract coverage and the release gate pass locally (18 focused combat
+  contracts, 93-test `release:verify`, `qa:fast`, build, and native sync).
+- Do not raise the evidence percentage or deploy this hardening until a fresh
+  post-edit browser/device route proves one attack, one room clear, and no
+  duplicate attack on a tap/drag transition. If that route still fails, record
+  the exact surface/event sequence and use the loop breaker before changing
+  combat semantics again.
+
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 
 - [x] Package the web build with Capacitor 8.4.2 using `dist` as the web asset directory.

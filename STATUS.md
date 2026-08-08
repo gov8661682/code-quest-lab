@@ -69,6 +69,25 @@ Data; the retained Mage and Barbarian profiles were unchanged. The evidence
 score remains **79%** for Checkpoint 1 and **18%** overall. No runtime change or
 website deployment was made from this incomplete evidence slice.
 
+## Local joystick click-fallback hardening (2026-08-08; unreleased, no deployment checkpoint)
+
+The fresh-profile probe isolated an input-delivery resilience opportunity: the
+managed surface hit `#joyRight` at the expected coordinates and ordinary
+target-assist button clicks worked, but the Attack joystick's click/drag path
+did not reliably produce an attack. The shared `Joystick` wrapper now has a
+guarded click fallback for tap actions when a managed surface emits a click
+without a usable pointer-up, while normal pointer-up taps and directional
+drags are protected from duplicate activation. The source mirror was
+resynchronized and the focused combat contracts now cover the fallback wiring
+and duplicate/drag guards.
+
+Post-edit local verification passes 18 focused combat contracts, the 93-test
+`release:verify` gate, `qa:fast`, production build, and native asset sync.
+This is implementation and contract evidence only: a fresh browser/device
+route must still validate the fallback before it can affect the clean-player
+or touch-only acceptance lanes. The score remains **79%** / **18%**, and no
+website deployment was made.
+
 ## Fresh-profile functional V1 route probe (2026-08-08; local QA evidence, no deployment checkpoint)
 
 A new disposable Mage started at Level 1 on the 540x720 loopback surface and

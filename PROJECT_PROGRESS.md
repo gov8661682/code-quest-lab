@@ -38,6 +38,15 @@ not clean-player or touch-only acceptance. The diagnostic log was empty and
 the disposable Level 22/2527-Soul profile was deleted; retained profiles were
 unchanged. The score remains **79%** / **18%**, and no deployment was made.
 
+The follow-up input hardening is local and intentionally unscored. The shared
+Attack joystick now accepts a guarded click fallback for managed surfaces that
+emit a click but lose pointer-up delivery; duplicate pointer-up taps and
+directional drags remain suppressed. The source mirror is synchronized, and
+18 focused combat contracts, `release:verify` (93 tests), `qa:fast`, the
+production build, and native sync pass. A fresh post-edit browser/device route
+is still required before this can count toward touch or clean-player
+acceptance; the score remains **79%** / **18%** and no deployment was made.
+
 The next route QA slice is locally verified and recorded as a GitHub/website
 checkpoint.
 On a disposable loopback Mage profile, the invincibility aid and 10x QA speed

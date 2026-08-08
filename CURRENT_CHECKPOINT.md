@@ -60,6 +60,16 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   record was observed, and retained profiles were unchanged. The score remains
   **79%** / **18%**.
 
+- The fresh-route input diagnosis led to a narrow local hardening: the shared
+  Attack joystick now has a guarded managed-browser click fallback for tap
+  actions when pointer-up delivery is lost, while normal pointer-up taps and
+  directional drags remain guarded against duplicate activation. The source
+  mirror was resynced; 18 focused combat contracts, the 93-test
+  `release:verify` gate, `qa:fast`, production build, and native sync pass.
+  This has not yet been revalidated in a fresh browser/device route, so it does
+  not add clean-player or touch-only evidence, change the **79%** / **18%**
+  score, or warrant a deployment checkpoint.
+
 - A disposable loopback QA Mage traversed the functional V1 chain through D1,
   D2, D4, D5, D6, D7, and D8 using the developer invincibility aid and 10x
   simulation speed. Every named boss was reached and completed, every portal

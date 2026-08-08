@@ -2,6 +2,14 @@
 
 ## Unreleased - 2026-08-08
 
+- Added a guarded click fallback to the shared touch Attack joystick for
+  managed/embedded surfaces that emit a click after losing pointer-up delivery;
+  normal pointer-up taps and directional drags remain protected from duplicate
+  activation. Re-synced the source mirror and added focused contract coverage.
+  The 93-test release gate, fast QA, production build, and native sync pass,
+  but post-edit browser/device validation is still required. No score change
+  or deployment checkpoint was made.
+
 - Recorded a local 540x720 touch-surface and recovery probe with a disposable
   Mage: D1 combat/shrine/treasure/boss/portal progression, D2 checkpoint
   recovery, protected room play, pause, and deliberate Finish and Return to

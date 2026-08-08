@@ -77,6 +77,17 @@ temporary profile was removed through the in-game Manage Data confirmation.
   full touch-only session, summary/next-step review, clean D1-8/ending route,
   and physical-device lifecycle evidence remain required.
 
+### Joystick click-fallback hardening - 2026-08-08
+
+- The shared Attack joystick now has a guarded click fallback for managed
+  surfaces that emit a click after pointer-up delivery is lost. The guard must
+  not fire twice for a normal pointer-up tap and must not convert a directional
+  drag into an attack.
+- Focused combat contracts (18), `npm.cmd run release:verify` (93 tests),
+  `npm.cmd run qa:fast`, the production build, and native sync passed after the
+  change. Manual post-edit browser/device validation remains open and this
+  hardening is not yet acceptance evidence.
+
 ### Fresh-profile functional V1 route probe - 2026-08-08
 
 - Surface: loopback shell with `?cql-dev=1`, managed in-app browser, 540x720,
@@ -128,7 +139,7 @@ remain separate acceptance requirements.
   copied into `dist\` or exposed by the public browser shell.
 - Settings persistence, input mapping, navigation, pause/resume, visibility/page lifecycle, and Android back behavior.
 - Session checkpoints, summary/next-step state, Learning Support explanations, and no forced-quiz path.
-- Starter attack data, shared touch/mouse/joystick attack routing, bounded desktop click/hold and managed-browser DOM click attack fallbacks with nearest-target recovery, a bounded nearest-target tap on the touch Attack joystick, and pointer/touch joystick release fallbacks.
+- Starter attack data, shared touch/mouse/joystick attack routing, bounded desktop click/hold and managed-browser DOM/click attack fallbacks with nearest-target recovery, a bounded nearest-target tap on the touch Attack joystick, guarded duplicate-safe joystick click fallback, and pointer/touch joystick release fallbacks.
 - Keyboard play-surface focus target and pointer-focus handoff.
 - Bounded WASD/arrow release nudge for short key pulses, with blur/visibility clearing.
 - Waypoint menu Close must remain dismissed while the player stays inside the waypoint radius; re-entry must be required to reopen it.
