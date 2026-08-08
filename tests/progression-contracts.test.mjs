@@ -171,7 +171,15 @@ test('production navigation hides post-release dungeon entries and blocks legacy
   assert.match(SOURCE, /function enterEntrance\(dungeonId\)\{\s*if\(!isReleaseDungeon\(dungeonId\)\)\{/);
   assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon9'\)\)\{/);
   assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon10'\)\)\{/);
-  assert.doesNotMatch(SOURCE, />Practice Modules</);
+  assert.doesNotMatch(SOURCE, /Practice Modules/);
+  assert.match(SOURCE, />← Back to Dungeon Entrance</);
+});
+
+test('defeated boss rooms point the player toward the unlocked exit', () => {
+  assert.match(
+    SOURCE,
+    /var bossExitReady=!!\(def&&def\.type===RT\.BOSS&&!boss&&roomCleared&&!enemies\.some\([\s\S]*?bossExitReady\?'Exit unlocked — continue through the portal':getCurrentDungeonObjective\(\)/
+  );
 });
 
 test('waypoint menu close requires leaving before it can reopen', () => {

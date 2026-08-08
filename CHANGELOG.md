@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-08
 
+- Hardened the shared route handoff after an accelerated disposable-profile QA
+  run traversed the functional D1, D2, D4, D5, D6, D7, and D8 chain. Developer
+  encounter completion now clears leftover boss adds, captures the correct boss
+  identity in telemetry, and keeps the exit objective truthful. Replaced stale
+  `Back to Practice Modules` wording with `Back to Dungeon Entrance`. The final
+  D8 session summary and `Finish for Now` Town return were observed; this is
+  functional QA evidence only and does not change the 79% / 18% score. Local
+  release verification passes 93 tests; GitHub/website checkpoint pending.
+
 - Completed a repository-wide architecture review without rewriting the
   parity-protected inline runtime. Added a shared boss identity registry so
   HUD, room progress, recovery, and generic rendering use the correct named

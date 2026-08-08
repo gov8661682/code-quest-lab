@@ -41,6 +41,9 @@ test('fast browser QA controls are gated, accelerated, and not profile state', (
   assert.match(SOURCE, /function developerQaJumpToBoss\(\)/);
   assert.match(SOURCE, /function developerQaAdvanceBossPhase\(\)/);
   assert.match(SOURCE, /function developerQaCompleteCurrentRoom\(\)/);
+  assert.match(SOURCE, /function developerQaClearEncounterAdds\(\)/);
+  assert.match(SOURCE, /var bossName=getBossDisplayName\(def,boss\);[\s\S]*?dealDamageToBoss\(1000000000,false\);[\s\S]*?developerQaClearEncounterAdds\(\);[\s\S]*?developerQaLog\('boss-skip',\{boss:bossName\}\)/);
+  assert.match(SOURCE, /var bossExitReady=!!\(def&&def\.type===RT\.BOSS&&!boss&&roomCleared&&!enemies\.some\(/);
   assert.match(SOURCE, /window\.__cqlDevTelemetry/);
   assert.match(SOURCE, /var developerQASequences=\[/);
   assert.match(SOURCE, /\['C','Q','L','S'\]/);
@@ -49,7 +52,8 @@ test('fast browser QA controls are gated, accelerated, and not profile state', (
 });
 
 test('developer QA enemy-free mode stays outside normal player and boss state', () => {
-  assert.match(SOURCE, /function developerQaApplyEnemyFreeMode\(\)[\s\S]*?enemies=\[\];enemyProjectiles=\[\];cursedLibrarians=\[\];/);
+  assert.match(SOURCE, /function developerQaClearEncounterAdds\(\)[\s\S]*?enemies=\[\];enemyProjectiles=\[\];cursedLibrarians=\[\];/);
+  assert.match(SOURCE, /function developerQaApplyEnemyFreeMode\(\)[\s\S]*?developerQaClearEncounterAdds\(\);/);
   assert.match(SOURCE, /developerQaApplyEnemyFreeMode\(\);\s*var _combatIntroActive/);
   assert.match(SOURCE, /developerQaApplyEnemyFreeMode\(\);\s*updateDoorInteraction/);
   assert.match(SOURCE, /developerQATelemetry\.push\(event\)/);

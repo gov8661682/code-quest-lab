@@ -13,6 +13,16 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
 
+The next route QA slice is locally verified but not yet a website checkpoint.
+On a disposable loopback Mage profile, the invincibility aid and 10x QA speed
+completed the functional D1, D2, D4, D5, D6, D7, and D8 chain, including every
+named boss, each portal handoff, the final session summary, and `Finish for
+Now` back to Town. The shared fixes now clear QA-completed boss summons, keep
+the exit objective truthful, and replace the stale `Back to Practice Modules`
+copy with `Back to Dungeon Entrance`. The full suite passes 93 tests, while the
+score remains **79%** / **18%** because this is not clean-player route or
+touch-first acceptance evidence.
+
 The 2026-08-08 architecture slice is locally verified and recorded as a
 GitHub/website checkpoint. `ARCHITECTURE_REVIEW.md` documents the 57,394-line
 runtime audit and the bounded plan. `BOSS_IDENTITY_DEFS` now centralizes named

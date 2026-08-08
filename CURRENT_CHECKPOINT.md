@@ -29,6 +29,15 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-08)
 
+- A disposable loopback QA Mage traversed the functional V1 chain through D1,
+  D2, D4, D5, D6, D7, and D8 using the developer invincibility aid and 10x
+  simulation speed. Every named boss was reached and completed, every portal
+  advanced to the next entrance, D8 reached `THE SESSION IS COMPLETE`, and
+  `Finish for Now` returned to Town. This is not clean-player route/ending
+  acceptance evidence and does not change the **79%** / **18%** score. The
+  follow-up fixes are locally verified in **93 tests**, `qa:fast`, the build/
+  package audit, and native sync; the GitHub/website checkpoint is pending.
+
 - The architecture and fast QA milestone is now a completed deployment
   checkpoint: commit `2c1d6ba` (`Add deterministic gameplay QA architecture`)
   was pushed to `origin/main` and deployed on 2026-08-08. Pages preview

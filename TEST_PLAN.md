@@ -68,6 +68,14 @@ enemy-free mode in seconds. This is functional coverage; it does not replace
 human assessment of fun, pacing, touch responsiveness, visual readability, or
 audio.
 
+For route-handoff regressions, the loopback-only QA controls can traverse the
+functional D1, D2, D4, D5, D6, D7, and D8 chain in accelerated time. The
+developer encounter-complete command must clear leftover boss adds, report the
+correct boss identity, open the next portal, and leave the final session
+summary/`Finish for Now` path usable. A disposable-profile run is diagnostic
+functional evidence only; clean-player route, ending, and touch-session lanes
+remain separate acceptance requirements.
+
 - Save creation, serialization, loading, backup recovery, corruption recovery, migration, and deletion.
 - Character creation, selection, switching, and deletion.
 - Combat calculations and damage boundaries.

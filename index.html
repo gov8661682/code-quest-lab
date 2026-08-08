@@ -761,7 +761,7 @@ html, body {
   <h1 id="difficultySelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Select Pace</h1>
   <div id="difficultySelectSub">Choose your practice speed</div>
   <div id="difficultySelectGrid" style="width:90%;max-width:380px;display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
-<button class="menuBtnSecondary" id="difficultySelectBackBtn">← Back to Practice Modules</button>
+<button class="menuBtnSecondary" id="difficultySelectBackBtn">← Back to Dungeon Entrance</button>
 </div>
 
 <div id="characterSelectScreen" class="screen active" style="justify-content:flex-start;padding-top:30px;overflow-y:auto;">
@@ -26342,9 +26342,13 @@ function updateDeveloperQAOverlay(dt){
   window.__cqlDevTelemetry=window.__cqlDevTelemetry||{enabled:true,events:developerQATelemetry.slice()};
   window.__cqlDevTelemetry.snapshot=developerQaSnapshot();
 }
+function developerQaClearEncounterAdds(){
+  enemies=[];enemyProjectiles=[];cursedLibrarians=[];
+  if(roomStates&&roomStates[currentRoomId])roomStates[currentRoomId].savedEnemies=[];
+}
 function developerQaApplyEnemyFreeMode(){
   if(!developerCheatAllowed()||!developerQAEnemyFreeEnabled)return;
-  enemies=[];enemyProjectiles=[];cursedLibrarians=[];
+  developerQaClearEncounterAdds();
 }
 function developerQaToggleSpeed(){
   developerQATimeScale=developerQATimeScale===1?10:(developerQATimeScale===10?25:1);
@@ -26379,8 +26383,16 @@ function developerQaCompleteCurrentRoom(){
   var def=typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS?ROOM_DEFS[currentRoomId]:null;
   if(!def){showBanner('DEV QA','No active room',1.3);return true;}
   if(boss){
+    var bossName=getBossDisplayName(def,boss);
     dealDamageToBoss(1000000000,false);
-    developerQaLog('boss-skip',{boss:getBossDisplayName(def,boss)});
+    developerQaClearEncounterAdds();
+    if(!roomCleared)roomCleared=true;
+    if(roomStates[currentRoomId]){roomStates[currentRoomId].cleared=true;roomStates[currentRoomId].savedEnemies=[];}
+    var bossGeo=getRoomGeometry();
+    if(def.forward)openForwardDoor(bossGeo);
+    sideDoorOpen=(def.side!==null);
+    updateRoomProgress(bossGeo);
+    developerQaLog('boss-skip',{boss:bossName});
   }else if(miniBoss){
     dealDamageToMiniBoss(1000000000,false);
     developerQaLog('miniboss-skip');
@@ -26448,10 +26460,7 @@ function clearDeveloperBossSummons(){
     return true;
   }
   var clearedCount=enemies.length;
-  enemies=[];
-  if(roomStates[currentRoomId]){
-    roomStates[currentRoomId].savedEnemies=[];
-  }
+  developerQaClearEncounterAdds();
   // A live boss still owns the room. Clearing its summons must not mark the
   // boss encounter complete or open the dungeon exit; it only gives local QA
   // a clean arena so the boss phase logic can be tested deterministically.
@@ -42168,7 +42177,8 @@ function updateHUD(){
   var objectiveEl=document.getElementById('objectiveInfo');
   if(objectiveEl){
     var isTownObjective=(def&&def.type===RT.START&&isTownRoom);
-    var objectiveText=isTownObjective?'Prepare in Town, then follow the northern road to the Forgotten Depths':(def&&def.type===RT.START?getCurrentRunObjective():getCurrentDungeonObjective());
+    var bossExitReady=!!(def&&def.type===RT.BOSS&&!boss&&roomCleared&&!enemies.some(function(enemy){return !!(enemy&&enemy.hp>0&&!enemy.dead);}));
+    var objectiveText=isTownObjective?'Prepare in Town, then follow the northern road to the Forgotten Depths':(def&&def.type===RT.START?getCurrentRunObjective():(bossExitReady?'Exit unlocked — continue through the portal':getCurrentDungeonObjective()));
     objectiveEl.textContent='Objective: '+objectiveText;
   }
 }

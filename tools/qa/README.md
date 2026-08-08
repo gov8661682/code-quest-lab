@@ -36,6 +36,11 @@ The controls are local-web/loopback gated, session-only, and excluded from
 profile saves, `.txt` exports, native packages, and public-host activation.
 They are for debugging and QA, not player progression or monetisation.
 
+`Complete the current encounter` also clears live encounter adds and refreshes
+the shared exit handoff, so a developer skip cannot report success while a boss
+portal remains locked behind leftover summons. The normal player path keeps its
+own summon and boss rules.
+
 The telemetry snapshot is available in the local browser console as
 `window.__cqlDevTelemetry` while the gate is active. It includes the latest
 room, boss phase, enemy count, command events, and overlay snapshot. No network

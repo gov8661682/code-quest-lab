@@ -110,6 +110,20 @@ exist:
   It does not raise the C1 percentage until a named route or tablet acceptance
   lane gains evidence.
 
+### Route QA and exit-handoff hardening (2026-08-08; local verification pending checkpoint)
+
+- A disposable loopback QA run now covers the functional D1, D2, D4, D5, D6,
+  D7, and D8 boss/portal chain in accelerated time, ending at the existing
+  session summary and safe `Finish for Now` Town return.
+- QA encounter completion clears live boss adds and refreshes the shared exit
+  handoff; player-facing objectives do not announce an unlocked exit while live
+  summons remain. Trial navigation uses world language (`Back to Dungeon
+  Entrance`) instead of the retired module wording.
+- The full 93-test release gate, deterministic QA suite, static/package audit,
+  and native sync pass locally. This remains functional QA evidence, not clean
+  player route/ending acceptance, until the GitHub and website checkpoint is
+  completed.
+
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 
 - [x] Package the web build with Capacitor 8.4.2 using `dist` as the web asset directory.

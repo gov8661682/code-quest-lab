@@ -38,6 +38,24 @@ D1-8, ending, or touch-first safe-stop acceptance lane was newly completed.
 
 Deployed source SHA-256: `00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
+## Route QA and exit-handoff hardening (2026-08-08; local verification pending checkpoint)
+
+The loopback QA path was used on a disposable Mage profile with the developer
+invincibility aid and 10x simulation speed. It traversed the functional V1
+chain through D1, D2, D4, D5, D6, D7, and D8: each named boss was jumped to and
+completed, each exit advanced to the next entrance, D8 reached `THE SESSION IS
+COMPLETE`, and `Finish for Now` returned safely to Town. This is functional QA
+evidence only, not clean-player D1-8 or ending acceptance evidence.
+
+The pass found and corrected two shared UX/QA defects: trial navigation now
+says `Back to Dungeon Entrance`, defeated boss rooms say `Exit unlocked —
+continue through the portal` only after live summons are gone, and the QA
+encounter-complete control clears leftover adds and records the concrete boss
+name before the boss object is released. The full suite passes **93 tests**;
+`qa:fast`, build/package audit, and native sync pass locally. The score remains
+**79%** for Checkpoint 1 and **18%** overall; this work awaits its own GitHub
+and website checkpoint.
+
 ## Latest QA hardening checkpoint
 
 The 2026-08-07 gameplay follow-up bounded the Void Monarch's summon pressure:
