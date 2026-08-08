@@ -8,8 +8,11 @@
   identity in telemetry, and keeps the exit objective truthful. Replaced stale
   `Back to Practice Modules` wording with `Back to Dungeon Entrance`. The final
   D8 session summary and `Finish for Now` Town return were observed; this is
-  functional QA evidence only and does not change the 79% / 18% score. Local
-  release verification passes 93 tests; GitHub/website checkpoint pending.
+  functional QA evidence only and does not change the 79% / 18% score. Release
+  verification passes 93 tests; commit `20f85ba` was pushed and deployed on
+  2026-08-08 to the configured domain with preview
+  `https://d8829db6.code-quest-lab.pages.dev/`. Production checks and live
+  desktop/tablet profile-shell smoke passed.
 
 - Completed a repository-wide architecture review without rewriting the
   parity-protected inline runtime. Added a shared boss identity registry so

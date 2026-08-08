@@ -38,7 +38,7 @@ D1-8, ending, or touch-first safe-stop acceptance lane was newly completed.
 
 Deployed source SHA-256: `00349B9312F68EE8402F143785AEEA28FB5FD5D0386E114D0501E5B2336448FC`.
 
-## Route QA and exit-handoff hardening (2026-08-08; local verification pending checkpoint)
+## Route QA and exit-handoff hardening (2026-08-08; deployed milestone checkpoint)
 
 The loopback QA path was used on a disposable Mage profile with the developer
 invincibility aid and 10x simulation speed. It traversed the functional V1
@@ -52,9 +52,17 @@ says `Back to Dungeon Entrance`, defeated boss rooms say `Exit unlocked —
 continue through the portal` only after live summons are gone, and the QA
 encounter-complete control clears leftover adds and records the concrete boss
 name before the boss object is released. The full suite passes **93 tests**;
-`qa:fast`, build/package audit, and native sync pass locally. The score remains
-**79%** for Checkpoint 1 and **18%** overall; this work awaits its own GitHub
-and website checkpoint.
+`qa:fast`, build/package audit, and native sync pass locally. Commit `20f85ba`
+(`Harden V1 route exit handoffs`) was pushed to `origin/main` and deployed on
+2026-08-08. Pages preview: `https://d8829db6.code-quest-lab.pages.dev/`;
+configured hostname: `https://code-quest-lab.gov8661682.com/`. Both production
+checks passed, the live source hash matches the local build, and the live
+desktop/tablet profile shell smoke passed with no browser warnings/errors or
+tablet overflow. The score remains **79%** for Checkpoint 1 and **18%** overall
+because the disposable accelerated run is not clean-player acceptance
+evidence.
+
+Deployed source SHA-256: `553C51477907DDDA9CA67AF0D1C79581378A676EAE83741627645ED1D4682A19`.
 
 ## Latest QA hardening checkpoint
 

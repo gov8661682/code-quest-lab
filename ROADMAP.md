@@ -110,7 +110,7 @@ exist:
   It does not raise the C1 percentage until a named route or tablet acceptance
   lane gains evidence.
 
-### Route QA and exit-handoff hardening (2026-08-08; local verification pending checkpoint)
+### Route QA and exit-handoff hardening (2026-08-08; deployed milestone checkpoint)
 
 - A disposable loopback QA run now covers the functional D1, D2, D4, D5, D6,
   D7, and D8 boss/portal chain in accelerated time, ending at the existing
@@ -120,9 +120,10 @@ exist:
   summons remain. Trial navigation uses world language (`Back to Dungeon
   Entrance`) instead of the retired module wording.
 - The full 93-test release gate, deterministic QA suite, static/package audit,
-  and native sync pass locally. This remains functional QA evidence, not clean
-  player route/ending acceptance, until the GitHub and website checkpoint is
-  completed.
+  native sync, GitHub push, Cloudflare deployment, production checks, and live
+  desktop/tablet profile-shell smoke all pass. This remains functional QA
+  evidence, not clean-player route/ending acceptance, so the C1 percentage is
+  unchanged.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 
