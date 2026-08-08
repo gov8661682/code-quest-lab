@@ -69,6 +69,29 @@ Data; the retained Mage and Barbarian profiles were unchanged. The evidence
 score remains **79%** for Checkpoint 1 and **18%** overall. No runtime change or
 website deployment was made from this incomplete evidence slice.
 
+## Fresh-profile functional V1 route probe (2026-08-08; local QA evidence, no deployment checkpoint)
+
+A new disposable Mage started at Level 1 on the 540x720 loopback surface and
+advanced through the Normal route boundary in the intended order: Dungeon 1,
+Dungeon 2, and Dungeons 4 through 8. The run observed the named Stone
+Guardian, Fallen King, Void Monarch, Corrupted High Chieftain, Archmage Valen,
+Hollow World Tree, and The Broker boss rooms; shrine and treasure rewards;
+portal handoffs; and the final `THE SESSION IS COMPLETE` screen. The ending
+summary displayed the final room, souls earned/total, mastery gained, optional
+Pattern recognition support, and a next-step suggestion. `Finish for Now`
+returned to Town, Pause exposed `Finish and Return to Dashboard`, and the
+profile list/Manage Data record showed Level 22, 2527 Souls, highest room 9,
+and seven runs before cleanup.
+
+This is functional fresh-profile route evidence, not clean-player acceptance:
+the managed-browser joystick/attack delivery remained unreliable, so the
+loopback-only enemy-free and current-encounter QA controls completed combat
+rooms and the boss handoffs. A normal attack-control route is still required
+for the C1 score. The local diagnostic log was empty, the disposable profile
+was deleted, and the retained Mage Level 36, Mage Level 12, and Barbarian
+Level 4 profiles remained. The score remains **79%** / **18%**; no runtime
+change or website deployment was made.
+
 ## Route QA and exit-handoff hardening (2026-08-08; deployed milestone checkpoint)
 
 The loopback QA path was used on a disposable Mage profile with the developer

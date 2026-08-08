@@ -27,6 +27,17 @@ temporary profile was deleted and retained profiles were unchanged. The score
 remains **79%** / **18%**, and no deployment was made for this incomplete local
 evidence slice.
 
+The same cycle also ran a new disposable Mage through the full functional V1
+route boundary: D1, D2, and D4-D8. All named bosses, shrine/treasure surfaces,
+portal handoffs, `THE SESSION IS COMPLETE`, optional Pattern recognition
+support, next-step copy, `Finish for Now`, and Pause -> `Finish and Return to
+Dashboard` were observed. Because the managed-browser joystick/attack path
+still failed to deliver normal attacks, enemy-free and current-encounter QA
+controls completed combat rooms; this is fresh-profile functional evidence,
+not clean-player or touch-only acceptance. The diagnostic log was empty and
+the disposable Level 22/2527-Soul profile was deleted; retained profiles were
+unchanged. The score remains **79%** / **18%**, and no deployment was made.
+
 The next route QA slice is locally verified and recorded as a GitHub/website
 checkpoint.
 On a disposable loopback Mage profile, the invincibility aid and 10x QA speed

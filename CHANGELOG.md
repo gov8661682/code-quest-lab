@@ -11,6 +11,16 @@
   retained profiles were unchanged, the score remains 79% / 18%, and no
   deployment was made.
 
+- Ran a new disposable Mage through the complete functional V1 route boundary
+  (D1, D2, D4-D8) on Normal. All named bosses, shrine/treasure progression,
+  portal handoffs, `THE SESSION IS COMPLETE`, optional learning support,
+  next-step copy, Finish for Now, and Finish and Return to Dashboard were
+  observed. Enemy-free/current-encounter QA controls were required after the
+  managed-browser joystick attack path failed, so this is not clean-player or
+  touch-only acceptance. Browser logs were empty; the temporary profile was
+  deleted, retained profiles were unchanged, the score remains 79% / 18%, and
+  no deployment was made.
+
 - Hardened the shared route handoff after an accelerated disposable-profile QA
   run traversed the functional D1, D2, D4, D5, D6, D7, and D8 chain. Developer
   encounter completion now clears leftover boss adds, captures the correct boss

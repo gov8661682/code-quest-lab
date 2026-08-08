@@ -141,6 +141,20 @@ exist:
   D1-8/ending route plus touch-only tablet/device lifecycle evidence. No
   runtime change or website checkpoint is warranted for this incomplete slice.
 
+### Fresh-profile functional V1 route probe (2026-08-08; local QA evidence only)
+
+- A new Mage traversed D1, D2, and D4-D8 on Normal and reached all seven
+  named bosses, shrine/treasure rewards, portal handoffs, the final session
+  summary, optional learning note, next-step suggestion, and both safe-stop
+  paths. The profile list and Manage Data record were verified before deleting
+  only the temporary profile.
+- The route used loopback enemy-free and current-encounter QA controls after
+  the managed-browser joystick/attack delivery failed again. It therefore
+  proves the progression/ending handoffs on a fresh profile, but not a
+  player-completed clean route or touch-only acceptance. Empty browser logs and
+  unchanged retained profiles were confirmed. No runtime change or website
+  checkpoint is warranted for this incomplete evidence slice.
+
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 
 - [x] Package the web build with Capacitor 8.4.2 using `dist` as the web asset directory.

@@ -77,6 +77,26 @@ temporary profile was removed through the in-game Manage Data confirmation.
   full touch-only session, summary/next-step review, clean D1-8/ending route,
   and physical-device lifecycle evidence remain required.
 
+### Fresh-profile functional V1 route probe - 2026-08-08
+
+- Surface: loopback shell with `?cql-dev=1`, managed in-app browser, 540x720,
+  new Mage profile, Normal difficulty.
+- Result: D1, D2, and D4-D8 advanced through their authored entrance, room,
+  reward, boss, and portal handoffs. The named bosses, final
+  `THE SESSION IS COMPLETE` summary, optional Pattern recognition note,
+  next-step suggestion, `Finish for Now`, and Pause -> `Finish and Return to
+  Dashboard` were observed. Manage Data recorded the temporary profile before
+  deletion; the three retained profiles remained present.
+- Limitation: the managed browser again did not deliver normal attack input
+  through the joystick or canvas coordinate path. Loopback enemy-free and
+  current-encounter QA controls were used to finish combat, so this is
+  progression/ending handoff evidence only, not clean-player or touch-only
+  acceptance. Browser diagnostic logs were empty. Harness-inflated play time
+  is not meaningful 10-30 minute human-session evidence.
+- Status: no confirmed product defect, no deployment, no score change; repeat
+  on a real touch-capable surface or a different supported browser for the
+  outstanding combat and session acceptance lane.
+
 ## Required automated coverage
 
 ### Fast logic QA before normal-speed play

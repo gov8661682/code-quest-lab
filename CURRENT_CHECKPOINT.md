@@ -45,6 +45,21 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   as a meaningful human session. The disposable profile was deleted and the
   retained profiles were unchanged; the score remains **79%** / **18%**.
 
+- A new disposable Mage started at Level 1 and traversed the full functional
+  V1 route boundary on Normal: D1, D2, and D4-D8. The run reached the named
+  bosses Stone Guardian, Fallen King, Void Monarch, Corrupted High Chieftain,
+  Archmage Valen, Hollow World Tree, and The Broker; observed shrine/treasure
+  rewards and every portal handoff; reached `THE SESSION IS COMPLETE`; read
+  the optional Pattern recognition note and next-step suggestion; and used
+  both `Finish for Now` and Pause -> `Finish and Return to Dashboard`. The
+  managed joystick/attack path still did not deliver a normal attack in this
+  fresh tab, so loopback enemy-free and current-encounter QA controls were
+  used for combat completion. This is fresh-profile functional evidence, not
+  clean-player route acceptance or touch-only evidence. The diagnostic log was
+  empty; the disposable profile was deleted after its Level 22/2527-Soul
+  record was observed, and retained profiles were unchanged. The score remains
+  **79%** / **18%**.
+
 - A disposable loopback QA Mage traversed the functional V1 chain through D1,
   D2, D4, D5, D6, D7, and D8 using the developer invincibility aid and 10x
   simulation speed. Every named boss was reached and completed, every portal
