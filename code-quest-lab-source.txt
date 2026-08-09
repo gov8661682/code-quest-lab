@@ -184,6 +184,8 @@ html, body {
 #doorStatus.visible { opacity:1; }
 #worldRouteBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:210px; min-height:40px; padding:9px 16px; background:rgba(16,14,28,0.95); border:2px solid #8a70b8; border-radius:6px; color:#d8c8f8; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(138,112,184,0.2); }
 #worldRouteBtn:active { background:#28213d; border-color:#c8a8f8; }
+#roomRewardBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #b88a42; border-radius:6px; color:#ffe0a0; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(184,138,66,0.18); }
+#roomRewardBtn:active { background:#332713; border-color:#fff0c8; }
 #roomExitBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #d8a23a; border-radius:6px; color:#ffd98a; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(216,162,58,0.18); }
 #roomExitBtn:active { background:#332713; border-color:#ffe6a6; }
 #waveBanner { position:absolute; top:56px; left:50%; transform:translateX(-50%); text-align:center; z-index:15; pointer-events:none; opacity:0; transition:opacity 0.3s; }
@@ -646,6 +648,7 @@ html, body {
   #autoRushBtn { bottom:116px !important; }
   #npcInteractBtn { bottom:164px !important; max-width:70vw; overflow:hidden; text-overflow:ellipsis; }
   #worldRouteBtn { bottom:164px; max-width:78vw; }
+  #roomRewardBtn { bottom:164px; max-width:78vw; }
   #roomExitBtn { bottom:164px; max-width:78vw; }
 }
 @media (max-height:520px) and (max-width:900px) {
@@ -912,6 +915,7 @@ html, body {
 <button id="autoRushBtn" style="display:none;position:absolute;bottom:158px;left:50%;transform:translateX(-50%);width:90px;height:36px;background:rgba(10,28,40,0.95);border:2px solid #3ab8e8;border-radius:4px;color:#b8e8ff;font-size:0.65em;cursor:pointer;z-index:12;letter-spacing:0.05em;text-align:center;touch-action:manipulation;">AUTO RUSH<br>✓ ON</button>
   <button id="npcInteractBtn" style="display:none;position:absolute;bottom:210px;left:50%;transform:translateX(-50%);padding:10px 24px;background:rgba(20,16,10,0.92);border:2px solid #d8a23a;border-radius:6px;color:#ffd98a;font-size:0.75em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;z-index:13;touch-action:manipulation;font-family:Georgia,'Times New Roman',serif;white-space:nowrap;">Press <span id="npcInteractLabel">Interact</span> to <span id="npcInteractVerb">talk</span></button>
   <button id="worldRouteBtn" type="button" aria-label="Use world route">Use World Route</button>
+  <button id="roomRewardBtn" type="button" aria-label="Open treasure">Open Treasure</button>
   <button id="roomExitBtn" type="button" aria-label="Proceed through exit">Proceed Through Exit</button>
   <div id="roomInfo">Start Room</div>
   <div id="objectiveInfo"></div>
@@ -22780,6 +22784,27 @@ function handleWorldRoutePrompt(){
     openDungeonGate(dungeonId);
   }
 }
+function hideRoomRewardPrompt(){
+  var el=document.getElementById('roomRewardBtn');
+  if(el)el.style.display='none';
+}
+function roomRewardPromptAvailable(def){
+  var roomType=def&&(def._sideRoomType||def.type);
+  return !!(roomType===RT.TREASURE&&treasureChest&&!treasureChest.opened&&
+    activeDungeonId!=='town'&&activeDungeonId!=='bob_arena'&&roomCleared&&!roomTransitioning);
+}
+function updateRoomRewardPrompt(def){
+  var el=document.getElementById('roomRewardBtn');
+  if(!el)return;
+  var available=roomRewardPromptAvailable(def);
+  el.style.display=available?'block':'none';
+}
+function handleRoomRewardPrompt(){
+  var def=ROOM_DEFS[currentRoomId];
+  if(!roomRewardPromptAvailable(def))return;
+  hideRoomRewardPrompt();
+  openTreasure();
+}
 function hideRoomExitPrompt(){
   var el=document.getElementById('roomExitBtn');
   if(el)el.style.display='none';
@@ -22817,6 +22842,7 @@ function resetSessionTransientUi(){
   var doorStatus=document.getElementById('doorStatus');
   if(doorStatus){doorStatus.classList.remove('visible','doorStatusLocked');doorStatus.textContent='';}
   hideWorldRoutePrompt();
+  hideRoomRewardPrompt();
   hideRoomExitPrompt();
   resetWaypointHold();
 }
@@ -25133,6 +25159,7 @@ safeClick('equipBackBtn','Equip Back',function(){closeCharScreenToMenu();});
 safeClick('eventCloseBtn','Event Close',function(){closeEventOverlay(currentRoomId,false);});
 safeClick('masteryBackBtn','Mastery Back',function(){closeCharScreenToMenu();});
 safeClick('worldRouteBtn','World Route',function(){handleWorldRoutePrompt();});
+safeClick('roomRewardBtn','Room Reward',function(){handleRoomRewardPrompt();});
 safeClick('roomExitBtn','Room Exit',function(){handleRoomExitPrompt();});
 safeClick('pauseBtn','Pause',function(){openPauseMenu();});
 safeClick('pauseResumeBtn','Resume',function(){closePauseMenu();});
@@ -42052,6 +42079,7 @@ function updateDoorInteraction(geo){
 function updateRoomProgress(geo){
   var def=ROOM_DEFS[currentRoomId];if(!def)return;
   updateWorldRoutePrompt();
+  updateRoomRewardPrompt(def);
   updateRoomExitPrompt(def);
   var doorStatus=document.getElementById('doorStatus');
   if(!doorStatus)return;

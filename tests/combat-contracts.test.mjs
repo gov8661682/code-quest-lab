@@ -182,6 +182,15 @@ test('static world hubs expose an optional touch travel fallback', () => {
   assert.match(roomProgress, /updateWorldRoutePrompt\(\);/, 'hub travel state refreshes with the shared room progress update');
 });
 
+test('unclaimed treasure rooms expose an optional touch reward action', () => {
+  assert.match(SOURCE, /<button id="roomRewardBtn"[^>]*aria-label="Open treasure"/, 'the treasure fallback is an accessible button');
+  assert.match(SOURCE, /function roomRewardPromptAvailable\(def\)\{[\s\S]*roomType===RT\.TREASURE[\s\S]*treasureChest&&!treasureChest\.opened[\s\S]*roomCleared/, 'the reward action requires an unclaimed cleared treasure room');
+  assert.match(SOURCE, /function handleRoomRewardPrompt\(\)\{[\s\S]*hideRoomRewardPrompt\(\);[\s\S]*openTreasure\(\);/, 'the fallback reuses the existing reward overlay and loot flow');
+  assert.match(SOURCE, /safeClick\('roomRewardBtn','Room Reward',function\(\)\{handleRoomRewardPrompt\(\);\}\)/, 'treasure interaction uses the guarded click layer');
+  const roomProgress = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'room progress');
+  assert.match(roomProgress, /updateRoomRewardPrompt\(def\);/, 'treasure reward state refreshes with room progress');
+});
+
 test('touch-first combat offers a visible, session-only target lock', () => {
   assert.match(SOURCE, /var touchAimAssistEnabled=true;/, 'touch aim assist starts enabled for a fresh session');
   assert.match(SOURCE, /function findNearestCombatTarget\(aimAngle\)/, 'combat target selection covers live room targets');

@@ -9,8 +9,10 @@
   fallback remains hidden in Town, entrance hubs, and unclaimed static rooms,
   then appears after a combat clear or claimed shrine/treasure reward. Fresh
   540x720 checks passed Town -> D1 Entrance -> gate selection -> D1 `room_m0`,
-  `room_m0` -> `room_m1`, and shrine -> treasure.
-- The source mirror, 95-test release gate, deterministic QA, production build,
+  `room_m0` -> `room_m1`, and shrine -> treasure. An unclaimed treasure also
+  exposed `Open Treasure`, delivered the existing loot overlay, and then
+  exposed the ordinary forward exit.
+- The source mirror, 96-test release gate, deterministic QA, production build,
   and Capacitor native sync pass. No website deployment checkpoint or score
   change was made for this local hardening slice.
 
@@ -21,7 +23,7 @@
   `room_m0` to `room_m1` and a completed shrine into the treasure room. The
   change responds to a bounded managed-browser directional-input diagnosis; it
   does not replace physical touch testing or claim a clean-player route.
-- The source mirror, 95-test release gate, deterministic QA, production build,
+- The source mirror, 96-test release gate, deterministic QA, production build,
   and Capacitor native sync pass. No website deployment checkpoint or score
   change was made for this minor local hardening slice.
 

@@ -20,8 +20,10 @@ combat room. Normal walking remains available. `Proceed Through Exit` stays
 hidden in Town, entrance hubs, and unclaimed static rooms, then appears after
 a real forward combat clear or a shrine/treasure reward. Fresh 540x720 checks
 passed Town -> D1 Entrance -> gate selection -> D1 `room_m0`, `room_m0` ->
-`room_m1`, and completed shrine -> treasure. The source mirror, 95-test release
-gate, deterministic QA, production build, and native sync pass. The score
+`room_m1`, and completed shrine -> treasure. An unclaimed treasure also exposed
+`Open Treasure`, delivered the existing loot overlay, and then exposed the
+ordinary forward exit. The source mirror, 96-test release gate, deterministic
+QA, production build, and native sync pass. The score
 remains **79%** / **18%**; this local usability hardening does not warrant a
 deployment checkpoint.
 

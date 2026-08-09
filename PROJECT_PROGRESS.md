@@ -28,8 +28,10 @@ hubs, and unclaimed static rooms, appears after a real forward combat clear or
 a claimed shrine/treasure reward, and preserves the existing save and
 transition handoff. Fresh 540x720 runtime checks used the fallback to advance
 Town -> D1 Entrance -> gate selection -> D1 `room_m0`, then `room_m0` ->
-`room_m1` and a claimed shrine -> treasure. The source mirror, **95-test**
-release gate, `qa:fast`, production build, and native sync pass. The score
+`room_m1` and a claimed shrine -> treasure. An unclaimed treasure also exposed
+`Open Treasure`, delivered the existing loot overlay, and then exposed the
+ordinary forward exit. The source mirror, **96-test** release gate, `qa:fast`,
+production build, and native sync pass. The score
 remains **79%** / **18%** and no deployment checkpoint was created.
 
 On 2026-08-08, a local 540x720 touch-surface probe used a disposable Mage to
