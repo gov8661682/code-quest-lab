@@ -1,5 +1,14 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-09
+
+- Revalidated the managed-browser joystick fallback on 2026-08-09 using a
+  fresh uncached `localhost:4173` profile at 540x720. One center tap reduced a
+  real D1 room from two enemies to one with empty browser diagnostics; a
+  directional drag left a three-enemy room unchanged, and the room was cleared
+  with the bounded high-damage QA aid. This is input evidence only, not a
+  physical-device/full-route acceptance or deployment checkpoint.
+
 ## Unreleased - 2026-08-08
 
 - Added a guarded click fallback to the shared touch Attack joystick for

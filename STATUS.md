@@ -1,6 +1,6 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-08
+Date: 2026-08-09
 State: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
 ## Architecture and fast QA milestone (2026-08-08)
@@ -82,11 +82,15 @@ resynchronized and the focused combat contracts now cover the fallback wiring
 and duplicate/drag guards.
 
 Post-edit local verification passes 18 focused combat contracts, the 93-test
-`release:verify` gate, `qa:fast`, production build, and native asset sync.
-This is implementation and contract evidence only: a fresh browser/device
-route must still validate the fallback before it can affect the clean-player
-or touch-only acceptance lanes. The score remains **79%** / **18%**, and no
-website deployment was made.
+`release:verify` gate, `qa:fast`, production build, and native asset sync. A
+fresh uncached `localhost:4173` browser run at 540x720 then confirmed one
+center tap reduced a real D1 room from `Enemies: 2` to `Enemies: 1` with empty
+browser diagnostics. A three-enemy room stayed at `Enemies: 3` after a
+directional joystick drag, confirming the drag did not become a duplicate tap;
+the room was then cleared with the bounded high-damage QA aid. This improves
+managed-browser input evidence but is not physical-device, full-route, or
+clean-player acceptance. The score remains **79%** / **18%**, and no website
+deployment was made.
 
 ## Fresh-profile functional V1 route probe (2026-08-08; local QA evidence, no deployment checkpoint)
 

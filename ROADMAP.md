@@ -155,7 +155,7 @@ exist:
   unchanged retained profiles were confirmed. No runtime change or website
   checkpoint is warranted for this incomplete evidence slice.
 
-### Managed-surface attack-input hardening (2026-08-08; local, not a milestone checkpoint)
+### Managed-surface attack-input hardening (2026-08-09; local, not a milestone checkpoint)
 
 - The fresh route probe isolated a resilience gap in managed/embedded input
   delivery: `#joyRight` received coordinate hits, while the Attack joystick did
@@ -164,11 +164,12 @@ exist:
   directional aiming, pointer ownership, and drag semantics.
 - Contract coverage and the release gate pass locally (18 focused combat
   contracts, 93-test `release:verify`, `qa:fast`, build, and native sync).
-- Do not raise the evidence percentage or deploy this hardening until a fresh
-  post-edit browser/device route proves one attack, one room clear, and no
-  duplicate attack on a tap/drag transition. If that route still fails, record
-  the exact surface/event sequence and use the loop breaker before changing
-  combat semantics again.
+- A fresh uncached `localhost:4173` route at 540x720 now proves one real center
+  tap (`Enemies: 2` -> `Enemies: 1`) and one three-enemy directional drag with
+  no count change; browser diagnostics were empty. The room clear used the
+  bounded high-damage QA aid, so physical-device, full-route, and clean-player
+  acceptance remain open. Do not raise the evidence percentage or deploy this
+  minor hardening until it is grouped with a substantial stable milestone.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 

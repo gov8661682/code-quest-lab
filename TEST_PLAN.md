@@ -77,7 +77,7 @@ temporary profile was removed through the in-game Manage Data confirmation.
   full touch-only session, summary/next-step review, clean D1-8/ending route,
   and physical-device lifecycle evidence remain required.
 
-### Joystick click-fallback hardening - 2026-08-08
+### Joystick click-fallback hardening - 2026-08-09
 
 - The shared Attack joystick now has a guarded click fallback for managed
   surfaces that emit a click after pointer-up delivery is lost. The guard must
@@ -85,8 +85,11 @@ temporary profile was removed through the in-game Manage Data confirmation.
   drag into an attack.
 - Focused combat contracts (18), `npm.cmd run release:verify` (93 tests),
   `npm.cmd run qa:fast`, the production build, and native sync passed after the
-  change. Manual post-edit browser/device validation remains open and this
-  hardening is not yet acceptance evidence.
+  change. A fresh uncached `localhost:4173` browser at 540x720 then confirmed a
+  real center tap reduced D1 `Enemies: 2` to `Enemies: 1` with empty logs; a
+  directional drag left a three-enemy room unchanged. The clear used the
+  bounded high-damage QA aid, so physical-device/full-route and clean-player
+  acceptance remain open.
 
 ### Fresh-profile functional V1 route probe - 2026-08-08
 

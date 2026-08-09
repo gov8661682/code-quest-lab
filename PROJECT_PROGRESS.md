@@ -1,6 +1,6 @@
 # Code Quest Lab - Project Progress Report
 
-Reviewed: 2026-08-08
+Reviewed: 2026-08-09
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
@@ -43,9 +43,13 @@ Attack joystick now accepts a guarded click fallback for managed surfaces that
 emit a click but lose pointer-up delivery; duplicate pointer-up taps and
 directional drags remain suppressed. The source mirror is synchronized, and
 18 focused combat contracts, `release:verify` (93 tests), `qa:fast`, the
-production build, and native sync pass. A fresh post-edit browser/device route
-is still required before this can count toward touch or clean-player
-acceptance; the score remains **79%** / **18%** and no deployment was made.
+production build, and native sync pass. A fresh post-edit browser run on an
+uncached `localhost:4173` origin at 540x720 confirmed one real center tap
+reduced D1 `Enemies: 2` to `Enemies: 1` with empty browser diagnostics, and a
+directional drag left a three-enemy room unchanged. The room clear used the
+bounded high-damage QA aid, so this is managed-browser input evidence, not
+physical-device, full-route, or clean-player acceptance; the score remains
+**79%** / **18%** and no deployment was made.
 
 The next route QA slice is locally verified and recorded as a GitHub/website
 checkpoint.

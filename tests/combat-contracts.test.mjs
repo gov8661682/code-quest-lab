@@ -155,7 +155,9 @@ test('touch attack joystick supports a bounded nearest-target tap', () => {
   assert.match(SOURCE, /e\.pointerId!=null&&e\.pointerId!==this\.pointerId/, 'global releases can neutralize a captured joystick');
   assert.match(SOURCE, /e\.type==='pointerup'\|\|e\.type==='touchend'/, 'tap action only fires on a release event');
   assert.match(SOURCE, /this\.base\.addEventListener\('click',\s+function\(e\)\{self\.onClick\(e\);\}\)/, 'managed-browser click fallback is wired');
-  assert.match(SOURCE, /Joystick\.prototype\.onClick=function\(e\)\{[\s\S]*this\.clickFallbackEligible[\s\S]*this\.lastTapAt/, 'click fallback is guarded against duplicate taps and drags');
+  assert.match(SOURCE, /Joystick\.prototype\.onClick=function\(e\)\{[\s\S]*var activeTap=this\.active&&!this\.moved&&now-this\.startTime<320/, 'active managed clicks can recover a lost pointer-up tap');
+  assert.match(SOURCE, /Joystick\.prototype\.onClick=function\(e\)\{[\s\S]*this\.clickFallbackEligible[\s\S]*this\.lastTapAt[\s\S]*this\.reset\(\)/, 'click fallback is guarded against duplicate taps and drags');
+  assert.match(SOURCE, /Joystick\.prototype\.onStart=function\(e\)\{this\.active=true/, 'joystick pointerdown preserves the browser click fallback');
   assert.match(SOURCE, /function queueNearestAttack\(\)/, 'nearest-target attack queue helper is present');
   assert.match(SOURCE, /function queueNearestAttack\(\)[\s\S]*desktopInput\.mouseSeen=false[\s\S]*desktopAttackTapState\.queued=true/, 'tap action clears stale aim and queues one shared attack');
   assert.match(SOURCE, /rightStick=new Joystick\(document\.getElementById\('joyRight'\),document\.getElementById\('knobRight'\),queueNearestAttack\)/, 'the production Attack joystick uses the tap action');

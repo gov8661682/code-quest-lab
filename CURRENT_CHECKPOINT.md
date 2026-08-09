@@ -1,6 +1,6 @@
 # Code Quest Lab - Current Checkpoint
 
-Updated: 2026-08-08
+Updated: 2026-08-09
 
 ## Current checkpoint
 
@@ -14,7 +14,7 @@ Active checkpoint completion: **79%**
 
 Overall project completion: **18%**
 
-Scoring date: 2026-08-08. Overall progress is rounded from one completed
+Scoring date: 2026-08-09. Overall progress is rounded from one completed
 checkpoint plus 79% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
@@ -69,6 +69,15 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   This has not yet been revalidated in a fresh browser/device route, so it does
   not add clean-player or touch-only evidence, change the **79%** / **18%**
   score, or warrant a deployment checkpoint.
+
+- Post-edit runtime validation on a fresh uncached `localhost:4173` origin at
+  540x720 confirmed the repaired control in a real D1 room: one center tap
+  reduced `Enemies: 2` to `Enemies: 1`, and browser diagnostics were empty. A
+  separate three-enemy room remained at `Enemies: 3` after a directional drag,
+  so the drag did not trigger a duplicate tap; the room was cleared only with
+  the bounded high-damage QA aid. This is managed-browser input evidence, not
+  physical-device, full-route, or clean-player acceptance. The score remains
+  **79%** / **18%** and no deployment checkpoint was created.
 
 - A disposable loopback QA Mage traversed the functional V1 chain through D1,
   D2, D4, D5, D6, D7, and D8 using the developer invincibility aid and 10x
