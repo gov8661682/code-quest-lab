@@ -13,14 +13,17 @@ within the five-attempt loop limit; the route was stopped and the disposable
 profile was deleted. This is not clean-player D1-8, touch-only, or physical
 device evidence.
 
-The runtime now exposes a contextual `Proceed Through Exit` button only after
-a real forward combat room is cleared or a shrine/treasure reward is claimed.
-It is hidden in Dungeon Entrance and unclaimed static rooms, preserves the
-normal room-save/transition handoff, and fresh 540x720 browser checks advanced
-`room_m0` to `room_m1` and a completed shrine into the treasure room through
-the button. The source mirror, 94-test release gate, deterministic QA,
-production build, and native sync pass. The score remains **79%** / **18%**;
-this local usability hardening does not warrant a deployment checkpoint.
+The runtime now exposes an optional touch fallback for constrained browser
+surfaces: Town can follow the Northern Road, an entrance hub can open its
+existing Dungeon Gate flow, and a dungeon `START` room can enter its first
+combat room. Normal walking remains available. `Proceed Through Exit` stays
+hidden in Town, entrance hubs, and unclaimed static rooms, then appears after
+a real forward combat clear or a shrine/treasure reward. Fresh 540x720 checks
+passed Town -> D1 Entrance -> gate selection -> D1 `room_m0`, `room_m0` ->
+`room_m1`, and completed shrine -> treasure. The source mirror, 95-test release
+gate, deterministic QA, production build, and native sync pass. The score
+remains **79%** / **18%**; this local usability hardening does not warrant a
+deployment checkpoint.
 
 ## Architecture and fast QA milestone (2026-08-08)
 

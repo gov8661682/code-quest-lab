@@ -1,6 +1,6 @@
 # Code Quest Lab - Test Plan
 
-Updated: 2026-08-08
+Updated: 2026-08-09
 
 ## Test rules
 
@@ -10,6 +10,24 @@ Updated: 2026-08-08
 - Record browser, viewport, commit, date, and result for each manual run.
 - Treat 13-17-year-old tablet users as the primary test audience; inspect clarity and tone without adding childish language.
 - Treat the public review pages and deployment package as release surfaces: verify every same-origin route, CSP/permissions headers, HTTPS, and clean-browser rendering.
+
+## Managed touch-surface travel fallback - 2026-08-09
+
+- On a fresh 540x720 local run, verify `Follow Northern Road` in Town enters
+  the existing D1 Entrance zone without removing the walkable portal.
+- Verify the entrance button opens the existing Dungeon Gate and difficulty
+  selection, then verify the dungeon `START` button enters the first combat
+  room.
+- Clear one combat room with the protected developer QA aid, confirm
+  `Proceed Through Exit` advances to the graph's forward room, and confirm the
+  prompt is hidden in Town, entrance hubs, and unclaimed shrine/treasure rooms.
+- Claim a shrine reward and confirm the same contextual exit fallback advances
+  to its forward treasure room. Record this as managed-surface usability
+  evidence only; it does not substitute for a clean player route, physical
+  touch device, or the 10-30 minute tablet-session lane.
+- Current result: Town -> D1 Entrance -> gate selection -> D1 `room_m0`,
+  `room_m0` -> `room_m1`, and shrine -> treasure passed with empty browser
+  diagnostics. Full release gate: 95/95; no deployment checkpoint.
 
 ## Baseline smoke journey
 
@@ -104,7 +122,7 @@ temporary profile was removed through the in-game Manage Data confirmation.
   save/fade transition. The local browser checks passed: it appeared after the
   QA room clear and advanced `room_m0` to `room_m1`, then advanced a claimed
   shrine into the treasure room.
-- Focused contracts and the full **94-test** release gate passed, as did
+- Focused contracts and the full **95-test** release gate passed, as did
   `qa:fast`, the production build, and Capacitor native sync. No deployment or
   score change is warranted by this local hardening slice.
 

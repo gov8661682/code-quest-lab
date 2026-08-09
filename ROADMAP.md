@@ -184,10 +184,26 @@ exist:
   a new progression shortcut. Fresh 540x720 local runtime checks advanced
   `room_m0` to `room_m1`, then advanced a completed shrine into the treasure
   room with the action.
-- The source mirror, 94-test release gate, deterministic QA, production build,
+- The source mirror, 95-test release gate, deterministic QA, production build,
   and native sync pass. Full D1-8 normal combat, 10-30 minute touch-only
   session, physical-device validation, and the next website checkpoint remain
   open; the score stays **79%** / **18%**.
+
+### Static-hub and dungeon-start travel fallback (2026-08-09; local, not a milestone checkpoint)
+
+- The same managed-surface diagnosis showed that a player could also be
+  stranded before the first combat room because continuous movement was not
+  reaching the Town portal or entrance gate. Added optional buttons that reuse
+  the existing Town -> Entrance -> Dungeon Gate flow, plus a dungeon-start
+  `Enter Dungeon` action. Walking remains the primary open-world interaction;
+  the buttons are a constrained touch/browser fallback.
+- Fresh 540x720 runtime checks completed Town -> D1 Entrance -> Normal trial ->
+  modifier -> D1 `room_m0`, then used the cleared-room fallback to reach
+  `room_m1` and the shrine-to-treasure handoff. No new content boundary was
+  opened and no clean-player/touch-only score was claimed.
+- The 95-test release gate, deterministic QA, production build, source mirror,
+  and native sync pass. This remains local hardening; group it with the next
+  substantial stable route milestone before deploying.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 

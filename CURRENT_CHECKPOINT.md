@@ -24,7 +24,7 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | 93-test release verification, build/package audit, native sync, milestone commit `20f85ba` pushed to GitHub, Cloudflare Pages preview `d8829db6` and configured hostname both passed production checks, and live desktop/tablet profile-shell smoke passed at 1024x768 and 1440x900 | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | 95-test release verification, build/package audit, native sync, milestone commit `20f85ba` pushed to GitHub, Cloudflare Pages preview `d8829db6` and configured hostname both passed production checks, and live desktop/tablet profile-shell smoke passed at 1024x768 and 1440x900 | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-09)
@@ -38,15 +38,17 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
   not clean-player D1-8 or touch-only acceptance evidence, and the disposable
   profile was deleted.
 
-- Added a contextual `Proceed Through Exit` button as a touch-first fallback.
-  It stays hidden in the Dungeon Entrance, new `START` rooms, and unclaimed
-  static rooms; after a real forward combat clear or claimed shrine/treasure
-  reward it preserves the ordinary room-save and transition handoff. Fresh
-  540x720 browser checks advanced `room_m0` to `room_m1`, then advanced a
-  completed shrine into the treasure room. The full release gate now passes
-  **94 tests**; `qa:fast`, production build, and Capacitor native sync also
-  pass. This is a local usability hardening slice, not a new acceptance lane or
-  deployment checkpoint, so the score remains **79%** / **18%**.
+- Added a contextual touch fallback for constrained browser surfaces. `Follow
+  Northern Road` is available in Town, the entrance hub exposes its existing
+  gate flow, and a dungeon `START` room exposes `Enter Dungeon`; normal walking
+  remains available. `Proceed Through Exit` stays hidden in Town, entrance
+  hubs, and unclaimed static rooms, then appears after a real forward combat
+  clear or claimed shrine/treasure reward. Fresh 540x720 checks advanced Town
+  -> D1 Entrance -> gate selection -> D1 `room_m0`, then `room_m0` -> `room_m1`
+  and a completed shrine -> treasure. The full release gate passes **95
+  tests**; `qa:fast`, production build, and Capacitor native sync also pass.
+  This is local usability hardening, not a new acceptance lane or deployment
+  checkpoint, so the score remains **79%** / **18%**.
 
 - A local 540x720 touch-surface probe used a disposable Mage on Normal
   difficulty and exercised the visible attack control through D1 combat,

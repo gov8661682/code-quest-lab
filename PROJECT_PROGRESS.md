@@ -20,12 +20,15 @@ Keyboard, arrow, joystick-drag, refocus, and pause/resume paths were bounded
 under the five-attempt loop policy and the route was stopped. The disposable
 profile was deleted; no clean-player or touch-only score was claimed.
 
-The targeted response adds a contextual `Proceed Through Exit` button. It is
-hidden in Entrance/`START` and unclaimed static rooms, appears after a real
-forward combat clear or a claimed shrine/treasure reward, and preserves the
-existing save and transition handoff. Fresh 540x720 runtime checks used the
-local QA room-clear aid to advance `room_m0` to `room_m1`, then claimed a
-shrine and advanced into the treasure room. The source mirror, **94-test**
+The targeted response adds an optional touch fallback for constrained browser
+surfaces. Town exposes `Follow Northern Road`, an entrance hub exposes its
+existing gate flow, and a dungeon `START` room exposes `Enter Dungeon`; normal
+walking remains available. `Proceed Through Exit` is hidden in Town, entrance
+hubs, and unclaimed static rooms, appears after a real forward combat clear or
+a claimed shrine/treasure reward, and preserves the existing save and
+transition handoff. Fresh 540x720 runtime checks used the fallback to advance
+Town -> D1 Entrance -> gate selection -> D1 `room_m0`, then `room_m0` ->
+`room_m1` and a claimed shrine -> treasure. The source mirror, **95-test**
 release gate, `qa:fast`, production build, and native sync pass. The score
 remains **79%** / **18%** and no deployment checkpoint was created.
 

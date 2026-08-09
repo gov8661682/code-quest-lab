@@ -2,6 +2,18 @@
 
 ## Unreleased - 2026-08-09
 
+- Added an optional touch travel fallback for constrained browser surfaces:
+  Town can follow the Northern Road, entrance hubs open their existing gate
+  flow, and dungeon `START` rooms can enter the first combat room. Normal
+  walking remains available, preserving the open-world route. The cleared-room
+  fallback remains hidden in Town, entrance hubs, and unclaimed static rooms,
+  then appears after a combat clear or claimed shrine/treasure reward. Fresh
+  540x720 checks passed Town -> D1 Entrance -> gate selection -> D1 `room_m0`,
+  `room_m0` -> `room_m1`, and shrine -> treasure.
+- The source mirror, 95-test release gate, deterministic QA, production build,
+  and Capacitor native sync pass. No website deployment checkpoint or score
+  change was made for this local hardening slice.
+
 - Added a contextual `Proceed Through Exit` fallback for cleared forward rooms.
   It remains hidden in Dungeon Entrance, `START`, and unclaimed static rooms;
   after a combat clear or claimed shrine/treasure reward it preserves the
@@ -9,7 +21,7 @@
   `room_m0` to `room_m1` and a completed shrine into the treasure room. The
   change responds to a bounded managed-browser directional-input diagnosis; it
   does not replace physical touch testing or claim a clean-player route.
-- The source mirror, 94-test release gate, deterministic QA, production build,
+- The source mirror, 95-test release gate, deterministic QA, production build,
   and Capacitor native sync pass. No website deployment checkpoint or score
   change was made for this minor local hardening slice.
 

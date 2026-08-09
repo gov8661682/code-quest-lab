@@ -182,6 +182,8 @@ html, body {
 #doorStatus { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1em; color:#d8a23a; letter-spacing:0.2em; text-transform:uppercase; text-align:center; z-index:5; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #doorStatus.doorStatusLocked { top:112px; transform:translateX(-50%); width:min(88vw,560px); padding:6px 12px; color:#ffe6a6; background:rgba(10,8,14,0.9); border:1px solid rgba(216,162,58,0.85); box-shadow:0 3px 12px rgba(0,0,0,0.42); font-size:0.82em; line-height:1.35; letter-spacing:0.14em; text-shadow:0 1px 2px #050509; }
 #doorStatus.visible { opacity:1; }
+#worldRouteBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:210px; min-height:40px; padding:9px 16px; background:rgba(16,14,28,0.95); border:2px solid #8a70b8; border-radius:6px; color:#d8c8f8; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(138,112,184,0.2); }
+#worldRouteBtn:active { background:#28213d; border-color:#c8a8f8; }
 #roomExitBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #d8a23a; border-radius:6px; color:#ffd98a; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(216,162,58,0.18); }
 #roomExitBtn:active { background:#332713; border-color:#ffe6a6; }
 #waveBanner { position:absolute; top:56px; left:50%; transform:translateX(-50%); text-align:center; z-index:15; pointer-events:none; opacity:0; transition:opacity 0.3s; }
@@ -643,6 +645,7 @@ html, body {
   #enemyCount { bottom:116px; font-size:0.62em; }
   #autoRushBtn { bottom:116px !important; }
   #npcInteractBtn { bottom:164px !important; max-width:70vw; overflow:hidden; text-overflow:ellipsis; }
+  #worldRouteBtn { bottom:164px; max-width:78vw; }
   #roomExitBtn { bottom:164px; max-width:78vw; }
 }
 @media (max-height:520px) and (max-width:900px) {
@@ -905,9 +908,10 @@ html, body {
     <div class="hudDivider hudOptionalPhone"></div>
     <div class="hudStat hudOptionalPhone"><div class="statVal" id="hudSouls">0</div><div class="statLbl">Souls</div></div>
   </div>
-<button id="pauseBtn">⏸</button>
+  <button id="pauseBtn">⏸</button>
 <button id="autoRushBtn" style="display:none;position:absolute;bottom:158px;left:50%;transform:translateX(-50%);width:90px;height:36px;background:rgba(10,28,40,0.95);border:2px solid #3ab8e8;border-radius:4px;color:#b8e8ff;font-size:0.65em;cursor:pointer;z-index:12;letter-spacing:0.05em;text-align:center;touch-action:manipulation;">AUTO RUSH<br>✓ ON</button>
   <button id="npcInteractBtn" style="display:none;position:absolute;bottom:210px;left:50%;transform:translateX(-50%);padding:10px 24px;background:rgba(20,16,10,0.92);border:2px solid #d8a23a;border-radius:6px;color:#ffd98a;font-size:0.75em;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;z-index:13;touch-action:manipulation;font-family:Georgia,'Times New Roman',serif;white-space:nowrap;">Press <span id="npcInteractLabel">Interact</span> to <span id="npcInteractVerb">talk</span></button>
+  <button id="worldRouteBtn" type="button" aria-label="Use world route">Use World Route</button>
   <button id="roomExitBtn" type="button" aria-label="Proceed through exit">Proceed Through Exit</button>
   <div id="roomInfo">Start Room</div>
   <div id="objectiveInfo"></div>
@@ -22744,6 +22748,38 @@ function resetWaypointHold(){
 // on screen. Clear both transient messages before Town, an Entrance Area, or
 // a new run is presented so stale dungeon state never makes a safe world look
 // blocked.
+function hideWorldRoutePrompt(){
+  var el=document.getElementById('worldRouteBtn');
+  if(el)el.style.display='none';
+}
+function updateWorldRoutePrompt(){
+  var el=document.getElementById('worldRouteBtn');
+  if(!el)return;
+  var isTown=activeDungeonId==='town';
+  var isEntrance=typeof isEntranceZone==='function'&&isEntranceZone(activeDungeonId);
+  if(!isTown&&!isEntrance){
+    hideWorldRoutePrompt();
+    return;
+  }
+  var dungeonId=isEntrance?getEntranceDungeonId(activeDungeonId):'dungeon1';
+  var dungeonDef=DUNGEON_DEFS[dungeonId];
+  var dungeonName=dungeonDef&&dungeonDef.name?dungeonDef.name:'Forgotten Depths';
+  el.textContent=isTown?'Follow Northern Road':'Enter '+dungeonName+' Gate';
+  el.setAttribute('aria-label',isTown?'Follow the northern road to the Forgotten Depths':'Enter '+dungeonName+' gate');
+  el.style.display='block';
+}
+function handleWorldRoutePrompt(){
+  if(activeDungeonId==='town'){
+    _townPortalInsideFlag=true;
+    enterEntrance('dungeon1');
+    return;
+  }
+  if(typeof isEntranceZone==='function'&&isEntranceZone(activeDungeonId)){
+    var dungeonId=getEntranceDungeonId(activeDungeonId);
+    _gateInsideFlag=true;
+    openDungeonGate(dungeonId);
+  }
+}
 function hideRoomExitPrompt(){
   var el=document.getElementById('roomExitBtn');
   if(el)el.style.display='none';
@@ -22752,15 +22788,21 @@ function roomExitPromptAvailable(def){
   var roomType=def&&(def._sideRoomType||def.type);
   var combatLike=roomType===RT.COMBAT||roomType===RT.ELITE||
     roomType===RT.MINIBOSS||roomType===RT.SIDE;
+  var dungeonStart=roomType===RT.START&&activeDungeonId!=='town'&&
+    activeDungeonId!=='bob_arena'&&!(typeof isEntranceZone==='function'&&isEntranceZone(activeDungeonId));
   var rewardComplete=roomType===RT.SHRINE&&!!(roomStates[currentRoomId]&&roomStates[currentRoomId].shrineUsed) ||
     roomType===RT.TREASURE&&!!(roomStates[currentRoomId]&&roomStates[currentRoomId].chestOpened);
-  return !!(def&&def.forward&&(combatLike||rewardComplete)&&activeDungeonId!=='town'&&
+  return !!(def&&def.forward&&(combatLike||dungeonStart||rewardComplete)&&activeDungeonId!=='town'&&
     exitDoor&&roomCleared&&!roomTransitioning);
 }
 function updateRoomExitPrompt(def){
   var el=document.getElementById('roomExitBtn');
   if(!el)return;
-  el.style.display=roomExitPromptAvailable(def)?'block':'none';
+  var available=roomExitPromptAvailable(def);
+  var roomType=def&&(def._sideRoomType||def.type);
+  el.textContent=roomType===RT.START?'Enter Dungeon':'Proceed Through Exit';
+  el.setAttribute('aria-label',roomType===RT.START?'Enter dungeon':'Proceed through exit');
+  el.style.display=available?'block':'none';
 }
 function handleRoomExitPrompt(){
   var def=ROOM_DEFS[currentRoomId];
@@ -22774,6 +22816,7 @@ function handleRoomExitPrompt(){
 function resetSessionTransientUi(){
   var doorStatus=document.getElementById('doorStatus');
   if(doorStatus){doorStatus.classList.remove('visible','doorStatusLocked');doorStatus.textContent='';}
+  hideWorldRoutePrompt();
   hideRoomExitPrompt();
   resetWaypointHold();
 }
@@ -25089,6 +25132,7 @@ safeClick('achBackBtn','Ach Back',function(){openMainMenu();});
 safeClick('equipBackBtn','Equip Back',function(){closeCharScreenToMenu();});
 safeClick('eventCloseBtn','Event Close',function(){closeEventOverlay(currentRoomId,false);});
 safeClick('masteryBackBtn','Mastery Back',function(){closeCharScreenToMenu();});
+safeClick('worldRouteBtn','World Route',function(){handleWorldRoutePrompt();});
 safeClick('roomExitBtn','Room Exit',function(){handleRoomExitPrompt();});
 safeClick('pauseBtn','Pause',function(){openPauseMenu();});
 safeClick('pauseResumeBtn','Resume',function(){closePauseMenu();});
@@ -42007,6 +42051,7 @@ function updateDoorInteraction(geo){
 // ============================================================
 function updateRoomProgress(geo){
   var def=ROOM_DEFS[currentRoomId];if(!def)return;
+  updateWorldRoutePrompt();
   updateRoomExitPrompt(def);
   var doorStatus=document.getElementById('doorStatus');
   if(!doorStatus)return;

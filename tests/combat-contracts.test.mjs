@@ -166,11 +166,20 @@ test('touch attack joystick supports a bounded nearest-target tap', () => {
 test('cleared rooms expose a contextual touch exit fallback', () => {
   assert.match(SOURCE, /<button id="roomExitBtn"[^>]*aria-label="Proceed through exit"/, 'the exit fallback is an accessible button');
   assert.match(SOURCE, /function roomExitPromptAvailable\(def\)\{[\s\S]*def\.forward[\s\S]*roomCleared[\s\S]*!roomTransitioning/, 'the prompt requires a real cleared forward route');
-  assert.match(SOURCE, /var roomType=def&&\(def\._sideRoomType\|\|def\.type\);[\s\S]*var combatLike=roomType===RT\.COMBAT[\s\S]*roomType===RT\.MINIBOSS/, 'static shrine and treasure rooms do not inherit a stale combat exit prompt');
+  assert.match(SOURCE, /var roomType=def&&\(def\._sideRoomType\|\|def\.type\);[\s\S]*var combatLike=roomType===RT\.COMBAT[\s\S]*roomType===RT\.MINIBOSS[\s\S]*var dungeonStart=roomType===RT\.START/, 'static shrine and treasure rooms stay hidden while dungeon starts get a clear forward action');
   assert.match(SOURCE, /function handleRoomExitPrompt\(\)\{[\s\S]*saveRoomState\(currentRoomId\);[\s\S]*window\._lastRoomTransitDir='forward';[\s\S]*fadeToRoom\(def\.forward\)/, 'the fallback preserves the normal save and room-transition handoff');
   assert.match(SOURCE, /safeClick\('roomExitBtn','Room Exit',function\(\)\{handleRoomExitPrompt\(\);\}\)/, 'the fallback is wired through the guarded click layer');
   const roomProgress = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'room progress');
   assert.match(roomProgress, /updateRoomExitPrompt\(def\);/, 'room progress refreshes the contextual exit state');
+});
+
+test('static world hubs expose an optional touch travel fallback', () => {
+  assert.match(SOURCE, /<button id="worldRouteBtn"[^>]*aria-label="Use world route"/, 'the hub travel fallback is an accessible button');
+  assert.match(SOURCE, /function updateWorldRoutePrompt\(\)\{[\s\S]*activeDungeonId==='town'[\s\S]*isEntranceZone\(activeDungeonId\)[\s\S]*el\.style\.display='block'/, 'Town and dungeon entrances expose the fallback without changing normal movement');
+  assert.match(SOURCE, /function handleWorldRoutePrompt\(\)\{[\s\S]*enterEntrance\('dungeon1'\)[\s\S]*openDungeonGate\(dungeonId\)/, 'the fallback follows the existing Town portal and dungeon gate flow');
+  assert.match(SOURCE, /safeClick\('worldRouteBtn','World Route',function\(\)\{handleWorldRoutePrompt\(\);\}\)/, 'hub travel uses the guarded click layer');
+  const roomProgress = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'room progress');
+  assert.match(roomProgress, /updateWorldRoutePrompt\(\);/, 'hub travel state refreshes with the shared room progress update');
 });
 
 test('touch-first combat offers a visible, session-only target lock', () => {
