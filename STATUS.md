@@ -3,6 +3,26 @@
 Date: 2026-08-09
 State: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
+## Step movement fallback and bounded full-route probe (2026-08-09; local, no deployment checkpoint)
+
+The constrained-surface route now has a small, optional Step movement pad with
+North/West/South/East actions. Each tap queues a short directional input in the
+existing player movement and collision loop; it does not teleport, skip rooms,
+alter combat values, or enter save/export state. A fresh 540x720 Mage run used
+the pad to traverse Town and the entrance-to-portal handoffs through D1, D2,
+D4, D5, D6, D7, and D8. The run reached the named end bosses and
+`THE SESSION IS COMPLETE`, then passed Finish For Now and Pause -> Finish and
+Return to Dashboard. Normal attack input was exercised in D4, while bounded
+developer encounter completion was used for the remaining accelerated route;
+this remains functional managed-surface evidence, not clean-player,
+physical-device, or 10-30-minute touch acceptance. The disposable profile was
+deleted and browser diagnostics were empty.
+
+The source mirror, `npm.cmd run qa:fast`, production build, Capacitor native
+sync, and `npm.cmd run release:verify` pass. The current release gate is
+**97/97**. This is a minor local usability hardening slice; the score remains
+**79%** / **18%** and no website deployment checkpoint was created.
+
 ## Tablet exit fallback and bounded route diagnosis (2026-08-09; local, no deployment checkpoint)
 
 A fresh protected Mage run on the uncached local shell at 540x720 reached a
@@ -22,7 +42,7 @@ a real forward combat clear or a shrine/treasure reward. Fresh 540x720 checks
 passed Town -> D1 Entrance -> gate selection -> D1 `room_m0`, `room_m0` ->
 `room_m1`, and completed shrine -> treasure. An unclaimed treasure also exposed
 `Open Treasure`, delivered the existing loot overlay, and then exposed the
-ordinary forward exit. The source mirror, 96-test release gate, deterministic
+  ordinary forward exit. The source mirror, 97-test release gate, deterministic
 QA, production build, and native sync pass. The score
 remains **79%** / **18%**; this local usability hardening does not warrant a
 deployment checkpoint.

@@ -29,8 +29,25 @@ Updated: 2026-08-09
   physical touch device, or the 10-30 minute tablet-session lane.
 - Current result: Town -> D1 Entrance -> gate selection -> D1 `room_m0`,
   `room_m0` -> `room_m1`, shrine -> treasure, and treasure reward -> forward
-  exit passed with empty browser diagnostics. Full release gate: 96/96; no
+  exit passed with empty browser diagnostics. Full release gate: 97/97; no
   deployment checkpoint.
+
+## Step movement fallback - 2026-08-09
+
+- On the same fresh 540x720 managed surface, verify the visible Step movement
+  group exposes North/West/South/East actions and that each tap is delivered as
+  a bounded input through the ordinary movement/clamp path.
+- Confirm the fallback can move through Town and the dungeon entrance/portal
+  handoffs without exposing a skip-room or debug-only route. Keep the existing
+  keyboard, joystick, and collision behavior intact.
+- Current result: the disposable Mage route used the pad for Town and the
+  D1/D2/D4-D8 portal handoffs, reached the D8 ending, and completed Finish For
+  Now plus Pause -> Finish and Return to Dashboard. Browser diagnostics were
+  empty and the profile was deleted. The route used bounded developer room/boss
+  completion after normal attack attempts, so this remains managed-surface
+  functional evidence, not clean-player, physical-device, or 10-30-minute
+  touch-session acceptance. Focused contracts and the full release gate pass
+  **97/97**; no deployment checkpoint.
 
 ## Baseline smoke journey
 

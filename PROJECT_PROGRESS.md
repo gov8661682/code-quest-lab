@@ -13,6 +13,19 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
 
+On 2026-08-09, the new Step movement pad was verified in a fresh loopback Mage
+run at 540x720. The four directional actions feed the shared movement and
+collision loop, and the run used them for Town travel plus D1/D2/D4-D8 portal
+handoffs. The route reached every V1 end boss and `THE SESSION IS COMPLETE`,
+then completed Finish For Now and Pause -> Finish and Return to Dashboard. A
+bounded normal attack attempt was exercised in D4; the accelerated remainder
+used the documented developer encounter aid, so this is managed-surface
+functional evidence rather than clean-player, physical-device, or 10-30-minute
+touch acceptance. The disposable profile was deleted and browser diagnostics
+were empty. The source mirror, `qa:fast`, production build, native sync, and
+the **97-test** release gate pass. The score remains **79%** / **18%** and no
+deployment checkpoint was created.
+
 On 2026-08-09, a fresh protected Mage route on the uncached local shell at
 540x720 reached a cleared D1 room, then reproduced a managed-browser
 navigation failure: normal directional input did not reach the forward door.
@@ -30,7 +43,7 @@ transition handoff. Fresh 540x720 runtime checks used the fallback to advance
 Town -> D1 Entrance -> gate selection -> D1 `room_m0`, then `room_m0` ->
 `room_m1` and a claimed shrine -> treasure. An unclaimed treasure also exposed
 `Open Treasure`, delivered the existing loot overlay, and then exposed the
-ordinary forward exit. The source mirror, **96-test** release gate, `qa:fast`,
+ordinary forward exit. The source mirror, **97-test** release gate, `qa:fast`,
 production build, and native sync pass. The score
 remains **79%** / **18%** and no deployment checkpoint was created.
 

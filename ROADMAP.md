@@ -87,6 +87,17 @@ lifecycle evidence.
   must remain queued. Both behaviors require focused contracts and a fresh-room
   playthrough before the next major deployment.
 
+### Managed-surface movement hardening (2026-08-09; local follow-up)
+
+The visible Step movement pad is a normal player-control fallback for managed
+or embedded surfaces that do not reliably deliver continuous joystick drags. It
+is bounded to a short input duration, prioritized behind keyboard and joystick
+movement, and covered by a focused contract. Fresh 540x720 route evidence
+verified the pad across Town and dungeon portal handoffs, with the D8 ending
+reachable in a QA-assisted functional run. This does not close the clean-player
+or 10-30-minute touch acceptance lanes and does not trigger a deployment
+checkpoint; the next high-priority item remains clean route/session evidence.
+
 Acceptance: a clean profile can complete a meaningful 10-30 minute tablet session and the locked V1 path in supported browser viewports; active-run recovery and optional play-support checks pass; remaining save-compatibility and full-path evidence is recorded.
 
 ### Architecture and fast QA slice (2026-08-08; deployed milestone checkpoint)

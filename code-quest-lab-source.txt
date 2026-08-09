@@ -188,6 +188,13 @@ html, body {
 #roomRewardBtn:active { background:#332713; border-color:#fff0c8; }
 #roomExitBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #d8a23a; border-radius:6px; color:#ffd98a; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(216,162,58,0.18); }
 #roomExitBtn:active { background:#332713; border-color:#ffe6a6; }
+#moveNudgePad { position:absolute; left:50%; bottom:7px; transform:translateX(-50%); width:96px; height:96px; z-index:11; pointer-events:none; }
+#moveNudgePad button { position:absolute; width:30px; height:30px; padding:0; border:1px solid rgba(216,192,138,0.72); border-radius:5px; background:rgba(12,14,20,0.78); color:#d8c08a; font:700 0.9em/1 Georgia,serif; cursor:pointer; pointer-events:auto; touch-action:manipulation; box-shadow:0 0 8px rgba(0,0,0,0.22); }
+#moveNudgePad button:active { background:#352c1b; border-color:#ffe6a6; color:#fff0c8; }
+#moveNudgeUp { left:33px; top:0; }
+#moveNudgeLeft { left:0; top:33px; }
+#moveNudgeDown { left:33px; top:66px; }
+#moveNudgeRight { left:66px; top:33px; }
 #waveBanner { position:absolute; top:56px; left:50%; transform:translateX(-50%); text-align:center; z-index:15; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #waveBanner.visible { opacity:1; }
 #waveBanner .bannerTitle { font-size:1.5em; letter-spacing:0.25em; color:#d8c08a; text-shadow:0 0 12px rgba(216,192,138,0.5); text-transform:uppercase; }
@@ -650,6 +657,7 @@ html, body {
   #worldRouteBtn { bottom:164px; max-width:78vw; }
   #roomRewardBtn { bottom:164px; max-width:78vw; }
   #roomExitBtn { bottom:164px; max-width:78vw; }
+  #moveNudgePad { bottom:max(7px,env(safe-area-inset-bottom)); }
 }
 @media (max-height:520px) and (max-width:900px) {
   .screen:not(#gameScreen) { justify-content:flex-start; overflow-y:auto; padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left)); }
@@ -917,6 +925,12 @@ html, body {
   <button id="worldRouteBtn" type="button" aria-label="Use world route">Use World Route</button>
   <button id="roomRewardBtn" type="button" aria-label="Open treasure">Open Treasure</button>
   <button id="roomExitBtn" type="button" aria-label="Proceed through exit">Proceed Through Exit</button>
+  <div id="moveNudgePad" role="group" aria-label="Step movement controls">
+    <button id="moveNudgeUp" type="button" aria-label="Step north">▲</button>
+    <button id="moveNudgeLeft" type="button" aria-label="Step west">◀</button>
+    <button id="moveNudgeDown" type="button" aria-label="Step south">▼</button>
+    <button id="moveNudgeRight" type="button" aria-label="Step east">▶</button>
+  </div>
   <div id="roomInfo">Start Room</div>
   <div id="objectiveInfo"></div>
   <button id="touchAimAssistBadge" type="button" aria-pressed="true" title="Toggle touch target assist. Center-hold the Attack joystick to lock and fire.">TARGET ASSIST: ON</button>
@@ -25161,6 +25175,10 @@ safeClick('masteryBackBtn','Mastery Back',function(){closeCharScreenToMenu();});
 safeClick('worldRouteBtn','World Route',function(){handleWorldRoutePrompt();});
 safeClick('roomRewardBtn','Room Reward',function(){handleRoomRewardPrompt();});
 safeClick('roomExitBtn','Room Exit',function(){handleRoomExitPrompt();});
+safeClick('moveNudgeUp','Move North',function(){queueTouchMoveStep(0,-1);});
+safeClick('moveNudgeLeft','Move West',function(){queueTouchMoveStep(-1,0);});
+safeClick('moveNudgeDown','Move South',function(){queueTouchMoveStep(0,1);});
+safeClick('moveNudgeRight','Move East',function(){queueTouchMoveStep(1,0);});
 safeClick('pauseBtn','Pause',function(){openPauseMenu();});
 safeClick('pauseResumeBtn','Resume',function(){closePauseMenu();});
 safeClick('charMenuEquipmentBtn','Char Menu Equipment',function(){_charScreenOpenedFromPauseMenu=true;openEquipmentScreen();});
@@ -26354,6 +26372,22 @@ if(window.visualViewport)window.visualViewport.addEventListener('resize',functio
 // separate so iPad play continues to use the existing pointer controls.
 var desktopInput={keys:{},tapUntil:{},mouseDown:false,mouseX:0,mouseY:0,mouseSeen:false};
 var DESKTOP_TAP_NUDGE_MS=120;
+// Managed and embedded browsers can lose a sustained joystick pointer stream.
+// Keep a small, optional step pad as a normal player control: it feeds the
+// same movement/collision loop for a short eased step and never teleports,
+// skips a room, or changes combat state.
+var touchNudgeInput={x:0,y:0,ttl:0};
+var TOUCH_NUDGE_DURATION=0.34;
+function queueTouchMoveStep(dx,dy){
+  if(!desktopGameIsActive()||!gameRunning)return;
+  var mag=Math.hypot(dx,dy);
+  if(!mag)return;
+  touchNudgeInput.x=dx/mag;touchNudgeInput.y=dy/mag;
+  touchNudgeInput.ttl=TOUCH_NUDGE_DURATION;
+}
+function touchNudgeMoveVector(){
+  return touchNudgeInput.ttl>0?{x:touchNudgeInput.x,y:touchNudgeInput.y,mag:1}:{x:0,y:0,mag:0};
+}
 // Developer-only combat aid. This is intentionally session-scoped and has no
 // save/export representation. The loopback query gate keeps the hidden key
 // sequence unavailable on the configured public hostname and native builds.
@@ -26746,6 +26780,7 @@ function clearDesktopInput(){desktopInput.keys={};desktopInput.tapUntil={};deskt
 function clearAllInputState(){
   clearDesktopInput();
   resetTouchAttackState();
+  touchNudgeInput.x=0;touchNudgeInput.y=0;touchNudgeInput.ttl=0;
   touchCombatTargetTimer=0;
   if(leftStick){
     leftStick.active=false;
@@ -34385,8 +34420,11 @@ function updatePlayerMovement(dt,geo){
     if(playerKnockbackTime<=0){playerKnockbackVx=0;playerKnockbackVy=0;}
   }
   var desktopMove=desktopMoveVector();
-  var mx=desktopMove.mag?desktopMove.x:(leftStick?leftStick.dx:0);
-  var my=desktopMove.mag?desktopMove.y:(leftStick?leftStick.dy:0);
+  var touchNudge=touchNudgeMoveVector();
+  if(touchNudge.mag)touchNudgeInput.ttl=Math.max(0,touchNudgeInput.ttl-dt);
+  var joystickMove=leftStick&&leftStick.magnitude()>0.1?{x:leftStick.dx,y:leftStick.dy,mag:leftStick.magnitude()}:{x:0,y:0,mag:0};
+  var mx=desktopMove.mag?desktopMove.x:(joystickMove.mag?joystickMove.x:touchNudge.x);
+  var my=desktopMove.mag?desktopMove.y:(joystickMove.mag?joystickMove.y:touchNudge.y);
   var mag=Math.sqrt(mx*mx+my*my);
   if(mag>0.1){
     var nx=mx/mag,ny=my/mag;

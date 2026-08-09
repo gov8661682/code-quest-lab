@@ -2,6 +2,17 @@
 
 ## Unreleased - 2026-08-09
 
+- Added a visible, optional Step movement pad for constrained tablet/managed
+  browser surfaces. North/West/South/East taps queue short directional input in
+  the shared player movement and collision path, behind keyboard and joystick
+  input; they do not teleport, skip encounters, or affect save/export state.
+  Fresh 540x720 play used the pad through the world portals and reached the D8
+  ending in a bounded QA-assisted functional run. The disposable profile was
+  deleted and browser diagnostics were empty.
+- Added the movement contract and re-ran the release workflow: `qa:fast`, build,
+  Capacitor native sync, and **97/97** tests pass. This remains local usability
+  hardening; no website deployment checkpoint or score change was made.
+
 - Added an optional touch travel fallback for constrained browser surfaces:
   Town can follow the Northern Road, entrance hubs open their existing gate
   flow, and dungeon `START` rooms can enter the first combat room. Normal
@@ -12,7 +23,7 @@
   `room_m0` -> `room_m1`, and shrine -> treasure. An unclaimed treasure also
   exposed `Open Treasure`, delivered the existing loot overlay, and then
   exposed the ordinary forward exit.
-- The source mirror, 96-test release gate, deterministic QA, production build,
+- The source mirror, 97-test release gate, deterministic QA, production build,
   and Capacitor native sync pass. No website deployment checkpoint or score
   change was made for this local hardening slice.
 

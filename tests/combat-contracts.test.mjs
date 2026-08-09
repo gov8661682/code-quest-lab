@@ -191,6 +191,15 @@ test('unclaimed treasure rooms expose an optional touch reward action', () => {
   assert.match(roomProgress, /updateRoomRewardPrompt\(def\);/, 'treasure reward state refreshes with room progress');
 });
 
+test('managed touch surfaces expose step movement without bypassing the movement loop', () => {
+  assert.match(SOURCE, /<div id="moveNudgePad"[^>]*aria-label="Step movement controls"/, 'the fallback movement pad is grouped and labelled');
+  assert.match(SOURCE, /function queueTouchMoveStep\(dx,dy\)\{[\s\S]*desktopGameIsActive\(\)[\s\S]*gameRunning[\s\S]*TOUCH_NUDGE_DURATION/, 'step input is session gameplay input with a bounded duration');
+  assert.match(SOURCE, /var joystickMove=leftStick&&leftStick\.magnitude\(\)>0\.1[\s\S]*var mx=desktopMove\.mag\?desktopMove\.x:\(joystickMove\.mag\?joystickMove\.x:touchNudge\.x\)/, 'step input is a fallback behind keyboard and joystick input');
+  assert.match(SOURCE, /player\.x\+=_d16mvx;player\.y\+=_d16mvy;[\s\S]*clampPlayerToRoom\(geo\)/, 'step input reaches the shared movement and room-clamp path');
+  assert.match(SOURCE, /safeClick\('moveNudgeUp','Move North',function\(\)\{queueTouchMoveStep\(0,-1\);\}\)/, 'direction buttons use the guarded click layer');
+  assert.match(SOURCE, /safeClick\('moveNudgeDown','Move South',function\(\)\{queueTouchMoveStep\(0,1\);\}\)/, 'all step actions remain ordinary player controls');
+});
+
 test('touch-first combat offers a visible, session-only target lock', () => {
   assert.match(SOURCE, /var touchAimAssistEnabled=true;/, 'touch aim assist starts enabled for a fresh session');
   assert.match(SOURCE, /function findNearestCombatTarget\(aimAngle\)/, 'combat target selection covers live room targets');
