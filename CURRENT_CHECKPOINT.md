@@ -27,7 +27,26 @@ checkpoint plus 79% of the active checkpoint across ten checkpoints.
 | Tests, current records, GitHub, and website milestone | 10 | 10 | 93-test release verification, build/package audit, native sync, milestone commit `20f85ba` pushed to GitHub, Cloudflare Pages preview `d8829db6` and configured hostname both passed production checks, and live desktop/tablet profile-shell smoke passed at 1024x768 and 1440x900 | Re-run this evidence for the next major milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
-### Latest evidence update (2026-08-08)
+### Latest evidence update (2026-08-09)
+
+- A fresh protected Mage route on an uncached `localhost:4173` surface at
+  540x720 confirmed that the repaired attack path can clear a combat room, but
+  the managed browser did not move the player to the forward door after the
+  room cleared. Keyboard, arrow, joystick-drag, refocus, and pause/resume
+  paths were each tried within the bounded five-attempt policy; the route was
+  stopped and the exact failure was preserved rather than repeated. This is
+  not clean-player D1-8 or touch-only acceptance evidence, and the disposable
+  profile was deleted.
+
+- Added a contextual `Proceed Through Exit` button as a touch-first fallback.
+  It stays hidden in the Dungeon Entrance, new `START` rooms, and unclaimed
+  static rooms; after a real forward combat clear or claimed shrine/treasure
+  reward it preserves the ordinary room-save and transition handoff. Fresh
+  540x720 browser checks advanced `room_m0` to `room_m1`, then advanced a
+  completed shrine into the treasure room. The full release gate now passes
+  **94 tests**; `qa:fast`, production build, and Capacitor native sync also
+  pass. This is a local usability hardening slice, not a new acceptance lane or
+  deployment checkpoint, so the score remains **79%** / **18%**.
 
 - A local 540x720 touch-surface probe used a disposable Mage on Normal
   difficulty and exercised the visible attack control through D1 combat,

@@ -91,6 +91,23 @@ temporary profile was removed through the in-game Manage Data confirmation.
   bounded high-damage QA aid, so physical-device/full-route and clean-player
   acceptance remain open.
 
+### Contextual cleared-room exit fallback - 2026-08-09
+
+- The bounded fresh-route diagnosis reached a cleared combat room on the
+  uncached local shell at 540x720, but the managed browser did not complete
+  forward-door movement through keyboard, arrow, joystick-drag, refocus, or
+  pause/resume attempts. The route was stopped at the five-attempt limit; this
+  is recorded as an input-surface limitation, not clean-player acceptance.
+- The new `Proceed Through Exit` action must remain hidden in Dungeon Entrance
+  and `START` rooms and in unclaimed shrine/treasure rooms, appear after a
+  real forward combat clear or claimed reward, and preserve the existing
+  save/fade transition. The local browser checks passed: it appeared after the
+  QA room clear and advanced `room_m0` to `room_m1`, then advanced a claimed
+  shrine into the treasure room.
+- Focused contracts and the full **94-test** release gate passed, as did
+  `qa:fast`, the production build, and Capacitor native sync. No deployment or
+  score change is warranted by this local hardening slice.
+
 ### Fresh-profile functional V1 route probe - 2026-08-08
 
 - Surface: loopback shell with `?cql-dev=1`, managed in-app browser, 540x720,

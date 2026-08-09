@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-08
+Updated: 2026-08-09
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -170,6 +170,24 @@ exist:
   bounded high-damage QA aid, so physical-device, full-route, and clean-player
   acceptance remain open. Do not raise the evidence percentage or deploy this
   minor hardening until it is grouped with a substantial stable milestone.
+
+### Contextual cleared-room exit fallback (2026-08-09; local, not a milestone checkpoint)
+
+- A fresh protected route reproduced a bounded managed-browser failure after a
+  combat room was cleared: directional keyboard and joystick paths did not
+  reach the forward door. The five-attempt policy stopped the route; the
+  disposable profile was removed and no clean-player evidence was claimed.
+- Added an accessible `Proceed Through Exit` action that appears only after a
+  real forward combat room is cleared or a shrine/treasure reward is claimed.
+  It is hidden in Entrance/`START` and unclaimed static rooms and reuses the
+  existing room save and fade transition, so it is a touch fallback rather than
+  a new progression shortcut. Fresh 540x720 local runtime checks advanced
+  `room_m0` to `room_m1`, then advanced a completed shrine into the treasure
+  room with the action.
+- The source mirror, 94-test release gate, deterministic QA, production build,
+  and native sync pass. Full D1-8 normal combat, 10-30 minute touch-only
+  session, physical-device validation, and the next website checkpoint remain
+  open; the score stays **79%** / **18%**.
 
 ## Phase 2 - Native packaging for managed devices (scaffold in progress)
 

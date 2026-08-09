@@ -13,6 +13,22 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest hardening evidence
 
+On 2026-08-09, a fresh protected Mage route on the uncached local shell at
+540x720 reached a cleared D1 room, then reproduced a managed-browser
+navigation failure: normal directional input did not reach the forward door.
+Keyboard, arrow, joystick-drag, refocus, and pause/resume paths were bounded
+under the five-attempt loop policy and the route was stopped. The disposable
+profile was deleted; no clean-player or touch-only score was claimed.
+
+The targeted response adds a contextual `Proceed Through Exit` button. It is
+hidden in Entrance/`START` and unclaimed static rooms, appears after a real
+forward combat clear or a claimed shrine/treasure reward, and preserves the
+existing save and transition handoff. Fresh 540x720 runtime checks used the
+local QA room-clear aid to advance `room_m0` to `room_m1`, then claimed a
+shrine and advanced into the treasure room. The source mirror, **94-test**
+release gate, `qa:fast`, production build, and native sync pass. The score
+remains **79%** / **18%** and no deployment checkpoint was created.
+
 On 2026-08-08, a local 540x720 touch-surface probe used a disposable Mage to
 exercise D1 combat, shrine, treasure, level-up, the Stone Guardian Phase 2
 fight, and the portal into the Fallen Kingdom entrance. D2 pause/reload showed

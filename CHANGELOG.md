@@ -2,6 +2,17 @@
 
 ## Unreleased - 2026-08-09
 
+- Added a contextual `Proceed Through Exit` fallback for cleared forward rooms.
+  It remains hidden in Dungeon Entrance, `START`, and unclaimed static rooms;
+  after a combat clear or claimed shrine/treasure reward it preserves the
+  existing save/fade transition. Fresh 540x720 local runtime checks advanced
+  `room_m0` to `room_m1` and a completed shrine into the treasure room. The
+  change responds to a bounded managed-browser directional-input diagnosis; it
+  does not replace physical touch testing or claim a clean-player route.
+- The source mirror, 94-test release gate, deterministic QA, production build,
+  and Capacitor native sync pass. No website deployment checkpoint or score
+  change was made for this minor local hardening slice.
+
 - Revalidated the managed-browser joystick fallback on 2026-08-09 using a
   fresh uncached `localhost:4173` profile at 540x720. One center tap reduced a
   real D1 room from two enemies to one with empty browser diagnostics; a

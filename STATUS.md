@@ -3,6 +3,25 @@
 Date: 2026-08-09
 State: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
+## Tablet exit fallback and bounded route diagnosis (2026-08-09; local, no deployment checkpoint)
+
+A fresh protected Mage run on the uncached local shell at 540x720 reached a
+cleared Dungeon 1 room. Normal attack input could be exercised, but the
+managed browser did not move the player to the forward door after the clear.
+Keyboard, arrow, joystick-drag, refocus, and pause/resume paths were tried
+within the five-attempt loop limit; the route was stopped and the disposable
+profile was deleted. This is not clean-player D1-8, touch-only, or physical
+device evidence.
+
+The runtime now exposes a contextual `Proceed Through Exit` button only after
+a real forward combat room is cleared or a shrine/treasure reward is claimed.
+It is hidden in Dungeon Entrance and unclaimed static rooms, preserves the
+normal room-save/transition handoff, and fresh 540x720 browser checks advanced
+`room_m0` to `room_m1` and a completed shrine into the treasure room through
+the button. The source mirror, 94-test release gate, deterministic QA,
+production build, and native sync pass. The score remains **79%** / **18%**;
+this local usability hardening does not warrant a deployment checkpoint.
+
 ## Architecture and fast QA milestone (2026-08-08)
 
 The repository-wide review is recorded in `ARCHITECTURE_REVIEW.md`. The

@@ -163,6 +163,16 @@ test('touch attack joystick supports a bounded nearest-target tap', () => {
   assert.match(SOURCE, /rightStick=new Joystick\(document\.getElementById\('joyRight'\),document\.getElementById\('knobRight'\),queueNearestAttack\)/, 'the production Attack joystick uses the tap action');
 });
 
+test('cleared rooms expose a contextual touch exit fallback', () => {
+  assert.match(SOURCE, /<button id="roomExitBtn"[^>]*aria-label="Proceed through exit"/, 'the exit fallback is an accessible button');
+  assert.match(SOURCE, /function roomExitPromptAvailable\(def\)\{[\s\S]*def\.forward[\s\S]*roomCleared[\s\S]*!roomTransitioning/, 'the prompt requires a real cleared forward route');
+  assert.match(SOURCE, /var roomType=def&&\(def\._sideRoomType\|\|def\.type\);[\s\S]*var combatLike=roomType===RT\.COMBAT[\s\S]*roomType===RT\.MINIBOSS/, 'static shrine and treasure rooms do not inherit a stale combat exit prompt');
+  assert.match(SOURCE, /function handleRoomExitPrompt\(\)\{[\s\S]*saveRoomState\(currentRoomId\);[\s\S]*window\._lastRoomTransitDir='forward';[\s\S]*fadeToRoom\(def\.forward\)/, 'the fallback preserves the normal save and room-transition handoff');
+  assert.match(SOURCE, /safeClick\('roomExitBtn','Room Exit',function\(\)\{handleRoomExitPrompt\(\);\}\)/, 'the fallback is wired through the guarded click layer');
+  const roomProgress = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'room progress');
+  assert.match(roomProgress, /updateRoomExitPrompt\(def\);/, 'room progress refreshes the contextual exit state');
+});
+
 test('touch-first combat offers a visible, session-only target lock', () => {
   assert.match(SOURCE, /var touchAimAssistEnabled=true;/, 'touch aim assist starts enabled for a fresh session');
   assert.match(SOURCE, /function findNearestCombatTarget\(aimAngle\)/, 'combat target selection covers live room targets');
