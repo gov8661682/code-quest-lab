@@ -53,6 +53,17 @@ portal, and managed surfaces could lack the legacy exit-door object. Both are
 fixed and contract-tested; the managed exit now follows the actual active
 portal state.
 
+## Published live-flow smoke - 2026-08-10
+
+The tested commit `e7871b0` was deployed to Cloudflare Pages at preview
+`https://a89328df.code-quest-lab.pages.dev/` and the configured hostname
+`https://code-quest-lab.gov8661682.com/`. Both production checks passed.
+The published hostname reached the profile dashboard, Town, the Forgotten
+Depths gate, Normal trial, Session Modifier, Ancient Entrance, and D1 `Burial
+Hall` combat. At 1024x768 it paused into the Character Menu; the browser
+recorded no warning or error diagnostics. This verifies the deployed shell and
+main handoff, not a clean full-route or physical-device session.
+
 ## Release-surface route follow-up - 2026-08-10
 
 The same local route was extended through D11, Ranger Watchtowers, after D10,

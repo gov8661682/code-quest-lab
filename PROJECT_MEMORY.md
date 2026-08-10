@@ -36,9 +36,9 @@ transcript.
   repeat that check or substitute contracts for the remaining clean/device
   evidence.
 - Do not retry the same blocked surface without a material state change:
-  B-009 is resolved for the current loopback session; B-010 covers Git
-  metadata write access, and B-011 covers unavailable production HTTPS
-  verification.
+  B-009, B-010, and B-011 are resolved for the current loopback/GitHub/Pages
+  checkpoint. Reopen only after a new failure or changed external target;
+  physical-device, native-build, and owner approval gaps remain genuine.
 - Use developer invincibility during permitted playthrough testing, but keep
   it loopback-only, session-only, and outside saves, exports, and production.
 - Run `npm.cmd run qa:fast` before repeating long combat checks. The composite

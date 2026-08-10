@@ -24,9 +24,9 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Dungeon 2 QA route and queued level-up clarity | A disposable Mage QA route completed Dungeon 2 Normal through the Fallen King and portal into The Shadow Realm Entrance; queued level-up cards now display their earned level and remaining choices; commit `9c451af`, 81-test release gate | Reopen only for a route regression, an upgrade overlay dead-end, or full D1-8 acceptance |
 | Elite pacing and queued attack input hardening | Local disposable Mage QA cleared the D2 two-elite Executioner's Court after the shared post-modifier health budget was applied, completed the three-phase Fallen King, and entered The Shadow Realm Entrance; touch and desktop attack taps now wait for cooldown readiness; two focused contracts pass | Reopen only for a fresh-room pacing regression, a discarded ready-intent report, or full D1-8 acceptance |
 
-## Completed local route milestone (2026-08-10; deployment pending)
+## Completed web milestone (2026-08-10; deployed)
 
-## Recovery-safe pause handoff (2026-08-10; local, deployment pending)
+## Recovery-safe pause handoff (2026-08-10; deployed)
 
 - Recovered combat checkpoints now restore the exact room and open the normal
   pause menu before the game loop resumes. This prevents damage from landing
@@ -36,7 +36,10 @@ documented acceptance-criterion failure. Optional improvements belong in
   reload, `SESSION RECOVERED`, safe Resume, a second pause, Finish and Return
   to Dashboard, and zero error/warning diagnostics. The focused lifecycle
   contract and full **113/113** release gate pass. Physical-device and
-  10-30-minute touch evidence remain open.
+  10-30-minute touch evidence remain open. Tested commit `e7871b0` was pushed
+  to `origin/main` and deployed to Cloudflare Pages; preview `a89328df` and
+  the configured hostname passed production checks, and live desktop/tablet
+  smoke reached D1 combat and safe pause with no browser diagnostics.
 
 - Promoted Necromancer's Stolen Graveyard after Ranger Watchtowers. A
   loopback QA-assisted Mage route verified the Cemetery Gate, corrupted horde
@@ -89,7 +92,7 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue; immediate final-enemy room/HUD refresh | A reproducible input, freeze, recovery, or P1 usability defect |
 | Town first-world breadcrumb | Town now renders a physical `North Road` signpost and matching `ROAD` minimap landmark toward the existing Forgotten Depths portal; it preserves free walking, portal interaction, and route boundaries; the static contract, 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a visual/readability regression or a promoted World Atlas milestone; permitted browser/device replay remains open |
 | First-session onboarding clarity | Profile copy explains the Town-led fantasy premise; the modifier screen explains temporary run rules; unlocked route cards point to the Town gate and show one reward line; the focused progression contract, 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a comprehension or layout regression; permitted browser/device visual replay remains open |
-| Managed action-button click fallback | Skill, potion, optional Bob Beam, and Auto Rush controls share `wireActionButtonPress`, with duplicate-safe DOM-click recovery, delayed-pointer-up suppression, cancellation handling, and behavioral contract coverage; the 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a reproducible duplicate activation, cancelled-gesture activation, or physical-device/browser validation failure; Git commit/push remains owner-gated by B-010 |
+| Managed action-button click fallback | Skill, potion, optional Bob Beam, and Auto Rush controls share `wireActionButtonPress`, with duplicate-safe DOM-click recovery, delayed-pointer-up suppression, cancellation handling, and behavioral contract coverage; the 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a reproducible duplicate activation, cancelled-gesture activation, or physical-device/browser validation failure |
 | Plain-text transfer migration fixtures | Legacy raw saves remain importable; future save versions and unsupported future classes are rejected; invalid optional checkpoints are dropped without invalidating durable profile data; all three focused fixtures and the 108-test release gate pass | Reopen for a failing migration, overwrite/data-loss evidence, or promoted cross-device/cross-origin acceptance requirement |
 | Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
 | Rolling project learning memory | `PROJECT_MEMORY.md` is read at the start of every autonomous cycle and updated by replacement/consolidation rather than stacked logs; the project-control contract enforces the read rule, material-state-change blocker rule, and 120-line limit; the full **108/108** gate passes | Reopen if a cycle bypasses the memory, stale facts accumulate, another project memory is created, or the bounded-memory contract fails |

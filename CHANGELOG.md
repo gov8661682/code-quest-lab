@@ -2,13 +2,22 @@
 
 ## Unreleased - 2026-08-10
 
+- Published the stable recovery-safe gameplay milestone from commit `e7871b0`
+  (`Checkpoint recovery-safe gameplay milestone`) to Cloudflare Pages after
+  the **113/113** release gate, `qa:fast`, build/package audit, and Capacitor
+  sync passed. Preview `https://a89328df.code-quest-lab.pages.dev/` and the
+  configured hostname `https://code-quest-lab.gov8661682.com/` passed
+  `production:check`; live desktop and 1024x768 tablet smoke reached D1
+  combat and paused safely with no browser warnings or errors.
+
 - Made recovered combat sessions player-safe: `Resume Session` now restores the
   exact checkpointed room and opens the existing pause menu before damage or
   enemy updates resume. Verified the D1 pause/reload/`SESSION RECOVERED`/Resume/
   Finish flow on the current build at port 4176 with the loopback invincibility
   aid and zero browser error/warning diagnostics. Added the focused lifecycle
   contract; the source mirror, build/package audit, Capacitor sync, and full
-  **113/113** release gate pass. No deployment checkpoint is claimed.
+  **113/113** release gate pass. The tested milestone was published and live-
+  verified as recorded above.
 
 - Promoted Necromancer's Stolen Graveyard into the local playable release
   surface after Ranger Watchtowers. Verified the Cemetery Gate, corrupted

@@ -3,7 +3,25 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## Recovery-safe pause handoff (2026-08-10; local)
+## Recovery-safe pause handoff web checkpoint (2026-08-10; deployed)
+
+The recovery-safe pause handoff was published from tested commit `e7871b0`
+(`Checkpoint recovery-safe gameplay milestone`) to the existing Cloudflare
+Pages project and pushed to `origin/main`. Preview:
+`https://a89328df.code-quest-lab.pages.dev/`. The configured hostname
+`https://code-quest-lab.gov8661682.com/` and the preview both passed
+`production:check` after deployment.
+
+Live smoke on the published hostname reached the profile dashboard, Town,
+Forgotten Depths gate, Normal trial, Session Modifier, Ancient Entrance, and
+D1 `Burial Hall` combat. At a 1024x768 tablet-sized viewport it paused cleanly
+into the Character Menu; the live tab recorded no browser warning or error
+entries. The deployed checkpoint records **93%** active checkpoint / **19%**
+overall progress. Clean player completion of D1-12, a 10-30-minute
+touch-only/device session, native builds, and release-candidate approvals
+remain open.
+
+## Recovery-safe pause handoff implementation (2026-08-10; local evidence)
 
 Recovered combat checkpoints now restore the saved room before opening the
 existing pause menu. A current-build managed-browser run at
@@ -11,8 +29,8 @@ existing pause menu. A current-build managed-browser run at
 `SESSION RECOVERED`, safe Resume, a second pause, Finish and Return to
 Dashboard, and no error/warning diagnostics. The source mirror, build/package
 audit, Capacitor sync, focused lifecycle contract, and full **113/113** gate
-pass. This raises the evidence score to **93%** / **19%**; no deployment
-checkpoint is claimed, and physical-device/10-30-minute touch evidence remains.
+pass. This is the local implementation record for the deployed checkpoint
+above; physical-device/10-30-minute touch evidence remains.
 
 ## Necromancer's Stolen Graveyard release-surface milestone (2026-08-10; local)
 

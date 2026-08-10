@@ -53,7 +53,7 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
-### Recovery-safe pause handoff (2026-08-10; local milestone)
+### Recovery-safe pause handoff (2026-08-10; deployed milestone checkpoint)
 
 Recovered combat runs now restore their exact saved room and open the shared
 pause menu before resuming the live loop. This protects players on managed
@@ -61,7 +61,13 @@ tablets from taking damage while they orient themselves and gives QA a stable
 point for session-only aids. A current-build D1 browser run verified pause,
 reload, `SESSION RECOVERED`, safe Resume, Finish and Return to Dashboard, and
 zero browser diagnostics. The focused contract and **113/113** release gate
-pass; physical-device and 10-30-minute touch evidence remain the next C1 work.
+pass. Tested commit `e7871b0` was pushed to `origin/main` and deployed to the
+configured Cloudflare Pages project. Preview
+`https://a89328df.code-quest-lab.pages.dev/` and
+`https://code-quest-lab.gov8661682.com/` both passed `production:check`.
+Published desktop flow reached D1 `Burial Hall`; published 1024x768 tablet
+flow paused into the Character Menu with no browser warnings or errors.
+Physical-device and 10-30-minute touch evidence remain the next C1 work.
 
 ### Necromancer's Stolen Graveyard release-surface expansion (2026-08-10; local milestone)
 
