@@ -60,7 +60,7 @@ export function checkReleaseContracts(root = ROOT) {
   has(serviceWorker, /addEventListener\(['"]install['"]/, 'service worker install handler is missing');
   has(serviceWorker, /addEventListener\(['"]fetch['"]/, 'service worker fetch handler is missing');
   has(serviceWorker, /index\.html/, 'service worker does not cache the game shell');
-  has(serviceWorker, /CACHE_NAME\s*=\s*['"]code-quest-lab-shell-v9['"]/, 'service worker cache version is not current');
+  has(serviceWorker, /CACHE_NAME\s*=\s*['"]code-quest-lab-shell-v10['"]/, 'service worker cache version is not current');
   has(serviceWorker, /new URL\(event\.request\.url\)/, 'service worker does not parse request origins');
   has(serviceWorker, /requestUrl\.origin\s*!==\s*self\.location\.origin/, 'service worker does not enforce a same-origin boundary');
   has(serviceWorker, /event\.request\.mode\s*===\s*['"]navigate['"]/, 'service worker navigation fallback is not scoped to documents');

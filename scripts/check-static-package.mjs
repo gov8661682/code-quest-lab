@@ -136,7 +136,7 @@ export function checkStaticPackage(root = ROOT) {
   }
 
   const serviceWorker = readUtf8(path.join(dist, 'service-worker.js'));
-  if (!serviceWorker.includes("CACHE_NAME = 'code-quest-lab-shell-v9'")) failures.push('dist service worker is not the current v9 shell');
+  if (!serviceWorker.includes("CACHE_NAME = 'code-quest-lab-shell-v10'")) failures.push('dist service worker is not the current v10 shell');
   if (!serviceWorker.includes("requestUrl.origin !== self.location.origin")) failures.push('dist service worker lacks same-origin isolation');
   if (!serviceWorker.includes("event.request.mode === 'navigate'")) failures.push('dist service worker fallback is not navigation-only');
 

@@ -49,7 +49,7 @@ const serviceWorker = await get('/service-worker.js');
 if (requireResponse('/service-worker.js', serviceWorker)) {
   const contentType = serviceWorker.response.headers.get('content-type') || '';
   if (!/javascript|ecmascript/i.test(contentType)) failures.push(`/service-worker.js has unexpected content type: ${contentType}`);
-  if (!serviceWorker.body.includes("CACHE_NAME = 'code-quest-lab-shell-v9'")) failures.push('service worker is not the current v9 shell');
+  if (!serviceWorker.body.includes("CACHE_NAME = 'code-quest-lab-shell-v10'")) failures.push('service worker is not the current v10 shell');
 }
 
 const buildInfo = await get('/build-info.json');
