@@ -15,7 +15,7 @@
     "package:check": "node scripts/check-static-package.mjs",
     "assets:generate": "python scripts/generate-native-assets.py",
     "production:check": "node scripts/check-production.mjs",
-    "release:verify": "npm run check && npm test && npm run build && npm run package:check",
+    "release:verify": "npm run check && npm run native:sync && npm test && npm run package:check",
     "native:sync": "npm run build && npx cap sync",
     "native:doctor": "npx cap doctor",
     "native:android:build": "npm run build && npx cap sync android && npx cap build android"

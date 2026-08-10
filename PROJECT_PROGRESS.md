@@ -1,15 +1,109 @@
 # Code Quest Lab - Project Progress Report
 
-Reviewed: 2026-08-09
+Reviewed: 2026-08-10
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
-Main checkpoint completion: **79%**
-Overall project completion: **18%**
+Main checkpoint completion: **93%**
+Overall project completion: **19%**
 
 The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
+
+## Latest 2026-08-10 progress delta
+
+Necromancer's Stolen Graveyard is now part of the playable release surface
+after D11. A loopback QA-assisted route reached the corrupted horde rooms,
+Soul Collector content, The Ritual Altar, the Corrupted Necromancer's authored
+transformation and custom Phase 2, soul-release defeat sequence, standard boss
+rewards, Veteran unlock, and `THE SESSION IS COMPLETE`. A saved defeated-boss
+reload also recreated the portal and verified the managed exit fallback. The
+full **112/112** local release gate remains green. This completes the
+functional route lane at **30/30**. The current build also now restores a
+combat checkpoint into the pause menu before damage resumes; a managed-browser
+run verified pause, reload, `SESSION RECOVERED`, safe Resume, Finish and Return
+to Dashboard, and zero error/warning diagnostics. The **113/113** gate remains
+green, making the active checkpoint **93%** and the rounded overall project
+display **19%**; clean-player and physical-device lanes remain open.
+
+Ranger Watchtowers remains part of the playable release surface after D10. A
+loopback QA-assisted route reached the randomized environment-first
+watchtower rooms, the Corrupted Ranger Captain's authored transformation and
+custom Phase 2, peaceful defeat sequence, guaranteed Tier 8 salvage, Veteran
+unlock, managed portal fallback, and `THE SESSION IS COMPLETE`. The full
+**111/111** local release gate passed at that milestone; clean-player and
+device lanes remain open.
+
+Vow Breaker's Castle is now part of the playable release surface after D8.
+A local QA-assisted route reached its Castle Gate, combat rooms, Royal
+Commander mini-boss, Oathbreaker King phase transition and final defeat,
+reward vault, Veteran unlock, and `THE SESSION IS COMPLETE` summary. The
+mini-boss exit race found during this route is fixed: an unspawned delayed
+mini-boss cannot be bypassed by a room-complete helper or exit prompt. The
+source mirror, `qa:fast`, production build/package audit, Capacitor sync, and
+full **109/109** release gate pass. This raises the functional route lane to
+**22/30**, making the active checkpoint **82%**; the ten-checkpoint formula
+still rounds overall progress to **18%** because clean-player and device lanes
+remain open.
+
+`PROJECT_MEMORY.md` now serves as one bounded rolling learning record. Every
+autonomous cycle reads it first and updates existing facts in place instead of
+stacking session logs. The executable control contract enforces the policy and
+line limit; the full release gate passes **108/108**. This improves execution
+discipline without changing the manual evidence score.
+
+The encounter architecture now composes dungeon scaling, difficulty tiers, and
+temporary Blood Moon/Titanic Foes modifiers through one
+`getEncounterTuning(dungeonId)` contract. Shared enemies, minibosses, and all
+named boss spawners use it while retaining Joey's bespoke mechanics. The
+source mirror, build/package audit, native sync, fast QA, and full **108/108**
+test suite pass. This improves future content safety but does not replace the
+manual route/device evidence, so progress remains **79%** / **18%**.
+
+Mini-boss selection now routes through `MINIBOSS_TYPES_BY_DUNGEON`, preserving
+Joey's named rosters and providing one explicit extension seam for future
+open-world regions. The focused architecture contract and full **108/108**
+release gate pass; the evidence score remains **79%** / **18%**.
+
+The composite `release:verify` command now refreshes the static package and
+Capacitor web assets before running static-package tests. The new ordering
+contract and full **108/108** release gate pass, eliminating the stale-build
+failure loop after source edits; this changes workflow reliability, not the
+manual route/device evidence score.
+
+The first-session surfaces now explain the short fantasy-adventure premise,
+describe modifiers as temporary run rules, and show unlocked routes as
+`Available from Town gate` with a single reward line. The source mirror,
+**108/108** release gate, deterministic fast QA, production build/package
+audit, and native sync pass; the evidence score remains **79%** / **18%**.
+
+Town now has a physical `North Road` signpost and a matching `ROAD` minimap
+landmark pointing toward the existing Forgotten Depths portal. This is a
+world-facing breadcrumb rather than a menu shortcut or teleport. The source
+mirror, **108/108** release gate, deterministic fast QA, production
+build/package audit, and native sync pass; the evidence score remains **79%**
+and **18%** because manual clean-route and touch-session lanes are unchanged.
+
+Skill, potion, optional Bob beam, and Auto Rush buttons now share a
+duplicate-safe DOM-click fallback for managed tablet/browser surfaces that
+lose pointer-up delivery. The full release gate is **108/108**; deterministic
+fast QA, production build/package audit, and native sync also pass. This is
+local usability hardening, so no deployment checkpoint or score change was
+made.
+
+A fresh normal-control Mage probe at 540x720, using only invincibility,
+ordinary attacks, and Step movement, cleared D1/Stone Guardian, D2/Fallen
+King, and early D4 before the browser session ended at the Corrupted Champion.
+It is incomplete and unscored. The next browser attempt was denied localhost
+permission; B-009 records the exact owner action needed to resume the clean
+route evidence.
+
+The transfer path also gained explicit legacy/current-schema fixtures: raw
+legacy saves remain importable, future save versions and unsupported future
+classes are rejected, and invalid optional checkpoints are not carried into a
+new profile. This protects the existing `.txt` progress-preservation promise
+without changing the local-only, non-overwrite behavior.
 
 ## Latest hardening evidence
 
@@ -211,7 +305,7 @@ D1-8 acceptance gates.
 | Product direction and V1 scope lock | Complete | `PRODUCT_VISION.md`, `V1_SCOPE.md`, `TARGET_AUDIENCE.md`, `MONETISATION.md`, and `DECISIONS.md` define teen-first, touch-first, offline, privacy-minimal, optional-learning, and fair-monetisation boundaries | Owner review and final release decisions remain | Owner approval of ratings, privacy, and commercial position | Yes | Keep new ideas in `BACKLOG.md` unless release-critical |
 | Source mirror, release contracts, build and static package | Complete for the current checkpoint | `npm.cmd run release:verify` passed; `index.html` and the downloadable mirror match; `dist\` contains 17 expected files and matches native web bundles | Repeat after each major milestone and before RC | Node/npm environment | Yes | Keep the verification command green |
 | Versioned plain-text profile transfer | Complete at local web/package boundary | Manage Data exports a `CODE QUEST LAB PROFILE EXPORT` `.txt` envelope containing durable data, a valid backup, and any valid active-run checkpoint; a real browser file-chooser upload imported a matching Level 4 Barbarian copy without changing the original; 81 tests and export/import smoke pass | Cross-device/cross-version fixtures and future-class migration evidence remain open | Clean storage profiles and representative supported surfaces | No; supports save portability | Keep the format stable while completing the later migration evidence |
-| V1 navigation boundary and procedural route contracts | Complete as a release guard | `REGION_ORDER` exposes Dungeons 1, 2, and 4-8; automated contracts cover every shipped generator, route validation, boss endpoints, legacy checkpoint rejection, and the Dungeon 8 summary endpoint | Manually complete the bounded route before calling gameplay complete | Stable combat and manual QA | Yes | Validate the path in a clean profile; do not promote D9-16 yet |
+| V1 navigation boundary and procedural route contracts | Complete as a release guard | `REGION_ORDER` exposes Dungeons 1, 2, and 4-12; automated contracts cover every shipped generator, route validation, boss endpoints, legacy checkpoint rejection, D12 recovery portal behavior, and the final session summary endpoint | Manually complete the bounded route before calling gameplay complete | Stable combat and manual QA | Yes | Validate the path in a clean profile; do not promote D13-16 yet |
 | Core save parser/loader contracts | Complete at the tested code boundary | `parseCharacterSave`, `loadPermanentData`, backup promotion, defaults fallback, legacy mastery migration, checkpoint parsing, session lifecycle, and profile-transfer contracts are executable; 81 tests pass; a fresh local Mage survived page close/reopen, resumed the visible checkpoint, and finished safely | Native/device migration, corruption, suspension, and cross-version evidence | Clean profiles and representative devices | Yes | Continue the remaining native/device and migration evidence in Checkpoint 1/3 |
 | Session recovery, pause/stop surfaces, and input hardening | Complete at the implemented browser contract boundary | Active-run checkpoint, Resume Session, Return to Town, Finish For Now, page-background save order, keyboard focus, touch/mouse attack paths, joystick release, and first-room onboarding are implemented and covered | Prove a complete 10-30 minute touch session and device behavior | Browser/device QA | Yes | Continue with clean-profile playthrough and lifecycle QA |
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
@@ -225,12 +319,12 @@ D1-8 acceptance gates.
 
 | Feature or workstream | Current status | Evidence from the repository | Remaining work | Dependencies | Required for V1? | Recommended next action |
 |---|---|---|---|---|---|---|
-| Full V1 gameplay and progression | Dungeon 1 touch-first slice is now player-completed; the full V1 path remains incomplete | `index.html` contains Town, four classes, combat, equipment, crafting, achievements, dungeon definitions, boss dispatches, and the D1-8 release guard; a disposable Mage cleared every observable D1 room, Stone Guardian, and exit portal, and the dead-summon handoff was fixed and contract-tested | Continue the bounded D1-8 path from a fresh profile; complete D2-8, final portal, and intended session ending, recording failures and balance issues | Clean browser profile, supported input surface, and stable combat | Yes | Continue from the next entrance with the developer QA aid, then capture a deliberate safe stop |
-| 10-30 minute session design | Meaningful touch-first progression is proven; the complete safe-stop sequence is not yet field-validated | Checkpoint/autosave, pause/resume, session summary, next-step copy, optional Learning Support, and Finish For Now are in the shell and contracts; the latest touch-first run reached the D1 boss and portal, but did not capture the full pause/recover/summary/stop sequence | Observe a meaningful session on representative tablet-sized browsers/devices, including stopping and resuming without loss | Tablet/browser or device access and working combat input | Yes | Run the next D2 route segment and capture the complete safe-stop sequence |
+| Full V1 gameplay and progression | Dungeon 1 touch-first slice is now player-completed; the full V1 path remains incomplete | `index.html` contains Town, four classes, combat, equipment, crafting, achievements, dungeon definitions, boss dispatches, and the D1-12 release guard; a local QA-assisted Mage cleared the D1, D2, D4-8, D9, D10, D11, and D12 chain, including the Head Researcher, The Alchemist, Corrupted Ranger Captain, Corrupted Necromancer, and final session summaries | Continue the bounded D1-12 path from a fresh profile; complete the route without encounter aids, then record balance and safe-stop behavior | Clean browser profile, supported input surface, and stable combat | Yes | Continue with clean D1-12 evidence, then evaluate D13 promotion as the next content milestone |
+| 10-30 minute session design | Safe-stop/reload sequence is verified in the current managed browser; duration and physical touch evidence remain open | Checkpoint/autosave, pause/resume, session summary, next-step copy, optional Learning Support, and Finish For Now are in the shell and contracts; a current-build run at port 4176 reached D1 combat, reloaded `SESSION RECOVERED`, resumed safely from the exact room, paused, and finished to Dashboard with no error/warning diagnostics | Observe a meaningful 10-30 minute session on a representative tablet-sized browser/device, including stopping and resuming without loss | Tablet/browser or device access and working combat input | Yes | Run the remaining touch/device session; do not repeat the completed managed-browser recovery check |
 | Save migration, corruption recovery, and lifecycle | Strong automated boundary, incomplete real-storage evidence | Save version 2, primary/backup recovery, migration, active-run checkpoint, page-background order, and deletion tests pass | Test malformed primary with backup, interrupted writes, reload/background/forced-close, baseline-to-current compatibility, and deletion in real browser/native storage | Isolated storage profiles and native devices | Yes | Use the existing tests as the guardrail and add only evidence-driven coverage |
 | Tablet, touch, accessibility, and audio experience | Browser layout/input hardening exists; physical and full usability review is open | Live 1024x768 and local 390x844/540x720 passes; keyboard-focus target, touch joysticks, release fallbacks, reduced-motion/audio settings and safe-stop surfaces are present | Touch-only hardware testing, safe areas, readability, muted/headphones, reduced motion, full accessibility review, and no P1 usability defects | iPad/Android tablet or equivalent managed-browser environments | Yes | Complete the browser/device slice after the clean route is playable |
 | PWA and offline behavior | Local shell and deterministic service-worker contracts pass | Relative manifest, v6 service worker, same-origin GET isolation, navigation-only fallback, public-page cache, and stopped-server reload evidence are present | Clean install/Add to Home Screen, deployed cache update, forced-close/offline soak, and physical device offline launch | HTTPS browser/device access | Yes for the web release | Run the PWA/offline journey as a separate major checkpoint |
-| Creative parity beyond the current four classes and D1-8 | Preserved and documented, not runtime-complete | Current selectable `CLASS_ORDER` has Barbarian, Mage, Rogue, Druid; source-resident later bosses/story remain gated; Joey's reference adds Ranger, Necromancer, Alchemist, Paladin, extra sets/materials, and seven D16 Phase 4 attack families | Decide promotion scope; implement each class/content family with save, HUD, skills, equipment, balance, browser play, and milestone evidence | Product decision and substantial engineering/QA time | No under the locked V1 scope; preserve for post-V1 | Keep in backlog; do not mix with active C1 work |
+| Creative parity beyond the current four classes and D1-12 | Preserved and documented, not runtime-complete | Current selectable `CLASS_ORDER` has Barbarian, Mage, Rogue, Druid; source-resident later bosses/story remain gated; Joey's reference adds Ranger, Necromancer, Alchemist, Paladin, extra sets/materials, and seven D16 Phase 4 attack families | Decide promotion scope; implement each class/content family with save, HUD, skills, equipment, balance, browser play, and milestone evidence | Product decision and substantial engineering/QA time | No under the current release surface; preserve for post-release | Keep in backlog; do not mix with active C1 work |
 | Website release readiness | Current deployment works, but RC publication evidence is not complete | Current production check passes and the 2026-08-04 deployment is recorded; public pages and headers are present | Re-run release/build/deploy/live verification for the final RC, reconcile owner-approved policy/support URLs and logs | Owner deployment approval and final build | Yes | Use the major-milestone protocol; no ad-hoc deploys |
 | Native packaging | Project generation and sync are done; build/device path is open | `android\`, `ios\`, Capacitor config, generated assets, and lifecycle contracts exist; `native:doctor` reports Android configuration okay and Xcode absent | Build Android and iOS, regenerate the iOS package on Mac, test lifecycle/storage/audio/safe areas, and record artifacts | Environment blockers in `BLOCKERS.md` | Yes for iOS/Android release | Prepare exact commands and hand off owner-only environment actions |
 | Monetisation and store integration | Core policy and fail-closed boundary exist; production transactions do not | `MONETISATION.md`, `platform\ENTITLEMENT_CONTRACT.md`, entitlement tests, parent gate, and development adapter are present | Integrate and test real platform adapters only after owner supplies products, accounts, sandbox data, pricing, and refund policy | Apple/Google accounts, product IDs, credentials, signed builds | Yes for a monetised release; not yet live | Keep production access fail-closed until verified |
@@ -240,7 +334,7 @@ D1-8 acceptance gates.
 
 | Feature or workstream | Current status | Evidence from the repository | Remaining work | Dependencies | Required for V1? | Recommended next action |
 |---|---|---|---|---|---|---|
-| Manual clean-profile completion of every shipped V1 dungeon and ending | Partial evidence only; not complete | The latest 2026-08-05 1024x768 Pages-preview Mage run showed click damage, defeated enemies, progressed through shrine/treasure, and reached `Gladiator Pit` before ending; automated generators do not simulate a player | Produce a dated, reproducible D1-8 completion record with bosses, endpoint, rewards, ending, and no browser diagnostics; then validate touch/tablet lifecycle behavior | Stable gameplay, working supported input, and enough time/device access | Yes | Continue the clean route from the now-confirmed first-combat response |
+| Manual clean-profile completion of every shipped V1 dungeon and ending | Partial evidence only; not complete | The latest QA-assisted local route reached the D1-12 endpoint, but automated generators and developer room controls do not simulate a player | Produce a dated, reproducible D1-12 completion record with bosses, endpoint, rewards, ending, and no browser diagnostics; then validate touch/tablet lifecycle behavior | Stable gameplay, working supported input, and enough time/device access | Yes | Continue the clean route from the now-confirmed D12 endpoint |
 | Cross-version save soak from baseline to RC | Not started as end-to-end evidence | Parser fixtures and mocked loader matrices exist, but no recorded baseline-save-to-RC browser/native run | Load a preserved baseline save, migrate it through the RC candidate, verify progression/equipment/dialogue and backup behavior | Baseline backup, RC build, isolated profiles | Yes | Add to the save checkpoint after C1 playability |
 | Live StoreKit and Google Play transaction evidence | Not started | No platform adapter implementation or sandbox transaction record exists | Build adapters, purchase/restore/revoke tests, parent-gate review, and offline verified entitlement behavior | Owner products, store access, sandbox accounts, signed native builds | Yes for paid native release | Remain blocked; do not simulate completion |
 | Signed/native build artifacts and physical-device release QA | Not started | No Android APK/AAB or iOS Xcode build/device evidence is present | Produce supported debug/release builds and test representative phone/tablet hardware | JDK/Android SDK; Mac/Xcode; signing | Yes for the stated iOS/Android goal | Complete environment setup first |
@@ -262,7 +356,7 @@ D1-8 acceptance gates.
 | Feature or workstream | Current status | Evidence from the repository | Remaining work | Dependencies | Required for Version 1? | Recommended next action |
 |---|---|---|---|---|---|---|
 | Ranger, Necromancer, Alchemist, and Paladin parity | Deferred, creative direction preserved | Names, skills, resources, passives, skill trees, class sets, and materials are recorded in `CREATIVE_REFERENCE_AUDIT.md`; current runtime exposes four classes | Implement in isolated post-V1 parity milestones if promoted | Product decision, design/engineering/QA capacity | No under current V1 lock | Preserve exact names and mechanics in backlog |
-| Dungeons 9-16, later rewards/progression, and D16 Phase 4 | Deferred, source content retained and release-gated | Later dungeon definitions/boss dispatches and Bob/Pure Corruption/Last Light content remain in source; `REGION_ORDER` intentionally excludes D9-16; Phase 4 IDs are absent | Finish route, rewards, progression, save, dialogue, balance, device play, and Phase 4 mechanics before exposure | Content QA and explicit scope promotion | No under current V1 lock | Keep the D1-8 guard until evidence exists |
+| Dungeons 13-16, later rewards/progression, and D16 Phase 4 | Deferred, source content retained and release-gated | Later dungeon definitions/boss dispatches and Bob/Pure Corruption/Last Light content remain in source; `REGION_ORDER` now exposes D9-12 but still excludes D13-16; Phase 4 IDs are absent | Finish route, rewards, progression, save, dialogue, balance, device play, and Phase 4 mechanics before exposure | Content QA and explicit scope promotion | No under the current release surface | Keep the D13-16 guard until evidence exists |
 | Forge Smelter activation | Deferred, engine/data present but UI exposure is withheld | Current source contains recipe data/renderer and no active Forge navigation button, avoiding Joey's contradictory “no recipes” surface | Reconcile UI, recipes, costs, save behavior, and tests before exposure | Design decision and end-to-end QA | No unless promoted | Do not re-add a placeholder |
 | Accounts, cloud saves, multiplayer, chat, UGC, analytics, ads, and live services | Deferred/excluded by safety decision | `DECISIONS.md`, safety contracts, privacy docs, and V1 scope prohibit them | No V1 implementation; reconsider only through a new privacy/product decision | New product and privacy review | No | Do not add them to solve current save or engagement gaps |
 | Full modular rewrite, controller support, cloud backup, and extra accessibility presets | Deferred after the stable V1 path | `BACKLOG.md` records modularization and controller/cloud work; current monolith remains protected by contracts | Promote only if a concrete release or maintainability need is documented | Stable parity tests and a scoped architecture decision | No for the current V1 release bar | Record improvements in backlog; do not reopen C0 |

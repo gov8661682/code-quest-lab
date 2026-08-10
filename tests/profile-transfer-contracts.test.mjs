@@ -76,3 +76,60 @@ test('plain-text profile transfer preserves durable data, backup, and run checkp
   assert.equal(parseProfileExport(JSON.stringify({ ...envelope, formatVersion: 2 })), null);
   assert.equal(parseProfileExport('not a profile'), null);
 });
+
+test('plain-text transfer keeps a legacy raw profile importable for migration', () => {
+  const legacy = {
+    saveVersion: 1,
+    souls: 17,
+    stats: { totalRuns: 2, highestRoom: 4 },
+    mastery: { level: 5, xp: 23 },
+    dungeons: { unlocked: { dungeon1: true }, selected: 'dungeon1' },
+    selectedClass: 'barbarian',
+    inventory: [{ id: 'legacy-axe' }]
+  };
+
+  const result = parseProfileExport(JSON.stringify(legacy));
+  assert.ok(result, 'raw legacy JSON remains accepted by the import envelope');
+  assert.equal(result.className, 'barbarian');
+  assert.equal(result.data.saveVersion, 1);
+  assert.equal(result.data.souls, 17);
+  assert.equal(result.data.mastery.level, 5);
+  assert.equal(result.backup, null);
+  assert.equal(result.checkpoint, null);
+});
+
+test('plain-text transfer rejects future schemas and unsupported Joey classes safely', () => {
+  const baseEnvelope = {
+    format: 'code-quest-lab-profile',
+    formatVersion: 1,
+    exportedAt: 1760000000000,
+    character: {
+      sourceId: 'char_future_fixture',
+      className: 'mage',
+      data: {
+        saveVersion: 2,
+        souls: 9,
+        stats: {},
+        mastery: { level: 3 },
+        dungeons: { unlocked: { dungeon1: true } },
+        selectedClass: 'mage'
+      }
+    },
+    backup: null,
+    runCheckpoint: { version: 2, activeDungeonId: 'dungeon1', currentRoomId: 'room_start' }
+  };
+
+  const malformedFutureSave = JSON.parse(JSON.stringify(baseEnvelope));
+  malformedFutureSave.character.data.saveVersion = 3;
+  assert.equal(parseProfileExport(JSON.stringify(malformedFutureSave)), null, 'future save versions are rejected');
+
+  const unsupportedClass = JSON.parse(JSON.stringify(baseEnvelope));
+  unsupportedClass.character.className = 'ranger';
+  unsupportedClass.character.data.selectedClass = 'ranger';
+  assert.equal(parseProfileExport(JSON.stringify(unsupportedClass)), null, 'unsupported future classes are not silently remapped');
+
+  const invalidCheckpoint = parseProfileExport(JSON.stringify(baseEnvelope));
+  assert.ok(invalidCheckpoint, 'durable data survives an invalid optional checkpoint');
+  assert.equal(invalidCheckpoint.className, 'mage');
+  assert.equal(invalidCheckpoint.checkpoint, null, 'invalid checkpoint data is not imported as active progress');
+});

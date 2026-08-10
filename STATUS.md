@@ -1,7 +1,173 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-09
-State: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
+Date: 2026-08-10
+State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
+
+## Recovery-safe pause handoff (2026-08-10; local)
+
+Recovered combat checkpoints now restore the saved room before opening the
+existing pause menu. A current-build managed-browser run at
+`http://127.0.0.1:4176/?cql-dev=1` verified D1 combat, pause, reload,
+`SESSION RECOVERED`, safe Resume, a second pause, Finish and Return to
+Dashboard, and no error/warning diagnostics. The source mirror, build/package
+audit, Capacitor sync, focused lifecycle contract, and full **113/113** gate
+pass. This raises the evidence score to **93%** / **19%**; no deployment
+checkpoint is claimed, and physical-device/10-30-minute touch evidence remains.
+
+## Necromancer's Stolen Graveyard release-surface milestone (2026-08-10; local)
+
+D12 is now reachable after Ranger Watchtowers. A loopback QA-assisted Mage
+route verified the Cemetery Gate, corrupted horde rooms, Soul Collector
+content, The Ritual Altar, the Corrupted Necromancer's authored Phase 1/Phase
+2 transformation and soul-release defeat sequence, standard boss rewards,
+Veteran unlock, and final session summary. Reloading the saved defeated-boss
+checkpoint recreated the portal and exposed the managed `Proceed through exit`
+fallback, which completed the session safely.
+
+The source mirror, deterministic QA, static build/package audit, Capacitor
+sync, and full local gate pass **112/112**. This is functional QA-assisted
+loopback evidence, not clean-player, physical-device, GitHub, or website
+deployment evidence; the active score is now **90%** / **19%**.
+
+## Ranger Watchtowers release-surface milestone (2026-08-10; local)
+
+D11 is now reachable after The Abandoned Laboratory. A loopback QA-assisted
+Mage route verified the environment-first watchtower rooms, Ranger Captain
+intro/transformation, custom Phase 2 corruption surge, peaceful defeat
+sequence, guaranteed Tier 8 salvage, Veteran unlock, managed portal fallback,
+and `THE SESSION IS COMPLETE`.
+
+The source mirror, deterministic QA, static build/package audit, Capacitor
+sync, and full local gate pass **111/111**. This is functional local evidence,
+not clean-player, physical-device, GitHub, or website deployment evidence; the
+active score is now **88%** / **19%**.
+
+## The Abandoned Laboratory release-surface milestone (2026-08-10; local)
+
+D10 is now reachable after Vow Breaker's Castle. A loopback QA-assisted Mage
+route verified the Laboratory Entrance, randomized combat chambers, Mutation
+Chamber, Head Researcher mini-boss, The Alchemist's authored introduction and
+Perfect Serum transformation, boss reward, Veteran unlock, portal-only touch
+exit, and `THE SESSION IS COMPLETE`.
+
+The developer phase-step helper now understands named Oathbreaker King and
+Alchemist phase fields, so QA checks exercise their authored dialogue and
+visual transitions rather than only a generic HP counter. The boss-room exit
+also exposes a managed-surface action only while the physical exit portal is
+active. The full local gate remains **110/110**. This is QA-assisted local
+evidence, not clean-player, physical-device, GitHub, or website deployment
+evidence; the active score is now **85%** / **19%**.
+
+## Vow Breaker's Castle release-surface milestone (2026-08-10; local)
+
+D9 is now reachable after D8. A loopback QA-assisted Mage route verified the
+Castle Gate, Royal Commander mini-boss timing and custom defeat sequence,
+Oathbreaker King phase-two dialogue/identity, boss vault, rewards, Veteran
+unlock, exit portal, and the final session summary. This preserves Joey's
+story and authored encounter flow while making the existing content reachable.
+
+The route also exposed and fixed a real mini-boss race: a delayed mini-boss
+cannot be skipped by `CQLR` or by an early exit prompt. The latest local gate
+passes **109/109**, including source-mirror, build/package, Capacitor sync, and
+deterministic fast QA checks. The route used developer QA aids and is not a
+clean-player, physical-device, or website deployment result; the active score
+is now **85%** / **19%**.
+
+## Rolling project learning memory (2026-08-10; local control improvement)
+
+`PROJECT_MEMORY.md` is now the single bounded learning record read at the start
+of every autonomous cycle. Durable facts are replaced or consolidated in place;
+per-cycle memory files and appended transcripts are forbidden. An executable
+project-control test enforces the read contract, blocker-state-change rule, and
+120-line limit. The full release gate passes **108/108**. This prevents repeated
+work but does not add manual route/device evidence, so the score remains
+**82%** / **18%**.
+
+## Shared encounter tuning architecture (2026-08-10; local, no deployment checkpoint)
+
+Difficulty tiers, dungeon progression scaling, and temporary Blood Moon/Titanic
+Foes modifiers now compose through `getEncounterTuning(dungeonId)`. The shared
+normal-enemy and miniboss paths plus every named boss spawner use that contract;
+Joey's boss-specific phases, attacks, dialogue, visuals, and endings remain
+unchanged. Miniboss HP and damage now honor the selected difficulty as well,
+removing the prior inconsistency with normal enemies and final bosses.
+
+The source mirror, static build, Capacitor native sync, deterministic fast QA,
+and full **108/108** test suite pass. This is architecture hardening only, so
+the evidence score remains **79%** / **18%**; no GitHub or website checkpoint
+was created because B-010/B-011 remain unresolved and manual C1 evidence is
+still open.
+
+## Mini-boss roster routing (2026-08-10; local, no deployment checkpoint)
+
+Mini-boss selection now uses the explicit `MINIBOSS_TYPES_BY_DUNGEON` registry,
+preserving Joey's named rosters while giving future regions a data-driven
+extension point and a safe D1 fallback. The source mirror, full **108/108**
+release gate, deterministic QA, build/package audit, and Capacitor sync pass.
+This is architecture hardening only; the evidence score remains **79%** /
+**18%** and no deployment checkpoint was created.
+
+## Self-preparing release verification (2026-08-10; local, no deployment checkpoint)
+
+`release:verify` now runs source contracts, rebuilds the static package,
+synchronizes Capacitor web assets, then runs tests and the package audit. This
+prevents stale `dist` or native bundles from causing a false failure after a
+source edit. The new project-control contract and full **108-test** gate pass;
+the score remains **79%** / **18%** and no deployment checkpoint was created.
+
+## First-session onboarding clarity (2026-08-10; local, no deployment checkpoint)
+
+The profile screen now explains the short fantasy-adventure premise and the
+Town-to-northern-road starting direction. The modifier screen explains that
+its rule is temporary and does not alter the saved profile. Unlocked route
+cards now show `Available from Town gate` and one readable reward line instead
+of repeating `Standard Rewards`. The source mirror, **108-test** release gate,
+`qa:fast`, production build/package audit, and Capacitor native sync pass. The
+score remains **79%** / **18%** and no deployment checkpoint was created.
+
+## Town breadcrumb hardening (2026-08-10; local, no deployment checkpoint)
+
+Town now includes a physical `North Road` signpost beside the existing road,
+with `ROAD` marked on the Town minimap. The breadcrumb points toward the
+existing Forgotten Depths portal while preserving free walking and the current
+portal interaction; it adds no teleport, route shortcut, or progression bypass.
+The source mirror, **108-test** release gate, `qa:fast`, production
+build/package audit, and Capacitor native sync pass. The score remains
+**79%** / **18%** and no deployment checkpoint was created.
+
+## Managed action-button fallback and interrupted normal route (2026-08-10; local, no deployment checkpoint)
+
+Skill, potion, optional Bob beam, and Auto Rush controls now accept a guarded
+DOM click when a managed tablet/browser surface loses the normal pointer-up
+delivery. A successful pointer-up suppresses its follow-up click, and a late
+pointer-up after fallback is suppressed, so one press cannot double-activate
+an action. Combat values, saves, exports, and developer controls are unchanged.
+
+The source mirror, **108-test** release gate, `qa:fast`, production build/package
+audit, and Capacitor native sync pass. No deployment checkpoint was created;
+the evidence score remains **79%** / **18%**.
+
+A fresh disposable Mage at 540x720 then used only session invincibility,
+ordinary attacks, and the Step movement fallback through Dungeon 1, Stone
+Guardian, Dungeon 2, Fallen King, and the early Dungeon 4 combat/event/vault
+sequence. The browser session ended before the Corrupted Champion was
+completed, so this does not count as clean D1-8, ending, or touch-session
+acceptance. A subsequent local-browser attempt was denied localhost access;
+the exact owner action is recorded in `BLOCKERS.md` as B-009. The verified
+working tree is also waiting on Git metadata write access: `git add` could not
+create `.git/index.lock`; B-010 records the safe owner-terminal action, and no
+commit, push, or deployment is claimed for this local slice.
+
+The read-only production check for `https://code-quest-lab.gov8661682.com` was
+also inconclusive on 2026-08-10: DNS and ping succeeded, but TCP 443 failed
+from this environment and every route returned `fetch failed`. This is
+recorded as B-011; it is not evidence that the deployed site is broken, and no
+new deployment was attempted.
+
+The plain-text transfer contract now includes legacy raw-save, future-schema,
+unsupported-class, and invalid-checkpoint fixtures. The current parser keeps
+durable data available for normal migration while rejecting unsafe future
+content; cross-device and cross-version runtime evidence remain later gates.
 
 ## Step movement fallback and bounded full-route probe (2026-08-09; local, no deployment checkpoint)
 

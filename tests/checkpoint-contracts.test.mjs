@@ -16,7 +16,7 @@ function loadProductionCheckpointParser() {
 
   const context = {
     isEntranceZone(zoneId) { return typeof zoneId === 'string' && zoneId.startsWith('entrance_'); },
-    isReleaseDungeon(zoneId) { return ['dungeon1', 'dungeon2', 'dungeon4', 'dungeon5', 'dungeon6', 'dungeon7', 'dungeon8'].includes(zoneId); }
+    isReleaseDungeon(zoneId) { return ['dungeon1', 'dungeon2', 'dungeon4', 'dungeon5', 'dungeon6', 'dungeon7', 'dungeon8', 'dungeon9', 'dungeon10', 'dungeon11', 'dungeon12'].includes(zoneId); }
   };
   vm.runInNewContext(
     `${SOURCE.slice(start, end)}\nthis.__parseRunCheckpoint = parseRunCheckpoint;`,
@@ -63,7 +63,7 @@ test('production checkpoint parser rejects malformed, static-zone, and incomplet
     { ...validCheckpoint(), version: 2 },
     { ...validCheckpoint(), activeDungeonId: 'town' },
     { ...validCheckpoint(), activeDungeonId: 'entrance_dungeon1' },
-    { ...validCheckpoint(), activeDungeonId: 'dungeon9' },
+    { ...validCheckpoint(), activeDungeonId: 'dungeon13' },
     { ...validCheckpoint(), roomStates: [] },
     { ...validCheckpoint(), roomDefs: [] },
     { ...validCheckpoint(), mainPath: [] },

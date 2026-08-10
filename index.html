@@ -429,6 +429,7 @@ html, body {
 .classCard .ccName { font-size:1.0em; color:#ffd98a; font-weight:bold; letter-spacing:0.1em; margin-bottom:5px; text-transform:uppercase; }
 .classCard .ccDesc { font-size:0.7em; color:#a98f5c; letter-spacing:0.04em; line-height:1.4; }
 #characterSelectScreen .csHint,#classSelectScreen .csHint { color:#8a8170; font-size:0.76em; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:20px; }
+.csIntro { color:#b8aa90; font-size:0.78em; line-height:1.5; letter-spacing:0.04em; text-align:center; width:90%; max-width:440px; margin:-8px auto 18px; }
 /* ── SAVE MANAGEMENT ── */
 .saveManageCard { background:linear-gradient(160deg,#18161e 0%,#110f18 100%); border:1px solid #3a342a; border-radius:6px; padding:14px 14px 12px; width:90%; max-width:360px; margin-bottom:10px; display:flex; flex-direction:column; gap:0; position:relative; transition:border-color 0.15s; }
 .saveManageCard:hover { border-color:#5a4a38; }
@@ -745,6 +746,7 @@ html, body {
 <div id="modifierScreen" class="screen">
   <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Session Modifier</h2>
   <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This adventure includes</div>
+  <div id="modifierIntro" style="color:#b8aa90;font-size:0.76em;line-height:1.5;letter-spacing:0.04em;max-width:340px;width:88%;text-align:center;margin:-8px auto 18px;">Each adventure includes one temporary rule. It changes this run, not your saved profile, so read the trade-off before you start.</div>
   <div id="modifierCard" style="background:#13111a;border:2px solid #8a6d3b;border-radius:8px;padding:24px 32px;max-width:320px;width:88%;text-align:center;margin-bottom:24px;">
     <div id="modifierIcon" style="font-size:2.8em;margin-bottom:10px;"></div>
     <div id="modifierName" style="font-size:1.4em;color:#ffd98a;font-weight:bold;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;"></div>
@@ -784,6 +786,7 @@ html, body {
 <div id="characterSelectScreen" class="screen active" style="justify-content:flex-start;padding-top:30px;overflow-y:auto;">
   <h1 id="charSelectTitle" style="font-size:1.8em;letter-spacing:0.18em;color:#d8c08a;text-shadow:0 0 12px rgba(216,192,138,0.35);text-transform:uppercase;margin-bottom:4px;" role="heading" aria-level="2">Your Profiles</h1>
   <div class="csHint" id="charSelectHint">Select a profile to continue, or create a new one</div>
+  <div class="csIntro" id="charSelectIntro">Choose a hero for a short fantasy adventure. Prepare in Town, follow the northern road, and grow from each run.</div>
   <div id="characterSelectGrid" style="display:flex;flex-direction:column;gap:0;align-items:center;width:100%;max-width:520px;margin-bottom:18px;"></div>
   <div id="charSelectBtns" style="display:flex;flex-direction:column;align-items:center;gap:0;">
     <button class="menuBtn" id="newCharacterBtn">+ New Profile</button>
@@ -1663,7 +1666,7 @@ function defaultForgeMaterials(){
 function defaultCharacterData(className){
   return{
     souls:0,
-    stats:{highestRoom:0,guardiansDefeated:0,totalEnemiesDefeated:0,totalSoulsEarned:0,totalRuns:0,bestPlayerLevel:1,timePlayed:0},
+    stats:{highestRoom:0,guardiansDefeated:0,totalEnemiesDefeated:0,totalSoulsEarned:0,totalRuns:0,bestPlayerLevel:1,timePlayed:0,necromancersDefeated:0},
     achievements:{},
     mastery:{level:1,xp:0,statPoints:0,skillTreePoints:0,allocatedStats:{strength:0,vitality:0,defense:0,fury:0,intelligence:0}},
     skillTree:{unlockedNodes:{root:true},chosenPath:null,chosenPaths:{},pointsSpent:0},
@@ -1671,7 +1674,7 @@ function defaultCharacterData(className){
     mageBuild:{base:'Fire Bolt',core:'Fireball',movement:'Blink',ultimate:'Meteor'},
     rogueBuild:{base:'Shadow Slash',core:'Fan of Knives',movement:'Shadowstep',ultimate:"Assassin's Fury"},
     druidBuild:{base:'Thorn Lash',core:'Pulverize',movement:'Spirit Walk',ultimate:'Avatar of Nature'},
-    dungeons:{unlocked:{dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false},selected:'dungeon1',dungeon2FirstUnlockShown:false,dungeon4FirstUnlockShown:false,dungeon5FirstUnlockShown:false,dungeon6FirstUnlockShown:false,difficulty:{}},
+    dungeons:{unlocked:{dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false,dungeon11:false,dungeon12:false},selected:'dungeon1',dungeon2FirstUnlockShown:false,dungeon4FirstUnlockShown:false,dungeon5FirstUnlockShown:false,dungeon6FirstUnlockShown:false,dungeon7FirstUnlockShown:false,dungeon8FirstUnlockShown:false,dungeon9FirstUnlockShown:false,dungeon10FirstUnlockShown:false,dungeon11FirstUnlockShown:false,dungeon12FirstUnlockShown:false,difficulty:{}},
     library:{blessings:{},curses:{}},
     // Where this character resumes into the world after Character Selection.
     // Only {type:'town'} is a real destination in this phase — dungeon
@@ -4249,11 +4252,10 @@ var DUNGEON_DEFS={
     },
     unlockHint:'Reach Level 170 or defeat the Hollow World Tree'
   },
-  // Main-path rooms spawn standard-enemy compositions (see
-  // d9BuildComposition/updateD9EnemyBehaviors). The Throne Room
-  // (room_boss) hosts The Oathbreaker King through the source-resident
-  // boss dispatch below. The V1 release guard may still hide this route
-  // until its full reward, progression, and hands-on evidence is complete.
+  // Main-path rooms spawn disciplined standard-enemy compositions (see
+  // d9BuildComposition/updateD9EnemyBehaviors). The Royal Audience Chamber
+  // and Throne Room host the route's named mini-boss and final boss through
+  // the source-resident dispatches below.
   dungeon9:{
     id:'dungeon9',name:"Vow Breaker's Castle",icon:'🏰',
     soulMult:10.5,mxpMult:10.5,
@@ -4264,39 +4266,34 @@ var DUNGEON_DEFS={
     },
     unlockHint:'Reach Level 200 or defeat The Broker'
   },
-  // The region beyond Vow Breaker's Castle's rear gate. comingSoon has been
-  // lifted so the Dungeon Gate lets players in (see openDungeonGate), and
-  // its room-graph generator exists (see generateDungeon10 below). Its
-  // Entrance Area and Waypoint work automatically off REGION_ORDER/
-  // DUNGEON_DEFS. Standard-enemy roster work is source-resident (see
-  // d10BuildComposition/updateD10EnemyBehaviors), and room_boss (Central
-  // Containment Chamber) hosts The Alchemist through the boss dispatch
-  // below. The V1 release guard may still hide this route until complete
-  // reward, progression, and hands-on evidence exists.
+  // The region beyond Vow Breaker's Castle's rear gate. comingSoon is lifted
+  // so the Dungeon Gate lets players in (see openDungeonGate), and its
+  // room-graph, authored enemy roster, mini-boss, boss, rewards, and return
+  // path are now part of the locally verified release surface. Its Entrance
+  // Area and Waypoint work automatically off REGION_ORDER/DUNGEON_DEFS.
   dungeon10:{
     id:'dungeon10',name:'The Abandoned Laboratory',icon:'🧪',
     soulMult:10.5,mxpMult:10.5,
     bgTheme:'abandonedlab',
-    objective:'Explore the Abandoned Laboratory',
+    objective:'Defeat The Alchemist',
     isUnlocked:function(){
       return(permanentData.mastery.level>=230)||((permanentData.stats.oathbreakerKingsDefeated||0)>=1);
     },
     unlockHint:'Reach Level 230 or defeat the Oathbreaker King'
   },
   // Ranger Watchtowers use an exploration-heavy middle path with no normal
-  // enemy waves, but the final Shattered Signal Tower hosts the source-
-  // resident Corrupted Ranger Captain boss. Its release surface remains
-  // gated until the route, rewards, progression, and hands-on evidence are
-  // complete; isUnlocked therefore remains level-only.
+  // enemy waves, but the final Shattered Signal Tower hosts the Corrupted
+  // Ranger Captain boss. The route is intentionally a quiet, readable
+  // breather after the Laboratory rather than another combat corridor.
   dungeon11:{
     id:'dungeon11',name:'Ranger Watchtowers',icon:'🏹',
     soulMult:10.5,mxpMult:10.5,
     bgTheme:'rangerwatchtowers',
-    objective:'Explore the Ranger Watchtowers',
+    objective:'Defeat the Corrupted Ranger Captain',
     isUnlocked:function(){
-      return permanentData.mastery.level>=260;
+      return(permanentData.mastery.level>=260)||((permanentData.stats.alchemistsDefeated||0)>=1);
     },
-    unlockHint:'Reach Level 260'
+    unlockHint:'Reach Level 260 or defeat The Alchemist'
   },
   // Necromancer's Stolen Graveyard uses corrupted horde rooms and a
   // source-resident Corrupted Necromancer boss in The Ritual Altar. The
@@ -4308,11 +4305,11 @@ var DUNGEON_DEFS={
     id:'dungeon12',name:"Necromancer's Stolen Graveyard",icon:'🪦',
     soulMult:12.0,mxpMult:12.0,
     bgTheme:'stolengraveyard',
-    objective:'Explore the Stolen Graveyard',
+    objective:'Defeat the Corrupted Necromancer',
     isUnlocked:function(){
-      return permanentData.mastery.level>=290;
+      return(permanentData.mastery.level>=290)||((permanentData.stats.rangerCaptainsDefeated||0)>=1);
     },
-    unlockHint:'Reach Level 290'
+    unlockHint:'Reach Level 290 or defeat the Corrupted Ranger Captain'
   },
   // Realm of Space — no normal enemies or minibosses anywhere (see the
   // _isDungeon13 branch in loadRoom). Beyond the Stolen Graveyard,
@@ -4542,7 +4539,7 @@ var DUNGEON_SCALING={
     eliteChanceBonus:0.24,extraEliteMods:2,
     bossHpMult:87.96,bossDmgMult:87.96,bossAtkSpeedMult:1.30
   },
-  // Ranger Watchtowers. No normal enemies (environment-only), just the
+  // Ranger Watchtowers. No normal enemies (environment-first), just the
   // Corrupted Ranger Captain final boss -- see spawnRangerCaptain.
   dungeon11:{
     targetPct:3844,
@@ -4645,11 +4642,11 @@ function isDungeonUnlocked(dungeonId){
 // waypoints, the Dungeon Gate flow, and save/load all key off this single
 // list plus DUNGEON_DEFS, so nothing dungeon-specific needs to be added
 // elsewhere for future regions.
-// Release surface: only regions with a complete V1 route are reachable from
-// the shipped navigation and boss-exit chain. Dungeons 9-16 remain in the
-// source for future content work, but are intentionally post-release until
-// their routes, bosses, rewards, and device evidence are complete.
-var REGION_ORDER=['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8'];
+// Release surface: only regions with a complete tested route are reachable
+// from shipped navigation and the boss-exit chain. Dungeon 11 is now part of
+// the locally verified playable chain; later dungeons remain source-resident
+// until their routes, rewards, and device evidence are complete.
+var REGION_ORDER=['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8','dungeon9','dungeon10','dungeon11','dungeon12'];
 function isReleaseDungeon(dungeonId){return REGION_ORDER.indexOf(dungeonId)>=0;}
 function getNextDungeonId(currentId){
   var idx=REGION_ORDER.indexOf(currentId);
@@ -4666,8 +4663,8 @@ function getEntranceDungeonId(zoneId){return zoneId.slice('entrance_'.length);}
 function isStaticHubZone(zoneId){return zoneId==='town'||isEntranceZone(zoneId);}
 
 function refreshDungeonUnlocks(){
-  if(!permanentData.dungeons)permanentData.dungeons={unlocked:{dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false},selected:'dungeon1',dungeon2FirstUnlockShown:false,dungeon4FirstUnlockShown:false,dungeon5FirstUnlockShown:false,dungeon6FirstUnlockShown:false,dungeon7FirstUnlockShown:false,dungeon8FirstUnlockShown:false,dungeon9FirstUnlockShown:false,dungeon10FirstUnlockShown:false,difficulty:{}};
-  if(!permanentData.dungeons.unlocked)permanentData.dungeons.unlocked={dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false};
+  if(!permanentData.dungeons)permanentData.dungeons={unlocked:{dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false,dungeon11:false,dungeon12:false},selected:'dungeon1',dungeon2FirstUnlockShown:false,dungeon4FirstUnlockShown:false,dungeon5FirstUnlockShown:false,dungeon6FirstUnlockShown:false,dungeon7FirstUnlockShown:false,dungeon8FirstUnlockShown:false,dungeon9FirstUnlockShown:false,dungeon10FirstUnlockShown:false,dungeon11FirstUnlockShown:false,dungeon12FirstUnlockShown:false,difficulty:{}};
+  if(!permanentData.dungeons.unlocked)permanentData.dungeons.unlocked={dungeon1:true,dungeon2:false,dungeon4:false,dungeon5:false,dungeon6:false,dungeon7:false,dungeon8:false,dungeon9:false,dungeon10:false,dungeon11:false,dungeon12:false};
   if(!isReleaseDungeon(permanentData.dungeons.selected)){
     permanentData.dungeons.selected='dungeon1';
     savePermanentData();
@@ -4679,6 +4676,8 @@ function refreshDungeonUnlocks(){
   if(permanentData.dungeons.unlocked.dungeon8===undefined)permanentData.dungeons.unlocked.dungeon8=false;
   if(permanentData.dungeons.unlocked.dungeon9===undefined)permanentData.dungeons.unlocked.dungeon9=false;
   if(permanentData.dungeons.unlocked.dungeon10===undefined)permanentData.dungeons.unlocked.dungeon10=false;
+  if(permanentData.dungeons.unlocked.dungeon11===undefined)permanentData.dungeons.unlocked.dungeon11=false;
+  if(permanentData.dungeons.unlocked.dungeon12===undefined)permanentData.dungeons.unlocked.dungeon12=false;
   if(permanentData.dungeons.dungeon4FirstUnlockShown===undefined)permanentData.dungeons.dungeon4FirstUnlockShown=false;
   if(permanentData.dungeons.dungeon5FirstUnlockShown===undefined)permanentData.dungeons.dungeon5FirstUnlockShown=false;
   if(permanentData.dungeons.dungeon6FirstUnlockShown===undefined)permanentData.dungeons.dungeon6FirstUnlockShown=false;
@@ -4686,6 +4685,8 @@ function refreshDungeonUnlocks(){
   if(permanentData.dungeons.dungeon8FirstUnlockShown===undefined)permanentData.dungeons.dungeon8FirstUnlockShown=false;
   if(permanentData.dungeons.dungeon9FirstUnlockShown===undefined)permanentData.dungeons.dungeon9FirstUnlockShown=false;
   if(permanentData.dungeons.dungeon10FirstUnlockShown===undefined)permanentData.dungeons.dungeon10FirstUnlockShown=false;
+  if(permanentData.dungeons.dungeon11FirstUnlockShown===undefined)permanentData.dungeons.dungeon11FirstUnlockShown=false;
+  if(permanentData.dungeons.dungeon12FirstUnlockShown===undefined)permanentData.dungeons.dungeon12FirstUnlockShown=false;
   var wasD2=!!permanentData.dungeons.unlocked.dungeon2;
   var nowD2=isDungeonUnlocked('dungeon2');
   if(nowD2&&!wasD2){
@@ -4769,10 +4770,9 @@ function refreshDungeonUnlocks(){
   }else if(nowD8&&!permanentData.dungeons.unlocked.dungeon8){
     permanentData.dungeons.unlocked.dungeon8=true;savePermanentData();
   }
-  // Dungeons 9 and 10 remain in the save schema for forward compatibility,
-  // but their unlock notifications stay dormant while those regions are
-  // outside the V1 release surface. Re-adding either id to REGION_ORDER will
-  // re-enable the existing progression logic for a future release.
+  // Dungeon 9 through Dungeon 11 are part of the shipped chain. Later
+  // dungeons remain in the save schema for forward compatibility until their
+  // release evidence is complete.
   if(isReleaseDungeon('dungeon9')){
     var wasD9=!!permanentData.dungeons.unlocked.dungeon9;
     var nowD9=isDungeonUnlocked('dungeon9');
@@ -4801,6 +4801,36 @@ function refreshDungeonUnlocks(){
       }
     }else if(nowD10&&!permanentData.dungeons.unlocked.dungeon10){
       permanentData.dungeons.unlocked.dungeon10=true;savePermanentData();
+    }
+  }
+  if(isReleaseDungeon('dungeon11')){
+    var wasD11=!!permanentData.dungeons.unlocked.dungeon11;
+    var nowD11=isDungeonUnlocked('dungeon11');
+    if(nowD11&&!wasD11){
+      permanentData.dungeons.unlocked.dungeon11=true;
+      savePermanentData();
+      if(!permanentData.dungeons.dungeon11FirstUnlockShown){
+        permanentData.dungeons.dungeon11FirstUnlockShown=true;
+        savePermanentData();
+        showMasteryToast('🏹 Ranger Watchtowers Unlocked','The last beacon still burns beyond the laboratory');
+      }
+    }else if(nowD11&&!permanentData.dungeons.unlocked.dungeon11){
+      permanentData.dungeons.unlocked.dungeon11=true;savePermanentData();
+    }
+  }
+  if(isReleaseDungeon('dungeon12')){
+    var wasD12=!!permanentData.dungeons.unlocked.dungeon12;
+    var nowD12=isDungeonUnlocked('dungeon12');
+    if(nowD12&&!wasD12){
+      permanentData.dungeons.unlocked.dungeon12=true;
+      savePermanentData();
+      if(!permanentData.dungeons.dungeon12FirstUnlockShown){
+        permanentData.dungeons.dungeon12FirstUnlockShown=true;
+        savePermanentData();
+        showMasteryToast('🪦 Necromancer\'s Graveyard Unlocked','The stolen dead stir beyond the Ranger Watchtowers');
+      }
+    }else if(nowD12&&!permanentData.dungeons.unlocked.dungeon12){
+      permanentData.dungeons.unlocked.dungeon12=true;savePermanentData();
     }
   }
 }
@@ -4846,6 +4876,40 @@ var DIFFICULTY_DEFS={
 
 var activeDifficultyId='normal';
 function getActiveDifficulty(){return DIFFICULTY_DEFS[activeDifficultyId]||DIFFICULTY_DEFS.normal;}
+
+// One read-only tuning snapshot for every encounter spawn path. Difficulty,
+// dungeon progression, and temporary run modifiers used to be multiplied at
+// each caller (normal enemies and every named boss). Keeping the composition
+// here preserves the existing values while making a new boss or reusable
+// enemy path consume one contract instead of reimplementing the formula.
+function getEncounterTuning(dungeonId){
+  var id=dungeonId||activeDungeonId||'dungeon1';
+  var dungeon=DUNGEON_SCALING[id]||DUNGEON_SCALING.dungeon1;
+  var difficulty=getActiveDifficulty();
+  var titanic=!!(activeModifier&&activeModifier._titanicFoes);
+  var bloodMoon=!!(activeModifier&&activeModifier._bloodMoon);
+  return{
+    dungeonId:id,
+    difficultyId:difficulty.id||activeDifficultyId||'normal',
+    dungeon:dungeon,
+    difficulty:difficulty,
+    // The existing Titanic Foes enemy path scales its shared spawn scale
+    // (including movement), while bosses intentionally use their separate
+    // 15% HP modifier. These names make that distinction explicit.
+    enemyModifierScale:titanic?1.30:1.0,
+    enemyHpMult:(difficulty.enemyHpMult||1.0)*(dungeon.hpMult||1.0),
+    enemyDmgMult:(difficulty.enemyDmgMult||1.0)*(dungeon.dmgMult||1.0)*(bloodMoon?1.25:1.0),
+    enemySpeedMult:dungeon.speedMult||1.0,
+    enemyAttackSpeedMult:dungeon.atkSpeedMult||1.0,
+    miniBossHpMult:(difficulty.enemyHpMult||1.0)*(dungeon.hpMult||1.0)*(titanic?1.20:1.0),
+    miniBossDmgMult:(difficulty.enemyDmgMult||1.0)*(dungeon.dmgMult||1.0)*(bloodMoon?1.15:1.0),
+    bossHpMult:(difficulty.enemyHpMult||1.0)*(dungeon.bossHpMult||1.0)*(titanic?1.15:1.0),
+    bossDmgMult:(difficulty.enemyDmgMult||1.0)*(dungeon.bossDmgMult||1.0)*(bloodMoon?1.10:1.0),
+    bossAttackSpeedMult:dungeon.bossAtkSpeedMult||1.0,
+    eliteChanceBonus:(difficulty.eliteChanceBonus||0)+(dungeon.eliteChanceBonus||0),
+    extraEliteMods:(difficulty.extraEliteMods||0)+(dungeon.extraEliteMods||0)
+  };
+}
 
 // Default per-dungeon difficulty save shape. Normal always starts unlocked.
 function defaultDungeonDifficultyState(){
@@ -10498,10 +10562,12 @@ function d4UpdateLegendaryEffects(dt){
 function spawnVoidMonarch(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.38;
   // ── DIFFICULTY SYSTEM: bosses scale with the selected difficulty ──
-  var _vmDiff=getActiveDifficulty();
-  var _vmDg=DUNGEON_SCALING.dungeon4;
-  var _vmHp=Math.round(4800*(activeModifier._titanicFoes?1.15:1.0)*_vmDiff.enemyHpMult*_vmDg.bossHpMult);
-  var _vmDmg=Math.round(38*(activeModifier._bloodMoon?1.12:1.0)*_vmDiff.enemyDmgMult*_vmDg.bossDmgMult);
+  var _vmTuning=getEncounterTuning('dungeon4');
+  var _vmDg=_vmTuning.dungeon;
+  var _vmHp=Math.round(4800*_vmTuning.bossHpMult);
+  // Void Monarch predates the shared boss modifier table's 10% Blood Moon
+  // rule and intentionally keeps its original 12% damage identity.
+  var _vmDmg=Math.round(38*_vmTuning.bossDmgMult*(activeModifier._bloodMoon?1.12/1.10:1.0));
   boss={
     x:cx,y:cy,radius:42,color:'#1a0a2a',hp:_vmHp,hpMax:_vmHp,
     speed:48,damage:_vmDmg,
@@ -12740,10 +12806,9 @@ function drawD8AmbientAtmosphere(geo){
 // (isWarShaman — reuses Dungeon 5's heal/buff-pulse ally support exactly,
 // plus its own holy bolt + protective shield), and the Castle Executioner
 // (isCastleExecutioner — slow, huge health, telegraphed heavy swings).
-// Elites, the mini boss, and the final boss are explicitly OUT of scope for
-// this pass — only RT.COMBAT main-path rooms get compositions here; side
-// rooms and the Throne Room (room_boss, reserved for the eventual final
-// boss) are untouched and still use `_isStoryRoom`.
+// Elites, the Royal Commander mini-boss, and the final boss all have explicit
+// route wiring below. Optional side rooms remain lightweight exploration
+// branches, while the main path is fully combat-gated.
 function updateD9EnemyBehaviors(dt,geo){
   for(var i=0;i<enemies.length;i++){
     var e=enemies[i];if(!e||e.hp<=0)continue;
@@ -13233,15 +13298,12 @@ function updateD9EnemyBehaviors(dt,geo){
 // buildEntranceDungeon/getWaypointZoneIds — no extra wiring needed there).
 // This pass builds out the castle's room-graph generator, atmosphere,
 // locked-door flow, secret bookshelf passages and telegraphed traps.
-// Side rooms and the Throne Room (room_boss) still use the `_isStoryRoom`
-// flag D4's Ancient Throne Hall uses for narrative beats — they auto-clear
-// on entry (no composition/spawns) and open their forward door immediately.
+// Optional side rooms use the `_isStoryRoom` flag for narrative/trap beats;
+// the main path uses ordinary combat, mini-boss, and boss room handling.
 // Main-path RT.COMBAT rooms (Courtyard/Barracks/Chapel/etc, see
-// D9_MAIN_STYLES) now spawn standard-enemy compositions via
-// d9BuildComposition — see the STANDARD ENEMIES section above. Elites, the
-// mini boss and the final boss remain unimplemented (final room stays
-// RT.COMBAT + _isStoryRoom rather than RT.BOSS until a boss exists — see
-// validateDungeon9Layout() below, which validates connectivity only).
+// D9_MAIN_STYLES spawn standard-enemy compositions via d9BuildComposition;
+// the optional Forgotten Reliquary hosts an elite escort, the Royal Audience
+// Chamber hosts the Royal Commander, and the final room is a real RT.BOSS.
 //
 // The castle was once home to the world's greatest holy knights, who broke
 // their sacred vows for forbidden power and were consumed by the
@@ -13277,8 +13339,8 @@ var D9_MAIN_STYLES=[
 //
 // STATUS: all six standard kinds — Broken Knight, Holy Spearman,
 // Greatshield Guardian, Castle Archer, Corrupted Priest and Castle
-// Executioner — are implemented. Elites, the mini boss and the final boss
-// remain explicitly OUT of scope; do NOT add them here.
+// Executioner — are implemented, along with the optional Oathbreaker Captain
+// elite, Royal Commander mini-boss, and Oathbreaker King final boss.
 var D9_FORMATIONS=[
   ['broken_knight'],
   ['holy_spearman','broken_knight'],
@@ -13415,7 +13477,7 @@ function tryGenerateDungeon9(){
 
   // Optional side rooms off 2-3 random story-room hosts (never the gate or
   // the throne room) — Treasure, a Trap Corridor, a bookshelf-gated Secret
-  // Passage, or an empty Elite placeholder.
+  // Passage, or a Forgotten Reliquary elite encounter.
   var hosts=mainPath.slice(1,mainPath.length-1);
   shuffleArray(hosts);
   var sideCount=Math.min(hosts.length,2+Math.floor(Math.random()*2));// 2-3
@@ -13424,16 +13486,10 @@ function tryGenerateDungeon9(){
     var hostDef=defs[hostId];
     var kind=d9RollSideKind(hostDef._d9Style);
     var sId='room_s'+h;
-    // IMPORTANT: every D9 side room uses RT.SIDE + _isStoryRoom:true so it
-    // auto-clears with zero enemies via the engine's existing story-room
-    // path (see the def._isStoryRoom branch in the COMBAT/SIDE room-entry
-    // handler) — using RT.TREASURE here would trigger the engine's real
-    // chest-loot logic, which is still out of scope. The "Treasury" reads
-    // as already-plundered (fits the ruined castle), and Trap Corridor /
-    // Hidden Passage are just themed, empty rooms for now. The Forgotten
-    // Reliquary is NOT one of these empties — it's a real RT.ELITE room
-    // hosting the Oathbreaker Captain (see d9BuildEliteComposition), now
-    // that the Elite Enemy pass has implemented him.
+    // Treasury, Trap Corridor, and Hidden Passage remain narrative side
+    // rooms so their forward/back travel is safe and deterministic. The
+    // Forgotten Reliquary is a real RT.ELITE room hosting the Oathbreaker
+    // Captain (see d9BuildEliteComposition).
     var _isEliteReliquary=(kind==='elite_reliquary');
     var sDef={id:sId,name:d9SideRoomName(kind),type:_isEliteReliquary?RT.ELITE:RT.SIDE,
       forward:null,back:hostId,side:null,_isDungeon9:true,_d9Style:kind,_isStoryRoom:!_isEliteReliquary};
@@ -13480,13 +13536,14 @@ function validateDungeon9Layout(defs,mainPath){
 }
 function buildFallbackDungeon9(){
   var defs={};
-  var mainPath=['room_start','room_m0','room_m1','room_m2','room_m3','room_boss'];
+  var mainPath=['room_start','room_m0','room_m1','room_m2','room_m3','room_miniboss','room_boss'];
   defs['room_start']={id:'room_start',name:'Castle Gate',type:RT.START,forward:'room_m0',back:null,side:null,_isDungeon9:true,_d9Style:'castle_gate'};
   defs['room_m0']={id:'room_m0',name:'Courtyard',type:RT.COMBAT,forward:'room_m1',back:'room_start',side:null,_isDungeon9:true,_d9Style:'courtyard',composition:d9BuildComposition(RT.COMBAT,1,4)};
   defs['room_m1']={id:'room_m1',name:'Barracks',type:RT.COMBAT,forward:'room_m2',back:'room_m0',side:null,_isDungeon9:true,_d9Style:'barracks',composition:d9BuildComposition(RT.COMBAT,2,4)};
   defs['room_m2']={id:'room_m2',name:'Chapel',type:RT.COMBAT,forward:'room_m3',back:'room_m1',side:null,_isDungeon9:true,_d9Style:'chapel',composition:d9BuildComposition(RT.COMBAT,3,4)};
-  defs['room_m3']={id:'room_m3',name:'Throne Hall',type:RT.COMBAT,forward:'room_boss',back:'room_m2',side:null,_isDungeon9:true,_d9Style:'throne_hall',composition:d9BuildComposition(RT.COMBAT,4,4)};
-  defs['room_boss']={id:'room_boss',name:'Throne Room',type:RT.BOSS,forward:null,back:'room_m3',side:null,_isDungeon9:true,_d9Style:'throne_room',_isOathbreakerKingBoss:true};
+  defs['room_m3']={id:'room_m3',name:'Throne Hall',type:RT.COMBAT,forward:'room_miniboss',back:'room_m2',side:null,_isDungeon9:true,_d9Style:'throne_hall',composition:d9BuildComposition(RT.COMBAT,4,5)};
+  defs['room_miniboss']={id:'room_miniboss',name:'Royal Audience Chamber',type:RT.MINIBOSS,forward:'room_boss',back:'room_m3',side:null,_isDungeon9:true,_d9Style:'royal_audience',miniBossType:'royal_commander'};
+  defs['room_boss']={id:'room_boss',name:'Throne Room',type:RT.BOSS,forward:null,back:'room_miniboss',side:null,_isDungeon9:true,_d9Style:'throne_room',_isOathbreakerKingBoss:true};
   buildMinimapPositions(defs,mainPath);
   return{defs:defs,mainPath:mainPath};
 }
@@ -14754,19 +14811,15 @@ function d10UpdateHazards(dt,geo){
 }
 
 // ============================================================
-// DUNGEON 11: RANGER WATCHTOWERS — ENVIRONMENT ONLY
+// DUNGEON 11: RANGER WATCHTOWERS — ENVIRONMENT-FIRST EXPLORATION
 // ============================================================
 // After leaving The Abandoned Laboratory, the player reaches an abandoned
 // mountain border defended by a network of ranger watchtowers. This is an
-// environment-only pass: no normal enemies, no minibosses, no combat
-// encounters anywhere in the dungeon (see the _isDungeon11 branch in
-// loadRoom — it always spawns zero enemies, mirroring the "reserved,
-// empty room" convention D9's Throne Room and D10's Central Containment
-// Chamber used before their bosses existed, except here it applies to
-// every room, not just the last one). The dungeon is meant to build
-// suspense through exploration rather than combat. The final room
-// (Shattered Signal Tower) simply exists as the arena where a boss will
-// later be added — no boss is spawned there yet.
+// environment-first route: no normal enemies or minibosses, so the player can
+// read the mountain border, discover environmental salvage, and build
+// suspense through exploration rather than another combat corridor. The
+// final Shattered Signal Tower is a full authored arena for the Corrupted
+// Ranger Captain.
 //
 // Corruption spreads gradually along the main path: black vines, corrupted
 // trees, and a darkening sky intensify with each room's _d11Corruption
@@ -14824,9 +14877,9 @@ function tryGenerateDungeon11(){
     forward:null,back:d11CaveHostId,side:null,_isDungeon11:true,_d11Style:'small_cave',_d11Corruption:hostCorruption};
   defs[d11CaveHostId].side='room_cave';
 
-  // Shattered Signal Tower — the final room. It exists purely as the
-  // arena where a boss will later be added; no boss is spawned here yet
-  // (see the _isDungeon11 branch in loadRoom). Heavily corrupted.
+  // Shattered Signal Tower is the final authored boss arena. It is heavily
+  // corrupted and carries the Ranger Captain flag into the normal boss
+  // dispatcher below.
   defs[prevId].forward='room_boss';
   defs['room_boss']={id:'room_boss',name:'Shattered Signal Tower',type:RT.BOSS,forward:null,back:prevId,side:null,_isDungeon11:true,_d11Style:'corrupted_summit',_d11Corruption:1.0,_isRangerCaptainBoss:true};
   mainPath.push('room_boss');
@@ -14848,6 +14901,36 @@ function validateDungeon11Layout(defs,mainPath){
   }
   return true;
 }
+// D11 is exploration-first, not reward-empty. Each first-time environmental
+// room yields a small, deterministic salvage bundle so the watchtower route
+// has a tangible purpose even though it has no normal enemy waves. The room
+// flag prevents duplicate grants after a resume or a return trip.
+function grantDungeon11ExplorationMaterials(style){
+  if(!permanentData.forgeMaterials)permanentData.forgeMaterials=defaultForgeMaterials();
+  var fm=permanentData.forgeMaterials;
+  var arrowheads=style==='arrow_supply'||style==='ballista_position'?3:1;
+  var bark=(style==='cliffside_path'||style==='rope_bridge'||style==='abandoned_camp'||style==='small_cave')?2:1;
+  fm.brokenArrowheads=(fm.brokenArrowheads||0)+arrowheads;
+  fm.corruptedBark=(fm.corruptedBark||0)+bark;
+  if(style==='signal_beacon')fm.rangerEmblems=(fm.rangerEmblems||0)+1;
+  savePermanentData();
+  addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-55,
+    '+'+arrowheads+' arrowheads  +'+bark+' corrupted bark','#c8d8c0',2.0);
+  if(style==='signal_beacon')addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-30,'+1 Ranger Emblem','#d8a23a',1.8);
+}
+
+function grantDungeon11BossMaterials(){
+  if(!permanentData.forgeMaterials)permanentData.forgeMaterials=defaultForgeMaterials();
+  var fm=permanentData.forgeMaterials;
+  fm.brokenArrowheads=(fm.brokenArrowheads||0)+4;
+  fm.corruptedBark=(fm.corruptedBark||0)+3;
+  fm.rangerEmblems=(fm.rangerEmblems||0)+2;
+  fm.beaconCore=(fm.beaconCore||0)+1;
+  savePermanentData();
+  addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-55,'+4 Arrowheads  +3 Bark  +2 Emblems','#d8e8c8',2.4);
+  addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-30,'+1 Beacon Core','#ffd98a',2.4);
+}
+
 function buildFallbackDungeon11(){
   var defs={};
   var mainPath=['room_start','room_m0','room_m1','room_m2','room_m3','room_boss'];
@@ -18799,6 +18882,7 @@ function getTownLayout(geo){
   var data={
     plaza:{x:cx,y:cy,r:townWaypointRadius},
     portalArea:{x:cx,y:inner.y+inner.h*0.15,r:64},
+    roadMarker:{x:cx-inner.w*0.11,y:inner.y+inner.h*0.32,name:'North Road',destination:'Forgotten Depths'},
     pond:{x:inner.x+inner.w*0.14,y:inner.y+inner.h*0.78,rx:95,ry:56},
     buildings:[
       {id:'blacksmith',name:'Blacksmith',x:cx-inner.w*0.27,y:cy-inner.h*0.14,w:132,h:104,color:'#5a4a3a',roof:'#3a2e22',accent:'#b0522a'},
@@ -22406,6 +22490,20 @@ function drawTownWorld(geo){
   });
   ctx.globalAlpha=1;
 
+  // First world breadcrumb: a physical sign beside the northern road. It
+  // explains the destination without turning Town back into a route menu;
+  // the player still has to walk to the existing portal.
+  var marker=layout.roadMarker;
+  ctx.save();
+  ctx.fillStyle='rgba(0,0,0,0.28)';ctx.beginPath();ctx.ellipse(marker.x,marker.y+18,30,7,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#5a3d25';ctx.fillRect(marker.x-3,marker.y-22,6,42);
+  ctx.fillStyle='#8a6339';ctx.fillRect(marker.x-28,marker.y-34,56,24);
+  ctx.strokeStyle='#d8b77a';ctx.lineWidth=2;ctx.strokeRect(marker.x-28,marker.y-34,56,24);
+  ctx.fillStyle='#8a6339';ctx.beginPath();ctx.moveTo(marker.x-28,marker.y-34);ctx.lineTo(marker.x-10,marker.y-43);ctx.lineTo(marker.x+28,marker.y-43);ctx.lineTo(marker.x+28,marker.y-34);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#2a1d14';ctx.font='bold 7px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('NORTH ROAD',marker.x,marker.y-27);
+  ctx.fillStyle='#fff0b0';ctx.font='bold 6px Arial';ctx.fillText('DEPTHS',marker.x,marker.y-17);
+  ctx.restore();
+
   // Pond (optional water feature)
   var p=layout.pond;
   ctx.save();
@@ -22827,12 +22925,25 @@ function roomExitPromptAvailable(def){
   var roomType=def&&(def._sideRoomType||def.type);
   var combatLike=roomType===RT.COMBAT||roomType===RT.ELITE||
     roomType===RT.MINIBOSS||roomType===RT.SIDE;
+  // A developer room-skip can arrive in the same frame as a mini-boss room
+  // transition, before loadRoom() has spawned its named encounter. Keep the
+  // visible exit closed until the room state proves that the mini-boss was
+  // actually defeated; this also prevents a delayed spawn from appearing
+  // behind an already-open exit prompt.
+  var miniBossReady=roomType!==RT.MINIBOSS||
+    (!!(roomStates[currentRoomId]&&roomStates[currentRoomId].cleared)&&!miniBoss);
   var dungeonStart=roomType===RT.START&&activeDungeonId!=='town'&&
     activeDungeonId!=='bob_arena'&&!(typeof isEntranceZone==='function'&&isEntranceZone(activeDungeonId));
   var rewardComplete=roomType===RT.SHRINE&&!!(roomStates[currentRoomId]&&roomStates[currentRoomId].shrineUsed) ||
     roomType===RT.TREASURE&&!!(roomStates[currentRoomId]&&roomStates[currentRoomId].chestOpened);
-  return !!(def&&def.forward&&(combatLike||dungeonStart||rewardComplete)&&activeDungeonId!=='town'&&
-    exitDoor&&roomCleared&&!roomTransitioning);
+  // Boss rooms hand off through a physical exit portal rather than a forward
+  // room definition. On constrained touch surfaces, expose the same
+  // deliberate action once that portal is actually active; this remains a
+  // truthful portal interaction and cannot bypass a locked or uncleared boss.
+  var bossPortalReady=roomType===RT.BOSS&&activeDungeonId!=='town'&&!!exitPortalActive;
+  var exitControlReady=roomType===RT.BOSS?bossPortalReady:!!exitDoor;
+  return !!(def&&((def.forward&&(combatLike||dungeonStart||rewardComplete))||bossPortalReady)&&
+    activeDungeonId!=='town'&&exitControlReady&&roomCleared&&!roomTransitioning&&miniBossReady);
 }
 function updateRoomExitPrompt(def){
   var el=document.getElementById('roomExitBtn');
@@ -22846,6 +22957,11 @@ function updateRoomExitPrompt(def){
 function handleRoomExitPrompt(){
   var def=ROOM_DEFS[currentRoomId];
   if(!roomExitPromptAvailable(def))return;
+  if(def&&def.type===RT.BOSS&&exitPortalActive){
+    hideRoomExitPrompt();
+    beginExitPortalTravel();
+    return;
+  }
   roomTransitioning=true;
   hideRoomExitPrompt();
   saveRoomState(currentRoomId);
@@ -23732,9 +23848,10 @@ function renderDungeonSelectGrid(){
      var card=document.createElement('div');
      card.className='dungeonCard '+(unlocked&&!premiumLocked?'unlocked':'locked')+(isSelected&&unlocked&&!premiumLocked?' selected':'')+(premiumLocked?' premiumLocked':'');
     var rewardLine=(d.soulMult>1||d.mxpMult>1)?('Rewards: +'+Math.round((d.soulMult-1)*100)+'% Souls · +'+Math.round((d.mxpMult-1)*100)+'% Mastery XP'):'Standard Rewards';
+    var subLine=unlocked?'Available from Town gate':('Locked — '+d.unlockHint);
     var bodyHtml='<span class="dcIcon">'+d.icon+'</span><div class="dcInfo">'+
       '<div class="dcName">'+d.name+'</div>'+
-      '<div class="dcSub">'+(unlocked?rewardLine:('Locked — '+d.unlockHint))+'</div>';
+      '<div class="dcSub">'+subLine+'</div>';
     if(unlocked)bodyHtml+='<div class="dcReward">'+rewardLine+'</div>';
     if(unlocked){
       var _bestDiff=getHighestDifficultyCompleted(did);
@@ -26510,8 +26627,17 @@ function developerQaToggleEnemyFree(){
 function developerQaAdvanceBossPhase(){
   if(!boss){showBanner('DEV QA','No live boss in this room',1.3);return true;}
   var phaseBefore=bossPhase||1;
-  var hpRatio=phaseBefore<=1?0.64:(phaseBefore===2?0.29:0.08);
+  // Named later bosses keep bespoke phase fields instead of the generic
+  // bossPhase counter. The QA phase step must still exercise their authored
+  // transitions, otherwise a test run can stop at a misleading generic HP
+  // value without triggering the custom dialogue/visual state.
+  var isOathbreaker=!!boss.isOathbreakerKing;
+  var isAlchemist=!!boss.isAlchemist;
+  var isRangerCaptain=!!boss.isRangerCaptain;
+  var isNecromancer=!!boss.isNecromancer;
+  var hpRatio=isNecromancer?(boss.necPhase2Triggered?0.18:0.48):(isRangerCaptain?(boss.rcPhase2Triggered?0.18:0.36):(isAlchemist?(boss.alchPhase2Triggered?0.24:0.49):(isOathbreaker?(boss.okPhase2Triggered?0.24:0.64):(phaseBefore<=1?0.64:(phaseBefore===2?0.29:0.08)))));
   boss.hp=Math.max(1,Math.floor(boss.hpMax*hpRatio));
+  if(isOathbreaker||isAlchemist||isRangerCaptain||isNecromancer)dealDamageToBoss(0,false);
   developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
   developerQaLog('boss-phase-step',{from:phaseBefore,targetHp:boss.hp});
   showBanner('DEV QA','Boss phase step queued',1.4);
@@ -26534,6 +26660,13 @@ function developerQaCompleteCurrentRoom(){
   }else if(miniBoss){
     dealDamageToMiniBoss(1000000000,false);
     developerQaLog('miniboss-skip');
+  }else if(def.type===RT.MINIBOSS&&!(roomStates[currentRoomId]&&roomStates[currentRoomId].cleared)){
+    // Do not mark a mini-boss room cleared before its encounter exists. This
+    // is reachable only through the loopback QA helper when it is fired
+    // immediately after a room transition, but leaving the room locked makes
+    // the helper safe and keeps delayed named spawns from being skipped.
+    developerQaLog('miniboss-not-ready');
+    showBanner('DEV QA','Mini-boss is still spawning',1.4);
   }else{
     enemies=[];cursedLibrarians=[];enemyProjectiles=[];roomCleared=true;
     if(roomStates[currentRoomId]){roomStates[currentRoomId].cleared=true;roomStates[currentRoomId].savedEnemies=[];}
@@ -28625,36 +28758,68 @@ function isAimedGroundSkill(tier){
   if(cls!=='druid'||tier!=='core')return false;
   return druidChosenSkills.core==='Creeping Vines';
 }
+// Managed tablet/browser surfaces can emit a DOM click after losing the
+// pointer-up event that normally activates these controls.  Keep the normal
+// pointer path, but accept that click as a one-shot fallback.  The short
+// release window suppresses the click that follows a successful pointer-up;
+// the pointer id guard also suppresses a delayed pointer-up after fallback.
+var ACTION_BUTTON_CLICK_FALLBACK_WINDOW=450;
+function wireActionButtonPress(el,onRelease,onDown,onCancel){
+  var lastPointerReleaseAt=-Infinity;
+  var fallbackClickAt=-Infinity;
+  var activePointerId=null;
+  el.addEventListener('pointerdown',function(e){
+    activePointerId=e.pointerId;
+    if(onDown)onDown(e);
+  });
+  el.addEventListener('pointerup',function(e){
+    var now=performance.now();
+    if(activePointerId!==null&&e.pointerId===activePointerId&&now-fallbackClickAt<ACTION_BUTTON_CLICK_FALLBACK_WINDOW){
+      activePointerId=null;
+      return;
+    }
+    activePointerId=null;
+    lastPointerReleaseAt=now;
+    e.preventDefault();e.stopPropagation();
+    onRelease(e);
+  });
+  el.addEventListener('click',function(e){
+    var now=performance.now();
+    if(now-lastPointerReleaseAt<ACTION_BUTTON_CLICK_FALLBACK_WINDOW)return;
+    fallbackClickAt=now;
+    e.preventDefault();e.stopPropagation();
+    onRelease(e);
+  });
+  el.addEventListener('pointercancel',function(e){
+    activePointerId=null;
+    lastPointerReleaseAt=performance.now();
+    if(onCancel)onCancel(e);
+  });
+}
 function wireSkillButtons(){
   ['core','movement','ultimate'].forEach(function(tier){
     var el=document.getElementById('shb-'+tier);if(!el)return;
-    el.addEventListener('pointerdown',function(e){
-      e.preventDefault();
-      if(isAimedGroundSkill(tier))druidAimingTier=tier;
-    });
-    el.addEventListener('pointerup',function(e){
+    wireActionButtonPress(el,function(e){
       if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}
-      e.preventDefault();e.stopPropagation();
       if(druidAimingTier===tier){druidAimingTier=null;activateSkill(tier);return;}
       if(isAimedGroundSkill(tier))return;// was started elsewhere; ignore stray release
       activateSkill(tier);
-    });
-    el.addEventListener('pointercancel',function(e){if(druidAimingTier===tier)druidAimingTier=null;});
+    },function(e){
+      e.preventDefault();
+      if(isAimedGroundSkill(tier))druidAimingTier=tier;
+    },function(){if(druidAimingTier===tier)druidAimingTier=null;});
   });
   var potEl=document.getElementById('potionBtn');
   if(potEl){
-    potEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();usePotion();});
-    potEl.addEventListener('pointerdown',function(e){e.preventDefault();});
+    wireActionButtonPress(potEl,function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}usePotion();},function(e){e.preventDefault();});
   }
   var bobBeamEl=document.getElementById('shb-bobbeam');
   if(bobBeamEl){
-    bobBeamEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();activateBobSetDemonBeam();});
-    bobBeamEl.addEventListener('pointerdown',function(e){e.preventDefault();});
+    wireActionButtonPress(bobBeamEl,function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}activateBobSetDemonBeam();},function(e){e.preventDefault();});
   }
   var autoRushEl=document.getElementById('autoRushBtn');
   if(autoRushEl){
-    autoRushEl.addEventListener('pointerup',function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}e.preventDefault();e.stopPropagation();legAutoBullRushEnabled=!legAutoBullRushEnabled;updateAutoRushButton();});
-    autoRushEl.addEventListener('pointerdown',function(e){e.preventDefault();});
+    wireActionButtonPress(autoRushEl,function(e){if(releaseJoystickBeforeSkillAction(e)){e.preventDefault();e.stopPropagation();return;}legAutoBullRushEnabled=!legAutoBullRushEnabled;updateAutoRushButton();},function(e){e.preventDefault();});
   }
 }
 
@@ -29090,9 +29255,20 @@ if(permanentData.selectedClass==='mage'){
     runSeq++;
     var _resumeRoomId=_resumeCheckpoint&&ROOM_DEFS[_resumeCheckpoint.currentRoomId]?_resumeCheckpoint.currentRoomId:MAIN_PATH[0];
     loadRoom(_resumeRoomId);
-    gameRunning=true;
     if(_resumeCheckpoint)restoreRunCheckpointState(_resumeCheckpoint);
     else if(!_isStatic)saveRunCheckpoint('session-start');
+    // A recovered combat room must be readable before it becomes live again.
+    // Restore the exact checkpointed room first, then reuse the normal pause
+    // menu so a player on a managed tablet can choose Resume after seeing the
+    // objective, enemies, and safe controls. This also gives loopback QA a
+    // deterministic point to arm session-only developer aids before damage
+    // updates resume; no cheat state is persisted by this handoff.
+    if(_resumeCheckpoint){
+      gameRunning=true;
+      openPauseMenu();
+      return;
+    }
+    gameRunning=true;
     lastTime=performance.now();requestAnimationFrame(gameLoop);
   }catch(e){
     console.log('startGame FATAL: '+e);
@@ -29240,6 +29416,10 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
   if(def._isDungeon11&&!def._isRangerCaptainBoss){
     enemies=[];miniBoss=null;boss=null;
     roomCleared=true;rs.cleared=true;
+    if(_isFirstVisit&&!rs.d11MaterialsGranted){
+      rs.d11MaterialsGranted=true;
+      grantDungeon11ExplorationMaterials(def._d11Style);
+    }
     if(def.forward)openForwardDoor(geo);
     sideDoorOpen=(def.side!==null);
     var _d11BannerMsg=(def.type===RT.BOSS)?'The tower ahead has gone silent.':'';
@@ -29345,6 +29525,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
       if(rs.bossDefeated){
         roomCleared=true;enemies=[];miniBoss=null;boss=null;
         showBanner(typeLabel+' '+def.name,'The Corrupted Necromancer has fallen. The graveyard is silent once more.',2.0);
+        unlockBossExit(0.2);
       }else{
         enemies=[];miniBoss=null;
         spawnNecromancer(geo);
@@ -29655,7 +29836,7 @@ function buildCompositionLabel(comp){
 var cursedLibrarians=[];
 function spawnComposition(comp,geo,depth){
   if(!comp||comp.length===0)comp=[{kind:'warrior'}];
-  var _scEliteBonus=(getActiveDifficulty().eliteChanceBonus||0)+(getActiveDungeonScaling().eliteChanceBonus||0);
+  var _scEliteBonus=getEncounterTuning().eliteChanceBonus;
   for(var i=0;i<comp.length;i++){
     // ── DIFFICULTY SYSTEM: Nightmare/Infernal occasionally upgrade a normal spawn to Elite ──
     var _scIsElite=(_scEliteBonus>0&&Math.random()<_scEliteBonus);
@@ -29672,23 +29853,20 @@ function spawnEliteComposition(comp,geo,depth){
 }
 function spawnEnemyByKind(kind,geo,depth,isElite){
   var def=ENEMY_KINDS[kind]||ENEMY_KINDS.warrior;
-  depth=depth||0;var scale=1+depth*0.12;if(isElite)scale*=1.6;
-  if(activeModifier._titanicFoes)scale*=1.30;
-  var _eDmgMult=activeModifier._bloodMoon?1.25:1.0;
+  depth=depth||0;
+  var _encounterTuning=getEncounterTuning();
+  var scale=(1+depth*0.12)*_encounterTuning.enemyModifierScale;
+  if(isElite)scale*=1.6;
+  var _eDmgMult=_encounterTuning.enemyDmgMult;
   // ── DIFFICULTY SYSTEM: scale Enemy Health separately from movement speed,
   // and fold Enemy Damage into the existing damage multiplier. Applies to
   // every enemy in every dungeon since this is the single shared spawn path. ──
-  var _diffScale=getActiveDifficulty();
-  var _hpScale=scale*(_diffScale.enemyHpMult||1.0);
-  _eDmgMult*=(_diffScale.enemyDmgMult||1.0);
+  var _hpScale=scale*_encounterTuning.enemyHpMult;
   // ── GLOBAL DIFFICULTY SCALING REWORK: per-dungeon Health/Damage/Speed/
   // Attack-Frequency on top of the difficulty-tier and depth scaling above.
   // Composes multiplicatively with everything else in this function. ──
-  var _dgScale=getActiveDungeonScaling();
-  _hpScale*=(_dgScale.hpMult||1.0);
-  _eDmgMult*=(_dgScale.dmgMult||1.0);
-  var _dgSpeedMult=_dgScale.speedMult||1.0;
-  var _dgAtkSpeedMult=_dgScale.atkSpeedMult||1.0;
+  var _dgSpeedMult=_encounterTuning.enemySpeedMult;
+  var _dgAtkSpeedMult=_encounterTuning.enemyAttackSpeedMult;
   var margin=100;
   var minX=geo.inner.x+margin,maxX=geo.inner.x+geo.inner.w-margin;
   var minY=geo.inner.y+margin,maxY=geo.inner.y+geo.inner.h-margin;
@@ -30003,10 +30181,10 @@ function openForwardDoor(geo){
 function spawnBoss(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.62;
   // ── DIFFICULTY SYSTEM: bosses scale with the selected difficulty ──
-  var _bDiff=getActiveDifficulty();
-  var _bDg=DUNGEON_SCALING.dungeon1;
-  var _bossHp=Math.round(750*(activeModifier._titanicFoes?1.15:1.0)*_bDiff.enemyHpMult*_bDg.bossHpMult);
-  var _bossDmg=Math.round(22*(activeModifier._bloodMoon?1.10:1.0)*_bDiff.enemyDmgMult*_bDg.bossDmgMult);
+  var _bTuning=getEncounterTuning('dungeon1');
+  var _bDg=_bTuning.dungeon;
+  var _bossHp=Math.round(750*_bTuning.bossHpMult);
+  var _bossDmg=Math.round(22*_bTuning.bossDmgMult);
   boss={x:cx,y:cy,radius:38,color:'#1a1a1a',hp:_bossHp,hpMax:_bossHp,speed:55,damage:_bossDmg,
     attackRange:38+player.radius+6,attackCooldown:1.8,attackTimer:0,hitFlash:0,
     isBoss:true,slamTimer:4.0,chargeTimer:7.0,summonTimer:10.0,
@@ -30027,10 +30205,10 @@ function spawnBoss(geo){
 function spawnFallenKingPlaceholder(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.62;
   // ── DIFFICULTY SYSTEM: bosses scale with the selected difficulty ──
-  var _fkDiff=getActiveDifficulty();
-  var _fkDg=DUNGEON_SCALING.dungeon2;
-  var _fkHp=Math.round(2100*(activeModifier._titanicFoes?1.15:1.0)*_fkDiff.enemyHpMult*_fkDg.bossHpMult);
-  var _fkDmgMult=(_fkDiff.enemyDmgMult||1.0)*(_fkDg.bossDmgMult||1.0);
+  var _fkTuning=getEncounterTuning('dungeon2');
+  var _fkDg=_fkTuning.dungeon;
+  var _fkHp=Math.round(2100*_fkTuning.bossHpMult);
+  var _fkDmgMult=_fkTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:40,color:'#2a2030',hp:_fkHp,hpMax:_fkHp,speed:55,damage:Math.round(80*_fkDmgMult),
     fkBasicDamage:Math.round(80*_fkDmgMult),fkChargeDamage:Math.round(50*_fkDmgMult),fkLongRangeDamage:Math.round(60*_fkDmgMult),fkCleaveDamage:Math.round(70*_fkDmgMult),
     attackRange:42+player.radius+8,attackCooldown:1.6,attackTimer:0,hitFlash:0,
@@ -30062,10 +30240,10 @@ function spawnFallenKingPlaceholder(geo){
 // dealDamageToBoss()/drawBoss() via the isChieftain branch.
 function spawnChieftain(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.62;
-  var _chDiff=getActiveDifficulty();
-  var _chDg=DUNGEON_SCALING.dungeon5;
-  var _chHp=Math.round(7000*(activeModifier._titanicFoes?1.15:1.0)*_chDiff.enemyHpMult*_chDg.bossHpMult);
-  var _chDmgMult=(_chDiff.enemyDmgMult||1.0)*(_chDg.bossDmgMult||1.0);
+  var _chTuning=getEncounterTuning('dungeon5');
+  var _chDg=_chTuning.dungeon;
+  var _chHp=Math.round(7000*_chTuning.bossHpMult);
+  var _chDmgMult=_chTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:44,color:'#241812',hp:_chHp,hpMax:_chHp,speed:56,damage:Math.round(55*_chDmgMult),
     chiefBasicDamage:Math.round(55*_chDmgMult),chiefCleaveDamage:Math.round(70*_chDmgMult),
     chiefAxeDamage:Math.round(45*_chDmgMult),chiefLeapDamage:Math.round(85*_chDmgMult),
@@ -30111,10 +30289,10 @@ function spawnChieftain(geo){
 // drawBoss().
 function spawnArchmageValen(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.58;
-  var _vDiff=getActiveDifficulty();
-  var _vDg=DUNGEON_SCALING.dungeon6;
-  var _vHp=Math.round(9600*(activeModifier._titanicFoes?1.15:1.0)*_vDiff.enemyHpMult*_vDg.bossHpMult);
-  var _vDmgMult=(_vDiff.enemyDmgMult||1.0)*(_vDg.bossDmgMult||1.0);
+  var _vTuning=getEncounterTuning('dungeon6');
+  var _vDg=_vTuning.dungeon;
+  var _vHp=Math.round(9600*_vTuning.bossHpMult);
+  var _vDmgMult=_vTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:34,color:'#3a2a5a',hp:_vHp,hpMax:_vHp,speed:46,damage:Math.round(20*_vDmgMult),
     valenTouchDamage:Math.round(20*_vDmgMult),
     valenFireballDamage:Math.round(38*_vDmgMult),valenOrbDamage:Math.round(52*_vDmgMult),
@@ -30172,10 +30350,10 @@ function spawnArchmageValen(geo){
 // branch of updateBoss()/dealDamageToBoss()/drawBoss().
 function spawnHollowWorldTree(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.42;
-  var _hDiff=getActiveDifficulty();
-  var _hDg=DUNGEON_SCALING.dungeon7;
-  var _hHp=Math.round(11500*(activeModifier._titanicFoes?1.15:1.0)*_hDiff.enemyHpMult*_hDg.bossHpMult);
-  var _hDmgMult=(_hDiff.enemyDmgMult||1.0)*(_hDg.bossDmgMult||1.0);
+  var _hTuning=getEncounterTuning('dungeon7');
+  var _hDg=_hTuning.dungeon;
+  var _hHp=Math.round(11500*_hTuning.bossHpMult);
+  var _hDmgMult=_hTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:58,color:'#2a2418',hp:_hHp,hpMax:_hHp,speed:0,damage:Math.round(18*_hDmgMult),
     hwtTouchDamage:Math.round(18*_hDmgMult),
     hwtSpearDamage:Math.round(26*_hDmgMult),hwtBranchDamage:Math.round(30*_hDmgMult),
@@ -30219,10 +30397,10 @@ function spawnHollowWorldTree(geo){
 // Dungeon 8 — The Black Market — Final Boss: The Broker.
 function spawnBroker(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.42;
-  var _bDiff=getActiveDifficulty();
-  var _bDg8=DUNGEON_SCALING.dungeon8;
-  var _bHp=Math.round(12800*(activeModifier._titanicFoes?1.15:1.0)*_bDiff.enemyHpMult*_bDg8.bossHpMult);
-  var _bDmgMult=(_bDiff.enemyDmgMult||1.0)*(_bDg8.bossDmgMult||1.0);
+  var _bTuning=getEncounterTuning('dungeon8');
+  var _bDg8=_bTuning.dungeon;
+  var _bHp=Math.round(12800*_bTuning.bossHpMult);
+  var _bDmgMult=_bTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:34,color:'#0d0b12',hp:_bHp,hpMax:_bHp,speed:0,damage:Math.round(20*_bDmgMult),
     brkTouchDamage:Math.round(20*_bDmgMult),
     brkDaggerDamage:Math.round(22*_bDmgMult),brkPoolDamage:Math.round(12*_bDmgMult),
@@ -30286,10 +30464,10 @@ function spawnBroker(geo){
 // isOathbreakerKing branch of updateBoss()/dealDamageToBoss()/drawBoss().
 function spawnOathbreakerKing(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.42;
-  var _kDiff=getActiveDifficulty();
-  var _kDg=DUNGEON_SCALING.dungeon9;
-  var _kHp=Math.round(14200*(activeModifier._titanicFoes?1.15:1.0)*_kDiff.enemyHpMult*_kDg.bossHpMult);
-  var _kDmgMult=(_kDiff.enemyDmgMult||1.0)*(_kDg.bossDmgMult||1.0);
+  var _kTuning=getEncounterTuning('dungeon9');
+  var _kDg=_kTuning.dungeon;
+  var _kHp=Math.round(14200*_kTuning.bossHpMult);
+  var _kDmgMult=_kTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:40,color:'#c9a227',hp:_kHp,hpMax:_kHp,speed:42,damage:Math.round(16*_kDmgMult),
     okTouchDamage:Math.round(16*_kDmgMult),
     okCleaveDamage:Math.round(24*_kDmgMult),okShieldBashDamage:Math.round(14*_kDmgMult),
@@ -30354,10 +30532,10 @@ function spawnOathbreakerKing(geo){
 // Poison Cloud.
 function spawnAlchemist(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.42;
-  var _aDiff=getActiveDifficulty();
-  var _aDg=DUNGEON_SCALING.dungeon10;
-  var _aHp=Math.round(16500*(activeModifier._titanicFoes?1.15:1.0)*_aDiff.enemyHpMult*_aDg.bossHpMult);
-  var _aDmgMult=(_aDiff.enemyDmgMult||1.0)*(_aDg.bossDmgMult||1.0);
+  var _aTuning=getEncounterTuning('dungeon10');
+  var _aDg=_aTuning.dungeon;
+  var _aHp=Math.round(16500*_aTuning.bossHpMult);
+  var _aDmgMult=_aTuning.bossDmgMult;
   boss={x:cx,y:cy,radius:38,color:'#8a4ad0',hp:_aHp,hpMax:_aHp,speed:0,damage:Math.round(18*_aDmgMult),
     alchTouchDamage:Math.round(18*_aDmgMult),
     alchClawDamage:Math.round(26*_aDmgMult),
@@ -38632,14 +38810,21 @@ var MINIBOSS_TYPES_D4=['corrupted_champion'];
 var MINIBOSS_TYPES_D5=['barbarian_champion'];
 var MINIBOSS_TYPES_D6=['crystal_guardian'];
 var MINIBOSS_TYPES_D10=['head_researcher'];
+// Data-driven routing keeps the dungeon-specific creative roster explicit while
+// allowing new open-world regions to register a miniboss pool without adding
+// another branch to the encounter factory.
+var MINIBOSS_TYPES_BY_DUNGEON={
+  dungeon1:MINIBOSS_TYPES_D1,
+  dungeon2:MINIBOSS_TYPES_D2,
+  dungeon4:MINIBOSS_TYPES_D4,
+  dungeon5:MINIBOSS_TYPES_D5,
+  dungeon6:MINIBOSS_TYPES_D6,
+  dungeon10:MINIBOSS_TYPES_D10
+};
 
 function pickMiniBossType(){
-  if(activeDungeonId==='dungeon10')return MINIBOSS_TYPES_D10[Math.floor(Math.random()*MINIBOSS_TYPES_D10.length)];
-  if(activeDungeonId==='dungeon4')return MINIBOSS_TYPES_D4[Math.floor(Math.random()*MINIBOSS_TYPES_D4.length)];
-  if(activeDungeonId==='dungeon5')return MINIBOSS_TYPES_D5[Math.floor(Math.random()*MINIBOSS_TYPES_D5.length)];
-  if(activeDungeonId==='dungeon6')return MINIBOSS_TYPES_D6[Math.floor(Math.random()*MINIBOSS_TYPES_D6.length)];
-  if(activeDungeonId==='dungeon2')return MINIBOSS_TYPES_D2[Math.floor(Math.random()*MINIBOSS_TYPES_D2.length)];
-  return MINIBOSS_TYPES_D1[Math.floor(Math.random()*MINIBOSS_TYPES_D1.length)];
+  var pool=MINIBOSS_TYPES_BY_DUNGEON[activeDungeonId]||MINIBOSS_TYPES_D1;
+  return pool[Math.floor(Math.random()*pool.length)];
 }
 
 function spawnMiniBoss(geo,mbType){
@@ -38654,16 +38839,16 @@ function spawnMiniBoss(geo,mbType){
     sweepWindup:false,sweepWarnTimer:0,sweepAngle:0,sweepActive:false,sweepTimer:0,
     glowPhase:0
   };
-var _mbHp=activeModifier._titanicFoes?1.20:1.0;
-  var _mbDmg=activeModifier._bloodMoon?1.15:1.0;
+  // The tuning snapshot also composes selected difficulty; the legacy
+  // dungeon-only description above is retained for historical context.
+  var _mbTuning=getEncounterTuning();
+  var _mbHp=_mbTuning.miniBossHpMult;
+  var _mbDmg=_mbTuning.miniBossDmgMult;
   // ── COMPOUND DUNGEON SCALING: every miniboss automatically inherits its
   // dungeon's Health/Damage multiplier through this single choke point --
   // every mb.hp/mb.damage assignment below (and every ability damage field
   // derived from _mbHp/_mbDmg, e.g. eoPrisonDamage/eoBurstDamage) is scaled
   // by it. Movement speed, attack speed and cooldowns are untouched. ──
-  var _mbDg=getActiveDungeonScaling();
-  _mbHp*=(_mbDg.hpMult||1.0);
-  _mbDmg*=(_mbDg.dmgMult||1.0);
   if(type==='tome_warden'){
     mb.label='Tome Warden';mb.color='#1a2a4a';mb.radius=28;
     mb.hp=Math.round(600*_mbHp);mb.hpMax=Math.round(600*_mbHp);
@@ -42414,6 +42599,7 @@ function drawTownMinimap(mc,mw,mh){
   var mapPoint=point;
   var lineWidth=Math.max(1.5,Math.min(4,Math.min(sx,sy)*18));
   var plazaPoint=mapPoint(plaza.x,plaza.y);
+  var markerPoint=mapPoint(layout.roadMarker.x,layout.roadMarker.y);
 
   mc.save();
   mc.font='bold 7px Arial';mc.textAlign='left';mc.textBaseline='alphabetic';
@@ -42442,6 +42628,9 @@ function drawTownMinimap(mc,mw,mh){
     var tp=mapPoint(tree.x,tree.y);mc.fillStyle='rgba(74,125,58,0.95)';
     mc.beginPath();mc.arc(tp.x,tp.y,Math.max(1.5,3*Math.min(sx,sy)),0,Math.PI*2);mc.fill();
   });
+  mc.fillStyle='rgba(216,183,122,0.95)';mc.strokeStyle='#fff0b0';mc.lineWidth=1;
+  mc.beginPath();mc.moveTo(markerPoint.x,markerPoint.y-4);mc.lineTo(markerPoint.x-4,markerPoint.y+3);mc.lineTo(markerPoint.x+4,markerPoint.y+3);mc.closePath();mc.fill();mc.stroke();
+  mc.font='5px Arial';mc.textAlign='center';mc.fillStyle='rgba(255,240,176,0.95)';mc.fillText('ROAD',markerPoint.x,markerPoint.y+9);
 
   mc.fillStyle='rgba(216,192,138,0.95)';mc.beginPath();
   mc.arc(plazaPoint.x,plazaPoint.y,Math.max(3,5*Math.min(sx,sy)),0,Math.PI*2);mc.fill();
@@ -52456,10 +52645,10 @@ var RC_PREFERRED_DIST=210;
 
 function spawnRangerCaptain(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.4;
-  var _rcDiff=getActiveDifficulty();
-  var _rcDg=DUNGEON_SCALING.dungeon11;
-  var _rcHp=Math.round(3400*(activeModifier._titanicFoes?1.15:1.0)*(_rcDiff.enemyHpMult||1.0)*(_rcDg.bossHpMult||1.0));
-  var _rcDmgMult=(_rcDiff.enemyDmgMult||1.0)*(_rcDg.bossDmgMult||1.0);
+  var _rcTuning=getEncounterTuning('dungeon11');
+  var _rcDg=_rcTuning.dungeon;
+  var _rcHp=Math.round(3400*_rcTuning.bossHpMult);
+  var _rcDmgMult=_rcTuning.bossDmgMult;
   rcBeaconLit=false; // in case this is a retry within the same session
   boss={
     x:cx,y:cy,radius:28,color:'#1a2a18',hp:_rcHp,hpMax:_rcHp,
@@ -52806,6 +52995,7 @@ function finalizeRangerCaptainDefeat(){
   permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+souls;
   permanentData.stats.totalEnemiesDefeated=(permanentData.stats.totalEnemiesDefeated||0)+1;
   permanentData.stats.rangerCaptainsDefeated=(permanentData.stats.rangerCaptainsDefeated||0)+1;
+  grantDungeon11BossMaterials();
   gainXP(XP_PER_BOSS);gainMasteryXP(MXP_GUARDIAN+30);gainMasteryXP(MXP_DUNGEON_COMPLETE);
   player.rage=clamp(player.rage+Math.round(RAGE_GAIN_KILL*upgrades.rageGenMult),0,player.rageMax);
   addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-60,'🏹 THE WATCH IS RECLAIMED','#d8e8c8',3.0);
@@ -52930,11 +53120,15 @@ function drawRangerCaptain(){
 // DUNGEON 12 FINAL BOSS: THE CORRUPTED NECROMANCER
 // ============================================================
 // The Ritual Altar (_isNecromancerAltar) — previously a reserved empty
-// placeholder room, same convention as every other dungeon's not-yet-built
+// placeholder room, now promoted to the release surface with authored
+// rewards, progression handoff, and a tested return portal.
 // boss room. This adds ONLY the boss/AI/attacks/phases/transformation, per
 // the design doc — no rewards, materials, dungeon unlocks, new UI, or
 // cutscenes beyond the in-fight floaty dialogue every other boss already
-// uses. Wired in via the same isolated-function dispatch pattern as
+// uses. The isolated dispatch pattern keeps its named attacks, transformation,
+// and soul-release dialogue intact while allowing the standard reward contract
+// to run at the end of the bespoke defeat sequence. Wired in via the same
+// isolated-function dispatch pattern as
 // isDemonBob/isRangerCaptain: one line each in updateBoss()/
 // dealDamageToBoss()/drawBoss(), plus the _isNecromancerAltar branch in
 // loadRoom's Dungeon 12 section (spawns the boss immediately, no intro
@@ -52961,10 +53155,10 @@ function drawRangerCaptain(){
 
 function spawnNecromancer(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.42;
-  var _necDiff=getActiveDifficulty();
-  var _necDg=DUNGEON_SCALING.dungeon12;
-  var _necHp=Math.round(19000*(activeModifier._titanicFoes?1.15:1.0)*(_necDiff.enemyHpMult||1.0)*(_necDg.bossHpMult||1.0));
-  var _necDmgMult=(_necDiff.enemyDmgMult||1.0)*(_necDg.bossDmgMult||1.0);
+  var _necTuning=getEncounterTuning('dungeon12');
+  var _necDg=_necTuning.dungeon;
+  var _necHp=Math.round(19000*_necTuning.bossHpMult);
+  var _necDmgMult=_necTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:36,color:'#241a30',hp:_necHp,hpMax:_necHp,
     speed:40,damage:Math.round(24*_necDmgMult),
@@ -53424,15 +53618,24 @@ function updateNecromancerDefeat(dt){
 }
 function finalizeNecromancerDefeat(){
   if(!boss)return;
-  boss=null;
-  // Rewards, materials, dungeon unlocks, and achievement checks are
+  var bx=boss.x,by=boss.y;
+  boss=null;totalKills++;
+  var souls=applyModifierToSouls(Math.round(SOUL_REWARD_GUARDIAN*1.85));
+  runSoulsEarned+=souls;
+  permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+souls;
+  permanentData.stats.totalEnemiesDefeated=(permanentData.stats.totalEnemiesDefeated||0)+1;
+  permanentData.stats.necromancersDefeated=(permanentData.stats.necromancersDefeated||0)+1;
+  gainXP(XP_PER_BOSS);gainMasteryXP(MXP_GUARDIAN+30);gainMasteryXP(MXP_DUNGEON_COMPLETE);
+  player.rage=clamp(player.rage+Math.round(RAGE_GAIN_KILL*upgrades.rageGenMult),0,player.rageMax);
+  // The standard boss reward, achievement, unlock, and difficulty handoff
   // intentionally NOT implemented here — out of scope for this pass, which
-  // covers only the boss/AI/attacks/phases/transformation. A future pass can
-  // add the standard soul/xp/mastery reward call here, same as every other
-  // boss, without touching anything above.
+  // runs after this bespoke soul-release sequence without touching the
+  // authored combat phases above.
   var bossRoomId=MAIN_PATH[MAIN_PATH.length-1]||'room_boss';
   if(roomStates[bossRoomId]){roomStates[bossRoomId].bossDefeated=true;roomStates[bossRoomId].cleared=true;}
   roomCleared=true;
+  if(playerLevel>(permanentData.stats.bestPlayerLevel||1))permanentData.stats.bestPlayerLevel=playerLevel;
+  checkAchievements();refreshDungeonUnlocks();recordDungeonDifficultyCompletion();
   addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-60,'☠ THE CORRUPTED NECROMANCER HAS FALLEN','#e8d8ff',3.0);
   applyBossPurification('dungeon12',(worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-90);
   unlockBossExit(2.2);
@@ -53582,10 +53785,10 @@ function drawNecromancer(){
 
 function spawnCorruptionOfSpace(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.5;
-  var _csDiff=getActiveDifficulty();
-  var _csDg=DUNGEON_SCALING.dungeon13;
-  var _csHp=Math.round(28000*(activeModifier._titanicFoes?1.15:1.0)*(_csDiff.enemyHpMult||1.0)*(_csDg.bossHpMult||1.0));
-  var _csDmgMult=(_csDiff.enemyDmgMult||1.0)*(_csDg.bossDmgMult||1.0);
+  var _csTuning=getEncounterTuning('dungeon13');
+  var _csDg=_csTuning.dungeon;
+  var _csHp=Math.round(28000*_csTuning.bossHpMult);
+  var _csDmgMult=_csTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:38,color:'#140c22',hp:_csHp,hpMax:_csHp,
     speed:55,damage:Math.round(26*_csDmgMult),
@@ -54264,10 +54467,10 @@ function drawCorruptionOfSpace(){
 
 function spawnCorruptionOfTime(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.5;
-  var _ctDiff=getActiveDifficulty();
-  var _ctDg=DUNGEON_SCALING.dungeon14;
-  var _ctHp=Math.round(29000*(activeModifier._titanicFoes?1.15:1.0)*(_ctDiff.enemyHpMult||1.0)*(_ctDg.bossHpMult||1.0));
-  var _ctDmgMult=(_ctDiff.enemyDmgMult||1.0)*(_ctDg.bossDmgMult||1.0);
+  var _ctTuning=getEncounterTuning('dungeon14');
+  var _ctDg=_ctTuning.dungeon;
+  var _ctHp=Math.round(29000*_ctTuning.bossHpMult);
+  var _ctDmgMult=_ctTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:40,color:'#1a160e',hp:_ctHp,hpMax:_ctHp,
     speed:50,damage:Math.round(25*_ctDmgMult),
@@ -54939,10 +55142,10 @@ function drawCorruptionOfTime(){
 // boss's finalize function.
 function spawnCorruptionOfLife(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.5;
-  var _colDiff=getActiveDifficulty();
-  var _colDg=DUNGEON_SCALING.dungeon15;
-  var _colHp=Math.round(4800*(activeModifier._titanicFoes?1.15:1.0)*(_colDiff.enemyHpMult||1.0)*(_colDg.bossHpMult||1.0));
-  var _colDmgMult=(_colDiff.enemyDmgMult||1.0)*(_colDg.bossDmgMult||1.0);
+  var _colTuning=getEncounterTuning('dungeon15');
+  var _colDg=_colTuning.dungeon;
+  var _colHp=Math.round(4800*_colTuning.bossHpMult);
+  var _colDmgMult=_colTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:46,color:'#2a1a14',hp:_colHp,hpMax:_colHp,
     speed:0,damage:Math.round(24*_colDmgMult),
@@ -55425,10 +55628,10 @@ function drawCorruptionOfLife(){
 // boss's finalize function already uses in this file.
 function spawnPureCorruption(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.5;
-  var _pcDiff=getActiveDifficulty();
-  var _pcDg=DUNGEON_SCALING.dungeon16;
-  var _pcHp=Math.round(6500*(activeModifier._titanicFoes?1.15:1.0)*(_pcDiff.enemyHpMult||1.0)*(_pcDg.bossHpMult||1.0));
-  var _pcDmgMult=(_pcDiff.enemyDmgMult||1.0)*(_pcDg.bossDmgMult||1.0);
+  var _pcTuning=getEncounterTuning('dungeon16');
+  var _pcDg=_pcTuning.dungeon;
+  var _pcHp=Math.round(6500*_pcTuning.bossHpMult);
+  var _pcDmgMult=_pcTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:40,color:'#000000',hp:_pcHp,hpMax:_pcHp,
     speed:70,damage:Math.round(20*_pcDmgMult),
@@ -55527,10 +55730,10 @@ function spawnPureCorruption(geo){
 // white light instead of the original's Final Choice offer.
 function spawnPureCorruptionRematch(geo){
   var cx=(worldRoomW||canvas.width)/2,cy=geo.inner.y+geo.inner.h*0.5;
-  var _pcDiff=getActiveDifficulty();
-  var _pcDg=DUNGEON_SCALING.dungeon16;
-  var _pcHp=Math.round(6500*(activeModifier._titanicFoes?1.15:1.0)*(_pcDiff.enemyHpMult||1.0)*(_pcDg.bossHpMult||1.0));
-  var _pcDmgMult=(_pcDiff.enemyDmgMult||1.0)*(_pcDg.bossDmgMult||1.0);
+  var _pcTuning=getEncounterTuning('dungeon16');
+  var _pcDg=_pcTuning.dungeon;
+  var _pcHp=Math.round(6500*_pcTuning.bossHpMult);
+  var _pcDmgMult=_pcTuning.bossDmgMult;
   boss={
     x:cx,y:cy,radius:40,color:'#000000',hp:_pcHp,hpMax:_pcHp,
     speed:70,damage:Math.round(20*_pcDmgMult),

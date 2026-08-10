@@ -1,5 +1,103 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-10
+
+- Made recovered combat sessions player-safe: `Resume Session` now restores the
+  exact checkpointed room and opens the existing pause menu before damage or
+  enemy updates resume. Verified the D1 pause/reload/`SESSION RECOVERED`/Resume/
+  Finish flow on the current build at port 4176 with the loopback invincibility
+  aid and zero browser error/warning diagnostics. Added the focused lifecycle
+  contract; the source mirror, build/package audit, Capacitor sync, and full
+  **113/113** release gate pass. No deployment checkpoint is claimed.
+
+- Promoted Necromancer's Stolen Graveyard into the local playable release
+  surface after Ranger Watchtowers. Verified the Cemetery Gate, corrupted
+  horde rooms, authored Soul Collector content, Ritual Altar, Corrupted
+  Necromancer transformation and Phase 2, soul-release defeat, standard boss
+  rewards, Veteran unlock, saved-boss portal recovery, managed exit fallback,
+  and final session summary in a loopback QA-assisted route. The source mirror,
+  `qa:fast`, build/package audit, Capacitor sync, and full **112/112** release
+  gate pass; no GitHub or website deployment checkpoint is claimed.
+
+- Promoted Ranger Watchtowers into the playable chain after The Abandoned
+  Laboratory. Verified its environment-first watchtower route, first-visit
+  salvage, Corrupted Ranger Captain intro/transformation, custom Phase 2,
+  peaceful defeat dialogue, guaranteed Tier 8 materials, Veteran unlock,
+  managed portal fallback, and final session summary in a loopback
+  QA-assisted route. Extended the developer phase-step helper for the Ranger
+  Captain's bespoke phase fields. The source mirror, `qa:fast`, build/package
+  audit, Capacitor sync, and full **111/111** release gate pass; no new
+  deployment is claimed.
+
+- Promoted The Abandoned Laboratory into the playable chain after D9.
+  Verified randomized laboratory chambers, the Head Researcher mini-boss,
+  The Alchemist's introduction and Perfect Serum transformation, rewards,
+  Veteran unlock, final portal, and session summary in a loopback QA-assisted
+  route.
+- Extended the developer phase-step helper for the Oathbreaker King and The
+  Alchemist's custom phase fields, and added a portal-only managed touch exit
+  action for cleared boss rooms. The source mirror, fast QA, build/package
+  audit, Capacitor sync, and full **110/110** release gate pass; no new
+  deployment is claimed.
+
+- Promoted the existing Vow Breaker's Castle route to the playable release
+  surface after D8. Verified the Royal Commander mini-boss, Oathbreaker King
+  phase transition, boss vault, rewards, Veteran unlock, exit, and final
+  session summary in a loopback QA-assisted route.
+- Fixed the delayed mini-boss exit race: an unspawned mini-boss now blocks the
+  room exit and `CQLR` reports that the encounter is still spawning. The
+  source mirror, `qa:fast`, build/package audit, Capacitor sync, and full
+  **109/109** release gate pass. This is local milestone evidence; no new
+  deployment is claimed.
+
+- Made mini-boss selection data-driven with `MINIBOSS_TYPES_BY_DUNGEON`.
+  Joey's D1, D2, D4, D5, D6, and D10 rosters remain unchanged, while future
+  open-world regions gain an explicit registration seam and a safe D1 fallback.
+  The source mirror, production build/package audit, Capacitor sync,
+  deterministic QA, and full local release gate pass **108/108**; no deployment
+  checkpoint was created.
+- Added `PROJECT_MEMORY.md` as one bounded rolling learning record and wired it
+  into every autonomous cycle. Existing facts are replaced or consolidated in
+  place; per-cycle memory files and appended transcripts are forbidden. Added
+  an executable control contract for the read rule, blocker state-change rule,
+  and 120-line limit. The full local release gate passes **108/108**.
+- Centralized difficulty, dungeon progression, and temporary run-modifier
+  composition in `getEncounterTuning(dungeonId)`. Shared enemies, minibosses,
+  Void Monarch compatibility logic, and all named boss spawners now consume
+  the same stat-tuning contract; Joey's bespoke mechanics and content remain
+  intact. Minibosses now respect selected difficulty consistently. Added a
+  registry invariant test for complete, finite, positive, monotonic dungeon
+  and difficulty scaling. The full local release suite passes **108/108**; no
+  deployment checkpoint was created.
+- Reordered `release:verify` so generated web and Capacitor assets are
+  refreshed before static-package tests, preventing stale-build failures after
+source edits. Added an executable ordering contract; the full gate passes
+  **108/108**.
+- Clarified first-session onboarding with a fantasy-adventure premise, a
+  temporary/profile-safe modifier explanation, and a single readable reward
+  line on unlocked route cards. Route cards now point back to the Town gate.
+- Added a physical `North Road` Town signpost and matching `ROAD` minimap
+  landmark pointing toward the existing Forgotten Depths portal. This improves
+  the open-world first breadcrumb without adding a shortcut or changing
+  progression.
+- Added a duplicate-safe DOM-click fallback for skill, potion, optional Bob
+  beam, and Auto Rush action controls. Normal pointer-up activation remains the
+  primary path; the guarded fallback helps managed tablet/browser surfaces
+  that lose pointer-up delivery without changing combat, saves, exports, or
+  developer-only controls.
+- Added focused contract coverage. The source mirror, deterministic QA,
+  production build/package audit, native sync, and **108/108** release gate pass.
+  This remains local usability hardening with no deployment checkpoint.
+- Recorded an incomplete fresh normal-control Mage probe through Dungeon 1,
+  Dungeon 2, and early Dungeon 4. The run ended before the Corrupted Champion,
+  so it does not add clean-route or touch-session evidence. The next local
+  browser attempt was denied permission; B-009 records the owner action.
+- Added profile-transfer migration fixtures covering legacy raw saves, future
+  save versions, unsupported future classes, and invalid optional checkpoints.
+  The current `.txt` import promise remains local-only and non-overwriting;
+  cross-device runtime evidence is still deferred. The release gate is now
+  **108/108**.
+
 ## Unreleased - 2026-08-09
 
 - Added a visible, optional Step movement pad for constrained tablet/managed

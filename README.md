@@ -58,6 +58,16 @@ The repository has a dependency-free Node check/test/build loop:
 npm.cmd run release:verify
 ```
 
+`release:verify` refreshes the static web package and synchronizes the
+Capacitor web assets before running tests, so a source edit cannot create a
+false stale-`dist` or stale-native-assets failure. Run `sync-source.ps1` first
+when `index.html` changes so the downloadable text mirror remains exact.
+
+Autonomous cycles use `PROJECT_MEMORY.md` as one rolling learning record. It is
+edited and consolidated in place rather than accumulated as daily/session
+notes, preventing stale blockers and repeated attempts from becoming the next
+cycle's instructions.
+
 For fast gameplay-logic QA, run the deterministic representative encounter
 suite before starting a long browser route:
 
@@ -69,6 +79,12 @@ It covers fixed-seed attack/collision/damage cycles, phase transitions, finite
 summons, victory/loss/timeout, accelerated time, invincibility, high damage,
 and enemy-free testing. Browser play remains necessary for input, rendering,
 audio, saves, and tablet feel.
+
+Encounter stat composition is centralized in `getEncounterTuning(dungeonId)`
+inside the canonical runtime. Shared enemies, minibosses, and named bosses use
+the same difficulty/dungeon/modifier contract while retaining Joey's bespoke
+phase and attack mechanics. The architecture contract is included in the
+normal test suite.
 
 The build copies the static release surface to `dist\`. It does not publish or create native store builds.
 

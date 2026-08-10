@@ -1,6 +1,6 @@
 # Code Quest Lab - Test Plan
 
-Updated: 2026-08-09
+Updated: 2026-08-10
 
 ## Test rules
 
@@ -10,6 +10,94 @@ Updated: 2026-08-09
 - Record browser, viewport, commit, date, and result for each manual run.
 - Treat 13-17-year-old tablet users as the primary test audience; inspect clarity and tone without adding childish language.
 - Treat the public review pages and deployment package as release surfaces: verify every same-origin route, CSP/permissions headers, HTTPS, and clean-browser rendering.
+
+## Rolling project memory - 2026-08-10
+
+- Verify every autonomous cycle reads `PROJECT_MEMORY.md` before choosing work.
+- Verify the memory requires in-place replacement/consolidation, a material
+  state change before retrying recorded blockers, and a 120-line maximum.
+- Current result: the focused control contract and full **108/108** release
+  gate pass.
+
+## Shared encounter tuning architecture - 2026-08-10
+
+- Verify `getEncounterTuning(dungeonId)` composes selected difficulty, dungeon
+  scaling, and temporary run modifiers for enemy, miniboss, and boss stat
+  paths.
+- Verify every named boss spawner and the reusable miniboss path consumes the
+  shared contract while retaining boss-specific phase and attack data.
+- Verify every dungeon/difficulty profile is present, finite, positive, and
+  monotonic across the configured progression order.
+- Current automated result: the architecture contract, source mirror, static
+  build/package audit, Capacitor sync, deterministic fast QA, and full
+  **108/108** suite pass. Balance and physical-device feel remain separate
+  validation work.
+
+## Mini-boss roster routing - 2026-08-10
+
+- Verify the explicit `MINIBOSS_TYPES_BY_DUNGEON` registry preserves the
+  authored D1, D2, D4, D5, D6, and D10 pools and falls back safely to D1.
+- Current automated result: the focused architecture contract, source mirror,
+  static build/package audit, Capacitor sync, deterministic fast QA, and full
+  **108/108** release gate pass.
+
+## Self-preparing release verification - 2026-08-10
+
+- Verify `release:verify` runs source contracts, then rebuilds `dist` and
+  synchronizes Capacitor web assets before the static-package tests.
+- Verify the generated package, Android web bundle, and iOS web bundle all
+  match the current canonical source after the command completes.
+- Current result: the ordering contract and full **108/108** release gate pass;
+  `qa:fast`, production package audit, and native sync pass. This protects the
+  autonomous workflow but does not replace manual route/device evidence.
+
+## First-session onboarding clarity - 2026-08-10
+
+- Verify the profile screen explains the short fantasy-adventure premise and
+  the Town-to-northern-road starting direction.
+- Verify the modifier screen explains that its rule is temporary and does not
+  change saved profile progress.
+- Verify unlocked route cards show `Available from Town gate` and one reward
+  line rather than repeating `Standard Rewards`.
+- Current static result: the focused progression contract and full **108/108**
+  release gate pass; `qa:fast`, production build/package audit, and Capacitor
+  native sync pass. Browser/device visual replay remains required.
+
+## Town world breadcrumb - 2026-08-10
+
+- Verify the physical `North Road` signpost is rendered beside the existing
+  Town road and points toward the Forgotten Depths without changing the
+  walkable portal flow.
+- Verify the Town minimap marks the same landmark as `ROAD` and continues to
+  show the player, Waypoint Plaza, roads, and `DEPTHS` destination.
+- Current static result: the breadcrumb contract passes; the full **108/108**
+  release gate, `qa:fast`, production build/package audit, and Capacitor native
+  sync pass. A permitted clean-browser/tablet visual replay remains required
+  before this becomes manual device evidence.
+
+## Managed action-button click fallback - 2026-08-10
+
+- Verify that skill, potion, optional Bob beam, and Auto Rush controls still
+  activate on normal pointer-up and also recover when a managed surface emits
+  only a DOM click.
+- Verify one normal pointer-up plus its follow-up click activates once, and a
+  delayed pointer-up after click fallback does not activate twice.
+- Current static/automated result: focused combat contracts and the full
+  **108/108** release gate pass; `qa:fast`, production build/package audit, and
+  Capacitor native sync pass. Fresh physical-device or permitted managed
+  browser validation remains required before touch acceptance is credited.
+
+## Plain-text transfer migration fixtures - 2026-08-10
+
+- Verify raw legacy profile JSON remains importable through the `.txt` parser
+  so the normal current save loader can apply its existing migrations.
+- Verify future save versions and unsupported Joey classes are rejected rather
+  than silently downgraded or remapped.
+- Verify invalid optional active-run checkpoints do not invalidate durable
+  profile progress and are not imported as active run state.
+- Current result: all three profile-transfer tests pass; full release gate is
+  **108/108**. Cross-device and cross-origin file-chooser evidence remain
+  separate later acceptance work.
 
 ## Managed touch-surface travel fallback - 2026-08-09
 

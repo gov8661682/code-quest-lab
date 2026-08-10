@@ -1,6 +1,6 @@
 # Code Quest Lab - Completed Work Ledger
 
-Updated: 2026-08-08
+Updated: 2026-08-10
 
 This is the canonical record of work that should not be repeated. Reopen an
 item only for a failing test, confirmed regression, changed dependency, or a
@@ -24,19 +24,79 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Dungeon 2 QA route and queued level-up clarity | A disposable Mage QA route completed Dungeon 2 Normal through the Fallen King and portal into The Shadow Realm Entrance; queued level-up cards now display their earned level and remaining choices; commit `9c451af`, 81-test release gate | Reopen only for a route regression, an upgrade overlay dead-end, or full D1-8 acceptance |
 | Elite pacing and queued attack input hardening | Local disposable Mage QA cleared the D2 two-elite Executioner's Court after the shared post-modifier health budget was applied, completed the three-phase Fallen King, and entered The Shadow Realm Entrance; touch and desktop attack taps now wait for cooldown readiness; two focused contracts pass | Reopen only for a fresh-room pacing regression, a discarded ready-intent report, or full D1-8 acceptance |
 
+## Completed local route milestone (2026-08-10; deployment pending)
+
+## Recovery-safe pause handoff (2026-08-10; local, deployment pending)
+
+- Recovered combat checkpoints now restore the exact room and open the normal
+  pause menu before the game loop resumes. This prevents damage from landing
+  before a returning player can read the objective or choose Resume, and gives
+  managed-tablet QA a deterministic point to arm the session-only invincibility
+  aid. A current-build browser run at port 4176 verified D1 combat, pause,
+  reload, `SESSION RECOVERED`, safe Resume, a second pause, Finish and Return
+  to Dashboard, and zero error/warning diagnostics. The focused lifecycle
+  contract and full **113/113** release gate pass. Physical-device and
+  10-30-minute touch evidence remain open.
+
+- Promoted Necromancer's Stolen Graveyard after Ranger Watchtowers. A
+  loopback QA-assisted Mage route verified the Cemetery Gate, corrupted horde
+  rooms, Soul Collector content, The Ritual Altar, the Corrupted
+  Necromancer's authored Phase 1/Phase 2 transformation and soul-release
+  defeat sequence, standard boss rewards, Veteran unlock, final portal, and
+  `THE SESSION IS COMPLETE`. Reloading the saved defeated-boss checkpoint
+  recreated the portal and exposed the managed `Proceed through exit`
+  fallback. The source mirror, deterministic QA, build/package audit,
+  Capacitor sync, and **112/112** release gate pass. This is functional
+  loopback evidence, not clean-player, physical-device, GitHub, or website
+  evidence.
+
+- Promoted Ranger Watchtowers after The Abandoned Laboratory. A loopback
+  QA-assisted Mage route verified the environment-first randomized watchtower
+  rooms, first-visit salvage, Shattered Signal Tower, Corrupted Ranger
+  Captain intro/transformation, custom Phase 2, peaceful defeat sequence,
+  guaranteed Tier 8 materials, Veteran unlock, managed portal fallback, and
+  `THE SESSION IS COMPLETE` summary. The source mirror, deterministic QA,
+  build/package audit, Capacitor sync, and **111/111** release gate pass. This
+  is functional local evidence, not clean-player, physical-device, GitHub,
+  or website evidence.
+
+- Promoted The Abandoned Laboratory after D9. A loopback QA-assisted route
+  verified its randomized combat rooms, Head Researcher mini-boss, The
+  Alchemist's authored phase transition, reward flow, Veteran unlock, portal,
+  and final session summary. The phase-aware QA helper and boss-portal touch
+  fallback are covered by the focused contracts and the **110/110** gate.
+
+- Promoted the existing Vow Breaker's Castle route into the playable chain
+  after D8. A loopback QA-assisted route verified the Castle Gate, Royal
+  Commander mini-boss, Oathbreaker King phase/dialogue transition, reward
+  vault, Veteran unlock, final portal, and `THE SESSION IS COMPLETE` summary.
+- Fixed the delayed mini-boss race exposed during that route: the exit prompt
+  and developer room-complete helper now wait for a mini-boss to spawn and be
+  defeated. The source mirror, deterministic QA, static build/package audit,
+  Capacitor sync, and **109/109** release gate pass. This is functional local
+  evidence, not clean-player, physical-device, GitHub, or website evidence.
+
 ## Completed release foundation
 
 | Work | Evidence | Reopen condition |
 |---|---|---|
 | Source mirror and dependency-free verification loop | `index.html` equals `code-quest-lab-source.txt`; `npm.cmd run release:verify` passes | Mirror/test/build failure |
+| Self-preparing release verification | `release:verify` now runs source contracts, `native:sync` (build plus Capacitor web-asset synchronization), tests, and the static-package audit in that order; the project-control contract and 108-test release gate pass locally | Reopen if a source edit can again leave `dist` or native web bundles stale during the composite gate |
 | Static/offline web foundation | Relative manifest, v6 service worker, local assets, public review pages, headers, deterministic `build-info.json` | A failing package/service-worker contract or changed release requirement |
-| V1 route boundary | `REGION_ORDER` and progression contracts expose D1-8 only and reject post-release checkpoint bypasses | A route guard regression or explicit scope promotion |
+| V1 route boundary | `REGION_ORDER` and progression contracts expose D1, D2, and D4-12 while rejecting D13-16 and post-release checkpoint bypasses | A route guard regression or explicit scope promotion |
 | Save and active-run contract layer | Save parser/loader matrices, backup promotion/default fallback, checkpoint parser, lifecycle tests, and deletion coverage | A failing test or real data-loss/unsafe-resume evidence |
 | Versioned plain-text profile transfer | `CODE QUEST LAB PROFILE EXPORT` preserves durable profile data, valid backup, and active-run checkpoint; a real browser file-chooser upload imported a matching Level 4 Barbarian copy with the same dungeon, highest room, run count, and play time while leaving the original untouched; import creates a new local profile and enforces the current class whitelist | A failing transfer contract, data-loss/overwrite evidence, or a promoted cross-version/device migration requirement |
 | Browser input/session hardening | Focusable canvas; touch/mouse/joystick paths; release fallbacks; first-room onboarding; pause/resume/Finish For Now/recovery surfaces; bounded offscreen live-threat cue; immediate final-enemy room/HUD refresh | A reproducible input, freeze, recovery, or P1 usability defect |
+| Town first-world breadcrumb | Town now renders a physical `North Road` signpost and matching `ROAD` minimap landmark toward the existing Forgotten Depths portal; it preserves free walking, portal interaction, and route boundaries; the static contract, 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a visual/readability regression or a promoted World Atlas milestone; permitted browser/device replay remains open |
+| First-session onboarding clarity | Profile copy explains the Town-led fantasy premise; the modifier screen explains temporary run rules; unlocked route cards point to the Town gate and show one reward line; the focused progression contract, 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a comprehension or layout regression; permitted browser/device visual replay remains open |
+| Managed action-button click fallback | Skill, potion, optional Bob Beam, and Auto Rush controls share `wireActionButtonPress`, with duplicate-safe DOM-click recovery, delayed-pointer-up suppression, cancellation handling, and behavioral contract coverage; the 108-test release gate, build/package audit, deterministic QA, and native sync pass locally | Reopen for a reproducible duplicate activation, cancelled-gesture activation, or physical-device/browser validation failure; Git commit/push remains owner-gated by B-010 |
+| Plain-text transfer migration fixtures | Legacy raw saves remain importable; future save versions and unsupported future classes are rejected; invalid optional checkpoints are dropped without invalidating durable profile data; all three focused fixtures and the 108-test release gate pass | Reopen for a failing migration, overwrite/data-loss evidence, or promoted cross-device/cross-origin acceptance requirement |
 | Local developer playtest aid | Loopback URL gate plus hidden key sequence toggles a session-only invincibility mode; focused contract and local runtime smoke passed; no save/export field and no public/native activation | A save/export leak, public-host activation, or runtime failure; keep it out of deployed builds unless explicitly promoted |
+| Rolling project learning memory | `PROJECT_MEMORY.md` is read at the start of every autonomous cycle and updated by replacement/consolidation rather than stacked logs; the project-control contract enforces the read rule, material-state-change blocker rule, and 120-line limit; the full **108/108** gate passes | Reopen if a cycle bypasses the memory, stale facts accumulate, another project memory is created, or the bounded-memory contract fails |
+| Shared encounter tuning architecture | `getEncounterTuning(dungeonId)` now composes difficulty, dungeon progression, and temporary run modifiers for the reusable enemy/miniboss paths and every named boss spawner; the architecture contract validates every spawner plus finite, complete, monotonic dungeon/difficulty registries; source mirror, static build/package audit, native sync, fast QA, and **108/108** tests pass while Joey's bespoke boss mechanics remain intact | Reopen for a stat-composition regression, a new encounter path that bypasses the contract, or a deliberately promoted balance change |
+| Data-driven mini-boss roster routing | `MINIBOSS_TYPES_BY_DUNGEON` preserves Joey's existing D1, D2, D4, D5, D6, and D10 mini-boss pools, gives future regions one registry seam, and retains the D1 fallback; the focused architecture contract, source mirror, build/package audit, native sync, deterministic QA, and **108/108** release gate pass | Reopen for a roster regression, a missing promoted-region pool, or a balance/content decision that changes the authored roster |
 | Architecture review and deterministic QA workflow | `ARCHITECTURE_REVIEW.md`; shared `BOSS_IDENTITY_DEFS`; loopback-only accelerated/phase/room/boss QA controls; fixed-seed `tools/qa/fast-combat-sim.mjs`; 92-test full suite, build/package audit, native sync, GitHub commit `2c1d6ba`, Cloudflare preview `7c154632`, configured-domain production checks, and live browser smoke pass | Reopen only for a regression in the identity contract, QA gate, simulator invariants, or a promoted architecture migration |
-| V1 route QA and exit-handoff hardening | Disposable loopback Mage traversed the functional D1, D2, D4, D5, D6, D7, and D8 boss/portal chain with the QA aid, reached the final session summary, returned to Town with `Finish for Now`, and removed only the temporary profile; shared QA add cleanup, truthful exit objective, and dungeon-entry wording are covered by 93 tests, native sync, commit `20f85ba`, Cloudflare preview `d8829db6`, configured-domain production checks, and live desktop/tablet profile-shell smoke | Reopen for a route-handoff regression; clean-player D1-8, ending, and touch-session acceptance remain separate |
+| V1 route QA and exit-handoff hardening | Loopback Mage QA now traverses the functional D1, D2, D4, D5, D6, D7, D8, D9, D10, D11, and D12 boss/portal chain with the QA aid, reaches the final session summary, and verifies the Royal Commander/Head Researcher/Oathbreaker King/Alchemist/Ranger Captain/Corrupted Necromancer content; shared QA cleanup, truthful exit objective, saved-boss portal recovery, and dungeon-entry wording are covered by the 112-test gate | Reopen for a route-handoff regression; clean-player D1-12, ending, and touch-session acceptance remain separate |
 | Bounded Dungeon 4 recovery pressure | D4 corruption now permits one Shadow Wraith surge per room; Regenerating elites can recover only a finite 25% of maximum health per encounter, with room-checkpoint persistence; focused contracts and the 78-test release gate pass; a fresh local D1 route also clears an elite room under the developer test aid | Fresh post-fix D4 elite-room rerun and full D1-8 route acceptance; do not deploy this hardening alone |
 | Session transient-status cleanup | New sessions clear stale dungeon door text, lock styling, and waypoint activation state; no-waypoint zones also hide leftover activation status. Focused contracts and a local defeat-to-Town screenshot pass cover the regression. | A reproduced stale status in a new Town/Entrance session |
 | Public safety/review surface | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin/static/package safety contracts | A product-safety regression or owner-approved policy change |

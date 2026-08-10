@@ -114,13 +114,13 @@ implements them.
 
 ### Now: direction and compatibility
 
-- Keep Checkpoint 1 active and finish the evidenced D1-8 path.
+- Keep Checkpoint 1 active and finish the evidenced D1-12 path.
 - Treat Town, entrances, waypoints, and `worldLocation` as the first world
   slice, not as disposable menus.
 - Keep the local Town minimap aligned with the existing layout registry so the
   first world slice communicates roads, landmarks, the player, and the next
   reachable dungeon without implying that future regions are playable.
-- Avoid promoting D9-16 or adding broad exploration code before the current
+- Avoid promoting D13-16 or adding broad exploration code before the current
   combat, save, and session evidence is stable.
 - Add tests and migrations before changing the save or route model.
 

@@ -159,6 +159,20 @@ test('new sessions clear stale dungeon door and waypoint status messages', () =>
   });
 });
 
+test('recovered combat checkpoints open paused before damage updates resume', () => {
+  const start = SOURCE.indexOf('function startGame(){');
+  const end = SOURCE.indexOf('// ============================================================\n// ROOM LOADING', start);
+  assert.notEqual(start, -1, 'start-game function is present');
+  assert.notEqual(end, -1, 'start-game function boundary is present');
+  const block = SOURCE.slice(start, end);
+  assert.match(
+    block,
+    /if\(_resumeCheckpoint\)restoreRunCheckpointState\(_resumeCheckpoint\);[\s\S]*?if\(_resumeCheckpoint\)\{\s*gameRunning=true;\s*openPauseMenu\(\);\s*return;\s*\}/,
+    'recovered runs restore state before opening the pause menu'
+  );
+  assert.match(block, /gameRunning=true;\s*lastTime=performance\.now\(\);requestAnimationFrame\(gameLoop\);/);
+});
+
 test('static rooms clear stale door text as well as hiding the status element', () => {
   const start = SOURCE.indexOf('function updateRoomProgress(geo)');
   const end = SOURCE.indexOf('function playerDied()', start);

@@ -131,7 +131,7 @@ test('production dungeon validator rejects broken route contracts', () => {
 
 test('production region order advances through an entrance and ends safely', () => {
   const api = loadRegionOrder();
-  const expectedReleaseOrder = ['dungeon1', 'dungeon2', 'dungeon4', 'dungeon5', 'dungeon6', 'dungeon7', 'dungeon8'];
+  const expectedReleaseOrder = ['dungeon1', 'dungeon2', 'dungeon4', 'dungeon5', 'dungeon6', 'dungeon7', 'dungeon8', 'dungeon9', 'dungeon10', 'dungeon11', 'dungeon12'];
 
   assert.deepEqual(Array.from(api.REGION_ORDER), expectedReleaseOrder);
   for (let index = 0; index < api.REGION_ORDER.length - 1; index += 1) {
@@ -141,7 +141,11 @@ test('production region order advances through an entrance and ends safely', () 
   assert.equal(api.getNextDungeonId('unknown_dungeon'), null);
   assert.equal(api.isReleaseDungeon('dungeon1'), true);
   assert.equal(api.isReleaseDungeon('dungeon8'), true);
-  for (const postReleaseId of ['dungeon9', 'dungeon10', 'dungeon11', 'dungeon12', 'dungeon13', 'dungeon14', 'dungeon15', 'dungeon16']) {
+  assert.equal(api.isReleaseDungeon('dungeon9'), true);
+  assert.equal(api.isReleaseDungeon('dungeon10'), true);
+  assert.equal(api.isReleaseDungeon('dungeon11'), true);
+  assert.equal(api.isReleaseDungeon('dungeon12'), true);
+  for (const postReleaseId of ['dungeon13', 'dungeon14', 'dungeon15', 'dungeon16']) {
     assert.equal(api.isReleaseDungeon(postReleaseId), false, `${postReleaseId} is post-release`);
     assert.equal(api.getNextDungeonId(postReleaseId), null, `${postReleaseId} cannot enter the V1 chain`);
   }
@@ -163,6 +167,24 @@ test('Town keeps the open-world portal discoverable off-screen', () => {
   assert.match(SOURCE, /drawOffscreenEnemyIndicators\(\);\s*drawTownPortalIndicator\(\);/);
 });
 
+test('Town gives the first destination a physical world breadcrumb', () => {
+  assert.match(SOURCE, /roadMarker:\{x:cx-inner\.w\*0\.11,y:inner\.y\+inner\.h\*0\.32,name:'North Road',destination:'Forgotten Depths'\}/);
+  const townRender = extractBetween('function drawTownWorld(geo){', '// DUNGEON ENTRANCE AREA LAYOUT', 'Town renderer');
+  assert.match(townRender, /var marker=layout\.roadMarker;[\s\S]*?NORTH ROAD[\s\S]*?DEPTHS/);
+  const townMap = extractBetween('function drawTownMinimap(mc,mw,mh){', '// When a room is larger than the viewport', 'Town minimap renderer');
+  assert.match(townMap, /var markerPoint=mapPoint\(layout\.roadMarker\.x,layout\.roadMarker\.y\);[\s\S]*?fillText\('ROAD'/);
+  assert.match(SOURCE, /el\.textContent=isTown\?'Follow Northern Road'/);
+});
+
+test('first-session onboarding explains the world and keeps route rewards readable', () => {
+  assert.match(SOURCE, /id="charSelectIntro"[^>]*>Choose a hero for a short fantasy adventure\. Prepare in Town, follow the northern road/);
+  assert.match(SOURCE, /id="modifierIntro"[^>]*>Each adventure includes one temporary rule\. It changes this run, not your saved profile/);
+  const dungeonGrid = extractBetween('function renderDungeonSelectGrid(){', '// Sets up and shows the modifier screen', 'dungeon selection renderer');
+  assert.match(dungeonGrid, /var subLine=unlocked\?'Available from Town gate':\('Locked — '\+d\.unlockHint\);/);
+  assert.match(dungeonGrid, /if\(unlocked\)bodyHtml\+='\<div class="dcReward">'\+rewardLine/);
+  assert.doesNotMatch(dungeonGrid, /dcSub.*rewardLine/);
+});
+
 test('production navigation hides post-release dungeon entries and blocks legacy resume bypasses', () => {
   assert.match(SOURCE, /REGION_ORDER\.forEach\(function\(did\)\{/);
   assert.match(SOURCE, /function isReleaseDungeon\(dungeonId\)\{return REGION_ORDER\.indexOf\(dungeonId\)>=0;\}/);
@@ -171,6 +193,11 @@ test('production navigation hides post-release dungeon entries and blocks legacy
   assert.match(SOURCE, /function enterEntrance\(dungeonId\)\{\s*if\(!isReleaseDungeon\(dungeonId\)\)\{/);
   assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon9'\)\)\{/);
   assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon10'\)\)\{/);
+  assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon11'\)\)\{/);
+  assert.match(SOURCE, /if\(isReleaseDungeon\('dungeon12'\)\)\{/);
+  assert.match(SOURCE, /objective:'Defeat The Alchemist'/);
+  assert.match(SOURCE, /objective:'Defeat the Corrupted Ranger Captain'/);
+  assert.match(SOURCE, /objective:'Defeat the Corrupted Necromancer'/);
   assert.doesNotMatch(SOURCE, /Practice Modules/);
   assert.match(SOURCE, />← Back to Dungeon Entrance</);
 });
@@ -180,6 +207,13 @@ test('defeated boss rooms point the player toward the unlocked exit', () => {
     SOURCE,
     /var bossExitReady=!!\(def&&def\.type===RT\.BOSS&&!boss&&roomCleared&&!enemies\.some\([\s\S]*?bossExitReady\?'Exit unlocked — continue through the portal':getCurrentDungeonObjective\(\)/
   );
+});
+
+test('boss exit portals expose a deliberate managed-surface fallback without bypassing the portal', () => {
+  assert.match(SOURCE, /var bossPortalReady=roomType===RT\.BOSS&&activeDungeonId!==\'town\'&&!!exitPortalActive;/);
+  assert.match(SOURCE, /var exitControlReady=roomType===RT\.BOSS\?bossPortalReady:!!exitDoor;/);
+  assert.match(SOURCE, /\|\|bossPortalReady\)\&\&\s*activeDungeonId!==\'town\'/);
+  assert.match(SOURCE, /if\(def&&def\.type===RT\.BOSS&&exitPortalActive\)\{[\s\S]*?beginExitPortalTravel\(\);/);
 });
 
 test('waypoint menu close requires leaving before it can reopen', () => {

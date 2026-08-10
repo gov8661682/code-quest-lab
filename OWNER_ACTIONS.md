@@ -1,8 +1,22 @@
 # Code Quest Lab - Owner Actions
 
-Updated: 2026-08-05
+Updated: 2026-08-10
 
 These are human-only or account/legal actions. The development work should continue around them.
+
+- Allow the Codex In-app Browser to access the local QA surface
+  `http://localhost:4173` before the next clean-profile D1-8 evidence run. The
+  current browser policy denied that target on 2026-08-10; Codex must not retry
+  it through another browser or an indirect workaround.
+- Restore Git metadata write access for the current Codex process, or run the
+  prepared commit/push from an owner terminal. The working tree is writable,
+  but `.git` denies creation of `.git/index.lock`; no commit or push is being
+  represented as complete until this is corrected.
+- Verify the configured site externally at
+  `https://code-quest-lab.gov8661682.com`. DNS resolves, but the current
+  environment cannot establish TCP 443, so the latest production check is
+  inconclusive. Record whether the site loads before approving a future
+  website checkpoint.
 
 - Confirm the final product name and obtain professional trademark/name clearance. A preliminary web search on 2026-08-04 did not surface an obvious exact-match game result, but this is not clearance.
 - Confirm the target audience and age-rating position: the current product direction is secondary-school students approximately 13-17, not an automatic Apple Kids-category claim.

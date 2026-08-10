@@ -9,7 +9,115 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
+## Recovery-safe pause handoff - 2026-08-10
+
+The current build was tested at
+`http://127.0.0.1:4176/?cql-dev=1&fresh=20260810-recovery-paused-v2` with a
+fresh Mage. The route reached D1 combat, was paused, reloaded, showed
+`SESSION RECOVERED`, and resumed the exact `Warden's Gate` checkpoint into the
+pause menu before live updates. The QA invincibility sequence was armed while
+paused, the run resumed without dying, paused again, and used `Finish and
+Return to Dashboard`. The tab recorded no error or warning diagnostics.
+
+This exposed and fixed a real player-safety issue: a recovered combat room
+could previously become live immediately, allowing damage before the player
+could read the room or choose Resume. The focused lifecycle contract and full
+local release gate now pass **113/113**. This is managed-browser QA evidence,
+not physical-device or 10-30-minute touch acceptance. The next recommendation
+is one representative touch/device session, then clean D1-12 route feel before
+any D13 promotion.
+
+## D12 release-surface playtest - 2026-08-10
+
+The local QA route at
+`http://127.0.0.1:4174/?cql-dev=1&fresh=20260810-d12-recovery-fix` extended the
+release surface through Necromancer's Stolen Graveyard. It verified the
+Cemetery Gate objective, corrupted horde rooms, authored Soul Collector
+surface, Ritual Altar, the Corrupted Necromancer's Phase 1 to Phase 2
+transformation, soul-release defeat, standard rewards, Veteran unlock, and
+the final session summary. A second reload resumed a saved defeated-boss
+checkpoint and restored its portal, proving that `Proceed through exit` does
+not strand a recovered run.
+
+The full local release gate now passes **112/112**, including the source mirror,
+build/package audit, deterministic QA, and Capacitor synchronization. This is
+QA-assisted loopback evidence; it does not replace clean-player route evidence,
+physical-device acceptance, GitHub, or website deployment evidence. The next
+expert recommendation is a clean D1-12 route with the invincibility aid off,
+followed by a touch-first safe-stop/reload session and only then a bounded D13
+promotion.
+
+The main usability finding from this pass was a real recovery edge: a defeated
+D12 boss checkpoint could show the completed objective without recreating the
+portal, and managed surfaces could lack the legacy exit-door object. Both are
+fixed and contract-tested; the managed exit now follows the actual active
+portal state.
+
+## Release-surface route follow-up - 2026-08-10
+
+The same local route was extended through D11, Ranger Watchtowers, after D10,
+The Abandoned Laboratory. It
+verified the randomized laboratory room names, Head Researcher mini-boss,
+The Alchemist's multi-line introduction, Perfect Serum phase transition,
+reward chest, Veteran unlock, portal-only touch exit, and final session
+summary. The managed-surface exit button appeared only after the physical
+portal was active, so it remains a truthful fallback rather than a progression
+shortcut.
+
+One additional QA finding was fixed during this pass: the developer phase-step
+helper used only the generic boss phase counter and could miss later bosses'
+custom phase fields. It now explicitly drives the Oathbreaker King and
+Alchemist transitions, preserving their authored dialogue/visual checks.
+
+The full local release gate now passes **111/111**. The route is QA-assisted
+and does not replace a clean normal-player D1-11 run, device evidence, or a new
+deployment checkpoint. D12 is now promoted; the next expert recommendation is
+clean D1-12 feel and balance validation, then a bounded D13 promotion.
+
+The local build was re-tested at `http://127.0.0.1:4174/?cql-dev=1` after
+promoting Joey's existing Vow Breaker's Castle content into the route chain.
+The QA-assisted route moved from D8 into D9 and reached Castle Gate, the
+Royal Commander mini-boss, the Oathbreaker King, the throne-room vault, the
+Veteran unlock, and `THE SESSION IS COMPLETE`.
+
+The playthrough preserved the authored details that matter for creative parity:
+the delayed mini-boss spawn/death sequence, the boss's phase-two identity and
+dialogue beat, the reward chest, and the post-boss rest/ending language. It
+also found a genuine usability/QA defect: a room-complete helper could expose
+an exit while a delayed mini-boss had not spawned. The exit and helper now
+wait for the mini-boss, and the full local release gate passes **109/109**.
+
+This is functional route evidence using loopback developer invincibility and
+QA controls, not a clean normal-player route, physical-tablet evidence, or a
+new GitHub/website checkpoint. The next expert recommendation is to run a
+fresh clean D1-9 route for feel/balance, then promote D10 only after its own
+route, save, reward, and return behavior is tested.
+
+## Architecture follow-up - 2026-08-10
+
+The repeated difficulty/modifier formulas found across enemies, minibosses, and
+named bosses are now centralized in `getEncounterTuning(dungeonId)`. The
+change preserves Joey's bespoke boss mechanics and makes miniboss difficulty
+consistent with the rest of the combat roster. Mini-boss roster selection now
+uses one explicit dungeon registry without changing Joey's named pools. The
+source mirror, static build/package audit, Capacitor sync, deterministic fast
+QA, and full **108/108**
+test suite pass. This is a local architecture improvement; the manual clean
+route, physical/tablet validation, and owner-controlled deployment checkpoint
+remain open.
+
 ## Follow-up against the recommendations
+
+The local first-session follow-up now explains the short fantasy-adventure
+premise, describes modifiers as temporary profile-safe run rules, and removes
+the duplicate reward label from unlocked route cards. It also adds a physical
+`North Road` signpost beside the
+existing road and a matching `ROAD` minimap landmark. It gives the player a
+world-facing first breadcrumb toward the Forgotten Depths while preserving
+free walking, the existing portal, and the current route boundaries. The
+static contract, **108/108** release gate, deterministic QA, build/package
+audit, and Capacitor native sync pass. This is local readability evidence, not
+yet a permitted live-browser or physical-device visual acceptance result.
 
 The latest D4 follow-up identified a genuine gameplay-loop risk: the Void
 Monarch could keep generating summon waves for the entire encounter, allowing

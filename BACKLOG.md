@@ -1,6 +1,6 @@
 # Code Quest Lab - Backlog
 
-Updated: 2026-08-05
+Updated: 2026-08-10
 
 These items are intentionally outside the active checkpoint and the locked V1
 route unless a release-critical defect or an explicit scope decision promotes
@@ -53,9 +53,11 @@ one. They must not be used to reopen completed work.
 - Add full input remapping, high-contrast presets, and further accessibility
   options after the current release-critical accessibility pass.
 - Extend the plain-text profile transfer with preserved Joey/current-profile
-  fixtures across browser origins and supported versions; expand class
-  migration only when Ranger, Necromancer, Alchemist, or Paladin are promoted.
-  Do not turn this convenience format into implicit cloud sync.
+  fixtures across browser origins and supported versions. Legacy raw-save,
+  future-schema, unsupported-class, and invalid-checkpoint fixtures are now
+  covered locally; expand class migration only when Ranger, Necromancer,
+  Alchemist, or Paladin are promoted. Do not turn this convenience format into
+  implicit cloud sync.
 - Add post-release content only after V1 audits remain stable.
 
 ## Guardrail

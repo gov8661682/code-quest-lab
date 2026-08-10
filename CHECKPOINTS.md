@@ -1,6 +1,6 @@
 # Code Quest Lab - Major Checkpoints to Release Candidate
 
-Updated: 2026-08-07
+Updated: 2026-08-10
 
 Only one checkpoint may be active. A checkpoint is complete only when its
 acceptance criteria, tests, manual evidence, documentation, and required
@@ -8,7 +8,7 @@ GitHub/website checkpoint are complete. Minor fixes are grouped into the next
 meaningful milestone and do not trigger a deployment by themselves.
 
 The main evidence-scored display is in `CURRENT_CHECKPOINT.md`; Checkpoint 1 is
-currently 79% complete and overall project progress is 18%. `AUTORUN.md`
+currently 90% complete and overall project progress is 19%. `AUTORUN.md`
 defines the bounded autonomous cycle and prevents repeated failed work from
 being counted as progress.
 
@@ -22,9 +22,9 @@ Status: **Complete**
 - Included work: baseline backup and tag; creative reference audit; V1 scope,
   safety, monetisation, privacy, and QA records; source mirror; release tests;
   PWA shell; public review pages; static package; generated Capacitor projects;
-  entitlement/lifecycle seams; session recovery and input hardening; D1-8
+  entitlement/lifecycle seams; session recovery and input hardening; D1-11
   release guard; first desktop/tablet web checkpoint.
-- Excluded work: full D1-8 player completion, new classes, D9-16 promotion,
+- Excluded work: full D1-11 player completion, new classes, D12-16 promotion,
   live billing, native builds, physical-device QA, store submission, and legal
   approval.
 - Dependencies: existing baseline, Joey reference, Node/npm, configured GitHub
@@ -45,20 +45,20 @@ Status: **Complete**
 
 Status: **Active**
 
-- Objective: prove that a clean profile can enjoyably complete the locked V1
-  D1-8 route and safely stop, resume, or recover a meaningful session.
+- Objective: prove that a clean profile can enjoyably complete the current
+  D1-12 route and safely stop, resume, or recover a meaningful session.
 - Included work: clean-profile onboarding; four current classes; combat rooms,
   bosses, rewards, progression, final V1 endpoint and intended ending;
   10-30 minute session shape; pause/resume; Finish For Now; session summary;
   optional Learning Support; touch-first and desktop fallback behavior; a
   versioned local plain-text profile transfer; fixes for verified P0/P1
   gameplay defects.
-- Excluded work: Ranger/Necromancer/Alchemist/Paladin, D9-16, D16 Phase 4,
+- Excluded work: Ranger/Necromancer/Alchemist/Paladin classes, D13-16, D16 Phase 4,
   Smelter activation, live billing, native signing, and non-critical refactors.
 - Dependencies: current web build, clean browser storage, stable input, and
   representative tablet-sized browser access.
 - Acceptance criteria:
-  1. A fresh profile completes the D1-8 route, bosses, rewards, final portal,
+  1. A fresh profile completes the D1-12 route, bosses, rewards, final portal,
      and intended session ending without a critical defect.
   2. A touch-first 10-30 minute session has a clear objective, checkpoint,
      autosave, pause/resume, summary, next step, and safe stop.

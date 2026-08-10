@@ -1,12 +1,13 @@
 # Code Quest Lab architecture review
 
-Updated: 2026-08-08
-Scope: current repository at `1849c59` (`Record bounded boss deployment checkpoint`)
+Updated: 2026-08-10
+Scope: current working tree after the encounter-tuning architecture slice;
+Git checkpoint is still owner-blocked by B-010.
 
 ## Executive result
 
-The current game is stable enough to improve incrementally: the baseline has
-84 passing Node tests, passing release contracts, a generated static package,
+The current game is stable enough to improve incrementally: the working tree
+has 108 passing Node tests, passing release contracts, a generated static package,
 and an existing central room/enemy/difficulty foundation. The largest risk is
 not a missing feature; it is the cost and fragility of validating a very large
 inline runtime by repeatedly playing it at normal speed.
@@ -15,6 +16,24 @@ This review therefore recommends a bounded architecture step rather than a
 rewrite. The existing HTML/Canvas runtime remains canonical while shared
 contracts, local developer controls, and deterministic logic tests make future
 content safer to add and faster to verify.
+
+## Implemented architecture slice - 2026-08-10
+
+`getEncounterTuning(dungeonId)` is now the shared composition point for
+difficulty tiers, dungeon scaling, and temporary Blood Moon/Titanic Foes rules.
+The normal enemy path, miniboss path, Void Monarch compatibility path, and all
+named boss spawners consume the same tuning snapshot. Boss-specific phases,
+attacks, dialogue, visuals, and endings remain in their existing bespoke
+systems; this change only removes repeated stat-composition formulas. Miniboss
+HP and damage now also respect the selected difficulty, correcting the prior
+inconsistency with normal enemies and final bosses.
+
+The architecture contract now covers the shared fields and every source-resident
+boss spawner, plus explicit data-driven mini-boss roster routing. The source
+mirror, static build, Capacitor sync, deterministic QA, and full **108/108** test
+suite pass. This remains local architecture
+hardening; no checkpoint percentage or deployment claim changes until the
+blocked manual route/device evidence is completed.
 
 ## Findings by category
 
@@ -26,7 +45,7 @@ content safer to add and faster to verify.
   This misrepresents Joey's Fallen King, Chieftain, Valen, Hollow World Tree,
   Broker, and later boss content to the player. It is a shared UI defect, not a
   reason to patch individual encounters.
-- **No release-breaking defect was found in the baseline.** The full 84-test
+- **No release-breaking defect was found in the baseline.** The full 107-test
   suite and release contracts pass, so broad gameplay rewrites are not
   justified by current evidence.
 
@@ -73,7 +92,7 @@ content safer to add and faster to verify.
 
 ### Testing and workflow
 
-- The 84 tests provide strong static/contract coverage for saves, lifecycle,
+- The 107 tests provide strong static/contract coverage for saves, lifecycle,
   input, route generation, package safety, and selected combat fixes.
 - The gap is fast gameplay logic validation: there is no fixed-seed encounter
   simulation, accelerated runtime mode, stage/phase skip, or structured local
@@ -147,4 +166,4 @@ content safer to add and faster to verify.
   observable, and never serialized/exported.
 - Deterministic representative simulations complete in seconds and fail with
   structured diagnostics if a shared combat invariant regresses.
-- Existing creative behavior and the 84-test baseline remain intact.
+- Existing creative behavior and the 107-test baseline remain intact.

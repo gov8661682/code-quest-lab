@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-09
+Updated: 2026-08-10
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -24,10 +24,10 @@ Acceptance: the existing browser game still launches, the baseline smoke journey
 Joey's latest output is preserved as a creative reference in `CREATIVE_REFERENCE_AUDIT.md`. It is a content ledger and parity reference, not a replacement source file.
 
 - Preserve Joey's original dungeon names, character identities, skill names, boss names, dialogue, endings, purification journey, and “Last Light” idea.
-- Keep the V1 D1-8 release boundary until later routes, rewards, progression, dialogue, save behavior, and desktop/tablet playability are evidenced.
+- Keep the current D1-12 release surface bounded until later routes, rewards, progression, dialogue, save behavior, and desktop/tablet playability are evidenced.
 - Correct stale source comments that describe already-present D9-16 boss dispatches as reserved or environment-only; do not change gameplay behavior as part of the audit.
 - Add Ranger, Necromancer, Alchemist, and Paladin in isolated milestones, including class selection/save migration, HUD resources, passives, all skill tiers, skill-tree behavior, class-restricted equipment, set bonuses, materials, balance, and playability.
-- Promote D9-D12 and D13-D16 only through explicit route/boss/reward/progression milestones. Source-resident boss functions do not by themselves make a dungeon release-ready.
+- Promote D13-D16 only through explicit route/boss/reward/progression milestones. Source-resident boss functions do not by themselves make a dungeon release-ready.
 - Preserve and later verify Joey's D16 Phase 4 Pure Corruption mechanics (`pcCleaveSpin`, `pcCrown`, `pcWarShock`, `pcBarrage`, `pcSnare`, `pcTendril`, and `pcStorm`) as an endgame parity milestone.
 - Keep the Smelter as an original idea, but do not expose a contradictory placeholder; its UI, 55-material recipe data, costs, saves, and tests must agree before activation.
 
@@ -41,8 +41,8 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 - Treat the existing Town, entrance hubs, waypoints, `worldLocation`, dungeon
   registries, and room engine as the first open-world-compatible foundation.
-- Keep the current V1 route guard and finish the D1-8 evidence before adding
-  broad exploration or promoting D9-16.
+- Keep the current route guard and finish the D1-12 evidence before adding broad
+  exploration or promoting D13-16.
 - After the current path is playable, build a tested World Atlas, region graph,
   discovered destinations, optional landmarks, and persistent return state.
 - Promote Joey's later classes, regions, Pure Corruption, Smelter, and story
@@ -52,6 +52,108 @@ layers, world-state model, save boundaries, and acceptance bar.
   reward, and return path.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
+
+### Recovery-safe pause handoff (2026-08-10; local milestone)
+
+Recovered combat runs now restore their exact saved room and open the shared
+pause menu before resuming the live loop. This protects players on managed
+tablets from taking damage while they orient themselves and gives QA a stable
+point for session-only aids. A current-build D1 browser run verified pause,
+reload, `SESSION RECOVERED`, safe Resume, Finish and Return to Dashboard, and
+zero browser diagnostics. The focused contract and **113/113** release gate
+pass; physical-device and 10-30-minute touch evidence remain the next C1 work.
+
+### Necromancer's Stolen Graveyard release-surface expansion (2026-08-10; local milestone)
+
+The source-resident D12 route is now promoted after Ranger Watchtowers. Its
+quiet Cemetery Gate opens into corrupted horde rooms using the Ancient Ruins
+pool plus the authored Soul Collector, then culminates at The Ritual Altar.
+The Corrupted Necromancer retains Joey's two-phase transformation, soul-
+release defeat sequence, and named dialogue beats. The release handoff now
+awards standard boss souls/XP/mastery, records the Necromancer defeat, unlocks
+Veteran, and restores the exit portal when a defeated boss checkpoint is
+reloaded. The managed `Proceed through exit` control is available only while
+the physical portal is active. The full **112/112** release gate,
+build/package audit, deterministic QA, and Capacitor sync pass. This is
+QA-assisted local evidence, not clean-player, physical-device, GitHub, or
+website checkpoint evidence; D13-D16 remain gated.
+
+### Ranger Watchtowers release-surface expansion (2026-08-10; local milestone)
+
+The source-resident D11 route is now promoted after D10. The route is
+environment-first by design: randomized watchtower/cliff/bridge/barracks
+rooms, gradual corruption atmosphere, and first-visit salvage lead to the
+Shattered Signal Tower. The Corrupted Ranger Captain owns an authored
+kneeling/transformation intro, custom Phase 2, peaceful defeat dialogue,
+guaranteed Tier 8 materials, Veteran unlock, and the existing portal-to-summary
+handoff. Older saves unlock D11 after The Alchemist or at Level 260. The
+developer phase helper covers the custom Ranger transition, and the managed
+portal action remains available only while the physical portal is active. The
+full **111/111** release gate, build/package audit, deterministic QA, and
+Capacitor sync pass. This is QA-assisted local evidence, not a clean-player,
+physical-device, GitHub, or website checkpoint; D13-D16 remain gated.
+
+### Vow Breaker's Castle release-surface expansion (2026-08-10; local milestone)
+
+The source-resident D9 route is now promoted after D8. The tested local route
+includes the Castle Gate, Royal Commander mini-boss, Oathbreaker King phase
+transition and authored dialogue, reward vault, Veteran unlock, and final
+session summary. A delayed mini-boss exit race was fixed and contract-tested.
+The **109/109** release gate, build/package audit, deterministic QA, and
+Capacitor sync pass. The route is QA-assisted and not yet a clean-player,
+physical-device, GitHub, or website checkpoint. D12 is now promoted; the next
+content candidate is D13, which remains gated until its own route, save,
+reward, and return path are verified.
+
+### The Abandoned Laboratory release-surface expansion (2026-08-10; local milestone)
+
+The source-resident D10 route is now promoted after D9. The tested local route
+includes randomized lab chambers, the Head Researcher mini-boss, The Alchemist
+introduction and Perfect Serum phase, rewards, Veteran unlock, and a
+portal-to-summary handoff. The named-boss QA phase helper and boss-portal touch
+fallback are covered by contracts. The **110/110** release gate, build,
+package audit, deterministic QA, and Capacitor sync pass. This is QA-assisted
+local evidence; D11 and D12 are now promoted and D13-D16 remain gated until
+their own milestones.
+
+### Rolling project learning memory (2026-08-10; execution control)
+
+`PROJECT_MEMORY.md` is the single bounded memory read at the start of each
+cycle. It is updated by replacement and consolidation, never by stacking
+session logs. A project-control contract enforces this behavior and the
+120-line ceiling. The full local gate passes **108/108**; this is not a
+deployment checkpoint or manual acceptance evidence.
+
+### Shared encounter tuning architecture (2026-08-10; local workflow milestone)
+
+Difficulty, dungeon scaling, and temporary run modifiers now flow through the
+single `getEncounterTuning(dungeonId)` contract. The shared enemy and miniboss
+paths and every named boss spawner use it, while Joey's boss-specific
+mechanics remain deliberately bespoke. The change also makes miniboss
+difficulty behavior consistent with the rest of the combat roster.
+
+The source mirror, deterministic QA, static build/package audit, Capacitor sync,
+and **108/108** tests pass. This is not a deployment checkpoint and does not
+change the **79%** / **18%** evidence score. GitHub/website checkpoint work
+remains reserved for the next stable, user-visible milestone after the manual
+route/device evidence and owner blockers are resolved.
+
+### Data-driven mini-boss roster routing (2026-08-10; local architecture slice)
+
+`MINIBOSS_TYPES_BY_DUNGEON` now routes all authored mini-boss pools through one
+explicit registry, preserving Joey's current rosters and leaving a safe D1
+fallback for unregistered regions. The focused architecture contract, source
+mirror, static/package audit, native sync, deterministic QA, and **108/108**
+release gate pass. This is not a deployment checkpoint and does not change the
+**79%** / **18%** evidence score.
+
+### Self-preparing release gate (2026-08-10; local workflow hardening)
+
+`release:verify` now rebuilds the static package and synchronizes Capacitor
+web assets before its tests and package audit. An executable project-control
+contract protects the order; the 108-test gate passes locally. This is not a
+deployment checkpoint and does not replace the clean-route or tablet-session
+acceptance evidence.
 
 Latest milestone: `2c1d6ba` (`Add deterministic gameplay QA architecture`) bounds
 the architecture/testing workflow after `9886f50` bounded the Void Monarch's
@@ -72,7 +174,7 @@ lifecycle evidence.
 - Validate one complete release path from onboarding through the current Dungeon 1-8 endpoint and intended ending; keep later incomplete regions out of the V1 surface.
 - Make touch the primary input path on iPad/Android tablet landscape layouts; test safe areas, muted devices, headphones, suspension, forced closure, and restricted-network conditions.
 - Shape 10-30 minute sessions with clear objectives, checkpoints, autosave, session summary, next-step suggestions, and a satisfying stop point.
-- Keep the C1 implementation compatible with the open-world direction: preserve explorable hub/waypoint seams and truthful destination context without expanding the tested D1-8 content boundary.
+- Keep the C1 implementation compatible with the open-world direction: preserve explorable hub/waypoint seams and truthful destination context without expanding the tested D1-12 content boundary.
 - Add optional Learning Support to the library/after-action surfaces: pattern, sequence, planning, decomposition, optimization, condition, loop, cause-and-effect, and debugging explanations without forced quizzes.
 - Keep active-run checkpoints separate from profile progression: recover the latest safe room locally after suspension or forced closure, while deliberately finishing a run clears the checkpoint.
 - Review dialogue, combat presentation, difficulty, humour, and monetisation for 13-17-year-old users; remove graphic, shocking, childish, or manipulative presentation.

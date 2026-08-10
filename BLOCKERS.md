@@ -1,6 +1,6 @@
 # Code Quest Lab - Blockers and Owner Actions
 
-Updated: 2026-08-07
+Updated: 2026-08-10
 
 These are genuine blockers or owner-gated decisions. Codex should complete all
 independent browser, documentation, test, and preparation work and should not
@@ -16,6 +16,9 @@ repeatedly retry the same blocked action.
 | B-006 | Future publication is approval-gated | Current web deployment is verified, but new major-milestone publishes change external hosting state | Owner approves each stable milestone publish; Codex then runs the documented build/deploy/live-check flow and records the result | 4, 5, 6, 7, 8, 9 | Not blocking current C1; no deploy for this documentation/test review |
 | B-007 | In-app browser permission denied for the manual C1 run | The initial 2026-08-05 attempts at the local QA page and designated Pages preview were denied before the game loaded; later the loopback QA surface loaded successfully and allowed a saved-session recovery smoke | No owner action is required for the current local continuation; approve Pages-preview access later if a live-preview QA pass needs it | 1 | Resolved for loopback QA on 2026-08-05: the current shell loaded, the defeated boss room rendered its exit portal, and portal travel completed without browser diagnostics |
 | B-008 | Codex goal service retains the previous blocked state | On 2026-08-07 the goal service rejected a replacement because the prior unfinished goal remains marked blocked; repository work and verification continue normally | Owner uses the Codex goal control to Resume the existing goal once; do not delete or falsely complete it | Automation only | Repository workaround complete: `AUTORUN.md` and its executable contract contain the updated continuation rules; interactive work is not blocked |
+| B-009 | Current in-app browser permission denied for the clean C1 route | The earlier 2026-08-10 denial applied to a prior localhost attempt; the current loopback browser session now loads the local build on port 4174 and supports bounded QA route verification | If a future clean route again requires the denied surface, grant browser access before retrying; do not repeat the denied target without a material permission change | 1 | Resolved for the current loopback continuation on 2026-08-10; clean-player evidence remains open but is no longer blocked from local QA work |
+| B-010 | Git metadata is read-only to the current Codex process | `git add` cannot create `.git/index.lock` (`Permission denied`); no stale lock exists, while the working-tree source remains writable | Grant the current Codex sandbox identity Modify access to the repository `.git` directory, or run the prepared `git add`, commit, and push from an owner terminal after reviewing the working-tree diff | GitHub checkpoint only | Commit preparation is complete locally; no commit or push was claimed, and no Git metadata was deleted or bypassed |
+| B-011 | Current production reachability cannot be verified from this environment | On 2026-08-10, `production:check` reported `fetch failed` for every configured route; DNS resolved and ICMP ping succeeded, but TCP 443 failed to both Cloudflare IPv4 addresses | Owner verifies `https://code-quest-lab.gov8661682.com` from an external browser/network or permits outbound TCP 443, then records the result before the next website checkpoint | 4, 5, 7, 8, 9 | Current live state is unknown from this environment; the last successful production verification remains the authoritative prior checkpoint, and no new deployment was attempted |
 
 ## Not blockers
 

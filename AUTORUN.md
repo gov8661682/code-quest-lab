@@ -1,6 +1,6 @@
 # Code Quest Lab - Autonomous Work Protocol
 
-Updated: 2026-08-08
+Updated: 2026-08-10
 Status: **Active**
 
 ## Outcome
@@ -11,10 +11,14 @@ combat, dungeons, bosses, progression, dialogue, endings, and original ideas.
 Shape new work toward the compact, discovery-led open-world direction without
 bypassing the tested Version 1 boundary.
 
+The current locally verified release surface is D1, D2, and D4-D12. D13 and
+later regions remain gated until each is promoted through route, reward, save,
+return, and release-gate evidence.
+
 ## Start of every work cycle
 
-1. Read `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `DECISIONS.md`, and this
-   file.
+1. Read `PROJECT_MEMORY.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`,
+   `DECISIONS.md`, and this file.
 2. Confirm the one active checkpoint and inspect the current Git/test state.
 3. Select the highest-priority unmet acceptance criterion that can produce new
    evidence now.
@@ -22,6 +26,12 @@ bypassing the tested Version 1 boundary.
    changing code.
 5. Implement the smallest coherent slice, verify it, record the result, and
    continue with the next eligible item.
+
+`PROJECT_MEMORY.md` is the single rolling learning record. Update its existing
+sections in place only when a durable fact, blocker, lesson, verified gate, or
+next-action priority changes. Never create per-cycle memory files or append a
+chronological transcript; consolidate or delete stale facts so the next cycle
+cannot mistake repeated history for unfinished work.
 
 When a proposed route check would repeat a normal-speed encounter, run
 `npm.cmd run qa:fast` and the relevant focused tests first. Use the loopback
@@ -37,6 +47,12 @@ Every cycle must produce at least one concrete progress delta:
 - a verified diagnosis that narrows a defect;
 - a completed release/control requirement; or
 - a precisely recorded external blocker plus a different actionable next step.
+
+For encounter work, keep dungeon, difficulty, and temporary-run modifiers in
+the shared `getEncounterTuning(dungeonId)` contract. New enemies, minibosses,
+and bosses should consume that tuning snapshot rather than reintroducing local
+stat-multiplication formulas; named boss mechanics may remain bespoke when
+they preserve Joey's creative direction.
 
 Effort, repeated observation, and a command variation that produces the same
 failure do not count as progress.
@@ -79,6 +95,11 @@ only source for the active-checkpoint percentage.
 The executable project-control contract verifies the retry limits, the table
 totals, and both displayed percentages during `npm.cmd test` and
 `npm.cmd run release:verify`.
+
+The composite `release:verify` gate is self-preparing: it runs source
+contracts, then `native:sync` to rebuild `dist` and synchronize Capacitor web
+assets before running tests and the package audit. This prevents a source edit
+from producing a stale-generated-file failure loop.
 
 ## Checkpoint and deployment discipline
 

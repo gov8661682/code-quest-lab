@@ -61,6 +61,57 @@ test('desktop click attack fallback queues a bounded first shot', () => {
   assert.match(SOURCE, /desktopAttackTapState\.queued=true/);
 });
 
+test('skill action buttons recover a managed click without double activation', () => {
+  assert.match(SOURCE, /var ACTION_BUTTON_CLICK_FALLBACK_WINDOW=450;/, 'the fallback window is bounded');
+  assert.match(SOURCE, /function wireActionButtonPress\(el,onRelease,onDown,onCancel\)/, 'skill actions share one guarded press helper');
+  assert.match(SOURCE, /wireActionButtonPress\(el,function\(e\)\{[\s\S]*?activateSkill\(tier\);[\s\S]*?\},function\(e\)\{/, 'core, movement, and ultimate skills use the helper');
+  assert.match(SOURCE, /el\.addEventListener\('pointerup',[\s\S]*?lastPointerReleaseAt=now;[\s\S]*?onRelease\(e\);/, 'normal pointer-up activation remains available');
+  assert.match(SOURCE, /el\.addEventListener\('click',[\s\S]*?now-lastPointerReleaseAt<ACTION_BUTTON_CLICK_FALLBACK_WINDOW[\s\S]*?fallbackClickAt=now[\s\S]*?onRelease\(e\);/, 'a lost pointer-up can recover through one DOM click');
+  assert.match(SOURCE, /potEl\)[\s\S]*?wireActionButtonPress\(potEl/, 'potion activation receives the same fallback');
+  assert.match(SOURCE, /bobBeamEl\)[\s\S]*?wireActionButtonPress\(bobBeamEl/, 'the optional Bob beam action receives the same fallback');
+});
+
+test('skill action click fallback activates once per physical press', () => {
+  const helper = extractBetween('function wireActionButtonPress(el,onRelease,onDown,onCancel){', 'function wireSkillButtons(){', 'action button helper');
+  const clock = { now: 0 };
+  const context = {
+    performance: { now: () => clock.now }
+  };
+  vm.runInNewContext(`var ACTION_BUTTON_CLICK_FALLBACK_WINDOW=450;\n${helper}\nthis.__wireActionButtonPress=wireActionButtonPress;`, context, {
+    filename: 'index.html#action-button-contract'
+  });
+  const handlers = {};
+  const element = { addEventListener(type, handler) { handlers[type] = handler; } };
+  let activations = 0;
+  context.__wireActionButtonPress(element, () => { activations += 1; });
+  const event = (pointerId) => ({ pointerId, preventDefault() {}, stopPropagation() {} });
+
+  handlers.pointerdown(event(1));
+  clock.now = 50;
+  handlers.pointerup(event(1));
+  clock.now = 60;
+  handlers.click(event(1));
+  assert.equal(activations, 1, 'normal pointer-up plus its click activates once');
+
+  clock.now = 1001;
+  handlers.pointerdown(event(2));
+  handlers.click(event(2));
+  clock.now = 1050;
+  handlers.pointerup(event(2));
+  assert.equal(activations, 2, 'lost pointer-up recovers through one click');
+
+  clock.now = 1600;
+  handlers.pointerdown(event(3));
+  handlers.pointerup(event(3));
+  assert.equal(activations, 3, 'a later physical press remains available');
+
+  clock.now = 2000;
+  handlers.pointerdown(event(4));
+  handlers.pointercancel(event(4));
+  handlers.click(event(4));
+  assert.equal(activations, 3, 'a cancelled gesture cannot become a click activation');
+});
+
 test('regenerating elites reset their recovery timer when hit', () => {
   assert.match(
     SOURCE,
@@ -146,8 +197,8 @@ test('production joystick release fallback neutralizes movement and attack input
 
 test('joystick-owned touch releases cannot trigger overlapping skill buttons', () => {
   assert.match(SOURCE, /function releaseJoystickBeforeSkillAction\(event\)\{[\s\S]*?stick\.active&&stick\.pointerId===event\.pointerId[\s\S]*?stick\.onEnd\(event\);/);
-  assert.match(SOURCE, /el\.addEventListener\('pointerup',function\(e\)\{\s*if\(releaseJoystickBeforeSkillAction\(e\)\)\{e\.preventDefault\(\);e\.stopPropagation\(\);return;\}/);
-  assert.match(SOURCE, /potEl\.addEventListener\('pointerup',function\(e\)\{if\(releaseJoystickBeforeSkillAction\(e\)\)/);
+  assert.match(SOURCE, /wireActionButtonPress\(el,function\(e\)\{\s*if\(releaseJoystickBeforeSkillAction\(e\)\)\{e\.preventDefault\(\);e\.stopPropagation\(\);return;\}/, 'skill actions release a joystick-owned pointer before activation');
+  assert.match(SOURCE, /wireActionButtonPress\(potEl,function\(e\)\{if\(releaseJoystickBeforeSkillAction\(e\)\)/, 'potion activation uses the same joystick handoff guard');
 });
 
 test('touch attack joystick supports a bounded nearest-target tap', () => {
