@@ -68,7 +68,12 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
   );
   assert.match(
     SOURCE,
-    /if\(!_aggro\.isCompanion&&isPlayerInvulnerable\(\)\)\{[\s\S]{0,220}e\.attackTimer=e\.attackCooldown\*0\.55\*getEnemyAtkSpeedMult\(e\);[\s\S]{0,120}\}else if\(!_aggro\.isCompanion&&rollRogueSmokeDodge\(\)\)/,
+    /function isPlayerDamageSuppressed\(\)\{return isPlayerInvulnerable\(\)\|\|combatIntroTimer>0;\}/,
+    'the bounded intro state directly suppresses player damage'
+  );
+  assert.match(
+    SOURCE,
+    /if\(!_aggro\.isCompanion&&isPlayerDamageSuppressed\(\)\)\{[\s\S]{0,220}e\.attackTimer=e\.attackCooldown\*0\.55\*getEnemyAtkSpeedMult\(e\);[\s\S]{0,120}\}else if\(!_aggro\.isCompanion&&rollRogueSmokeDodge\(\)\)/,
     'the opening grace also covers the shared melee damage branch'
   );
   assert.doesNotMatch(

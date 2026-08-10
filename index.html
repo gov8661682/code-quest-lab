@@ -41355,8 +41355,8 @@ function updatePassiveHealthRegen(dt){
 // ── ELITE MODIFIER: player-targeted Slow (Frozen) and Burn (Burning) debuffs ──
 // Minimal extension of the existing player buff pattern (apply multiplier, divide back out on expiry).
 // ── Brief player invulnerability / untargetable window. Currently used by
-// Spirit Dash (invuln during the dash) and Earth Tunnel (untargetable while
-// burrowed). NOTE: this guards the central status-effect entry points
+// Spirit Dash (invuln during the dash), Earth Tunnel (untargetable while
+// burrowed), and the first-room read-and-respond window. NOTE: this guards the central status-effect entry points
 // (applyPlayerSlow/applyPlayerBurn) and the generic ranged-enemy and Cursed
 // Librarian melee damage funnels below — it does NOT cover every bespoke
 // boss/mini-boss special-attack damage line in this file (there are dozens,
@@ -41364,10 +41364,11 @@ function updatePassiveHealthRegen(dt){
 // boss-specific attack while "untargetable". ──
 var playerInvulnTimer=0;
 function isPlayerInvulnerable(){return playerInvulnTimer>0;}
+function isPlayerDamageSuppressed(){return isPlayerInvulnerable()||combatIntroTimer>0;}
 var playerSlowActive=false,playerSlowTimer=0,playerSlowMult=1.0;
 var playerBurnTimer=0,playerBurnDmgPerTick=0,playerBurnTickTimer=0;
 function applyPlayerSlow(mult,duration){
-  if(player.dead||isPlayerInvulnerable())return;
+  if(player.dead||isPlayerDamageSuppressed())return;
   if(playerSlowActive){
     // Refresh duration; only re-apply the multiplier if it changed
     playerSlowTimer=Math.max(playerSlowTimer,duration);
@@ -41378,7 +41379,7 @@ function applyPlayerSlow(mult,duration){
   addFloatie(player.x,player.y-46,'❄ SLOWED','#90e0ef',0.8);
 }
 function applyPlayerBurn(dmgPerTick,duration){
-  if(player.dead||isPlayerInvulnerable())return;
+  if(player.dead||isPlayerDamageSuppressed())return;
   playerBurnDmgPerTick=Math.max(playerBurnDmgPerTick,dmgPerTick);
   playerBurnTimer=Math.max(playerBurnTimer,duration);
   if(playerBurnTickTimer<=0)playerBurnTickTimer=0.5;
@@ -41388,7 +41389,7 @@ function applyPlayerBurn(dmgPerTick,duration){
 // touching movement speed/damage, so it stays a readability/tension effect.
 var playerBlindTimer=0;
 function applyPlayerBlind(duration){
-  if(player.dead||isPlayerInvulnerable())return;
+  if(player.dead||isPlayerDamageSuppressed())return;
   playerBlindTimer=Math.max(playerBlindTimer,duration);
   addFloatie(player.x,player.y-46,'◉ BLINDED','#26241f',0.9);
 }
@@ -41398,7 +41399,7 @@ function applyPlayerBlind(duration){
 // simply refuses to move the player at all while this is running out).
 var playerRootTimer=0;
 function applyPlayerRoot(duration){
-  if(player.dead||isPlayerInvulnerable())return;
+  if(player.dead||isPlayerDamageSuppressed())return;
   playerRootTimer=Math.max(playerRootTimer,duration);
   addFloatie(player.x,player.y-46,'⛓ ROOTED','#8a2be2',0.9);
 }
@@ -41737,7 +41738,7 @@ function updateEnemyProjectiles(dt,geo){
       continue;
     }
     if(Math.hypot(p.x-player.x,p.y-player.y)<p.radius+player.radius){
-      if(isPlayerInvulnerable()){enemyProjectiles.splice(i,1);continue;}
+      if(isPlayerDamageSuppressed()){enemyProjectiles.splice(i,1);continue;}
       if(rollRogueSmokeDodge()){enemyProjectiles.splice(i,1);continue;}
       var dmg=p.damage;
       if(brPhantomActive&&dmg>0)dmg=Math.round(dmg*(1-brPhantomDmgReduction));
@@ -41834,7 +41835,7 @@ function updateCursedLibrarians(dt,geo){
 
     // Melee curse touch (massive damage)
     if(e.attackTimer<=0&&_clDist<e.radius+player.radius+6){
-      if(isPlayerInvulnerable()){e.attackTimer=1.4;continue;}
+      if(isPlayerDamageSuppressed()){e.attackTimer=1.4;continue;}
       if(rollRogueSmokeDodge()){e.attackTimer=1.4;continue;}
       var _clInSmokeM=rogueSmokeBombActive&&Math.hypot(e.x-rogueSmokeBombX,e.y-rogueSmokeBombY)<=rogueSmokeBombRadius;
       var _clDmg=Math.round(player.hpMax*0.45*(_clInSmokeM?0.8:1));
@@ -41996,7 +41997,7 @@ function updateEnemies(dt,geo){
         var _ebDmg=e.damage||35;
         if(ironWillShield>0){var _ebAbs=Math.min(ironWillShield,_ebDmg);ironWillShield-=_ebAbs;_ebDmg-=_ebAbs;}
         if(_ebDmg>0)_ebDmg=applyArmorReduction(_ebDmg);
-        if(_ebDmg>0&&!isPlayerInvulnerable()){player.hp=clamp(player.hp-_ebDmg,0,player.hpMax);addFloatie(player.x,player.y-40,'💥-'+_ebDmg+' EXPLOSION!','#ff8800',1.5);}
+        if(_ebDmg>0&&!isPlayerDamageSuppressed()){player.hp=clamp(player.hp-_ebDmg,0,player.hpMax);addFloatie(player.x,player.y-40,'💥-'+_ebDmg+' EXPLOSION!','#ff8800',1.5);}
         player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
         if(player.hp<=0){playerDied();return;}
         screenShakeTimer=0.3;
@@ -42150,7 +42151,7 @@ function updateEnemies(dt,geo){
             // branch as well as projectile/debuff damage. Keep companions
             // on their normal threat rules; only the player target is
             // protected by the player invulnerability timer.
-            if(!_aggro.isCompanion&&isPlayerInvulnerable()){
+            if(!_aggro.isCompanion&&isPlayerDamageSuppressed()){
               e.attackTimer=e.attackCooldown*0.55*getEnemyAtkSpeedMult(e);
             }else if(!_aggro.isCompanion&&rollRogueSmokeDodge()){lastFightTimer=0;e.attackTimer=e.attackCooldown*0.55;}else{
 var r=Math.round(e.damage*getEnemyDamageOutputMult(e));
