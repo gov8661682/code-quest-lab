@@ -178,7 +178,10 @@ test('Town gives the first destination a physical world breadcrumb', () => {
 
 test('first-session onboarding explains the world and keeps route rewards readable', () => {
   assert.match(SOURCE, /id="charSelectIntro"[^>]*>Choose a hero for a short fantasy adventure\. Prepare in Town, follow the northern road/);
-  assert.match(SOURCE, /id="modifierIntro"[^>]*>Each adventure includes one temporary rule\. It changes this run, not your saved profile/);
+  assert.match(SOURCE, /id="modifierIntro"[^>]*>Choose a temporary rule for extra rewards, or take a calm Standard Expedition while you learn the route/);
+  assert.match(SOURCE, /id="modifierStandardBtn"[^>]*>🧭 Start Standard Expedition/);
+  assert.match(SOURCE, /var _needsOpeningSafety=activeDungeonId==='dungeon1'/);
+  assert.match(SOURCE, /_pendingModifierId=_needsOpeningSafety\?'standard_expedition':mod\.id/);
   const dungeonGrid = extractBetween('function renderDungeonSelectGrid(){', '// Sets up and shows the modifier screen', 'dungeon selection renderer');
   assert.match(dungeonGrid, /var subLine=unlocked\?'Available from Town gate':\('Locked — '\+d\.unlockHint\);/);
   assert.match(dungeonGrid, /if\(unlocked\)bodyHtml\+='\<div class="dcReward">'\+rewardLine/);

@@ -746,14 +746,15 @@ html, body {
 <div id="modifierScreen" class="screen">
   <h2 style="color:#d8c08a;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;">Session Modifier</h2>
   <div style="color:#8a8170;font-size:0.78em;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;">This adventure includes</div>
-  <div id="modifierIntro" style="color:#b8aa90;font-size:0.76em;line-height:1.5;letter-spacing:0.04em;max-width:340px;width:88%;text-align:center;margin:-8px auto 18px;">Each adventure includes one temporary rule. It changes this run, not your saved profile, so read the trade-off before you start.</div>
+  <div id="modifierIntro" style="color:#b8aa90;font-size:0.76em;line-height:1.5;letter-spacing:0.04em;max-width:340px;width:88%;text-align:center;margin:-8px auto 18px;">Choose a temporary rule for extra rewards, or take a calm Standard Expedition while you learn the route. Your profile is never changed by the choice.</div>
   <div id="modifierCard" style="background:#13111a;border:2px solid #8a6d3b;border-radius:8px;padding:24px 32px;max-width:320px;width:88%;text-align:center;margin-bottom:24px;">
     <div id="modifierIcon" style="font-size:2.8em;margin-bottom:10px;"></div>
     <div id="modifierName" style="font-size:1.4em;color:#ffd98a;font-weight:bold;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;"></div>
     <div id="modifierShortDesc" style="font-size:0.8em;color:#cfc4ae;letter-spacing:0.06em;line-height:1.7;margin-bottom:12px;"></div>
     <div id="modifierReward" style="font-size:0.75em;color:#d8a23a;letter-spacing:0.08em;border-top:1px solid #3a342a;padding-top:10px;margin-top:4px;"></div>
   </div>
-  <button class="menuBtn" id="modifierContinueBtn">Start Session</button>
+  <button class="menuBtn" id="modifierStandardBtn">🧭 Start Standard Expedition</button>
+  <button class="menuBtnSecondary" id="modifierContinueBtn" style="margin-top:10px;">Try This Modifier</button>
 </div>
 <div id="entitlementScreen" class="screen" style="justify-content:flex-start;padding-top:24px;overflow-y:auto;">
   <div class="entitlementCard">
@@ -4179,6 +4180,11 @@ var DUNGEON_MODIFIERS=[
 ];
 var activeModifier={id:null,_bloodMoon:false,_ancientRiches:false,_undeadHorde:false,_eliteInvasion:false,_blessedJourney:false,_titanicFoes:false};
 var _pendingModifierId=null;
+var _offeredModifierId=null;
+var STANDARD_EXPEDITION_MODIFIER={id:'standard_expedition',name:'Standard Expedition',icon:'🧭',
+  shortDesc:'No extra enemy pressure or route rules. Learn the world at your own pace.',
+  reward:'Reward: A calm route with the normal adventure rewards.',
+  apply:function(){}};
 
 // ============================================================
 // DUNGEON 2: THE FALLEN KINGDOM — FOUNDATION
@@ -23886,12 +23892,23 @@ function renderDungeonSelectGrid(){
 // safety) and from the new Difficulty Selection screen.
 function proceedToModifierScreen(){
   var mod=pickDungeonModifier();
-  _pendingModifierId=mod.id;
+  _offeredModifierId=mod.id;
+  var _needsOpeningSafety=activeDungeonId==='dungeon1'&&permanentData&&permanentData.stats&&!(permanentData.stats.guardiansDefeated||0);
+  _pendingModifierId=_needsOpeningSafety?'standard_expedition':mod.id;
   document.getElementById('modifierIcon').textContent=mod.icon;
   document.getElementById('modifierName').textContent=mod.name;
   document.getElementById('modifierShortDesc').textContent=mod.shortDesc;
   document.getElementById('modifierReward').textContent=mod.reward;
+  var _modifierIntroEl=document.getElementById('modifierIntro');
+  if(_modifierIntroEl)_modifierIntroEl.textContent=_needsOpeningSafety?
+    'This is your first expedition. Standard Expedition is recommended while you learn the route; the optional rule below adds extra pressure and rewards.':
+    'Choose a temporary rule for extra rewards, or take a calm Standard Expedition while you learn the route. Your profile is never changed by the choice.';
   showScreen('modifierScreen');
+}
+function startPendingModifierRun(){
+  _gateReturnZone=null;
+  showScreen('gameScreen');
+  requestAnimationFrame(function(){requestAnimationFrame(startGame);});
 }
 
 // ============================================================
@@ -25117,9 +25134,12 @@ safeClick('skillResetTreeBtn','Reset Skill Tree',function(){
   resetSkillTree();
 });
 safeClick('modifierContinueBtn','Modifier Continue',function(){
-  _gateReturnZone=null;
-  showScreen('gameScreen');
-  requestAnimationFrame(function(){requestAnimationFrame(startGame);});
+    _pendingModifierId=_offeredModifierId||_pendingModifierId;
+    startPendingModifierRun();
+});
+safeClick('modifierStandardBtn','Standard Expedition',function(){
+  _pendingModifierId='standard_expedition';
+  startPendingModifierRun();
 });
 safeClick('goMenuBtn','GO Menu',function(){returnToDungeonWaypoint();});
 safeClick('goFinishBtn','Finish For Now',function(){finishSessionForNow();});
@@ -29088,7 +29108,13 @@ function startGame(){
     var _isMageDmg=(permanentData&&permanentData.selectedClass==='mage');
     var _isRogueDmg=(permanentData&&permanentData.selectedClass==='rogue');
     var _isDruidDmg=(permanentData&&permanentData.selectedClass==='druid');
-    upgrades={damageMult:_isMageDmg?2.0:(_isRogueDmg?0.80:(_isDruidDmg?1.5:0.55)),cooldownMult:1.0,rageGenMult:1.0,defense:0};
+    // Barbarian's authored basic skills are deliberate, close-range strikes.
+    // The former 0.55 fresh-run multiplier made a first-room Zombie require a
+    // long uninterrupted damage window, especially when Titanic Foes was the
+    // randomly offered modifier. Keep the class's slower, sturdier identity
+    // while bringing its starter damage into the same opening-room budget as
+    // the other selectable classes.
+    upgrades={damageMult:_isMageDmg?2.0:(_isRogueDmg?0.80:(_isDruidDmg?1.5:0.75)),cooldownMult:1.0,rageGenMult:1.0,defense:0};
     runTempBuffs={damagePct:0,hpBonus:0,rageGenPct:0,speedPct:0};
     levelUpPending=false;levelUpQueue=[];
     enemies=[];projectiles=[];enemyProjectiles=[];floaties=[];skillEffects=[];deathParticles=[];
@@ -29116,7 +29142,7 @@ function startGame(){
     resetActiveModifier();
     if(_pendingModifierId&&!_isStatic){
       activeModifier.id=_pendingModifierId;
-      var _activeMod=DUNGEON_MODIFIERS.filter(function(m){return m.id===_pendingModifierId;})[0];
+      var _activeMod=_pendingModifierId==='standard_expedition'?STANDARD_EXPEDITION_MODIFIER:DUNGEON_MODIFIERS.filter(function(m){return m.id===_pendingModifierId;})[0];
       if(_activeMod)_activeMod.apply();
     }
     // ── DIFFICULTY SYSTEM: sync active difficulty with this dungeon's saved selection ──
@@ -29910,6 +29936,13 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   // preserving the normal procedural placement everywhere else.
   var _firstRoomDef=ROOM_DEFS&&ROOM_DEFS[currentRoomId];
   var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH.length>1&&currentRoomId===MAIN_PATH[1]&&_firstRoomDef&&_firstRoomDef.type===RT.COMBAT;
+  // The first Normal D1 combat room is a teaching encounter, not a full
+  // progression test. Its depth index and an optional Titanic Foes modifier
+  // otherwise compound before a new player has earned a level-up. Keep Joey's
+  // enemy identities and later dungeon scaling intact, but give this single
+  // opening room a bounded health/damage budget so the first route converges.
+  var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty().id==='normal';
+  if(_isOpeningCombatRoom){_hpScale*=0.80;_eDmgMult*=0.80;}
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;

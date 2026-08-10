@@ -40,6 +40,24 @@ test('production starter attack data remains usable for a new hero', () => {
   assert.equal(skills['Throwing Axe'].ranged, true, 'Throwing Axe remains ranged');
 });
 
+test('a fresh Barbarian and the first Normal room stay inside the opening damage budget', () => {
+  assert.match(
+    SOURCE,
+    /upgrades=\{damageMult:_isMageDmg\?2\.0:\(_isRogueDmg\?0\.80:\(_isDruidDmg\?1\.5:0\.75\)\)/,
+    'fresh Barbarian damage is not left at the old damage-sponge value'
+  );
+  assert.match(
+    SOURCE,
+    /var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty\(\)\.id==='normal';\s*if\(_isOpeningCombatRoom\)\{_hpScale\*=0\.80;_eDmgMult\*=0\.80;\}/,
+    'only the Normal Dungeon 1 opening room receives the onboarding budget'
+  );
+  assert.doesNotMatch(
+    SOURCE,
+    /if\(_isOpeningCombatRoom\)[\s\S]{0,180}DUNGEON_SCALING/,
+    'opening-room softening does not replace the shared dungeon scaling table'
+  );
+});
+
 test('production attack update accepts touch, mouse, and attack-joystick input', () => {
   const source = extractBetween('function updatePlayerAttack(dt){', 'function updateRogueCooldowns', 'attack update');
   assert.match(source, /touchAttackState\.queued/, 'touch tap attack path is retained');
@@ -292,4 +310,12 @@ test('first combat room gives a bounded read-and-respond window', () => {
   assert.match(SOURCE, /activeDungeonId==='dungeon1'&&def\.type===RT\.COMBAT&&roomId===MAIN_PATH\[1\]/, 'only the first Dungeon 1 combat room receives onboarding');
   assert.match(SOURCE, /Read the room .* move or attack/, 'the onboarding prompt explains the available response');
   assert.match(SOURCE, /if\(_combatIntroActive\)\{[\s\S]*enemyProjectiles=\[\];[\s\S]*\}else\{[\s\S]*updateEnemies\(dt,geo\);/, 'hostile simulation is paused while player input remains active');
+});
+
+test('the modifier screen offers a calm standard expedition without removing authored modifiers', () => {
+  assert.match(SOURCE, /id="modifierStandardBtn"[^>]*>🧭 Start Standard Expedition/, 'the calm route is an accessible choice');
+  assert.match(SOURCE, /var STANDARD_EXPEDITION_MODIFIER=\{id:'standard_expedition'/, 'the calm route is data-defined');
+  assert.match(SOURCE, /function startPendingModifierRun\(\)\{[\s\S]*showScreen\('gameScreen'\)[\s\S]*startGame/, 'both modifier choices share the normal run start');
+  assert.match(SOURCE, /_pendingModifierId==='standard_expedition'\?STANDARD_EXPEDITION_MODIFIER:DUNGEON_MODIFIERS\.filter/, 'standard runs use the neutral modifier without changing authored modifier data');
+  assert.match(SOURCE, /safeClick\('modifierStandardBtn','Standard Expedition',function\(\)\{[\s\S]*_pendingModifierId='standard_expedition';[\s\S]*startPendingModifierRun\(\);/, 'the standard choice is wired through the guarded click layer');
 });
