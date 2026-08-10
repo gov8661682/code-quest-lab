@@ -28,6 +28,19 @@ documented acceptance-criterion failure. Optional improvements belong in
 
 ## Recovery-safe pause handoff (2026-08-10; deployed)
 
+## Fresh managed D1-D3 route evidence (2026-08-10; no deployment checkpoint)
+
+- A fresh Mage used only loopback session invincibility and normal player
+  controls to complete D1 and D2 Normal at 1024x768/600x768, including the D2
+  Prison Warden mini-boss, Fallen King phases, queued rewards, Veteran unlock,
+  and portal into The Shadow Realm. The managed browser recorded no warning or
+  error diagnostics.
+- A D3 attempt reached Broken Crossing and correctly saved a death summary
+  after invincibility was accidentally toggled off. A second D3 start verified
+  the aid's visible enabled banner, protected combat, pause, and deliberate
+  finish. This is managed route evidence only; full D1-D12, clean-player,
+  physical-device, and deployment-checkpoint requirements remain open.
+
 - Recovered combat checkpoints now restore the exact room and open the normal
   pause menu before the game loop resumes. This prevents damage from landing
   before a returning player can read the objective or choose Resume, and gives

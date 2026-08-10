@@ -2,6 +2,14 @@
 
 ## Unreleased - 2026-08-10
 
+- Added fresh managed route evidence: a new Mage completed D1 and D2 Normal
+  with ordinary attacks, target assist, touch-sized controls, rewards, the D2
+  mini-boss and Fallen King, Veteran unlock, and portal entry into D3. A D3
+  death/restart probe also verified truthful session saving and the visible
+  local invincibility enable state. Diagnostics were clean; this does not
+  claim full D1-D12, clean-player, or physical-device acceptance and does not
+  create a deployment checkpoint.
+
 - Published the stable recovery-safe gameplay milestone from commit `e7871b0`
   (`Checkpoint recovery-safe gameplay milestone`) to Cloudflare Pages after
   the **113/113** release gate, `qa:fast`, build/package audit, and Capacitor

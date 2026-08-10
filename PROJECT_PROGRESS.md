@@ -13,6 +13,16 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-10 progress delta
 
+A fresh managed normal-control route used the local session invincibility aid
+and ordinary combat controls to complete D1 and D2 Normal end to end at
+1024x768/600x768, including D2's Prison Warden, Fallen King phases, rewards,
+Veteran unlock, and portal into D3. A D3 attempt reached Broken Crossing and
+recorded a truthful saved death after the aid was toggled off; a protected
+restart verified the visible enable banner, combat, pause, and deliberate
+finish. Browser diagnostics were empty. This materially improves the managed
+route evidence, but it is not full D1-D12, clean-player, or physical-device
+acceptance, so the scored checkpoint remains **93%** / **19%**.
+
 Necromancer's Stolen Graveyard is now part of the playable release surface
 after D11. A loopback QA-assisted route reached the corrupted horde rooms,
 Soul Collector content, The Ritual Altar, the Corrupted Necromancer's authored

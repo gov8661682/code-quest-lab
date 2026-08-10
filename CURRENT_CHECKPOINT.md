@@ -29,6 +29,22 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-10)
 
+- A fresh managed-browser normal-control playthrough at
+  `http://127.0.0.1:4176/?cql-dev=1&fresh=20260810-d1-d3-route-v1` used a
+  1024x768 desktop-sized view for D1, then a 600x768 touch-sized view for D2
+  and D3. With only the local session invincibility aid, ordinary canvas
+  attacks, the visible target-assist/attack joystick, step movement, and
+  normal reward/exit controls, a new Mage completed D1 and D2 Normal end to
+  end. D2 included its shrine, treasure, Prison Warden mini-boss, queued
+  level-up choices, three-phase Fallen King fight, Veteran unlock, and portal
+  travel into D3. A D3 attempt reached Broken Crossing; after the aid was
+  accidentally toggled off, the saved session summary correctly recorded the
+  death at that mini-boss. A second D3 start re-armed the aid before combat,
+  verified protected combat, pause, and Finish and Return to Dashboard. The
+  managed tab recorded no warning or error diagnostics. This is useful
+  managed touch-sized evidence, but not physical-device, clean-player, or
+  full D1-12 evidence, so the score remains **93%** / **19%**.
+
 - Hardened recovered combat sessions so `Resume Session` restores the exact
   checkpointed room and opens the existing pause menu before damage updates
   resume. On the current build at `http://127.0.0.1:4176/?cql-dev=1`, a fresh

@@ -34,7 +34,12 @@ transcript.
   10-30 minute touch-only/device session. The current build now proves managed-
   browser pause, reload, safe resume, and deliberate Finish For Now; do not
   repeat that check or substitute contracts for the remaining clean/device
-  evidence.
+  evidence. A fresh managed route has now completed D1 and D2 and reached D3,
+  but it is still not full-route, clean-player, or physical-device evidence.
+- The invincibility aid is page-session state and toggles. Verify the visible
+  `Invincibility enabled` banner once before combat after each fresh page/run;
+  an accidental disable produced a truthful D3 death summary, not a game
+  defect. Keep the aid outside saves, exports, native builds, and production.
 - Do not retry the same blocked surface without a material state change:
   B-009, B-010, and B-011 are resolved for the current loopback/GitHub/Pages
   checkpoint. Reopen only after a new failure or changed external target;
@@ -59,9 +64,9 @@ transcript.
 
 1. Recheck whether a recorded blocker has materially changed; do not probe it
    merely because a new cycle started.
-2. If permitted browser evidence is available, finish the fresh normal D1-12
-   route with invincibility only; use the now-paused recovery handoff for the
-   remaining touch/device session when that surface is available.
+2. If permitted browser evidence is available, extend the protected
+  normal-control route from D3 with invincibility only after verifying its
+  banner; do not count the managed run as full D1-12 or device evidence.
 3. Otherwise finish the clean D1-12 evidence, then inspect D13 for a bounded
    promotion milestone with route, save, reward, and return coverage.
 4. Stop cosmetic churn. One coherent verified delta is better than many small

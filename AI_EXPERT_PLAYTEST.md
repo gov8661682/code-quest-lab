@@ -9,6 +9,32 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
+## Fresh D1-D3 normal-control route - 2026-08-10
+
+The current local build was tested at
+`http://127.0.0.1:4176/?cql-dev=1&fresh=20260810-d1-d3-route-v1` with a new
+Mage. D1 started at 1024x768; D2 and D3 were continued at a 600x768
+touch-sized viewport. The only developer aid was the documented local,
+session-only invincibility sequence. Attacks used the ordinary canvas/target
+assist controls, with normal step movement and semantic reward/exit buttons;
+no room, phase, boss, damage, enemy-free, or summon-clearing QA aids were used.
+
+The route completed D1 and D2 Normal through their rewards and portals. D2's
+observable path included the Broken Throne Shrine, Vault of the Fallen King,
+Prison Warden mini-boss, queued level-up choices, three-phase Fallen King,
+Veteran unlock, and entry to The Shadow Realm. A D3 run reached Broken
+Crossing. The aid was then accidentally toggled off; the character died and
+the game saved a truthful summary at that mini-boss (47 enemies defeated,
+level 8, 444 souls earned). A second D3 run enabled invincibility before the
+first combat room, verified protected combat, and was deliberately paused and
+finished to the dashboard.
+
+No browser warning or error entries were recorded. This closes a useful
+managed route slice but does not replace a full D1-D12 route, physical-device
+touch evidence, or clean-player evidence. The accidental toggle also confirms
+that playthroughs should verify the visible `Invincibility enabled` banner
+once at the start of each fresh page session.
+
 ## Recovery-safe pause handoff - 2026-08-10
 
 The current build was tested at

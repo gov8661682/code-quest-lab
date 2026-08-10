@@ -32,6 +32,21 @@ audit, Capacitor sync, focused lifecycle contract, and full **113/113** gate
 pass. This is the local implementation record for the deployed checkpoint
 above; physical-device/10-30-minute touch evidence remains.
 
+## Fresh managed D1-D3 route evidence (2026-08-10; local)
+
+A fresh Mage completed D1 and D2 Normal with ordinary attacks, target assist,
+touch-sized controls, rewards, the Prison Warden mini-boss, the three-phase
+Fallen King, Veteran unlock, and portal entry into The Shadow Realm. A bounded
+D3 run reached Broken Crossing; after invincibility was accidentally toggled
+off, the game saved a truthful death summary. A second D3 start verified the
+visible enable banner, protected combat, pause, and deliberate finish. The
+managed browser recorded no warning or error diagnostics.
+
+This is managed route evidence only. It does not close the full D1-D12,
+clean-player, physical-device, or 10-30-minute touch lanes, and it creates no
+deployment checkpoint. The scored status remains **93%** active checkpoint /
+**19%** overall.
+
 ## Necromancer's Stolen Graveyard release-surface milestone (2026-08-10; local)
 
 D12 is now reachable after Ranger Watchtowers. A loopback QA-assisted Mage
