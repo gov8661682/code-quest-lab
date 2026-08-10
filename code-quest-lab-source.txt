@@ -30788,9 +30788,11 @@ function update(dt){
   updateCombatIntro(dt);
   updateProjectiles(dt,geo);
   if(_combatIntroActive){
-    // The first room gives a new player time to read the enemy count and
-    // discover movement/attack input. Player movement and attacks still run;
-    // only hostile simulation is paused for this bounded introduction.
+    // Keep the bounded read-and-respond window, but let enemies reposition
+    // immediately so entering a combat room never looks frozen. The opening
+    // invulnerability window and the melee/projectile guards still prevent
+    // hostile damage while the player reads the room and discovers controls.
+    updateEnemies(dt,geo);updateCursedLibrarians(dt,geo);
     enemyProjectiles=[];
   }else{
     updateEnemyProjectiles(dt,geo);

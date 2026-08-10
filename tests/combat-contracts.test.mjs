@@ -323,13 +323,13 @@ test('boss rooms clear dead summon state before the exit handoff', () => {
   assert.match(source, /document\.getElementById\('doorStatus'\)\.textContent='';[\s\S]*?classList\.remove\('visible'\)/, 'stale summon text is cleared');
 });
 
-test('first combat room gives a bounded read-and-respond window', () => {
+test('first combat room keeps moving enemies inside a bounded read-and-respond window', () => {
   assert.match(SOURCE, /var combatIntroTimer=0;/, 'combat introduction timer is declared');
   assert.match(SOURCE, /var COMBAT_INTRO_DURATION=10\.0;/, 'combat introduction duration is bounded');
   assert.match(SOURCE, /function updateCombatIntro\(dt\)/, 'combat introduction timer updates');
   assert.match(SOURCE, /activeDungeonId==='dungeon1'&&def\.type===RT\.COMBAT&&roomId===MAIN_PATH\[1\]/, 'only the first Dungeon 1 combat room receives onboarding');
   assert.match(SOURCE, /Read the room .* move or attack/, 'the onboarding prompt explains the available response');
-  assert.match(SOURCE, /if\(_combatIntroActive\)\{[\s\S]*enemyProjectiles=\[\];[\s\S]*\}else\{[\s\S]*updateEnemies\(dt,geo\);/, 'hostile simulation is paused while player input remains active');
+  assert.match(SOURCE, /if\(_combatIntroActive\)\{[\s\S]*updateEnemies\(dt,geo\);updateCursedLibrarians\(dt,geo\);[\s\S]*enemyProjectiles=\[\];[\s\S]*\}else\{[\s\S]*updateEnemyProjectiles\(dt,geo\);[\s\S]*updateEnemies\(dt,geo\);/, 'enemies reposition during the prompt while hostile projectiles remain suppressed');
 });
 
 test('the modifier screen offers a calm standard expedition without removing authored modifiers', () => {
