@@ -24,29 +24,33 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `a7d71f8` is pushed to `origin/main` and deployed; the **116/116** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and a cache-busted live Level 1 room-clear smoke pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commits `1987310`, `a169c11`, and `fc7f738` are pushed to `origin/main`; the latest build is deployed; the **116/116** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, the earlier live Level 1 room-clear smoke, and the latest live moving-enemy/HP smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-10)
 
-- The Level 1 balance correction is now checkpointed in runtime commit
-  `a7d71f8`, pushed to `origin/main`, and deployed on 2026-08-10. Preview:
-  `https://fa004626.code-quest-lab.pages.dev/`; configured hostname:
+- The opening-enemy behavior is now checkpointed in runtime commits `1987310`
+  (enemies reposition during the opening prompt), `a169c11` (PWA cache v10),
+  and `fc7f738` (opening damage suppression tied directly to the intro state),
+  all pushed to `origin/main` and deployed on 2026-08-10. Preview:
+  `https://bad086fb.code-quest-lab.pages.dev/`; configured hostname:
   `https://code-quest-lab.gov8661682.com/`; packaged source hash:
-  `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`;
-  PWA shell: v9. Both production checks passed. The first Normal Dungeon 1
-  room uses `0.50` health, `0.45` damage, `0.55` movement speed, and `1.80`
-  attack-cooldown scaling, plus a bounded 10-second read-and-respond grace
-  window that also covers shared melee damage. Ordinary-player fast QA clears
-  the two-enemy room in **6.1 simulated seconds**; the full local gate is
-  **116/116**. The evidence score remains **93%** / **19%**.
+  `FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4`;
+  PWA shell: v10. Both production checks passed. The first Normal Dungeon 1
+  room keeps its narrow `0.50` health, `0.45` damage, `0.55` movement speed,
+  and `1.80` attack-cooldown tuning, while enemies now move immediately during
+  the bounded 10-second read-and-respond prompt and player damage remains
+  suppressed for that window. Ordinary-player fast QA clears the room in
+  **6.1 simulated seconds**; the full local gate is **116/116**. The evidence
+  score remains **93%** / **19%**.
 
-- Cache-busted live smoke on the deployed hostname created a fresh Barbarian,
-  reached the first Normal D1 combat room, kept the player at **100% HP** after
-  three seconds of idle opening pressure, then defeated both enemies with
-  ordinary target clicks and reached `ROOM CLEARED`. Browser warning/error
-  diagnostics were empty. This closes the reported Level 1 web-play blocker;
-  full D1-12 clean-player and physical/native-device evidence remain open.
+- Cache-busted live smoke on the deployed hostname reached the first Normal D1
+  combat room with **2 enemies** and the `Read the room - move or attack`
+  prompt visible. Two screenshots 1.8 seconds apart showed the enemies
+  repositioning; HP remained **100%** before and after the interval, and browser
+  warning/error diagnostics were empty. The earlier live room-clear smoke is
+  retained as supporting evidence; full D1-12 clean-player and
+  physical/native-device evidence remain open.
 
 - Level 1 onboarding balance checkpoint completed: runtime commit `7113366`
   was pushed to `origin/main` and deployed to Cloudflare Pages on 2026-08-10.

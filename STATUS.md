@@ -3,24 +3,27 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## Level 1 opening-pressure correction (2026-08-10; deployed checkpoint)
+## Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 
 The first Level 1 report exposed a production-versus-QA cadence mismatch: the
-previous regression model omitted the normal melee attack-frequency multiplier.
-The tested follow-up narrows only the first Normal Dungeon 1 combat room to
-`0.50` health, `0.45` damage, `0.55` movement speed, and `1.80` attack-
-cooldown scaling, and applies the existing 10-second read-and-respond window
-as real Normal-only invulnerability. Joey's roster, later scaling, and
-optional modifiers are unchanged. Ordinary-player fast QA clears the room in
-**6.1 simulated seconds**; the complete local gate is **116/116**. Runtime
-commit `a7d71f8` was pushed to `origin/main` and deployed to Cloudflare Pages.
-Preview: `https://fa004626.code-quest-lab.pages.dev/`; configured hostname:
-`https://code-quest-lab.gov8661682.com/`; source hash
-`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`; PWA
-shell v9. Both production checks passed. Cache-busted live smoke reached the
-first Normal D1 combat room, held the player at 100% HP during the opening
-window, and cleared both enemies with ordinary target clicks; no browser
-warning/error diagnostics were recorded.
+previous regression model omitted the normal melee attack-frequency multiplier
+and the opening prompt made moving enemies look frozen. The completed follow-up
+narrows only the first Normal Dungeon 1 combat room to `0.50` health, `0.45`
+damage, `0.55` movement speed, and `1.80` attack-cooldown scaling. Enemies now
+reposition immediately during the bounded 10-second read-and-respond window;
+the same intro state directly suppresses player damage across the shared melee,
+projectile, debuff, and opening special-attack guards. Joey's roster, later
+scaling, and optional modifiers are unchanged.
+
+Ordinary-player fast QA clears the room in **6.1 simulated seconds**; the
+complete local gate is **116/116**. Runtime commits `1987310`, `a169c11`, and
+`fc7f738` were pushed to `origin/main` and the final build was deployed to
+Cloudflare Pages. Preview: `https://bad086fb.code-quest-lab.pages.dev/`;
+configured hostname: `https://code-quest-lab.gov8661682.com/`; source hash
+`FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4`; PWA
+shell v10. Both production checks passed. Cache-busted live smoke showed two
+enemies changing position while the prompt remained visible; HP stayed at
+100% across a 1.8-second interval, with no browser warning/error diagnostics.
 
 ## Level 1 onboarding balance checkpoint (2026-08-10; deployed)
 

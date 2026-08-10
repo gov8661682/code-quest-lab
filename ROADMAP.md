@@ -74,23 +74,24 @@ This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
 
-### Follow-up: Level 1 opening-pressure correction (2026-08-10; deployed checkpoint)
+### Follow-up: Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 
 - [x] Reconcile the production melee cadence with the ordinary-player QA model.
 - [x] Keep the relief scoped to the first Normal D1 combat room: `0.50` HP,
   `0.45` damage, `0.55` movement speed, `1.80` attack-cooldown scaling, and a
-  bounded 10-second read-and-respond grace window.
+  bounded 10-second read-and-respond grace window; keep enemies moving during
+  the prompt and suppress opening damage directly from the intro state.
 - [x] Preserve Joey's authored enemy identities, later dungeon scaling, and
   optional modifiers.
 - [x] Pass the ordinary-player opening simulation, `qa:fast`, full **116/116**
   release verification, static package audit, and native sync.
 - [x] Create the GitHub and website checkpoint after commit, deployment, and
-  live opening-room verification: runtime commit `a7d71f8`, preview
-  `https://fa004626.code-quest-lab.pages.dev/`, configured hostname
-  `https://code-quest-lab.gov8661682.com/`, source hash
-  `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`, and
-  PWA shell v9. Both production checks passed; live smoke cleared the opening
-  room with ordinary target clicks.
+  live opening-room verification: runtime commits `1987310`, `a169c11`, and
+  `fc7f738`, preview `https://bad086fb.code-quest-lab.pages.dev/`, configured
+  hostname `https://code-quest-lab.gov8661682.com/`, source hash
+  `FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4`, and
+  PWA shell v10. Both production checks passed; live smoke showed enemies
+  repositioning during the prompt and HP stable at 100% across 1.8 seconds.
 
 ### D1-D12 route continuation and managed tablet evidence (2026-08-10; deployed checkpoint)
 

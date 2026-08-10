@@ -33,22 +33,26 @@ documented acceptance-criterion failure. Optional improvements belong in
   live desktop/tablet smoke reached the Mage entrance, pause/resume, and
   movement input with no browser warning/error diagnostics.
 
-## Level 1 opening-pressure correction (2026-08-10; deployed checkpoint)
+## Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 
 - Corrected the opening-room regression model to include the production melee
   cadence, then tuned only the first Normal Dungeon 1 room to `0.50` health,
   `0.45` damage, `0.55` movement speed, and `1.80` attack-cooldown scaling.
-  The existing 10-second read-and-respond message now provides the same
-  bounded Normal-only protection in play. Joey's enemy roster and later
-  dungeon scaling remain unchanged.
+  The existing 10-second read-and-respond message now keeps enemies moving
+  while the intro state directly suppresses player damage across the shared
+  melee, projectile, debuff, and opening special-attack guards. Joey's enemy
+  roster and later dungeon scaling remain unchanged.
 - Ordinary-player fast QA clears the two-enemy room in **6.1 simulated
   seconds** with the player alive. The source mirror, static build, native
-  sync, package audit, and full **116/116** release gate pass. Runtime commit
-  `a7d71f8` was pushed and deployed to preview
-  `https://fa004626.code-quest-lab.pages.dev/` and the configured hostname
+  sync, package audit, and full **116/116** release gate pass. Runtime commits
+  `1987310`, `a169c11`, and `fc7f738` were pushed and deployed to preview
+  `https://bad086fb.code-quest-lab.pages.dev/` and the configured hostname
   `https://code-quest-lab.gov8661682.com/`; both production checks passed.
-  Cache-busted live smoke cleared both opening enemies with ordinary target
-  clicks and no browser warning/error diagnostics. Clean-player full-route and
+  PWA shell v10 and source/mirror hash
+  `FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4` are
+  recorded. Cache-busted live smoke showed two enemies repositioning while
+  the prompt remained visible and HP stayed at 100% across 1.8 seconds, with
+  no browser warning/error diagnostics. Clean-player full-route and
   physical-device evidence remain separate acceptance lanes.
 
 ## Level 1 opening-room regression contract (2026-08-10; local)
@@ -58,7 +62,7 @@ documented acceptance-criterion failure. Optional improvements belong in
   with ordinary Barbarian attacks only, clears in 6.1 simulated seconds, and
   confirms the player survives the opening pressure. The complete local gate
   is **116/116**. The regression contract is included in deployed runtime
-  commit `a7d71f8`; player/device acceptance lanes remain open.
+  commits `1987310` and `fc7f738`; player/device acceptance lanes remain open.
 
 ## Recovery-safe pause handoff (2026-08-10; deployed)
 

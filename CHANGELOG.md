@@ -6,15 +6,17 @@
   enemy cadence with the regression model. The first Normal Dungeon 1 room now
   uses `0.50` health, `0.45` damage, `0.55` movement speed, and `1.80` attack-
   cooldown scaling, plus a bounded 10-second read-and-respond grace window.
-  Joey's enemy identities, later dungeon scaling, and optional modifiers are
-  unchanged. The corrected ordinary-player model clears the room in **6.1
-  simulated seconds**; the full local release gate is **116/116**. The shared
-  melee branch now honors the same Normal-only grace window. Runtime commit
-  `a7d71f8` was pushed and deployed on 2026-08-10 to
-  `https://fa004626.code-quest-lab.pages.dev/` and
+  Enemies reposition immediately during that prompt, and the intro state
+  directly suppresses player damage across the shared melee, projectile,
+  debuff, and opening special-attack guards. Joey's enemy identities, later
+  dungeon scaling, and optional modifiers are unchanged. The corrected
+  ordinary-player model clears the room in **6.1 simulated seconds**; the full
+  local release gate is **116/116**. Runtime commits `1987310`, `a169c11`, and
+  `fc7f738` were pushed and deployed on 2026-08-10 to
+  `https://bad086fb.code-quest-lab.pages.dev/` and
   `https://code-quest-lab.gov8661682.com/`; both production checks passed.
-  The PWA shell is v9 and a cache-busted live fresh-profile smoke cleared both
-  opening enemies with ordinary target clicks and no browser diagnostics.
+  The PWA shell is v10. A cache-busted live smoke showed enemy movement while
+  HP stayed at 100% across 1.8 seconds, with no browser diagnostics.
 
 - Fixed the Level 1 Normal onboarding balance after a fresh web Barbarian
   could spend too long closing on the first room. Fresh Barbarian damage now
@@ -32,8 +34,8 @@
   two-enemy opening room. It verifies the production onboarding budget clears
   in 6.1 simulated seconds with the starter player alive and no developer aid
   or route shortcut. The full local release gate is now **116/116**. This
-  regression protection is included in the deployed `a7d71f8` follow-up
-  checkpoint.
+  regression protection is included in the deployed `1987310`/`fc7f738`
+  follow-up checkpoint.
 
 - Extended a fresh loopback Mage route through D4-D6. The run verified D4's
   Fallen Hero event, off-screen target indicator, elite Crystal Hollow, and

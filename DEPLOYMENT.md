@@ -73,19 +73,23 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-10 Level 1 opening-pressure correction was published from source
-commit `a7d71f8` to the configured Cloudflare Pages project `code-quest-lab`.
-Preview: `https://fa004626.code-quest-lab.pages.dev/`; primary hostname:
+The 2026-08-10 Level 1 opening-pressure and enemy-motion correction was
+published from runtime commits `1987310`, `a169c11`, and `fc7f738` to the
+configured Cloudflare Pages project `code-quest-lab`. Preview:
+`https://bad086fb.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B` and the
-deployed service-worker shell is v9.
+`FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4` and the
+deployed service-worker shell is v10.
 
 `npm.cmd run production:check` passed for both origins on 2026-08-10. A
-cache-busted live fresh-profile smoke reached Town, the Forgotten Depths gate,
-Normal, Standard Expedition, and the first D1 combat room. The player stayed
-at 100% HP after three seconds of idle opening pressure, then ordinary target
-clicks defeated both enemies and reached `ROOM CLEARED`. No browser warning or
-error diagnostics were recorded during the live route check.
+cache-busted live smoke reached Town, the Forgotten Depths gate, Normal,
+Standard Expedition, and the first D1 combat room. The room showed two enemies
+and the `Read the room - move or attack` prompt; screenshots 1.8 seconds apart
+showed enemy repositioning while HP stayed at 100%. No browser warning or
+error diagnostics were recorded during the live route check. An earlier
+cache-busted deployment also cleared both opening enemies with ordinary target
+clicks; that supporting smoke remains recorded separately from the latest
+movement-focused check.
 
 The 2026-08-07 Dungeon 2 progression/level-up checkpoint was published to the
 configured Cloudflare Pages project `code-quest-lab` at source commit

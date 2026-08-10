@@ -15,26 +15,30 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 The Level 1 web balance report produced a deployed follow-up to the earlier
 `7113366` pass. The production opening-room cadence was stricter than the
-earlier QA model, so the first Normal D1 combat room now uses `0.50` health,
-`0.45` damage, `0.55` movement speed, `1.80` attack-cooldown scaling, and a
-bounded 10-second read-and-respond grace window that also covers shared melee
-damage. Joey's authored roster, later scaling, and optional modifiers remain
-unchanged. Ordinary-player fast QA clears the room in **6.1 simulated
-seconds**; the full local gate is **116/116**. Runtime commit `a7d71f8` is
-pushed to `origin/main` and deployed at preview
-`https://fa004626.code-quest-lab.pages.dev/` and the configured hostname
-`https://code-quest-lab.gov8661682.com/`; both production checks passed.
-Cache-busted live smoke cleared the first room with ordinary clicks and no
-browser warnings/errors. The evidence score remains **93%** / **19%** until
-clean-player/device lanes advance.
+earlier QA model, and the opening prompt made stationary enemies look frozen.
+The first Normal D1 combat room now uses `0.50` health, `0.45` damage, `0.55`
+movement speed, `1.80` attack-cooldown scaling, and a bounded 10-second
+read-and-respond grace window. Enemies reposition during the prompt, while
+the intro state directly suppresses shared melee, projectile, debuff, and
+opening special-attack damage. Joey's authored roster, later scaling, and
+optional modifiers remain unchanged. Ordinary-player fast QA clears the room
+in **6.1 simulated seconds**; the full local gate is **116/116**. Runtime
+commits `1987310`, `a169c11`, and `fc7f738` are pushed to `origin/main` and
+deployed at preview `https://bad086fb.code-quest-lab.pages.dev/` and the
+configured hostname `https://code-quest-lab.gov8661682.com/`; both production
+checks passed. Cache-busted live smoke showed two enemies changing position
+with HP stable at 100% across 1.8 seconds and no browser warnings/errors. The
+evidence score remains **93%** / **19%** until clean-player/device lanes
+advance.
 
 The preceding Level 1 onboarding balance checkpoint was deployed from runtime
 commit `7113366` at preview `https://caacd1f4.code-quest-lab.pages.dev/` and the
 configured hostname `https://code-quest-lab.gov8661682.com/`; both production
 checks passed. It established the finite onboarding-only budget and close
-starter placement. The production-cadence correction and melee-grace follow-up
-are separately deployed and recorded above as `a7d71f8`; the evidence score
-remains **93%** / **19%**.
+starter placement. The production-cadence, enemy-motion, and deterministic
+intro-guard follow-ups are separately deployed and recorded above as commits
+`1987310`, `a169c11`, and `fc7f738`; the evidence score remains **93%** /
+**19%**.
 
 A fresh loopback Mage route extended live route coverage through D4-D6. It
 verified D4's Fallen Hero event, off-screen target guidance, elite Crystal
@@ -389,7 +393,7 @@ D1-8 acceptance gates.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-10 Level 1 opening-pressure correction | Cloudflare Pages project `code-quest-lab`; runtime commit `a7d71f8` was pushed, preview `fa004626` and the configured hostname passed production checks, and cache-busted live smoke cleared the first Normal D1 room with ordinary clicks and no browser diagnostics | Repeat the owner-approved publish after the next major tested milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-12 route and remaining touch/device evidence |
+| Current web deployment checkpoint | Complete for the 2026-08-10 Level 1 opening-pressure and enemy-motion correction | Cloudflare Pages project `code-quest-lab`; runtime commits `1987310`, `a169c11`, and `fc7f738` were pushed, preview `bad086fb` and the configured hostname passed production checks, and cache-busted live smoke confirmed enemy movement with HP stable at 100% during the prompt | Repeat the owner-approved publish after the next major tested milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-12 route and remaining touch/device evidence |
 | Open-world product and architecture direction | Complete as a design decision; runtime implementation is intentionally staged | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; the existing Town layout now also feeds a local schematic minimap; `DECISIONS.md` records the explicit owner direction | Implement and test the first World Atlas/region graph only after C1 playability and relevant save/input evidence are stable | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
 | AI expert playtest and first usability fixes | Playtest complete; grouped copy, Town orientation, and readability follow-up are deployed; initial attack response is reproduced; full progression evidence remains open | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy, minimap, lock banner, enemy silhouettes, and HP-bar treatment are live in the checkpoint shell; the D2 elite playthrough reproduced a Corrupted summon escalation and local commit `6423ecb` bounds it with a finite budget | Continue the clean-profile C1 route and complete the touch/tablet lifecycle evidence; keep the local hardening fix under regression coverage before the next deployment | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Re-test the corrected D2 elite room, then continue D1-8 evidence |
 

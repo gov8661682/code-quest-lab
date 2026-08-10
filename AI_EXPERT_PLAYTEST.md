@@ -9,7 +9,7 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
-## Level 1 balance regression and release fix - 2026-08-10
+## Level 1 balance regression, enemy motion, and release fix - 2026-08-10
 
 A fresh live Barbarian run on the pre-fix deployed shell exposed the user
 reported onboarding problem: Titanic Foes was active, the first target could
@@ -17,27 +17,29 @@ remain too far from the starter position, and repeated stationary web taps
 ended with zero enemy defeats. This records the observed interaction failure;
 it did not claim a calculation-only cause.
 
-The fix keeps the authored enemy roster and combat identity while narrowing
-the relief to onboarding: fresh Barbarian damage is `0.75`; the first Normal
-Dungeon 1 combat room alone uses `0.65` health, damage, and movement speed;
-the starter targets use a close readable lane; and Standard Expedition is the
-recommended/default first-run choice while Joey's modifiers remain optional.
-The loopback-only developer invincibility aid was used for the bounded local
-room-clear smoke and displayed its visible banner; it is unavailable on the
-production hostname. The follow-up also fixed the shared melee branch so the
-Normal-only grace window is real protection rather than a display-only cue.
+The final fix keeps the authored enemy roster and combat identity while
+narrowing the relief to onboarding: fresh Barbarian damage is `0.75`; the first
+Normal Dungeon 1 combat room alone uses `0.50` health, `0.45` damage, and `0.55`
+movement speed with `1.80` attack-cooldown scaling; the starter targets use a
+close readable lane; and Standard Expedition is the recommended/default
+first-run choice while Joey's modifiers remain optional. Enemies now
+reposition immediately during the read-and-respond prompt instead of appearing
+frozen. The intro state directly suppresses opening damage across the shared
+melee, projectile, debuff, and special-attack guards. The loopback-only
+developer invincibility aid remains available for bounded local QA and is
+unavailable on the production hostname.
 
 The rebuilt local smoke cleared the two-enemy opening room with ordinary
 targeting and the regression model cleared it in 6.1 simulated seconds. The
-new live hostname smoke created a fresh Barbarian, reached the first Normal D1
-room, held at 100% HP after three seconds of idle pressure, then defeated both
-enemies with ordinary target clicks and reached `ROOM CLEARED`. Runtime commit
-`a7d71f8`, shell v9, source/mirror hash
-`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`, preview
-`https://fa004626.code-quest-lab.pages.dev/`, configured hostname
+final live hostname smoke reached the first Normal D1 room, showed two enemies
+repositioning during the visible prompt, and held at 100% HP across a 1.8-second
+interval. Runtime commits `1987310`, `a169c11`, and `fc7f738`, shell v10,
+source/mirror hash
+`FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4`, preview
+`https://bad086fb.code-quest-lab.pages.dev/`, configured hostname
 `https://code-quest-lab.gov8661682.com/`, and the **116/116** release gate are
-recorded for the deployed follow-up checkpoint. No browser warning/error
-diagnostics were observed.
+recorded for the deployed checkpoint. No browser warning/error diagnostics
+were observed.
 
 ## Fresh D1-D4 normal-control route - 2026-08-10
 

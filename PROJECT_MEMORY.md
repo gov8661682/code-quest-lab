@@ -18,14 +18,15 @@ transcript.
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **116/116** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Latest milestone checkpoint: runtime commit `a7d71f8` is pushed to
-  `origin/main` and deployed on 2026-08-10 to preview `fa004626` and the
-  configured hostname; both production checks passed. The source/mirror hash
-  is `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B` and
-  the PWA shell is v9. Cache-busted live smoke reached the first Normal D1
-  combat room and cleared both enemies with ordinary target clicks while the
-  player remained at 100% HP through the opening grace window; diagnostics
-  were empty.
+- Latest milestone checkpoint: runtime commits `1987310`, `a169c11`, and
+  `fc7f738` are pushed to `origin/main` and the final build is deployed on
+  2026-08-10 to preview `bad086fb` and the configured hostname; both
+  production checks passed. The source/mirror hash is
+  `FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4` and
+  the PWA shell is v10. Cache-busted live smoke reached the first Normal D1
+  combat room with two enemies, showed them repositioning during the visible
+  read-and-respond prompt, and kept HP at 100% across a 1.8-second interval;
+  diagnostics were empty.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
@@ -66,10 +67,12 @@ transcript.
   short south-west movement brought the remaining target into view and the
   normal target lock then defeated it.
 - A managed web browser can spend the first-room read-and-respond window in
-  tool round-trips; record a no-cheat clear only when the player actually
-  defeats the enemies. The Level 1 local smoke cleared the room with the
-  visible loopback invincibility aid, while live smoke verified load, close
-  placement, and attack damage without claiming a clean clear.
+  tool round-trips; measure opening behavior in one rapid smoke sequence and
+  record a no-cheat clear only when the player actually defeats the enemies.
+  The opening prompt must never be a frozen scene: keep enemy repositioning
+  active while using the intro state itself as the deterministic damage guard.
+  The latest live smoke verified movement, the visible prompt, and 100% HP
+  stability without claiming a new room clear.
 - The invincibility aid is page-session state. `CQLI` is idempotent and always
   enables it; verify the visible `Invincibility enabled` banner before combat
   after each fresh page/run. A page reload resets the aid. Keep it outside
@@ -78,8 +81,6 @@ transcript.
   B-009, B-010, and B-011 are resolved for the current loopback/GitHub/Pages
   checkpoint. Reopen only after a new failure or changed external target;
   physical-device, native-build, and owner approval gaps remain genuine.
-- Use developer invincibility during permitted playthrough testing, but keep
-  it loopback-only, session-only, and outside saves, exports, and production.
 - Run `npm.cmd run qa:fast` before repeating long combat checks. The composite
   `release:verify` gate rebuilds and synchronizes generated web/native assets
   before tests, preventing stale-package loops.
