@@ -16,7 +16,7 @@ transcript.
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **115/115** tests, static build/package audit,
+- Current verified local gate: **116/116** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Latest milestone checkpoint: runtime commit `7113366` is pushed to
   `origin/main` and deployed on 2026-08-10 to preview `caacd1f4` and the
@@ -37,6 +37,10 @@ transcript.
   `0.75`; only the first Normal D1 combat room uses `0.65` health/damage/speed
   and a close starter lane. Standard Expedition is recommended on the first
   run, while the authored modifier choices remain available.
+- Fast QA now includes an ordinary-player model of that two-enemy opening
+  room: it clears in 7.2 simulated seconds with the player alive, proving the
+  configured starter budget without developer aids. This is local regression
+  protection; the deployed milestone remains the prior runtime checkpoint.
 - The prior retained D1 handoff has been consumed: a loopback Mage route now
   reaches the D1-D12 final session summary with the bounded QA route aid. This
   remains QA-assisted evidence, not clean-player acceptance.

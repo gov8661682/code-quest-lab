@@ -56,6 +56,26 @@ export const REPRESENTATIVE_ENCOUNTERS = Object.freeze({
   })
 });
 
+// This is the smallest normal-player budget that must remain comfortable for
+// a fresh web session. It mirrors the production opening-room values without
+// enabling any developer aid: two authored D1 enemies, the starter Barbarian
+// Cleave, the onboarding-only room tuning, and the readable spawn lane.
+export const LEVEL1_OPENING_ENCOUNTER = Object.freeze({
+  id: 'dungeon1-opening-two-enemy-room',
+  dungeonId: 'dungeon1',
+  enemyCount: 2,
+  enemyHp: 140 * 0.65,
+  enemyDamage: 16 * 0.65,
+  enemyAttackEvery: 1.8,
+  playerHp: 100,
+  playerDamage: 17 * 0.75,
+  playerAttackEvery: 0.55,
+  attackRange: 85 + 22,
+  targetDistances: Object.freeze([64, 86]),
+  readWindowSeconds: 10,
+  stepSeconds: 0.05
+});
+
 export function createSeededRng(seed = 1) {
   let state = (Number(seed) >>> 0) || 1;
   return function nextRandom() {
@@ -278,8 +298,101 @@ export function simulateEncounter(options = {}) {
   };
 }
 
+/**
+ * Simulate the fresh Normal D1 opening room with ordinary attacks only.
+ *
+ * This deliberately models a player selecting the nearest target and holding
+ * the ordinary attack input. It does not use invincibility, high damage,
+ * enemy-free mode, room completion, or any route shortcut.
+ */
+export function simulateOpeningRoom(options = {}) {
+  const defaults = LEVEL1_OPENING_ENCOUNTER;
+  const enemyCount = Math.max(1, Math.floor(Number(options.enemyCount ?? defaults.enemyCount)));
+  const enemyHpMax = Math.max(1, Number(options.enemyHp ?? defaults.enemyHp));
+  const enemyDamage = Math.max(0, Number(options.enemyDamage ?? defaults.enemyDamage));
+  const enemyAttackEvery = Math.max(0.05, Number(options.enemyAttackEvery ?? defaults.enemyAttackEvery));
+  const playerHpMax = Math.max(1, Number(options.playerHp ?? defaults.playerHp));
+  const playerDamage = Math.max(1, Number(options.playerDamage ?? defaults.playerDamage));
+  const playerAttackEvery = Math.max(0.05, Number(options.playerAttackEvery ?? defaults.playerAttackEvery));
+  const attackRange = Math.max(1, Number(options.attackRange ?? defaults.attackRange));
+  const targetDistances = Array.from(options.targetDistances ?? defaults.targetDistances, Number);
+  const readWindowSeconds = Math.max(0.05, Number(options.readWindowSeconds ?? defaults.readWindowSeconds));
+  const stepSeconds = Math.max(0.01, Number(options.stepSeconds ?? defaults.stepSeconds));
+  const enemies = Array.from({length: enemyCount}, (_, index) => ({
+    hp: enemyHpMax,
+    hpMax: enemyHpMax,
+    distance: Number.isFinite(targetDistances[index]) ? targetDistances[index] : defaults.attackRange + 1,
+    attackTimer: enemyAttackEvery
+  }));
+  let playerHp = playerHpMax;
+  let simulatedSeconds = 0;
+  let attackTimer = 0;
+  let attackCount = 0;
+  let successfulHits = 0;
+  let damageDealt = 0;
+  let damageTaken = 0;
+  let targetIndex = 0;
+
+  const nextLiveTarget = () => {
+    while (targetIndex < enemies.length && enemies[targetIndex].hp <= 0) targetIndex += 1;
+    return enemies[targetIndex] || null;
+  };
+
+  while (simulatedSeconds < readWindowSeconds && playerHp > 0 && nextLiveTarget()) {
+    const dt = Math.min(stepSeconds, readWindowSeconds - simulatedSeconds);
+    simulatedSeconds += dt;
+    attackTimer -= dt;
+
+    for (const enemy of enemies) {
+      if (enemy.hp <= 0) continue;
+      enemy.attackTimer -= dt;
+      if (enemy.attackTimer <= 0) {
+        enemy.attackTimer += enemyAttackEvery;
+        const dealt = Math.min(playerHp, Math.max(0, Math.round(enemyDamage)));
+        playerHp -= dealt;
+        damageTaken += dealt;
+      }
+    }
+
+    if (attackTimer <= 0) {
+      attackTimer += playerAttackEvery;
+      attackCount += 1;
+      const target = nextLiveTarget();
+      if (!target) break;
+      if (target.distance <= attackRange) {
+        successfulHits += 1;
+        const dealt = Math.min(target.hp, Math.max(1, Math.round(playerDamage)));
+        target.hp -= dealt;
+        damageDealt += dealt;
+      }
+    }
+  }
+
+  const enemiesDefeated = enemies.filter((enemy) => enemy.hp <= 0).length;
+  return {
+    status: enemiesDefeated === enemyCount ? 'victory' : (playerHp <= 0 ? 'loss' : 'timeout'),
+    scenario: defaults.id,
+    dungeonId: defaults.dungeonId,
+    simulatedSeconds: Number(simulatedSeconds.toFixed(3)),
+    playerHp: Math.max(0, Math.round(playerHp)),
+    playerHpMax,
+    enemyCount,
+    enemiesDefeated,
+    enemyHp: Math.round(enemyHpMax),
+    playerDamage: Math.round(playerDamage),
+    attackCount,
+    successfulHits,
+    damageDealt,
+    damageTaken,
+    targetDistances,
+    attackRange,
+    readWindowSeconds
+  };
+}
+
 export function runRepresentativeSuite() {
   return {
+    opening: simulateOpeningRoom(),
     early: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.early, seed: 101 }),
     mid: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.mid, seed: 202, timeScale: 10, invincible: true }),
     late: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.late, seed: 303, timeScale: 25, invincible: true, highDamage: true, highDamageMultiplier: 2, enemyFree: true }),

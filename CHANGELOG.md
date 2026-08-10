@@ -14,6 +14,13 @@
   `https://caacd1f4.code-quest-lab.pages.dev/` and
   `https://code-quest-lab.gov8661682.com/`; both production checks passed.
 
+- Added a deterministic ordinary-player fast-QA model for the fresh Normal D1
+  two-enemy opening room. It verifies the production onboarding budget clears
+  in 7.2 simulated seconds with the starter player alive and no developer aid
+  or route shortcut. The full local release gate is now **116/116**. This is
+  regression protection only, so it is grouped with the deployed milestone's
+  records and does not create a second website checkpoint.
+
 - Extended a fresh loopback Mage route through D4-D6. The run verified D4's
   Fallen Hero event, off-screen target indicator, elite Crystal Hollow, and
   Void Monarch; D5's Fallen Hero event and Chieftain phase-3 transition; and

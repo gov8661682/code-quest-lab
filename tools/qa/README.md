@@ -11,9 +11,12 @@ npm.cmd run qa:fast
 ```
 
 The Node tests also run it through `npm.cmd test`. The suite uses fixed seeds
-and representative early, mid, and late encounters. It checks attack cycles,
-collision, damage, phase transitions, finite summon budgets, victory, loss,
-timeout, invincibility, high damage, enemy-free mode, and accelerated time.
+and representative early, mid, and late encounters, plus the fresh Normal
+Dungeon 1 two-enemy opening budget. It checks attack cycles, collision,
+damage, phase transitions, finite summon budgets, victory, loss, timeout,
+invincibility, high damage, enemy-free mode, and accelerated time. The
+opening-room case uses ordinary player damage and timing only; it does not use
+a developer aid or route shortcut.
 
 ## Local browser controls
 

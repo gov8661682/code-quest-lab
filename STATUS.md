@@ -22,6 +22,16 @@ the visible invincibility aid; live smoke verified the corrected route and
 first room, but no-cheat live room-clear evidence remains a separate lane.
 The score remains **93% active checkpoint / 19% overall**.
 
+## Local opening-room regression contract (2026-08-10; no deployment checkpoint)
+
+The fast QA suite now models the fresh Normal D1 two-enemy room using ordinary
+Barbarian damage, attack cadence, enemy pressure, spawn distances, and the
+10-second read window. It clears in **7.2 simulated seconds** with the player
+alive and no invincibility, high-damage, enemy-free, room, or route aid. The
+full local gate is **116/116** after this test-only hardening. The deployed
+runtime remains the already verified `7113366` checkpoint; no website deploy
+was created for a regression-test-only change.
+
 ## D4-D6 route QA and phase hardening checkpoint (2026-08-10; deployed)
 
 Commit `095aa30` (`Checkpoint D4-D6 route QA and phase hardening`) was pushed

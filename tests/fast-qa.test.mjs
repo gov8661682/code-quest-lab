@@ -4,7 +4,8 @@ import {
   REPRESENTATIVE_ENCOUNTERS,
   createSeededRng,
   runRepresentativeSuite,
-  simulateEncounter
+  simulateEncounter,
+  simulateOpeningRoom
 } from '../tools/qa/fast-combat-sim.mjs';
 
 test('deterministic RNG and representative encounter results are repeatable', () => {
@@ -30,6 +31,17 @@ test('representative early, mid, and late encounters converge with finite summon
   }
   assert.deepEqual(suite.mid.phaseTransitions, [2, 3]);
   assert.deepEqual(suite.late.phaseTransitions, [2, 3]);
+});
+
+test('fresh Normal D1 opening room clears inside the ordinary attack budget', () => {
+  const result = simulateOpeningRoom();
+  assert.equal(result.status, 'victory');
+  assert.equal(result.enemiesDefeated, result.enemyCount);
+  assert.ok(result.successfulHits > 0, 'opening room should accept ordinary attack hits');
+  assert.ok(result.simulatedSeconds < result.readWindowSeconds, 'opening room should clear before the read window expires');
+  assert.ok(result.playerHp > 0, 'starter player should survive the opening room budget');
+  assert.deepEqual(result.targetDistances, [64, 86]);
+  assert.ok(result.targetDistances.every((distance) => distance <= result.attackRange), 'starter targets should begin within attack range');
 });
 
 test('accelerated invincible QA completes the mid encounter in bounded wall time', () => {

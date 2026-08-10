@@ -33,6 +33,15 @@ documented acceptance-criterion failure. Optional improvements belong in
   live desktop/tablet smoke reached the Mage entrance, pause/resume, and
   movement input with no browser warning/error diagnostics.
 
+## Level 1 opening-room regression contract (2026-08-10; local)
+
+- Added a dependency-free `simulateOpeningRoom` model to the fast QA suite.
+  It exercises the fresh Normal D1 two-enemy health/damage/timing/range budget
+  with ordinary Barbarian attacks only, clears in 7.2 simulated seconds, and
+  confirms the player survives the opening pressure. The complete local gate
+  is **116/116**. This is regression protection rather than a player/device or
+  website deployment checkpoint; the deployed runtime remains `7113366`.
+
 ## Recovery-safe pause handoff (2026-08-10; deployed)
 
 ## D1-D12 route continuation and custom phase QA hardening (2026-08-10; deployed)
