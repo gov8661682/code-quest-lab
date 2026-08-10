@@ -1,7 +1,7 @@
 // Bump the shell cache whenever a shipped gameplay shell changes. Keeping the
 // same cache name would let an already-controlled browser keep an older
 // index.html after a successful Pages deployment.
-const CACHE_NAME = 'code-quest-lab-shell-v7';
+const CACHE_NAME = 'code-quest-lab-shell-v8';
 const APP_SHELL = [
   './',
   './index.html',

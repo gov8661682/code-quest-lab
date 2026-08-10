@@ -34,7 +34,7 @@ function createServiceWorkerHarness() {
       if (request === './index.html') return Promise.resolve({ name: 'offline-shell' });
       return Promise.resolve(null);
     },
-    keys() { return Promise.resolve(['code-quest-lab-shell-old', 'code-quest-lab-shell-v7']); },
+    keys() { return Promise.resolve(['code-quest-lab-shell-old', 'code-quest-lab-shell-v8']); },
     delete(name) {
       deletedCaches.push(name);
       return Promise.resolve(true);

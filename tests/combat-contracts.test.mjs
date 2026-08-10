@@ -48,8 +48,13 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
   );
   assert.match(
     SOURCE,
-    /var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty\(\)\.id==='normal';\s*if\(_isOpeningCombatRoom\)\{_hpScale\*=0\.80;_eDmgMult\*=0\.80;\}/,
+    /var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty\(\)\.id==='normal';[\s\S]{0,240}if\(_isOpeningCombatRoom\)\{_hpScale\*=0\.65;_eDmgMult\*=0\.65;\}/,
     'only the Normal Dungeon 1 opening room receives the onboarding budget'
+  );
+  assert.match(
+    SOURCE,
+    /var _openingEnemySpeedMult=_isOpeningCombatRoom\?0\.65:1\.0;[\s\S]{0,1400}speed:def\.speed\*scale\*_dgSpeedMult\*_openingEnemySpeedMult/,
+    'the opening room gives a new player a slower read-and-respond pace'
   );
   assert.doesNotMatch(
     SOURCE,
