@@ -29931,9 +29931,9 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   var ex,ey,attempts=0;
   // The first combat room is the player's onboarding moment. A full-room
   // random spawn can place both enemies outside the visible tablet viewport
-  // in the 1.75x room, leaving a new player taking damage without a readable
-  // target. Keep this one encounter in a visible band below the spawn while
-  // preserving the normal procedural placement everywhere else.
+  // in the 1.75x room, while a distant fixed band makes a fresh Barbarian's
+  // first taps miss until the player understands movement. Keep this one
+  // encounter in a close, readable lane below the spawn while preserving the normal procedural placement everywhere else.
   var _firstRoomDef=ROOM_DEFS&&ROOM_DEFS[currentRoomId];
   var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH.length>1&&currentRoomId===MAIN_PATH[1]&&_firstRoomDef&&_firstRoomDef.type===RT.COMBAT;
   // The first Normal D1 combat room is a teaching encounter, not a full
@@ -29946,8 +29946,8 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;
-    ex=clamp(player.x+_firstCombatSide*(90+Math.random()*70),minX,maxX);
-    ey=clamp(player.y+250+_firstCombatSlot*70,minY,maxY);
+    ex=clamp(player.x+_firstCombatSide*(55+Math.random()*35),minX,maxX);
+    ey=clamp(player.y+60+_firstCombatSlot*42,minY,maxY);
   }else{
     do{ex=minX+Math.random()*(maxX-minX);ey=minY+Math.random()*(maxY-minY);attempts++;}
     while(Math.hypot(ex-player.x,ey-player.y)<160&&attempts<30);

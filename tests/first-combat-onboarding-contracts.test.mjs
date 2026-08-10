@@ -11,9 +11,10 @@ test('first combat keeps initial enemies inside a readable onboarding band', () 
   assert.match(SOURCE, /var _firstRoomDef=ROOM_DEFS&&ROOM_DEFS\[currentRoomId\];/);
   assert.match(SOURCE, /var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH\.length>1&&currentRoomId===MAIN_PATH\[1\]&&_firstRoomDef&&_firstRoomDef\.type===RT\.COMBAT;/);
   assert.match(SOURCE, /var _firstCombatSlot=enemies\.length\+cursedLibrarians\.length;/);
-  assert.match(SOURCE, /ex=clamp\(player\.x\+_firstCombatSide\*\(90\+Math\.random\(\)\*70\),minX,maxX\);/);
-  assert.match(SOURCE, /ey=clamp\(player\.y\+250\+_firstCombatSlot\*70,minY,maxY\);/);
-  assert.match(SOURCE, /preserving the normal procedural placement everywhere else/);
+  assert.match(SOURCE, /ex=clamp\(player\.x\+_firstCombatSide\*\(55\+Math\.random\(\)\*35\),minX,maxX\);/);
+  assert.match(SOURCE, /ey=clamp\(player\.y\+60\+_firstCombatSlot\*42,minY,maxY\);/);
+  assert.match(SOURCE, /first taps miss until the player understands movement/);
+  assert.match(SOURCE, /preserving the\s+normal procedural placement everywhere else/);
 });
 
 test('larger combat rooms point toward a live enemy outside the viewport', () => {
