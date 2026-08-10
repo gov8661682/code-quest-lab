@@ -1,6 +1,6 @@
 # Code Quest Lab - Web Deployment Package
 
-Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-07)
+Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-10)
 
 ## Intended deployment
 
@@ -72,6 +72,18 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 ```
 
 ## Current production audit
+
+The 2026-08-10 D4-D6 route QA and phase-hardening milestone was published from
+source commit `095aa30` to the configured Cloudflare Pages project
+`code-quest-lab`. Preview:
+`https://050a6395.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-10. Live
+smoke reached the Mage profile and playable entrance, verified pause/resume and
+movement input, remained usable at 1024x768, and recorded no browser warning or
+error diagnostics.
 
 The 2026-08-07 Dungeon 2 progression/level-up checkpoint was published to the
 configured Cloudflare Pages project `code-quest-lab` at source commit

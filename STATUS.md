@@ -3,6 +3,21 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## D4-D6 route QA and phase hardening checkpoint (2026-08-10; deployed)
+
+Commit `095aa30` (`Checkpoint D4-D6 route QA and phase hardening`) was pushed
+to `origin/main` and deployed to the existing Cloudflare Pages project.
+Preview: `https://050a6395.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. The packaged source hash is
+`60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
+
+Both production checks passed. Live smoke reached the existing profile surface,
+entered the Mage playable entrance, verified pause/resume and a movement input,
+and remained usable at a 1024x768 tablet-sized viewport. No live browser
+warning or error diagnostics were recorded. This milestone preserves the
+93% active checkpoint / 19% overall score because its extended D4-D6 route was
+QA-assisted rather than clean-player acceptance.
+
 ## Recovery-safe pause handoff web checkpoint (2026-08-10; deployed)
 
 The recovery-safe pause handoff was published from tested commit `e7871b0`
@@ -42,8 +57,8 @@ Valen arena and completed its QA phase/defeat handoff. The D4 elite pair was
 resolved with bounded developer damage after normal Mage damage proved
 impractical at the tablet viewport; this is QA-assisted evidence, not clean
 player acceptance. The browser recorded no warning or error diagnostics and
-the score remains **93%** active checkpoint / **19%** overall. No deployment
-checkpoint was created.
+the score remains **93%** active checkpoint / **19%** overall. The deployment
+checkpoint for this tested milestone is recorded above.
 
 A loopback Mage route continued through D1 and D2, then used the bounded
 developer phase/room aids to exercise D4-D12. It reached the final session

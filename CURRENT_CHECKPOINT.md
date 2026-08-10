@@ -24,10 +24,20 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Tested commit `e7871b0` is pushed to `origin/main`; the **113/113** release gate, `qa:fast`, build/package audit, and native sync pass; Cloudflare Pages preview `a89328df` and the configured hostname pass production checks, and live desktop/tablet smoke reaches D1 combat and safe pause | Re-run the owner-approved GitHub, website, and live-flow evidence for the next stable milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Tested commit `095aa30` is pushed to `origin/main`; the **113/113** release gate, `qa:fast`, build/package audit, and native sync pass; Cloudflare Pages preview `050a6395` and the configured hostname pass production checks, and live desktop/tablet smoke reaches the profile, Mage entrance, pause/resume, and movement input with no browser diagnostics | Re-run the owner-approved GitHub, website, and live-flow evidence for the next stable milestone; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-10)
+
+- Major release-readiness checkpoint completed: commit `095aa30` was pushed to
+  `origin/main` and deployed to Cloudflare Pages on 2026-08-10. Preview:
+  `https://050a6395.code-quest-lab.pages.dev/`; configured hostname:
+  `https://code-quest-lab.gov8661682.com/`; packaged source hash:
+  `60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
+  Both production checks passed. Live smoke entered the Mage profile and
+  playable entrance, verified pause/resume and movement input, and remained
+  usable at 1024x768 with no warning/error diagnostics. The route evidence
+  remains QA-assisted, so the score stays **93%** / **19%**.
 
 - A fresh loopback Mage route extended the managed route through D4-D6. D4
   reached The Shadow Realm's Fallen Hero event, off-screen target guidance,
@@ -59,8 +69,9 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   custom phase fields for Fallen King, Void Monarch, High Chieftain, Valen,
   Hollow World Tree, Broker, the later corruption bosses, and Pure Corruption.
   The source mirror, production build, Capacitor sync, package audit, and full
-  **113/113** release gate pass. This is local QA tooling and does not create a
-  deployment checkpoint.
+  **113/113** release gate pass. This tested QA hardening was included in the
+  `095aa30` GitHub/Cloudflare milestone above; it does not increase the manual
+  evidence score.
 
 - A fresh managed-browser normal-control playthrough at
   `http://127.0.0.1:4176/?cql-dev=1` used a 1024x768 desktop-sized view for

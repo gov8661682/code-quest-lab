@@ -53,7 +53,7 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
-### D1-D12 route continuation and managed tablet evidence (2026-08-10; local)
+### D1-D12 route continuation and managed tablet evidence (2026-08-10; deployed checkpoint)
 
 A fresh loopback Mage route extended live managed coverage through D4-D6.
 D4 exercised the Fallen Hero event, off-screen target guidance, elite Crystal
@@ -61,7 +61,11 @@ Hollow, and Void Monarch; D5 exercised the Fallen Hero event and Chieftain
 phase-3 transition; D6 exercised the Archmage arena and QA defeat handoff.
 The route used bounded developer damage/room/phase aids after a D4 elite pair
 became impractical at normal Mage damage. This is QA-assisted evidence only;
-the score remains **93%** / **19%**, and no deployment checkpoint was created.
+the score remains **93%** / **19%**. The tested milestone was checkpointed as
+commit `095aa30`, pushed to `origin/main`, and deployed on 2026-08-10. Preview:
+`https://050a6395.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. Both production checks and live
+desktop/tablet smoke passed with no browser warning/error diagnostics.
 
 A loopback Mage route reaches the D1-D12 final session summary after bounded
 QA exercise of the authored D5-D12 bosses, transformations, dialogue, rewards,

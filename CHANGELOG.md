@@ -8,13 +8,17 @@
   D6's Archmage arena/defeat handoff. It used session invincibility and
   bounded developer damage/room/phase aids after a high-health D4 elite pair
   made normal Mage damage impractical. This is QA-assisted evidence only;
-  browser diagnostics were empty and no deployment checkpoint was created.
+  browser diagnostics were empty. The tested milestone was checkpointed as
+  commit `095aa30`, pushed to `origin/main`, deployed to
+  `https://050a6395.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`, and passed both production checks
+  plus live desktop/tablet smoke.
 
 - Completed a loopback QA-assisted D1-D12 route through the final session
   summary, preserving the named D5-D12 bosses, authored phases, dialogue,
   rewards, Veteran unlocks, and portal handoffs. This remains QA-assisted
-  evidence and does not claim clean-player acceptance or create a deployment
-  checkpoint.
+  evidence and does not claim clean-player acceptance; the tested milestone
+  checkpoint is recorded in the entry above.
 
 - Ran a disposable 13-minute 600x768 managed tablet session through D1 and D2
   with the visible Move/Attack controls, target lock, step movement, shrines,

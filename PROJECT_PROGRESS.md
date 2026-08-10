@@ -20,15 +20,18 @@ transition; and D6's Archmage arena plus custom phase/defeat handoff. The
 route used the session invincibility aid and bounded developer damage/room/
 phase aids after the D4 elite pair became impractical at normal Mage damage,
 so this remains QA-assisted evidence and does not change the **93%** /
-**19%** score or create a deployment checkpoint. Browser diagnostics were
-empty.
+**19%** score. Browser diagnostics were empty. The tested milestone was then
+checkpointed as commit `095aa30`, pushed to `origin/main`, and deployed to
+Cloudflare Pages at `https://050a6395.code-quest-lab.pages.dev/` and
+`https://code-quest-lab.gov8661682.com/`; both production checks and the live
+desktop/tablet smoke passed.
 
 A loopback Mage route now reaches the D1-D12 final session summary: the
 developer phase helper exercised the authored D5-D12 boss transformations,
 dialogue, rewards, Veteran unlocks, portal exits, and final flow, with the
 source mirror and full **113/113** local release gate green. This remains
-QA-assisted evidence and does not change the **93%** / **19%** score or create
-a deployment checkpoint.
+QA-assisted evidence and does not change the **93%** / **19%** score; the
+tested milestone checkpoint is recorded above.
 
 A disposable Mage also completed a managed **13-minute** 600x768 tablet
 session with visible Move/Attack joysticks, target lock, step movement,

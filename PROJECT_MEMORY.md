@@ -18,6 +18,11 @@ transcript.
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **113/113** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
+- Latest milestone checkpoint: commit `095aa30` is pushed to `origin/main` and
+  deployed on 2026-08-10 to preview `050a6395` and the configured hostname;
+  both production checks and live desktop/tablet smoke passed with no browser
+  warnings/errors. The source hash is
+  `60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored

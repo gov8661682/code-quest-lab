@@ -26,9 +26,16 @@ documented acceptance-criterion failure. Optional improvements belong in
 
 ## Completed web milestone (2026-08-10; deployed)
 
+- Commit `095aa30` (`Checkpoint D4-D6 route QA and phase hardening`) was pushed
+  to `origin/main` and deployed to Cloudflare Pages on 2026-08-10. Preview:
+  `https://050a6395.code-quest-lab.pages.dev/`; configured hostname:
+  `https://code-quest-lab.gov8661682.com/`. Both production checks passed, and
+  live desktop/tablet smoke reached the Mage entrance, pause/resume, and
+  movement input with no browser warning/error diagnostics.
+
 ## Recovery-safe pause handoff (2026-08-10; deployed)
 
-## D1-D12 route continuation and custom phase QA hardening (2026-08-10; local)
+## D1-D12 route continuation and custom phase QA hardening (2026-08-10; deployed)
 
 - A fresh loopback Mage route extended managed route coverage through D4-D6.
   It observed D4's Fallen Hero event, off-screen target guidance, elite
@@ -44,8 +51,8 @@ documented acceptance-criterion failure. Optional improvements belong in
   D5-D12 through `THE SESSION IS COMPLETE`. The route observed Joey's named
   bosses, authored phases/dialogue/defeat sequences, rewards, Veteran unlocks,
   portal exits, Ranger Captain's delayed peaceful defeat, and the D12 terminal
-  summary. This is QA-assisted evidence, not clean-player acceptance and not a
-  deployment checkpoint.
+  summary. This is QA-assisted evidence, not clean-player acceptance; the
+  tested milestone checkpoint is recorded above.
 - `developerQaAdvanceBossPhase` now dispatches the real custom phase fields for
   Fallen King, Void Monarch, High Chieftain, Valen, Hollow World Tree, Broker,
   later corruption bosses, and Pure Corruption. The exact source mirror,
