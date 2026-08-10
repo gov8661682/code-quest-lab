@@ -48,13 +48,23 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
   );
   assert.match(
     SOURCE,
-    /var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty\(\)\.id==='normal';[\s\S]{0,240}if\(_isOpeningCombatRoom\)\{_hpScale\*=0\.65;_eDmgMult\*=0\.65;\}/,
+    /var LEVEL1_OPENING_TUNING=Object\.freeze\(\{[\s\S]{0,260}attackCooldownMult:1\.80,[\s\S]{0,120}graceSeconds:COMBAT_INTRO_DURATION[\s\S]{0,80}\}\);/,
+    'the Normal Dungeon 1 opening room has one bounded onboarding tuning table'
+  );
+  assert.match(
+    SOURCE,
+    /var _isOpeningCombatRoom=_isFirstCombatRoom&&getActiveDifficulty\(\)\.id==='normal';[\s\S]{0,300}if\(_isOpeningCombatRoom\)\{_hpScale\*=LEVEL1_OPENING_TUNING\.hpMult;_eDmgMult\*=LEVEL1_OPENING_TUNING\.damageMult;\}/,
     'only the Normal Dungeon 1 opening room receives the onboarding budget'
   );
   assert.match(
     SOURCE,
-    /var _openingEnemySpeedMult=_isOpeningCombatRoom\?0\.65:1\.0;[\s\S]{0,1400}speed:def\.speed\*scale\*_dgSpeedMult\*_openingEnemySpeedMult/,
+    /var _openingEnemySpeedMult=_isOpeningCombatRoom\?LEVEL1_OPENING_TUNING\.speedMult:1\.0;[\s\S]{0,1600}speed:def\.speed\*scale\*_dgSpeedMult\*_openingEnemySpeedMult[\s\S]{0,260}attackCooldown:\(\(def\.attackCooldown\/_d2Atk\)\/_dgAtkSpeedMult\)\*_openingEnemyAttackCooldownMult/,
     'the opening room gives a new player a slower read-and-respond pace'
+  );
+  assert.match(
+    SOURCE,
+    /var _isNormalOpeningIntro=_isFirstCombatIntro&&getActiveDifficulty\(\)\.id==='normal';[\s\S]{0,180}playerInvulnTimer=Math\.max\(playerInvulnTimer,LEVEL1_OPENING_TUNING\.graceSeconds\)/,
+    'the opening room protects the read-and-respond window without changing later rooms'
   );
   assert.doesNotMatch(
     SOURCE,

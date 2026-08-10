@@ -33,11 +33,25 @@ documented acceptance-criterion failure. Optional improvements belong in
   live desktop/tablet smoke reached the Mage entrance, pause/resume, and
   movement input with no browser warning/error diagnostics.
 
+## Level 1 opening-pressure correction (2026-08-10; tested, checkpoint pending)
+
+- Corrected the opening-room regression model to include the production melee
+  cadence, then tuned only the first Normal Dungeon 1 room to `0.50` health,
+  `0.45` damage, `0.55` movement speed, and `1.80` attack-cooldown scaling.
+  The existing 10-second read-and-respond message now provides the same
+  bounded Normal-only protection in play. Joey's enemy roster and later
+  dungeon scaling remain unchanged.
+- Ordinary-player fast QA clears the two-enemy room in **6.1 simulated
+  seconds** with the player alive. The source mirror, static build, native
+  sync, package audit, and full **116/116** release gate pass. This is ready
+  for the next GitHub/website checkpoint; clean-player and device evidence
+  remain separate acceptance lanes.
+
 ## Level 1 opening-room regression contract (2026-08-10; local)
 
 - Added a dependency-free `simulateOpeningRoom` model to the fast QA suite.
   It exercises the fresh Normal D1 two-enemy health/damage/timing/range budget
-  with ordinary Barbarian attacks only, clears in 7.2 simulated seconds, and
+  with ordinary Barbarian attacks only, clears in 6.1 simulated seconds, and
   confirms the player survives the opening pressure. The complete local gate
   is **116/116**. This is regression protection rather than a player/device or
   website deployment checkpoint; the deployed runtime remains `7113366`.

@@ -59,15 +59,16 @@ export const REPRESENTATIVE_ENCOUNTERS = Object.freeze({
 // This is the smallest normal-player budget that must remain comfortable for
 // a fresh web session. It mirrors the production opening-room values without
 // enabling any developer aid: two authored D1 enemies, the starter Barbarian
-// Cleave, the onboarding-only room tuning, and the readable spawn lane.
+// Cleave, the onboarding-only room tuning, the real enemy attack cadence, and
+// the readable spawn lane.
 export const LEVEL1_OPENING_ENCOUNTER = Object.freeze({
   id: 'dungeon1-opening-two-enemy-room',
   dungeonId: 'dungeon1',
   enemyCount: 2,
-  enemyHp: 140 * 0.65,
-  enemyDamage: 16 * 0.65,
-  enemyAttackEvery: 1.8,
-  playerHp: 100,
+  enemyHp: Math.round(140 * 1.12 * 0.50),
+  enemyDamage: Math.round(16 * 1.12 * 0.45),
+  enemyAttackEvery: 1.8 * 1.80 * 0.55,
+  playerHp: 130,
   playerDamage: 17 * 0.75,
   playerAttackEvery: 0.55,
   attackRange: 85 + 22,
@@ -322,7 +323,9 @@ export function simulateOpeningRoom(options = {}) {
     hp: enemyHpMax,
     hpMax: enemyHpMax,
     distance: Number.isFinite(targetDistances[index]) ? targetDistances[index] : defaults.attackRange + 1,
-    attackTimer: enemyAttackEvery
+    // The production enemy starts with an immediately available melee hit
+    // once it reaches the player; this keeps the budget honest.
+    attackTimer: 0
   }));
   let playerHp = playerHpMax;
   let simulatedSeconds = 0;

@@ -2,6 +2,15 @@
 
 ## Unreleased - 2026-08-10
 
+- Followed up on the Level 1 web balance report after comparing the production
+  enemy cadence with the regression model. The first Normal Dungeon 1 room now
+  uses `0.50` health, `0.45` damage, `0.55` movement speed, and `1.80` attack-
+  cooldown scaling, plus a bounded 10-second read-and-respond grace window.
+  Joey's enemy identities, later dungeon scaling, and optional modifiers are
+  unchanged. The corrected ordinary-player model clears the room in **6.1
+  simulated seconds**; the full local release gate is **116/116**. Runtime
+  deployment is pending the GitHub/website checkpoint for this tested slice.
+
 - Fixed the Level 1 Normal onboarding balance after a fresh web Barbarian
   could spend too long closing on the first room. Fresh Barbarian damage now
   starts at `0.75`; only the first Normal Dungeon 1 combat room receives
@@ -16,7 +25,7 @@
 
 - Added a deterministic ordinary-player fast-QA model for the fresh Normal D1
   two-enemy opening room. It verifies the production onboarding budget clears
-  in 7.2 simulated seconds with the starter player alive and no developer aid
+  in 6.1 simulated seconds with the starter player alive and no developer aid
   or route shortcut. The full local release gate is now **116/116**. This is
   regression protection only, so it is grouped with the deployed milestone's
   records and does not create a second website checkpoint.

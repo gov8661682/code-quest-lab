@@ -24,10 +24,19 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Tested commit `7113366` is pushed to `origin/main`; the **115/115** release gate, `qa:fast`, build/package audit, and native sync pass; Cloudflare Pages preview `caacd1f4` and the configured hostname pass production checks, and live smoke reaches a fresh profile, Normal trial, Standard Expedition, and the corrected first combat room with no browser diagnostics recorded | Re-run the owner-approved GitHub, website, and live-flow evidence for the next stable milestone; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed checkpoint `7113366` remains live and verified; the follow-up runtime candidate passes the **116/116** release gate, `qa:fast`, build/package audit, and native sync. The next GitHub/website checkpoint is pending the candidate commit and live opening-room verification | Complete the follow-up checkpoint and repeat live-flow evidence; full C1 acceptance remains separate |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-10)
+
+- The next Level 1 balance probe found that the previous QA budget omitted the
+  production melee cadence. The tested follow-up narrows only the first Normal
+  Dungeon 1 combat room to `0.50` health, `0.45` damage, `0.55` movement speed,
+  and `1.80` attack-cooldown scaling; its existing 10-second read-and-respond
+  period now gives a bounded Normal-only grace window. Ordinary-player fast QA
+  clears the two-enemy room in **6.1 simulated seconds**; the full local gate
+  is **116/116**. This is prepared for the next GitHub/website checkpoint and
+  does not change the **93%** / **19%** evidence score.
 
 - Level 1 onboarding balance checkpoint completed: runtime commit `7113366`
   was pushed to `origin/main` and deployed to Cloudflare Pages on 2026-08-10.

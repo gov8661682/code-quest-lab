@@ -3,6 +3,19 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Level 1 opening-pressure correction (2026-08-10; tested, checkpoint pending)
+
+The first Level 1 report exposed a production-versus-QA cadence mismatch: the
+previous regression model omitted the normal melee attack-frequency multiplier.
+The tested follow-up narrows only the first Normal Dungeon 1 combat room to
+`0.50` health, `0.45` damage, `0.55` movement speed, and `1.80` attack-
+cooldown scaling, and applies the existing 10-second read-and-respond window
+as real Normal-only invulnerability. Joey's roster, later scaling, and
+optional modifiers are unchanged. Ordinary-player fast QA clears the room in
+**6.1 simulated seconds**; the complete local gate is **116/116**. The
+runtime is ready for the next GitHub/website checkpoint after the commit and
+live verification are recorded.
+
 ## Level 1 onboarding balance checkpoint (2026-08-10; deployed)
 
 Runtime commit `7113366` was pushed to `origin/main` and deployed to the
@@ -22,15 +35,15 @@ the visible invincibility aid; live smoke verified the corrected route and
 first room, but no-cheat live room-clear evidence remains a separate lane.
 The score remains **93% active checkpoint / 19% overall**.
 
-## Local opening-room regression contract (2026-08-10; no deployment checkpoint)
+## Local opening-room regression contract (2026-08-10; superseded by tested follow-up)
 
 The fast QA suite now models the fresh Normal D1 two-enemy room using ordinary
 Barbarian damage, attack cadence, enemy pressure, spawn distances, and the
-10-second read window. It clears in **7.2 simulated seconds** with the player
-alive and no invincibility, high-damage, enemy-free, room, or route aid. The
-full local gate is **116/116** after this test-only hardening. The deployed
-runtime remains the already verified `7113366` checkpoint; no website deploy
-was created for a regression-test-only change.
+10-second read window. The superseding model includes the real melee cadence,
+clears in **6.1 simulated seconds** with the player alive, and uses no
+invincibility, high-damage, enemy-free, room, or route aid. The full local gate
+is **116/116**; the older **7.2-second** result remains historical evidence for
+the previous test-only contract.
 
 ## D4-D6 route QA and phase hardening checkpoint (2026-08-10; deployed)
 

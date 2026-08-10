@@ -28993,9 +28993,17 @@ function updatePotionButton(){
 }
 var exitDoor=null,backDoorOpen=false,sideDoorOpen=false,roomTransitioning=false;
 var combatIntroTimer=0;
-// Give a new player enough time to orient, aim, and deliver the first attack
-// on a touch tablet or managed browser before hostile simulation resumes.
+// The first Normal Dungeon 1 room is a teaching encounter. Keep its relief
+// bounded and data-driven so the authored enemy roster and later scaling remain
+// unchanged while a new web player learns the attack loop.
 var COMBAT_INTRO_DURATION=10.0;
+var LEVEL1_OPENING_TUNING=Object.freeze({
+  hpMult:0.50,
+  damageMult:0.45,
+  speedMult:0.55,
+  attackCooldownMult:1.80,
+  graceSeconds:COMBAT_INTRO_DURATION
+});
 function updateCombatIntro(dt){
   if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
 }
@@ -29830,6 +29838,8 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
           if(def._isDungeon9)d9ApplyFormationClustering(geo);
           if(enemies.length===0)enemies.push(spawnEnemyByKind(def._isDungeon4?'shadow_beast':(def._isDungeon7?'corrupted_wolf':(def._isDungeon9?'broken_knight':(def._isDungeon10?'failed_subject':'warrior'))),geo,depth,isEliteSpawn));
           var _isFirstCombatIntro=activeDungeonId==='dungeon1'&&def.type===RT.COMBAT&&roomId===MAIN_PATH[1];
+          var _isNormalOpeningIntro=_isFirstCombatIntro&&getActiveDifficulty().id==='normal';
+          if(_isNormalOpeningIntro)playerInvulnTimer=Math.max(playerInvulnTimer,LEVEL1_OPENING_TUNING.graceSeconds);
           if(_isFirstCombatIntro){
             combatIntroTimer=COMBAT_INTRO_DURATION;
             showBanner(typeLabel+' '+def.name,'Read the room - move or attack',COMBAT_INTRO_DURATION);
@@ -29945,8 +29955,9 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   // Give the first Normal room a forgiving but finite starter budget. This is
   // the only room that gets this onboarding adjustment; later rooms retain
   // their authored depth and difficulty scaling.
-  if(_isOpeningCombatRoom){_hpScale*=0.65;_eDmgMult*=0.65;}
-  var _openingEnemySpeedMult=_isOpeningCombatRoom?0.65:1.0;
+  if(_isOpeningCombatRoom){_hpScale*=LEVEL1_OPENING_TUNING.hpMult;_eDmgMult*=LEVEL1_OPENING_TUNING.damageMult;}
+  var _openingEnemySpeedMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.speedMult:1.0;
+  var _openingEnemyAttackCooldownMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.attackCooldownMult:1.0;
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;
@@ -29967,7 +29978,7 @@ var eliteRadius=isElite?Math.round(def.radius*1.3):def.radius;
   var _d2EliteDmgMult=(_d2Mult&&isElite)?0.50:1.0;
   var spawned={x:ex,y:ey,radius:eliteRadius,color:isElite?'#daa520':def.color,
     speed:def.speed*scale*_dgSpeedMult*_openingEnemySpeedMult,hp:Math.round(def.hp*_hpScale*_d2Hp),hpMax:Math.round(def.hp*_hpScale*_d2Hp),
-    damage:Math.round(def.damage*scale*_eDmgMult*_d2EliteDmgMult),attackRange:eliteRadius+player.radius+4,attackCooldown:(def.attackCooldown/_d2Atk)/_dgAtkSpeedMult,
+    damage:Math.round(def.damage*scale*_eDmgMult*_d2EliteDmgMult),attackRange:eliteRadius+player.radius+4,attackCooldown:((def.attackCooldown/_d2Atk)/_dgAtkSpeedMult)*_openingEnemyAttackCooldownMult,
     attackTimer:0,hitFlash:0,knockbackVx:0,knockbackVy:0,knockbackTime:0,
     kind:kind,label:def.label,isGhost:def.isGhost,ranged:def.ranged,
     preferredDist:def.preferredDist||0,

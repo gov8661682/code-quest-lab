@@ -74,6 +74,19 @@ This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
 
+### Follow-up: Level 1 opening-pressure correction (2026-08-10; tested)
+
+- [x] Reconcile the production melee cadence with the ordinary-player QA model.
+- [x] Keep the relief scoped to the first Normal D1 combat room: `0.50` HP,
+  `0.45` damage, `0.55` movement speed, `1.80` attack-cooldown scaling, and a
+  bounded 10-second read-and-respond grace window.
+- [x] Preserve Joey's authored enemy identities, later dungeon scaling, and
+  optional modifiers.
+- [x] Pass the ordinary-player opening simulation, `qa:fast`, full **116/116**
+  release verification, static package audit, and native sync.
+- [ ] Create the GitHub and website checkpoint after commit, deployment, and
+  live opening-room verification.
+
 ### D1-D12 route continuation and managed tablet evidence (2026-08-10; deployed checkpoint)
 
 A fresh loopback Mage route extended live managed coverage through D4-D6.

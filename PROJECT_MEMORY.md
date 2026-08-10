@@ -33,29 +33,21 @@ transcript.
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world
   direction are creative constraints, not optional complexity to remove.
-- Level 1 balance relief is intentionally narrow: fresh Barbarian damage is
-  `0.75`; only the first Normal D1 combat room uses `0.65` health/damage/speed
-  and a close starter lane. Standard Expedition is recommended on the first
-  run, while the authored modifier choices remain available.
-- Fast QA now includes an ordinary-player model of that two-enemy opening
-  room: it clears in 7.2 simulated seconds with the player alive, proving the
-  configured starter budget without developer aids. This is local regression
-  protection; the deployed milestone remains the prior runtime checkpoint.
-- The prior retained D1 handoff has been consumed: a loopback Mage route now
-  reaches the D1-D12 final session summary with the bounded QA route aid. This
-  remains QA-assisted evidence, not clean-player acceptance.
+- Level 1 relief is intentionally narrow: fresh Barbarian damage remains
+  `0.75`; only the first Normal D1 combat room uses `0.50` health, `0.45`
+  damage, `0.55` speed, `1.80` attack-cooldown scaling, a close lane, and a
+  10-second read-and-respond grace window. Standard Expedition remains
+  recommended while authored modifiers stay available.
+- Fast QA models that two-enemy opening with the real melee cadence: it clears
+  in 6.1 simulated seconds with the player alive and no developer aids.
 - A disposable Mage completed a managed 13-minute 600x768 tablet session with
   visible Move/Attack controls, target lock, step movement, D1-D2 rewards and
   bosses, all Fallen King phases, pause, and Finish and Return to Dashboard.
   The disposable profile was deleted; retained profiles remain intact.
-- `developerQaAdvanceBossPhase` now dispatches the real custom phase fields for
-  D2, D4-D12, and later corruption/Pure Corruption bosses; the exact source
-  mirror and **115/115** release gate are green.
-- A fresh loopback Mage route extended managed coverage through D4-D6,
-  including D4's Void Monarch, D5's Chieftain phase 3, and D6's Archmage
-  defeat handoff. It used bounded QA aids after a high-health D4 elite pair
-  became impractical at normal Mage damage; keep this separate from clean
-  player evidence. The browser recorded no warning/error diagnostics.
+- QA phase routing now dispatches the real custom fields for D2, D4-D12, and
+  later corruption bosses. Managed Mage route coverage through D1-D12 and
+  D4-D6 remains QA-assisted, not clean-player acceptance; browser diagnostics
+  were clear.
 
 ## Durable lessons
 

@@ -13,6 +13,17 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-10 progress delta
 
+The Level 1 web balance report produced a tested follow-up to the deployed
+`7113366` pass. The production opening-room cadence was stricter than the
+earlier QA model, so the first Normal D1 combat room now uses `0.50` health,
+`0.45` damage, `0.55` movement speed, `1.80` attack-cooldown scaling, and a
+bounded 10-second read-and-respond grace window. Joey's authored roster,
+later scaling, and optional modifiers remain unchanged. Ordinary-player fast
+QA clears the room in **6.1 simulated seconds**; the full local gate is
+**116/116**. This runtime slice is ready for the next deployment checkpoint;
+the evidence score remains **93%** / **19%** until clean-player/device lanes
+advance.
+
 The Level 1 onboarding balance checkpoint is deployed from runtime commit
 `7113366` at preview `https://caacd1f4.code-quest-lab.pages.dev/` and the
 configured hostname `https://code-quest-lab.gov8661682.com/`; both production
