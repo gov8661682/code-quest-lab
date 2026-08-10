@@ -27,19 +27,36 @@ transcript.
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world
   direction are creative constraints, not optional complexity to remove.
-- A retained Mage's protected D1 Normal run is paused at Death Chamber after
-  normal attacks cleared the earlier rooms and one elite (36 enemies defeated,
-  two elites remaining). Resume that handoff before restarting D1; it is useful
-  route evidence but does not satisfy fresh-profile or full-route acceptance.
+- The prior retained D1 handoff has been consumed: a loopback Mage route now
+  reaches the D1-D12 final session summary with the bounded QA route aid. This
+  remains QA-assisted evidence, not clean-player acceptance.
+- A disposable Mage completed a managed 13-minute 600x768 tablet session with
+  visible Move/Attack controls, target lock, step movement, D1-D2 rewards and
+  bosses, all Fallen King phases, pause, and Finish and Return to Dashboard.
+  The disposable profile was deleted; retained profiles remain intact.
+- `developerQaAdvanceBossPhase` now dispatches the real custom phase fields for
+  D2, D4-D12, and later corruption/Pure Corruption bosses; the exact source
+  mirror and **113/113** release gate are green.
+- A fresh loopback Mage route extended managed coverage through D4-D6,
+  including D4's Void Monarch, D5's Chieftain phase 3, and D6's Archmage
+  defeat handoff. It used bounded QA aids after a high-health D4 elite pair
+  became impractical at normal Mage damage; keep this separate from clean
+  player evidence. The browser recorded no warning/error diagnostics.
 
 ## Durable lessons
 
-- The highest-value missing evidence is a fresh normal D1-12 player route and a
-  10-30 minute touch-only/device session. The current build now proves managed-
-  browser pause, reload, safe resume, and deliberate Finish For Now; do not
-  repeat that check or substitute contracts for the remaining clean/device
-  evidence. A fresh managed route has now completed D1 and D2 and reached D4,
-  but it is still not full-route, clean-player, or physical-device evidence.
+- The highest-value missing evidence is a fresh normal D1-12 player route
+  without developer encounter aids and physical/native-device acceptance. A
+  managed 13-minute tablet session now exists; do not repeat it or substitute
+  managed-browser evidence for physical-device evidence.
+- On the 600x768 tablet layout, use the visible Attack joystick's center-lock
+  hold for nearest-target combat. Desktop canvas taps can be misleading when a
+  target overlaps the encounter banner; this is a managed-input observation,
+  not a confirmed production blocker.
+- Large D4 rooms can place a live target outside the tablet viewport. Follow
+  the on-screen TARGET/THREAT edge indicator before changing combat logic; a
+  short south-west movement brought the remaining target into view and the
+  normal target lock then defeated it.
 - The invincibility aid is page-session state. `CQLI` is idempotent and always
   enables it; verify the visible `Invincibility enabled` banner before combat
   after each fresh page/run. A page reload resets the aid. Keep it outside
@@ -68,12 +85,11 @@ transcript.
 
 1. Recheck whether a recorded blocker has materially changed; do not probe it
    merely because a new cycle started.
-2. If the handed-off browser run is available, resume the protected D1 Normal
-   Death Chamber route with invincibility only after verifying its banner, then
-   continue through D2 and the D4-D12 release surface; do not count the managed
-   run as full D1-12 or device evidence until the final portal is reached.
-3. Otherwise finish the clean D1-12 evidence, then inspect D13 for a bounded
-   promotion milestone with route, save, reward, and return coverage.
+2. Do not restart the consumed D1 handoff or repeat the completed D4-D6 QA
+   route. A future route run must be clean if it is intended to close the
+   D1-D12 lane; otherwise move to the next independent acceptance item.
+3. Finish clean D1-D12 evidence, then inspect D13 for a bounded promotion
+   milestone with route, save, reward, and return coverage.
 4. Stop cosmetic churn. One coherent verified delta is better than many small
    status rewrites.
 

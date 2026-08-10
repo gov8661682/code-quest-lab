@@ -53,6 +53,29 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
+### D1-D12 route continuation and managed tablet evidence (2026-08-10; local)
+
+A fresh loopback Mage route extended live managed coverage through D4-D6.
+D4 exercised the Fallen Hero event, off-screen target guidance, elite Crystal
+Hollow, and Void Monarch; D5 exercised the Fallen Hero event and Chieftain
+phase-3 transition; D6 exercised the Archmage arena and QA defeat handoff.
+The route used bounded developer damage/room/phase aids after a D4 elite pair
+became impractical at normal Mage damage. This is QA-assisted evidence only;
+the score remains **93%** / **19%**, and no deployment checkpoint was created.
+
+A loopback Mage route reaches the D1-D12 final session summary after bounded
+QA exercise of the authored D5-D12 bosses, transformations, dialogue, rewards,
+Veteran unlocks, portal exits, and final flow. The developer phase helper now
+dispatches production custom phase fields across the named bosses, and the
+full **113/113** local gate remains green.
+
+A disposable **13-minute** 600x768 managed tablet session exercised the
+visible Move/Attack controls, target lock, step movement, D1-D2 rewards,
+shrine/treasure choices, the Prison Warden, all Fallen King phases, pause, and
+dashboard return. The temporary profile was removed after verification;
+physical/native-device, clean-player, and full-route evidence remain open.
+This is local progress only and creates no deployment checkpoint.
+
 ### Recovery-safe pause handoff (2026-08-10; deployed milestone checkpoint)
 
 Recovered combat runs now restore their exact saved room and open the shared

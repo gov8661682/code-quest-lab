@@ -13,6 +13,30 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-10 progress delta
 
+A fresh loopback Mage route extended live route coverage through D4-D6. It
+verified D4's Fallen Hero event, off-screen target guidance, elite Crystal
+Hollow, and Void Monarch; D5's Fallen Hero event and Chieftain phase-3
+transition; and D6's Archmage arena plus custom phase/defeat handoff. The
+route used the session invincibility aid and bounded developer damage/room/
+phase aids after the D4 elite pair became impractical at normal Mage damage,
+so this remains QA-assisted evidence and does not change the **93%** /
+**19%** score or create a deployment checkpoint. Browser diagnostics were
+empty.
+
+A loopback Mage route now reaches the D1-D12 final session summary: the
+developer phase helper exercised the authored D5-D12 boss transformations,
+dialogue, rewards, Veteran unlocks, portal exits, and final flow, with the
+source mirror and full **113/113** local release gate green. This remains
+QA-assisted evidence and does not change the **93%** / **19%** score or create
+a deployment checkpoint.
+
+A disposable Mage also completed a managed **13-minute** 600x768 tablet
+session with visible Move/Attack joysticks, target lock, step movement,
+rewards, shrine/treasure choices, the Prison Warden, all Fallen King phases,
+pause, and dashboard return. Its temporary profile was deleted after review;
+retained profiles were preserved. Physical/native-device and clean-player
+acceptance remain open.
+
 A fresh managed normal-control route used the local session invincibility aid
 and ordinary combat controls to complete D1 and D2 Normal end to end at
 1024x768/600x768, including D2's Prison Warden, Fallen King phases, rewards,

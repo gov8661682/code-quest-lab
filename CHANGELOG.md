@@ -2,6 +2,33 @@
 
 ## Unreleased - 2026-08-10
 
+- Extended a fresh loopback Mage route through D4-D6. The run verified D4's
+  Fallen Hero event, off-screen target indicator, elite Crystal Hollow, and
+  Void Monarch; D5's Fallen Hero event and Chieftain phase-3 transition; and
+  D6's Archmage arena/defeat handoff. It used session invincibility and
+  bounded developer damage/room/phase aids after a high-health D4 elite pair
+  made normal Mage damage impractical. This is QA-assisted evidence only;
+  browser diagnostics were empty and no deployment checkpoint was created.
+
+- Completed a loopback QA-assisted D1-D12 route through the final session
+  summary, preserving the named D5-D12 bosses, authored phases, dialogue,
+  rewards, Veteran unlocks, and portal handoffs. This remains QA-assisted
+  evidence and does not claim clean-player acceptance or create a deployment
+  checkpoint.
+
+- Ran a disposable 13-minute 600x768 managed tablet session through D1 and D2
+  with the visible Move/Attack controls, target lock, step movement, shrines,
+  treasure, queued upgrades, elite bounty, Prison Warden, all Fallen King
+  phases, pause, and Finish and Return to Dashboard. The temporary profile was
+  deleted after verification; retained profiles were preserved. Physical-device
+  acceptance remains open.
+
+- Extended the developer phase-step QA helper across the real custom phase
+  fields for D2, D4-D12, later corruption bosses, and Pure Corruption. The
+  source mirror, production build, Capacitor sync, package audit, and full
+  **113/113** release gate pass. This is local QA tooling only; no deployment
+  checkpoint was created.
+
 - Hardened the loopback-only developer test aid: repeating the `CQLI`
   activation sequence is now idempotent and always enables invincibility with
   a visible confirmation; reloading the page resets it. Focused contracts and

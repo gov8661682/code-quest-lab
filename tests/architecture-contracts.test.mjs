@@ -51,7 +51,21 @@ test('fast browser QA controls are gated, accelerated, and not profile state', (
   assert.match(SOURCE, /var isAlchemist=!!boss\.isAlchemist;/);
   assert.match(SOURCE, /var isRangerCaptain=!!boss\.isRangerCaptain;/);
   assert.match(SOURCE, /var isNecromancer=!!boss\.isNecromancer;/);
-  assert.match(SOURCE, /if\(isOathbreaker\|\|isAlchemist\|\|isRangerCaptain\|\|isNecromancer\)dealDamageToBoss\(0,false\);/);
+  for (const field of [
+    'isFallenKing',
+    'isVoidMonarch',
+    'isChieftain',
+    'isValen',
+    'isHollowTree',
+    'isBroker',
+    'isSpaceCorruption',
+    'isTimeCorruption',
+    'isCorruptionOfLife',
+    'isPureCorruption'
+  ]) assert.match(SOURCE, new RegExp(`var ${field}=!!boss\\.${field};`), `${field} phase dispatch remains covered`);
+  assert.match(SOURCE, /boss\.fkPhase3Triggered\?0\.08:\(boss\.fkPhase2Triggered\?0\.29:0\.69\)/);
+  assert.match(SOURCE, /boss\.vmPhase3Triggered\?0\.08:\(boss\.vmPhase2Triggered\?0\.29:0\.64\)/);
+  assert.match(SOURCE, /dealDamageToBoss\(0,false\);/);
   assert.match(SOURCE, /function developerQaCompleteCurrentRoom\(\)/);
   assert.match(SOURCE, /function developerQaClearEncounterAdds\(\)/);
   assert.match(SOURCE, /var bossName=getBossDisplayName\(def,boss\);[\s\S]*?dealDamageToBoss\(1000000000,false\);[\s\S]*?developerQaClearEncounterAdds\(\);[\s\S]*?developerQaLog\('boss-skip',\{boss:bossName\}\)/);

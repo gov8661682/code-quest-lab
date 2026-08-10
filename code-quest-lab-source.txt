@@ -26637,9 +26637,39 @@ function developerQaAdvanceBossPhase(){
   var isAlchemist=!!boss.isAlchemist;
   var isRangerCaptain=!!boss.isRangerCaptain;
   var isNecromancer=!!boss.isNecromancer;
-  var hpRatio=isNecromancer?(boss.necPhase2Triggered?0.18:0.48):(isRangerCaptain?(boss.rcPhase2Triggered?0.18:0.36):(isAlchemist?(boss.alchPhase2Triggered?0.24:0.49):(isOathbreaker?(boss.okPhase2Triggered?0.24:0.64):(phaseBefore<=1?0.64:(phaseBefore===2?0.29:0.08)))));
+  var isFallenKing=!!boss.isFallenKing;
+  var isVoidMonarch=!!boss.isVoidMonarch;
+  var isChieftain=!!boss.isChieftain;
+  var isValen=!!boss.isValen;
+  var isHollowTree=!!boss.isHollowTree;
+  var isBroker=!!boss.isBroker;
+  var isSpaceCorruption=!!boss.isSpaceCorruption;
+  var isTimeCorruption=!!boss.isTimeCorruption;
+  var isCorruptionOfLife=!!boss.isCorruptionOfLife;
+  var isPureCorruption=!!boss.isPureCorruption;
+  // Each authored boss owns a different phase field and threshold. Keep the
+  // QA phase step aligned with those real fields so a test run exercises the
+  // actual transition/dialogue/arena state instead of merely lowering HP.
+  var hpRatio=phaseBefore<=1?0.64:(phaseBefore===2?0.29:0.08);
+  if(isFallenKing)hpRatio=boss.fkPhase3Triggered?0.08:(boss.fkPhase2Triggered?0.29:0.69);
+  else if(isVoidMonarch)hpRatio=boss.vmPhase3Triggered?0.08:(boss.vmPhase2Triggered?0.29:0.64);
+  else if(isChieftain)hpRatio=boss.chiefPhase3Triggered?0.08:(boss.chiefPhase2Triggered?0.24:0.59);
+  else if(isValen)hpRatio=boss.valenPhase3Triggered?0.08:(boss.valenPhase2Triggered?0.29:0.64);
+  else if(isHollowTree)hpRatio=boss.hwtPhase3Triggered?0.08:(boss.hwtPhase2Triggered?0.29:0.64);
+  else if(isBroker)hpRatio=boss.brkPhase3Triggered?0.08:(boss.brkPhase2Triggered?0.24:0.59);
+  else if(isOathbreaker)hpRatio=boss.okPhase3Triggered?0.08:(boss.okPhase2Triggered?0.24:0.64);
+  else if(isAlchemist)hpRatio=boss.alchPhase3Triggered?0.08:(boss.alchPhase2Triggered?0.24:0.49);
+  else if(isRangerCaptain)hpRatio=boss.rcPhase2Triggered?0.18:0.36;
+  else if(isNecromancer)hpRatio=boss.necPhase2Triggered?0.18:0.48;
+  else if(isSpaceCorruption)hpRatio=boss.csPhase3Triggered?0.08:(boss.csPhase2Triggered?0.18:0.49);
+  else if(isTimeCorruption)hpRatio=boss.ctPhase3Triggered?0.08:(boss.ctPhase2Triggered?0.18:0.49);
+  else if(isCorruptionOfLife)hpRatio=boss.colPhase3Triggered?0.08:(boss.colPhase2Triggered?0.18:0.49);
+  else if(isPureCorruption)hpRatio=boss.pcPhase3Triggered?0.08:(boss.pcPhase2Triggered?0.39:0.69);
   boss.hp=Math.max(1,Math.floor(boss.hpMax*hpRatio));
-  if(isOathbreaker||isAlchemist||isRangerCaptain||isNecromancer)dealDamageToBoss(0,false);
+  // The generic and bespoke damage dispatchers both own their phase checks;
+  // invoking them with zero damage keeps QA side-effect-free while still
+  // exercising the production transition path.
+  dealDamageToBoss(0,false);
   developerQAOverlayEnabled=true;ensureDeveloperQAOverlay();
   developerQaLog('boss-phase-step',{from:phaseBefore,targetHp:boss.hp});
   showBanner('DEV QA','Boss phase step queued',1.4);

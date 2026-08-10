@@ -28,6 +28,39 @@ documented acceptance-criterion failure. Optional improvements belong in
 
 ## Recovery-safe pause handoff (2026-08-10; deployed)
 
+## D1-D12 route continuation and custom phase QA hardening (2026-08-10; local)
+
+- A fresh loopback Mage route extended managed route coverage through D4-D6.
+  It observed D4's Fallen Hero event, off-screen target guidance, elite
+  Crystal Hollow, and Void Monarch; D5's Fallen Hero event and Chieftain
+  phase-3 transition; and D6's Archmage arena and QA defeat handoff. A D4
+  high-health elite pair required bounded developer damage after normal Mage
+  damage became impractical at the tablet viewport; this remains QA-assisted
+  evidence and does not close clean-player or physical-device acceptance.
+  Browser warning/error diagnostics were empty.
+
+- A loopback Mage route continued the protected D1 handoff through D1 and D2,
+  then used the bounded developer route aid to traverse The Shadow Realm and
+  D5-D12 through `THE SESSION IS COMPLETE`. The route observed Joey's named
+  bosses, authored phases/dialogue/defeat sequences, rewards, Veteran unlocks,
+  portal exits, Ranger Captain's delayed peaceful defeat, and the D12 terminal
+  summary. This is QA-assisted evidence, not clean-player acceptance and not a
+  deployment checkpoint.
+- `developerQaAdvanceBossPhase` now dispatches the real custom phase fields for
+  Fallen King, Void Monarch, High Chieftain, Valen, Hollow World Tree, Broker,
+  later corruption bosses, and Pure Corruption. The exact source mirror,
+  production build, Capacitor sync, package audit, and **113/113** gate pass.
+
+## Managed tablet touch session (2026-08-10; local; no deployment checkpoint)
+
+- A disposable Mage completed a managed 600x768 tablet session recorded by the
+  profile data screen as **13 minutes**. It used the visible Move/Attack
+  joysticks, target lock, step movement, shrine and treasure taps, queued level
+  ups, elite bounty, Prison Warden, all three Fallen King phases, pause, and
+  deliberate Finish and Return to Dashboard. The disposable profile was then
+  deleted; the retained profiles were not changed. This improves managed
+  tablet evidence but does not satisfy physical-device or clean-player lanes.
+
 ## Fresh managed D1-D4 route evidence (2026-08-10; no deployment checkpoint)
 
 - A fresh Mage used only loopback session invincibility and normal player

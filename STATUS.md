@@ -32,6 +32,37 @@ audit, Capacitor sync, focused lifecycle contract, and full **113/113** gate
 pass. This is the local implementation record for the deployed checkpoint
 above; physical-device/10-30-minute touch evidence remains.
 
+## D1-D12 route continuation and developer phase QA hardening (2026-08-10; local)
+
+A fresh loopback Mage route extended live managed coverage through D4-D6.
+D4 verified the Fallen Hero event, off-screen target guidance, the elite
+Crystal Hollow, and the Void Monarch; D5 verified the Fallen Hero event and
+the Corrupted High Chieftain's phase-3 transition; D6 reached the Archmage
+Valen arena and completed its QA phase/defeat handoff. The D4 elite pair was
+resolved with bounded developer damage after normal Mage damage proved
+impractical at the tablet viewport; this is QA-assisted evidence, not clean
+player acceptance. The browser recorded no warning or error diagnostics and
+the score remains **93%** active checkpoint / **19%** overall. No deployment
+checkpoint was created.
+
+A loopback Mage route continued through D1 and D2, then used the bounded
+developer phase/room aids to exercise D4-D12. It reached the final session
+summary after the authored D5-D12 bosses, transformations, dialogue, rewards,
+Veteran unlocks, portal exits, and end-of-session flow. The phase helper now
+dispatches each production boss's custom phase fields and zero-damage
+transition check. The source mirror, build/package audit, Capacitor sync, and
+full **113/113** gate pass; this is QA evidence only and creates no deployment
+checkpoint.
+
+## Managed tablet touch session (2026-08-10; local)
+
+A disposable Mage completed a managed **13-minute** session at a 600x768
+tablet viewport with visible Move/Attack joysticks, target lock, step movement,
+D1-D2 rewards, shrine/treasure choices, the Prison Warden, all Fallen King
+phases, pause, and Finish and Return to Dashboard. The temporary Level 10
+profile was deleted after verification; retained profiles were preserved. This
+is managed-browser evidence, not physical-device or clean-player acceptance.
+
 ## Fresh managed D1-D4 route evidence (2026-08-10; local)
 
 A fresh Mage completed D1 and D2 Normal with ordinary attacks, target assist,

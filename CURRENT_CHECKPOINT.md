@@ -29,6 +29,39 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-10)
 
+- A fresh loopback Mage route extended the managed route through D4-D6. D4
+  reached The Shadow Realm's Fallen Hero event, off-screen target guidance,
+  the elite Crystal Hollow, and the Void Monarch; D5 reached the Fallen Hero
+  event, the Corrupted High Chieftain's final-rage phase, and its portal; D6
+  reached the Archmage Valen arena and the authored QA phase/defeat path. The
+  route used session invincibility plus bounded developer damage/room/phase
+  aids after the D4 elite pair proved impractical at normal Mage damage, so it
+  is QA-assisted evidence, not clean-player evidence. No browser warning or
+  error diagnostics were observed; the score remains **93%** / **19%**.
+
+- A loopback Mage route continued the protected D1 handoff through the D1
+  Stone Guardian and the D2 Fallen King, then used the bounded developer route
+  aid to traverse The Shadow Realm and D5-D12 through the final `THE SESSION IS
+  COMPLETE` summary. D5-D12 retained Joey's named bosses, authored phases,
+  dialogue/defeat sequences, rewards, Veteran unlocks, portal exits, and the
+  final session summary. This is QA-assisted route evidence, not a clean-player
+  D1-D12 completion, so the score remains **93%** / **19%**.
+
+- A disposable Mage also completed a managed **13-minute** 600x768 tablet
+  session using the visible Move/Attack controls, target lock, step movement,
+  shrines, treasure, queued level-ups, elite bounty, Prison Warden, all three
+  Fallen King phases, pause, and deliberate Finish and Return to Dashboard. The
+  temporary profile was deleted afterward; the retained profiles remained.
+  This is strong managed tablet evidence, but it is not physical-device or
+  clean-player evidence, so the touch/input lanes remain open.
+
+- Hardened `developerQaAdvanceBossPhase` so QA phase steps dispatch the real
+  custom phase fields for Fallen King, Void Monarch, High Chieftain, Valen,
+  Hollow World Tree, Broker, the later corruption bosses, and Pure Corruption.
+  The source mirror, production build, Capacitor sync, package audit, and full
+  **113/113** release gate pass. This is local QA tooling and does not create a
+  deployment checkpoint.
+
 - A fresh managed-browser normal-control playthrough at
   `http://127.0.0.1:4176/?cql-dev=1` used a 1024x768 desktop-sized view for
   D1, then a 600x768 touch-sized view for D2 and D4. With only the local
@@ -51,14 +84,10 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   developer-cheat contracts and full **113/113** gate pass. This does not change
   the evidence score or create a deployment checkpoint.
 
-- A retained Level 3 Mage then started a new D1 Normal run at the default
-  desktop viewport with only session invincibility. Ordinary mouse-target
-  attacks and normal reward/exit controls completed Shadow Hall, the Elder Stone
-  shrine, Bone Chamber, Treasure Chamber, Ruined Archway, and Ashen Pit. The
-  run reached Death Chamber, defeated one elite, and paused safely with two
-  elites remaining (36 enemies defeated; no browser warnings or errors). This
-  is route evidence only, not fresh-profile, full D1-D12, clean-player, or
-  physical-device acceptance, so the score remains **93%** / **19%**.
+- The earlier retained Level 3 Mage Death Chamber handoff was consumed by the
+  protected route continuation above; it is no longer a live paused handoff.
+  The route evidence remains QA-assisted and does not satisfy fresh-profile,
+  clean-player, full-route, or physical-device acceptance.
 
 - Hardened recovered combat sessions so `Resume Session` restores the exact
   checkpointed room and opens the existing pause menu before damage updates
