@@ -66,6 +66,11 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
     /var _isNormalOpeningIntro=_isFirstCombatIntro&&getActiveDifficulty\(\)\.id==='normal';[\s\S]{0,180}playerInvulnTimer=Math\.max\(playerInvulnTimer,LEVEL1_OPENING_TUNING\.graceSeconds\)/,
     'the opening room protects the read-and-respond window without changing later rooms'
   );
+  assert.match(
+    SOURCE,
+    /if\(!_aggro\.isCompanion&&isPlayerInvulnerable\(\)\)\{[\s\S]{0,220}e\.attackTimer=e\.attackCooldown\*0\.55\*getEnemyAtkSpeedMult\(e\);[\s\S]{0,120}\}else if\(!_aggro\.isCompanion&&rollRogueSmokeDodge\(\)\)/,
+    'the opening grace also covers the shared melee damage branch'
+  );
   assert.doesNotMatch(
     SOURCE,
     /if\(_isOpeningCombatRoom\)[\s\S]{0,180}DUNGEON_SCALING/,

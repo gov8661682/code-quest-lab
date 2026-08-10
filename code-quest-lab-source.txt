@@ -42144,7 +42144,13 @@ function updateEnemies(dt,geo){
           }
 }else{
           if(e.attackTimer<=0){
-            if(!_aggro.isCompanion&&rollRogueSmokeDodge()){lastFightTimer=0;e.attackTimer=e.attackCooldown*0.55;}else{
+            // The Level 1 Normal onboarding grace covers the shared melee
+            // branch as well as projectile/debuff damage. Keep companions
+            // on their normal threat rules; only the player target is
+            // protected by the player invulnerability timer.
+            if(!_aggro.isCompanion&&isPlayerInvulnerable()){
+              e.attackTimer=e.attackCooldown*0.55*getEnemyAtkSpeedMult(e);
+            }else if(!_aggro.isCompanion&&rollRogueSmokeDodge()){lastFightTimer=0;e.attackTimer=e.attackCooldown*0.55;}else{
 var r=Math.round(e.damage*getEnemyDamageOutputMult(e));
             if(e.isBrokenKnight&&e.bkHeavyPending){
               r=Math.round(r*1.7);e.bkHeavyPending=false;
