@@ -3,7 +3,7 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## Level 1 opening-pressure correction (2026-08-10; tested, checkpoint pending)
+## Level 1 opening-pressure correction (2026-08-10; deployed checkpoint)
 
 The first Level 1 report exposed a production-versus-QA cadence mismatch: the
 previous regression model omitted the normal melee attack-frequency multiplier.
@@ -12,9 +12,15 @@ The tested follow-up narrows only the first Normal Dungeon 1 combat room to
 cooldown scaling, and applies the existing 10-second read-and-respond window
 as real Normal-only invulnerability. Joey's roster, later scaling, and
 optional modifiers are unchanged. Ordinary-player fast QA clears the room in
-**6.1 simulated seconds**; the complete local gate is **116/116**. The
-runtime is ready for the next GitHub/website checkpoint after the commit and
-live verification are recorded.
+**6.1 simulated seconds**; the complete local gate is **116/116**. Runtime
+commit `a7d71f8` was pushed to `origin/main` and deployed to Cloudflare Pages.
+Preview: `https://fa004626.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`; source hash
+`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`; PWA
+shell v9. Both production checks passed. Cache-busted live smoke reached the
+first Normal D1 combat room, held the player at 100% HP during the opening
+window, and cleared both enemies with ordinary target clicks; no browser
+warning/error diagnostics were recorded.
 
 ## Level 1 onboarding balance checkpoint (2026-08-10; deployed)
 

@@ -18,12 +18,14 @@ transcript.
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **116/116** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Latest milestone checkpoint: runtime commit `7113366` is pushed to
-  `origin/main` and deployed on 2026-08-10 to preview `caacd1f4` and the
-  configured hostname; both production checks passed. Live smoke reached the
-  fresh profile, Normal trial, Standard Expedition, and corrected D1 opening
-  room. The source/mirror hash is
-  `78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A`.
+- Latest milestone checkpoint: runtime commit `a7d71f8` is pushed to
+  `origin/main` and deployed on 2026-08-10 to preview `fa004626` and the
+  configured hostname; both production checks passed. The source/mirror hash
+  is `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B` and
+  the PWA shell is v9. Cache-busted live smoke reached the first Normal D1
+  combat room and cleared both enemies with ordinary target clicks while the
+  player remained at 100% HP through the opening grace window; diagnostics
+  were empty.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored

@@ -24,19 +24,29 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed checkpoint `7113366` remains live and verified; the follow-up runtime candidate passes the **116/116** release gate, `qa:fast`, build/package audit, and native sync. The next GitHub/website checkpoint is pending the candidate commit and live opening-room verification | Complete the follow-up checkpoint and repeat live-flow evidence; full C1 acceptance remains separate |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `a7d71f8` is pushed to `origin/main` and deployed; the **116/116** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and a cache-busted live Level 1 room-clear smoke pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-10)
 
-- The next Level 1 balance probe found that the previous QA budget omitted the
-  production melee cadence. The tested follow-up narrows only the first Normal
-  Dungeon 1 combat room to `0.50` health, `0.45` damage, `0.55` movement speed,
-  and `1.80` attack-cooldown scaling; its existing 10-second read-and-respond
-  period now gives a bounded Normal-only grace window. Ordinary-player fast QA
-  clears the two-enemy room in **6.1 simulated seconds**; the full local gate
-  is **116/116**. This is prepared for the next GitHub/website checkpoint and
-  does not change the **93%** / **19%** evidence score.
+- The Level 1 balance correction is now checkpointed in runtime commit
+  `a7d71f8`, pushed to `origin/main`, and deployed on 2026-08-10. Preview:
+  `https://fa004626.code-quest-lab.pages.dev/`; configured hostname:
+  `https://code-quest-lab.gov8661682.com/`; packaged source hash:
+  `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`;
+  PWA shell: v9. Both production checks passed. The first Normal Dungeon 1
+  room uses `0.50` health, `0.45` damage, `0.55` movement speed, and `1.80`
+  attack-cooldown scaling, plus a bounded 10-second read-and-respond grace
+  window that also covers shared melee damage. Ordinary-player fast QA clears
+  the two-enemy room in **6.1 simulated seconds**; the full local gate is
+  **116/116**. The evidence score remains **93%** / **19%**.
+
+- Cache-busted live smoke on the deployed hostname created a fresh Barbarian,
+  reached the first Normal D1 combat room, kept the player at **100% HP** after
+  three seconds of idle opening pressure, then defeated both enemies with
+  ordinary target clicks and reached `ROOM CLEARED`. Browser warning/error
+  diagnostics were empty. This closes the reported Level 1 web-play blocker;
+  full D1-12 clean-player and physical/native-device evidence remain open.
 
 - Level 1 onboarding balance checkpoint completed: runtime commit `7113366`
   was pushed to `origin/main` and deployed to Cloudflare Pages on 2026-08-10.

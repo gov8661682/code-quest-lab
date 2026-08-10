@@ -15,7 +15,7 @@ A fresh live Barbarian run on the pre-fix deployed shell exposed the user
 reported onboarding problem: Titanic Foes was active, the first target could
 remain too far from the starter position, and repeated stationary web taps
 ended with zero enemy defeats. This records the observed interaction failure;
-it does not claim a calculation-only cause.
+it did not claim a calculation-only cause.
 
 The fix keeps the authored enemy roster and combat identity while narrowing
 the relief to onboarding: fresh Barbarian damage is `0.75`; the first Normal
@@ -24,18 +24,20 @@ the starter targets use a close readable lane; and Standard Expedition is the
 recommended/default first-run choice while Joey's modifiers remain optional.
 The loopback-only developer invincibility aid was used for the bounded local
 room-clear smoke and displayed its visible banner; it is unavailable on the
-production hostname.
+production hostname. The follow-up also fixed the shared melee branch so the
+Normal-only grace window is real protection rather than a display-only cue.
 
-The rebuilt local smoke cleared the two-enemy opening room with five targeted
-clicks and reached the exit prompt. The final live hostname loaded the fresh
-profile route, Normal trial, Standard Expedition, and first combat room with
-the corrected close target layout; a no-cheat managed-browser clear was not
-credited because browser round-trips let the opening window expire. Runtime
-commit `7113366`, shell v8, source/mirror hash
-`78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A`, preview
-`https://caacd1f4.code-quest-lab.pages.dev/`, configured hostname
-`https://code-quest-lab.gov8661682.com/`, and the **115/115** release gate are
-recorded for this checkpoint.
+The rebuilt local smoke cleared the two-enemy opening room with ordinary
+targeting and the regression model cleared it in 6.1 simulated seconds. The
+new live hostname smoke created a fresh Barbarian, reached the first Normal D1
+room, held at 100% HP after three seconds of idle pressure, then defeated both
+enemies with ordinary target clicks and reached `ROOM CLEARED`. Runtime commit
+`a7d71f8`, shell v9, source/mirror hash
+`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`, preview
+`https://fa004626.code-quest-lab.pages.dev/`, configured hostname
+`https://code-quest-lab.gov8661682.com/`, and the **116/116** release gate are
+recorded for the deployed follow-up checkpoint. No browser warning/error
+diagnostics were observed.
 
 ## Fresh D1-D4 normal-control route - 2026-08-10
 

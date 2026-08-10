@@ -8,8 +8,13 @@
   cooldown scaling, plus a bounded 10-second read-and-respond grace window.
   Joey's enemy identities, later dungeon scaling, and optional modifiers are
   unchanged. The corrected ordinary-player model clears the room in **6.1
-  simulated seconds**; the full local release gate is **116/116**. Runtime
-  deployment is pending the GitHub/website checkpoint for this tested slice.
+  simulated seconds**; the full local release gate is **116/116**. The shared
+  melee branch now honors the same Normal-only grace window. Runtime commit
+  `a7d71f8` was pushed and deployed on 2026-08-10 to
+  `https://fa004626.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`; both production checks passed.
+  The PWA shell is v9 and a cache-busted live fresh-profile smoke cleared both
+  opening enemies with ordinary target clicks and no browser diagnostics.
 
 - Fixed the Level 1 Normal onboarding balance after a fresh web Barbarian
   could spend too long closing on the first room. Fresh Barbarian damage now
@@ -26,9 +31,9 @@
 - Added a deterministic ordinary-player fast-QA model for the fresh Normal D1
   two-enemy opening room. It verifies the production onboarding budget clears
   in 6.1 simulated seconds with the starter player alive and no developer aid
-  or route shortcut. The full local release gate is now **116/116**. This is
-  regression protection only, so it is grouped with the deployed milestone's
-  records and does not create a second website checkpoint.
+  or route shortcut. The full local release gate is now **116/116**. This
+  regression protection is included in the deployed `a7d71f8` follow-up
+  checkpoint.
 
 - Extended a fresh loopback Mage route through D4-D6. The run verified D4's
   Fallen Hero event, off-screen target indicator, elite Crystal Hollow, and

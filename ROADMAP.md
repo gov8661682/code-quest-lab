@@ -74,7 +74,7 @@ This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
 
-### Follow-up: Level 1 opening-pressure correction (2026-08-10; tested)
+### Follow-up: Level 1 opening-pressure correction (2026-08-10; deployed checkpoint)
 
 - [x] Reconcile the production melee cadence with the ordinary-player QA model.
 - [x] Keep the relief scoped to the first Normal D1 combat room: `0.50` HP,
@@ -84,8 +84,13 @@ remain open.
   optional modifiers.
 - [x] Pass the ordinary-player opening simulation, `qa:fast`, full **116/116**
   release verification, static package audit, and native sync.
-- [ ] Create the GitHub and website checkpoint after commit, deployment, and
-  live opening-room verification.
+- [x] Create the GitHub and website checkpoint after commit, deployment, and
+  live opening-room verification: runtime commit `a7d71f8`, preview
+  `https://fa004626.code-quest-lab.pages.dev/`, configured hostname
+  `https://code-quest-lab.gov8661682.com/`, source hash
+  `AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B`, and
+  PWA shell v9. Both production checks passed; live smoke cleared the opening
+  room with ordinary target clicks.
 
 ### D1-D12 route continuation and managed tablet evidence (2026-08-10; deployed checkpoint)
 

@@ -73,21 +73,19 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-10 Level 1 onboarding balance milestone was published from source
-commit `7113366` to the configured Cloudflare Pages project `code-quest-lab`.
-Preview: `https://caacd1f4.code-quest-lab.pages.dev/`; primary hostname:
+The 2026-08-10 Level 1 opening-pressure correction was published from source
+commit `a7d71f8` to the configured Cloudflare Pages project `code-quest-lab`.
+Preview: `https://fa004626.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A` and the
-deployed service-worker shell is v8.
+`AC21225913C9E7201572AAFA87B73DE9CEF413A7E8F3CDCDA10EFF00ECD6917B` and the
+deployed service-worker shell is v9.
 
-`npm.cmd run production:check` passed for both origins on 2026-08-10. Live
-smoke reached a fresh profile, Town, the Forgotten Depths gate, Normal,
-Standard Expedition, and the corrected first combat room at desktop size;
-the targets were close/readable and ordinary clicks produced damage. The
-loopback-only invincibility aid cleared the rebuilt local opening room; the
-production hostname cannot activate that aid, and no clean live room-clear is
-claimed from the managed-browser run. No browser warning or error diagnostics
-were recorded during the live route check.
+`npm.cmd run production:check` passed for both origins on 2026-08-10. A
+cache-busted live fresh-profile smoke reached Town, the Forgotten Depths gate,
+Normal, Standard Expedition, and the first D1 combat room. The player stayed
+at 100% HP after three seconds of idle opening pressure, then ordinary target
+clicks defeated both enemies and reached `ROOM CLEARED`. No browser warning or
+error diagnostics were recorded during the live route check.
 
 The 2026-08-07 Dungeon 2 progression/level-up checkpoint was published to the
 configured Cloudflare Pages project `code-quest-lab` at source commit
