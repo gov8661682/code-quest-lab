@@ -15,7 +15,8 @@ test('developer invincibility is local-only and session-scoped', async () => {
   assert.match(SOURCE, /host==='localhost'\|\|host==='127\.0\.0\.1'\|\|host==='\[::1\]'/);
   assert.match(SOURCE, /location\.protocol==='http:'\|\|location\.protocol==='https:'/);
   assert.match(SOURCE, /new URLSearchParams\(location\.search\)\.get\('cql-dev'\)==='1'/);
-  assert.match(SOURCE, /developerInvincibilityEnabled=!developerInvincibilityEnabled;/);
+  assert.ok((SOURCE.match(/developerInvincibilityEnabled=true;/g) || []).length >= 2, 'both cheat sequences must idempotently enable invincibility');
+  assert.doesNotMatch(SOURCE, /developerInvincibilityEnabled=!developerInvincibilityEnabled;/, 'repeating the activation sequence must not disable the safety aid');
   assert.match(SOURCE, /developerInvincibilityEnabled=false/);
   assert.doesNotMatch(SOURCE, /permanentData\.[^;\n]*developerInvincibilityEnabled/);
 });

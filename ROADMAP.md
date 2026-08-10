@@ -69,17 +69,22 @@ Published desktop flow reached D1 `Burial Hall`; published 1024x768 tablet
 flow paused into the Character Menu with no browser warnings or errors.
 Physical-device and 10-30-minute touch evidence remain the next C1 work.
 
-### Managed D1-D3 route evidence (2026-08-10; no deployment checkpoint)
+### Managed D1-D4 route evidence (2026-08-10; no deployment checkpoint)
 
 A fresh Mage completed D1 and D2 Normal with ordinary combat/target-assist
 controls, touch-sized viewport controls, D2 rewards, the Prison Warden,
-Fallen King phases, Veteran unlock, and entry to The Shadow Realm. A bounded
-D3 probe reached Broken Crossing, verified truthful death/session saving when
+Fallen King phases, Veteran unlock, and entry to D4, The Shadow Realm. A bounded
+D4 probe reached Broken Crossing, verified truthful death/session saving when
 the local aid was disabled, then restarted with the aid visibly enabled and
 finished safely from the pause menu. This improves route evidence but leaves
 the full D1-D12, physical-device, and clean-player lanes open; the next useful
 acceptance item is a longer protected route continuation with the cheat banner
 verified before each fresh page/session.
+
+The developer aid workflow is now safer for that continuation: repeating
+`CQLI` always enables the page-session invincibility aid instead of toggling it
+off accidentally. This is a local QA improvement and does not advance the
+manual evidence score or create a deployment checkpoint.
 
 ### Necromancer's Stolen Graveyard release-surface expansion (2026-08-10; local milestone)
 

@@ -2,9 +2,16 @@
 
 ## Unreleased - 2026-08-10
 
+- Hardened the loopback-only developer test aid: repeating the `CQLI`
+  activation sequence is now idempotent and always enables invincibility with
+  a visible confirmation; reloading the page resets it. Focused contracts and
+  the full **113/113** release gate pass. This is QA workflow hardening only,
+  so it does not change the manual evidence score or trigger a deployment.
+
 - Added fresh managed route evidence: a new Mage completed D1 and D2 Normal
   with ordinary attacks, target assist, touch-sized controls, rewards, the D2
-  mini-boss and Fallen King, Veteran unlock, and portal entry into D3. A D3
+  mini-boss and Fallen King, Veteran unlock, and portal entry into D4 Shadow
+  Realm. A D4
   death/restart probe also verified truthful session saving and the visible
   local invincibility enable state. Diagnostics were clean; this does not
   claim full D1-D12, clean-player, or physical-device acceptance and does not

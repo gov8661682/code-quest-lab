@@ -26508,6 +26508,8 @@ function touchNudgeMoveVector(){
 // Developer-only combat aid. This is intentionally session-scoped and has no
 // save/export representation. The loopback query gate keeps the hidden key
 // sequence unavailable on the configured public hostname and native builds.
+// CQLI is deliberately idempotent: repeating the activation sequence can never
+// turn the safety aid off by accident. Reloading the page resets it to false.
 var developerInvincibilityEnabled=false;
 var developerCheatSequence=['F8','F7','F6','F3'];
 var developerCheatProgress=0;
@@ -26763,17 +26765,17 @@ function handleDeveloperCheatKey(event){
   if(developerCheatProgress===developerCheatSequence.length){
     developerCheatProgress=0;
     resetDeveloperQASequences();
-    developerInvincibilityEnabled=!developerInvincibilityEnabled;
+    developerInvincibilityEnabled=true;
     if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
-    if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
+    if(typeof showBanner==='function')showBanner('DEV TEST MODE','Invincibility enabled',1.6);
     return true;
   }
   if(developerCheatFallbackProgress===developerCheatFallbackSequence.length){
     developerCheatFallbackProgress=0;
     resetDeveloperQASequences();
-    developerInvincibilityEnabled=!developerInvincibilityEnabled;
+    developerInvincibilityEnabled=true;
     if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
-    if(typeof showBanner==='function')showBanner('DEV TEST MODE',developerInvincibilityEnabled?'Invincibility enabled':'Invincibility disabled',1.6);
+    if(typeof showBanner==='function')showBanner('DEV TEST MODE','Invincibility enabled',1.6);
     return true;
   }
   if(handleDeveloperQASequenceKey(key))return true;
