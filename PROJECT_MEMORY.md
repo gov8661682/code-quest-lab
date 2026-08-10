@@ -16,13 +16,14 @@ transcript.
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **113/113** tests, static build/package audit,
+- Current verified local gate: **115/115** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Latest milestone checkpoint: commit `095aa30` is pushed to `origin/main` and
-  deployed on 2026-08-10 to preview `050a6395` and the configured hostname;
-  both production checks and live desktop/tablet smoke passed with no browser
-  warnings/errors. The source hash is
-  `60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
+- Latest milestone checkpoint: runtime commit `7113366` is pushed to
+  `origin/main` and deployed on 2026-08-10 to preview `caacd1f4` and the
+  configured hostname; both production checks passed. Live smoke reached the
+  fresh profile, Normal trial, Standard Expedition, and corrected D1 opening
+  room. The source/mirror hash is
+  `78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A`.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
@@ -32,6 +33,10 @@ transcript.
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world
   direction are creative constraints, not optional complexity to remove.
+- Level 1 balance relief is intentionally narrow: fresh Barbarian damage is
+  `0.75`; only the first Normal D1 combat room uses `0.65` health/damage/speed
+  and a close starter lane. Standard Expedition is recommended on the first
+  run, while the authored modifier choices remain available.
 - The prior retained D1 handoff has been consumed: a loopback Mage route now
   reaches the D1-D12 final session summary with the bounded QA route aid. This
   remains QA-assisted evidence, not clean-player acceptance.
@@ -41,7 +46,7 @@ transcript.
   The disposable profile was deleted; retained profiles remain intact.
 - `developerQaAdvanceBossPhase` now dispatches the real custom phase fields for
   D2, D4-D12, and later corruption/Pure Corruption bosses; the exact source
-  mirror and **113/113** release gate are green.
+  mirror and **115/115** release gate are green.
 - A fresh loopback Mage route extended managed coverage through D4-D6,
   including D4's Void Monarch, D5's Chieftain phase 3, and D6's Archmage
   defeat handoff. It used bounded QA aids after a high-health D4 elite pair
@@ -62,6 +67,11 @@ transcript.
   the on-screen TARGET/THREAT edge indicator before changing combat logic; a
   short south-west movement brought the remaining target into view and the
   normal target lock then defeated it.
+- A managed web browser can spend the first-room read-and-respond window in
+  tool round-trips; record a no-cheat clear only when the player actually
+  defeats the enemies. The Level 1 local smoke cleared the room with the
+  visible loopback invincibility aid, while live smoke verified load, close
+  placement, and attack damage without claiming a clean clear.
 - The invincibility aid is page-session state. `CQLI` is idempotent and always
   enables it; verify the visible `Invincibility enabled` banner before combat
   after each fresh page/run. A page reload resets the aid. Keep it outside

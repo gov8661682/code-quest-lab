@@ -73,17 +73,21 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-10 D4-D6 route QA and phase-hardening milestone was published from
-source commit `095aa30` to the configured Cloudflare Pages project
-`code-quest-lab`. Preview:
-`https://050a6395.code-quest-lab.pages.dev/`; primary hostname:
+The 2026-08-10 Level 1 onboarding balance milestone was published from source
+commit `7113366` to the configured Cloudflare Pages project `code-quest-lab`.
+Preview: `https://caacd1f4.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`60BEFCF0A5D66067B0578D9F307A7BA99332A6A5F273D3EA20A9A637580CA593`.
+`78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A` and the
+deployed service-worker shell is v8.
 
 `npm.cmd run production:check` passed for both origins on 2026-08-10. Live
-smoke reached the Mage profile and playable entrance, verified pause/resume and
-movement input, remained usable at 1024x768, and recorded no browser warning or
-error diagnostics.
+smoke reached a fresh profile, Town, the Forgotten Depths gate, Normal,
+Standard Expedition, and the corrected first combat room at desktop size;
+the targets were close/readable and ordinary clicks produced damage. The
+loopback-only invincibility aid cleared the rebuilt local opening room; the
+production hostname cannot activate that aid, and no clean live room-clear is
+claimed from the managed-browser run. No browser warning or error diagnostics
+were recorded during the live route check.
 
 The 2026-08-07 Dungeon 2 progression/level-up checkpoint was published to the
 configured Cloudflare Pages project `code-quest-lab` at source commit

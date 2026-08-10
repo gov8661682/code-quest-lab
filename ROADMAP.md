@@ -53,6 +53,27 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
+### Completed milestone: Level 1 onboarding balance pass (2026-08-10; deployed)
+
+- Reduced the fresh Barbarian starter damage multiplier to `0.75`.
+- Applied `0.65` health, damage, and speed tuning only to the first Normal
+  Dungeon 1 combat room, preserving later dungeon scaling and Joey's enemy
+  identities.
+- Moved the two first-room targets into a close, readable starter lane and
+  kept Standard Expedition as the recommended/default first-run choice while
+  preserving the optional authored modifiers.
+- Bumped the PWA shell to v8 so existing controlled browsers receive the
+  corrected runtime after deployment.
+- Passed the **115/115** release gate, `qa:fast`, package/native sync, both
+  production checks, local loopback room-clear smoke, and live first-room
+  smoke. Runtime commit `7113366` is deployed at
+  `https://caacd1f4.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`.
+
+This resolves the current Level 1 scaling blocker without increasing the
+evidence score: full clean-player D1-D12 and physical/native touch evidence
+remain open.
+
 ### D1-D12 route continuation and managed tablet evidence (2026-08-10; deployed checkpoint)
 
 A fresh loopback Mage route extended live managed coverage through D4-D6.

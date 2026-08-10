@@ -2,6 +2,18 @@
 
 ## Unreleased - 2026-08-10
 
+- Fixed the Level 1 Normal onboarding balance after a fresh web Barbarian
+  could spend too long closing on the first room. Fresh Barbarian damage now
+  starts at `0.75`; only the first Normal Dungeon 1 combat room receives
+  finite `0.65` health, damage, and speed tuning; and its two starter targets
+  spawn in a close, readable lane. Standard Expedition is recommended by
+  default before the first guardian while Joey's authored modifiers remain
+  available through the optional choice. The shell cache is now v8 so existing
+  PWA sessions receive the gameplay fix. Release gate: **115/115**. Runtime
+  commit `7113366` was pushed and deployed on 2026-08-10 to
+  `https://caacd1f4.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`; both production checks passed.
+
 - Extended a fresh loopback Mage route through D4-D6. The run verified D4's
   Fallen Hero event, off-screen target indicator, elite Crystal Hollow, and
   Void Monarch; D5's Fallen Hero event and Chieftain phase-3 transition; and

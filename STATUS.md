@@ -3,6 +3,25 @@
 Date: 2026-08-10
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Level 1 onboarding balance checkpoint (2026-08-10; deployed)
+
+Runtime commit `7113366` was pushed to `origin/main` and deployed to the
+existing Cloudflare Pages project. Preview:
+`https://caacd1f4.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. The packaged source hash is
+`78FB1959FBF58656E4278CB3D418E7CCED8A465B10DD605F08333F9E84D1F44A` and the
+PWA shell cache is v8.
+
+The first Normal Dungeon 1 combat room now uses an onboarding-only `0.65`
+health/damage/speed budget and close readable starter placement; fresh
+Barbarian damage is `0.75`. Standard Expedition is recommended before the
+first guardian while Joey's authored modifiers remain optional. The full
+**115/115** release gate, `qa:fast`, package audit, native sync, preview check,
+and configured-host check passed. Loopback QA cleared the opening room with
+the visible invincibility aid; live smoke verified the corrected route and
+first room, but no-cheat live room-clear evidence remains a separate lane.
+The score remains **93% active checkpoint / 19% overall**.
+
 ## D4-D6 route QA and phase hardening checkpoint (2026-08-10; deployed)
 
 Commit `095aa30` (`Checkpoint D4-D6 route QA and phase hardening`) was pushed
