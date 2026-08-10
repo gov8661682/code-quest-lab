@@ -23,6 +23,14 @@ finish. Browser diagnostics were empty. This materially improves the managed
 route evidence, but it is not full D1-D12, clean-player, or physical-device
 acceptance, so the scored checkpoint remains **93%** / **19%**.
 
+A retained Level 3 Mage then started a new D1 Normal run with only session
+invincibility. Normal mouse-target attacks and reward/exit controls cleared
+Shadow Hall, the Elder Stone shrine, Bone Chamber, Treasure Chamber, Ruined
+Archway, and Ashen Pit; Death Chamber was reached, one elite was defeated, and
+the run was safely paused with two elites remaining at 36 kills. Diagnostics
+were empty. This adds partial route evidence but not the full-route or device
+acceptance required to change the score.
+
 The D4 test-aid workflow is now idempotent: repeating `CQLI` cannot turn the
 page-session invincibility aid off accidentally. Two consecutive activations
 showed the enabled banner, and protected D4 combat stayed alive through

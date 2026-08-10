@@ -50,9 +50,11 @@ task. Only one checkpoint may be active.
 
 The active checkpoint is `Checkpoint 1 - Core game stability and complete V1
 path`. The highest-priority unmet criterion is a fresh-profile, player-completed
-D1-8 path plus meaningful session/lifecycle evidence. Do not start creative
-parity, monetisation, native integration, or broad refactoring while this
-criterion remains open unless a verified blocker or regression requires it.
+D1-12 path through the final portal/ending plus the remaining meaningful
+session/device evidence. The locally verified release surface is D1, D2, and
+D4-D12; D13 and later remain gated. Do not start creative parity, monetisation,
+native integration, or broad refactoring while this criterion remains open
+unless a verified blocker or regression requires it.
 
 ## D-012 - Deployment evidence is separated from local verification
 

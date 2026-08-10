@@ -48,6 +48,18 @@ browser warnings or errors. The focused developer-cheat contracts and the full
 **113/113** local release gate pass. This is developer QA workflow hardening,
 not player-facing functionality or additional route acceptance evidence.
 
+## Fresh D1 normal-control continuation - 2026-08-10
+
+The retained Level 3 Mage started a new D1 Normal run at the default desktop
+viewport with only the loopback session invincibility aid. Ordinary mouse-target
+attacks and the normal reward/exit controls completed Shadow Hall, the Elder
+Stone shrine, Bone Chamber, Treasure Chamber, Ruined Archway, and Ashen Pit.
+The run reached Death Chamber, defeated one elite, and was paused safely with
+two elites remaining (36 enemies defeated; no browser warnings or errors).
+This is useful fresh-run route evidence, but it is not a fresh-profile,
+full-D1-D12, clean-player, or device acceptance result, so it does not change
+the score.
+
 ## Recovery-safe pause handoff - 2026-08-10
 
 The current build was tested at

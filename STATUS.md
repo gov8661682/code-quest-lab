@@ -54,6 +54,17 @@ ordinary touch-sized input, pause, and deliberate finish. The focused contract,
 source mirror, and full **113/113** gate pass; this is QA workflow evidence only
 and does not change the score.
 
+## Fresh D1 continuation (2026-08-10; local)
+
+A retained Level 3 Mage started a new D1 Normal run with only session
+invincibility. Ordinary mouse-target attacks and normal reward/exit controls
+cleared Shadow Hall, the Elder Stone shrine, Bone Chamber, Treasure Chamber,
+Ruined Archway, and Ashen Pit. Death Chamber was reached, one elite was
+defeated, and the run was paused with two elites remaining at 36 kills. The
+managed browser recorded no warning or error diagnostics. This adds partial
+route evidence only; it does not change the **93%** / **19%** score or close
+fresh-profile, full-route, clean-player, or physical-device acceptance.
+
 ## Necromancer's Stolen Graveyard release-surface milestone (2026-08-10; local)
 
 D12 is now reachable after Ranger Watchtowers. A loopback QA-assisted Mage

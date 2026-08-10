@@ -45,6 +45,16 @@ documented acceptance-criterion failure. Optional improvements belong in
   boundary. The focused contract and full **113/113** release gate pass; this
   does not add player-route or deployment evidence.
 
+## Fresh D1 normal-control continuation (2026-08-10; no deployment checkpoint)
+
+- A retained Level 3 Mage started a new D1 Normal run with only loopback session
+  invincibility. Normal mouse-target attacks and reward/exit controls cleared
+  Shadow Hall, the Elder Stone shrine, Bone Chamber, Treasure Chamber, Ruined
+  Archway, and Ashen Pit; Death Chamber was reached, one elite was defeated,
+  and the run was safely paused with two elites remaining at 36 kills. Browser
+  diagnostics were empty. This is partial route evidence only and does not
+  satisfy fresh-profile, full-route, clean-player, or device acceptance.
+
 - Recovered combat checkpoints now restore the exact room and open the normal
   pause menu before the game loop resumes. This prevents damage from landing
   before a returning player can read the objective or choose Resume, and gives

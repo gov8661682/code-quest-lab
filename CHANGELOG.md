@@ -8,6 +8,13 @@
   the full **113/113** release gate pass. This is QA workflow hardening only,
   so it does not change the manual evidence score or trigger a deployment.
 
+- Continued the protected normal-control route with a retained Mage: D1 rooms
+  through Ashen Pit were cleared using ordinary mouse-target attacks and normal
+  reward/exit controls, Death Chamber was reached, one elite was defeated, and
+  the run was paused safely with two elites remaining at 36 kills. Diagnostics
+  were empty; this partial route evidence does not create a deployment
+  checkpoint or change the score.
+
 - Added fresh managed route evidence: a new Mage completed D1 and D2 Normal
   with ordinary attacks, target assist, touch-sized controls, rewards, the D2
   mini-boss and Fallen King, Veteran unlock, and portal entry into D4 Shadow

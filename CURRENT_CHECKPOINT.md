@@ -51,6 +51,15 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   developer-cheat contracts and full **113/113** gate pass. This does not change
   the evidence score or create a deployment checkpoint.
 
+- A retained Level 3 Mage then started a new D1 Normal run at the default
+  desktop viewport with only session invincibility. Ordinary mouse-target
+  attacks and normal reward/exit controls completed Shadow Hall, the Elder Stone
+  shrine, Bone Chamber, Treasure Chamber, Ruined Archway, and Ashen Pit. The
+  run reached Death Chamber, defeated one elite, and paused safely with two
+  elites remaining (36 enemies defeated; no browser warnings or errors). This
+  is route evidence only, not fresh-profile, full D1-D12, clean-player, or
+  physical-device acceptance, so the score remains **93%** / **19%**.
+
 - Hardened recovered combat sessions so `Resume Session` restores the exact
   checkpointed room and opens the existing pause menu before damage updates
   resume. On the current build at `http://127.0.0.1:4176/?cql-dev=1`, a fresh

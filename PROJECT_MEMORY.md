@@ -27,6 +27,10 @@ transcript.
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world
   direction are creative constraints, not optional complexity to remove.
+- A retained Mage's protected D1 Normal run is paused at Death Chamber after
+  normal attacks cleared the earlier rooms and one elite (36 enemies defeated,
+  two elites remaining). Resume that handoff before restarting D1; it is useful
+  route evidence but does not satisfy fresh-profile or full-route acceptance.
 
 ## Durable lessons
 
@@ -64,9 +68,10 @@ transcript.
 
 1. Recheck whether a recorded blocker has materially changed; do not probe it
    merely because a new cycle started.
-2. If permitted browser evidence is available, extend the protected
-  normal-control route from D4 with invincibility only after verifying its
-  banner; do not count the managed run as full D1-12 or device evidence.
+2. If the handed-off browser run is available, resume the protected D1 Normal
+   Death Chamber route with invincibility only after verifying its banner, then
+   continue through D2 and the D4-D12 release surface; do not count the managed
+   run as full D1-12 or device evidence until the final portal is reached.
 3. Otherwise finish the clean D1-12 evidence, then inspect D13 for a bounded
    promotion milestone with route, save, reward, and return coverage.
 4. Stop cosmetic churn. One coherent verified delta is better than many small

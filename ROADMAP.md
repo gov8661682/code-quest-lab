@@ -86,6 +86,12 @@ The developer aid workflow is now safer for that continuation: repeating
 off accidentally. This is a local QA improvement and does not advance the
 manual evidence score or create a deployment checkpoint.
 
+The next protected route handoff is now paused at D1 Death Chamber after a
+retained Mage cleared the earlier D1 rooms with ordinary mouse-target attacks,
+defeated one elite, and reached 36 kills with two elites remaining. Resume this
+run and continue through D2 and D4-D12 before considering a full-route evidence
+update; the partial run does not change the score.
+
 ### Necromancer's Stolen Graveyard release-surface expansion (2026-08-10; local milestone)
 
 The source-resident D12 route is now promoted after Ranger Watchtowers. Its
