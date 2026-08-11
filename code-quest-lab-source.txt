@@ -9546,6 +9546,28 @@ function d4DrawLightShrines(){
 // ============================================================
 // DUNGEON 4: BUILD COMPOSITIONS
 // ============================================================
+// The Omen Chamber is a deliberate three-wave set piece, but its first
+// release pass combined full Dungeon 4 scaling with 3/4 random targets before
+// a final elite wave. On a touch-sized surface that could become a long
+// target-finding exercise rather than a readable skill check. Keep Joey's
+// three-wave structure, roster, and final elite identity; only Normal gets a
+// finite event budget. Veteran and above retain the authored pressure.
+var D4_AMBUSH_TUNING=Object.freeze({
+  normal:Object.freeze({waveCountDelta:-1,hpMult:0.78,damageMult:0.85,finalEliteHpMult:0.82,waveDelay:1.0}),
+  default:Object.freeze({waveCountDelta:0,hpMult:1.0,damageMult:1.0,finalEliteHpMult:1.0,waveDelay:1.5})
+});
+function getD4AmbushTuning(){
+  var encounter=getEncounterTuning('dungeon4');
+  return D4_AMBUSH_TUNING[encounter.difficultyId]||D4_AMBUSH_TUNING.default;
+}
+function tuneD4AmbushEnemy(enemy,tuning,isFinalElite){
+  if(!enemy||!tuning)return;
+  var hpMult=isFinalElite?(tuning.finalEliteHpMult||1.0):(tuning.hpMult||1.0);
+  enemy.hpMax=Math.max(1,Math.round(enemy.hpMax*hpMult));
+  enemy.hp=enemy.hpMax;
+  if(enemy.eliteRegenRemaining!==undefined)enemy.eliteRegenRemaining=Math.min(enemy.eliteRegenRemaining,Math.round(enemy.hpMax*0.25));
+  enemy.damage=Math.max(1,Math.round(enemy.damage*(tuning.damageMult||1.0)));
+}
 function d4BuildComposition(type,depth,totalDepth){
   var depthRatio=depth/(totalDepth||8);
   var count;
@@ -10034,21 +10056,28 @@ function d4StartAmbush(roomId){
 function d4AmbushSpawnWave(geo){
   var ev=d4EventState.ambush;
   var depth=getRoomDepth(ev.roomId);
+  var tuning=getD4AmbushTuning();
   ev.wave++;
   var kinds;
   if(ev.wave<ev.maxWaves){
     kinds=['shadow_beast','void_mage','soul_wraith','void_mage'];
-    var count=2+ev.wave;
+    var count=Math.max(2,2+ev.wave+(tuning.waveCountDelta||0));
     for(var i=0;i<count;i++){
       var k=kinds[Math.floor(Math.random()*kinds.length)];
-      enemies.push(spawnEnemyByKind(k,geo,depth,false));
+      var waveEnemy=spawnEnemyByKind(k,geo,depth,false);
+      tuneD4AmbushEnemy(waveEnemy,tuning,false);
+      enemies.push(waveEnemy);
     }
     showBanner('⚔ WAVE '+ev.wave+'/'+ev.maxWaves,'Shadow forces close in!',1.8);
   } else {
     // Final wave: elite enemies
-    enemies.push(spawnEnemyByKind('corrupted_knight',geo,depth,true));
-    enemies.push(spawnEnemyByKind('shadow_beast',geo,depth,true));
-    enemies.push(spawnEnemyByKind('void_mage',geo,depth,false));
+    var finalKnight=spawnEnemyByKind('corrupted_knight',geo,depth,true);
+    var finalBeast=spawnEnemyByKind('shadow_beast',geo,depth,true);
+    var finalMage=spawnEnemyByKind('void_mage',geo,depth,false);
+    tuneD4AmbushEnemy(finalKnight,tuning,true);
+    tuneD4AmbushEnemy(finalBeast,tuning,true);
+    tuneD4AmbushEnemy(finalMage,tuning,false);
+    enemies.push(finalKnight,finalBeast,finalMage);
     showBanner('⚔ FINAL WAVE – ELITE','Destroy them all to claim your reward!',2.2);
   }
 }
@@ -10182,7 +10211,7 @@ function d4UpdateEventSystems(dt){
     if(amb.waveDelay>0){amb.waveDelay-=dt;}
     else{
       if(amb.wave<amb.maxWaves){
-        amb.waveDelay=1.5;
+        amb.waveDelay=getD4AmbushTuning().waveDelay;
         d4AmbushSpawnWave(getRoomGeometry());
       } else {
         d4AmbushComplete(getRoomGeometry());
@@ -10200,7 +10229,7 @@ function d4UpdateCursedCircles(dt){
       if(Math.hypot(player.x-c.x,player.y-c.y)<c.radius){
         var ccd=10;
         if(ironWillShield>0){var cca=Math.min(ironWillShield,ccd);ironWillShield-=cca;ccd-=cca;}
-        if(ccd>0){player.hp=clamp(player.hp-ccd,0,player.hpMax);addFloatie(player.x,player.y-30,'-'+ccd+' CURSED','#9a50da',0.7);}
+        if(ccd>0&&!isPlayerDamageSuppressed()){player.hp=clamp(player.hp-ccd,0,player.hpMax);addFloatie(player.x,player.y-30,'-'+ccd+' CURSED','#9a50da',0.7);}
         player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
         if(player.hp<=0){playerDied();return;}
       }
@@ -26546,6 +26575,9 @@ function developerCheatAllowed(){
   var isLocalWebProtocol=location.protocol==='http:'||location.protocol==='https:';
   return isLocalWebProtocol&&isLoopback&&new URLSearchParams(location.search).get('cql-dev')==='1';
 }
+function isDeveloperInvincibilityActive(){
+  return !!(developerInvincibilityEnabled&&developerCheatAllowed());
+}
 // Fast QA controls are deliberately narrower than a general debug menu. They
 // are available only on loopback with ?cql-dev=1, live in memory for one page
 // session, and are never written to a profile, checkpoint, export, native
@@ -26781,7 +26813,7 @@ function handleDeveloperQASequenceKey(key){
   return handled;
 }
 function clearDeveloperBossSummons(){
-  if(!developerInvincibilityEnabled)return false;
+  if(!isDeveloperInvincibilityActive())return false;
   var def=(typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS)?ROOM_DEFS[currentRoomId]:null;
   if(!def||def.type!==RT.BOSS||!enemies.length){
     if(typeof showBanner==='function')showBanner('DEV TEST MODE','No live boss summons to clear',1.4);
@@ -26887,10 +26919,19 @@ function combatTargetIsLive(target){
 }
 function findNearestCombatTarget(aimAngle){
   var target=null,targetScore=Infinity;
+  var readableEnemyCount=0;
+  for(var ri=0;ri<enemies.length;ri++){
+    var readableEnemy=enemies[ri];
+    if(combatTargetIsLive(readableEnemy)&&!(readableEnemy.wraithing&&!readableEnemy.wraith_visible))readableEnemyCount++;
+  }
   function consider(candidate){
     if(!combatTargetIsLive(candidate))return;
     var dx=candidate.x-player.x,dy=candidate.y-player.y,dist=Math.hypot(dx,dy);
     var score=dist;
+    // A phased Soul Wraith remains targetable, but touch aim assist should
+    // prefer a visible threat when one exists so the player is not silently
+    // locked onto a barely visible target while trying to clear a wave.
+    if(candidate.wraithing&&!candidate.wraith_visible&&readableEnemyCount>0)score+=180;
     if(aimAngle!==null&&aimAngle!==undefined){
       var candidateAngle=Math.atan2(dy,dx);
       var angleGap=Math.abs(Math.atan2(Math.sin(candidateAngle-aimAngle),Math.cos(candidateAngle-aimAngle)));
@@ -31017,7 +31058,7 @@ updateFissures(dt);
   // Keep this guard at the end of the shared update pipeline so every
   // damage source remains visible for debugging while the developer test
   // mode prevents a death or a persisted HP change.
-  if(developerInvincibilityEnabled){player.dead=false;player.hp=player.hpMax;}
+  if(isDeveloperInvincibilityActive()){player.dead=false;player.hp=player.hpMax;}
   developerQaApplyEnemyFreeMode();
   updateDoorInteraction(geo);updateRoomProgress(geo);updateHUD();
   updateDeveloperQAOverlay(dt);
@@ -41445,7 +41486,7 @@ function updatePassiveHealthRegen(dt){
 // boss-specific attack while "untargetable". ──
 var playerInvulnTimer=0;
 function isPlayerInvulnerable(){return playerInvulnTimer>0;}
-function isPlayerDamageSuppressed(){return isPlayerInvulnerable()||combatIntroTimer>0;}
+function isPlayerDamageSuppressed(){return isDeveloperInvincibilityActive()||isPlayerInvulnerable()||combatIntroTimer>0;}
 var playerSlowActive=false,playerSlowTimer=0,playerSlowMult=1.0;
 var playerBurnTimer=0,playerBurnDmgPerTick=0,playerBurnTickTimer=0;
 function applyPlayerSlow(mult,duration){
@@ -42582,7 +42623,7 @@ function updateRoomProgress(geo){
 }
 
 function playerDied(){
-  if(developerInvincibilityEnabled){
+  if(isDeveloperInvincibilityActive()){
     player.dead=false;player.hp=player.hpMax;
     return;
   }
@@ -42891,6 +42932,37 @@ function drawTownPortalIndicator(){
   ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(-9,-10);ctx.lineTo(-5,0);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
 }
 
+// After a combat room is cleared, keep the next destination readable without
+// changing room routing. The cue follows the player and points toward the
+// already-open forward door, so the player never has to search for an arrow
+// left behind at the far edge of a large room.
+function forwardExitGuideAvailable(def){
+  return !!(gameRunning&&def&&def.forward&&exitDoor&&roomCleared&&!roomTransitioning&&
+    activeDungeonId!=='town'&&activeDungeonId!=='bob_arena'&&!isEntranceZone(activeDungeonId)&&
+    def.type!==RT.SIDE&&def.type!==RT.BOSS);
+}
+
+function drawForwardExitGuide(geo,def){
+  if(!forwardExitGuideAvailable(def)||!geo||!geo.forwardDoor)return;
+  var fd=geo.forwardDoor;
+  var dx=fd.cx-player.x,dy=fd.cy-player.y;
+  if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
+  var angle=Math.atan2(dy,dx);
+  var placeAbove=player.y>geo.inner.y+62;
+  var ax=player.x,ay=placeAbove?player.y-player.radius-30:player.y+player.radius+30;
+  var labelY=placeAbove?-22:22;
+  ctx.save();ctx.translate(ax,ay);ctx.rotate(angle);ctx.globalAlpha=0.96;
+  ctx.shadowColor='rgba(255,217,138,0.9)';ctx.shadowBlur=8;
+  ctx.fillStyle='rgba(86,54,20,0.92)';ctx.strokeStyle='#ffe7a8';ctx.lineWidth=2;
+  ctx.beginPath();
+  ctx.moveTo(18,0);ctx.lineTo(5,-11);ctx.lineTo(5,-4);ctx.lineTo(-15,-4);
+  ctx.lineTo(-15,4);ctx.lineTo(5,4);ctx.lineTo(5,11);ctx.closePath();
+  ctx.fill();ctx.stroke();
+  ctx.restore();
+  ctx.save();ctx.translate(ax,ay);ctx.fillStyle='rgba(255,231,168,0.96)';ctx.font='bold 10px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('NEXT ROOM',0,labelY);ctx.restore();
+}
+
 // ============================================================
 // DRAW
 // ============================================================
@@ -43019,7 +43091,7 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawMageProjectiles();drawMageEffects();
   drawDruidVineZones();drawDruidStorm();drawDruidSummons();drawDruidRavens();drawRogueEffects();
   drawLbsDebris();
-  drawPlayer();drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
+  drawPlayer();drawForwardExitGuide(geo,ROOM_DEFS[currentRoomId]);drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
   drawOffscreenEnemyIndicators();

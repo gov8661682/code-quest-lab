@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-11
+Updated: 2026-08-12
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -117,6 +117,29 @@ The no-aid 600x768 live smoke reached the first combat room and showed enemy
 repositioning across two captures about half a second apart. It is a movement
 fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
 **93%** / **19%**.
+
+### Current tested milestone: D4 Normal pacing, player-following exit guide, and route contract (2026-08-12; checkpoint ready)
+
+- [x] Replace the cleared-room gate cue with a steady arrow anchored above the
+  player and aimed at the open forward door; do not add a pulsing gate marker.
+- [x] Keep boss rooms on the existing deliberate exit-portal handoff.
+- [x] Keep Joey's Omen Chamber three-wave roster and elite finale while giving
+  Normal a finite 2/3 target wave budget, bounded health/damage relief, and a
+  shorter handoff; retain authored pressure at higher difficulties.
+- [x] Route the loopback developer invincibility aid through shared hazard
+  suppression, including D4 cursed circles, without exposing it to saves,
+  exports, native builds, or production activation.
+- [x] Add the bounded D1-D12 release-route contract for generated connectivity,
+  authored finale identities, portal handoff, region order, and the final
+  session ending.
+- [x] Pass the local **125/125** gate, `qa:fast`, static package checks, and
+  Capacitor sync.
+
+A fresh loopback browser smoke reached D4, resolved an event, verified the
+player-following guide with empty browser diagnostics, and stopped safely. This
+is QA-assisted evidence rather than clean-player D1-D12 or physical-device
+acceptance. Complete the GitHub/website checkpoint after production and live
+verification, then continue with the next open evidence lane.
 
 ### Follow-up: Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 

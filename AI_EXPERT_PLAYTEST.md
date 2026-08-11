@@ -9,6 +9,35 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
+## Follow-up: D4 Normal ambush budget and player-following exit guide - 2026-08-12
+
+The incomplete Normal D4 route identified a real tablet-playability problem:
+the Omen Chamber combined full Dungeon 4 scaling with 3/4 random targets in
+its first two waves, while a phased Soul Wraith could be difficult to acquire
+with touch targeting. The fix preserves Joey's three-wave structure, roster,
+and final elite, but gives Normal a finite event budget: 2/3 targets in the
+first two waves, `0.78` regular health, `0.85` damage, bounded final-elite
+health relief, and a shorter wave handoff. Veteran and higher difficulties
+retain the authored pressure. Touch target selection now prefers readable
+visible threats when a phased wraith is present, without making the wraith
+untargetable when it is the only threat.
+
+The local developer invincibility aid now participates in shared hazard
+suppression, including cursed circles, so a QA HP trace cannot be changed by a
+hazard while the banner says invincible. This remains a loopback-only,
+session-only test aid and is not included in saves, exports, native builds, or
+production activation.
+
+The current build passed the **125/125** release gate, `qa:fast`, static
+package audit, and Capacitor sync. A fresh loopback browser smoke at the
+current build reached Dungeon 4, resolved an event, and verified that the
+steady `NEXT ROOM` arrow remains above the moving character while guiding the
+route toward the next room. Browser warning/error diagnostics were empty. The
+smoke used the documented QA aid and route accelerators, so it verifies the
+changed build's navigation/rendering and recovery surface, not clean-player
+D1-D12 or physical-device acceptance. The final production check and live
+deployment verification remain the next checkpoint actions.
+
 ## Follow-up: first-room approach lane - 2026-08-11
 
 The latest deployed smoke reproduced the reported visual pause only in the
@@ -29,6 +58,52 @@ shell v11. A fresh no-aid 600x768 live smoke reached the first combat room;
 two captures about half a second apart showed enemy repositioning. The smoke
 did not clear the room, so clean-player D1-D12 and physical/native-device
 acceptance remain open.
+
+## Fresh Normal D1-8 route - 2026-08-11 (incomplete at D4)
+
+The local shell was tested at
+`http://127.0.0.1:4176/?cql-dev=1` with a fresh Mage profile at a `540x720`
+viewport. The route used Normal difficulty, Standard Expedition, normal step
+movement, the ordinary attack joystick, target assist, Fire Bolt/Fireball, and
+the normal reward/exit controls. The only gameplay aid was the loopback,
+session-only `C Q L I` invincibility sequence. No room-complete, boss-phase,
+high-damage, enemy-free, summon-clear, or timescale aid was used. The target
+assist toggle was also exercised as a normal control during the bounded D4
+investigation.
+
+Evidence captured before the safe stop:
+
+- D1 `Forsaken Vault`: one real attack changed the visible enemy count from
+  `Enemies: 2` to `Enemies: 1` and unlocked `First Blood`; the room then
+  cleared through ordinary attacks.
+- D1 normal route rooms, shrine, treasure, elite, and the Stone Guardian were
+  cleared. The D1 exit portal opened to `The Fallen Kingdom Entrance`.
+- D2 normal route rooms, shrine, treasure, elite, chapel, Prison Warden, and
+  the three-phase Fallen King were cleared. The D2 exit portal opened to
+  `The Shadow Realm Entrance`.
+- D4's first two combat rooms and a shrine were cleared. The normal `Omen
+  Chamber` ambush then reached Wave 2/3 with two live enemies remaining.
+  Telemetry identified them as `void_mage` and `soul_wraith` in
+  `dungeon4 / room_m3`; `DMG normal`, `ENEMIES on`, and `boss none` were
+  visible in the diagnostic overlay.
+
+The D4 ambush did not clear after bounded normal repositioning, target-assist
+and manual-aim checks, repeated normal attacks, and normal Fireball casts. A
+Fireball/cursed-circle interaction also reduced HP from `100/100` to `87/100`
+while the invincibility banner remained visible; re-arming `C Q L I` restored
+the session state. This is preserved as a diagnostic finding rather than
+being treated as proof of full hazard immunity.
+
+Recovery was verified with the normal `Pause` button followed by `Finish and
+Return to Dashboard`; the app returned to the dashboard without a browser
+warning or error. The intended D8 ending and the ending-screen `Finish For
+Now` action were not reached. The fresh Level 14 Mage remains in local Manage
+Data so the saved route diagnostics are recoverable; retained profiles were
+not changed.
+
+Result: the requested clean D1-8 acceptance criteria are **not met**. The
+checkpoint and score remain unchanged. Final browser warning/error logs were
+empty.
 
 ## Level 1 balance regression, enemy motion, and release fix - 2026-08-10
 

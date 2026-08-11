@@ -68,8 +68,8 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
   );
   assert.match(
     SOURCE,
-    /function isPlayerDamageSuppressed\(\)\{return isPlayerInvulnerable\(\)\|\|combatIntroTimer>0;\}/,
-    'the bounded intro state directly suppresses player damage'
+    /function isPlayerDamageSuppressed\(\)\{return isDeveloperInvincibilityActive\(\)\|\|isPlayerInvulnerable\(\)\|\|combatIntroTimer>0;\}/,
+    'the bounded intro state and local QA aid directly suppress player damage'
   );
   assert.match(
     SOURCE,
@@ -187,6 +187,29 @@ test('Dungeon 4 corruption surges are bounded per room', () => {
   assert.match(SOURCE, /else if\(_d4RoomWraithSpent\)\{\s*d4Corruption=0;\s*\}/, 'spent rooms do not keep refilling their corruption meter');
 });
 
+test('Dungeon 4 ambush preserves its three-wave identity inside a Normal touch budget', () => {
+  assert.match(
+    SOURCE,
+    /var D4_AMBUSH_TUNING=Object\.freeze\(\{[\s\S]*normal:Object\.freeze\(\{waveCountDelta:-1,hpMult:0\.78,damageMult:0\.85,finalEliteHpMult:0\.82,waveDelay:1\.0\}/,
+    'Normal ambush relief is explicit and finite'
+  );
+  assert.match(SOURCE, /function getD4AmbushTuning\(\)\{[\s\S]*getEncounterTuning\('dungeon4'\)/, 'the event consumes the shared encounter difficulty contract');
+  const ambush = extractBetween('function d4AmbushSpawnWave(geo){', 'function d4AmbushComplete', 'D4 ambush wave spawning');
+  assert.match(ambush, /if\(ev\.wave<ev\.maxWaves\)/, 'the first two waves remain distinct from the finale');
+  assert.match(ambush, /var count=Math\.max\(2,2\+ev\.wave\+\(tuning\.waveCountDelta\|\|0\)\);/, 'Normal waves use a bounded target count');
+  assert.match(ambush, /tuneD4AmbushEnemy\(waveEnemy,tuning,false\);/, 'regular ambush enemies use the event budget');
+  assert.match(ambush, /tuneD4AmbushEnemy\(finalKnight,tuning,true\);[\s\S]*tuneD4AmbushEnemy\(finalBeast,tuning,true\);[\s\S]*tuneD4AmbushEnemy\(finalMage,tuning,false\);/, 'the authored final elite wave remains intact and bounded');
+  assert.match(SOURCE, /amb\.waveDelay=getD4AmbushTuning\(\)\.waveDelay;/, 'the event handoff delay is bounded by the same tuning');
+});
+
+test('developer invincibility suppresses D4 hazard damage instead of falsifying QA state', () => {
+  assert.match(SOURCE, /function isDeveloperInvincibilityActive\(\)\{[\s\S]*developerInvincibilityEnabled&&developerCheatAllowed\(\)/, 'the aid is still loopback-gated');
+  assert.match(SOURCE, /function isPlayerDamageSuppressed\(\)\{return isDeveloperInvincibilityActive\(\)\|\|isPlayerInvulnerable\(\)\|\|combatIntroTimer>0;\}/, 'shared damage suppression includes the developer aid');
+  const circles = extractBetween('function d4UpdateCursedCircles(dt){', 'function d4DrawCursedCircles', 'D4 cursed circle damage');
+  assert.match(circles, /if\(ccd>0&&!isPlayerDamageSuppressed\(\)\)/, 'cursed circles respect the invincibility aid before changing HP');
+  assert.match(SOURCE, /if\(isDeveloperInvincibilityActive\(\)\)\{player\.dead=false;player\.hp=player\.hpMax;\}/, 'the frame-end safety restore remains active');
+});
+
 test('Void Monarch summon pressure is finite and phase-aware', () => {
   assert.match(SOURCE, /vmBeastSummonsRemaining:4/);
   assert.match(SOURCE, /vmCrystalSummonsRemaining:4/);
@@ -265,6 +288,13 @@ test('cleared rooms expose a contextual touch exit fallback', () => {
   assert.match(SOURCE, /safeClick\('roomExitBtn','Room Exit',function\(\)\{handleRoomExitPrompt\(\);\}\)/, 'the fallback is wired through the guarded click layer');
   const roomProgress = extractBetween('function updateRoomProgress(geo){', 'function playerDied(){', 'room progress');
   assert.match(roomProgress, /updateRoomExitPrompt\(def\);/, 'room progress refreshes the contextual exit state');
+});
+
+test('cleared rooms show a floating guide toward the next room', () => {
+  assert.match(SOURCE, /function forwardExitGuideAvailable\(def\)\{[\s\S]*def\.forward[\s\S]*exitDoor[\s\S]*roomCleared[\s\S]*!roomTransitioning[\s\S]*def\.type!==RT\.SIDE[\s\S]*def\.type!==RT\.BOSS/, 'the guide is limited to a cleared forward route');
+  assert.match(SOURCE, /function drawForwardExitGuide\(geo,def\)\{[\s\S]*var dx=fd\.cx-player\.x,dy=fd\.cy-player\.y;[\s\S]*var angle=Math\.atan2\(dy,dx\)[\s\S]*ctx\.translate\(ax,ay\);ctx\.rotate\(angle\)/, 'the guide follows the player and points toward the forward door');
+  assert.match(SOURCE, /drawPlayer\(\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the guide is rendered with the player so it follows each frame');
+  assert.doesNotMatch(SOURCE, /function drawOffscreenForwardExitIndicator\(/, 'the gate does not receive a separate pulsing edge arrow');
 });
 
 test('static world hubs expose an optional touch travel fallback', () => {

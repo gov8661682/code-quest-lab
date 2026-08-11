@@ -1,6 +1,6 @@
 # Code Quest Lab - Current Checkpoint
 
-Updated: 2026-08-11
+Updated: 2026-08-12
 
 ## Current checkpoint
 
@@ -24,10 +24,36 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `ae91268` is pushed to `origin/main`; the tested build is deployed; the **121/121** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `ae91268` is pushed to `origin/main`; the tested build is deployed; the **125/125** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
-### Latest evidence update (2026-08-11)
+### Latest evidence update (2026-08-12)
+
+- The reported D4 Normal Omen Chamber stall is now bounded without removing
+  Joey's three-wave structure, enemy identities, or elite finale: Normal uses
+  a finite 2/3 target wave budget, `0.78` regular health, `0.85` damage, and a
+  bounded final-elite health relief; higher difficulties retain the authored
+  pressure. Developer invincibility now suppresses shared hazard damage as
+  well as ordinary combat damage, so local QA telemetry cannot be falsified by
+  cursed circles. The **125/125** release gate, `qa:fast`, static package
+  audit, and Capacitor sync pass. A fresh current-build loopback browser smoke
+  reached Dungeon 4, resolved an event, and showed the steady exit guide
+  staying above the moving character while pointing toward the next room;
+  browser warning/error diagnostics were empty. This used the documented
+  loopback QA aid and route accelerators, so it verifies the changed build's
+  navigation/rendering and recovery surface, not clean-player D1-D12 or a
+  physical-device acceptance lane. The GitHub/website checkpoint is ready
+  after the final production check and live deployment verification.
+
+- The cleared-room guidance now uses a steady `NEXT ROOM` arrow anchored
+  above the player and rotated toward the existing open forward door. It moves
+  with the character each frame instead of pulsing at the gate. Boss rooms
+  retain the deliberate exit-portal interaction. The new focused contract,
+  full **125/125** local gate, `qa:fast`, static build/package audit, and
+  Capacitor sync pass. The route score remains **93%** / **19%**: this is a
+  player-facing route-readability improvement and automated coverage, not
+  clean-player D1-D12 or physical-device evidence. It is grouped for the next
+  substantial deployment checkpoint rather than deployed as a one-off.
 
 - The reported room-entry pause is now corrected in runtime commit `ae91268`,
   pushed to `origin/main` and deployed to preview

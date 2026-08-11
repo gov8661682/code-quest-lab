@@ -1,5 +1,39 @@
 # Code Quest Lab - Changelog
 
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+
+- Kept Joey's Omen Chamber three-wave identity, roster, and elite finale while
+  adding a finite Normal touch budget: 2/3 targets in the first two waves,
+  `0.78` regular health, `0.85` damage, bounded final-elite relief, and a
+  shorter wave handoff. Veteran and higher difficulties retain the authored
+  pressure.
+- Added shared developer-invincibility hazard suppression for cursed circles,
+  keeping the loopback-only QA aid's HP telemetry truthful without putting it
+  in saves, exports, native builds, or production activation.
+- Replaced the cleared-room gate cue with a steady `NEXT ROOM` arrow above the
+  player that rotates toward the open forward door and follows movement. Boss
+  rooms retain the deliberate exit-portal handoff.
+- The **125/125** release gate, `qa:fast`, static package audit, Capacitor sync,
+  and a fresh D4 loopback browser smoke pass with empty warning/error logs.
+  This is QA-assisted evidence; clean-player D1-D12 and physical/native-device
+  acceptance remain open pending the deployment checkpoint.
+
+# Local route guidance and release-route contract (2026-08-12; not deployed)
+
+- Replaced the cleared-room gate cue with a steady `NEXT ROOM` arrow that is
+  anchored above the player and rotates toward the open forward door. It moves
+  with the character each frame, so the player does not have to search for a
+  pulsing marker left at the gate. Boss rooms continue to use their deliberate
+  exit-portal handoff.
+- Added a bounded release-route QA contract that generates every released
+  D1-D12 route, checks forward connectivity and Joey's named finale identity,
+  verifies the shared boss/portal handoff, and confirms D12 reaches the
+  existing session ending. This is automated route coverage, not a substitute
+  for clean-player or physical-device acceptance.
+- The local gate now passes **125/125** tests. This small UX/QA follow-up is
+  intentionally grouped for the next substantial tested deployment checkpoint;
+  no one-off deployment is claimed here.
+
 # Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
 
 - Fixed the pause-like monster entry behavior by giving mobile enemies a

@@ -1,7 +1,40 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-11
+Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
+
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+
+Normal Dungeon 4's Omen Chamber keeps Joey's authored three-wave ambush,
+roster, and elite finale, but now uses a finite tablet-friendly event budget:
+the first two waves target 2/3 enemies, regular health is `0.78`, damage is
+`0.85`, the final elite receives a bounded health relief, and the handoff delay
+is shorter. Veteran and higher difficulties retain the original pressure.
+Developer invincibility now participates in the shared damage-suppression path,
+including D4 cursed circles, so local QA state remains truthful.
+
+Cleared rooms show a steady `NEXT ROOM` arrow above the character, rotated
+toward the open forward door. It follows the character rather than pulsing at
+the gate; boss rooms retain their deliberate exit-portal handoff. The **125/125**
+release gate, `qa:fast`, static package audit, and Capacitor sync pass. A fresh
+current-build loopback smoke reached Dungeon 4, resolved an event, and showed
+the guide following movement with empty browser warning/error diagnostics.
+This is QA-assisted evidence, not clean-player D1-12 or physical-device
+acceptance. The GitHub/website checkpoint is ready for final live verification.
+
+## Local route guidance and release-route contract (2026-08-12; not deployed)
+
+Cleared rooms now show a steady `NEXT ROOM` arrow above the player. It follows
+the character and rotates toward the open forward door instead of pulsing at
+the gate. Boss rooms continue to use their separate exit-portal handoff.
+
+A new bounded route contract generates the released D1-D12 paths, checks each
+forward link and Joey-authored finale identity, verifies the shared boss/portal
+handoff, and confirms D12 reaches the existing session ending. The local gate
+passes **125/125** tests, with `qa:fast`, static package checks, and Capacitor
+sync passing. This remains grouped local work: no deployment checkpoint is
+claimed, and the score stays **93% active checkpoint / 19% overall** because
+clean-player D1-D12 and physical/native-device acceptance remain open.
 
 ## Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
 

@@ -1,6 +1,6 @@
 # Code Quest Lab - Rolling Project Memory
 
-Updated: 2026-08-11
+Updated: 2026-08-12
 Mode: **Replace and consolidate; never append a chronological work log**
 
 ## Purpose
@@ -15,8 +15,20 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **121/121** tests, static build/package audit,
+- Current verified local gate: **125/125** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
+- Current tested milestone (checkpoint ready): D4 Normal's Omen Chamber keeps
+  Joey's three-wave roster and elite finale while using a finite 2/3 target
+  wave budget, `0.78` regular health, `0.85` damage, bounded final-elite
+  relief, and a shorter handoff delay. Higher difficulties retain the authored
+  pressure. Developer invincibility now suppresses shared hazard damage,
+  including cursed circles. Cleared rooms show a steady player-following
+  `NEXT ROOM` arrow aimed at the open forward door; boss rooms keep their
+  separate exit-portal flow. A release-route contract checks all released
+  D1-D12 generated paths, authored finale identities, portal handoff, and the
+  D12 session ending. The **125/125** local gate and a fresh D4 loopback smoke
+  pass with empty browser diagnostics. This does not change the 93%/19% score:
+  QA aids were used and clean-player/device evidence remains open.
 - Latest milestone checkpoint (2026-08-11): the first Normal D1
   combat room keeps the bounded, data-driven approach lane
   (`132/28/18/84/36`) and now uses a brief `1.35s` mobile arrival window whose

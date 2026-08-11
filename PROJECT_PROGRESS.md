@@ -1,6 +1,6 @@
 # Code Quest Lab - Project Progress Report
 
-Reviewed: 2026-08-11
+Reviewed: 2026-08-12
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
 Release status: pre-release hardening; architecture checkpoint deployed; not a Release Candidate
 
@@ -10,6 +10,26 @@ Overall project completion: **19%**
 The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
+
+## Latest 2026-08-12 progress delta
+
+Dungeon 4's Normal Omen Chamber now keeps Joey's three-wave encounter and
+elite finale inside a finite touch-sized budget: the first two waves target
+2/3 enemies, regular health is `0.78`, damage is `0.85`, final-elite health
+relief is bounded, and the wave handoff is shorter. Shared developer
+invincibility now suppresses D4 cursed-circle damage as well as ordinary
+combat damage. The cleared-room guide is a steady `NEXT ROOM` arrow above the
+player, rotated toward the open forward door and following movement; no pulsing
+gate marker remains. A fresh loopback browser smoke reached D4 and verified the
+guide after event resolution with no browser warning/error diagnostics. The
+current local gate is **125/125** with `qa:fast`, package checks, and Capacitor
+sync passing. This remains QA-assisted evidence and does not change the
+**93%** / **19%** evidence score.
+
+The bounded release-route contract generates and walks the released D1-D12
+chain, checks Joey's named finales and forward links, verifies the shared portal
+handoff, and confirms the D12 session ending. The GitHub/website checkpoint is
+ready after the final production and live deployment checks.
 
 ## Latest 2026-08-11 progress delta
 

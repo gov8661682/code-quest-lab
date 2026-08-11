@@ -23,12 +23,12 @@ test('developer invincibility is local-only and session-scoped', async () => {
 
 test('developer invincibility is wired before normal keyboard actions and blocks death', () => {
   assert.match(SOURCE, /if\(handleDeveloperCheatKey\(event\)\)\{event\.preventDefault\(\);return;\}/);
-  assert.match(SOURCE, /function playerDied\(\)\{\s*if\(developerInvincibilityEnabled\)\{[\s\S]*?return;\s*\}/);
-  assert.match(SOURCE, /if\(developerInvincibilityEnabled\)\{player\.dead=false;player\.hp=player\.hpMax;\}/);
+  assert.match(SOURCE, /function playerDied\(\)\{\s*if\(isDeveloperInvincibilityActive\(\)\)\{[\s\S]*?return;\s*\}/);
+  assert.match(SOURCE, /if\(isDeveloperInvincibilityActive\(\)\)\{player\.dead=false;player\.hp=player\.hpMax;\}/);
 });
 
 test('developer summon clearing stays gated and preserves live boss encounters', () => {
-  assert.match(SOURCE, /function clearDeveloperBossSummons\(\)\{\s*if\(!developerInvincibilityEnabled\)return false;/);
+  assert.match(SOURCE, /function clearDeveloperBossSummons\(\)\{\s*if\(!isDeveloperInvincibilityActive\(\)\)return false;/);
   assert.match(SOURCE, /clearDeveloperBossSummons\(\)[\s\S]*?if\(!def\|\|def\.type!==RT\.BOSS\|\|!enemies\.length\)/);
   assert.match(SOURCE, /if\(!boss&&!miniBoss\)\{[\s\S]*?openForwardDoor\(geo\);/);
   assert.match(SOURCE, /var _bossIdentity=getBossIdentity\(def,boss\);/);

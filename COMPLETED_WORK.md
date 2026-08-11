@@ -7,6 +7,38 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+
+- Preserved Joey's Omen Chamber three-wave structure, enemy roster, and final
+  elite while giving Normal a finite touch-sized event budget: 2/3 targets in
+  the first two waves, `0.78` regular health, `0.85` damage, bounded final
+  elite health relief, and a shorter wave handoff. Veteran and higher
+  difficulties keep the authored pressure.
+- Routed developer invincibility through shared hazard suppression so cursed
+  circles cannot falsify local QA HP telemetry. The aid remains loopback-only,
+  session-only, and excluded from saves/exports/production.
+- Cleared rooms now show a steady `NEXT ROOM` arrow above the player, aimed at
+  the open forward door and following the player's movement; gate pulsing was
+  removed. Boss rooms retain their deliberate exit-portal interaction.
+- The **125/125** release gate, `qa:fast`, static package audit, Capacitor
+  sync, and a fresh D4 loopback browser smoke pass. The smoke used documented
+  QA accelerators, reached D4, resolved an event, verified the moving guide,
+  and recorded empty browser warning/error diagnostics. Clean-player D1-D12
+  and physical/native-device acceptance remain open.
+
+## Local route guidance and release-route contract (2026-08-12; no deployment checkpoint)
+
+- Cleared rooms now render a steady `NEXT ROOM` arrow above the player. The
+  arrow follows the player's world position and rotates toward the existing
+  open forward door; it does not pulse on the gate or change route logic.
+  Boss-room exit portals remain a separate deliberate handoff.
+- Added a bounded release-route contract covering the released D1-D12 chain:
+  generated forward links, authored finale identities, shared boss defeat and
+  portal handoff, region order, and the existing D12 session ending.
+- The local gate passes **125/125** tests. Clean-player D1-D12,
+  physical/native-device evidence, and the next grouped deployment checkpoint
+  remain open.
+
 ## Completed baseline and direction
 
 | Work | Evidence | Reopen condition |
