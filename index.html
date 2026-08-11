@@ -29007,18 +29007,38 @@ var LEVEL1_OPENING_TUNING=Object.freeze({
   damageMult:0.45,
   speedMult:0.55,
   attackCooldownMult:1.80,
-  graceSeconds:COMBAT_INTRO_DURATION
+  graceSeconds:COMBAT_INTRO_DURATION,
+  // Keep the first approach readable on a small screen. The old 40-65px
+  // side lane put melee enemies inside attack range on spawn, so their first
+  // visible decision was to stand and swing instead of walking toward the
+  // player. This changes only their opening positions, not their identity or
+  // combat stats.
+  spawnSideOffset:132,
+  spawnSideStep:28,
+  spawnJitter:18,
+  spawnForwardOffset:84,
+  spawnForwardStep:36
 });
-// The next two ordinary D1 combat rooms are the player's first real loop:
+// The first procedural D1 combat loop is the player's real onboarding:
 // move, attack, read the target, and reach the exit. Keep the same authored
-// warrior/zombie/ghost/archer roster, but ease only this short onboarding band
-// so a new web player is not erased immediately after the opening grace ends.
+// warrior/zombie/ghost/archer roster, but ease only this short depth band so a
+// new web player is not erased immediately after the opening grace ends.
 var LEVEL1_EARLY_ROUTE_TUNING=Object.freeze({
-  maxDepth:3,
+  maxDepth:5,
   hpMult:0.90,
   damageMult:0.65,
   speedMult:0.90,
   attackCooldownMult:1.35
+});
+// The first D1 mini-boss is the first authored pattern test, not a gear check.
+// Keep its Bone Champion/roster identity and warning patterns, but give a new
+// Normal player a finite response budget before the route's later encounters.
+var LEVEL1_EARLY_MINIBOSS_TUNING=Object.freeze({
+  maxDepth:6,
+  hpMult:0.75,
+  damageMult:0.60,
+  speedMult:0.90,
+  attackCooldownMult:1.25
 });
 function updateCombatIntro(dt){
   if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
@@ -29957,9 +29977,10 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   var ex,ey,attempts=0;
   // The first combat room is the player's onboarding moment. A full-room
   // random spawn can place both enemies outside the visible tablet viewport
-  // in the 1.75x room, while a distant fixed band makes a fresh Barbarian's
-  // first taps miss until the player understands movement. Keep this one
-  // encounter in a close, readable lane below the spawn while preserving the normal procedural placement everywhere else.
+  // in the 1.75x room, while an immediate melee-range spawn makes the enemies
+  // look frozen as soon as they begin their attack cadence. Keep this one
+  // encounter in a visible approach lane while preserving the normal
+  // procedural placement rule for every later room.
   var _firstRoomDef=ROOM_DEFS&&ROOM_DEFS[currentRoomId];
   var _isFirstCombatRoom=activeDungeonId==='dungeon1'&&MAIN_PATH.length>1&&currentRoomId===MAIN_PATH[1]&&_firstRoomDef&&_firstRoomDef.type===RT.COMBAT;
   // The first Normal D1 combat room is a teaching encounter, not a full
@@ -29982,8 +30003,12 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;
-    ex=clamp(player.x+_firstCombatSide*(40+Math.random()*25),minX,maxX);
-    ey=clamp(player.y+34+_firstCombatSlot*28,minY,maxY);
+    var _firstCombatOffset=LEVEL1_OPENING_TUNING.spawnSideOffset+
+      _firstCombatSlot*LEVEL1_OPENING_TUNING.spawnSideStep;
+    ex=clamp(player.x+_firstCombatSide*(_firstCombatOffset+
+      Math.random()*LEVEL1_OPENING_TUNING.spawnJitter),minX,maxX);
+    ey=clamp(player.y+LEVEL1_OPENING_TUNING.spawnForwardOffset+
+      _firstCombatSlot*LEVEL1_OPENING_TUNING.spawnForwardStep,minY,maxY);
   }else{
     do{ex=minX+Math.random()*(maxX-minX);ey=minY+Math.random()*(maxY-minY);attempts++;}
     while(Math.hypot(ex-player.x,ey-player.y)<160&&attempts<30);
@@ -38952,6 +38977,9 @@ function spawnMiniBoss(geo,mbType){
   var _mbTuning=getEncounterTuning();
   var _mbHp=_mbTuning.miniBossHpMult;
   var _mbDmg=_mbTuning.miniBossDmgMult;
+  var _isEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&
+    getActiveDifficulty().id==='normal'&&getRoomDepth(currentRoomId)<=LEVEL1_EARLY_MINIBOSS_TUNING.maxDepth;
+  if(_isEarlyD1MiniBoss){_mbHp*=LEVEL1_EARLY_MINIBOSS_TUNING.hpMult;_mbDmg*=LEVEL1_EARLY_MINIBOSS_TUNING.damageMult;}
   // ── COMPOUND DUNGEON SCALING: every miniboss automatically inherits its
   // dungeon's Health/Damage multiplier through this single choke point --
   // every mb.hp/mb.damage assignment below (and every ability damage field
@@ -39136,6 +39164,7 @@ function spawnMiniBoss(geo,mbType){
     mb.abilityTimer=3.5+Math.random()*1.5;
     mb.soulGain=SOUL_REWARD_MINIBOSS;mb.mxpGain=MXP_MINIBOSS;mb.xpGain=60;
   }
+  if(_isEarlyD1MiniBoss){mb.speed*=LEVEL1_EARLY_MINIBOSS_TUNING.speedMult;mb.attackCooldown*=LEVEL1_EARLY_MINIBOSS_TUNING.attackCooldownMult;}
   miniBoss=mb;
 }
 

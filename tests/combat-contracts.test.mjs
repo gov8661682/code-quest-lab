@@ -48,7 +48,7 @@ test('a fresh Barbarian and the first Normal room stay inside the opening damage
   );
   assert.match(
     SOURCE,
-    /var LEVEL1_OPENING_TUNING=Object\.freeze\(\{[\s\S]{0,260}attackCooldownMult:1\.80,[\s\S]{0,120}graceSeconds:COMBAT_INTRO_DURATION[\s\S]{0,80}\}\);/,
+    /var LEVEL1_OPENING_TUNING=Object\.freeze\(\{[\s\S]{0,260}attackCooldownMult:1\.80,[\s\S]{0,520}graceSeconds:COMBAT_INTRO_DURATION[\s\S]{0,520}\}\);/,
     'the Normal Dungeon 1 opening room has one bounded onboarding tuning table'
   );
   assert.match(
@@ -346,13 +346,35 @@ test('new mobile enemies get a bounded arrival step instead of appearing frozen 
     'arrival motion has a bounded tangential speed');
 });
 
+test('the first combat room gives melee enemies a readable approach lane', () => {
+  assert.match(SOURCE, /spawnSideOffset:132,[\s\S]*spawnSideStep:28,[\s\S]*spawnJitter:18,[\s\S]*spawnForwardOffset:84,[\s\S]*spawnForwardStep:36/,
+    'opening placement is explicit and data-driven');
+  assert.match(SOURCE, /var _firstCombatOffset=LEVEL1_OPENING_TUNING\.spawnSideOffset\+[\s\S]*_firstCombatSlot\*LEVEL1_OPENING_TUNING\.spawnSideStep;/,
+    'each opening enemy receives a separate readable side offset');
+  assert.match(SOURCE, /player\.x\+_firstCombatSide\*\(_firstCombatOffset\+[\s\S]*Math\.random\(\)\*LEVEL1_OPENING_TUNING\.spawnJitter\)/,
+    'opening enemies do not spawn directly in melee range');
+  assert.match(SOURCE, /player\.y\+LEVEL1_OPENING_TUNING\.spawnForwardOffset\+[\s\S]*_firstCombatSlot\*LEVEL1_OPENING_TUNING\.spawnForwardStep/,
+    'opening enemies approach from a visible forward lane');
+});
+
 test('the first real D1 rooms use a bounded onboarding combat budget', () => {
-  assert.match(SOURCE, /var LEVEL1_EARLY_ROUTE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:3,[\s\S]*hpMult:0\.90,[\s\S]*damageMult:0\.65,[\s\S]*speedMult:0\.90,[\s\S]*attackCooldownMult:1\.35/,
+  assert.match(SOURCE, /var LEVEL1_EARLY_ROUTE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:5,[\s\S]*hpMult:0\.90,[\s\S]*damageMult:0\.65,[\s\S]*speedMult:0\.90,[\s\S]*attackCooldownMult:1\.35/,
     'the early route tuning is explicit and finite');
   assert.match(SOURCE, /_isEarlyNormalCombatRoom=activeDungeonId==='dungeon1'&&[\s\S]*depth>=2&&depth<=LEVEL1_EARLY_ROUTE_TUNING\.maxDepth[\s\S]*_entryRoomDef\.type===RT\.COMBAT&&!isElite;/,
     'the relief is limited to ordinary early D1 combat rooms');
   assert.match(SOURCE, /if\(_isEarlyNormalCombatRoom\)\{_hpScale\*=LEVEL1_EARLY_ROUTE_TUNING\.hpMult;_eDmgMult\*=LEVEL1_EARLY_ROUTE_TUNING\.damageMult;\}/,
     'early-room health and damage use the shared spawn path');
+});
+
+test('the first D1 mini-boss has a separate bounded onboarding budget', () => {
+  assert.match(SOURCE, /var LEVEL1_EARLY_MINIBOSS_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:6,[\s\S]*hpMult:0\.75,[\s\S]*damageMult:0\.60,[\s\S]*speedMult:0\.90,[\s\S]*attackCooldownMult:1\.25/,
+    'the early mini-boss relief is explicit and finite');
+  assert.match(SOURCE, /var _isEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&[\s\S]*getRoomDepth\(currentRoomId\)<=LEVEL1_EARLY_MINIBOSS_TUNING\.maxDepth;/,
+    'the relief is limited to the first Normal D1 mini-boss depth');
+  assert.match(SOURCE, /if\(_isEarlyD1MiniBoss\)\{_mbHp\*=LEVEL1_EARLY_MINIBOSS_TUNING\.hpMult;_mbDmg\*=LEVEL1_EARLY_MINIBOSS_TUNING\.damageMult;\}/,
+    'mini-boss health and damage use the shared spawn tuning');
+  assert.match(SOURCE, /if\(_isEarlyD1MiniBoss\)\{mb\.speed\*=LEVEL1_EARLY_MINIBOSS_TUNING\.speedMult;mb\.attackCooldown\*=LEVEL1_EARLY_MINIBOSS_TUNING\.attackCooldownMult;\}/,
+    'mini-boss movement and cadence are bounded without replacing its mechanics');
 });
 
 test('the modifier screen offers a calm standard expedition without removing authored modifiers', () => {

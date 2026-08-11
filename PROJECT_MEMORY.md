@@ -15,25 +15,22 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **118/118** tests, static build/package audit,
+- Current verified local gate: **120/120** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Latest deployed follow-up (2026-08-11 checkpoint): newly revealed
-  mobile melee enemies keep a bounded tangential arrival step for `4.2s` and
-  through the first-room read prompt, while the first two ordinary D1 rooms use
-  a finite onboarding health/damage/cadence budget. Joey's roster, attack math,
-  and stationary enemies are unchanged. A clean 600x768 route cleared the
-  opening room, a shrine, and an early three-enemy room while the player stayed
-  alive; loopback telemetry confirmed enemy coordinates changed during entry.
-- Latest milestone checkpoint: runtime commit `c6004be` is pushed to
+- Current local milestone delta (pending checkpoint): the first Normal D1
+  combat room now uses a bounded, data-driven approach lane
+  (`132/28/18/84/36` side offset, side step, jitter, forward offset, and
+  forward step). Joey's roster, attack math, later procedural placement, and
+  stationary enemies are unchanged. A clean 600x768 smoke reached the room and
+  showed enemy repositioning across two captures; the room clear remains open.
+  The release build carries PWA shell v11.
+- Previous deployed milestone: runtime commit `c6004be` is pushed to
   `origin/main` and the final build is deployed on 2026-08-11 to preview
   `6434f214` and the configured hostname; both production checks passed. The
   source/mirror hash is
   `A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112` and
-  the PWA shell is v10. A no-cheat 600x768 live smoke reached the first
-  Normal D1 combat room, showed enemies repositioning during the visible
-  read-and-respond prompt, and kept HP at 100/100 across two captures about
-  one second apart. The temporary profile was paused, finished, and deleted;
-  retained profiles were not changed.
+  the PWA shell is v10. The temporary profile was paused, finished, and
+  deleted; retained profiles were not changed.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
@@ -55,7 +52,6 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - A disposable Mage completed a managed 13-minute 600x768 tablet session with
   visible Move/Attack controls, target lock, step movement, D1-D2 rewards and
   bosses, all Fallen King phases, pause, and Finish and Return to Dashboard.
-  The disposable profile was deleted; retained profiles remain intact.
 - QA phase routing now dispatches the real custom fields for D2, D4-D12, and
   later corruption bosses. Managed Mage route coverage through D1-D12 and
   D4-D6 remains QA-assisted, not clean-player acceptance; browser diagnostics
@@ -78,16 +74,13 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   rapid smoke sequence and claim a clean clear only when enemies are defeated.
   Keep intro repositioning active as the damage guard, and keep the bounded
   arrival step active for the whole prompt so a newly entered room never reads
-  as a frozen sprite. The clean current-build route cleared a first room and
-  an early three-enemy room without the developer aid; do not count this as a
-  completed D1-D12 route.
+  as a frozen sprite. The latest clean smoke proved movement but did not clear
+  the room; do not count it as a completed D1-D12 route.
 - The invincibility aid is page-session state. `CQLI` is idempotent and always
   enables it; verify the visible `Invincibility enabled` banner before combat
   after each fresh page/run. A page reload resets the aid. Keep it outside
   saves, exports, native builds, and production.
 - Do not retry the same blocked surface without a material state change:
-  B-009, B-010, and B-011 are resolved for the current loopback/GitHub/Pages
-  checkpoint. Reopen only after a new failure or changed external target;
   physical-device, native-build, and owner approval gaps remain genuine.
 - Run `npm.cmd run qa:fast` before repeating long combat checks. The composite
   `release:verify` gate rebuilds and synchronizes generated web/native assets
@@ -99,9 +92,6 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - A failed method is not progress. After three materially identical technical
   failures, change strategy; never exceed five materially identical gameplay
   attempts. Continue an independent acceptance item when one surface is blocked.
-- GitHub and website checkpoints are for substantial, stable, user-visible
-  milestones only. Do not deploy isolated tests, wording, or architecture
-  housekeeping.
 
 ## Next-action rule
 
@@ -112,9 +102,8 @@ When a fact changes, edit or remove the old statement in place. Do not add a
    D1-D12 lane; otherwise move to the next independent acceptance item.
 3. Finish clean D1-D12 evidence, then inspect D13 for a bounded promotion
    milestone with route, save, reward, and return coverage.
-4. Stop cosmetic churn. One coherent verified delta is better than many small
-   status rewrites.
-
+ 4. Stop cosmetic churn. One coherent verified delta is better than many small
+    status rewrites.
 ## Update protocol
 
 - Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`,
