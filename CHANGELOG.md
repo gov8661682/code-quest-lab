@@ -1,26 +1,25 @@
 # Code Quest Lab - Changelog
 
-## Level 1 room-entry motion and early-route onboarding (2026-08-11; deployed checkpoint)
+## Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
 
-- Followed up on the room-entry motion report. Newly spawned mobile melee
-  enemies now use a bounded `4.2s` tangential arrival step from reveal, and
-  continue repositioning through the first Normal D1 read-and-respond prompt,
-  so a newly entered room does not read as a frozen sprite. The next two
-  ordinary D1 rooms also use a narrow Normal-only onboarding combat budget;
-  their authored roster, normal attack branch, later scaling, stationary enemy
-  behavior, and Joey's creative identities are unchanged. Loopback telemetry
-  confirmed enemy coordinates changing during entry, and a clean 600x768
-  route cleared the opening room plus an early three-enemy room while alive.
-  The new contracts are included in the **118/118** release gate. Commit
-  `c6004be` was pushed to `origin/main` and deployed to preview
-  `https://6434f214.code-quest-lab.pages.dev/` and the configured hostname
-  `https://code-quest-lab.gov8661682.com/`; both production checks passed.
-  A live 600x768 no-cheat smoke reached the first combat room and showed
-  enemies repositioning with HP at 100/100. The temporary test profile was
-  deleted after verification. Clean-player D1-D12 and physical/native-device
-  acceptance remain open.
+- Followed up on the room-entry report by moving the first Normal D1 melee
+  roster into a bounded, data-driven visible approach lane
+  (`132/28/18/84/36` side offset, side step, jitter, forward offset, and
+  forward step). This removes the pause-like appearance caused by spawning
+  inside attack range while preserving Joey's roster, attack math, later
+  procedural placement, and stationary enemies. The **120/120** release gate,
+  `qa:fast`, static package audit, and Android/iOS Capacitor sync pass.
+- Commit `0000f0d` was pushed to `origin/main` and deployed to preview
+  `https://ca1ac0fa.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`; both production checks passed. The
+  deployed source hash is
+  `E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E` and the
+  PWA shell is v11. A fresh no-aid 600x768 live smoke reached the first combat
+  room and showed enemy repositioning across two captures about half a second
+  apart; the temporary profile was deleted after the normal dashboard flow.
+  Clean-player D1-D12 and physical/native-device acceptance remain open.
 
-## Unreleased - 2026-08-10
+## Historical follow-up - 2026-08-10 (superseded by deployed checkpoint)
 
 - Followed up on the Level 1 web balance report after comparing the production
   enemy cadence with the regression model. The first Normal Dungeon 1 room now

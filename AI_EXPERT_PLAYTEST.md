@@ -9,6 +9,27 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
+## Follow-up: first-room approach lane - 2026-08-11
+
+The latest deployed smoke reproduced the reported visual pause only in the
+old opening placement: melee enemies could begin inside attack range, so their
+first visible state was an attack cadence rather than an approach. The fix
+keeps the first Normal D1 roster and combat math intact, but gives it a bounded
+data-driven approach lane (`132/28/18/84/36` side offset, side step, jitter,
+forward offset, and forward step). Later procedural placement and stationary
+enemy behavior are unchanged.
+
+The **120/120** release gate, `qa:fast`, package audit, Android/iOS sync, and
+both production checks passed. Runtime commit `0000f0d` was pushed to
+`origin/main` and deployed to preview
+`https://ca1ac0fa.code-quest-lab.pages.dev/` and the configured hostname
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E`, with PWA
+shell v11. A fresh no-aid 600x768 live smoke reached the first combat room;
+two captures about half a second apart showed enemy repositioning. The smoke
+did not clear the room, so clean-player D1-D12 and physical/native-device
+acceptance remain open.
+
 ## Level 1 balance regression, enemy motion, and release fix - 2026-08-10
 
 A fresh live Barbarian run on the pre-fix deployed shell exposed the user

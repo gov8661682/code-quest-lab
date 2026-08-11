@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Roadmap
 
-Updated: 2026-08-10
+Updated: 2026-08-11
 
 The numbered checkpoint sequence and evidence-backed progress report are
 canonical in `CHECKPOINTS.md` and `PROJECT_PROGRESS.md`. `CURRENT_CHECKPOINT.md`
@@ -73,6 +73,27 @@ layers, world-state model, save boundaries, and acceptance bar.
 This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
+
+### Current follow-up: Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
+
+- [x] Move only the first Normal D1 melee roster into a bounded, data-driven
+  visible approach lane (`132/28/18/84/36` side offset, side step, jitter,
+  forward offset, and forward step) so enemies do not appear frozen at melee
+  range on entry.
+- [x] Preserve Joey's authored roster, attack math, later procedural placement,
+  stationary enemies, and the separate early-route balance budget.
+- [x] Pass the **120/120** release gate, `qa:fast`, static package audit,
+  Android/iOS Capacitor sync, and both production checks.
+- [x] Push runtime commit `0000f0d` to `origin/main` and deploy the tested
+  build to preview `https://ca1ac0fa.code-quest-lab.pages.dev/` and the
+  configured hostname `https://code-quest-lab.gov8661682.com/`; source hash
+  `E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E`, PWA
+  shell v11.
+
+The no-aid 600x768 live smoke reached the first combat room and showed enemy
+repositioning across two captures about half a second apart. It is a movement
+fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
+**93%** / **19%**.
 
 ### Follow-up: Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 

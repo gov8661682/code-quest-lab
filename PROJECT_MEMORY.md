@@ -17,13 +17,17 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **120/120** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Current local milestone delta (pending checkpoint): the first Normal D1
+- Latest milestone checkpoint (2026-08-11): the first Normal D1
   combat room now uses a bounded, data-driven approach lane
   (`132/28/18/84/36` side offset, side step, jitter, forward offset, and
   forward step). Joey's roster, attack math, later procedural placement, and
   stationary enemies are unchanged. A clean 600x768 smoke reached the room and
   showed enemy repositioning across two captures; the room clear remains open.
-  The release build carries PWA shell v11.
+  Runtime commit `0000f0d` is pushed to `origin/main` and deployed to preview
+  `ca1ac0fa.code-quest-lab.pages.dev` and the configured hostname. The deployed
+  source hash is `E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E`;
+  the PWA shell is v11. The **120/120** release gate, `qa:fast`, package audit,
+  native sync, and both production checks passed.
 - Previous deployed milestone: runtime commit `c6004be` is pushed to
   `origin/main` and the final build is deployed on 2026-08-11 to preview
   `6434f214` and the configured hostname; both production checks passed. The

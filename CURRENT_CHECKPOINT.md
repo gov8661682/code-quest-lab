@@ -24,10 +24,26 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `c6004be` is pushed to `origin/main`; the tested build is deployed; the **118/118** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and the live tablet-sized first-room motion smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `0000f0d` is pushed to `origin/main`; the tested build is deployed; the **120/120** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and the live tablet-sized first-room motion smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-11)
+
+- The first Normal D1 room now places its opening melee enemies in a bounded,
+  data-driven visible approach lane (`132/28/18/84/36` side offset, side step,
+  jitter, forward offset, and forward step), fixing the pause-like appearance
+  caused by spawning inside attack range. Runtime commit `0000f0d` is pushed to
+  `origin/main` and deployed to preview
+  `https://ca1ac0fa.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+  `E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E` and the
+  PWA shell is v11. The **120/120** release gate, `qa:fast`, build/package
+  audit, Android/iOS sync, and both production checks pass. A fresh no-aid
+  600x768 live smoke reached the first combat room; two captures about half a
+  second apart showed enemy repositioning. The temporary profile was deleted
+  after the smoke. This confirms the entry-motion fix without claiming a
+  complete clean-player D1-D12 route, so the evidence score remains **93%** /
+  **19%**.
 
 - Level 1 room-entry motion and early-route onboarding is now a tested
   GitHub/Cloudflare checkpoint. Commit `c6004be` is pushed to

@@ -73,22 +73,21 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-11 Level 1 room-entry motion and early-route onboarding
-checkpoint was published from runtime commit `c6004be` to the configured
+The 2026-08-11 Level 1 room-entry approach-lane checkpoint was published from
+runtime commit `0000f0d` to the configured
 Cloudflare Pages project `code-quest-lab`. Preview:
-`https://6434f214.code-quest-lab.pages.dev/`; primary hostname:
+`https://ca1ac0fa.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112` and
-the deployed service-worker shell is v10.
+`E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E` and
+the deployed service-worker shell is v11.
 
 `npm.cmd run production:check` passed for both origins on 2026-08-11. A
-no-cheat 600x768 live browser smoke reached Town, the Forgotten Depths gate,
+no-aid 600x768 live browser smoke reached Town, the Forgotten Depths gate,
 Normal, Standard Expedition, and the first D1 combat room. Two captures about
-one second apart showed the enemies repositioning during the visible prompt
-while player HP stayed at 100/100. The run was paused and finished through the
-normal dashboard flow, and the temporary profile was deleted; retained
-profiles were not changed. This verifies the reported entry behavior and main
-web flow without claiming full D1-D12 completion.
+half a second apart showed the enemies repositioning during the visible prompt.
+The run was paused and finished through the normal dashboard flow, and the
+temporary profile was deleted. This verifies the reported entry behavior and
+main web flow without claiming full D1-D12 completion.
 
 The 2026-08-10 Level 1 opening-pressure and enemy-motion correction was
 published from runtime commits `1987310`, `a169c11`, and `fc7f738` to the
