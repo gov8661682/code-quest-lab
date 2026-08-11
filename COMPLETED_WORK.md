@@ -24,6 +24,32 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Dungeon 2 QA route and queued level-up clarity | A disposable Mage QA route completed Dungeon 2 Normal through the Fallen King and portal into The Shadow Realm Entrance; queued level-up cards now display their earned level and remaining choices; commit `9c451af`, 81-test release gate | Reopen only for a route regression, an upgrade overlay dead-end, or full D1-8 acceptance |
 | Elite pacing and queued attack input hardening | Local disposable Mage QA cleared the D2 two-elite Executioner's Court after the shared post-modifier health budget was applied, completed the three-phase Fallen King, and entered The Shadow Realm Entrance; touch and desktop attack taps now wait for cooldown readiness; two focused contracts pass | Reopen only for a fresh-room pacing regression, a discarded ready-intent report, or full D1-8 acceptance |
 
+## Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
+
+- Fixed the remaining pause-like entry behavior: mobile enemies receive a
+  short `1.35s` arrival-motion budget with bounded tangential drift, and that
+  timer is no longer extended by the opening read-and-respond prompt. The
+  prompt remains a damage grace state; it does not freeze or hold enemies in
+  an orbit.
+- Tuned only the first Normal D1 onboarding band: ordinary rooms through
+  depth 5, the first elite, and the first mini-boss each use explicit finite
+  health/damage/speed/cadence budgets and short response grace where needed.
+  Joey's named enemies, authored mechanics, later scaling, and stationary
+  enemies remain unchanged.
+- The source mirror, **121/121** release gate, fast QA, static package audit,
+  Android/iOS sync, and production checks passed. A clean local route cleared
+  the first combat room and reached the first mini-boss before ending. Live
+  600x768 tablet and 1024x768 desktop smokes reached the first combat room,
+  returned through the normal dashboard flow, and recorded no browser
+  diagnostics; disposable smoke profiles were deleted.
+- Commit `ae91268` was pushed to `origin/main` and deployed on 2026-08-11 to
+  preview `https://dfb05e32.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. Deployed source hash:
+  `ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094`; PWA
+  shell v11.
+- This is a release checkpoint, not completion of Checkpoint 1: clean-player
+  D1-D12 and physical/native-device acceptance remain open.
+
 ## Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
 
 - Fixed the reported pause-like appearance when entering the first Normal D1

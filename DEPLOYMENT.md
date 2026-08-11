@@ -73,6 +73,24 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The 2026-08-11 room-entry motion and early Normal D1 onboarding checkpoint
+was published from runtime commit `ae91268` to the configured Cloudflare
+Pages project `code-quest-lab`. Preview:
+`https://dfb05e32.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094` and the
+deployed service-worker shell is v11.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-11. A
+fresh live 600x768 tablet smoke reached Town, the Forgotten Depths gate,
+Normal, Standard Expedition, and the first D1 combat room, then returned
+through the normal dashboard flow. A fresh 1024x768 desktop smoke reached the
+same combat room and verified the desktop control surface. Browser warning and
+error diagnostics were empty, and both disposable smoke profiles were deleted.
+The local no-aid route cleared the first combat room and reached the first
+mini-boss before ending; this checkpoint does not claim a complete clean
+D1-D12 route.
+
 The 2026-08-11 Level 1 room-entry approach-lane checkpoint was published from
 runtime commit `0000f0d` to the configured
 Cloudflare Pages project `code-quest-lab`. Preview:

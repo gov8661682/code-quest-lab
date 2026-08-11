@@ -74,6 +74,29 @@ This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
 
+### Completed follow-up: room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
+
+- [x] Shorten mobile enemy arrival to a bounded `1.35s` visible step and
+  decouple it from the opening prompt so the prompt cannot make enemies appear
+  frozen.
+- [x] Keep Joey's authored roster, attack math, stationary-enemy behavior, and
+  later procedural scaling intact.
+- [x] Add finite Normal-only onboarding budgets for D1 ordinary depths through
+  5, the first elite, and the first mini-boss, with explicit response grace.
+- [x] Pass the **121/121** release gate, `qa:fast`, static package audit,
+  Android/iOS Capacitor sync, and both production checks.
+- [x] Push runtime commit `ae91268` to `origin/main` and deploy the tested
+  build to preview `https://dfb05e32.code-quest-lab.pages.dev/` and the
+  configured hostname `https://code-quest-lab.gov8661682.com/`; source hash
+  `ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094`, PWA
+  shell v11.
+
+Live tablet and desktop smokes reached the first combat room and returned
+through the dashboard without browser diagnostics. A clean local route cleared
+the first room and reached the first mini-boss before ending; this milestone
+does not close the clean-player D1-D12 or physical-device evidence lanes. The
+score remains **93%** / **19%**.
+
 ### Current follow-up: Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
 
 - [x] Move only the first Normal D1 melee roster into a bounded, data-driven

@@ -13,21 +13,23 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-11 progress delta
 
-The room-entry motion report is resolved and checkpointed in runtime commit
-`0000f0d`, pushed to `origin/main`, and deployed to Cloudflare Pages at
-`https://ca1ac0fa.code-quest-lab.pages.dev/` and
+The room-entry motion report and the next early-route pressure findings are
+resolved and checkpointed in runtime commit `ae91268`, pushed to `origin/main`,
+and deployed to Cloudflare Pages at
+`https://dfb05e32.code-quest-lab.pages.dev/` and
 `https://code-quest-lab.gov8661682.com/`. The tested build has source hash
-`E60F8F1D603A4F8FEE74715DE66A7ED04AE0325B4B7C715DF49E90338B33B56E` and
-PWA shell v11. The first Normal D1 melee roster now uses a bounded,
-data-driven visible approach lane (`132/28/18/84/36` side offset, side step,
-jitter, forward offset, and forward step), while ordinary D1 depths 2-3 keep
-their finite Normal-only onboarding budget. The **120/120** gate, `qa:fast`,
-build/package audit, Capacitor sync, both production checks, and live
-600x768 first-room smoke pass. The fresh live route reached Town, the gate,
-Normal, Standard Expedition, and combat; captures showed enemy repositioning
-with no developer aid. The temporary profile was deleted after the check. The
-score remains **93%** / **19%** because clean-player D1-12 and physical/device
-acceptance are still open; the smoke did not claim a room clear.
+`ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094` and PWA
+shell v11. The first Normal D1 melee roster retains its bounded approach lane
+(`132/28/18/84/36`), while mobile enemies now use a brief `1.35s` arrival
+window whose visible drift is independent of the opening prompt. Normal D1
+ordinary rooms through depth 5 and the first elite receive finite, Normal-only
+onboarding budgets and grace windows; Joey's authored roster and mechanics
+remain intact. The **121/121** gate, `qa:fast`, build/package audit,
+Capacitor sync, both production checks, and live 600x768/1024x768 main-flow
+smokes pass with no browser diagnostics. A clean local route cleared the first
+room and reached the first mini-boss before ending. The score remains **93%** /
+**19%** because clean-player D1-12 and physical/device acceptance are still
+open.
 
 ## Latest 2026-08-10 progress delta
 

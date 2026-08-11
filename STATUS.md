@@ -3,6 +3,32 @@
 Date: 2026-08-11
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
+
+The reported pause-like monster behavior is corrected in runtime commit
+`ae91268`, pushed to `origin/main` and deployed to the existing Cloudflare
+Pages project. Preview: `https://dfb05e32.code-quest-lab.pages.dev/`; configured
+hostname: `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094` and the
+PWA shell is v11.
+
+Mobile enemies now receive a brief bounded arrival step (`1.35s`, with a
+visible tangential drift) that ends independently of the 10-second opening
+prompt. The prompt still provides damage grace, but no longer holds an orbit
+that can make enemies look frozen. Normal D1 ordinary rooms through depth 5,
+the first elite, and the first mini-boss use separate finite onboarding
+budgets. Joey's roster, authored mechanics, later scaling, and stationary
+enemies remain intact.
+
+The **121/121** release gate, `qa:fast`, static package audit, Android/iOS
+Capacitor sync, and both production checks passed. A fresh local no-aid route
+cleared the first combat room and reached the first mini-boss before ending.
+Live 600x768 tablet and 1024x768 desktop smokes reached the first combat room
+through the normal flow, returned safely through the dashboard, and recorded
+no browser warning/error diagnostics. The score remains **93% active
+checkpoint / 19% overall** because clean-player D1-D12 and physical/native
+device evidence remain open.
+
 ## Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
 
 The reported room-entry freeze is corrected in commit `0000f0d`, pushed to

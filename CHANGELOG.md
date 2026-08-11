@@ -1,5 +1,27 @@
 # Code Quest Lab - Changelog
 
+# Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
+
+- Fixed the pause-like monster entry behavior by giving mobile enemies a
+  short bounded `1.35s` arrival step with visible tangential drift. The arrival
+  timer now ends independently of the opening read-and-respond prompt, so the
+  prompt remains a damage grace state without holding enemies in an orbit.
+- Added finite Normal-only onboarding budgets for early D1 ordinary rooms,
+  the first elite, and the first mini-boss. Joey's enemy identities, authored
+  mechanics, stationary enemies, later scaling, and optional modifiers remain
+  intact.
+- Passed the **121/121** release gate, fast QA, static package audit,
+  Android/iOS Capacitor sync, and both production checks. Live 600x768 tablet
+  and 1024x768 desktop smokes reached the first combat room and returned
+  through the normal dashboard flow with no browser diagnostics. A clean local
+  route cleared the first room and reached the first mini-boss before ending.
+- Runtime commit `ae91268` was pushed to `origin/main` and deployed to preview
+  `https://dfb05e32.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. Source hash:
+  `ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094`; PWA
+  shell v11. Clean-player D1-D12 and physical/native-device acceptance remain
+  open.
+
 ## Level 1 room-entry approach lane (2026-08-11; deployed checkpoint)
 
 - Followed up on the room-entry report by moving the first Normal D1 melee
