@@ -26600,12 +26600,17 @@ function ensureDeveloperQAOverlay(){
 function developerQaSnapshot(){
   var def=typeof ROOM_DEFS!=='undefined'&&ROOM_DEFS?ROOM_DEFS[currentRoomId]:null;
   var currentBoss=typeof boss!=='undefined'?boss:null;
+  var currentPlayer=typeof player!=='undefined'?player:null;
+  var enemyTrace=typeof enemies!=='undefined'?enemies.slice(0,2).map(function(e){return e.kind+':'+Math.round(e.x)+','+Math.round(e.y)+'/'+Math.max(0,e.entryMotionTimer||0).toFixed(1);}).join('  '):'-';
   return 'DEV QA  x'+developerQATimeScale+
     '  DMG '+(developerQAHighDamageEnabled?'HIGH':'normal')+
     '  ENEMIES '+(developerQAEnemyFreeEnabled?'OFF':'on')+'\n'+
     (typeof activeDungeonId!=='undefined'?activeDungeonId:'-')+' / '+
     (typeof currentRoomId!=='undefined'?currentRoomId:'-')+'\n'+
-    'enemies '+(typeof enemies!=='undefined'?enemies.length:0)+
+    'hp '+(currentPlayer?Math.round(currentPlayer.hp)+'/'+Math.round(currentPlayer.hpMax):'-')+
+    '  intro '+(typeof combatIntroTimer!=='undefined'?combatIntroTimer.toFixed(1):'-')+
+    '  inv '+(typeof playerInvulnTimer!=='undefined'?playerInvulnTimer.toFixed(1):'-')+'\n'+
+    'enemies '+(typeof enemies!=='undefined'?enemies.length:0)+'  '+enemyTrace+'\n'+
     '  boss '+(currentBoss?getBossDisplayName(def,currentBoss)+' P'+(bossPhase||1):'none');
 }
 function updateDeveloperQAOverlay(dt){
@@ -29004,6 +29009,17 @@ var LEVEL1_OPENING_TUNING=Object.freeze({
   attackCooldownMult:1.80,
   graceSeconds:COMBAT_INTRO_DURATION
 });
+// The next two ordinary D1 combat rooms are the player's first real loop:
+// move, attack, read the target, and reach the exit. Keep the same authored
+// warrior/zombie/ghost/archer roster, but ease only this short onboarding band
+// so a new web player is not erased immediately after the opening grace ends.
+var LEVEL1_EARLY_ROUTE_TUNING=Object.freeze({
+  maxDepth:3,
+  hpMult:0.90,
+  damageMult:0.65,
+  speedMult:0.90,
+  attackCooldownMult:1.35
+});
 function updateCombatIntro(dt){
   if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
 }
@@ -29956,8 +29972,13 @@ function spawnEnemyByKind(kind,geo,depth,isElite){
   // the only room that gets this onboarding adjustment; later rooms retain
   // their authored depth and difficulty scaling.
   if(_isOpeningCombatRoom){_hpScale*=LEVEL1_OPENING_TUNING.hpMult;_eDmgMult*=LEVEL1_OPENING_TUNING.damageMult;}
-  var _openingEnemySpeedMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.speedMult:1.0;
-  var _openingEnemyAttackCooldownMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.attackCooldownMult:1.0;
+  var _entryRoomDef=ROOM_DEFS&&ROOM_DEFS[currentRoomId];
+  var _isEarlyNormalCombatRoom=activeDungeonId==='dungeon1'&&
+    getActiveDifficulty().id==='normal'&&depth>=2&&depth<=LEVEL1_EARLY_ROUTE_TUNING.maxDepth&&
+    _entryRoomDef&&_entryRoomDef.type===RT.COMBAT&&!isElite;
+  if(_isEarlyNormalCombatRoom){_hpScale*=LEVEL1_EARLY_ROUTE_TUNING.hpMult;_eDmgMult*=LEVEL1_EARLY_ROUTE_TUNING.damageMult;}
+  var _openingEnemySpeedMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.speedMult:(_isEarlyNormalCombatRoom?LEVEL1_EARLY_ROUTE_TUNING.speedMult:1.0);
+  var _openingEnemyAttackCooldownMult=_isOpeningCombatRoom?LEVEL1_OPENING_TUNING.attackCooldownMult:(_isEarlyNormalCombatRoom?LEVEL1_EARLY_ROUTE_TUNING.attackCooldownMult:1.0);
   if(_isFirstCombatRoom){
     var _firstCombatSlot=enemies.length+cursedLibrarians.length;
     var _firstCombatSide=_firstCombatSlot%2===0?-1:1;
@@ -29984,7 +30005,12 @@ var eliteRadius=isElite?Math.round(def.radius*1.3):def.radius;
     preferredDist:def.preferredDist||0,
     xpGain:xpGain,soulGain:soulGain,mxpGain:mxpGain,
     rangedTimer:0,isElite:isElite||false,eliteGlow:0,
-    projectileSpeed:def.projectileSpeed||280};
+    projectileSpeed:def.projectileSpeed||280,
+    // Give newly revealed mobile enemies a short, bounded arrival motion. This
+    // prevents a melee enemy that reaches attack range during a room banner
+    // from reading as a frozen sprite, without changing its chase speed,
+    // attack range, damage, or authored stationary-enemy behavior.
+    entryMotionTimer:def.speed>0?4.2:0,entryMotionSign:Math.random()<0.5?-1:1};
   // Dungeon 2 enemy runtime fields (no effect on Dungeon 1 kinds)
   if(def.isChargerKind){
     spawned.isChargerKind=true;spawned.chargeRange=def.chargeRange||160;
@@ -42118,6 +42144,23 @@ function updateEnemies(dt,geo){
       // but may still attack if the player is already within their attack range.
       var _druidRooted=(e._rootedTimer>0);
       var _caSpdMult=getEnemySpeedMult(e);
+      // A newly revealed melee enemy can otherwise stop the instant it
+      // reaches attack range. Keep a small tangential step through its bounded
+      // arrival window (and through the opening read-and-respond prompt) so
+      // entering a room remains readable and lively instead of looking frozen;
+      // the normal melee branch still runs in the same frame, so this is not a
+      // hidden stun or damage grace period.
+      if(e.entryMotionTimer===undefined)e.entryMotionTimer=e.speed>0?1.8:0;
+      var _entryMotionActive=e.speed>0&&!e.ranged&&!_druidRooted&&dist>0&&
+        (e.entryMotionTimer>0||combatIntroTimer>0);
+      if(e.entryMotionTimer>0)e.entryMotionTimer=Math.max(0,e.entryMotionTimer-dt);
+      if(_entryMotionActive){
+        var _entrySign=e.entryMotionSign||1;
+        var _entryDrift=clamp(Math.max(30,e.speed*0.45),30,72)*_entrySign;
+        e.x+=(-dy/dist)*_entryDrift*dt;e.y+=(dx/dist)*_entryDrift*dt;
+        e.x=clamp(e.x,geo.inner.x+e.radius,geo.inner.x+geo.inner.w-e.radius);
+        e.y=clamp(e.y,geo.inner.y+e.radius,geo.inner.y+geo.inner.h-e.radius);
+      }
       if(e.ranged){
         var pdist=e.preferredDist||200;
         if(!_druidRooted){

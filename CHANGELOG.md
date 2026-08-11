@@ -1,5 +1,19 @@
 # Code Quest Lab - Changelog
 
+## Unreleased - 2026-08-11
+
+- Followed up on the room-entry motion report. Newly spawned mobile melee
+  enemies now use a bounded `4.2s` tangential arrival step from reveal, and
+  continue repositioning through the first Normal D1 read-and-respond prompt,
+  so a newly entered room does not read as a frozen sprite. The next two
+  ordinary D1 rooms also use a narrow Normal-only onboarding combat budget;
+  their authored roster, normal attack branch, later scaling, stationary enemy
+  behavior, and Joey's creative identities are unchanged. Loopback telemetry
+  confirmed enemy coordinates changing during entry, and a clean 600x768
+  route cleared the opening room plus an early three-enemy room while alive.
+  The new contracts are included in the **118/118** local release gate. This is
+  local/unreleased until the next substantial deployment checkpoint.
+
 ## Unreleased - 2026-08-10
 
 - Followed up on the Level 1 web balance report after comparing the production
