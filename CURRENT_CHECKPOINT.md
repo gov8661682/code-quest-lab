@@ -1,6 +1,6 @@
 # Code Quest Lab - Current Checkpoint
 
-Updated: 2026-08-10
+Updated: 2026-08-11
 
 ## Current checkpoint
 
@@ -14,7 +14,7 @@ Active checkpoint completion: **93%**
 
 Overall project completion: **19%**
 
-Scoring date: 2026-08-10. Overall progress is rounded from one completed
+Scoring date: 2026-08-11. Overall progress is rounded from one completed
 checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
@@ -24,10 +24,25 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commits `1987310`, `a169c11`, and `fc7f738` are pushed to `origin/main`; the latest build is deployed; the **116/116** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, the earlier live Level 1 room-clear smoke, and the latest live moving-enemy/HP smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `c6004be` is pushed to `origin/main`; the tested build is deployed; the **118/118** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and the live tablet-sized first-room motion smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
-### Latest evidence update (2026-08-10)
+### Latest evidence update (2026-08-11)
+
+- Level 1 room-entry motion and early-route onboarding is now a tested
+  GitHub/Cloudflare checkpoint. Commit `c6004be` is pushed to
+  `origin/main` and deployed on 2026-08-11 to preview
+  `https://6434f214.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+  `A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112`;
+  the PWA shell remains v10. The **118/118** release gate, `qa:fast`,
+  build/package audit, Android/iOS sync, and both production checks pass.
+  A fresh no-cheat Mage reached the first Normal D1 combat room at a 600x768
+  tablet-sized live surface; two captures about one second apart showed the
+  enemies repositioning while player HP remained 100/100. The temporary live
+  profile was paused, finished, and deleted after the smoke. This confirms
+  the reported room-entry behavior is corrected without claiming a complete
+  clean-player D1-D12 route, so the evidence score remains **93%** / **19%**.
 
 - The opening-enemy behavior is now checkpointed in runtime commits `1987310`
   (enemies reposition during the opening prompt), `a169c11` (PWA cache v10),

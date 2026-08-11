@@ -1,7 +1,29 @@
 # Code Quest Lab - Status
 
-Date: 2026-08-10
+Date: 2026-08-11
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
+
+## Level 1 room-entry motion and early-route onboarding (2026-08-11; deployed checkpoint)
+
+The reported room-entry freeze is corrected in commit `c6004be`, pushed to
+`origin/main` and deployed to the existing Cloudflare Pages project.
+Preview: `https://6434f214.code-quest-lab.pages.dev/`; configured hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112` and
+the PWA shell is v10.
+
+Newly revealed mobile melee enemies get a bounded tangential arrival step
+through the first-room read prompt, while ordinary D1 depths 2-3 receive a
+narrow Normal-only onboarding health/damage/speed/cadence budget. Ranged and
+stationary enemies, authored rosters, later scaling, and the normal attack
+branch remain unchanged. The **118/118** release gate, `qa:fast`, static
+package audit, Android/iOS Capacitor sync, and both production checks passed.
+A no-cheat live Mage smoke at 600x768 reached Town, the Forgotten Depths,
+Normal, Standard Expedition, and the first combat room; captures about one
+second apart showed enemy repositioning with HP at 100/100. The temporary
+profile was paused, finished, and deleted afterward. This milestone does not
+increase the evidence score: it remains **93% active checkpoint / 19% overall**
+until clean-player full-route and physical/native-device evidence advances.
 
 ## Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 

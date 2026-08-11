@@ -1,6 +1,6 @@
 # Code Quest Lab - Completed Work Ledger
 
-Updated: 2026-08-10
+Updated: 2026-08-11
 
 This is the canonical record of work that should not be repeated. Reopen an
 item only for a failing test, confirmed regression, changed dependency, or a
@@ -23,6 +23,27 @@ documented acceptance-criterion failure. Optional improvements belong in
 | Boss dead-summon handoff | Boss-room progress counts live summons, discards dead summon objects after boss defeat, reopens the exit, and clears stale `CLEAR SUMMONS` text; the focused contract is part of the 80-test release gate | Reopen only if a defeated boss room remains locked or displays stale summon status |
 | Dungeon 2 QA route and queued level-up clarity | A disposable Mage QA route completed Dungeon 2 Normal through the Fallen King and portal into The Shadow Realm Entrance; queued level-up cards now display their earned level and remaining choices; commit `9c451af`, 81-test release gate | Reopen only for a route regression, an upgrade overlay dead-end, or full D1-8 acceptance |
 | Elite pacing and queued attack input hardening | Local disposable Mage QA cleared the D2 two-elite Executioner's Court after the shared post-modifier health budget was applied, completed the three-phase Fallen King, and entered The Shadow Realm Entrance; touch and desktop attack taps now wait for cooldown readiness; two focused contracts pass | Reopen only for a fresh-room pacing regression, a discarded ready-intent report, or full D1-8 acceptance |
+
+## Level 1 room-entry motion and early-route onboarding (2026-08-11; deployed checkpoint)
+
+- Fixed the reported pause-like appearance when entering a room with monsters:
+  newly revealed mobile melee enemies now take a bounded tangential arrival step
+  from reveal through the opening read prompt.
+- Added a narrow, data-defined Normal-only onboarding budget for ordinary D1
+  combat depths 2-3. The existing authored enemy roster, ranged/stationary
+  behavior, later scaling, and normal combat branch are preserved.
+- Added loopback-only QA telemetry for player HP, intro/invulnerability timers,
+  and the first enemy coordinates. The public/native build has no developer
+  activation or save/export field.
+- The exact source mirror, **118/118** release gate, fast QA, static package
+  audit, Android/iOS sync, and production build passed.
+- Commit `c6004be` was pushed to `origin/main` and deployed on 2026-08-11
+  to preview `https://6434f214.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. Live 600x768 smoke reached the
+  first combat room; two captures showed enemies moving while HP stayed
+  100/100. The temporary test profile was deleted after verification.
+- This is a release checkpoint, not completion of Checkpoint 1: clean-player
+  D1-D12 and physical/native-device acceptance remain open.
 
 ## Completed web milestone (2026-08-10; deployed)
 

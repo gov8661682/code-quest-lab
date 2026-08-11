@@ -17,22 +17,23 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **118/118** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Latest local follow-up (not yet a deployment checkpoint): newly revealed
+- Latest deployed follow-up (2026-08-11 checkpoint): newly revealed
   mobile melee enemies keep a bounded tangential arrival step for `4.2s` and
   through the first-room read prompt, while the first two ordinary D1 rooms use
   a finite onboarding health/damage/cadence budget. Joey's roster, attack math,
   and stationary enemies are unchanged. A clean 600x768 route cleared the
   opening room, a shrine, and an early three-enemy room while the player stayed
   alive; loopback telemetry confirmed enemy coordinates changed during entry.
-- Latest milestone checkpoint: runtime commits `1987310`, `a169c11`, and
-  `fc7f738` are pushed to `origin/main` and the final build is deployed on
-  2026-08-10 to preview `bad086fb` and the configured hostname; both
-  production checks passed. The source/mirror hash is
-  `FF72502DB480DF89225A7335E68574DD983C75C08DC4077E2F223A1CC35AEDC4` and
-  the PWA shell is v10. Cache-busted live smoke reached the first Normal D1
-  combat room with two enemies, showed them repositioning during the visible
-  read-and-respond prompt, and kept HP at 100% across a 1.8-second interval;
-  diagnostics were empty.
+- Latest milestone checkpoint: runtime commit `c6004be` is pushed to
+  `origin/main` and the final build is deployed on 2026-08-11 to preview
+  `6434f214` and the configured hostname; both production checks passed. The
+  source/mirror hash is
+  `A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112` and
+  the PWA shell is v10. A no-cheat 600x768 live smoke reached the first
+  Normal D1 combat room, showed enemies repositioning during the visible
+  read-and-respond prompt, and kept HP at 100/100 across two captures about
+  one second apart. The temporary profile was paused, finished, and deleted;
+  retained profiles were not changed.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored

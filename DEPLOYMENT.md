@@ -1,6 +1,6 @@
 # Code Quest Lab - Web Deployment Package
 
-Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-10)
+Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-11)
 
 ## Intended deployment
 
@@ -72,6 +72,23 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 ```
 
 ## Current production audit
+
+The 2026-08-11 Level 1 room-entry motion and early-route onboarding
+checkpoint was published from runtime commit `c6004be` to the configured
+Cloudflare Pages project `code-quest-lab`. Preview:
+`https://6434f214.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`A21333514999991BAE0725648B8CD018FB0B79EE2151570EB61419D25FD83112` and
+the deployed service-worker shell is v10.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-11. A
+no-cheat 600x768 live browser smoke reached Town, the Forgotten Depths gate,
+Normal, Standard Expedition, and the first D1 combat room. Two captures about
+one second apart showed the enemies repositioning during the visible prompt
+while player HP stayed at 100/100. The run was paused and finished through the
+normal dashboard flow, and the temporary profile was deleted; retained
+profiles were not changed. This verifies the reported entry behavior and main
+web flow without claiming full D1-D12 completion.
 
 The 2026-08-10 Level 1 opening-pressure and enemy-motion correction was
 published from runtime commits `1987310`, `a169c11`, and `fc7f738` to the

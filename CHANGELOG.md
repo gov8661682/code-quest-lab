@@ -1,6 +1,6 @@
 # Code Quest Lab - Changelog
 
-## Unreleased - 2026-08-11
+## Level 1 room-entry motion and early-route onboarding (2026-08-11; deployed checkpoint)
 
 - Followed up on the room-entry motion report. Newly spawned mobile melee
   enemies now use a bounded `4.2s` tangential arrival step from reveal, and
@@ -11,8 +11,14 @@
   behavior, and Joey's creative identities are unchanged. Loopback telemetry
   confirmed enemy coordinates changing during entry, and a clean 600x768
   route cleared the opening room plus an early three-enemy room while alive.
-  The new contracts are included in the **118/118** local release gate. This is
-  local/unreleased until the next substantial deployment checkpoint.
+  The new contracts are included in the **118/118** release gate. Commit
+  `c6004be` was pushed to `origin/main` and deployed to preview
+  `https://6434f214.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`; both production checks passed.
+  A live 600x768 no-cheat smoke reached the first combat room and showed
+  enemies repositioning with HP at 100/100. The temporary test profile was
+  deleted after verification. Clean-player D1-D12 and physical/native-device
+  acceptance remain open.
 
 ## Unreleased - 2026-08-10
 
