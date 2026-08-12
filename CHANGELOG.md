@@ -9,6 +9,9 @@
 - Runtime `3cce0e0` is pushed with source hash
   `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`;
   `release:verify` passes **142/142** and `qa:fast` clears all 11 finales.
+- A fresh managed-browser smoke at 1280x720, 1024x768, and 600x800 matched
+  canvas dimensions and captured no warnings/errors; this is not device
+  acceptance.
 - This is local compatibility hardening, not a website checkpoint or score
   change; the deployed runtime remains `b5d701e`.
 

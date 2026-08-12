@@ -16,6 +16,9 @@ documented acceptance-criterion failure. Optional improvements belong in
   `release:verify` (**142/142**), and all-11-finale `qa:fast` pass. Runtime
   `3cce0e0` is pushed with source hash
   `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+- A fresh managed-browser smoke covered 1280x720, 1024x768, and 600x800 with
+  matching canvas dimensions and empty browser diagnostics; it does not claim
+  physical-device or touch-only acceptance.
 - This is minor local tablet compatibility hardening, not a deployment
   checkpoint or evidence-score change; physical/device acceptance remains open.
 

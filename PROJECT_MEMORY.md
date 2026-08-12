@@ -29,6 +29,7 @@ or cumulative session transcript.
 - Current local QA follow-up (2026-08-12): touch joysticks tolerate absent or
   rejected Pointer Capture, and window/visual-viewport changes share active-
   world reflow; source/mirror, native sync, and the local gate **142/142** pass.
+  A fresh managed-browser 1280x720 -> 1024x768 -> 600x800 smoke matched canvas sizes with no warnings/errors; it is not device evidence.
   The released-route World Atlas remains contract-tested over Town, `REGION_ORDER`,
   `worldLocation`, waypoints, and unlock state with no new region/save field.
   D13 stays gated behind its future-content contracts and outside the atlas;

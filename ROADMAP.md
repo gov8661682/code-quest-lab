@@ -112,6 +112,8 @@ owner-run device acceptance packet.
   `qa:fast`, package audit, and Capacitor synchronization.
 - [x] Push runtime `3cce0e0` with source/mirror hash
   `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+- [x] Record a fresh managed-browser smoke across 1280x720, 1024x768, and
+  600x800 with matching canvas dimensions and empty browser diagnostics.
 
 This is local tablet/orientation hardening rather than a major deployment
 checkpoint. It does not change the **93%** / **19%** score or replace the

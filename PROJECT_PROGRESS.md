@@ -23,6 +23,12 @@ local `release:verify` gate is **142/142** and `qa:fast` still clears all 11
 released finales. It is local tablet release-readiness hardening, not a
 deployment or score change; the deployed runtime remains `b5d701e`.
 
+A fresh managed-browser smoke resized the current build through 1280x720,
+1024x768, and 600x800; canvas dimensions matched each viewport, touch-oriented
+controls remained visible, and no browser warnings/errors were captured. This
+strengthens responsive browser evidence only; it is not physical-device,
+touch-only, or full-route acceptance.
+
 The player-following guidance checkpoint is now deployed: `TO DEPTHS`, `TO
 GATE`, and `NEXT ROOM` arrows stay anchored to the character and point toward
 the next destination, with no gate-mounted pulsing arrow. The first Normal D1

@@ -45,6 +45,15 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   compatibility hardening; the deployed runtime remains `b5d701e` and the
   score remains **93% / 19%**.
 
+## Responsive viewport smoke (2026-08-12; managed browser)
+
+- A fresh local profile on runtime `3cce0e0` was checked at 1280x720, 1024x768,
+  and 600x800. The canvas matched each viewport, tablet/touch controls remained
+  visible, and temporary viewport overrides were reset afterward.
+- The managed-browser console had no warnings or errors. This is responsive
+  browser evidence only; it is not physical-device, touch-only, or full-route
+  acceptance and does not change the **93% / 19%** score.
+
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
 - The first Normal D1 combat banner now adapts to the input surface: touch-first

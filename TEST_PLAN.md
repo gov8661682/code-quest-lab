@@ -27,6 +27,10 @@ Updated: 2026-08-12
   compatibility fix, not a major website checkpoint.
 - Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
+- A fresh managed-browser viewport smoke on `3cce0e0` covered 1280x720,
+  1024x768, and 600x800; canvas dimensions matched each viewport, touch
+  controls remained visible, and no warnings/errors were captured. This is not
+  physical-device, touch-only, or full-route evidence.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser
   smoke, not by clean-player/device acceptance.
