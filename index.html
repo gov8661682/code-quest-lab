@@ -42951,11 +42951,13 @@ function drawOffscreenEnemyIndicators(){
 
 // Town and dungeon entrances are intentionally free-roaming. Keep the next
 // physical destination discoverable without pinning a marker to the gate: the
-// guide is rendered in screen space beside the player and rotates toward the
-// gate while the player walks. The minimap remains the detailed map.
-function drawTownPortalIndicator(){
-  if(!gameRunning)return;
-  var geo=getRoomGeometry(),target=null,label='';
+// guide is rendered in world space beside the player and rotates toward the
+// gate while the player walks. Rendering in the same camera pass as the player
+// means it follows the character instead of becoming an edge marker. The
+// minimap remains the detailed map.
+function drawPlayerFollowingPortalGuide(geo){
+  if(!gameRunning||!geo)return;
+  var target=null,label='';
   if(activeDungeonId==='town'){
     var townLayout=getTownLayout(geo);
     target=townLayout&&townLayout.portalArea;label='TO DEPTHS';
@@ -42969,17 +42971,16 @@ function drawTownPortalIndicator(){
   if(Math.hypot(dx,dy)<=targetRadius+(player.radius||18)+18)return;
   if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
   var angle=Math.atan2(dy,dx);
-  var _shakeX=Number(window._lastFrameShakeX)||0,_shakeY=Number(window._lastFrameShakeY)||0;
-  var playerScreenX=player.x-camera.x+_shakeX,playerScreenY=player.y-camera.y+_shakeY;
-  var arrowX=clamp(playerScreenX,38,canvas.width-38);
-  var arrowY=clamp(playerScreenY-(player.radius||18)-32,96,canvas.height-42);
+  var placeAbove=player.y>geo.inner.y+96;
+  var arrowX=player.x,arrowY=placeAbove?player.y-(player.radius||18)-34:player.y+(player.radius||18)+34;
+  var labelY=placeAbove?-24:24;
   // Constant visibility is deliberate: this is a directional companion to
   // the player, not a pulsing callout sitting on the gate.
-  ctx.save();ctx.translate(arrowX,arrowY);ctx.rotate(angle);ctx.globalAlpha=0.96;ctx.shadowColor='rgba(200,168,248,0.85)';ctx.shadowBlur=8;
+  ctx.save();ctx.translate(arrowX,arrowY);ctx.rotate(angle);ctx.globalAlpha=0.98;ctx.shadowColor='rgba(200,168,248,0.85)';ctx.shadowBlur=8;
   ctx.fillStyle='rgba(42,24,62,0.9)';ctx.strokeStyle='#e0c8ff';ctx.lineWidth=2;
-  ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(5,-10);ctx.lineTo(5,-4);ctx.lineTo(-12,-4);ctx.lineTo(-12,4);ctx.lineTo(5,4);ctx.lineTo(5,10);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(18,0);ctx.lineTo(5,-11);ctx.lineTo(5,-4);ctx.lineTo(-15,-4);ctx.lineTo(-15,4);ctx.lineTo(5,4);ctx.lineTo(5,11);ctx.closePath();ctx.fill();ctx.stroke();
   ctx.restore();
-  ctx.save();ctx.translate(arrowX,arrowY);ctx.fillStyle='rgba(224,200,255,0.96)';ctx.font='bold 10px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(label,0,24);ctx.restore();
+  ctx.save();ctx.translate(arrowX,arrowY);ctx.fillStyle='rgba(224,200,255,0.96)';ctx.font='bold 10px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(label,0,labelY);ctx.restore();
 }
 
 // After a combat room is cleared, keep the next destination readable without
@@ -43141,11 +43142,10 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawMageProjectiles();drawMageEffects();
   drawDruidVineZones();drawDruidStorm();drawDruidSummons();drawDruidRavens();drawRogueEffects();
   drawLbsDebris();
-  drawPlayer();drawForwardExitGuide(geo,ROOM_DEFS[currentRoomId]);drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
+  drawPlayer();drawPlayerFollowingPortalGuide(geo);drawForwardExitGuide(geo,ROOM_DEFS[currentRoomId]);drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
   drawOffscreenEnemyIndicators();
-  drawTownPortalIndicator();
   // HUD elements drawn in screen space (no camera offset)
   drawXPBarCanvas();
   // Blighted Raven blind debuff — dark vignette closing in around the edges

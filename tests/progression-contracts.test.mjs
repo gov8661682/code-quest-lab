@@ -163,9 +163,10 @@ test('entrance objectives resolve from the underlying dungeon definition', () =>
 });
 
 test('Town and dungeon entrances keep their physical gate discoverable with a player-following guide', () => {
-  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?activeDungeonId===\'town\'[\s\S]*?portalArea/);
-  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?isEntranceZone\(activeDungeonId\)[\s\S]*?target=entranceLayout&&entranceLayout\.gate[\s\S]*?player\.x-camera\.x[\s\S]*?ctx\.translate\(arrowX,arrowY\);ctx\.rotate\(angle\)/, 'the hub guide follows the character and points at the gate');
-  assert.match(SOURCE, /drawOffscreenEnemyIndicators\(\);\s*drawTownPortalIndicator\(\);/);
+  assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?activeDungeonId===\'town\'[\s\S]*?portalArea/);
+  assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?isEntranceZone\(activeDungeonId\)[\s\S]*?target=entranceLayout&&entranceLayout\.gate[\s\S]*?var arrowX=player\.x,arrowY=[\s\S]*?ctx\.translate\(arrowX,arrowY\);ctx\.rotate\(angle\)/, 'the hub guide follows the character and points at the gate');
+  assert.match(SOURCE, /drawPlayer\(\);drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the hub guide is rendered in the player camera pass');
+  assert.doesNotMatch(SOURCE, /drawTownPortalIndicator\(/, 'the previous edge-marker implementation is not retained');
 });
 
 test('Town gives the first destination a physical world breadcrumb', () => {
