@@ -80,8 +80,12 @@ runtime commit `7b961b9` to the configured Cloudflare Pages project
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
 `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
 
-The complete release gate passed with **139/139** tests, deterministic
-`qa:fast`, static package audit, and Android/iOS Capacitor synchronization.
+The deployed milestone's complete release gate passed with **139/139** tests,
+deterministic `qa:fast`, static package audit, and Android/iOS Capacitor
+synchronization. The current local QA runtime is one controlled follow-up
+commit ahead at `b5d701e`, with a **140/140** gate and an adaptive first-room
+control hint; it is intentionally not deployed because it is a minor usability
+slice rather than a major website checkpoint.
 `npm.cmd run production:check` passed for both origins. A fresh preview UI
 smoke created a disposable Barbarian, returned to the dashboard, opened World
 Atlas, confirmed Town plus the released route and honest locked-road states,

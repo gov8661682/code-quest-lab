@@ -880,12 +880,12 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA commit: `0a6e729` (`Make Capacitor sync
-  junction-safe`), after the **139/139** release verification, build/package
-  audit, alias-launched native sync, GitHub push, and project-control
-  verification; documentation follow-up is `6384772`. Checkpoint 1 remains
-  active because clean D1-12 and device evidence are not complete; the
-  deployed milestone remains `7b961b9`.
+- Current verified local QA runtime commit: `b5d701e` (`Add adaptive first-room
+  control guidance`), after `release:verify` (**140/140**), `qa:fast`, package
+  audit, Capacitor synchronization, browser smoke, and GitHub push. Control
+  records are current in `4e05065`. Checkpoint 1 remains active because clean
+  D1-12 and device evidence are not complete; the deployed milestone remains
+  `7b961b9`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.

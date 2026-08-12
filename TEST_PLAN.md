@@ -15,8 +15,13 @@ Updated: 2026-08-12
 
 - Runtime `7b961b9` is the tested/live web build; the source mirror and
   generated web/native surfaces match its deployed SHA-256 identity.
-- `npm.cmd test` passes **139/139**; release contracts, package audit,
+- Current local QA runtime `b5d701e` and control record `4e05065` are pushed;
+  the deployed runtime remains the separately recorded `7b961b9` checkpoint.
+- `npm.cmd test` passes **140/140**; release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
+- The first Normal D1 banner adapts its guidance to pointer versus touch-first
+  controls; this is covered by the combat contract and an isolated browser
+  smoke, not by clean-player/device acceptance.
 - The deployed preview dashboard smoke opens World Atlas, shows Town plus the
   released route and honest locked roads, hands off to the existing difficulty
   screen, and remains usable at 600x768. The configured hostname serves the

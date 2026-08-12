@@ -3,13 +3,15 @@
 Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
-steady-guide regression, and released-route atlas slices; `origin/main` is writable and synchronized
-at tested QA commit `7b961b9`.
+steady-guide regression, adaptive first-room guidance, and released-route atlas
+slices; `origin/main` is writable and synchronized at tested local QA commit
+`b5d701e`, with control records in `4e05065` and the deployed milestone kept
+separate at `7b961b9`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **139 passing Node tests**, passing release contracts, a generated static
+has **140 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly
@@ -36,8 +38,10 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **139/139** test
-suite pass. This remains architecture hardening; no checkpoint percentage is
+static build, Capacitor sync, deterministic fast QA, and full **140/140** local
+test suite pass. The current local adaptive first-room hint is covered by a
+focused contract and isolated browser smoke. This remains architecture
+hardening; no checkpoint percentage is
 claimed until the open clean-player/device evidence is completed.
 
 ## Findings by category
@@ -49,7 +53,7 @@ claimed until the open clean-player/device evidence is completed.
   helpers now drive HUD, recovery, and room-facing messaging for named bosses.
   The contract covers current and source-resident identities; do not reopen this
   as per-boss UI patches unless a regression is reproduced.
-- **No release-breaking defect is currently known.** The full 139-test suite
+- **No release-breaking defect is currently known.** The full 140-test suite
   and release contracts pass, so broad gameplay rewrites are not justified by
   current evidence.
 

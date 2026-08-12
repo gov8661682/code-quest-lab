@@ -1007,11 +1007,15 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA commit: `0a6e729` (`Make Capacitor sync junction-safe`),
-  pushed to `origin/main` after the **139/139** release gate, `qa:fast`,
-  build/package audit, alias-launched native sync, and project-control
-  verification. The latest website checkpoint remains `7b961b9`; Checkpoint 1
-  remains active.
+- Latest tested local QA runtime commit: `b5d701e` (`Add adaptive first-room
+  control guidance`), pushed to `origin/main` after `release:verify`
+  (**140/140**), `qa:fast`, package audit, Capacitor synchronization, and an
+  isolated first-room browser smoke with empty diagnostics. Control records are
+  synchronized in `4e05065`; the latest website checkpoint remains `7b961b9`
+  and Checkpoint 1 remains active.
+
+Earlier local QA entries below are historical evidence and are retained for
+regression context; they are not the current next-action pointer.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -1050,11 +1054,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest runtime/website milestone and tested local QA
-  commit is `7b961b9` (`Add released-route World Atlas foundation`). The
+- Branch: `main`; the latest runtime/website milestone remains `7b961b9`
+  (`Add released-route World Atlas foundation`), while the latest tested local
+  QA runtime is `b5d701e` and the current control record is `4e05065`. The
   deployed preview is `https://79d7af68.code-quest-lab.pages.dev/` and the
-  configured hostname is
-  `https://code-quest-lab.gov8661682.com/`.
+  configured hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
@@ -1072,10 +1076,10 @@ with no gate-mounted pulse, cleared-room forward guidance, profile transfer,
 grouped readability fixes, touch target assist, recovery-safe progression, and the
 V1 route surface. Live desktop/tablet main-flow smokes passed with empty
 browser diagnostics. The current local source hash is
-`9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`, which
-contains gated D13 reward/story work and is intentionally not deployed. The
-next step remains the clean D1-12 route and the remaining touch/device session
-evidence.
+`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`, which
+contains gated D13 reward/story work and the adaptive first-room hint and is
+intentionally not deployed. The next step remains the clean D1-12 route and
+the remaining touch/device session evidence.
 
 ## Exact condition required to advance
 
