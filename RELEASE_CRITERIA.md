@@ -1,6 +1,6 @@
 # Code Quest Lab - Release Candidate Criteria
 
-Status: pre-release, not yet an RC (2026-08-04)
+Status: pre-release, not yet an RC (2026-08-12)
 
 Evidence must be recorded when a check is actually executed. A document or
 assumption is not a passing test. The seven release surfaces below are tracked
@@ -16,7 +16,7 @@ purchase test.
 - [x] Post-release dungeon sources are not reachable from V1 selection, waypoint, saved-world resume, or the boss-exit chain; the last validated endpoint uses the existing session summary.
 - [x] Repeated route-generation contracts exercise every shipped V1 generator (Dungeon 1, 2, and 4-8) and validate connected paths with boss endpoints.
 - [x] Owner approves deployment to the HTTPS production hostname for the 2026-08-04 checkpoint.
-- [x] Deployed hostname, certificate, headers, support URL, privacy URL, and build identifier are verified by the production contract and live browser smoke.
+- [x] Deployed hostname, certificate, headers, support URL, privacy URL, and build identifier are verified by the production contract and live browser smoke for the 2026-08-12 World Atlas checkpoint (`7b961b9`, preview `79d7af68`).
 - [x] No unexpected external request, debug secret, source-map leak, or inaccurate public metadata is present in the deployed package audit.
 
 ## 2. Progressive Web App and offline behaviour

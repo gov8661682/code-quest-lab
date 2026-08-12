@@ -14,11 +14,14 @@ These are human-only or account/legal actions. The development work should conti
   was created and pushed to `origin/main`. Reopen this action only if a later
   checkpoint again cannot create `.git/index.lock`.
 - The configured site was verified from the current environment after runtime
-  commit `4580631`: preview `932a4fb6.code-quest-lab.pages.dev` and
-  `https://code-quest-lab.gov8661682.com` passed production checks, and live
-  desktop/tablet smokes reached D1 combat. Owner review remains appropriate
-  before a future publication checkpoint, but this is no longer an active
-  reachability blocker.
+  commit `7b961b9`: preview `79d7af68.code-quest-lab.pages.dev` and
+  `https://code-quest-lab.gov8661682.com` passed production checks. The live
+  preview smoke opened World Atlas, handed off to the existing route difficulty
+  screen, and remained usable at 600x768 with no captured browser errors. The
+  deployed source hash is
+  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+  Owner review remains appropriate before a future publication checkpoint, but
+  this is no longer an active reachability blocker.
 
 - Confirm the final product name and obtain professional trademark/name clearance. A preliminary web search on 2026-08-04 did not surface an obvious exact-match game result, but this is not clearance.
 - Confirm the target audience and age-rating position: the current product direction is secondary-school students approximately 13-17, not an automatic Apple Kids-category claim.
@@ -26,7 +29,12 @@ These are human-only or account/legal actions. The development work should conti
 - Confirm whether any school deployment requires allowlisting, additional consent, filtering, accessibility, or device-management documentation. Codex will not bypass those controls.
 - Confirm commercial rights to the existing repository code and any owner-supplied assets; provide a project license decision.
 - Approve the final public support URL and privacy-policy URL/text. Draft same-origin Support and Privacy pages are present in the repository, but their final wording and hosting/log disclosures require owner review.
-- Confirm the static web deployment, DNS/HTTPS certificate, hosting/CDN log treatment, and clean-host verification for `code-quest-lab.gov8661682.com`. The current 2026-08-04 checkpoint is already deployed and `production:check` passed on 2026-08-05; owner approval is still required for each future milestone publish.
+- Confirm the static web deployment, DNS/HTTPS certificate, hosting/CDN log
+  treatment, and clean-host verification for
+  `code-quest-lab.gov8661682.com`. The 2026-08-12 World Atlas checkpoint is
+  deployed from `7b961b9` and `production:check` passed for the primary and
+  preview origins; owner approval is still required for each future milestone
+  publish.
 - For the next substantial, tested milestone, approve publishing the complete `dist\` package to the existing Cloudflare Pages project and repeat the post-deployment checks. Do not treat the current open-world/design review, AI playtest, or incomplete copy/usability fixes as a deployment milestone.
 - Provide Apple Developer and Google Play Console access when native submission work is ready. Do not put credentials in the repository.
 - Confirm the final application/bundle identifier; the provisional recommendation is `com.gov8661682.codequestlab`.
@@ -38,7 +46,12 @@ These are human-only or account/legal actions. The development work should conti
 - Review and approve the `PRIVACY.md` data inventory after hosting/CDN logs and native dependencies are known.
 - Review and approve the optional Learning Support wording; keep claims limited to supporting problem-solving and computational-thinking skills through play.
 - Review and approve the generated app icon/splash set in `ASSET_REGISTER.md`; provide or approve the remaining feature graphic, screenshots, and promotional assets.
-- Perform physical-device testing on representative iPhone/iPad and Android hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Record Runs A-C, including the clean D1-D12 route, 10-30 minute touch session, safe-area, audio, offline, suspension, local-save, and (if claimed) transfer results. A Mac/Xcode environment is required to produce a signed iOS build.
+- Perform physical-device testing on representative iPhone/iPad and Android
+  hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Start from the deployed
+  `7b961b9` build and record Runs A-C, including the clean D1-D12 route,
+  10-30 minute touch session, safe-area, audio, offline, suspension, local-save,
+  and (if claimed) transfer results. A Mac/Xcode environment is required to
+  produce a signed iOS build.
 - Provide a Windows or CI environment with a supported JDK, Android SDK/platform tools, and Gradle access; run `npm.cmd run native:android:build` and record the resulting APK/AAB build evidence.
 - Current native check (2026-08-12): `npm.cmd run native:doctor` reports Android
   looking great, but `java`/`JAVA_HOME` and Xcode are unavailable here, so the
