@@ -6,7 +6,7 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
 ## Current repository and website record (2026-08-12)
 
 - Repository head: `a7b5f2d` (`Prepare device acceptance handoff`), pushed to
-  `origin/main`; local release gate: **136/136**.
+  `origin/main`; local release gate: **137/137**.
 - Runtime milestone: `4580631` (`Make entrance guidance follow the player`),
   deployed and live-verified at the configured hostname and preview
   `https://932a4fb6.code-quest-lab.pages.dev/`.
@@ -14,6 +14,11 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
   The local hash is `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`
   because gated D13 reward/story work remains intentionally undeployed.
 - `production:check` passed for both primary and preview on 2026-08-12.
+
+The service-worker contract now proves successful same-origin asset caching
+and later offline reuse in addition to navigation fallback and cross-origin
+isolation. This remains local deterministic evidence; it does not claim a
+physical-device offline soak or change the **93%** / **19%** score.
 
 ## Device acceptance handoff (2026-08-12)
 

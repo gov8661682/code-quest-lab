@@ -15,7 +15,7 @@ Updated: 2026-08-12
 
 - Runtime `4580631` is the tested/live web build; the source mirror and
   generated web/native surfaces match its deployed SHA-256 identity.
-- `npm.cmd test` passes **136/136**; release contracts, package audit,
+- `npm.cmd test` passes **137/137**; release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - Live 1024x768 desktop and 600x768 tablet smokes reach the first Normal combat
   room with two enemies and visible touch controls. This is short smoke evidence,

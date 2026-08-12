@@ -11,8 +11,11 @@ const SOURCE = fs.readFileSync(path.join(ROOT, 'service-worker.js'), 'utf8');
 function createServiceWorkerHarness() {
   const handlers = {};
   const cacheRecords = new Map();
+  const cachedResponses = new Map();
   const deletedCaches = [];
   const networkRequests = [];
+  let networkAvailable = true;
+  const requestKey = (request) => typeof request === 'string' ? request : request?.url;
   const cache = {
     added: [],
     puts: [],
@@ -22,6 +25,7 @@ function createServiceWorkerHarness() {
     },
     put(request, response) {
       this.puts.push({ request, response });
+      cachedResponses.set(requestKey(request), response);
       return Promise.resolve();
     }
   };
@@ -31,8 +35,9 @@ function createServiceWorkerHarness() {
       return Promise.resolve(cache);
     },
     match(request) {
-      if (request === './index.html') return Promise.resolve({ name: 'offline-shell' });
-      return Promise.resolve(null);
+      const key = requestKey(request);
+      if (key === './index.html' || key?.endsWith('/index.html')) return Promise.resolve({ name: 'offline-shell' });
+      return Promise.resolve(cachedResponses.get(key) || null);
     },
   keys() { return Promise.resolve(['code-quest-lab-shell-old', 'code-quest-lab-shell-v10', 'code-quest-lab-shell-v11']); },
     delete(name) {
@@ -52,6 +57,7 @@ function createServiceWorkerHarness() {
     Response: { error: () => ({ name: 'network-error' }) },
     fetch(request) {
       networkRequests.push(request);
+      if (!networkAvailable) return Promise.reject(new Error('offline'));
       return Promise.resolve({ status: 200, type: 'basic', clone: () => ({ name: 'network-copy' }) });
     }
   };
@@ -70,7 +76,7 @@ function createServiceWorkerHarness() {
     return responsePromise ? responsePromise : undefined;
   }
 
-  return { context, cache, cacheRecords, deletedCaches, networkRequests, dispatch };
+  return { context, cache, cacheRecords, deletedCaches, networkRequests, dispatch, setNetworkAvailable(value) { networkAvailable = value; } };
 }
 
 test('service-worker shell paths are first-party files and lifecycle updates remove stale caches', async () => {
@@ -126,4 +132,24 @@ test('service worker falls back to index only for failed document navigation', a
     mode: 'same-origin'
   });
   assert.deepEqual(assetResponse, { name: 'network-error' });
+});
+
+test('service worker caches successful same-origin assets for later offline reads', async () => {
+  const harness = createServiceWorkerHarness();
+  const request = {
+    method: 'GET',
+    url: 'https://example.test/site.css',
+    mode: 'same-origin'
+  };
+
+  const networkResponse = await harness.dispatch('fetch', request);
+  assert.equal(networkResponse.status, 200);
+  assert.equal(networkResponse.type, 'basic');
+  assert.equal(harness.cache.puts.length, 1, 'a successful asset response is cached');
+  assert.equal(harness.networkRequests.length, 1, 'the first read uses the network');
+
+  harness.setNetworkAvailable(false);
+  const offlineResponse = await harness.dispatch('fetch', request);
+  assert.deepEqual(offlineResponse, { name: 'network-copy' }, 'the cached asset remains available offline');
+  assert.equal(harness.networkRequests.length, 1, 'the offline read does not retry the network');
 });

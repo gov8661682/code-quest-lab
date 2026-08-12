@@ -14,8 +14,17 @@ documented acceptance-criterion failure. Optional improvements belong in
   and optional cross-device transfer checks.
 - Linked the runbook from the blocker and owner-action records and removed the
   stale instruction to repeat the consumed managed-browser route. No physical
-  device evidence or C1 score credit is claimed; the **136/136** local gate and
+  device evidence or C1 score credit is claimed; the **137/137** local gate and
   **93% / 19%** score remain unchanged.
+
+## PWA cache happy-path regression (2026-08-12; local QA)
+
+- Extended the service-worker harness to prove that a successful same-origin
+  asset response is cached and then served after simulated network loss without
+  a second network request.
+- The focused service-worker contracts and full local release gate pass
+  **137/137**. This is deterministic offline-readiness coverage, not a
+  physical-device/offline-soak claim or website deployment checkpoint.
 
 ## D13 authored story parity guard (2026-08-12; local)
 

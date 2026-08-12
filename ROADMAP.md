@@ -84,6 +84,17 @@ This prepares the exact external acceptance action without claiming hardware
 evidence, changing the **93%** / **19%** score, or creating a deployment
 checkpoint. The consumed managed-browser route remains loop-broken.
 
+### PWA cache happy-path regression (2026-08-12; local QA)
+
+- [x] Contract-test successful same-origin asset caching and later offline
+  reuse after simulated network loss.
+- [ ] Complete deployed-cache update, install/Add to Home Screen, and physical
+  offline/forced-close soak in Checkpoint 2 on an approved device surface.
+
+The deterministic contract passes in the **137/137** local gate. It strengthens
+the offline boundary without claiming device evidence or creating a deployment
+checkpoint.
+
 ### D13 preflight audit: keep Realm of Space gated (2026-08-12; local)
 
 - [x] Confirm the source-resident two-room route, Corruption of Space identity,

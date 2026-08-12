@@ -9,6 +9,13 @@
   QA aids out of clean-player score credit. No deployment or percentage change
   was made; the managed-browser route remains loop-broken.
 
+## PWA cache happy-path regression (2026-08-12; local QA)
+
+- Added service-worker coverage for caching a successful same-origin asset and
+  reusing it after simulated network loss without retrying the network.
+- The full local gate is now **137/137**. This is offline-readiness coverage
+  only; no physical-device evidence, score change, or deployment was created.
+
 ## D13 authored story parity guard (2026-08-12; local)
 
 - Contract-tested Joey's complete D13 story delivery: Threshold of the Void
