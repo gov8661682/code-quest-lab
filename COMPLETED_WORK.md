@@ -7,6 +7,17 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Junction-safe Capacitor command wrappers (2026-08-12; local release readiness)
+
+- Replaced direct native npm/npx chains with wrappers that resolve the real
+  repository root before building and synchronizing Capacitor. This prevents
+  the `Desktop\Codex\Joey's Game` junction from producing invalid generated
+  Android/Swift dependency paths.
+- Added project-control contracts for both wrappers. Alias-launched sync left
+  the generated path files unchanged; **139/139** tests, package audit, native
+  sync, and `qa:fast` passed. Commit `0a6e729` is pushed; no deployment or
+  evidence-score credit was claimed.
+
 ## Released-route World Atlas foundation (2026-08-12; deployed milestone)
 
 - Added a dashboard World Atlas using Town, the existing released

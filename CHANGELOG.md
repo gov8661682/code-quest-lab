@@ -1,5 +1,15 @@
 # Code Quest Lab - Changelog
 
+## Junction-safe Capacitor commands (2026-08-12; local release readiness)
+
+- Added repository-root-safe wrappers for native synchronization and the
+  Android build command. They resolve the real Git path before invoking npm,
+  npx, and Capacitor, so the Codex workspace junction cannot corrupt generated
+  Gradle or Swift dependency paths.
+- Alias-launched sync, the full **139/139** release gate, static package audit,
+  and `qa:fast` pass. Commit `0a6e729` is pushed; no website deployment was
+  created because the runtime and deployed milestone were unchanged.
+
 ## Steady gate landmark polish (2026-08-12; local QA)
 
 - Kept the destination cue attached to the player and aimed at the Town portal

@@ -5,11 +5,11 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `0c5920f` (`Polish steady player-following gate
-  guide`), pushed to `origin/main` after the **139/139** release gate,
-  deterministic fast QA, package audit, and native synchronization. The
-  deployed milestone remains `7b961b9`; this minor visual refinement is grouped
-  for the next website checkpoint.
+- Latest tested local QA commit: `0a6e729` (`Make Capacitor sync junction-safe`),
+  pushed to `origin/main` after the **139/139** release gate, deterministic fast
+  QA, package audit, and alias-launched native synchronization. The deployed
+  milestone remains `7b961b9`; this release-tooling hardening does not create a
+  website checkpoint.
 - Runtime milestone: `7b961b9`, deployed and live-verified at the configured
   hostname and preview `https://79d7af68.code-quest-lab.pages.dev/`.
 - Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
@@ -17,6 +17,18 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   preview UI smoke opened the dashboard atlas, handed off to the existing
   difficulty screen, and remained usable at 600x768; the configured hostname
   served the release shell with no captured browser errors.
+
+## Junction-safe native command hardening (2026-08-12; local release readiness)
+
+- `native:sync` and `native:android:build` now resolve the real Git repository
+  before invoking npm/npx and Capacitor. This prevents the Desktop\Codex
+  junction path from leaking into generated Gradle or Swift dependency paths.
+- The alias-launched sync passed with unchanged `android/capacitor.settings.gradle`
+  and `ios/App/CapApp-SPM/Package.swift`; the full **139/139** release gate,
+  static package audit, and `qa:fast` also passed.
+- Commit `0a6e729` is pushed to `origin/main`. This is release-tooling
+  hardening, not a runtime milestone, so the deployed `7b961b9` website and
+  **93% / 19%** evidence score remain unchanged.
 
 ## Released-route World Atlas foundation (2026-08-12; deployment checkpoint)
 

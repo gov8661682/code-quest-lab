@@ -44,6 +44,11 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   remains beside the player while the destination glow is now stable. It was
   tested locally and pushed to GitHub without creating a separate website
   checkpoint; the evidence score remains **93%** / **19%**.
+- Commit `0a6e729` makes `native:sync` and `native:android:build` resolve the
+  real repository root before invoking Capacitor, preventing workspace-junction
+  paths from leaking into generated Android/Swift files. Alias-launched sync,
+  **139/139**, package audit, and `qa:fast` passed; this is release-tooling
+  hardening with no runtime deployment or score credit.
 
 ### Latest evidence update (2026-08-12)
 
@@ -992,11 +997,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA/runtime commit: `0c5920f` (`Polish steady
-  player-following gate guide`), pushed to `origin/main` after the **139/139**
-  release gate, `qa:fast`, build/package audit, native sync, and
-  project-control verification. The latest website checkpoint remains
-  `7b961b9`; Checkpoint 1 remains active.
+- Latest tested local QA commit: `0a6e729` (`Make Capacitor sync junction-safe`),
+  pushed to `origin/main` after the **139/139** release gate, `qa:fast`,
+  build/package audit, alias-launched native sync, and project-control
+  verification. The latest website checkpoint remains `7b961b9`; Checkpoint 1
+  remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full

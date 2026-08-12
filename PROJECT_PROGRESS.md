@@ -13,6 +13,16 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+Capacitor native commands are now junction-safe. The `native:sync` and
+`native:android:build` wrappers resolve the real Git repository before running
+the web build and Capacitor CLI, preventing the workspace alias from writing
+invalid Android/Swift dependency paths. An alias-launched sync left the
+generated native path files unchanged; **139/139** tests, the package audit,
+Capacitor sync, and `qa:fast` passed. Commit `0a6e729` is pushed to
+`origin/main`. This is release-tooling hardening rather than a runtime or
+website milestone, so the **93%** / **19%** score and deployed `7b961b9`
+checkpoint are unchanged.
+
 The remaining C1 physical/native evidence boundary is now operationally
 prepared in `DEVICE_ACCEPTANCE_RUNBOOK.md`. It defines separate clean-route,
 10-30 minute touch-session, device/lifecycle, audio, offline, local-save, and

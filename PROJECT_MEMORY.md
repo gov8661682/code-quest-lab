@@ -88,11 +88,13 @@ memory file, daily entry, repeated failure note, or cumulative session transcrip
   outside saves, exports, native builds, and production.
 - Native readiness is still environment-gated: `native:doctor` sees the Android
   project, but `java`/`JAVA_HOME`, Xcode, and physical devices are unavailable.
+  Capacitor `native:sync` and `native:android:build` now resolve the real Git
+  root through junctions, preventing generated Android/iOS path corruption.
   Do not retry the same blocked surface without a material state change;
   physical-device, native-build, and owner approval gaps remain genuine.
-- Run `npm.cmd run qa:fast` before long combat checks; `release:verify` rebuilds
-  and synchronizes generated web/native assets first. New encounter code must
-  use `getEncounterTuning(dungeonId)` and `MINIBOSS_TYPES_BY_DUNGEON`; named
+- Run `npm.cmd run qa:fast` before long combat checks; `release:verify`
+  rebuilds/synchronizes generated web/native assets first. New encounter code
+  must use `getEncounterTuning(dungeonId)` and `MINIBOSS_TYPES_BY_DUNGEON`; named
   boss mechanics may remain bespoke for Joey parity.
 - A failed method is not progress. After three materially identical technical
   failures, change strategy; never exceed five materially identical gameplay
@@ -111,9 +113,7 @@ memory file, daily entry, repeated failure note, or cumulative session transcrip
   promotion validation, not cosmetic churn.
 ## Update protocol
 
-- Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`,
-  `DECISIONS.md`, and `AUTORUN.md` at the start of every cycle.
-- Update this file only when a durable fact, blocker, lesson, verified gate, or
-  next-action priority changes.
+- Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `DECISIONS.md`, and `AUTORUN.md` at the start of every cycle.
+- Update this file only when a durable fact, blocker, lesson, verified gate, or next-action priority changes.
 - Replace stale statements in place and consolidate overlapping lessons.
 - Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and `COMPLETED_WORK.md`.
