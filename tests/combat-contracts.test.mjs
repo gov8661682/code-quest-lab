@@ -319,7 +319,7 @@ test('cleared rooms expose a contextual touch exit fallback', () => {
 test('cleared rooms show a floating guide toward the next room', () => {
   assert.match(SOURCE, /function forwardExitGuideAvailable\(def\)\{[\s\S]*def\.forward[\s\S]*exitDoor[\s\S]*roomCleared[\s\S]*!roomTransitioning[\s\S]*def\.type!==RT\.SIDE[\s\S]*def\.type!==RT\.BOSS/, 'the guide is limited to a cleared forward route');
   assert.match(SOURCE, /function drawForwardExitGuide\(geo,def\)\{[\s\S]*var dx=fd\.cx-player\.x,dy=fd\.cy-player\.y;[\s\S]*var angle=Math\.atan2\(dy,dx\)[\s\S]*ctx\.translate\(ax,ay\);ctx\.rotate\(angle\)/, 'the guide follows the player and points toward the forward door');
-  assert.match(SOURCE, /drawPlayer\(\);drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the guide is rendered in the player camera pass so it follows each frame');
+  assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s*drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the guide is rendered from the player screen anchor after the camera pass');
   assert.doesNotMatch(SOURCE, /function drawOffscreenForwardExitIndicator\(/, 'the gate does not receive a separate pulsing edge arrow');
   assert.doesNotMatch(SOURCE, /fillText\('▼',fd\.cx,H-4\)/, 'the gate itself does not carry a directional arrow');
 });

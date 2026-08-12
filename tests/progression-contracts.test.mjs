@@ -164,8 +164,9 @@ test('entrance objectives resolve from the underlying dungeon definition', () =>
 
 test('Town and dungeon entrances keep their physical gate discoverable with a player-following guide', () => {
   assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?activeDungeonId===\'town\'[\s\S]*?portalArea/);
-  assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?isEntranceZone\(activeDungeonId\)[\s\S]*?target=entranceLayout&&entranceLayout\.gate[\s\S]*?var arrowX=player\.x,arrowY=[\s\S]*?ctx\.translate\(arrowX,arrowY\);ctx\.rotate\(angle\)/, 'the hub guide follows the character and points at the gate');
-  assert.match(SOURCE, /drawPlayer\(\);drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the hub guide is rendered in the player camera pass');
+  assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?isEntranceZone\(activeDungeonId\)[\s\S]*?target=entranceLayout&&entranceLayout\.gate[\s\S]*?var anchor=getPlayerGuideScreenAnchor\(\);[\s\S]*?var arrowX=anchor\.x,arrowY=[\s\S]*?ctx\.translate\(arrowX,arrowY\);ctx\.rotate\(angle\)/, 'the hub guide follows the character and points at the gate');
+  assert.match(SOURCE, /function getPlayerGuideScreenAnchor\(\)[\s\S]*?player\.x\+Math\.round\(-camera\.x\+shakeX\)[\s\S]*?player\.y\+Math\.round\(-camera\.y\+shakeY\)/, 'the guide uses the current screen anchor after camera movement');
+  assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s*drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the hub guide is rendered after the camera pass');
   assert.match(SOURCE, /function drawPlayerFollowingPortalGuide\(geo\)[\s\S]*?ctx\.globalAlpha=0\.98[\s\S]*?ctx\.restore\(\);\s*ctx\.save\(\);/, 'the player guide uses a steady visible arrow');
   assert.doesNotMatch(SOURCE, /drawTownPortalIndicator\(/, 'the previous edge-marker implementation is not retained');
   assert.doesNotMatch(SOURCE, /ctx\.globalAlpha=0\.6\+0\.15\*Math\.sin\(now\*1\.6\)/, 'the Town portal and dungeon gate do not carry a pulsing directional cue');
@@ -177,7 +178,7 @@ test('the player-following portal guide stays steady instead of pulsing on the g
     '// After a combat room is cleared',
     'player-following portal guide'
   );
-  assert.match(guide, /var arrowX=player\.x,arrowY=/, 'the guide is anchored to the player');
+  assert.match(guide, /var anchor=getPlayerGuideScreenAnchor\(\);[\s\S]*var arrowX=anchor\.x,arrowY=/, 'the guide is anchored to the player screen position');
   assert.match(guide, /ctx\.globalAlpha=0\.98/, 'the guide uses a constant alpha');
   assert.doesNotMatch(guide, /Math\.sin|Math\.cos|\bnow\b|pulse/i, 'the guide has no time-based pulsing');
 });

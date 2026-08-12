@@ -43109,11 +43109,16 @@ function drawOffscreenEnemyIndicators(){
 
 // Town and dungeon entrances are intentionally free-roaming. Keep the next
 // physical destination discoverable without pinning a marker to the gate: the
-// guide is rendered in world space beside the player and rotates toward the
-// gate while the player walks. Rendering in the same camera pass as the player
-// means it follows the character instead of becoming an edge marker. The
-// arrow remains steady; only its position and rotation change. The minimap
-// remains the detailed map.
+// guide rotates toward the gate while the player walks. It is rendered after
+// the camera pass from the player's current screen position, so it stays
+// attached to the character even when the camera is clamped at a world edge
+// or the viewport changes size. The arrow remains steady; only its position
+// and rotation change. The minimap remains the detailed map.
+function getPlayerGuideScreenAnchor(){
+  var shakeX=Number(window._lastFrameShakeX)||0,shakeY=Number(window._lastFrameShakeY)||0;
+  return{x:player.x+Math.round(-camera.x+shakeX),y:player.y+Math.round(-camera.y+shakeY)};
+}
+
 function drawPlayerFollowingPortalGuide(geo){
   if(!gameRunning||!geo)return;
   var target=null,label='';
@@ -43130,8 +43135,9 @@ function drawPlayerFollowingPortalGuide(geo){
   if(Math.hypot(dx,dy)<=targetRadius+(player.radius||18)+18)return;
   if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
   var angle=Math.atan2(dy,dx);
-  var placeAbove=player.y>geo.inner.y+96;
-  var arrowX=player.x,arrowY=placeAbove?player.y-(player.radius||18)-34:player.y+(player.radius||18)+34;
+  var anchor=getPlayerGuideScreenAnchor();
+  var placeAbove=anchor.y>Math.max(96,canvas.height*0.42);
+  var arrowX=anchor.x,arrowY=placeAbove?anchor.y-(player.radius||18)-34:anchor.y+(player.radius||18)+34;
   var labelY=placeAbove?-24:24;
   // Constant visibility is deliberate: this is a directional companion to
   // the player, not a pulsing callout sitting on the gate.
@@ -43158,8 +43164,9 @@ function drawForwardExitGuide(geo,def){
   var dx=fd.cx-player.x,dy=fd.cy-player.y;
   if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
   var angle=Math.atan2(dy,dx);
-  var placeAbove=player.y>geo.inner.y+62;
-  var ax=player.x,ay=placeAbove?player.y-player.radius-30:player.y+player.radius+30;
+  var anchor=getPlayerGuideScreenAnchor();
+  var placeAbove=anchor.y>Math.max(96,canvas.height*0.42);
+  var ax=anchor.x,ay=placeAbove?anchor.y-player.radius-30:anchor.y+player.radius+30;
   var labelY=placeAbove?-22:22;
   ctx.save();ctx.translate(ax,ay);ctx.rotate(angle);ctx.globalAlpha=0.96;
   ctx.shadowColor='rgba(255,217,138,0.9)';ctx.shadowBlur=8;
@@ -43301,9 +43308,10 @@ drawBurnPatches();drawFissures();drawShrineOrb();drawMeteors();
   drawMageProjectiles();drawMageEffects();
   drawDruidVineZones();drawDruidStorm();drawDruidSummons();drawDruidRavens();drawRogueEffects();
   drawLbsDebris();
-  drawPlayer();drawPlayerFollowingPortalGuide(geo);drawForwardExitGuide(geo,ROOM_DEFS[currentRoomId]);drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
+  drawPlayer();drawTouchCombatTarget();if(badEndingActive)drawBadEndingPlayerGlow();drawAttackEffect();drawWhirlwindEffect();drawEndlessRageBuff();drawSkillEffects();
   drawDeathParticles();drawFloaties();
   ctx.restore(); // end camera transform
+  drawPlayerFollowingPortalGuide(geo);drawForwardExitGuide(geo,ROOM_DEFS[currentRoomId]);
   drawOffscreenEnemyIndicators();
   // HUD elements drawn in screen space (no camera offset)
   drawXPBarCanvas();

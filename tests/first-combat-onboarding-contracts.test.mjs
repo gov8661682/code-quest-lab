@@ -24,7 +24,7 @@ test('larger combat rooms point toward a live enemy outside the viewport', () =>
   assert.match(SOURCE, /if\(!oe\|\|oe\.hp<=0\|\|oe\.destroyed\|\|oe\.bkaInvisible\|\|oe\.buried\)continue;/);
   assert.match(SOURCE, /var _isHiddenThreat=!!\(oe\.wraithing&&!oe\.wraith_visible\);/);
   assert.match(SOURCE, /var _indicatorLabel=bestHidden\?'THREAT':'TARGET';/);
-  assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s+drawOffscreenEnemyIndicators\(\);/);
+  assert.match(SOURCE, /ctx\.restore\(\); \/\/ end camera transform\s+drawPlayerFollowingPortalGuide\(geo\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);\s+drawOffscreenEnemyIndicators\(\);/);
 });
 
 test('last enemy defeat refreshes progress before a level-up pause can leave a stale lock', () => {
