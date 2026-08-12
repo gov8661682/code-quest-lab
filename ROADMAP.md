@@ -83,6 +83,8 @@ the full open-world acceptance bar or increase the C1 evidence score by itself.
 - [x] Pass the focused QA test, `qa:fast`, and the full **128/128** local
   release gate. Keep the evidence score at **93%** / **19%** because this is
   release-readiness diagnostics, not a clean-player route or device session.
+- [x] Make the first Normal D1 combat instruction adapt to touch-first and
+  pointer controls without changing the authored combat or balance systems.
 
 This is a local QA improvement and does not create a website deployment
 checkpoint. The next manual route evidence must use a genuinely touch-capable

@@ -1,5 +1,17 @@
 # Code Quest Lab - Changelog
 
+## Adaptive first-room control guidance (2026-08-12; local QA)
+
+- The first Normal D1 combat banner now detects touch-first surfaces and tells
+  players to center-hold Attack to lock and fire; pointer surfaces receive
+  nearest-target Attack/click guidance. This is a bounded onboarding hint and
+  does not alter Joey's combat or balance.
+- The canonical source/mirror, Capacitor-synchronized package,
+  `release:verify` (**140/140**), `qa:fast`, and a fresh first-room smoke on an
+  isolated loopback origin passed with empty browser diagnostics. The disposable
+  test profile was deleted; commit `b5d701e` is pushed with no deployment or
+  score credit.
+
 ## No-aid released-route QA (2026-08-12; local QA)
 
 - Added a data-driven mechanics-confidence simulation for all 11 released

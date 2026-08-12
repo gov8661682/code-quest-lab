@@ -13,6 +13,15 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The first Normal D1 combat instruction is now surface-aware: touch-first users
+see the center-hold Attack lock/fire gesture, while pointer users see the
+nearest-target Attack/click path. This is a bounded onboarding improvement that
+preserves Joey's combat and balance. The canonical mirror, Capacitor package,
+`release:verify` (**140/140**), `qa:fast`, and an isolated first-room browser
+smoke passed with empty diagnostics; the disposable profile was deleted. The
+Commit `b5d701e` is pushed; the **93%** / **19%** evidence score and deployed
+`7b961b9` remain unchanged.
+
 The accelerated QA layer now includes a data-driven no-aid mechanics-confidence
 pass for all 11 released finales: D1, D2, and D4-D12. It exercises each named
 boss's configured phase/add budget with ordinary attack cadence and real

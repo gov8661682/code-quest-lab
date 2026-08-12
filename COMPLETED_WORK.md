@@ -7,6 +7,17 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Adaptive first-room control guidance (2026-08-12; local QA)
+
+- Added a shared first Normal D1 combat hint that detects touch-first versus
+  pointer surfaces. Touch users are told to center-hold Attack to lock and
+  fire; pointer users are told to use the nearest-target Attack/click path.
+  Joey's combat, enemy tuning, and balance systems are unchanged.
+- The source mirror, Capacitor-synchronized package, `release:verify`
+  (**140/140**), `qa:fast`, and an isolated first-room browser smoke passed
+  with empty diagnostics. The disposable profile was deleted; no deployment
+  or evidence-score credit was claimed. Commit `b5d701e` is pushed.
+
 ## No-aid released-route mechanics confidence (2026-08-12; local QA)
 
 - Added `tools/qa/release-route-sim.mjs` with data-driven profiles for every

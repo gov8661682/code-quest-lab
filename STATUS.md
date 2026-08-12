@@ -5,7 +5,7 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `c1d4ba0` (`Add no-aid released route QA`),
+- Latest tested local QA commit: `b5d701e` (`Add adaptive first-room control guidance`),
   pushed to `origin/main` after the **140/140** release gate, deterministic fast
   QA, package audit, and alias-launched native synchronization. The deployed
   milestone remains `7b961b9`; this automated confidence slice does not create
@@ -17,6 +17,17 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   preview UI smoke opened the dashboard atlas, handed off to the existing
   difficulty screen, and remained usable at 600x768; the configured hostname
   served the release shell with no captured browser errors.
+
+## Adaptive first-room control guidance (2026-08-12; local QA)
+
+- The first Normal D1 combat banner now adapts to the input surface: touch-first
+  users receive the center-hold Attack lock/fire instruction, while pointer
+  users receive nearest-target Attack/click guidance. No combat, enemy, or
+  balance system changed.
+- `release:verify` passes **140/140**, `qa:fast` passes all released finales,
+  the isolated first-room smoke had empty browser diagnostics, and the
+  disposable profile was deleted. This local usability slice does not create a
+  website checkpoint or change the **93% / 19%** evidence score.
 
 ## Junction-safe native command hardening (2026-08-12; local release readiness)
 
