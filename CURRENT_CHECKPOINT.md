@@ -807,22 +807,15 @@ change it.
    session around the now-verified pause, page-background, reload, Resume
    Session, and Finish For Now paths; do not repeat the completed managed-
    browser recovery check.
-3. Keep the deployed profile-transfer and grouped enemy/door readability
-  changes under regression coverage. The local follow-up also clears stale
-  dungeon lock and waypoint messages when a session returns to Town or uses
-  Finish for Now; combat
-  calculations remain unchanged. A separate loopback-gated, session-only
-  developer invincibility aid and the first-combat visible-spawn hardening are
-  local QA tools only and are not part of the deployed checkpoint. The local
-  follow-up also resets a regenerating elite's recovery timer after every
-  successful hit and restores the exact generated route before applying a
-  saved room checkpoint; these are combat/recovery correctness fixes, not new
-  gameplay systems.
-4. Continue the clean-profile D1-8 route on a representative supported
-   surface. Initial attack response is now reproduced on the Pages preview;
-   the save/readability milestone has passed its tests, GitHub push, deployment,
-   and live verification, while C1 remains active because D1-8 completion and
-   tablet/lifecycle evidence are still open.
+3. Use the same owner-supplied device or approved lab packet for tablet
+   lifecycle, offline/cache, local-save, audio, and optional transfer evidence;
+   do not repeat the consumed managed-browser route or claim device credit from
+   a desktop emulation.
+4. When a materially different surface produces dated evidence, run the full
+   release gate again, update the weighted table/status, and create the next
+   GitHub + website checkpoint. Until then, the repository and deployed
+   registry milestone are stable and there is no independent score-bearing
+   browser task to repeat.
 
 The open-world design is now recorded in `OPEN_WORLD_DIRECTION.md`. It is a
 product/architecture constraint for future implementation, not permission to

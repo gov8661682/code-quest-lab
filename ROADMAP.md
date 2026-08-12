@@ -824,17 +824,19 @@ that route to stop and be recorded. `CURRENT_CHECKPOINT.md` is the canonical
 percentage display; percentages are earned from named evidence and do not
 replace acceptance criteria.
 
-Latest verified checkpoint (2026-08-12): runtime `b5d701e` added the grouped
-player-following Town/entrance/cleared-room guidance and adaptive first-room
-input hint on top of the tested World Atlas foundation. The gate has no
-directional pulsing arrow; the release surface was published from current main
-snapshot `cca39fb` and live-verified at preview
-`https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
-The source is pushed to GitHub and deployed with source hash
-`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`; both
-production checks passed, and the fresh preview UI smoke reached first combat,
-pause, and safe finish with empty diagnostics. The active
-next priority is the owner-supplied clean D1-12 route, meaningful touch
-session, and device evidence in `DEVICE_ACCEPTANCE_RUNBOOK.md`. Later
-milestones must repeat the same test, push, deploy, and live-verification
-sequence.
+Latest verified checkpoint (2026-08-12): runtime `f0ce0e9` adds the
+backward-compatible `WorldState` migration and shared `WorldRegion`/
+`WorldConnection` registry on top of the tested Atlas, player-following
+guidance, tablet controls, and audio foundation. The gate has no directional
+pulsing arrow; the guide follows the character and points at the destination.
+The release surface was published at preview
+`https://596095e6.code-quest-lab.pages.dev/` and the configured hostname with
+source hash
+`AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`; both
+production checks passed, and the fresh preview smoke reached Town, returned
+safely to the dashboard, verified `1/11 routes charted` with no Dungeon 13
+card, cleaned its disposable profile, and the configured hostname loaded the
+current shell. The active next priority is the owner-supplied clean D1-12
+route, meaningful touch session, and device evidence in
+`DEVICE_ACCEPTANCE_RUNBOOK.md`. Later milestones must repeat the same test,
+push, deploy, and live-verification sequence.
