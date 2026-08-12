@@ -1,5 +1,14 @@
 # Code Quest Lab - Changelog
 
+## Device acceptance handoff (2026-08-12; control/release readiness)
+
+- Added `DEVICE_ACCEPTANCE_RUNBOOK.md` for the remaining owner-side clean
+  route, touch-session, device/lifecycle, audio, offline, local-save, and
+  optional transfer checks.
+- Linked the packet from blocker/owner records and explicitly kept developer
+  QA aids out of clean-player score credit. No deployment or percentage change
+  was made; the managed-browser route remains loop-broken.
+
 ## D13 authored story parity guard (2026-08-12; local)
 
 - Contract-tested Joey's complete D13 story delivery: Threshold of the Void

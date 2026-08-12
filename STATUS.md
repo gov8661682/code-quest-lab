@@ -3,6 +3,14 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Device acceptance handoff (2026-08-12)
+
+`DEVICE_ACCEPTANCE_RUNBOOK.md` is the prepared owner-side packet for the
+remaining C1 clean-player, touch-session, and physical/native checks. It does
+not claim device evidence or change the **93%** / **19%** score; the managed-
+browser route method remains loop-broken until a materially different device or
+approved lab is available.
+
 ## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
 
 Checked-in, synthetic `.txt` fixtures now exercise the local transfer parser

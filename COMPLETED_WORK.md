@@ -7,6 +7,16 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Device acceptance handoff (2026-08-12; control/release readiness)
+
+- Added `DEVICE_ACCEPTANCE_RUNBOOK.md` with separate clean-player route,
+  10-30 minute touch-session, device/lifecycle, audio, offline, local-save,
+  and optional cross-device transfer checks.
+- Linked the runbook from the blocker and owner-action records and removed the
+  stale instruction to repeat the consumed managed-browser route. No physical
+  device evidence or C1 score credit is claimed; the **135/135** local gate and
+  **93% / 19%** score remain unchanged.
+
 ## D13 authored story parity guard (2026-08-12; local)
 
 - Confirmed against Joey's reference that the current D13 runtime already

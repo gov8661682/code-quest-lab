@@ -38,7 +38,7 @@ These are human-only or account/legal actions. The development work should conti
 - Review and approve the `PRIVACY.md` data inventory after hosting/CDN logs and native dependencies are known.
 - Review and approve the optional Learning Support wording; keep claims limited to supporting problem-solving and computational-thinking skills through play.
 - Review and approve the generated app icon/splash set in `ASSET_REGISTER.md`; provide or approve the remaining feature graphic, screenshots, and promotional assets.
-- Perform physical-device testing on representative iPhone/iPad and Android hardware. A Mac/Xcode environment is required to produce a signed iOS build.
+- Perform physical-device testing on representative iPhone/iPad and Android hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Record Runs A-C, including the clean D1-D12 route, 10-30 minute touch session, safe-area, audio, offline, suspension, local-save, and (if claimed) transfer results. A Mac/Xcode environment is required to produce a signed iOS build.
 - Provide a Windows or CI environment with a supported JDK, Android SDK/platform tools, and Gradle access; run `npm.cmd run native:android:build` and record the resulting APK/AAB build evidence.
 - Current native check (2026-08-12): `npm.cmd run native:doctor` reports Android
   looking great, but `java`/`JAVA_HOME` and Xcode are unavailable here, so the

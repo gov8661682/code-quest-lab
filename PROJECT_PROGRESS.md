@@ -13,6 +13,14 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The remaining C1 physical/native evidence boundary is now operationally
+prepared in `DEVICE_ACCEPTANCE_RUNBOOK.md`. It defines separate clean-route,
+10-30 minute touch-session, device/lifecycle, audio, offline, local-save, and
+optional transfer checks, with a metadata/evidence packet and an explicit rule
+that developer aids do not earn score credit. This is a release-readiness
+handoff, not hardware evidence or a percentage increase; the **93%** / **19%**
+score remains unchanged.
+
 The D13 preflight lane now closes the Joey-preserving standard reward boundary:
 Realm of Space retains its two-room atmosphere, named Corruption of Space boss,
 authored phases/death sequence, 2.0x guardian soul reward, boss XP/mastery,

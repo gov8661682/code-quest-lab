@@ -104,11 +104,11 @@ When a fact changes, edit or remove the old statement in place. Do not add a
    a new cycle started.
 2. Do not restart consumed D1 handoff or D4-D6 QA routes. A future route run
    must be clean to close D1-D12; otherwise choose an independent lane.
-3. Finish clean D1-D12 evidence remains the highest score-bearing lane, but the
-  managed-browser method is loop-broken and must not be repeated; wait for a
-  materially different touch-capable/physical surface. D13 reward and story
-  parity are now audited and protected; reopen only for bounded save/return or
-  route-promotion validation, not cosmetic churn.
+3. Finish clean D1-D12 evidence remains the highest score-bearing lane, but the managed-browser method is loop-broken and must not be repeated; use the
+  `DEVICE_ACCEPTANCE_RUNBOOK.md` packet when a materially different
+  touch-capable/physical surface is available. D13 reward/story parity is
+  audited and protected; reopen only for bounded save/return or route-
+  promotion validation, not cosmetic churn.
 ## Update protocol
 
 - Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`,

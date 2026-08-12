@@ -86,6 +86,13 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
   The evidence score remains **93%** / **19%**.
 
+- The remaining physical/native acceptance boundary is now packaged in
+  `DEVICE_ACCEPTANCE_RUNBOOK.md`. It separates clean-player route evidence,
+  the 10-30 minute touch-first session, and device release-readiness checks;
+  developer QA aids cannot be used for score credit. No score is claimed until
+  an owner-supplied representative device or approved lab produces the dated
+  Runs A-C evidence packet.
+
 - The fine-pointer input-surface gap from the fresh no-aid audit is now
   addressed by a visible, keyboard-accessible `Attack nearest target` button.
   It routes through the existing shared nearest-target attack queue; touch
@@ -699,18 +706,14 @@ change it.
 
 ## Active tasks
 
-1. Continue the highest-priority clean-profile, touch-first D1-12 playthrough;
-   record the first failing room/system if the run cannot complete. The latest
-   disposable Mage QA route completed D1 and the patched D2 route through the
-   Fallen King, including the bounded elite room, and entered The Shadow Realm
-   Entrance with the local invincibility aid; the next route target is D4-8 and
-   the intended ending. The full D1-12 route is still unproven. Apply the
-   `AUTORUN.md` failure fingerprint: switch strategy after three materially
-   identical technical failures and stop the same manual route after five
-   materially identical attempts.
-2. Run the remaining 10-30 minute touch-only/device session around the now-
-   verified pause, page-background, reload, Resume Session, and Finish For Now
-   paths; do not repeat the completed managed-browser recovery check.
+1. Run the clean-profile D1-12 route only on a materially different,
+   touch-capable or physical surface using `DEVICE_ACCEPTANCE_RUNBOOK.md`;
+   record the first failing room/system if the route cannot complete. The
+   managed-browser route method is loop-broken and must not be repeated.
+2. Use the same runbook for the remaining 10-30 minute touch-only/device
+   session around the now-verified pause, page-background, reload, Resume
+   Session, and Finish For Now paths; do not repeat the completed managed-
+   browser recovery check.
 3. Keep the deployed profile-transfer and grouped enemy/door readability
   changes under regression coverage. The local follow-up also clears stale
   dungeon lock and waypoint messages when a session returns to Town or uses

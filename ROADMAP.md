@@ -70,6 +70,20 @@ checkpoint. The next manual route evidence must use a genuinely touch-capable
 surface or another materially different strategy; do not repeat attack-only
 browser batches.
 
+### Device acceptance handoff (2026-08-12; owner-environment preparation)
+
+- [x] Publish `DEVICE_ACCEPTANCE_RUNBOOK.md` with separate clean-player route,
+  10-30 minute touch-session, device/lifecycle, audio, offline, local-save,
+  and optional cross-device transfer checks.
+- [x] Link the packet from `BLOCKERS.md`, `OWNER_ACTIONS.md`,
+  `CURRENT_CHECKPOINT.md`, and `PROJECT_PROGRESS.md`.
+- [ ] Owner supplies a representative physical device or approved lab and
+  records the dated Runs A-C packet before C1 score credit can advance.
+
+This prepares the exact external acceptance action without claiming hardware
+evidence, changing the **93%** / **19%** score, or creating a deployment
+checkpoint. The consumed managed-browser route remains loop-broken.
+
 ### D13 preflight audit: keep Realm of Space gated (2026-08-12; local)
 
 - [x] Confirm the source-resident two-room route, Corruption of Space identity,

@@ -30,6 +30,19 @@ test('project learning uses one bounded rolling memory instead of stacked logs',
   assert.ok(memory.split(/\r?\n/).length <= 120, 'rolling memory stays bounded');
 });
 
+test('device acceptance handoff keeps owner evidence distinct from developer QA', () => {
+  const runbook = read('DEVICE_ACCEPTANCE_RUNBOOK.md');
+
+  assert.match(runbook, /## Run A - clean-player V1 route/);
+  assert.match(runbook, /## Run B - 10-30 minute touch-first session/);
+  assert.match(runbook, /## Run C - device and release-readiness checks/);
+  assert.match(runbook, /no developer controls/);
+  assert.match(runbook, /safe-area/);
+  assert.match(runbook, /forced-close/);
+  assert.match(runbook, /\.txt.*profile export and import/);
+  assert.match(runbook, /Do not publish a new build merely to collect this evidence/);
+});
+
 test('release verification prepares generated web and native assets before tests', () => {
   const packageJson = JSON.parse(read('package.json'));
   assert.match(
