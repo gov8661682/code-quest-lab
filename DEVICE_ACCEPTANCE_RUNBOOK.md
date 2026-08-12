@@ -18,8 +18,23 @@ the Pages preview:
 - Primary: `https://code-quest-lab.gov8661682.com/`
 - Source SHA-256:
   `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`
-- Local release gate before the run: **151/151**; do not enable developer
-  controls during Runs A-C.
+- Deployed checkpoint gate: **151/151**; current repository control gate:
+  **153/153**. Do not enable developer controls during Runs A-C.
+
+## Generate a fresh report template
+
+From the repository root, create a dated, non-personal report seeded with the
+current Git commit and canonical source hash:
+
+```powershell
+npm.cmd run acceptance:report -- --output .\device-acceptance-reports\cql-device-YYYY-MM-DD.md
+```
+
+Replace `YYYY-MM-DD` with the actual run date. The command refuses to overwrite
+an existing report. Complete the generated template on the representative
+device, then record its sanitized path in the project control records after
+Runs A-C are finished. Do not commit an incomplete report or include personal
+data, credentials, tokens, school identifiers, or raw device accounts.
 
 ## Required test inputs
 

@@ -39,7 +39,7 @@ function createServiceWorkerHarness() {
       if (key === './index.html' || key?.endsWith('/index.html')) return Promise.resolve({ name: 'offline-shell' });
       return Promise.resolve(cachedResponses.get(key) || null);
     },
-  keys() { return Promise.resolve(['code-quest-lab-shell-old', 'code-quest-lab-shell-v10', 'code-quest-lab-shell-v11']); },
+  keys() { return Promise.resolve(['code-quest-lab-shell-old', 'code-quest-lab-shell-v10', 'code-quest-lab-shell-v11', 'code-quest-lab-shell-v12']); },
     delete(name) {
       deletedCaches.push(name);
       return Promise.resolve(true);
@@ -95,7 +95,7 @@ test('service-worker shell paths are first-party files and lifecycle updates rem
   assert.deepEqual(harness.cache.added, Array.from(shellPaths));
 
   await harness.dispatch('activate');
-  assert.deepEqual(harness.deletedCaches, ['code-quest-lab-shell-old', 'code-quest-lab-shell-v10']);
+  assert.deepEqual(harness.deletedCaches, ['code-quest-lab-shell-old', 'code-quest-lab-shell-v10', 'code-quest-lab-shell-v11']);
 });
 
 test('service worker ignores non-GET and cross-origin requests', async () => {

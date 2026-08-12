@@ -219,6 +219,9 @@ browser batches.
   and optional cross-device transfer checks.
 - [x] Link the packet from `BLOCKERS.md`, `OWNER_ACTIONS.md`,
   `CURRENT_CHECKPOINT.md`, and `PROJECT_PROGRESS.md`.
+- [x] Add `npm.cmd run acceptance:report` to seed a dated, non-personal report
+  with the current commit and source hash; contract-test refusal to overwrite
+  an existing report and separation from developer QA.
 - [ ] Owner supplies a representative physical device or approved lab and
   records the dated Runs A-C packet before C1 score credit can advance.
 
@@ -230,6 +233,9 @@ checkpoint. The consumed managed-browser route remains loop-broken.
 
 - [x] Contract-test successful same-origin asset caching and later offline
   reuse after simulated network loss.
+- [x] Bump the first-party shell cache to v12 and verify a normal-URL reload
+  shows the steady player-following `TO GATE` arrow instead of the stale
+  gate-mounted cue.
 - [ ] Complete deployed-cache update, install/Add to Home Screen, and physical
   offline/forced-close soak in Checkpoint 2 on an approved device surface.
 

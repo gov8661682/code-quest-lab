@@ -41,7 +41,7 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **151/151** local
+static build, Capacitor sync, deterministic fast QA, and full **153/153** local
 test suite pass. The optional procedural gameplay-audio layer, visible local
 toggle, and the new backward-compatible `WorldState` plus shared
 `WorldRegion`/`WorldConnection` registry are covered by focused contracts while

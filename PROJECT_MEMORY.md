@@ -8,11 +8,10 @@ Mode: **Replace and consolidate; never append a chronological work log**
 This is the project's single short-term learning memory; edit stale facts in place. Do not add a second memory file, daily entry, repeated failure note, or
 cumulative session transcript.
 ## Current state
-
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **151/151** tests, static build/package audit,
+- Current verified local gate: **153/153** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the bounded, save-compatible
@@ -31,6 +30,10 @@ cumulative session transcript.
   region progression, save, balance, return, and device evidence exist. The
   `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues still stay beside the character;
   no gate-mounted pulse is used.
+- Owner handoff: `npm.cmd run acceptance:report` seeds a dated report with the
+  commit/source hash and refuses overwrite; it is preparation only. The current
+  local gate is **153/153**, while deployed `f0ce0e9` remains **151/151** and
+  physical/device evidence is still required.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A

@@ -30,6 +30,15 @@ disposable profile, and the configured hostname loaded the current shell. The
 score remains **93%** / **19%** because clean-player D1-D12 and physical/native-
 device acceptance are still open.
 
+### Current local correction: player-following gate guide cache refresh
+
+The first-party shell cache is now v12, so an existing controlled browser will
+discard the stale pre-guide shell after the worker update. A normal-URL
+1280x720 smoke showed the steady `TO GATE` arrow beside the character and
+pointing toward the gate; the gate itself has no pulsing directional arrow.
+The local gate remains **153/153** and the score remains **93% / 19%** until
+the corrected build is deployed and owner device evidence is recorded.
+
 ### Previous delta: gameplay audio feedback
 
 The gameplay audio feedback milestone now adds optional procedural cues for

@@ -22,6 +22,15 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   routes charted` with no Dungeon 13 card, and removed the disposable profile;
   the configured hostname loaded the current shell. This is not full
   clean-player D1-D12 or physical-device evidence.
+- The current repository after the acceptance-report workflow change passes
+  `release:verify` at **153/153**, `qa:fast`, static/package audit, and native
+  synchronization. The deployed runtime remains unchanged at `f0ce0e9`; no
+  website checkpoint was created for this local control improvement.
+- The current local runtime also bumps the first-party PWA shell cache to v12.
+  This fixes the stale-browser path that could continue showing the old
+  gate-mounted cue; a normal-URL 1280x720 smoke now shows the steady guide
+  beside the character and aimed at the gate. Deployment is still pending for
+  this runtime correction; the score remains **93% / 19%**.
 - Runtime `f0ce0e9` and the current status records are pushed to
   `origin/main`; control record `706d349` advances the autorun pointer to the
   owner-supplied device evidence lane. The preceding tablet-control milestone
@@ -177,7 +186,10 @@ physical-device offline soak or change the **93%** / **19%** score.
 remaining C1 clean-player, touch-session, and physical/native checks. It does
 not claim device evidence or change the **93%** / **19%** score; the managed-
 browser route method remains loop-broken until a materially different device or
-approved lab is available.
+approved lab is available. `npm.cmd run acceptance:report` now seeds a dated
+report template with the current commit and source hash, refuses accidental
+overwrite, and keeps personal/device evidence out of the repository until the
+owner completes and reviews Runs A-C.
 
 ## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
 

@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -41,6 +43,48 @@ test('device acceptance handoff keeps owner evidence distinct from developer QA'
   assert.match(runbook, /forced-close/);
   assert.match(runbook, /\.txt.*profile export and import/);
   assert.match(runbook, /Do not publish a new build merely to collect this evidence/);
+});
+
+test('device acceptance report generator seeds the current build identity safely', () => {
+  const packageJson = JSON.parse(read('package.json'));
+  const generator = read('scripts/create-device-acceptance-report.mjs');
+
+  assert.equal(packageJson.scripts['acceptance:report'], 'node scripts/create-device-acceptance-report.mjs');
+  assert.match(generator, /cql-device-\$\{date\}\.md/);
+  assert.match(generator, /sha256/);
+  assert.match(generator, /rev-parse/);
+  assert.match(generator, /Refusing to overwrite existing report/);
+  assert.match(generator, /do not include personal data/);
+  assert.match(generator, /Run A - clean-player V1 route/);
+  assert.match(generator, /Run B - 10-30 minute touch-first session/);
+  assert.match(generator, /Run C - device and release-readiness checks/);
+});
+
+test('device acceptance report generator refuses accidental overwrite', () => {
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'cql-acceptance-'));
+  const outputPath = path.join(tempRoot, 'report.md');
+  const scriptPath = path.join(ROOT, 'scripts', 'create-device-acceptance-report.mjs');
+
+  try {
+    const first = spawnSync(process.execPath, [scriptPath, '--output', outputPath], {
+      cwd: ROOT,
+      encoding: 'utf8'
+    });
+    assert.equal(first.status, 0, first.stderr);
+    const report = fs.readFileSync(outputPath, 'utf8');
+    assert.match(report, /Runtime commit \| [0-9a-f]+ \|/);
+    assert.match(report, /Source SHA-256 \| [0-9a-f]{64} \|/);
+    assert.match(report, /Status: DRAFT/);
+
+    const second = spawnSync(process.execPath, [scriptPath, '--output', outputPath], {
+      cwd: ROOT,
+      encoding: 'utf8'
+    });
+    assert.equal(second.status, 1);
+    assert.match(second.stderr, /Refusing to overwrite existing report/);
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
 });
 
 test('release verification prepares generated web and native assets before tests', () => {

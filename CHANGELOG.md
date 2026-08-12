@@ -1,5 +1,29 @@
 # Code Quest Lab - Changelog
 
+## Player-following gate guide cache refresh (2026-08-12; local QA)
+
+- Bumped the first-party PWA shell cache from v11 to v12 so an already-
+  controlled browser cannot keep the pre-guide gameplay shell after this
+  runtime is published. The source already keeps `TO GATE` beside the player;
+  the gate itself has no pulsing directional arrow.
+- A normal-URL reload after the service-worker update was verified at
+  1280x720: the guide remains above the character and rotates toward the gate.
+  The local gate remains **153/153**, `qa:fast` remains green, and the score is
+  unchanged at **93% / 19%** pending deployment and owner device evidence.
+
+## Device acceptance report workflow (2026-08-12; local control)
+
+- Added `npm.cmd run acceptance:report` to create a dated, non-personal Runs
+  A-C report seeded with the current repository commit and canonical source
+  hash. The generator refuses to overwrite an existing report and leaves no
+  draft evidence in the repository unless the owner explicitly chooses an
+  output path.
+- Added executable contract coverage for metadata seeding, report sections,
+  overwrite protection, and personal-data boundaries. The current local gate is
+  **153/153** with `qa:fast`, package audit, and native synchronization green.
+- This is owner-environment preparation, not device evidence or a website
+  deployment checkpoint; the score remains **93% / 19%**.
+
 ## World-state and connection registry milestone (2026-08-12; deployed)
 
 - Added a backward-compatible `WORLD_STATE_VERSION=1` normalization layer.

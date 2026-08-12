@@ -34,6 +34,8 @@ Updated: 2026-08-12
   and captured no warnings/errors. The configured hostname loaded the current
   profile shell. Browser CSS reports zero insets in this environment; the
   safe-area contract remains required for native and cutout-device validation.
+- The current repository-only acceptance-report workflow is covered by the
+  full **153/153** gate and does not change the deployed web build or score.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser
   smoke, not by clean-player/device acceptance.

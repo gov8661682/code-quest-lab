@@ -53,6 +53,10 @@ These are human-only or account/legal actions. The development work should conti
   10-30 minute touch session, safe-area, audio, offline, suspension, local-save,
   and (if claimed) transfer results. A Mac/Xcode environment is required to
   produce a signed iOS build.
+- Before the device run, generate the blank evidence packet with
+  `npm.cmd run acceptance:report -- --output .\device-acceptance-reports\cql-device-YYYY-MM-DD.md`;
+  replace the date, complete it on the device, and do not include personal data
+  or credentials.
 - Provide a Windows or CI environment with a supported JDK, Android SDK/platform tools, and Gradle access; run `npm.cmd run native:android:build` and record the resulting APK/AAB build evidence.
 - Current native check (2026-08-12): `npm.cmd run native:doctor` reports Android
   looking great, but `java`/`JAVA_HOME` and Xcode are unavailable here, so the

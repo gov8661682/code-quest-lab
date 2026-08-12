@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; the current local build also passed a 1280x720 -> 1024x768 -> 600x800 responsive smoke with no browser warnings/errors; no P0/P1 issue was observed during those checks | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `f0ce0e9` is pushed to `origin/main`; the **151/151** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and primary/preview production checks pass; deployed source hash is `AA469B...2E611F1` | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `f0ce0e9` passed **151/151** at the website checkpoint; the current repository control/build gate is **153/153**, with `qa:fast`, package audit, Android/iOS Capacitor sync, and primary/preview production checks passing; deployed source hash is `AA469B...2E611F1` | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Current milestone: world-state and connection registry (2026-08-12; deployed)
@@ -47,6 +47,27 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   no Dungeon 13 card. The configured hostname loaded the current profile shell.
   The score remains **93% / 19%**; clean-player D1-D12 and physical/native-device
   acceptance remain the next score-bearing lanes.
+
+### Current local QA: device acceptance report workflow (2026-08-12)
+
+- Added `npm.cmd run acceptance:report`, which creates a dated, non-personal
+  Runs A-C report seeded with the current repository commit and canonical source
+  SHA-256. It refuses to overwrite an existing report and keeps incomplete
+  device evidence out of the repository by default.
+- The focused control contracts, full `release:verify`, static/package audit,
+  native synchronization, and `qa:fast` now pass **153/153**. This is workflow
+  preparation only: no runtime source changed, no website deployment was made,
+  and the score remains **93% / 19%** until owner/device evidence exists.
+
+### Current local QA: player-following gate guide cache refresh (2026-08-12)
+
+- Bumped the first-party PWA shell cache from v11 to v12 so a browser already
+  controlled by the game refreshes from the old gate cue to the current
+  player-following `TO GATE` guide after the worker update.
+- A normal-URL 1280x720 smoke showed the arrow beside the character, pointing
+  toward the gate, with no directional arrow mounted on the gate. The local
+  **153/153** gate and all 11 `qa:fast` finales pass; deployment and physical
+  device evidence remain separate release actions, so the score is unchanged.
 
 ### Previous deployed milestone: gameplay audio feedback (2026-08-12)
 
@@ -801,7 +822,8 @@ change it.
 
 1. Run the clean-profile D1-12 route only on a materially different,
    touch-capable or physical surface using `DEVICE_ACCEPTANCE_RUNBOOK.md`;
-   record the first failing room/system if the route cannot complete. The
+   first run can be prepared with `npm.cmd run acceptance:report`; record the
+   first failing room/system if the route cannot complete. The
    managed-browser route method is loop-broken and must not be repeated.
 2. Use the same runbook for the remaining 10-30 minute touch-only/device
    session around the now-verified pause, page-background, reload, Resume

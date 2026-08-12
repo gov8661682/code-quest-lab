@@ -7,6 +7,25 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Player-following gate guide cache refresh (2026-08-12; local QA; completed)
+
+- Bumped the first-party PWA shell cache from v11 to v12 so controlled browsers
+  receive the current player-following gate guide instead of a stale shell.
+- A normal-URL 1280x720 smoke showed `TO GATE` attached to the character and
+  aimed at the gate; no gate-mounted directional arrow is present. The full
+  **153/153** gate and `qa:fast` pass. Deployment and physical-device evidence
+  remain open, so the **93% / 19%** score is unchanged.
+
+## Device acceptance report workflow (2026-08-12; local control; completed)
+
+- Added `npm.cmd run acceptance:report` and a safe report generator that seeds
+  the current repository commit/source hash, includes Runs A-C and sanitized
+  evidence fields, and refuses accidental overwrite.
+- Added focused executable contracts and verified the full **153/153** gate,
+  `qa:fast`, package audit, and Capacitor synchronization. No runtime source or
+  deployed build changed; this prepares the owner/device handoff but does not
+  claim physical evidence or change the **93% / 19%** score.
+
 ## World-state and connection registry milestone (2026-08-12; deployed; completed)
 
 - Added a backward-compatible `WORLD_STATE_VERSION=1` migration/normalization
