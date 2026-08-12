@@ -1173,6 +1173,13 @@ html, body {
     </div>
     <button id="settingsScreenShakeToggle" class="menuBtnSecondary" style="margin:0;width:auto;padding:8px 20px;font-size:0.8em;">ON</button>
   </div>
+  <div style="width:90%;max-width:420px;background:#13111a;border:1px solid #3a342a;border-radius:6px;padding:14px 18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="text-align:left;">
+      <div style="color:#e8ddc8;font-size:0.9em;letter-spacing:0.05em;">Gameplay Audio</div>
+      <div style="color:#8a8170;font-size:0.68em;letter-spacing:0.05em;margin-top:2px;">Combat, reward, room-clear and progression cues</div>
+    </div>
+    <button id="settingsAudioToggle" class="menuBtnSecondary" aria-pressed="true" style="margin:0;width:auto;padding:8px 20px;font-size:0.8em;">ON</button>
+  </div>
   <div style="width:90%;max-width:420px;background:#13111a;border:1px solid #3a342a;border-radius:6px;padding:14px 18px;margin-bottom:18px;text-align:left;">
     <div style="color:#a98f5c;font-size:0.65em;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;">Character Info</div>
     <div style="color:#cfc4ae;font-size:0.8em;line-height:1.7;" id="settingsCharInfo"></div>
@@ -1579,6 +1586,113 @@ function showScreen(id) {
     } catch(e2){}
   }
 }
+
+// ============================================================
+// GAMEPLAY AUDIO FEEDBACK
+// ============================================================
+// This layer is deliberately procedural and optional. It adds small feedback
+// cues without shipping recordings, network requests, or a second content
+// pipeline. Joey's authored boss/ending cues remain independent and intact.
+var GAME_AUDIO_SETTING_KEY='cql_audio_enabled';
+var gameAudio={ctx:null,master:null,unlocked:false,enabled:true,preferenceLoaded:false,lastAt:{}};
+var GAME_AUDIO_PATTERNS={
+  attack:{gap:70,notes:[{at:0,f:165,to:245,d:0.07,v:0.055,type:'square'}]},
+  hit:{gap:55,notes:[{at:0,f:390,to:185,d:0.055,v:0.045,type:'triangle'}]},
+  critical:{gap:80,notes:[{at:0,f:480,to:260,d:0.07,v:0.06,type:'sawtooth'},{at:0.06,f:720,to:420,d:0.08,v:0.045,type:'triangle'}]},
+  enemyDefeat:{gap:60,notes:[{at:0,f:280,to:180,d:0.10,v:0.05,type:'triangle'},{at:0.08,f:180,to:105,d:0.14,v:0.04,type:'sine'}]},
+  playerHurt:{gap:110,notes:[{at:0,f:145,to:75,d:0.13,v:0.065,type:'sawtooth'}]},
+  door:{gap:120,notes:[{at:0,f:220,to:330,d:0.12,v:0.05,type:'sine'},{at:0.10,f:330,to:495,d:0.16,v:0.04,type:'triangle'}]},
+  roomClear:{gap:220,notes:[{at:0,f:392,d:0.12,v:0.045,type:'triangle'},{at:0.10,f:523.25,d:0.12,v:0.045,type:'triangle'},{at:0.20,f:659.25,d:0.20,v:0.05,type:'sine'}]},
+  bossHit:{gap:80,notes:[{at:0,f:115,to:78,d:0.10,v:0.06,type:'square'}]},
+  bossDefeat:{gap:300,notes:[{at:0,f:196,d:0.16,v:0.05,type:'triangle'},{at:0.14,f:261.63,d:0.16,v:0.05,type:'triangle'},{at:0.28,f:392,d:0.30,v:0.06,type:'sine'}]},
+  levelUp:{gap:300,notes:[{at:0,f:392,d:0.12,v:0.045,type:'triangle'},{at:0.11,f:523.25,d:0.12,v:0.05,type:'triangle'},{at:0.22,f:783.99,d:0.24,v:0.06,type:'sine'}]}
+};
+function readGameAudioPreference(){
+  if(gameAudio.preferenceLoaded)return gameAudio.enabled;
+  gameAudio.preferenceLoaded=true;
+  try{gameAudio.enabled=localStorage.getItem(GAME_AUDIO_SETTING_KEY)!=='0';}catch(e){gameAudio.enabled=true;}
+  return gameAudio.enabled;
+}
+function gameAudioIsEnabled(){return readGameAudioPreference()!==false;}
+function getGameAudioContext(){
+  try{
+    if(!gameAudio.ctx){
+      var Ctx=window.AudioContext||window.webkitAudioContext;
+      if(!Ctx)return null;
+      gameAudio.ctx=new Ctx();
+      gameAudio.master=gameAudio.ctx.createGain();
+      gameAudio.master.gain.value=0.12;
+      gameAudio.master.connect(gameAudio.ctx.destination);
+    }
+    return gameAudio.ctx;
+  }catch(e){return null;}
+}
+function updateGameAudioUi(){
+  var button=document.getElementById('settingsAudioToggle');
+  if(!button)return;
+  var enabled=gameAudioIsEnabled();
+  button.textContent=enabled?'ON':'OFF';
+  button.setAttribute('aria-pressed',enabled?'true':'false');
+}
+function primeGameAudio(){
+  if(!gameAudioIsEnabled())return;
+  try{
+    var ac=getGameAudioContext();
+    if(!ac)return;
+    gameAudio.unlocked=true;
+    if(ac.state==='suspended'&&typeof ac.resume==='function'){
+      var pending=ac.resume();
+      if(pending&&typeof pending.catch==='function')pending.catch(function(){});
+    }
+  }catch(e){}
+}
+function setGameAudioEnabled(enabled){
+  gameAudio.preferenceLoaded=true;
+  gameAudio.enabled=enabled!==false;
+  try{localStorage.setItem(GAME_AUDIO_SETTING_KEY,gameAudio.enabled?'1':'0');}catch(e){}
+  try{
+    if(gameAudio.master&&gameAudio.ctx){
+      var now=gameAudio.ctx.currentTime;
+      gameAudio.master.gain.cancelScheduledValues(now);
+      gameAudio.master.gain.setTargetAtTime(gameAudio.enabled?0.12:0,now,0.025);
+    }
+  }catch(e2){}
+  updateGameAudioUi();
+  if(gameAudio.enabled)primeGameAudio();
+}
+function playGameSound(kind){
+  if(!gameAudioIsEnabled()||!gameAudio.unlocked)return;
+  var pattern=GAME_AUDIO_PATTERNS[kind];
+  if(!pattern)return;
+  var ac=gameAudio.ctx,master=gameAudio.master;
+  if(!ac||!master)return;
+  var nowMs=Date.now(),last=gameAudio.lastAt[kind]||0;
+  if(nowMs-last<pattern.gap)return;
+  gameAudio.lastAt[kind]=nowMs;
+  try{
+    if(ac.state==='suspended'&&typeof ac.resume==='function'){
+      var pending=ac.resume();
+      if(pending&&typeof pending.catch==='function')pending.catch(function(){});
+    }
+    var start=ac.currentTime+0.01;
+    pattern.notes.forEach(function(note){
+      var osc=ac.createOscillator(),gain=ac.createGain();
+      var at=start+(note.at||0),duration=Math.max(0.025,note.d||0.08);
+      osc.type=note.type||'sine';
+      osc.frequency.setValueAtTime(Math.max(30,note.f||220),at);
+      if(note.to)osc.frequency.exponentialRampToValueAtTime(Math.max(30,note.to),at+duration*0.8);
+      osc.connect(gain);gain.connect(master);
+      gain.gain.setValueAtTime(0.0001,at);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.001,note.v||0.04),at+0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001,at+duration);
+      osc.start(at);osc.stop(at+duration+0.02);
+    });
+  }catch(e){}
+}
+try{
+  window.addEventListener('pointerdown',primeGameAudio,{passive:true});
+  window.addEventListener('keydown',primeGameAudio,{passive:true});
+}catch(e){}
 
 // ============================================================
 // SAVE / LOAD
@@ -4061,6 +4175,7 @@ function gainMasteryXP(baseAmount) {
   }
 if(m.level>=MASTERY_LEVEL_CAP)m.xp=0;
   if(leveled){
+    playGameSound('levelUp');
     savePermanentData();
     refreshDungeonUnlocks();
     showMasteryToast(getClassData(permanentData.selectedClass||'barbarian').name+' Level '+m.level,'+3 Stat Points available!');
@@ -25503,7 +25618,19 @@ safeClick('charMenuSkillTreeBtn','Char Menu Skill Tree',function(){_charScreenOp
 safeClick('charMenuBuildBtn','Char Menu Choose Build',function(){_charScreenOpenedFromPauseMenu=true;openBuildConfig();});
 safeClick('charMenuMasteryBtn','Char Menu Mastery',function(){_charScreenOpenedFromPauseMenu=true;openMastery();});
 safeClick('charMenuSwitchBtn','Char Menu Switch Character',function(){returnToMainMenuFromGame();openCharacterSelectScreen();});
-safeClick('charMenuSettingsBtn','Char Menu Settings',function(){showScreen('settingsScreen');});
+function openSettingsScreen(){
+  readGameAudioPreference();
+  updateGameAudioUi();
+  var info=document.getElementById('settingsCharInfo');
+  if(info&&permanentData){
+    var cls=getClassData(permanentData.selectedClass||'barbarian');
+    var level=permanentData.mastery&&permanentData.mastery.level||1;
+    info.textContent='Character: '+(cls&&cls.name||'Adventurer')+'  ·  Mastery Level: '+level+'  ·  Local save active';
+  }
+  showScreen('settingsScreen');
+}
+safeClick('charMenuSettingsBtn','Char Menu Settings',function(){openSettingsScreen();});
+safeClick('settingsAudioToggle','Settings Audio',function(){setGameAudioEnabled(!gameAudioIsEnabled());});
 safeClick('settingsBackBtn','Settings Back',function(){showScreen('gameScreen');openPauseMenu();});
 safeClick('pauseRestartBtn','Restart',function(){
   closePauseMenu();showScreen('gameScreen');
@@ -30562,6 +30689,7 @@ var eliteRadius=isElite?Math.round(def.radius*1.3):def.radius;
 
 function openForwardDoor(geo){
   exitDoor={x:geo.forwardDoor.x,y:geo.forwardDoor.y,w:geo.forwardDoor.w,h:geo.forwardDoor.h,cx:geo.forwardDoor.cx,cy:geo.forwardDoor.cy};
+  playGameSound('door');
 }
 
 function spawnBoss(geo){
@@ -35645,6 +35773,7 @@ function performAttack(angle){
   var isMage=(cls==='mage');
   var isRogue=(cls==='rogue');
   var isDruid=(cls==='druid');
+  playGameSound('attack');
   if(isMage){performMageAttack(angle);return;}
   if(isRogue){
     // Assassin's Fury: Attack Speed +50% shortens the swing timer between basic attacks.
@@ -36155,6 +36284,7 @@ function dealDamageToEnemy(e,amount,isCrit,ignoreArmorPct){
     addFloatie(e.x,e.y-e.radius-22,'✦ WARDED','#e8a8ff',0.7);
   }
   e.hp-=amount;e.hitFlash=e.isElite?0.28:0.18;
+  if(amount>0)playGameSound(isCrit?'critical':'hit');
   // Regenerating elites must treat every successful hit as renewed pressure.
   // Without this reset, the timer keeps running while the player is attacking
   // and the elite can recover at full rate during sustained combat.
@@ -36315,6 +36445,7 @@ function dealDamageToEnemy(e,amount,isCrit,ignoreArmorPct){
     permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+_eSouls;
     permanentData.stats.totalEnemiesDefeated=(permanentData.stats.totalEnemiesDefeated||0)+1;
     enemies.splice(idx,1);totalKills++;
+    playGameSound('enemyDefeat');
     if(e.isElite)runEliteKills++;
     // Rebuild stunTimers map with corrected indices after splice
     var newStunTimers={};
@@ -36631,6 +36762,7 @@ function dealDamageToBoss(amount,isCrit){
   var _isOK=!!boss.isOathbreakerKing;
   var _isAlch=!!boss.isAlchemist;
   boss.hp-=amount;boss.hitFlash=0.12;
+  if(amount>0)playGameSound(isCrit?'critical':'bossHit');
   addFloatie(boss.x+(Math.random()*20-10),boss.y-boss.radius-10,'-'+amount,'#ffd98a',0.9);
   if(_isChief){
     if(!boss.chiefPhase2Triggered&&boss.hp<=boss.hpMax*0.6){
@@ -36778,6 +36910,7 @@ function dealDamageToBoss(amount,isCrit){
     if(boss._deathMark){detonateDeathMark(boss.x,boss.y,false,boss,boss._deathMarkDamage);boss._deathMark=false;applyDeathMarkKillReward();}
     applyRogueUltKillReward();
     boss=null;totalKills++;
+    playGameSound('bossDefeat');
     var _bSouls=applyModifierToSouls((_isFK||_isChief)?Math.round(SOUL_REWARD_GUARDIAN*1.1):(_isValen?Math.round(SOUL_REWARD_GUARDIAN*1.3):(_isHollowTree?Math.round(SOUL_REWARD_GUARDIAN*1.4):(_isBroker?Math.round(SOUL_REWARD_GUARDIAN*1.5):(_isOK?Math.round(SOUL_REWARD_GUARDIAN*1.6):(_isAlch?Math.round(SOUL_REWARD_GUARDIAN*1.75):SOUL_REWARD_GUARDIAN))))));
     runSoulsEarned+=_bSouls;
     permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+_bSouls;
@@ -40760,6 +40893,7 @@ function dealDamageToMiniBoss(amount,isCrit){
   if(miniBoss._ddMarkTimer>0)amount=Math.round(amount*(1+(miniBoss._ddMarkBonus||0.15)));
   if(miniBoss._cataVulnerable)amount=Math.round(amount*1.20);
   miniBoss.hp-=amount;miniBoss.hitFlash=0.22;
+  if(amount>0)playGameSound(isCrit?'critical':'bossHit');
   if(amount>0)addFloatie(miniBoss.x+(Math.random()*20-10),miniBoss.y-miniBoss.radius-10,'-'+amount,'#ffd98a',0.9);
   if(miniBoss.hp<=0){
     // Royal Commander (D9): plays a kneel/death-line sequence instead of
@@ -40778,6 +40912,7 @@ function dealDamageToMiniBoss(amount,isCrit){
     if(miniBoss._deathMark){detonateDeathMark(miniBoss.x,miniBoss.y,false,miniBoss,miniBoss._deathMarkDamage);miniBoss._deathMark=false;applyDeathMarkKillReward();}
     applyRogueUltKillReward();
     var mb=miniBoss;miniBoss=null;totalKills++;
+    playGameSound('bossDefeat');
     var _mbSouls=applyModifierToSouls(mb.soulGain||SOUL_REWARD_MINIBOSS);
     runSoulsEarned+=_mbSouls;
     permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+_mbSouls;
@@ -42014,6 +42149,7 @@ function applyEnemyDamageToTarget(targetInfo,amount){
     return;
   }
   player.hp=clamp(player.hp-amount,0,player.hpMax);
+  if(amount>0)playGameSound('playerHurt');
   player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
   addFloatie(player.x+(Math.random()*20-10),player.y-30,'-'+amount,'#e74c3c',0.85);
   if(player.hp<=0)playerDied();
@@ -42064,6 +42200,7 @@ function updateEnemyProjectiles(dt,geo){
       var _mgProjMult=getMageDamageMult();if(_mgProjMult<1&&dmg>0)dmg=Math.round(dmg*_mgProjMult);
       if(dmg>0)dmg=applyArmorReduction(dmg);
       player.hp=clamp(player.hp-dmg,0,player.hpMax);
+      if(dmg>0)playGameSound('playerHurt');
       player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
       addFloatie(player.x,player.y-30,'-'+dmg,'#e74c3c',0.85);lastFightTimer=0;
       // ── ELITE MODIFIER (ranged): Vampiric / Frozen / Burning ──
@@ -42809,6 +42946,7 @@ function updateRoomProgress(geo){
     }
     if(def.forward)openForwardDoor(geo);
     sideDoorOpen=(def.side!==null);
+    playGameSound('roomClear');
     addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-40,'ROOM CLEARED!','#d8c08a',2.0);
     showBanner('ROOM CLEARED',def.type===RT.SIDE?'Bonus rewards earned!':def.type===RT.ELITE?'Elite Bounty Collected!':'Proceed through the exit',2.0);
   }
@@ -42860,6 +42998,7 @@ function getDefeatAudioContext(){
   }catch(e){return null;}
 }
 function primeDefeatAudio(){
+  if(!gameAudioIsEnabled())return;
   try{
     var ac=getDefeatAudioContext();
     if(ac&&ac.state==='suspended')ac.resume();
@@ -42868,6 +43007,7 @@ function primeDefeatAudio(){
 window.addEventListener('pointerdown',primeDefeatAudio,{once:true,passive:true});
 window.addEventListener('keydown',primeDefeatAudio,{once:true,passive:true});
 function playOriginalDefeatJingle(){
+  if(!gameAudioIsEnabled())return;
   try{
     var ac=getDefeatAudioContext();if(!ac)return;
     if(ac.state==='suspended')ac.resume();
