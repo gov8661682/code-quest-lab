@@ -15,7 +15,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **135/135** tests, static build/package audit,
+- Current verified local gate: **136/136** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): the Town/entrance destination cue
   is a steady world-space arrow beside the player, rotating toward the
@@ -27,7 +27,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   diagnostics. This does not change the **93% / 19%** score: clean-player
   D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): D13 is protected by three future-
-  content contracts and remains gated; the local release gate is **135/135**.
+  content contracts and remains gated; the local release gate is **136/136**.
   Its Joey-preserving standard reward boundary is now implemented locally:
   2.0x guardian souls, boss XP/mastery, named defeat statistics, death effects,
   and completion handoff. D13 is not credited until future-region progression,

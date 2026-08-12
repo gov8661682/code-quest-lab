@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **135/135** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **136/136** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
@@ -40,7 +40,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   `REGION_ORDER`, normal unlock refresh, and active-run recovery while
   future-region progression, save/resume, balance, and return-to-world
   acceptance remain open. Three future-content guard contracts pass; the
-  current local gate is **135/135**. No score credit is claimed and the
+  current local gate is **136/136**. No score credit is claimed and the
   evidence score remains **93%** / **19%**.
 
 - The plain-text profile transfer now has checked-in, synthetic fixtures for a
@@ -974,10 +974,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current verified code head: `e7871b0` (`Checkpoint recovery-safe gameplay
-  milestone`), pushed to `origin/main` after the **113/113** release gate,
-  `qa:fast`, build/package audit, native sync, and live browser smoke.
-  Checkpoint 1 remains active.
+- Current repository head: `a7b5f2d` (`Prepare device acceptance handoff`),
+  pushed to `origin/main` after the **136/136** release gate, `qa:fast`, build/
+  package audit, native sync, and project-control verification. This is a
+  control/readiness commit; Checkpoint 1 remains active and the runtime source
+  hash is unchanged from the local gated D13 follow-up.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -1016,28 +1017,31 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; milestone commit `e7871b0` records the recovery-safe pause
-  handoff and the current GitHub/website checkpoint; the deployment preview is
-  `https://a89328df.code-quest-lab.pages.dev/` and the configured hostname is
+- Branch: `main`; the latest runtime/website milestone is commit `4580631`
+  (`Make entrance guidance follow the player`), while `a7b5f2d` is the latest
+  pushed control record. The deployed preview is
+  `https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname is
   `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `e7871b0` (`Checkpoint recovery-safe gameplay milestone`)
-- Deployment date: 2026-08-10
+- Commit: `4580631` (`Make entrance guidance follow the player`)
+- Deployment date: 2026-08-12
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://a89328df.code-quest-lab.pages.dev/`
-- Current production check: passed on 2026-08-10 for primary and preview
+- Preview: `https://932a4fb6.code-quest-lab.pages.dev/`
+- Current production check: passed on 2026-08-12 for primary and preview
+- Deployed source hash: `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`
 
-The verified milestone shell includes the recovery-safe pause handoff, existing
-Town minimap, versioned profile transfer, grouped readability fixes,
-session-only touch target assist, dead-summon boss handoff correction, and
-queued level-up clarity. The live smoke reached the profile dashboard, Town,
-Dungeon 1 start, `COMBAT Burial Hall`, pause/finish, and cleanup; the tablet
-viewport also paused into the Character Menu. Both production checks passed
-with no browser diagnostics. The next step is a fresh D1-12 player route and
-the remaining touch/device session evidence.
+The verified shell includes the player-following Town/entrance guide with no
+gate-mounted pulse, cleared-room forward guidance, profile transfer, grouped
+readability fixes, touch target assist, recovery-safe progression, and the
+V1 route surface. Live desktop/tablet main-flow smokes passed with empty
+browser diagnostics. The current local source hash is
+`9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`, which
+contains gated D13 reward/story work and is intentionally not deployed. The
+next step remains the clean D1-12 route and the remaining touch/device session
+evidence.
 
 ## Exact condition required to advance
 

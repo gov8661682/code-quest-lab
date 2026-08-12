@@ -2,8 +2,8 @@
 
 Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
-portability, player-guidance, and D13 gated-content slices; `origin/main` is
-writable and synchronized at `c5b514e`.
+portability, player-guidance, D13 gated-content, and device-handoff slices;
+`origin/main` is writable and synchronized at `a7b5f2d`.
 
 ## Executive result
 
@@ -35,7 +35,7 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **135/135** test
+static build, Capacitor sync, deterministic fast QA, and full **136/136** test
 suite pass. This remains architecture hardening; no checkpoint percentage is
 claimed until the open clean-player/device evidence is completed.
 
@@ -48,7 +48,7 @@ claimed until the open clean-player/device evidence is completed.
   helpers now drive HUD, recovery, and room-facing messaging for named bosses.
   The contract covers current and source-resident identities; do not reopen this
   as per-boss UI patches unless a regression is reproduced.
-- **No release-breaking defect is currently known.** The full 135-test suite
+- **No release-breaking defect is currently known.** The full 136-test suite
   and release contracts pass, so broad gameplay rewrites are not justified by
   current evidence.
 

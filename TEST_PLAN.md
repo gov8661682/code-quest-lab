@@ -13,18 +13,18 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `baaab57` is the tested/live web build; the source mirror and
-  generated web/native surfaces match its SHA-256 identity.
-- `npm.cmd test` passes **125/125**; release contracts, package audit,
+- Runtime `4580631` is the tested/live web build; the source mirror and
+  generated web/native surfaces match its deployed SHA-256 identity.
+- `npm.cmd test` passes **136/136**; release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - Live 1024x768 desktop and 600x768 tablet smokes reach the first Normal combat
   room with two enemies and visible touch controls. This is short smoke evidence,
   not a clean full-route or physical-device pass.
 - The next manual route must use a fresh profile and ordinary controls without
   `CQLI`, encounter accelerators, room completion, enemy-free mode, or high
-  damage. The five-attempt loop boundary is already consumed for the current
-  route method; a future run must use a materially different control strategy
-  and record the first failing room/system rather than repeat the same batch.
+  damage, and must use the materially different touch-capable/device surface
+  specified in `DEVICE_ACCEPTANCE_RUNBOOK.md`; the consumed managed-browser
+  route method must not be repeated.
 - Native evidence remains owner-environment work: this Windows host has no
   `java`/`JAVA_HOME`, Xcode, or representative hardware.
 

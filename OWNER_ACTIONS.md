@@ -10,15 +10,15 @@ These are human-only or account/legal actions. The development work should conti
   specifically blocked again, grant access to the requested loopback URL once;
   do not retry a denied target through another browser or an indirect
   workaround.
-- Git metadata write access is currently resolved: commits `c2c3b39` and
-  `692bb65` were created and pushed to `origin/main`. Reopen this action only
-  if a later checkpoint again cannot create `.git/index.lock`.
+- Git metadata write access is currently resolved: control commit `a7b5f2d`
+  was created and pushed to `origin/main`. Reopen this action only if a later
+  checkpoint again cannot create `.git/index.lock`.
 - The configured site was verified from the current environment after runtime
-  commit `baaab57`: preview `051a6921.code-quest-lab.pages.dev` and
+  commit `4580631`: preview `932a4fb6.code-quest-lab.pages.dev` and
   `https://code-quest-lab.gov8661682.com` passed production checks, and live
-  1024x768 desktop and 600x768 tablet smoke reached D1 combat. Owner review
-  remains appropriate before a future publication checkpoint, but this is no
-  longer an active reachability blocker.
+  desktop/tablet smokes reached D1 combat. Owner review remains appropriate
+  before a future publication checkpoint, but this is no longer an active
+  reachability blocker.
 
 - Confirm the final product name and obtain professional trademark/name clearance. A preliminary web search on 2026-08-04 did not surface an obvious exact-match game result, but this is not clearance.
 - Confirm the target audience and age-rating position: the current product direction is secondary-school students approximately 13-17, not an automatic Apple Kids-category claim.

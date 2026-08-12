@@ -3,6 +3,18 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Current repository and website record (2026-08-12)
+
+- Repository head: `a7b5f2d` (`Prepare device acceptance handoff`), pushed to
+  `origin/main`; local release gate: **136/136**.
+- Runtime milestone: `4580631` (`Make entrance guidance follow the player`),
+  deployed and live-verified at the configured hostname and preview
+  `https://932a4fb6.code-quest-lab.pages.dev/`.
+- Deployed source hash: `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+  The local hash is `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`
+  because gated D13 reward/story work remains intentionally undeployed.
+- `production:check` passed for both primary and preview on 2026-08-12.
+
 ## Device acceptance handoff (2026-08-12)
 
 `DEVICE_ACCEPTANCE_RUNBOOK.md` is the prepared owner-side packet for the
@@ -298,7 +310,7 @@ warning or error diagnostics were recorded. This milestone preserves the
 93% active checkpoint / 19% overall score because its extended D4-D6 route was
 QA-assisted rather than clean-player acceptance.
 
-## Recovery-safe pause handoff web checkpoint (2026-08-10; deployed)
+## Recovery-safe pause handoff web checkpoint (2026-08-10; historical deployment)
 
 The recovery-safe pause handoff was published from tested commit `e7871b0`
 (`Checkpoint recovery-safe gameplay milestone`) to the existing Cloudflare
@@ -806,29 +818,28 @@ intended ending, or the full safe-stop session acceptance lanes.
 
 ## Checkpoint process status
 
-- Evidence-scored progress: Checkpoint 1 is **79%** complete and overall
-  project progress is **18%** using the ten-checkpoint formula in
+- Evidence-scored progress: Checkpoint 1 is **93%** complete and overall
+  project progress is **19%** using the ten-checkpoint formula in
   `AUTORUN.md`. `tests/project-control-contracts.test.mjs` prevents score drift
   and verifies the three/five-attempt loop breaker.
 - Autonomous work protocol: `AUTORUN.md` requires a concrete progress delta per
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified code head: `9886f50` (`Bound Void Monarch summon pressure`),
-  after the 84-test release verification, build/package audit, native asset
-  sync, GitHub push, and live browser smoke. Checkpoint 1 remains active
-  because D1-8 and the ending are not complete.
+- Current verified repository head: `a7b5f2d` (`Prepare device acceptance
+  handoff`), after the **136/136** release verification, build/package audit,
+  native asset sync, GitHub push, and project-control verification. Checkpoint 1
+  remains active because clean D1-12 and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `cd90db4` (`Harden local boss QA
-  controls`), deployed on 2026-08-07 to the configured Cloudflare Pages
-  project. The earlier pacing/input runtime `944675b` and all preceding
-  hardening commits remain in history.
-- Checkpoint record: commit `cd90db4`, deployed 2026-08-07 to
+- Latest deployed milestone runtime: `4580631` (`Make entrance guidance
+  follow the player`), deployed on 2026-08-12 to the configured Cloudflare
+  Pages project. The local gated D13 follow-up is not part of this deployment.
+- Checkpoint record: commit `4580631`, deployed 2026-08-12 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://0db3ee6b.code-quest-lab.pages.dev/`), build SHA-256
-  `C6D5E0A29FD8AD5F52F868C4E873E4B031CE5219D3E61252F93E3FE6085A1099`.
+  `https://932a4fb6.code-quest-lab.pages.dev/`), deployed source SHA-256
+  `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
 - Production verification passed for both the configured hostname and preview;
   the live browser smoke reached the profile screen and playable entrance with
   visible target assist at the default desktop viewport and at 1024x768 tablet
