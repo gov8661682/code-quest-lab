@@ -13,7 +13,7 @@ or cumulative session transcript.
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **141/141** tests, static build/package audit,
+- Current verified local gate: **142/142** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the guidance and release-readiness
