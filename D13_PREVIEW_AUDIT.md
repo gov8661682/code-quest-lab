@@ -18,18 +18,25 @@ surface.
 - Phase 2 Rift Collapse and Dimensional Prison.
 - Phase 3 speed/attack escalation and the authored collapse/light defeat sequence.
 - Shared exit portal and `dungeon13` purification hook.
+- Joey-preserving standard boss completion boundary: a 2.0x guardian soul
+  reward, boss XP/mastery, `spaceCorruptionsDefeated` statistics, death
+  particles, achievement refresh, and the existing completion handoff.
 
 ## Missing before promotion
 
-The current `finalizeCorruptionOfSpaceDefeat` intentionally does not provide:
+The current `finalizeCorruptionOfSpaceDefeat` still does not provide:
 
-- standard souls, XP, mastery, materials, loot, or achievement updates;
 - dungeon unlock state and a tested progression handoff to the next region;
-- complete D13 dialogue/story delivery and save/resume coverage;
+- complete D13 dialogue/story delivery and D13 save/resume coverage;
 - a fresh desktop/tablet play path, balance evidence, and a return-to-world
   acceptance record.
 
+Joey's reference finalizer does not define a D13-specific material or loot
+helper. The current implementation therefore does not invent one; any later
+special loot must be added as a separate, reference-backed content decision.
+
 The route is therefore kept gated. The three future-content guard contracts in
-`tests/future-content-guard-contracts.test.mjs` protect this boundary. A future
-D13 milestone must implement and test the missing state before adding D13 to
-the open-world region graph or release route.
+`tests/future-content-guard-contracts.test.mjs` protect both the completed
+reward boundary and the release guard. A future D13 milestone must implement
+and test the missing state before adding D13 to the open-world region graph or
+release route.

@@ -75,13 +75,20 @@ browser batches.
 - [x] Confirm the source-resident two-room route, Corruption of Space identity,
   authored attack/phase/death sequence, shared exit portal, and purification
   hook without promoting the region.
-- [x] Confirm and contract-test the missing reward, material, achievement,
-  unlock/progression, dialogue, and release-handoff work in the D13 finalizer.
+- [x] Implement and contract-test Joey's standard D13 reward boundary: 2.0x
+  guardian souls, boss XP/mastery, named defeat statistic, death effects,
+  achievement refresh, and the standard completion handoff.
+- [x] Record that Joey's reference does not define a D13-specific material or
+  loot helper; do not fabricate one during promotion preparation.
 - [x] Keep D13 outside `REGION_ORDER`, normal unlock refresh, and active-run
   recovery until a complete route/save/reward/return milestone exists.
+- [ ] Add the future-region progression handoff, complete D13 dialogue/story,
+  save/resume coverage, fresh desktop/tablet balance evidence, and return-to-
+  world acceptance before exposing the region.
 
 The three guard contracts are local release-readiness coverage only. They do
-not expose D13, advance Checkpoint 1, or create a website deployment.
+not expose D13, advance Checkpoint 1, or create a website deployment. This
+runtime change is intentionally not deployed while the route remains gated.
 
 ### Plain-text transfer portability fixtures (2026-08-12; local)
 

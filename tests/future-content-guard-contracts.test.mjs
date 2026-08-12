@@ -69,12 +69,18 @@ test('D13 keeps its authored two-room atmosphere and named boss wiring', () => {
   assert.match(bossUpdater, /beginCorruptionOfSpacePhase3\(\)/, 'D13 keeps its Phase 3 transition');
 });
 
-test('D13 defeat remains explicitly incomplete until reward and progression work is promoted', () => {
+test('D13 defeat closes the Joey reward boundary while remaining gated from release', () => {
   const finalizer = sliceBetween('function finalizeCorruptionOfSpaceDefeat(){', '// ---- Rendering ----');
-  assert.match(finalizer, /Rewards, materials, dungeon unlocks, and achievement checks are[\s\S]*NOT implemented/, 'the source records the missing release work');
+  assert.match(finalizer, /var bx=boss\.x,by=boss\.y;/, 'the defeat sequence captures the authored boss position');
+  assert.match(finalizer, /SOUL_REWARD_GUARDIAN\*2\.0/, 'D13 keeps Joey\'s large guardian soul reward');
+  assert.match(finalizer, /spaceCorruptionsDefeated/, 'D13 records its named boss statistic');
+  assert.match(finalizer, /gainXP\(XP_PER_BOSS\)/, 'D13 awards boss experience');
+  assert.match(finalizer, /gainMasteryXP\(MXP_GUARDIAN\+30\)/, 'D13 awards guardian mastery');
+  assert.match(finalizer, /gainMasteryXP\(MXP_DUNGEON_COMPLETE\)/, 'D13 awards completion mastery');
+  assert.match(finalizer, /spawnDeathParticles\(bx,by/, 'D13 keeps the authored defeat spectacle');
+  assert.match(finalizer, /checkAchievements\(\);refreshDungeonUnlocks\(\);recordDungeonDifficultyCompletion\(\);/, 'D13 uses the standard completion handoff');
   assert.match(finalizer, /applyBossPurification\('dungeon13'/, 'the authored purification hook remains');
   assert.match(finalizer, /unlockBossExit\(2\.2\)/, 'the existing exit system remains reusable');
-  for (const marker of ['runSoulsEarned', 'refreshDungeonUnlocks()', 'recordDungeonDifficultyCompletion()', 'checkAchievements()']) {
-    assert.equal(finalizer.includes(marker), false, `D13 must not imply completed ${marker} before promotion`);
-  }
+  assert.equal(finalizer.includes('grantDungeon13'), false, 'D13 does not invent a special loot helper absent from Joey\'s reference');
+  assert.match(SOURCE, /var REGION_ORDER=\['dungeon1'.*'dungeon12'\]/s, 'D13 remains outside the release route until the full promotion seam is ready');
 });

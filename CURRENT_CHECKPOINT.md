@@ -29,14 +29,16 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-12)
 
-- The D13 preflight audit confirms that Realm of Space is source-resident but
-  not release-ready: its two-room route, Corruption of Space identity, and
-  authored phase/attack/death wiring are present, while the defeat handler
-  intentionally omits rewards, materials, achievement updates, dungeon
-  unlock/progression, and release handoff. D13 remains outside `REGION_ORDER`,
-  normal unlock refresh, and active-run recovery. Three future-content guard
-  contracts pass; the current local gate is **135/135**. No score credit is
-  claimed and the evidence score remains **93%** / **19%**.
+- The D13 preflight lane now closes the Joey-preserving standard reward
+  boundary: Realm of Space keeps its two-room route, Corruption of Space
+  identity, authored phases/death sequence, 2.0x guardian soul reward, boss
+  XP/mastery, named defeat statistic, death effects, and standard completion
+  handoff. D13-specific loot is not invented because Joey's reference does not
+  define it. D13 remains outside `REGION_ORDER`, normal unlock refresh, and
+  active-run recovery while future-region progression, dialogue, save/resume,
+  balance, and return-to-world acceptance remain open. Three future-content
+  guard contracts pass; the current local gate is **135/135**. No score credit
+  is claimed and the evidence score remains **93%** / **19%**.
 
 - The plain-text profile transfer now has checked-in, synthetic fixtures for a
   legacy v1 raw save, current v2 Mage progress with backup and interrupted-run

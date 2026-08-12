@@ -1,5 +1,18 @@
 # Code Quest Lab - Changelog
 
+## D13 reward-boundary closure (2026-08-12; local gated runtime)
+
+- Added Joey-preserving standard completion rewards to Corruption of Space:
+  2.0x guardian souls, boss XP/mastery, named defeat statistics, best-level
+  tracking, authored death effects, achievement refresh, and the shared exit
+  handoff.
+- Kept Realm of Space outside the release route, unlock graph, and active-run
+  recovery until future-region progression, story/dialogue, save/resume,
+  balance, and return-to-world acceptance are tested. No D13-specific loot was
+  invented because the reference build does not define it.
+- Updated the gated-content contracts and audit. The local **135/135** gate
+  passes; no website deployment or score credit was created.
+
 ## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
 
 - Added synthetic `.txt` fixtures covering legacy v1 raw saves, current v2

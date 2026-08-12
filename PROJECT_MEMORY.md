@@ -28,8 +28,11 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): D13 is protected by three future-
   content contracts and remains gated; the local release gate is **135/135**.
-  The source-resident Realm of Space route is not credited until rewards,
-  progression, save, dialogue, and return work are complete.
+  Its Joey-preserving standard reward boundary is now implemented locally:
+  2.0x guardian souls, boss XP/mastery, named defeat statistics, death effects,
+  and completion handoff. D13 is not credited until future-region progression,
+  save, dialogue, balance, and return work are complete; no D13-specific loot
+  is invented because Joey's reference does not define one.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A
@@ -41,9 +44,9 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
   bosses/rewards, Veteran unlocks, portal exits, and final summaries. D13-D16
-  remain gated. D13 preflight confirms the two-room Realm of Space route and
-  named boss are present, but rewards, materials, achievements, unlock/
-  progression, dialogue, and release handoff remain intentionally absent.
+  remain gated. D13 preflight confirms the two-room Realm of Space route,
+  named boss, and standard reward boundary are present, but future-region
+  progression, dialogue, save/resume, balance, and return handoff remain open.
 - Canonical runtime: `index.html`; `code-quest-lab-source.txt` must remain an
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world

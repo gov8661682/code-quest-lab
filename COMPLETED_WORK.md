@@ -7,6 +7,20 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## D13 reward-boundary closure (2026-08-12; local gated runtime)
+
+- Implemented Joey's reference-shaped Corruption of Space completion reward:
+  2.0x guardian souls, boss XP/mastery, `spaceCorruptionsDefeated`, best-level
+  tracking, death particles, achievement refresh, and the shared dungeon
+  completion handoff.
+- Kept D13 outside the release route, normal unlock graph, and active-run save
+  guard. No D13-specific loot helper was invented because Joey's reference
+  does not define one; future progression, dialogue, save/resume, balance,
+  and return-to-world acceptance remain open.
+- Updated the future-content contracts and D13 audit. The local runtime gate
+  remains **135/135**; this gated content slice is not a deployment checkpoint
+  and does not change the **93% / 19%** score.
+
 ## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
 
 - Added synthetic, device-neutral `.txt` fixtures for legacy v1 raw saves,

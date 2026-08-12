@@ -54538,16 +54538,27 @@ function updateCorruptionOfSpaceDefeat(dt){
 }
 function finalizeCorruptionOfSpaceDefeat(){
   if(!boss)return;
-  boss=null;
-  // Rewards, materials, dungeon unlocks, and achievement checks are
-  // intentionally NOT implemented here — out of scope for this pass, which
-  // covers only the boss/AI/attacks/phases/death sequence. A future pass can
-  // add the standard soul/xp/mastery reward call here, same as every other
-  // boss, without touching anything above.
+  var bx=boss.x,by=boss.y;
+  boss=null;totalKills++;
+  // Joey's reference build uses the standard guardian reward shape here:
+  // a large soul payout, boss XP/mastery, and the same completion handoff as
+  // the other authored dungeons. D13 remains gated from the release route.
+  var souls=applyModifierToSouls(Math.round(SOUL_REWARD_GUARDIAN*2.0));
+  runSoulsEarned+=souls;
+  permanentData.stats.totalSoulsEarned=(permanentData.stats.totalSoulsEarned||0)+souls;
+  permanentData.stats.totalEnemiesDefeated=(permanentData.stats.totalEnemiesDefeated||0)+1;
+  permanentData.stats.spaceCorruptionsDefeated=(permanentData.stats.spaceCorruptionsDefeated||0)+1;
+  gainXP(XP_PER_BOSS);gainMasteryXP(MXP_GUARDIAN+30);gainMasteryXP(MXP_DUNGEON_COMPLETE);
+  player.rage=clamp(player.rage+Math.round(RAGE_GAIN_KILL*upgrades.rageGenMult),0,player.rageMax);
+  addFloatie(bx,by-30,'+'+souls+' Ancient Souls','#e8d8ff',2.5);
+  spawnDeathParticles(bx,by,'#e8d8ff');
+  spawnDeathParticles(bx,by,'#ffffff');
   var bossRoomId=MAIN_PATH[MAIN_PATH.length-1]||'room_boss';
   if(roomStates[bossRoomId]){roomStates[bossRoomId].bossDefeated=true;roomStates[bossRoomId].cleared=true;}
   roomCleared=true;
-  addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-60,'🌌 CORRUPTION OF SPACE HAS BEEN UNMADE','#ffffff',3.0);
+  if(playerLevel>(permanentData.stats.bestPlayerLevel||1))permanentData.stats.bestPlayerLevel=playerLevel;
+  checkAchievements();refreshDungeonUnlocks();recordDungeonDifficultyCompletion();
+  addFloatie((worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-60,'CORRUPTION OF SPACE HAS BEEN UNMADE','#ffffff',3.0);
   applyBossPurification('dungeon13',(worldRoomW||canvas.width)/2,(worldRoomH||canvas.height)/2-90);
   unlockBossExit(2.2);
 }

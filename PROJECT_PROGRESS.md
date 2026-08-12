@@ -13,13 +13,14 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
-The D13 preflight audit now has a protected boundary: Realm of Space retains
-its two-room atmosphere, named Corruption of Space boss, authored phases and
-death sequence, while its reward/material/achievement/unlock/progression
-finalizer work is explicitly incomplete. D13 remains outside the release
-  region order and save guard. Three focused future-content contracts pass; the
-  full local gate is now **135/135** after the profile-transfer fixture lane.
-  No D13 route or C1 score credit is claimed.
+The D13 preflight lane now closes the Joey-preserving standard reward boundary:
+Realm of Space retains its two-room atmosphere, named Corruption of Space boss,
+authored phases/death sequence, 2.0x guardian soul reward, boss XP/mastery,
+named defeat statistic, death effects, and completion handoff. D13 remains
+outside the release region order and save guard; progression to a future region,
+dialogue delivery, and save/return acceptance are still intentionally gated.
+Three focused future-content contracts pass; the full local gate remains
+**135/135**. No D13 route or C1 score credit is claimed.
 
 The local transfer matrix now loads checked-in `.txt` fixtures for legacy v1,
 current v2 Mage data with backup and active-run checkpoint, invalid optional
