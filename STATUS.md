@@ -3,7 +3,7 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 
 Normal Dungeon 4's Omen Chamber keeps Joey's authored three-wave ambush,
 roster, and elite finale, but now uses a finite tablet-friendly event budget:
@@ -20,9 +20,13 @@ release gate, `qa:fast`, static package audit, and Capacitor sync pass. A fresh
 current-build loopback smoke reached Dungeon 4, resolved an event, and showed
 the guide following movement with empty browser warning/error diagnostics.
 This is QA-assisted evidence, not clean-player D1-12 or physical-device
-acceptance. The GitHub/website checkpoint is ready for final live verification.
+acceptance. Commit `471cf96` was pushed to `origin/main` and deployed on
+2026-08-12 to preview `https://f55bf568.code-quest-lab.pages.dev/` and the
+configured hostname `https://code-quest-lab.gov8661682.com/`. The deployed
+source hash is `BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`
+and the PWA shell is v11. Production, desktop, and tablet live checks passed.
 
-## Local route guidance and release-route contract (2026-08-12; not deployed)
+## Included route guidance and release-route contract (2026-08-12 checkpoint)
 
 Cleared rooms now show a steady `NEXT ROOM` arrow above the player. It follows
 the character and rotates toward the open forward door instead of pulsing at
@@ -32,8 +36,8 @@ A new bounded route contract generates the released D1-D12 paths, checks each
 forward link and Joey-authored finale identity, verifies the shared boss/portal
 handoff, and confirms D12 reaches the existing session ending. The local gate
 passes **125/125** tests, with `qa:fast`, static package checks, and Capacitor
-sync passing. This remains grouped local work: no deployment checkpoint is
-claimed, and the score stays **93% active checkpoint / 19% overall** because
+sync passing. It is included in the grouped 2026-08-12 deployment checkpoint
+above. The score stays **93% active checkpoint / 19% overall** because
 clean-player D1-D12 and physical/native-device acceptance remain open.
 
 ## Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)

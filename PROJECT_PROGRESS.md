@@ -28,8 +28,13 @@ sync passing. This remains QA-assisted evidence and does not change the
 
 The bounded release-route contract generates and walks the released D1-D12
 chain, checks Joey's named finales and forward links, verifies the shared portal
-handoff, and confirms the D12 session ending. The GitHub/website checkpoint is
-ready after the final production and live deployment checks.
+handoff, and confirms the D12 session ending. Commit `471cf96` was pushed to
+`origin/main` and deployed on 2026-08-12 to preview
+`https://f55bf568.code-quest-lab.pages.dev/` and the configured hostname
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`, PWA shell
+v11, and production/desktop/tablet live checks passed. Clean-player D1-D12 and
+physical/native-device evidence remain open.
 
 ## Latest 2026-08-11 progress delta
 

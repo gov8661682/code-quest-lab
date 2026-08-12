@@ -1,6 +1,6 @@
 # Code Quest Lab - Changelog
 
-## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 
 - Kept Joey's Omen Chamber three-wave identity, roster, and elite finale while
   adding a finite Normal touch budget: 2/3 targets in the first two waves,
@@ -16,9 +16,13 @@
 - The **125/125** release gate, `qa:fast`, static package audit, Capacitor sync,
   and a fresh D4 loopback browser smoke pass with empty warning/error logs.
   This is QA-assisted evidence; clean-player D1-D12 and physical/native-device
-  acceptance remain open pending the deployment checkpoint.
+  acceptance remain open. Commit `471cf96` was pushed to `origin/main` and
+  deployed to preview `https://f55bf568.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+  `BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`, PWA
+  shell v11, and production/desktop/tablet live checks passed.
 
-# Local route guidance and release-route contract (2026-08-12; not deployed)
+## Included route guidance and release-route contract (2026-08-12 checkpoint)
 
 - Replaced the cleared-room gate cue with a steady `NEXT ROOM` arrow that is
   anchored above the player and rotates toward the open forward door. It moves
@@ -30,9 +34,9 @@
   verifies the shared boss/portal handoff, and confirms D12 reaches the
   existing session ending. This is automated route coverage, not a substitute
   for clean-player or physical-device acceptance.
-- The local gate now passes **125/125** tests. This small UX/QA follow-up is
-  intentionally grouped for the next substantial tested deployment checkpoint;
-  no one-off deployment is claimed here.
+- The local gate now passes **125/125** tests. This route contract is included
+  in the grouped tested deployment checkpoint above; it is not clean-player
+  D1-D12 or physical-device evidence.
 
 # Room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
 

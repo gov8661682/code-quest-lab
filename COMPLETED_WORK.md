@@ -7,7 +7,7 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
-## D4 Normal ambush pacing and player-following exit guide (2026-08-12; checkpoint ready)
+## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 
 - Preserved Joey's Omen Chamber three-wave structure, enemy roster, and final
   elite while giving Normal a finite touch-sized event budget: 2/3 targets in
@@ -25,6 +25,11 @@ documented acceptance-criterion failure. Optional improvements belong in
   QA accelerators, reached D4, resolved an event, verified the moving guide,
   and recorded empty browser warning/error diagnostics. Clean-player D1-D12
   and physical/native-device acceptance remain open.
+- Commit `471cf96` was pushed to `origin/main` and deployed on 2026-08-12 to
+  preview `https://f55bf568.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. Deployed source hash:
+  `BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`; PWA
+  shell v11. Production, desktop, and tablet live checks passed.
 
 ## Local route guidance and release-route contract (2026-08-12; no deployment checkpoint)
 
@@ -35,9 +40,9 @@ documented acceptance-criterion failure. Optional improvements belong in
 - Added a bounded release-route contract covering the released D1-D12 chain:
   generated forward links, authored finale identities, shared boss defeat and
   portal handoff, region order, and the existing D12 session ending.
-- The local gate passes **125/125** tests. Clean-player D1-D12,
-  physical/native-device evidence, and the next grouped deployment checkpoint
-  remain open.
+- The local gate passes **125/125** tests. This route contract is included in
+  the grouped deployment checkpoint above. Clean-player D1-D12 and
+  physical/native-device evidence remain open.
 
 ## Completed baseline and direction
 

@@ -118,7 +118,7 @@ repositioning across two captures about half a second apart. It is a movement
 fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
 **93%** / **19%**.
 
-### Current tested milestone: D4 Normal pacing, player-following exit guide, and route contract (2026-08-12; checkpoint ready)
+### Current deployed milestone: D4 Normal pacing, player-following exit guide, and route contract (2026-08-12)
 
 - [x] Replace the cleared-room gate cue with a steady arrow anchored above the
   player and aimed at the open forward door; do not add a pulsing gate marker.
@@ -138,8 +138,13 @@ fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
 A fresh loopback browser smoke reached D4, resolved an event, verified the
 player-following guide with empty browser diagnostics, and stopped safely. This
 is QA-assisted evidence rather than clean-player D1-D12 or physical-device
-acceptance. Complete the GitHub/website checkpoint after production and live
-verification, then continue with the next open evidence lane.
+acceptance. The **125/125** release gate, `qa:fast`, package/native checks,
+production check, desktop/tablet live smokes, and safe disposable-profile
+cleanup passed. Commit `471cf96` is pushed to `origin/main` and deployed to
+preview `https://f55bf568.code-quest-lab.pages.dev/` and
+`https://code-quest-lab.gov8661682.com/`; source hash
+`BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`, PWA shell
+v11. Continue with the next open evidence lane.
 
 ### Follow-up: Level 1 opening-pressure and enemy-motion correction (2026-08-10; deployed checkpoint)
 
