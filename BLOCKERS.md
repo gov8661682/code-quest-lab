@@ -25,7 +25,7 @@ repeatedly retry the same blocked action.
 - The missing four classes, D9-16, D16 Phase 4, and Smelter activation are
   deferred creative parity work under the locked V1 scope, not reasons to stop
   the current C1 browser path.
-- The current 56,689-line monolith is a maintainability risk, not a release
+- The current 58,304-line monolith is a maintainability risk, not a release
   blocker while the contract tests protect the existing game.
 - The current live website is healthy for the latest tested shell;
   `production:check` passed on 2026-08-10. The deployed shell is not evidence
