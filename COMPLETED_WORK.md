@@ -7,6 +7,28 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Stone Guardian web onboarding budget and player-following guide (2026-08-12; local grouped milestone)
+
+- Kept Joey's first boss, phase transition, summons, slam, cleave, meteors,
+  rewards, and later difficulty pressure intact while adding a Normal D1-only
+  first-boss budget of `0.60/0.55/0.90/1.40/0.60` for HP, damage, speed,
+  attack cadence, and authored ability damage, plus `4.0s` entry grace.
+- Kept the developer invincibility aid truthful across Stone Guardian melee,
+  cleave, slam, charge, and meteor paths. The aid remains loopback-only,
+  session-only, and excluded from saves, exports, native builds, and release
+  activation.
+- Combined this correction with the steady player-following `TO DEPTHS`,
+  `TO GATE`, and `NEXT ROOM` guide. The gate carries no pulsing or mounted
+  directional arrow; boss-room portals remain deliberate interactions.
+- Ordered release verification passes **126/126**, `qa:fast`, static package
+  audit, and Capacitor synchronization. A 600x768 loopback smoke showed the
+  Normal boss at `450/450`, cleared it with ordinary attack input under the
+  documented QA aid, and unlocked the exit. This is QA-assisted evidence only;
+  clean-player D1-D12 and physical/native-device acceptance remain open.
+- GitHub/domain checkpoint publication is the next release action for this
+  grouped, user-visible milestone; no deployment claim is made until the live
+  build and main flow are verified.
+
 ## Normal D1 onboarding balance correction (2026-08-12; deployed checkpoint)
 
 - Kept Joey's D1 enemy roster, first mini-boss identity, rewards, attack math,

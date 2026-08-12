@@ -29,6 +29,22 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-12)
 
+- The first Normal Dungeon 1 Stone Guardian now has a finite web onboarding
+  budget: `0.60` HP, `0.55` damage, `0.90` speed, `1.40` attack cooldown,
+  `0.60` authored ability damage, and `4.0s` entry grace. The phase change,
+  summon cadence, slam, cleave, meteor pattern, boss identity, rewards, and
+  higher-difficulty pressure remain intact. A production-shaped diagnostic
+  changed from a bounded player loss to a win under this first-boss budget;
+  the focused contracts and ordered local release gate now pass **126/126**.
+  A fresh 600x768 loopback smoke used ordinary attack input after the
+  documented session-only invincibility and boss-jump QA aids: the HUD showed
+  `450/450`, the boss cleared, and the exit unlocked. This is QA-assisted
+  evidence, not clean-player D1-D12 or physical/native-device acceptance.
+  The navigation change remains a steady player-following guide with no
+  directional arrow mounted on the gate. The grouped GitHub/domain checkpoint
+  is pending until this tested local build is committed and live-verified;
+  the evidence score remains **93%** / **19%**.
+
 - The level-1 web difficulty wall is now addressed in the release build
   without simplifying Joey's content. Normal D1 ordinary rooms through
   depth 6 use a finite `0.68` health / `0.28` damage / `0.80` speed /

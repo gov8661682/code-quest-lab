@@ -13,18 +13,20 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
-Dungeon 4's Normal Omen Chamber now keeps Joey's three-wave encounter and
-elite finale inside a finite touch-sized budget: the first two waves target
-2/3 enemies, regular health is `0.78`, damage is `0.85`, final-elite health
-relief is bounded, and the wave handoff is shorter. Shared developer
-invincibility now suppresses D4 cursed-circle damage as well as ordinary
-combat damage. The cleared-room guide is a steady `NEXT ROOM` arrow above the
-player, rotated toward the open forward door and following movement; no pulsing
-gate marker remains. A fresh loopback browser smoke reached D4 and verified the
-guide after event resolution with no browser warning/error diagnostics. The
-current local gate is **125/125** with `qa:fast`, package checks, and Capacitor
-sync passing. This remains QA-assisted evidence and does not change the
-**93%** / **19%** evidence score.
+The first Normal Dungeon 1 Stone Guardian now uses a finite web onboarding
+budget (`0.60/0.55/0.90/1.40/0.60` for HP, damage, speed, attack cadence, and
+authored ability damage, plus `4.0s` entry grace). Joey's boss identity,
+phases, summons, slam, cleave, meteors, rewards, and higher-difficulty
+pressure remain intact. A production-shaped diagnostic now wins under the
+bounded first-boss budget, and a fresh 600x768 loopback smoke showed `450/450`,
+ordinary attack clearing, and the exit unlocking under the documented
+session-only QA aid. The steady player-following guide also remains in place;
+the gate itself has no directional marker. This is QA-assisted evidence, not
+clean-player D1-D12 or physical/native-device acceptance.
+
+The ordered local gate is now **126/126**, with `qa:fast`, package checks, and
+Capacitor synchronization passing. The grouped GitHub/domain checkpoint is
+pending commit and live verification; the score remains **93%** / **19%**.
 
 The bounded release-route contract generates and walks the released D1-D12
 chain, checks Joey's named finales and forward links, verifies the shared portal

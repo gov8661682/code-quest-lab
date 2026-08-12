@@ -295,6 +295,7 @@ test('cleared rooms show a floating guide toward the next room', () => {
   assert.match(SOURCE, /function drawForwardExitGuide\(geo,def\)\{[\s\S]*var dx=fd\.cx-player\.x,dy=fd\.cy-player\.y;[\s\S]*var angle=Math\.atan2\(dy,dx\)[\s\S]*ctx\.translate\(ax,ay\);ctx\.rotate\(angle\)/, 'the guide follows the player and points toward the forward door');
   assert.match(SOURCE, /drawPlayer\(\);drawForwardExitGuide\(geo,ROOM_DEFS\[currentRoomId\]\);/, 'the guide is rendered with the player so it follows each frame');
   assert.doesNotMatch(SOURCE, /function drawOffscreenForwardExitIndicator\(/, 'the gate does not receive a separate pulsing edge arrow');
+  assert.doesNotMatch(SOURCE, /fillText\('▼',fd\.cx,H-4\)/, 'the gate itself does not carry a directional arrow');
 });
 
 test('static world hubs expose an optional touch travel fallback', () => {
@@ -409,6 +410,26 @@ test('the first D1 mini-boss has a separate bounded onboarding budget', () => {
     'mini-boss movement and cadence are bounded without replacing its mechanics');
   assert.match(SOURCE, /var _isNormalEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&[\s\S]*getRoomDepth\(roomId\)<=LEVEL1_EARLY_MINIBOSS_TUNING\.maxDepth;[\s\S]*if\(_isNormalEarlyD1MiniBoss\)playerInvulnTimer=Math\.max\(playerInvulnTimer,LEVEL1_EARLY_MINIBOSS_TUNING\.graceSeconds\);/,
     'the first mini-boss gives a finite entry response window');
+});
+
+test('the first Normal D1 boss keeps Joey mechanics inside a finite web onboarding budget', () => {
+  assert.match(
+    SOURCE,
+    /var LEVEL1_EARLY_BOSS_TUNING=Object\.freeze\(\{[\s\S]*hpMult:0\.60,[\s\S]*damageMult:0\.55,[\s\S]*speedMult:0\.90,[\s\S]*attackCooldownMult:1\.40,[\s\S]*abilityDamageMult:0\.60,[\s\S]*graceSeconds:4\.0/,
+    'the first Stone Guardian has an explicit finite onboarding budget'
+  );
+  assert.match(
+    SOURCE,
+    /var _isEarlyNormalD1Boss=activeDungeonId==='dungeon1'&&getActiveDifficulty\(\)\.id==='normal';[\s\S]*var _bossHp=Math\.round\(750\*_bTuning\.bossHpMult\*\(_bOnboard\?_bOnboard\.hpMult:1\.0\)\);[\s\S]*var _bossDmg=Math\.round\(22\*_bTuning\.bossDmgMult\*\(_bOnboard\?_bOnboard\.damageMult:1\.0\)\);/,
+    'only the Normal D1 Stone Guardian receives the onboarding budget'
+  );
+  assert.match(SOURCE, /speed:55\*\(_bOnboard\?_bOnboard\.speedMult:1\.0\)/, 'the first boss gives a new player room to read and move');
+  assert.match(SOURCE, /attackCooldown:1\.8\*\(_bOnboard\?_bOnboard\.attackCooldownMult:1\.0\)/, 'the first boss cadence is finite and readable');
+  assert.match(SOURCE, /onboardingDamageMult:_bOnboard\?_bOnboard\.abilityDamageMult:1\.0/, 'authored boss abilities use the same bounded budget');
+  assert.match(SOURCE, /if\(_bOnboard\)playerInvulnTimer=Math\.max\(playerInvulnTimer,_bOnboard\.graceSeconds\)/, 'the first boss has a finite entry response window');
+  assert.match(SOURCE, /if\(!isPlayerDamageSuppressed\(\)&&dist<220&&Math\.abs\(angleDiff\)<Math\.PI\*0\.55\)/, 'the shared local invincibility aid remains truthful during the cleave');
+  assert.match(SOURCE, /if\(!isPlayerDamageSuppressed\(\)&&dist<slamRange\)/, 'the first boss slam honors onboarding damage suppression');
+  assert.match(SOURCE, /damage:Math\.round\(18\*\(\(boss&&boss\.onboardingDamageMult\)\|\|1\.0\)\)/, 'meteor damage uses the first-boss ability budget');
 });
 
 test('the first Normal D1 elite has a bounded onboarding budget', () => {

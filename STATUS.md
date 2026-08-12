@@ -3,6 +3,23 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Local grouped milestone awaiting checkpoint publication
+
+The first Normal D1 Stone Guardian now has a finite web onboarding budget:
+`0.60/0.55/0.90/1.40/0.60` for HP, damage, speed, attack cadence, and authored
+ability damage, plus `4.0s` entry grace. Joey's phase, summon, slam, cleave,
+meteor, reward, and higher-difficulty behavior remain intact. The gate guide
+also remains a steady arrow that follows the player toward the destination;
+there is no pulsing arrow mounted on the gate.
+
+The ordered local release gate passes **126/126**, `qa:fast`, static package
+audit, and Capacitor synchronization. A 600x768 loopback smoke showed the
+Normal boss at `450/450`, cleared it with ordinary attack input under the
+documented session-only QA aid, and unlocked the exit. This is QA-assisted
+evidence only; clean-player D1-D12 and physical/native-device acceptance
+remain open. The grouped GitHub/domain checkpoint is pending commit and live
+verification; the score remains **93%** / **19%**.
+
 ## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 
 Normal Dungeon 4's Omen Chamber keeps Joey's authored three-wave ambush,

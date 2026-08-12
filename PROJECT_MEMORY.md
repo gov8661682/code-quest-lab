@@ -15,7 +15,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **125/125** tests, static build/package audit,
+- Current verified local gate: **126/126** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): Normal D1 onboarding keeps Joey's
   rosters, rewards, and later pressure while using a finite opening budget:
@@ -31,20 +31,17 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`, PWA
   shell v11. This does not change the 93%/19% score: clean-player D1-D12 and
   physical/native-device evidence remain open.
-- Prior input milestone (2026-08-11): the first Normal D1 combat room keeps a
-  bounded, data-driven approach lane and now uses a brief `1.35s` mobile
-  arrival window whose
-  tangential drift is independent of the 10-second read-and-respond prompt.
-  The prompt remains a damage grace state, not an enemy movement lock. Joey's
-  roster, attack math, later procedural placement, stationary enemies, and
-  authored modifiers remain intact. Runtime commit `ae91268` is pushed to
-  preview `dfb05e32.code-quest-lab.pages.dev` and the configured hostname. The
-  deployed source hash is
-  `ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094`; the
-  PWA shell is v11. The **121/121** release gate, `qa:fast`, package audit,
-  native sync, both production checks, and desktop/tablet live smoke passed.
-  A clean local route cleared the first room and reached the first mini-boss
-  before ending; it does not claim full D1-D12 completion.
+- Unreleased local follow-up (2026-08-12): the first Normal D1 Stone Guardian
+  uses a finite `0.60/0.55/0.90/1.40/0.60` onboarding budget plus `4.0s` entry
+  grace, while its authored phase, summons, slam, cleave, meteors, identity,
+  and rewards remain intact. A 600x768 QA-assisted smoke observed `450/450`,
+  ordinary attack clearing, and exit unlock; this is not deployed and does not
+  change the 93%/19% score.
+- Prior input milestone `ae91268` is deployed: the `1.35s` mobile arrival
+  window is independent of the opening damage grace, and Joey's roster,
+  attack math, and later scaling remain intact. Its **121/121** gate, package
+  audit, native sync, production checks, and desktop/tablet smoke passed; the
+  clean route reached the first mini-boss but not full D1-D12.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored

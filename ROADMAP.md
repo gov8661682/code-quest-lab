@@ -118,6 +118,25 @@ repositioning across two captures about half a second apart. It is a movement
 fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
 **93%** / **19%**.
 
+### Current follow-up: Stone Guardian onboarding and player-following guide (2026-08-12; checkpoint pending)
+
+- [x] Keep the first Normal D1 Stone Guardian's Joey-authored mechanics and
+  rewards while applying a finite web onboarding budget of
+  `0.60/0.55/0.90/1.40/0.60` plus `4.0s` entry grace.
+- [x] Keep the developer invincibility aid truthful across the boss's melee,
+  cleave, slam, charge, and meteor damage paths without exposing it to saves,
+  exports, native builds, or production activation.
+- [x] Keep `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` as steady guides that follow
+  the player; do not mount or pulse a directional arrow on the gate.
+- [x] Pass the ordered **126/126** release gate, `qa:fast`, static package
+  checks, and Capacitor synchronization; verify the 600x768 loopback smoke.
+- [ ] Commit, push, deploy, and live-verify this grouped user-visible
+  milestone, then record its exact commit, source hash, and deployment date.
+
+The smoke is QA-assisted evidence and does not increase the **93%** / **19%**
+score. Clean-player D1-D12 and physical/native-device acceptance remain the
+next evidence lanes.
+
 ### Current deployed milestone: D4 Normal pacing, player-following exit guide, and route contract (2026-08-12)
 
 - [x] Replace the cleared-room gate cue with a steady arrow anchored above the

@@ -162,8 +162,9 @@ test('entrance objectives resolve from the underlying dungeon definition', () =>
   assert.match(SOURCE, /function getActiveDungeon\(\)\{[\s\S]*?isEntranceZone\(activeDungeonId\)\?getEntranceDungeonId\(activeDungeonId\):activeDungeonId[\s\S]*?return DUNGEON_DEFS\[dungeonId\]\|\|DUNGEON_DEFS\.dungeon1;/);
 });
 
-test('Town keeps the open-world portal discoverable off-screen', () => {
-  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?activeDungeonId!==\'town\'[\s\S]*?portalArea/);
+test('Town and dungeon entrances keep their physical gate discoverable with a player-following guide', () => {
+  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?activeDungeonId===\'town\'[\s\S]*?portalArea/);
+  assert.match(SOURCE, /function drawTownPortalIndicator\(\)[\s\S]*?isEntranceZone\(activeDungeonId\)[\s\S]*?target=entranceLayout&&entranceLayout\.gate[\s\S]*?player\.x-camera\.x[\s\S]*?ctx\.translate\(arrowX,arrowY\);ctx\.rotate\(angle\)/, 'the hub guide follows the character and points at the gate');
   assert.match(SOURCE, /drawOffscreenEnemyIndicators\(\);\s*drawTownPortalIndicator\(\);/);
 });
 

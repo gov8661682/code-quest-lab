@@ -29102,6 +29102,19 @@ var LEVEL1_EARLY_MINIBOSS_TUNING=Object.freeze({
   attackCooldownMult:1.60,
   graceSeconds:3.5
 });
+// The Stone Guardian is the first full boss, so it needs its own finite
+// Normal-only onboarding budget. Keep the authored phase transition, summon
+// cadence, slam, cleave, and meteor patterns, but make the first web session
+// a pattern lesson rather than an immediate gear check. Veteran and later
+// dungeons continue to use the authored boss pressure.
+var LEVEL1_EARLY_BOSS_TUNING=Object.freeze({
+  hpMult:0.60,
+  damageMult:0.55,
+  speedMult:0.90,
+  attackCooldownMult:1.40,
+  abilityDamageMult:0.60,
+  graceSeconds:4.0
+});
 function updateCombatIntro(dt){
   if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
 }
@@ -30392,15 +30405,19 @@ function spawnBoss(geo){
   // ── DIFFICULTY SYSTEM: bosses scale with the selected difficulty ──
   var _bTuning=getEncounterTuning('dungeon1');
   var _bDg=_bTuning.dungeon;
-  var _bossHp=Math.round(750*_bTuning.bossHpMult);
-  var _bossDmg=Math.round(22*_bTuning.bossDmgMult);
-  boss={x:cx,y:cy,radius:38,color:'#1a1a1a',hp:_bossHp,hpMax:_bossHp,speed:55,damage:_bossDmg,
-    attackRange:38+player.radius+6,attackCooldown:1.8,attackTimer:0,hitFlash:0,
+  var _isEarlyNormalD1Boss=activeDungeonId==='dungeon1'&&getActiveDifficulty().id==='normal';
+  var _bOnboard=_isEarlyNormalD1Boss?LEVEL1_EARLY_BOSS_TUNING:null;
+  var _bossHp=Math.round(750*_bTuning.bossHpMult*(_bOnboard?_bOnboard.hpMult:1.0));
+  var _bossDmg=Math.round(22*_bTuning.bossDmgMult*(_bOnboard?_bOnboard.damageMult:1.0));
+  boss={x:cx,y:cy,radius:38,color:'#1a1a1a',hp:_bossHp,hpMax:_bossHp,speed:55*(_bOnboard?_bOnboard.speedMult:1.0),damage:_bossDmg,
+    attackRange:38+player.radius+6,attackCooldown:1.8*(_bOnboard?_bOnboard.attackCooldownMult:1.0),attackTimer:0,hitFlash:0,
     isBoss:true,slamTimer:4.0,chargeTimer:7.0,summonTimer:10.0,
     chargeVx:0,chargeVy:0,charging:false,chargeDuration:0,slamPulse:0,
-    phase:1,phase2Triggered:false,meteorTimer:0,    cleaveTimer:8.0,cleaveWindup:0,cleaveActive:false,cleaveWarning:false,cleaveAngle:0};
+    phase:1,phase2Triggered:false,meteorTimer:0,    cleaveTimer:8.0,cleaveWindup:0,cleaveActive:false,cleaveWarning:false,cleaveAngle:0,
+    onboardingDamageMult:_bOnboard?_bOnboard.abilityDamageMult:1.0};
   bossPhase=1;
   applyAbilityFrequencyScaling(boss,_bDg.bossAtkSpeedMult||1.0);
+  if(_bOnboard)playerInvulnTimer=Math.max(playerInvulnTimer,_bOnboard.graceSeconds);
 }
 
 // ============================================================
@@ -30796,7 +30813,7 @@ function spawnMeteors(){
     bossMeteorites.push({
       x:boss.x+Math.cos(angle)*r,y:boss.y+Math.sin(angle)*r,
       tx:player.x+(Math.random()-0.5)*80,ty:player.y+(Math.random()-0.5)*80,
-      life:1.2,maxLife:1.2,radius:14,damage:18
+      life:1.2,maxLife:1.2,radius:14,damage:Math.round(18*((boss&&boss.onboardingDamageMult)||1.0))
     });
   }
 }
@@ -30808,7 +30825,7 @@ function updateMeteors(dt){
     var cx2=m.x+(m.tx-m.x)*t;var cy2=m.y+(m.ty-m.y)*t-(Math.sin(t*Math.PI)*60);
     m.cx=cx2;m.cy=cy2;
     if(m.life<=0){
-      if(Math.hypot(cx2-player.x,cy2-player.y)<m.radius+player.radius+10){
+      if(!isPlayerDamageSuppressed()&&Math.hypot(cx2-player.x,cy2-player.y)<m.radius+player.radius+10){
         var dmg=Math.max(1,m.damage-upgrades.defense);
         player.hp=clamp(player.hp-dmg,0,player.hpMax);
         player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
@@ -36916,8 +36933,8 @@ function updateBoss(dt,geo){
         var angleDiff=playerAngle-cleaveAngle;
         while(angleDiff>Math.PI)angleDiff-=Math.PI*2;
         while(angleDiff<-Math.PI)angleDiff+=Math.PI*2;
-        if(dist<220&&Math.abs(angleDiff)<Math.PI*0.55){
-          var cd=50;
+        if(!isPlayerDamageSuppressed()&&dist<220&&Math.abs(angleDiff)<Math.PI*0.55){
+          var cd=Math.max(1,Math.round(50*(boss.onboardingDamageMult||1.0)));
           player.hp=clamp(player.hp-cd,0,player.hpMax);
           player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
           addFloatie(player.x,player.y-40,'💥-'+cd+' CLEAVE!','#ff2200',1.5);
@@ -36943,11 +36960,13 @@ if(boss.charging){
     boss.x=clamp(boss.x,geo.inner.x+boss.radius,geo.inner.x+geo.inner.w-boss.radius);
     boss.y=clamp(boss.y,geo.inner.y+boss.radius,geo.inner.y+geo.inner.h-boss.radius);
     if(Math.hypot(player.x-boss.x,player.y-boss.y)<boss.radius+player.radius+10){
-      var chDmg=Math.max(Math.round(boss.fkChargeDamage*0.35),boss.fkChargeDamage-upgrades.defense);
-      if(ironWillShield>0){var _chabs=Math.min(ironWillShield,chDmg);ironWillShield-=_chabs;chDmg-=_chabs;}
-      if(chDmg>0){player.hp=clamp(player.hp-chDmg,0,player.hpMax);addFloatie(player.x,player.y-30,'-'+chDmg,'#e74c3c',0.85);}
-      player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
-      if(player.hp<=0){playerDied();return;}
+      if(!isPlayerDamageSuppressed()){
+        var chDmg=Math.max(Math.round((boss.fkChargeDamage||0)*0.35),(boss.fkChargeDamage||0)-upgrades.defense);
+        if(ironWillShield>0){var _chabs=Math.min(ironWillShield,chDmg);ironWillShield-=_chabs;chDmg-=_chabs;}
+        if(chDmg>0){player.hp=clamp(player.hp-chDmg,0,player.hpMax);addFloatie(player.x,player.y-30,'-'+chDmg,'#e74c3c',0.85);}
+        player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
+        if(player.hp<=0){playerDied();return;}
+      }
       boss.charging=false;
     }
     if(boss.chargeDuration<=0)boss.charging=false;
@@ -36956,12 +36975,15 @@ if(boss.charging){
   if(dist>boss.attackRange){boss.x+=(dx/dist)*boss.speed*dt;boss.y+=(dy/dist)*boss.speed*dt;}
   else{
 if(boss.attackTimer<=0){
-      var br=boss.damage;
-      if(ironWillShield>0){var _babs=Math.min(ironWillShield,br);ironWillShield-=_babs;br-=_babs;}
-      if(br>0)br=applyArmorReduction(br);
-      if(br>0){player.hp=clamp(player.hp-br,0,player.hpMax);addFloatie(player.x+(Math.random()*20-10),player.y-30,'-'+br,'#e74c3c',0.85);}
-      player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
-      if(player.hp<=0){playerDied();return;}boss.attackTimer=boss.attackCooldown;lastFightTimer=0;
+      if(!isPlayerDamageSuppressed()){
+        var br=boss.damage;
+        if(ironWillShield>0){var _babs=Math.min(ironWillShield,br);ironWillShield-=_babs;br-=_babs;}
+        if(br>0)br=applyArmorReduction(br);
+        if(br>0){player.hp=clamp(player.hp-br,0,player.hpMax);addFloatie(player.x+(Math.random()*20-10),player.y-30,'-'+br,'#e74c3c',0.85);}
+        player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);
+        if(player.hp<=0){playerDied();return;}
+      }
+      boss.attackTimer=boss.attackCooldown;lastFightTimer=0;
       }
 // Legendary: Damage triggers earthquake proc
   if(legDamageTriggersEarthquake&&legDamageEarthquakeCooldown<=0){
@@ -36985,7 +37007,7 @@ if(boss.attackTimer<=0){
     boss.slamTimer=(bossPhase===2?2.5:5.0)+Math.random()*2;boss.slamPulse=0.6;
     addFloatie(boss.x,boss.y-50,'GROUND SLAM!','#e74c3c',1.2);
     var slamRange=bossPhase===2?160:130;
-    if(dist<slamRange){var sr=Math.max(1,(bossPhase===2?28:20)-upgrades.defense);player.hp=clamp(player.hp-sr,0,player.hpMax);player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);addFloatie(player.x,player.y-30,'-'+sr,'#e74c3c',0.85);if(player.hp<=0){playerDied();return;}}
+    if(!isPlayerDamageSuppressed()&&dist<slamRange){var sr=Math.max(1,Math.round((bossPhase===2?28:20)*(boss.onboardingDamageMult||1.0))-upgrades.defense);player.hp=clamp(player.hp-sr,0,player.hpMax);player.rage=clamp(player.rage+Math.round(RAGE_GAIN_RECV*upgrades.rageGenMult),0,player.rageMax);addFloatie(player.x,player.y-30,'-'+sr,'#e74c3c',0.85);if(player.hp<=0){playerDied();return;}}
   }
   boss.chargeTimer-=dt;
   if(boss.chargeTimer<=0){
@@ -42921,26 +42943,37 @@ function drawOffscreenEnemyIndicators(){
   ctx.fillText(_indicatorLabel,labelX,labelY);ctx.restore();
 }
 
-// Town is intentionally free-roaming, but the first authored destination can
-// sit outside the camera on a compact tablet viewport. Keep discovery honest
-// by pointing toward the existing portal only when it is off-screen; the
-// player still has to walk there and the minimap remains the detailed map.
+// Town and dungeon entrances are intentionally free-roaming. Keep the next
+// physical destination discoverable without pinning a marker to the gate: the
+// guide is rendered in screen space beside the player and rotates toward the
+// gate while the player walks. The minimap remains the detailed map.
 function drawTownPortalIndicator(){
-  if(!gameRunning||activeDungeonId!=='town')return;
-  var geo=getRoomGeometry(),layout=getTownLayout(geo),portal=layout&&layout.portalArea;
-  if(!portal)return;
-  var sx=portal.x-camera.x,sy=portal.y-camera.y,pad=48,topPad=104;
-  if(sx>=pad&&sx<=canvas.width-pad&&sy>=pad&&sy<=canvas.height-pad)return;
-  var cx=canvas.width/2,cy=canvas.height/2,dx=sx-cx,dy=sy-cy;
+  if(!gameRunning)return;
+  var geo=getRoomGeometry(),target=null,label='';
+  if(activeDungeonId==='town'){
+    var townLayout=getTownLayout(geo);
+    target=townLayout&&townLayout.portalArea;label='TO DEPTHS';
+  }else if(typeof isEntranceZone==='function'&&isEntranceZone(activeDungeonId)){
+    var entranceLayout=getEntranceLayout(activeDungeonId,geo);
+    target=entranceLayout&&entranceLayout.gate;label='TO GATE';
+  }else return;
+  if(!target)return;
+  var dx=target.x-player.x,dy=target.y-player.y;
+  var targetRadius=target.r||56;
+  if(Math.hypot(dx,dy)<=targetRadius+(player.radius||18)+18)return;
   if(Math.abs(dx)<0.001&&Math.abs(dy)<0.001)return;
-  var tx=dx>0?(canvas.width-pad-cx)/dx:(pad-cx)/dx;
-  var ty=dy>0?(canvas.height-pad-cy)/dy:(topPad-cy)/dy;
-  var t=Math.min(tx>0?tx:Infinity,ty>0?ty:Infinity);
-  if(!isFinite(t))return;
-  var ix=clamp(cx+dx*t,pad,canvas.width-pad),iy=clamp(cy+dy*t,topPad,canvas.height-pad),angle=Math.atan2(dy,dx);
-  ctx.save();ctx.translate(ix,iy);ctx.rotate(angle);ctx.globalAlpha=0.94;ctx.shadowColor='rgba(200,168,248,0.85)';ctx.shadowBlur=8;
+  var angle=Math.atan2(dy,dx);
+  var _shakeX=Number(window._lastFrameShakeX)||0,_shakeY=Number(window._lastFrameShakeY)||0;
+  var playerScreenX=player.x-camera.x+_shakeX,playerScreenY=player.y-camera.y+_shakeY;
+  var arrowX=clamp(playerScreenX,38,canvas.width-38);
+  var arrowY=clamp(playerScreenY-(player.radius||18)-32,96,canvas.height-42);
+  // Constant visibility is deliberate: this is a directional companion to
+  // the player, not a pulsing callout sitting on the gate.
+  ctx.save();ctx.translate(arrowX,arrowY);ctx.rotate(angle);ctx.globalAlpha=0.96;ctx.shadowColor='rgba(200,168,248,0.85)';ctx.shadowBlur=8;
   ctx.fillStyle='rgba(42,24,62,0.9)';ctx.strokeStyle='#e0c8ff';ctx.lineWidth=2;
-  ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(-9,-10);ctx.lineTo(-5,0);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+  ctx.beginPath();ctx.moveTo(16,0);ctx.lineTo(5,-10);ctx.lineTo(5,-4);ctx.lineTo(-12,-4);ctx.lineTo(-12,4);ctx.lineTo(5,4);ctx.lineTo(5,10);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
+  ctx.save();ctx.translate(arrowX,arrowY);ctx.fillStyle='rgba(224,200,255,0.96)';ctx.font='bold 10px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(label,0,24);ctx.restore();
 }
 
 // After a combat room is cleared, keep the next destination readable without
@@ -44323,7 +44356,7 @@ function drawRoom(geo){
       ctx.restore();
       ctx.fillStyle='#c8a8f8';ctx.font='bold 14px Georgia';ctx.textAlign='center';
       ctx.fillText(getDoorSymbol(def.forward),fd.cx,H-wallT/2+5);
-      ctx.font='9px Georgia';ctx.fillStyle='rgba(200,160,255,0.7)';ctx.fillText('▼',fd.cx,H-4);ctx.textAlign='left';
+      ctx.textAlign='left';
     }else{
       ctx.fillStyle='#1a1428';ctx.fillRect(fd.x,H-wallT,fd.w,wallT);
       ctx.fillStyle='#2a1838';for(var bx2=fd.x+8;bx2<fd.x+fd.w;bx2+=14)ctx.fillRect(bx2,H-wallT,4,wallT);
@@ -44413,7 +44446,7 @@ function drawRoom(geo){
       ctx.restore();
       ctx.fillStyle='#c8a8f8';ctx.font='bold 14px Georgia';ctx.textAlign='center';
       ctx.fillText(getDoorSymbol(def.forward),fd.cx,H-wallT/2+5);
-      ctx.font='9px Georgia';ctx.fillStyle='rgba(200,160,255,0.7)';ctx.fillText('▼',fd.cx,H-4);ctx.textAlign='left';
+      ctx.textAlign='left';
     }else{
       ctx.fillStyle='#0a0814';ctx.fillRect(fd.x,H-wallT,fd.w,wallT);
       ctx.fillStyle='#15101e';for(var bx4=fd.x+8;bx4<fd.x+fd.w;bx4+=14)ctx.fillRect(bx4,H-wallT,4,wallT);
@@ -44447,7 +44480,7 @@ function drawRoom(geo){
       ctx.fillStyle='rgba(216,192,138,0.15)';ctx.fillRect(fd.x-4,H-wallT,fd.w+8,wallT+2);
       ctx.fillStyle='#d8c08a';ctx.font='bold 15px Georgia';ctx.textAlign='center';
       ctx.fillText(getDoorSymbol(def.forward),fd.cx,H-wallT/2+5);
-      ctx.font='10px Georgia';ctx.fillStyle='rgba(216,192,138,0.6)';ctx.fillText('▼',fd.cx,H-4);ctx.textAlign='left';
+      ctx.textAlign='left';
     }else{
       ctx.fillStyle='#3a2a20';ctx.fillRect(fd.x,H-wallT,fd.w,wallT);
       ctx.fillStyle='#5a3a28';for(var bx3=fd.x+8;bx3<fd.x+fd.w;bx3+=14)ctx.fillRect(bx3,H-wallT,4,wallT);
