@@ -15,24 +15,22 @@ cumulative session transcript.
 - Current verified local gate: **143/143** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
-- Current deployed milestone (2026-08-12): the guidance and release-readiness
-  slice keeps the World Atlas/Town route and D13+ sealed, while the Town,
-  entrance, and cleared-room cues remain steady arrows that follow the player;
-  no gate-mounted pulse is used. Runtime `b5d701e` was published from current
-  main snapshot `cca39fb` to preview `ce226dfb.code-quest-lab.pages.dev` and
+- Current deployed milestone (2026-08-12): the tablet-control resilience
+  slice keeps the World Atlas/Town route and D13+ sealed, while pointer-capture
+  fallback, active-world viewport reflow, player-following destination arrows,
+  and safe-area reservations are live. The `TO DEPTHS`, `TO GATE`, and `NEXT
+  ROOM` cues stay beside the character; no gate-mounted pulse is used. Runtime
+  `830ce00` was published to preview `6dc4ee18.code-quest-lab.pages.dev` and
   the configured hostname; source hash is
-  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
-  Production checks, 140/140 release verification, deterministic fast QA, and
-  fresh live route/safe-stop smokes pass. Score stays **93% / 19%**:
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+  Production checks, 143/143 release verification, deterministic fast QA, and
+  a fresh live route/attack/safe-stop smoke pass. Score stays **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
-- Current local QA follow-up (2026-08-12): touch joysticks tolerate absent or
-  rejected Pointer Capture; window/visual-viewport changes share active-world
-  reflow; Town/entrance/cleared-room destination arrows use the player's screen
-  anchor after the camera pass; and lower gameplay overlays reserve declared
-  safe-area insets across wide, narrow, and short landscape layouts. Runtime
-  `830ce00`, source/mirror, native sync, local gate **143/143**, and a
-  cache-busted browser smoke with no warnings/errors pass; this is not device
-  evidence. The released-route World Atlas is contract-tested over Town,
+- Current verified follow-up (2026-08-12): the exact source/mirror, generated
+  package, native sync, local gate **143/143**, and live browser smoke pass;
+  the smoke showed `TO GATE`, defeated one enemy with ordinary attack input,
+  safely finished, removed its disposable profile, and captured no warnings or
+  errors. The released-route World Atlas remains contract-tested over Town,
   `REGION_ORDER`, `worldLocation`, waypoints, and unlock state; D13 stays gated
   until future-region progression, save, balance, return, and device evidence exist.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures

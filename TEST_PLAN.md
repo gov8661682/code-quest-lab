@@ -13,19 +13,13 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `b5d701e` is the tested/live web build, published from current main
-  snapshot `cca39fb`; the source mirror and generated web/native surfaces match
-  deployed SHA-256 identity `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
-- The deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
-  configured hostname is `https://code-quest-lab.gov8661682.com/`; both
-  production checks pass.
-- Current local runtime `830ce00` adds safe-area reservations for lower
-  gameplay overlays after the pointer-capture fallback, visual-viewport reflow,
-  and screen-attached destination guidance. Its source/mirror hash is
-  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
-  `npm.cmd test` and `release:verify` pass **143/143**; the deployed runtime
-  remains the previously verified `b5d701e` build because this is local
-  compatibility hardening, not a major website checkpoint.
+- Runtime `830ce00` is the tested/live web build, published to preview
+  `https://6dc4ee18.code-quest-lab.pages.dev/` and the configured hostname;
+  source/mirror and generated web/native surfaces match deployed SHA-256
+  identity `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- The grouped tablet-control milestone includes pointer-capture fallback,
+  visual-viewport reflow, player-following destination guidance, and safe-area
+  overlay reservations. `npm.cmd test` and `release:verify` pass **143/143**.
 - Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - A fresh managed-browser viewport smoke on `3cce0e0` covered 1280x720,

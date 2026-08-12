@@ -5,9 +5,9 @@ Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, released-route atlas,
 viewport reflow, and safe-area overlay slices; `origin/main` is writable and
-synchronized at tested local QA commit `830ce00`. The deployed runtime remains
-`b5d701e` at the configured hostname and preview
-`https://ce226dfb.code-quest-lab.pages.dev/`; the local source/mirror hash is
+synchronized at tested runtime commit `830ce00`. The deployed runtime is the
+same tablet-control milestone at the configured hostname and preview
+`https://6dc4ee18.code-quest-lab.pages.dev/`; the source/mirror hash is
 `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
 
 ## Executive result

@@ -2,7 +2,7 @@
 
 Reviewed: 2026-08-12
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
-Release status: pre-release hardening; guidance and release-readiness milestone deployed and verified; not a Release Candidate
+Release status: pre-release hardening; tablet-control resilience milestone deployed and verified; not a Release Candidate
 
 Main checkpoint completion: **93%**
 Overall project completion: **19%**
@@ -13,17 +13,18 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
-The gameplay overlays now reserve the declared `safe-area-inset-*` values for
-desktop guidance, joysticks, skills, movement nudges, target assist, and
-travel/treasure/exit prompts across wide, narrow, and short landscape layouts.
-Runtime `830ce00` is pushed with source/mirror hash
+The tablet-control resilience milestone now ships the safe-area overlay
+reservations, pointer-capture fallback, active-world viewport reflow, and
+player-following destination guides. Runtime `830ce00` is pushed with
+source/mirror hash
 `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`; the
-local `release:verify` gate is **143/143**, `qa:fast` still clears all 11
-released finales, and a cache-busted browser smoke reached the first room,
-displayed the player-following guide, returned safely, and captured no
-warnings/errors. This is local tablet/native readiness hardening, not a
-deployment or score change; the deployed runtime remains `b5d701e` and the
-score remains **93%** / **19%**.
+release gate is **143/143**, `qa:fast` clears all 11 released finales, and the
+static/package/native checks pass. It is deployed at preview
+`https://6dc4ee18.code-quest-lab.pages.dev/` and the configured hostname. A
+fresh live smoke reached first combat, showed `TO GATE` beside the character,
+accepted a normal attack, safely finished, cleaned up its disposable profile,
+and captured no warnings/errors. The score remains **93%** / **19%** because
+clean-player D1-D12 and physical/native-device acceptance are still open.
 
 The shared touch joystick still treats Pointer Capture as optional, and window
 and `visualViewport` changes now share an active-world reflow handler. During a
@@ -598,7 +599,7 @@ D1-8 acceptance gates.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-12 guidance and release-readiness milestone | Cloudflare Pages project `code-quest-lab`; runtime `b5d701e` is pushed, preview `ce226dfb` and the configured hostname passed production checks, deployed source hash `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`, and fresh preview/primary release-shell and first-combat safe-stop smokes passed | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
+| Current web deployment checkpoint | Complete for the 2026-08-12 tablet-control resilience milestone | Cloudflare Pages project `code-quest-lab`; runtime `830ce00` is pushed, preview `6dc4ee18` and the configured hostname passed production checks, deployed source hash `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`, and the fresh live smoke showed the player-following guide, first-room attack, safe finish, cleanup, and empty diagnostics | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
 | Open-world product and architecture direction | Complete as the staged released-route foundation; full expansion remains post-C1 | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; runtime commit `7b961b9` now ships the Town/released-route World Atlas with honest locks and existing route handoff; `DECISIONS.md` records the explicit owner direction | Add optional landmarks, persistent discovered connections, save migration, and future regions only through complete route/reward/device milestones | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
 | AI expert playtest and first usability fixes | Playtest complete; grouped copy, Town orientation, and readability follow-up are deployed; initial attack response is reproduced; full progression evidence remains open | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy, minimap, lock banner, enemy silhouettes, and HP-bar treatment are live in the checkpoint shell; the D2 elite playthrough reproduced a Corrupted summon escalation and local commit `6423ecb` bounds it with a finite budget | Continue the clean-profile C1 route and complete the touch/tablet lifecycle evidence; keep the local hardening fix under regression coverage before the next deployment | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Re-test the corrected D2 elite room, then continue D1-8 evidence |
 

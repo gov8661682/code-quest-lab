@@ -7,6 +7,24 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Tablet-control resilience milestone (2026-08-12; deployed)
+
+- Grouped the pointer-capture fallback, active-world viewport reflow,
+  screen-attached player-following guides, and safe-area overlay reservations
+  into one user-visible tablet/native-readiness milestone. The `TO DEPTHS`,
+  `TO GATE`, and `NEXT ROOM` cues remain steady, follow the character, and
+  point toward their real destinations; the gate-mounted pulsing arrow stays
+  removed.
+- Runtime `830ce00` passed the exact source/mirror, generated package,
+  `release:verify` (**143/143**), `qa:fast`, static audit, and Capacitor sync.
+- Published preview `https://6dc4ee18.code-quest-lab.pages.dev/` and the
+  configured hostname on 2026-08-12; source hash:
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- A fresh live smoke reached first combat, accepted an ordinary attack that
+  defeated one enemy, safely finished, deleted its disposable profile, and
+  captured no warnings/errors. It does not close clean-player D1-D12 or
+  physical/native-device acceptance, so the score remains **93% / 19%**.
+
 ## Gameplay overlay safe-area hardening (2026-08-12; local QA)
 
 - Reserved the declared safe-area insets for desktop guidance, the shared

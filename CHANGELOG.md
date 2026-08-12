@@ -1,5 +1,23 @@
 # Code Quest Lab - Changelog
 
+## Tablet-control resilience milestone (2026-08-12; deployed)
+
+- Grouped pointer-capture fallback, active-world viewport reflow,
+  player-following destination guides, and safe-area reservations into one
+  tested tablet/native-readiness milestone. The guide stays beside the
+  character and points toward the gate or next room; the gate has no pulsing
+  directional arrow.
+- Runtime `830ce00` passed `release:verify` (**143/143**), deterministic
+  `qa:fast` for all 11 released finales, static/package audit, Capacitor sync,
+  and production checks for both public origins.
+- Published preview: `https://6dc4ee18.code-quest-lab.pages.dev/`; the
+  configured hostname serves the same source hash
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- Live smoke reached first combat, defeated one enemy with ordinary attack
+  input, safely finished, removed its disposable profile, and recorded no
+  browser warnings/errors. This does not claim clean-player D1-D12 or device
+  acceptance; the score remains **93% / 19%**.
+
 ## Gameplay overlay safe-area hardening (2026-08-12; local QA)
 
 - Reserved `safe-area-inset-*` space for desktop guidance, the shared

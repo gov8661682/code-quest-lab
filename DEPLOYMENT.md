@@ -73,28 +73,29 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-12 guidance and release-readiness checkpoint was published from
-runtime commit `b5d701e` using current main snapshot `cca39fb` to the
-configured Cloudflare Pages project `code-quest-lab`. Preview:
-`https://ce226dfb.code-quest-lab.pages.dev/`; primary hostname:
+The 2026-08-12 tablet-control resilience milestone was published from runtime
+commit `830ce00` using the current main snapshot to the configured Cloudflare
+Pages project `code-quest-lab`. Preview:
+`https://6dc4ee18.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+`124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
 
-This grouped checkpoint keeps the player-following `TO DEPTHS`, `TO GATE`, and
-`NEXT ROOM` cues steady and anchored to the character; the gate has no
-directional pulsing arrow. It also includes the adaptive first-room
-pointer/touch hint without changing Joey's combat, story, or balance systems.
-The complete release gate passed with **140/140** tests, deterministic
+This grouped checkpoint ships the pointer-capture fallback, active-world
+viewport reflow, safe-area overlay reservations, and player-following
+`TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues. The arrow stays beside the
+character and points toward the destination; the gate has no directional
+pulsing arrow. Joey's combat, story, and balance systems remain unchanged.
+The complete release gate passed with **143/143** tests, deterministic
 `qa:fast` passed all 11 released finales, the static package audit and
 Android/iOS Capacitor synchronization passed, and `npm.cmd run
 production:check` passed for both origins.
 
-A fresh live preview smoke used a disposable profile at `1280x720`, followed
-Town -> northern road -> entrance -> Normal -> Standard Expedition -> first
-combat, paused, finished safely, removed the profile through the UI, and left
-empty diagnostics. The primary hostname served the current release shell with
-no captured browser errors. This is release-surface verification, not a
-clean-player D1-D12 or physical/native-device acceptance claim.
+A fresh live smoke created a disposable Mage at `1280x720`, followed Town ->
+northern road -> entrance -> Normal -> Standard Expedition -> first combat,
+displayed `TO GATE`, defeated one enemy with ordinary attack input, safely
+finished, removed the profile through the UI, and left empty diagnostics. This
+is release-surface verification, not a clean-player D1-D12 or
+physical/native-device acceptance claim.
 
 The 2026-08-12 player-following entrance-guide refinement was published from
 runtime commit `4580631` to the configured Cloudflare Pages project
