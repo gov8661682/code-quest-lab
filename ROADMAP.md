@@ -80,11 +80,14 @@ browser batches.
   achievement refresh, and the standard completion handoff.
 - [x] Record that Joey's reference does not define a D13-specific material or
   loot helper; do not fabricate one during promotion preparation.
+- [x] Verify and contract-test the complete authored D13 story delivery rather
+  than inventing a longer cutscene: threshold/arena arrival, post-defeat
+  stillness, and purification farewell.
 - [x] Keep D13 outside `REGION_ORDER`, normal unlock refresh, and active-run
   recovery until a complete route/save/reward/return milestone exists.
-- [ ] Add the future-region progression handoff, complete D13 dialogue/story,
-  save/resume coverage, fresh desktop/tablet balance evidence, and return-to-
-  world acceptance before exposing the region.
+- [ ] Add the future-region progression handoff, save/resume coverage, fresh
+  desktop/tablet balance evidence, and return-to-world acceptance before
+  exposing the region.
 
 The three guard contracts are local release-readiness coverage only. They do
 not expose D13, advance Checkpoint 1, or create a website deployment. This

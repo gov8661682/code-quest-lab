@@ -67,6 +67,14 @@ test('D13 keeps its authored two-room atmosphere and named boss wiring', () => {
   const bossUpdater = sliceBetween('function updateCorruptionOfSpace(dt,geo){', 'function updateCorruptionOfSpaceMovement');
   assert.match(bossUpdater, /beginCorruptionOfSpacePhase2\(\)/, 'D13 keeps its Phase 2 transition');
   assert.match(bossUpdater, /beginCorruptionOfSpacePhase3\(\)/, 'D13 keeps its Phase 3 transition');
+
+  const storyBranch = sliceBetween('// ---- DUNGEON 13: REALM OF SPACE', '// ---- DUNGEON 14: REALM OF TIME');
+  assert.match(storyBranch, /showBanner\(typeLabel\+' '\+def\.name,''\,1\.6\)/, 'D13 keeps the authored threshold arrival beat');
+  assert.match(storyBranch, /showBanner\('🌌 THE COLLAPSING ARENA','Reality itself turns to face you\.\.\.',3\.0\)/, 'D13 keeps the authored arena arrival line');
+  assert.match(storyBranch, /Corruption of Space has been unmade\. Reality holds still once more\./, 'D13 keeps the authored post-defeat line');
+
+  const farewellLines = sliceBetween('var PURIFICATION_FAREWELL_LINES={', '\n};');
+  assert.match(farewellLines, /dungeon13:"I tore the world apart looking for somewhere to belong\. Thank you for closing the wound\."/, 'D13 keeps Joey\'s authored purification farewell');
 });
 
 test('D13 defeat closes the Joey reward boundary while remaining gated from release', () => {

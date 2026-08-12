@@ -7,6 +7,15 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## D13 authored story parity guard (2026-08-12; local)
+
+- Confirmed against Joey's reference that the current D13 runtime already
+  delivers the complete authored story beats: Threshold of the Void arrival,
+  arena arrival, post-defeat stillness, and the exact purification farewell.
+- Added those lines to the existing future-content contract without inventing
+  a longer cutscene. The route remains gated and the **93% / 19%** evidence
+  score is unchanged.
+
 ## D13 reward-boundary closure (2026-08-12; local gated runtime)
 
 - Implemented Joey's reference-shaped Corruption of Space completion reward:

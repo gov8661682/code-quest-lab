@@ -1,5 +1,14 @@
 # Code Quest Lab - Changelog
 
+## D13 authored story parity guard (2026-08-12; local)
+
+- Contract-tested Joey's complete D13 story delivery: Threshold of the Void
+  arrival, the arena arrival line, post-defeat stillness, and the exact
+  purification farewell.
+- Corrected the audit and roadmap to show dialogue parity as complete; no
+  extra cutscene was invented and no website deployment or score credit was
+  created.
+
 ## D13 reward-boundary closure (2026-08-12; local gated runtime)
 
 - Added Joey-preserving standard completion rewards to Corruption of Space:

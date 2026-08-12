@@ -18,7 +18,8 @@ Realm of Space retains its two-room atmosphere, named Corruption of Space boss,
 authored phases/death sequence, 2.0x guardian soul reward, boss XP/mastery,
 named defeat statistic, death effects, and completion handoff. D13 remains
 outside the release region order and save guard; progression to a future region,
-dialogue delivery, and save/return acceptance are still intentionally gated.
+save/return acceptance, and fresh play evidence are still intentionally gated;
+the complete authored D13 story beats are now regression-protected.
 Three focused future-content contracts pass; the full local gate remains
 **135/135**. No D13 route or C1 score credit is claimed.
 

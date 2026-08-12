@@ -33,12 +33,15 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   boundary: Realm of Space keeps its two-room route, Corruption of Space
   identity, authored phases/death sequence, 2.0x guardian soul reward, boss
   XP/mastery, named defeat statistic, death effects, and standard completion
-  handoff. D13-specific loot is not invented because Joey's reference does not
-  define it. D13 remains outside `REGION_ORDER`, normal unlock refresh, and
-  active-run recovery while future-region progression, dialogue, save/resume,
-  balance, and return-to-world acceptance remain open. Three future-content
-  guard contracts pass; the current local gate is **135/135**. No score credit
-  is claimed and the evidence score remains **93%** / **19%**.
+  handoff. Joey's complete reference story beats are also preserved and now
+  contract-tested: threshold arrival, arena arrival, post-defeat stillness,
+  and the exact purification farewell. D13-specific loot is not invented
+  because Joey's reference does not define it. D13 remains outside
+  `REGION_ORDER`, normal unlock refresh, and active-run recovery while
+  future-region progression, save/resume, balance, and return-to-world
+  acceptance remain open. Three future-content guard contracts pass; the
+  current local gate is **135/135**. No score credit is claimed and the
+  evidence score remains **93%** / **19%**.
 
 - The plain-text profile transfer now has checked-in, synthetic fixtures for a
   legacy v1 raw save, current v2 Mage progress with backup and interrupted-run
