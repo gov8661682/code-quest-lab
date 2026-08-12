@@ -23,8 +23,9 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   the configured hostname loaded the current shell. This is not full
   clean-player D1-D12 or physical-device evidence.
 - Runtime `f0ce0e9` and the current status records are pushed to
-  `origin/main`; the preceding tablet-control milestone remains documented
-  below as historical release evidence.
+  `origin/main`; control record `706d349` advances the autorun pointer to the
+  owner-supplied device evidence lane. The preceding tablet-control milestone
+  remains documented below as historical release evidence.
 
 ## World-state and connection registry milestone (2026-08-12; deployed)
 

@@ -1113,10 +1113,10 @@ regression context; they are not the current next-action pointer.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest tested local runtime is `3cce0e0`
-  (`Harden mobile viewport reflow`), while the latest deployed
-  runtime remains `b5d701e`; the current control record is `4e05065`. The
-  deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
+- Branch: `main`; the latest tested and deployed runtime is `f0ce0e9`
+  (`Add data-driven world state registry`), and the current control record is
+  `706d349` (`Advance autorun to owner device evidence`). The deployed preview
+  is `https://596095e6.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
