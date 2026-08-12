@@ -5,11 +5,11 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `0a6e729` (`Make Capacitor sync junction-safe`),
-  pushed to `origin/main` after the **139/139** release gate, deterministic fast
+- Latest tested local QA commit: `c1d4ba0` (`Add no-aid released route QA`),
+  pushed to `origin/main` after the **140/140** release gate, deterministic fast
   QA, package audit, and alias-launched native synchronization. The deployed
-  milestone remains `7b961b9`; this release-tooling hardening does not create a
-  website checkpoint.
+  milestone remains `7b961b9`; this automated confidence slice does not create
+  a website checkpoint.
 - Runtime milestone: `7b961b9`, deployed and live-verified at the configured
   hostname and preview `https://79d7af68.code-quest-lab.pages.dev/`.
 - Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
@@ -29,6 +29,17 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 - Commit `0a6e729` is pushed to `origin/main`. This is release-tooling
   hardening, not a runtime milestone, so the deployed `7b961b9` website and
   **93% / 19%** evidence score remain unchanged.
+
+## Released-route mechanics confidence (2026-08-12; local QA)
+
+- Added a deterministic ordinary-player mechanics pass for every released
+  finale: D1, D2, and D4-D12. The pass uses no invincibility, high damage,
+  enemy-free mode, encounter completion, or route shortcuts; it checks real
+  damage received, authored phase thresholds, finite summons, and victory.
+- The full gate is **140/140** and `qa:fast` reports all 11 finales victorious.
+  This is accelerated logic evidence, not clean-player route, touch/device,
+  room-interaction, or balance acceptance. The deployed runtime and **93% / 19%**
+  score remain unchanged.
 
 ## Released-route World Atlas foundation (2026-08-12; deployment checkpoint)
 

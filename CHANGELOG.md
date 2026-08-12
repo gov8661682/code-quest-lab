@@ -1,5 +1,16 @@
 # Code Quest Lab - Changelog
 
+## No-aid released-route QA (2026-08-12; local QA)
+
+- Added a data-driven mechanics-confidence simulation for all 11 released
+  finales: D1, D2, and D4-D12. It uses ordinary attack cadence, real incoming
+  damage, authored phase thresholds, and finite add budgets without developer
+  aids or route shortcuts; D11 and D12 retain their distinct content modes.
+- The local gate is **140/140** and `qa:fast` reports all finales victorious.
+  This does not claim clean-player, touch/device, room-interaction, or balance
+  acceptance, so no website deployment or score change was created. Commit
+  `c1d4ba0` is pushed.
+
 ## Junction-safe Capacitor commands (2026-08-12; local release readiness)
 
 - Added repository-root-safe wrappers for native synchronization and the

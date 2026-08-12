@@ -7,6 +7,18 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## No-aid released-route mechanics confidence (2026-08-12; local QA)
+
+- Added `tools/qa/release-route-sim.mjs` with data-driven profiles for every
+  released finale: D1, D2, and D4-D12. The pass keeps the authored names and
+  D11 environment-first/D12 horde-and-explore identities while exercising
+  ordinary attack cadence, real incoming damage, phases, finite summons, and
+  victory without developer aids.
+- The full local gate is **140/140** and `qa:fast` reports 11/11 victories.
+  This is automated mechanics confidence only; it does not close the clean
+  human route, touch/device, room-interaction, or balance evidence lanes.
+  Commit `c1d4ba0` is pushed with no deployment or score credit.
+
 ## Junction-safe Capacitor command wrappers (2026-08-12; local release readiness)
 
 - Replaced direct native npm/npx chains with wrappers that resolve the real

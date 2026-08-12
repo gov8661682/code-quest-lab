@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `7b961b9` is pushed to `origin/main`; its tested build is deployed to preview `79d7af68.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **139/139** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and deployed World Atlas UI smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `7b961b9` is pushed to `origin/main`; its tested build is deployed to preview `79d7af68.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **140/140** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and deployed World Atlas UI smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Open-world foundation update (2026-08-12; local QA)
@@ -49,6 +49,16 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   paths from leaking into generated Android/Swift files. Alias-launched sync,
   **139/139**, package audit, and `qa:fast` passed; this is release-tooling
   hardening with no runtime deployment or score credit.
+
+### Released-route mechanics confidence (2026-08-12; local QA)
+
+- Commit `c1d4ba0` adds a data-driven, no-aid mechanics-confidence pass for all
+  11 released finales: D1, D2, and D4-D12. Each profile receives real incoming
+  damage, exercises its authored phase/add budget, and must finish with no live
+  summons. D11 remains environment-first and D12 remains horde-and-explore.
+- The full local gate is now **140/140**, `qa:fast` reports all 11 victories,
+  and no developer aid is enabled. This is automated logic confidence only; it
+  does not claim a clean human D1-D12 route, touch/device, or balance evidence.
 
 ### Latest evidence update (2026-08-12)
 

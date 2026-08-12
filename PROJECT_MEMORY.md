@@ -5,16 +5,17 @@ Mode: **Replace and consolidate; never append a chronological work log**
 
 ## Purpose
 
-This is the project's single short-term learning memory. It records only the current facts and durable lessons needed to choose
-the next useful action; stale facts are edited in place. Do not add a second
-memory file, daily entry, repeated failure note, or cumulative session transcript.
+This is the project's single short-term learning memory; stale facts are edited
+in place. Do not add a second memory file, daily entry, repeated failure note,
+or cumulative session transcript.
 ## Current state
 
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **139/139** tests, static build/package audit,
-  Capacitor Android/iOS synchronization, and deterministic fast QA pass.
+- Current verified local gate: **140/140** tests, static build/package audit,
+  Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
+  no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the dashboard World Atlas reuses
   Town, released routes, existing unlocks, and the current difficulty flow;
   D13+ remains sealed. Commit `7b961b9` is pushed to `origin/main` and
@@ -27,7 +28,7 @@ memory file, daily entry, repeated failure note, or cumulative session transcrip
   D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): the released-route World Atlas is
   contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints, and
-  unlock state with no new region/save field; local gate **139/139**. D13 stays
+  unlock state with no new region/save field; local gate **140/140**. D13 stays
   gated behind three future-content contracts and outside the atlas. Its
   Joey-preserving reward boundary is implemented locally: 2.0x guardian souls,
   boss XP/mastery, named defeat statistics, death effects, and completion
@@ -94,8 +95,7 @@ memory file, daily entry, repeated failure note, or cumulative session transcrip
   physical-device, native-build, and owner approval gaps remain genuine.
 - Run `npm.cmd run qa:fast` before long combat checks; `release:verify`
   rebuilds/synchronizes generated web/native assets first. New encounter code
-  must use `getEncounterTuning(dungeonId)` and `MINIBOSS_TYPES_BY_DUNGEON`; named
-  boss mechanics may remain bespoke for Joey parity.
+  must use `getEncounterTuning(dungeonId)` and `MINIBOSS_TYPES_BY_DUNGEON`; named boss mechanics may remain bespoke for Joey parity.
 - A failed method is not progress. After three materially identical technical
   failures, change strategy; never exceed five materially identical gameplay
   attempts. Continue an independent acceptance item when one surface is blocked.

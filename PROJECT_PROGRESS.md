@@ -13,6 +13,15 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The accelerated QA layer now includes a data-driven no-aid mechanics-confidence
+pass for all 11 released finales: D1, D2, and D4-D12. It exercises each named
+boss's configured phase/add budget with ordinary attack cadence and real
+incoming damage; D11 stays environment-first and D12 stays horde-and-explore.
+The full local gate is **140/140**, and `qa:fast` reports all finales victorious
+without developer aids. Commit `c1d4ba0` is pushed to `origin/main`. This does
+not replace a clean human route or physical touch evidence, so the **93%** /
+**19%** score and deployed `7b961b9` checkpoint are unchanged.
+
 Capacitor native commands are now junction-safe. The `native:sync` and
 `native:android:build` wrappers resolve the real Git repository before running
 the web build and Capacitor CLI, preventing the workspace alias from writing
