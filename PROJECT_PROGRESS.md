@@ -443,7 +443,7 @@ Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` is clean and synchronized with latest tested local QA
-  commit `635dd71` (`Cover offline asset cache reuse`) and runtime milestone
+  commit `b5be3ec` (`Protect steady player-following guide`) and runtime milestone
   `4580631` (`Make entrance guidance follow the player`) in the pushed history.
   The local D13 reward/story follow-up remains intentionally gated and
   undeployed.

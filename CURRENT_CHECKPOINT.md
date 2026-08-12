@@ -974,7 +974,7 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA commit: `635dd71` (`Cover offline asset cache reuse`),
+- Latest tested local QA commit: `b5be3ec` (`Protect steady player-following guide`),
   pushed to `origin/main` after the **138/138** release gate, `qa:fast`,
   build/package audit, native sync, and project-control verification. This is a
   test/control readiness commit; Checkpoint 1 remains active and the runtime
@@ -1019,7 +1019,7 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
 - Branch: `main`; the latest runtime/website milestone is commit `4580631`
   (`Make entrance guidance follow the player`), and the latest tested local QA
-  commit is `635dd71`. The deployed preview is
+  commit is `b5be3ec`. The deployed preview is
   `https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname is
   `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`

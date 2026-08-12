@@ -5,7 +5,7 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `635dd71` (`Cover offline asset cache reuse`),
+- Latest tested local QA commit: `b5be3ec` (`Protect steady player-following guide`),
   pushed to `origin/main`; local release gate: **138/138**.
 - Runtime milestone: `4580631` (`Make entrance guidance follow the player`),
   deployed and live-verified at the configured hostname and preview
@@ -831,8 +831,8 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA commit: `635dd71` (`Cover offline asset cache
-  reuse`), after the **138/138** release verification, build/package audit,
+- Current verified local QA commit: `b5be3ec` (`Protect steady player-following
+  guide`), after the **138/138** release verification, build/package audit,
   native asset sync, GitHub push, and project-control verification. Checkpoint 1
   remains active because clean D1-12 and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
