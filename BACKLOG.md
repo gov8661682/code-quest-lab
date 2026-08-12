@@ -1,6 +1,6 @@
 # Code Quest Lab - Backlog
 
-Updated: 2026-08-10
+Updated: 2026-08-12
 
 These items are intentionally outside the active checkpoint and the locked V1
 route unless a release-critical defect or an explicit scope decision promotes
@@ -8,9 +8,10 @@ one. They must not be used to reopen completed work.
 
 ## Open-world foundation (explicit direction, staged)
 
-- Replace the route-only presentation with a tested touch-friendly World Atlas
-  that shows Town, discovered regions, safe return points, objectives, and
-  honest post-release previews.
+- [x] Replace the route-only presentation with a tested touch-friendly World
+  Atlas that shows Town, released destinations, objectives, and honest
+  post-release lock conditions. Delivered in runtime commit `7b961b9`; full
+  open-world expansion remains staged behind C1 and device evidence.
 - Introduce a data-driven `WorldRegion`/`WorldConnection` registry backed by
   migrated `WorldState`; connect Town, regional hubs, landmarks, and dungeon
   instances without creating a second game engine.
