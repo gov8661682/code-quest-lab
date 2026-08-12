@@ -192,10 +192,11 @@ test('the World Atlas reuses released routes and existing unlock state', () => {
     'function openWorldAtlasScreen(){',
     'world atlas renderer'
   );
-  assert.match(atlas, /REGION_ORDER\.filter/, 'the route count comes from the release registry');
-  assert.match(atlas, /REGION_ORDER\.forEach/, 'the atlas renders only registered release routes');
+  assert.match(atlas, /getWorldRegionList\(\)/, 'the atlas renders the shared world-region registry');
+  assert.match(atlas, /getWorldConnectionDefinition\(home\.id,did\)/, 'the atlas renders shared world connections');
+  assert.match(atlas, /getWorldAtlasDiscoveredRouteCount\(\)/, 'the route count comes from persisted world state');
   assert.match(atlas, /isPremiumDungeon\(did\)&&shouldEnforcePremiumEntitlement\(\)/, 'premium gating remains explicit');
-  assert.match(SOURCE, /function openWorldAtlasDestination\(dungeonId\)\{[\s\S]*?if\(!isReleaseDungeon\(dungeonId\)\|\|!DUNGEON_DEFS\[dungeonId\]\)return;/, 'atlas actions cannot bypass the release route guard');
+  assert.match(SOURCE, /function openWorldAtlasDestination\(dungeonId\)\{[\s\S]*?if\(!getWorldRegionDefinition\(dungeonId\)\|\|!isReleaseDungeon\(dungeonId\)\)return;/, 'atlas actions cannot bypass the release route guard');
   assert.match(SOURCE, /function openWorldAtlasScreen\(\)[\s\S]*?refreshDungeonUnlocks\(\);[\s\S]*?renderWorldAtlas\(\);[\s\S]*?showScreen\('worldAtlasScreen'\)/, 'opening the atlas refreshes current progression before rendering');
 });
 

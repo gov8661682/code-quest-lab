@@ -1734,6 +1734,43 @@ var SAVE_KEY_DUNGEONS='idg_dungeon_progress';
 var SAVE_KEY_CHAR_INDEX='idg_char_index';
 var SAVE_KEY_ACTIVE_CHAR='idg_active_char';
 var CHARACTER_SAVE_VERSION=2;
+var WORLD_STATE_VERSION=1;
+
+function defaultWorldState(){
+  return{version:WORLD_STATE_VERSION,discoveredRegions:{town:true},openedConnections:{},clearedLandmarks:{}};
+}
+function isSafeWorldStateKey(key){
+  return typeof key==='string'&&key.length>0&&key.length<=120&&key!=='__proto__'&&key!=='constructor'&&key!=='prototype'&&/^[a-zA-Z0-9_.:>\-]+$/.test(key);
+}
+function copyWorldStateFlags(target,source){
+  if(!source||typeof source!=='object'||Array.isArray(source))return;
+  Object.keys(source).slice(0,256).forEach(function(key){
+    if(isSafeWorldStateKey(key)&&source[key]===true)target[key]=true;
+  });
+}
+function getWorldStateConnectionId(fromId,toId){return String(fromId)+'>'+String(toId);}
+function normalizeWorldState(raw,dungeons,worldLocation){
+  var state=defaultWorldState();
+  if(raw&&typeof raw==='object'&&!Array.isArray(raw)){
+    if(Number.isInteger(raw.version)&&raw.version>=1&&raw.version<=WORLD_STATE_VERSION)state.version=raw.version;
+    copyWorldStateFlags(state.discoveredRegions,raw.discoveredRegions);
+    copyWorldStateFlags(state.openedConnections,raw.openedConnections);
+    copyWorldStateFlags(state.clearedLandmarks,raw.clearedLandmarks);
+  }
+  state.discoveredRegions.town=true;
+  var unlocked=dungeons&&dungeons.unlocked;
+  if(unlocked&&typeof unlocked==='object'&&!Array.isArray(unlocked)){
+    Object.keys(unlocked).forEach(function(dungeonId){
+      if(!isSafeWorldStateKey(dungeonId)||unlocked[dungeonId]!==true)return;
+      state.discoveredRegions[dungeonId]=true;
+      state.openedConnections[getWorldStateConnectionId('town',dungeonId)]=true;
+    });
+  }
+  if(worldLocation&&typeof worldLocation==='object'&&isSafeWorldStateKey(worldLocation.dungeonId)){
+    state.discoveredRegions[worldLocation.dungeonId]=true;
+  }
+  return state;
+}
 
 function charDataKey(id){return'idg_char_'+id;}
 function charBackupKey(id){return charDataKey(id)+'_backup';}
@@ -1743,11 +1780,12 @@ function parseCharacterSave(raw){
   if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))return null;
   if(parsed.saveVersion!==undefined&&(!Number.isInteger(parsed.saveVersion)||parsed.saveVersion>CHARACTER_SAVE_VERSION))return null;
   var recognized=0;
-  ['souls','stats','mastery','dungeons','selectedClass','inventory','equipped'].forEach(function(key){if(Object.prototype.hasOwnProperty.call(parsed,key))recognized++;});
+  ['souls','stats','mastery','dungeons','selectedClass','inventory','equipped','worldState'].forEach(function(key){if(Object.prototype.hasOwnProperty.call(parsed,key))recognized++;});
   if(recognized<2)return null;
   if(parsed.stats!==undefined&&(!parsed.stats||typeof parsed.stats!=='object'||Array.isArray(parsed.stats)))return null;
   if(parsed.mastery!==undefined&&(!parsed.mastery||typeof parsed.mastery!=='object'||Array.isArray(parsed.mastery)))return null;
   if(parsed.dungeons!==undefined&&(!parsed.dungeons||typeof parsed.dungeons!=='object'||Array.isArray(parsed.dungeons)))return null;
+  if(parsed.worldState!==undefined&&(!parsed.worldState||typeof parsed.worldState!=='object'||Array.isArray(parsed.worldState)))return null;
   if(parsed.selectedClass!==undefined&&typeof parsed.selectedClass!=='string')return null;
   return parsed;
 }
@@ -1833,6 +1871,7 @@ function defaultCharacterData(className){
     worldLocation:{type:'town'},
     // Waypoint System (Phase 3) — unlocked waypoints persist per character.
     waypoints:{unlocked:{}},
+    worldState:defaultWorldState(),
     selectedClass:className||'barbarian',
     equipped:defaultEquipped(),
     inventory:[],
@@ -2000,6 +2039,7 @@ function loadPermanentData() {
     merged.worldLocation=(parsed.worldLocation&&parsed.worldLocation.type)?parsed.worldLocation:{type:'town'};
     merged.waypoints=Object.assign({unlocked:{}},parsed.waypoints||{});
     merged.waypoints.unlocked=Object.assign({},(parsed.waypoints&&parsed.waypoints.unlocked)||{});
+    merged.worldState=normalizeWorldState(parsed.worldState,merged.dungeons,merged.worldLocation);
     merged.bobDialogue=Object.assign({seen:[],lastId:null,progress:0,convosCompleted:0,friendship:0,lastVisitDay:null,visitsToday:0,passiveToday:0,cosmeticSeen:{}},parsed.bobDialogue||{});
     merged.bobDialogue.seen=Array.isArray(merged.bobDialogue.seen)?merged.bobDialogue.seen:[];
     merged.bobDialogue.progress=typeof merged.bobDialogue.progress==='number'?merged.bobDialogue.progress:0;
@@ -2037,6 +2077,7 @@ function loadPermanentData() {
 function savePermanentData() {
   if(!activeCharacterId)return;
   try{
+    permanentData.worldState=normalizeWorldState(permanentData.worldState,permanentData.dungeons,permanentData.worldLocation);
     var _savedMageData=permanentData.mageData||{mana:MAX_MANA,maxMana:MAX_MANA,manaRegen:MANA_REGEN_PER_SECOND};
     if(gameRunning||player.dead){
       _savedMageData={mana:player.mana,maxMana:player.maxMana,manaRegen:player.manaRegen};
@@ -2060,6 +2101,7 @@ function savePermanentData() {
       library:permanentData.library||{blessings:{},curses:{}},
       worldLocation:permanentData.worldLocation||{type:'town'},
       waypoints:permanentData.waypoints||{unlocked:{}},
+      worldState:permanentData.worldState||defaultWorldState(),
       bobDialogue:permanentData.bobDialogue||{seen:[],lastId:null,progress:0,convosCompleted:0,friendship:0,lastVisitDay:null,visitsToday:0,passiveToday:0,cosmeticSeen:{},visitDays:0,hiddenSeen:[],hiddenStage:0,lastHiddenId:null,convosSinceHidden:0,bobSecretUnlocked:false},
       bobPosition:permanentData.bobPosition||null,
       bobArmor:permanentData.bobArmor||{hood:0,tunic:0,gloves:0,boots:0},
@@ -4804,6 +4846,23 @@ function isDungeonUnlocked(dungeonId){
 // the locally verified playable chain; later dungeons remain source-resident
 // until their routes, rewards, and device evidence are complete.
 var REGION_ORDER=['dungeon1','dungeon2','dungeon4','dungeon5','dungeon6','dungeon7','dungeon8','dungeon9','dungeon10','dungeon11','dungeon12'];
+var WORLD_HOME_REGION_ID='town';
+function getWorldRegionDefinition(regionId){
+  if(regionId===WORLD_HOME_REGION_ID)return{id:WORLD_HOME_REGION_ID,kind:'home',name:'Town',icon:'⌂',objective:'Prepare, meet characters, and choose where to go next.',unlockHint:'Home region'};
+  if(!DUNGEON_DEFS[regionId]||!isReleaseDungeon(regionId))return null;
+  var dungeon=DUNGEON_DEFS[regionId];
+  return{id:regionId,kind:'dungeon',name:dungeon.name,icon:dungeon.icon||'•',objective:dungeon.objective||'Explore this region',unlockHint:dungeon.unlockHint||'Complete the previous region'};
+}
+function getWorldRegionList(){
+  var regions=[getWorldRegionDefinition(WORLD_HOME_REGION_ID)];
+  REGION_ORDER.forEach(function(regionId){var region=getWorldRegionDefinition(regionId);if(region)regions.push(region);});
+  return regions;
+}
+function getWorldConnectionDefinition(fromId,toId){
+  if(fromId!==WORLD_HOME_REGION_ID||!isReleaseDungeon(toId))return null;
+  var region=getWorldRegionDefinition(toId);if(!region)return null;
+  return{id:getWorldStateConnectionId(fromId,toId),from:fromId,to:toId,label:toId===REGION_ORDER[0]?'Northern road →':'Connected route →',kind:'charted-route'};
+}
 function isReleaseDungeon(dungeonId){return REGION_ORDER.indexOf(dungeonId)>=0;}
 function getNextDungeonId(currentId){
   var idx=REGION_ORDER.indexOf(currentId);
@@ -24046,10 +24105,16 @@ function openDungeonSelectScreen(){
 function getWorldAtlasLocationLabel(){
   var location=permanentData&&permanentData.worldLocation;
   if(!location||location.type==='town')return'Town · home region';
-  if((location.type==='entrance'||location.type==='dungeon')&&location.dungeonId&&DUNGEON_DEFS[location.dungeonId]){
-    return(location.type==='entrance'?'Entrance · ':'Dungeon · ')+DUNGEON_DEFS[location.dungeonId].name;
+  var region=location.dungeonId&&getWorldRegionDefinition(location.dungeonId);
+  if((location.type==='entrance'||location.type==='dungeon')&&region){
+    return(location.type==='entrance'?'Entrance · ':'Dungeon · ')+region.name;
   }
   return'Town · home region';
+}
+function getWorldAtlasDiscoveredRouteCount(){
+  var state=permanentData&&permanentData.worldState;
+  var discovered=state&&state.discoveredRegions;
+  return getWorldRegionList().filter(function(region){return region.kind==='dungeon'&&discovered&&discovered[region.id]===true;}).length;
 }
 function getWorldAtlasWaypointCount(){
   var unlocked=permanentData&&permanentData.waypoints&&permanentData.waypoints.unlocked;
@@ -24086,7 +24151,7 @@ function appendWorldAtlasCard(grid,entry){
 function openWorldAtlasDestination(dungeonId){
   permanentData=loadPermanentData();
   refreshDungeonUnlocks();
-  if(!isReleaseDungeon(dungeonId)||!DUNGEON_DEFS[dungeonId])return;
+  if(!getWorldRegionDefinition(dungeonId)||!isReleaseDungeon(dungeonId))return;
   var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[dungeonId]);
   if(!unlocked){
     showBanner('ROAD LOCKED',DUNGEON_DEFS[dungeonId].unlockHint||'Complete the previous region first.',2.5);
@@ -24106,26 +24171,28 @@ function renderWorldAtlas(){
   var summary=document.getElementById('worldAtlasSummary');
   var grid=document.getElementById('worldAtlasGrid');
   if(!summary||!grid)return;
-  var unlockedCount=REGION_ORDER.filter(function(did){
-    return !!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
-  }).length;
-  summary.textContent='Current location: '+getWorldAtlasLocationLabel()+' · '+getWorldAtlasWaypointCount()+' waypoint'+(getWorldAtlasWaypointCount()===1?'':'s')+' discovered · '+unlockedCount+'/'+REGION_ORDER.length+' routes charted';
+  var regions=getWorldRegionList();
+  var routeCount=regions.filter(function(region){return region.kind==='dungeon';}).length;
+  var discoveredCount=getWorldAtlasDiscoveredRouteCount();
+  summary.textContent='Current location: '+getWorldAtlasLocationLabel()+' · '+getWorldAtlasWaypointCount()+' waypoint'+(getWorldAtlasWaypointCount()===1?'':'s')+' discovered · '+discoveredCount+'/'+routeCount+' routes charted';
   grid.innerHTML='';
-  appendWorldAtlasCard(grid,{icon:'⌂',name:'Town',meta:'Home region · safe return point',objective:'Prepare, meet characters, and choose where to go next.',status:isWorldAtlasCurrentDestination('town')?'Current':'Home',current:isWorldAtlasCurrentDestination('town')});
-  REGION_ORDER.forEach(function(did,index){
-    var d=DUNGEON_DEFS[did];if(!d)return;
-    appendWorldAtlasConnection(grid,index===0?'Northern road →':'Connected route →');
+  var home=regions[0];
+  appendWorldAtlasCard(grid,{icon:home.icon,name:home.name,meta:'Home region · safe return point',objective:home.objective,status:isWorldAtlasCurrentDestination(home.id)?'Current':'Home',current:isWorldAtlasCurrentDestination(home.id)});
+  regions.slice(1).forEach(function(region){
+    var did=region.id,d=DUNGEON_DEFS[did];if(!d)return;
+    var connection=getWorldConnectionDefinition(home.id,did);
+    appendWorldAtlasConnection(grid,connection?connection.label:'Connected route →');
     var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
     var premiumLocked=unlocked&&isPremiumDungeon(did)&&shouldEnforcePremiumEntitlement()&&!hasVerifiedPremiumEntitlement();
     var action=unlocked?(function(routeId){return function(){openWorldAtlasDestination(routeId);};})(did):null;
     if(premiumLocked)action=(function(routeId){return function(){openWorldAtlasDestination(routeId);};})(did);
     appendWorldAtlasCard(grid,{
-      icon:d.icon,name:d.name,
-      meta:unlocked?(premiumLocked?'Charted route · parent unlock required':'Charted connection · reachable from Town'):'Locked road · '+(d.unlockHint||'Complete the previous region'),
-      objective:'Goal: '+(d.objective||'Explore this region'),
+      icon:region.icon,name:region.name,
+      meta:unlocked?(premiumLocked?'Charted route · parent unlock required':'Charted connection · reachable from Town'):'Locked road · '+region.unlockHint,
+      objective:'Goal: '+region.objective,
       status:premiumLocked?'Unlock':unlocked?'Prepare':'Locked',
       current:isWorldAtlasCurrentDestination(did),locked:!unlocked,
-      action:action,actionLabel:(premiumLocked?'Open unlock information for ':'Prepare the ')+d.name+' route'
+      action:action,actionLabel:(premiumLocked?'Open unlock information for ':'Prepare the ')+region.name+' route'
     });
   });
 }
