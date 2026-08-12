@@ -29,6 +29,16 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-12)
 
+- A fresh no-aid route audit on the current build reached Dungeon 1's first
+  combat room in a new Mage profile, but the managed browser exposed a
+  `1280x720` fine-pointer surface with the touch Attack joystick hidden. The
+  ordinary CUA gestures delivered no observable hits and the session ended
+  with `0` enemies defeated; a longer burst also exceeded the control-session
+  timeout. This narrows the next evidence requirement to a genuinely
+  touch-capable/device surface or a bounded visible-input harness. It is not a
+  balance conclusion and does not advance the clean-player D1-D12 lane or the
+  **93%** / **19%** score.
+
 - The first Normal Dungeon 1 Stone Guardian now has a finite web onboarding
   budget: `0.60` HP, `0.55` damage, `0.90` speed, `1.40` attack cooldown,
   `0.60` authored ability damage, and `4.0s` entry grace. The phase change,

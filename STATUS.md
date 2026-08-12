@@ -3,6 +3,17 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Clean-player route audit (2026-08-12; evidence gap remains)
+
+A fresh no-aid route reached the first Dungeon 1 combat room in a new Mage
+profile. The managed browser was running at `1280x720` with fine-pointer
+behavior, so the touch Attack joystick was hidden; ordinary CUA gestures did
+not produce observable hits and the run ended with `0` enemies defeated. A
+longer click burst exceeded the browser-control timeout. This is not enough to
+diagnose gameplay balance or claim a clean-player pass. A real touch-capable
+surface or a bounded visible-input harness is still required; the score remains
+**93%** / **19%**.
+
 ## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 The first Normal D1 Stone Guardian now has a finite web onboarding budget:

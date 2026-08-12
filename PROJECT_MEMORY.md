@@ -39,11 +39,6 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   deployed to preview `ab0fd517.code-quest-lab.pages.dev` and the configured
   hostname; source hash is
   `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
-- Prior input milestone `ae91268` is deployed: the `1.35s` mobile arrival
-  window is independent of the opening damage grace, and Joey's roster,
-  attack math, and later scaling remain intact. Its **121/121** gate, package
-  audit, native sync, production checks, and desktop/tablet smoke passed; the
-  clean route reached the first mini-boss but not full D1-D12.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
@@ -68,6 +63,11 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   600x768 no-aid smoke cleared the opening room; bounded local runs also reached
   D1's first mini-boss before the browser-control batch stopped. This is progress
   evidence, not a full D1-D12 acceptance claim.
+- Fresh no-aid managed-browser audit (2026-08-12) reached D1's first room but
+  ran at `1280x720` fine-pointer mode with the touch Attack joystick hidden;
+  ordinary CUA gestures produced no observable hits and the run ended with
+  `0` kills. Treat this as an input-surface gap, not a balance diagnosis; use a
+  real touch-capable surface or a bounded visible-input harness next.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route

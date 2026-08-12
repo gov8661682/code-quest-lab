@@ -13,6 +13,14 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+A fresh no-aid route audit reached the first Dungeon 1 combat room in a new
+Mage profile, but the current managed browser was a `1280x720` fine-pointer
+surface with the touch Attack joystick hidden. Ordinary CUA gestures produced
+no observable hits and the session ended with `0` enemies defeated; a longer
+burst exceeded the browser-control timeout. This is an input-surface evidence
+gap, not a balance conclusion. The clean-player D1-D12 lane and the **93%** /
+**19%** score remain unchanged.
+
 The first Normal Dungeon 1 Stone Guardian now uses a finite web onboarding
 budget (`0.60/0.55/0.90/1.40/0.60` for HP, damage, speed, attack cadence, and
 authored ability damage, plus `4.0s` entry grace). Joey's boss identity,
