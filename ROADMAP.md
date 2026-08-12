@@ -53,6 +53,23 @@ layers, world-state model, save boundaries, and acceptance bar.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
+### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)
+
+- [x] Stop the repeated no-aid route method under the three/five-attempt loop
+  breaker after the fourth bounded 600x768 audit produced attack-only death
+  with no movement; preserve the result as input evidence, not a balance claim.
+- [x] Add a deterministic fresh Normal Mage/Stone Guardian scenario that uses
+  the ordinary Fire Bolt cadence, crosses the authored summon phase, takes real
+  damage, and wins without invincibility or other developer aids.
+- [x] Pass the focused QA test, `qa:fast`, and the full **128/128** local
+  release gate. Keep the evidence score at **93%** / **19%** because this is
+  release-readiness diagnostics, not a clean-player route or device session.
+
+This is a local QA improvement and does not create a website deployment
+checkpoint. The next manual route evidence must use a genuinely touch-capable
+surface or another materially different strategy; do not repeat attack-only
+browser batches.
+
 ### Completed milestone: Level 1 onboarding balance pass (2026-08-10; deployed)
 
 - Reduced the fresh Barbarian starter damage multiplier to `0.75`.

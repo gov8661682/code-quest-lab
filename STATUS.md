@@ -57,6 +57,25 @@ These distinct outcomes still do not close a clean-player D1-D12 route, so
 the score remains **93%** / **19%**. The retained 8/4 save was preserved and
 temporary audit profiles were removed.
 
+## Fresh-Mage first-boss QA diagnostic (2026-08-12; local release-readiness slice)
+
+A fourth bounded 600x768 no-aid run reached `Dark Corridor`. The visible
+Attack joystick delivered a real hit and reduced the room from two enemies to
+one, but an attack-only follow-up with no movement ended in player death after
+one kill. This confirms that ordinary attack input is deliverable; it does not
+justify another global damage reduction and does not close the clean-player
+D1-D12 lane. The disposable profile was deleted and the retained 8/4 save was
+left untouched.
+
+The deterministic fast-QA harness now includes a fresh Normal Mage versus the
+first Stone Guardian: 450 boss HP, 12 boss damage, one authored summon phase,
+40-damage ordinary attacks, and 80 player HP. It wins in **9.15 simulated
+seconds**, takes real damage, clears the summon, and uses no invincibility,
+high-damage, room, or phase aid. Focused tests, `qa:fast`, and the full local
+release gate pass **128/128**. This is diagnostic/release-readiness evidence,
+not clean-player or physical-device acceptance, so the score remains
+**93%** / **19%**.
+
 ## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 The first Normal D1 Stone Guardian now has a finite web onboarding budget:

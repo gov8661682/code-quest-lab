@@ -77,6 +77,31 @@ export const LEVEL1_OPENING_ENCOUNTER = Object.freeze({
   stepSeconds: 0.05
 });
 
+// This is the first full-boss teaching budget for a fresh Mage. It mirrors
+// the production Normal D1 Stone Guardian onboarding values and the starter
+// Mage's ordinary Fire Bolt loop. The scenario deliberately uses no
+// invincibility, damage multiplier, room skip, or phase aid: it exists to
+// catch a balance regression in the intended attack-and-movement lesson
+// without requiring another slow browser route attempt.
+export const LEVEL1_STONE_GUARDIAN_ONBOARDING = Object.freeze({
+  id: 'dungeon1-first-boss-fresh-mage',
+  dungeonId: 'dungeon1',
+  bossName: 'Stone Guardian',
+  playerClass: 'mage',
+  bossHp: Math.round(750 * 0.60),
+  bossDamage: Math.round(22 * 0.55),
+  bossAttackEvery: 1.8 * 1.40,
+  playerHp: 80,
+  playerDamage: 40,
+  playerAttackEvery: 0.65,
+  phases: Object.freeze([
+    Object.freeze({ threshold: null, summons: 0 }),
+    Object.freeze({ threshold: 0.5, summons: 1 })
+  ]),
+  maxWallSeconds: 30,
+  stepSeconds: 0.05
+});
+
 export function createSeededRng(seed = 1) {
   let state = (Number(seed) >>> 0) || 1;
   return function nextRandom() {
@@ -396,6 +421,7 @@ export function simulateOpeningRoom(options = {}) {
 export function runRepresentativeSuite() {
   return {
     opening: simulateOpeningRoom(),
+    firstBoss: simulateEncounter({ ...LEVEL1_STONE_GUARDIAN_ONBOARDING, seed: 505 }),
     early: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.early, seed: 101 }),
     mid: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.mid, seed: 202, timeScale: 10, invincible: true }),
     late: simulateEncounter({ profile: REPRESENTATIVE_ENCOUNTERS.late, seed: 303, timeScale: 25, invincible: true, highDamage: true, highDamageMultiplier: 2, enemyFree: true }),

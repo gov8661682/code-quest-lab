@@ -15,7 +15,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **127/127** tests, static build/package audit,
+- Current verified local gate: **128/128** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): fine-pointer surfaces now show a
   visible, accessible `Attack nearest target` control while touch surfaces
@@ -53,11 +53,13 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   mechanics remain intact; higher difficulties and later rooms retain their
   authored scaling. Standard Expedition remains recommended.
 - Fast QA models the two-enemy opening with real melee cadence and clears it in
-  6.1 simulated seconds without developer aids. Managed D1-D12 Mage coverage
-  remains QA-assisted, not clean-player acceptance. A fresh current-build
-  600x768 no-aid smoke cleared the opening room; bounded local runs also reached
-  D1's first mini-boss before the browser-control batch stopped. This is progress
-  evidence, not a full D1-D12 acceptance claim.
+  6.1 simulated seconds without developer aids. It now also models a fresh
+  Normal Mage against the first Stone Guardian: one authored summon phase,
+  real incoming damage, and victory in 9.15 simulated seconds without any QA
+  aid. Managed D1-D12 Mage coverage remains QA-assisted, not clean-player
+  acceptance. The latest fourth 600x768 no-aid audit delivered one attack then
+  died during an attack-only/no-movement follow-up; this is input evidence,
+  not a full D1-D12 acceptance claim or a reason for another global nerf.
 - The deployed entrance-guide refinement moves the Town/entrance destination
   cue into the world-space player camera pass: a steady arrow stays beside the
   character, rotates toward the portal/gate, and disappears at the destination

@@ -8,6 +8,6 @@ for (const [name, result] of Object.entries(suite)) {
   const summonBudget = result.summonBudget === undefined ? 0 : result.summonBudget;
   console.log(`${name}: ${result.status} in ${wallSeconds}s wall / ${result.simulatedSeconds}s simulated; phases=${phases}; summons=${summonsSpawned}/${summonBudget}`);
 }
-if (suite.opening.status !== 'victory' || suite.early.status !== 'victory' || suite.mid.status !== 'victory' || suite.late.status !== 'victory' || suite.loss.status !== 'loss') {
+if (suite.opening.status !== 'victory' || suite.firstBoss.status !== 'victory' || suite.early.status !== 'victory' || suite.mid.status !== 'victory' || suite.late.status !== 'victory' || suite.loss.status !== 'loss') {
   process.exitCode = 1;
 }

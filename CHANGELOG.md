@@ -1,5 +1,17 @@
 # Code Quest Lab - Changelog
 
+## Fresh Mage first-boss QA diagnostic (2026-08-12; local)
+
+- Added a deterministic fresh Normal Mage/Stone Guardian scenario to fast QA.
+  It exercises the ordinary attack cadence, the authored summon phase, real
+  incoming damage, and victory without invincibility or developer shortcuts.
+- Recorded the fourth bounded 600x768 no-aid audit as input evidence: one
+  attack landed, then attack-only input without movement ended in death. No
+  additional global damage nerf was justified, and the evidence score remains
+  **93%** / **19%**.
+- The full local release gate is now **128/128**; this test-only slice is not a
+  deployment checkpoint.
+
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 
 - Replaced the Town and dungeon-entrance edge cue with a steady arrow rendered

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  LEVEL1_STONE_GUARDIAN_ONBOARDING,
   REPRESENTATIVE_ENCOUNTERS,
   createSeededRng,
   runRepresentativeSuite,
@@ -42,6 +43,20 @@ test('fresh Normal D1 opening room clears inside the ordinary attack budget', ()
   assert.ok(result.playerHp > 0, 'starter player should survive the opening room budget');
   assert.deepEqual(result.targetDistances, [64, 86]);
   assert.ok(result.targetDistances.every((distance) => distance <= result.attackRange), 'starter targets should begin within attack range');
+});
+
+test('fresh Normal Mage can learn the Stone Guardian pattern without QA aids', () => {
+  const result = runRepresentativeSuite().firstBoss;
+  assert.equal(result.status, 'victory');
+  assert.equal(result.dungeonId, LEVEL1_STONE_GUARDIAN_ONBOARDING.dungeonId);
+  assert.equal(result.bossName, LEVEL1_STONE_GUARDIAN_ONBOARDING.bossName);
+  assert.deepEqual(result.phaseTransitions, [2]);
+  assert.equal(result.summonsSpawned, 1, 'the authored first phase summon remains exercised');
+  assert.equal(result.summonsRemaining, 0);
+  assert.ok(result.playerHp > 0, 'the fresh Mage survives the intended first-boss lesson');
+  assert.ok(result.damageTaken > 0, 'the scenario is not accidentally invincible');
+  assert.equal(result.events.some((event) => event.type === 'damage-blocked'), false, 'the scenario does not use developer invincibility');
+  assert.ok(result.simulatedSeconds < 10, 'the first-boss budget remains readable and finite');
 });
 
 test('accelerated invincible QA completes the mid encounter in bounded wall time', () => {

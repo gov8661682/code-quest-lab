@@ -7,6 +7,20 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Fresh Mage first-boss diagnostic (2026-08-12; local QA slice)
+
+- Recorded the fourth bounded 600x768 no-aid audit: a touch attack defeated one
+  `Dark Corridor` enemy, then attack-only input without movement ended in death.
+  The result confirms input delivery but is not a balance conclusion or clean
+  route evidence; the disposable profile was removed and the retained save was
+  preserved.
+- Added a deterministic fresh Normal Mage/Stone Guardian model to fast QA. It
+  crosses the authored one-summon phase, takes real damage, and wins in 9.15
+  simulated seconds with no developer aid.
+- Focused tests, `qa:fast`, and the full local release gate pass **128/128**.
+  This local diagnostic does not change the evidence score or trigger a site
+  deployment.
+
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 
 - Moved the Town and dungeon-entrance destination cue into the world-space
