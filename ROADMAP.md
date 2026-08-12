@@ -90,6 +90,22 @@ This resolves a reproducible managed-browser combat dead end without changing
 Joey's combat design. It does not advance the score until clean-player D1-D12
 and physical/native-device acceptance lanes have named evidence.
 
+### Completed milestone: player-following entrance guidance (2026-08-12; deployed)
+
+- [x] Render Town and dungeon-entrance guidance beside the player in the
+  world-space camera pass, aimed at the actual portal/gate.
+- [x] Remove the pulsing/gate-mounted entrance arrow while preserving the
+  cleared-room forward-door guide and boss exit portal.
+- [x] Pass the **127/127** release gate, `qa:fast`, package audit, and native
+  synchronization; verify live desktop `1280x720` and tablet `600x768`
+  main-flow controls with empty browser diagnostics.
+- [x] Commit `4580631`, push to `origin/main`, deploy, and verify both
+  configured production origins plus the Pages preview.
+
+This improves route readability without changing Joey's story, encounters,
+rewards, or open-world direction. It does not advance the evidence score:
+clean-player D1-D12 and physical/native-device acceptance remain open.
+
 ### Completed follow-up: room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
 
 - [x] Shorten mobile enemy arrival to a bounded `1.35s` visible step and

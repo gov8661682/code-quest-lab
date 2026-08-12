@@ -13,6 +13,20 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The Town and dungeon-entrance guide now follows the character in world space.
+It stays beside the player, rotates toward the real portal/gate, and hides near
+the destination; no pulsing or gate-mounted arrow remains. The exact source
+mirror passes **127/127**, `qa:fast`, package audit, and Capacitor
+synchronization. A live `1280x720` desktop smoke displayed `TO DEPTHS` and
+reached the first combat room. A live `600x768` tablet smoke showed the touch
+joystick and its first tap defeated one enemy; both live checks had empty
+browser warning/error diagnostics. Commit `4580631` is pushed to
+`origin/main` and deployed on 2026-08-12 to preview
+`https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname
+`https://code-quest-lab.gov8661682.com/`; source hash:
+`6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+The score remains **93%** / **19%**.
+
 The fine-pointer input-surface gap found by a fresh no-aid route audit is now
 addressed by a visible, keyboard-accessible `Attack nearest target` button.
 The button uses the existing shared nearest-target queue; touch surfaces keep

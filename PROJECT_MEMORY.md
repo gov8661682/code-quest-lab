@@ -58,13 +58,14 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   600x768 no-aid smoke cleared the opening room; bounded local runs also reached
   D1's first mini-boss before the browser-control batch stopped. This is progress
   evidence, not a full D1-D12 acceptance claim.
-- The fresh `1280x720` fine-pointer audit exposed a hidden-joystick input gap;
-  it is now closed by the visible `Attack nearest target` button, which uses
-  the shared nearest-target queue while touch surfaces keep the Attack joystick
-  unchanged. The canonical smoke displayed the button, clicked it in the
-  first D1 room, and recorded no browser warnings/errors. This improves the
-  managed surface but does not claim a clean-player D1-D12 route or advance
-  the **93% / 19%** score.
+- The deployed entrance-guide refinement moves the Town/entrance destination
+  cue into the world-space player camera pass: a steady arrow stays beside the
+  character, rotates toward the portal/gate, and disappears at the destination
+  radius; there is no pulsing or gate-mounted arrow. Source, mirror, and dist
+  match SHA `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`;
+  **127/127** and `qa:fast` pass, and live 1280x720/600x768 checks are clean.
+  Commit `4580631` is deployed to the configured hostname and preview;
+  disposable live profiles were removed without changing existing saves.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route

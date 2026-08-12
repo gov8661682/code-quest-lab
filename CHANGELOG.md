@@ -1,5 +1,21 @@
 # Code Quest Lab - Changelog
 
+## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
+
+- Replaced the Town and dungeon-entrance edge cue with a steady arrow rendered
+  beside the character in world space. It rotates toward the actual destination
+  and follows player movement; no pulsing or directional arrow is mounted on
+  the gate.
+- Kept the existing cleared-room forward-door guide and boss-room portal
+  handoff intact. The mirrored source and ordered local gate pass **127/127**,
+  `qa:fast`, package audit, and Capacitor synchronization.
+- Live desktop `1280x720` and tablet `600x768` main-flow smokes passed with
+  empty warning/error diagnostics; the tablet touch joystick defeated one
+  opening enemy. Commit `4580631` was pushed and deployed to
+  `https://932a4fb6.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/` on 2026-08-12. Source hash:
+  `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+
 ## Fine-pointer attack fallback (2026-08-12; deployed checkpoint)
 
 - Added a visible, keyboard-accessible `Attack nearest target` control for

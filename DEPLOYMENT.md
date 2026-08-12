@@ -73,6 +73,23 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The 2026-08-12 player-following entrance-guide refinement was published from
+runtime commit `4580631` to the configured Cloudflare Pages project
+`code-quest-lab`. Preview:
+`https://932a4fb6.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A` and the
+deployed service-worker shell is v11.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-12. The
+live `1280x720` smoke showed the steady `TO DEPTHS` arrow beside the
+character and reached the first D1 combat room. The live `600x768` smoke
+showed the touch Attack joystick and an immediate tap defeated one opening
+enemy. Browser warning/error diagnostics were empty; disposable live
+profiles were deleted and existing saved profiles were left untouched. This
+is release-surface verification, not clean-player D1-D12 or physical/native
+device acceptance.
+
 The 2026-08-12 fine-pointer attack-affordance checkpoint was published from
 runtime commit `7f1ea4f` to the configured Cloudflare Pages project
 `code-quest-lab`. Preview:

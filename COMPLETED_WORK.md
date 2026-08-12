@@ -7,6 +7,24 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
+
+- Moved the Town and dungeon-entrance destination cue into the world-space
+  player camera pass. The steady arrow stays beside the character, rotates
+  toward the actual portal/gate, and hides at the destination radius.
+- Removed the old screen-edge/gate-mounted behavior for these destinations;
+  cleared combat rooms still use their separate steady forward-door guide and
+  boss rooms retain deliberate exit-portal interaction.
+- The mirrored source, **127/127** release gate, `qa:fast`, package audit, and
+  Capacitor synchronization pass. Live desktop `1280x720` and tablet
+  `600x768` smokes reached the main route; the tablet joystick defeated one
+  opening enemy and live browser diagnostics were empty.
+- Commit `4580631` is pushed to `origin/main` and deployed on 2026-08-12
+  to preview `https://932a4fb6.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. Source hash:
+  `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+  Clean-player D1-D12 and physical/native-device acceptance remain open.
+
 ## Fine-pointer attack fallback (2026-08-12; deployed checkpoint)
 
 - Closed the managed-browser fine-pointer combat dead end with a visible,

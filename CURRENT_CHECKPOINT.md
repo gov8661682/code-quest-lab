@@ -24,10 +24,25 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `6e5812f` is pushed to `origin/main`; its tested build is deployed to preview `ab0fd517.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **126/126** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live tablet main-flow smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **127/127** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
+
+- The Town and dungeon-entrance destination cue is now a steady, world-space
+  arrow beside the player. It rotates toward the actual portal/gate, follows
+  the character in the same camera pass, and hides near the destination; the
+  gate has no pulsing or mounted directional arrow. The exact mirrored build
+  passes **127/127**, `qa:fast`, package audit, and Capacitor synchronization.
+  A live `1280x720` desktop smoke showed `TO DEPTHS` beside the hero and
+  reached the first combat room; a live `600x768` tablet smoke showed the
+  touch joystick and its first tap defeated one enemy. Both live checks had
+  empty browser warning/error diagnostics. Commit `4580631` was pushed to
+  `origin/main` and deployed on 2026-08-12 to preview
+  `https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`; source hash:
+  `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+  The evidence score remains **93%** / **19%**.
 
 - The fine-pointer input-surface gap from the fresh no-aid audit is now
   addressed by a visible, keyboard-accessible `Attack nearest target` button.
