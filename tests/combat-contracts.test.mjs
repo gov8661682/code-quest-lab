@@ -258,6 +258,16 @@ test('visual viewport changes reflow the active world instead of only resizing t
   assert.match(SOURCE, /window\.visualViewport\)window\.visualViewport\.addEventListener\('resize',handleViewportChange\)/, 'visual viewport resize uses the shared reflow handler');
 });
 
+test('gameplay overlays reserve declared safe-area insets', () => {
+  assert.match(SOURCE, /viewport-fit=cover/, 'the web shell opts into display cutout insets');
+  assert.match(SOURCE, /#desktopControlsHint \{[\s\S]*?left:max\(12px,env\(safe-area-inset-left\)\)[\s\S]*?bottom:max\(12px,env\(safe-area-inset-bottom\)\)/, 'desktop guidance clears horizontal and bottom insets');
+  assert.match(SOURCE, /\.joyBase \{[\s\S]*?bottom:max\(24px,env\(safe-area-inset-bottom\)\)/, 'shared joysticks clear the bottom inset');
+  assert.match(SOURCE, /#skillButtons-left \{[\s\S]*?bottom:calc\(134px \+ max\(24px,env\(safe-area-inset-bottom\)\)\)/, 'wide-screen skill controls stay above the joystick and home indicator');
+  assert.match(SOURCE, /@media \(max-width:600px\) \{[\s\S]*?#skillButtons-left,#skillButtons-right \{ bottom:calc\(106px \+ max\(12px,env\(safe-area-inset-bottom\)\)\)/, 'narrow touch skill controls retain their safe gap');
+  assert.match(SOURCE, /#worldRouteBtn \{[\s\S]*?bottom:calc\(158px \+ env\(safe-area-inset-bottom\)\)/, 'world travel fallback clears the bottom inset');
+  assert.match(SOURCE, /#moveNudgePad \{[\s\S]*?bottom:max\(7px,env\(safe-area-inset-bottom\)\)/, 'step movement fallback clears the bottom inset');
+});
+
 test('new sessions clear cross-run movement and ending locks', () => {
   const resetStart = SOURCE.indexOf('totalKills=0;timeSurvived=0;lastFightTimer=0;gameRunning=false;gamePaused=false;');
   const resetEnd = SOURCE.indexOf('runSoulsEarned=0;runMasteryXpEarned=0;', resetStart);

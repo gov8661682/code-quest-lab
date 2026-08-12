@@ -181,15 +181,15 @@ html, body {
 .hudStat .statLbl { font-size:0.55em; letter-spacing:0.12em; color:#8a8170; text-transform:uppercase; }
 #pauseBtn { position:absolute; top:calc(6px + env(safe-area-inset-top)); right:max(10px,env(safe-area-inset-right)); width:32px; height:32px; background:rgba(20,16,30,0.9); border:1px solid #4a4338; border-radius:4px; color:#cfc4ae; font-size:1.1em; cursor:pointer; z-index:8; display:flex; align-items:center; justify-content:center; touch-action:manipulation; }
 #pauseBtn:active { background:#2a2530; }
-#desktopControlsHint { display:none; position:absolute; left:12px; bottom:12px; z-index:12; padding:7px 10px; border:1px solid rgba(216,192,138,0.45); border-radius:5px; background:rgba(11,11,16,0.78); color:#cfc4ae; font:0.68em/1.4 Georgia,'Times New Roman',serif; pointer-events:none; }
-#desktopAttackBtn { display:none; position:absolute; left:50%; bottom:108px; transform:translateX(-50%); min-width:118px; min-height:42px; padding:8px 18px; border:2px solid #c0392b; border-radius:6px; background:rgba(38,12,16,0.95); color:#ffd0c8; font:700 0.72em/1 Georgia,'Times New Roman',serif; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; z-index:12; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(192,57,43,0.28); box-shadow:0 0 12px rgba(192,57,43,0.18); }
+#desktopControlsHint { display:none; position:absolute; left:max(12px,env(safe-area-inset-left)); bottom:max(12px,env(safe-area-inset-bottom)); z-index:12; padding:7px 10px; border:1px solid rgba(216,192,138,0.45); border-radius:5px; background:rgba(11,11,16,0.78); color:#cfc4ae; font:0.68em/1.4 Georgia,'Times New Roman',serif; pointer-events:none; }
+#desktopAttackBtn { display:none; position:absolute; left:50%; bottom:calc(108px + env(safe-area-inset-bottom)); transform:translateX(-50%); min-width:118px; min-height:42px; padding:8px 18px; border:2px solid #c0392b; border-radius:6px; background:rgba(38,12,16,0.95); color:#ffd0c8; font:700 0.72em/1 Georgia,'Times New Roman',serif; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; z-index:12; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(192,57,43,0.28); box-shadow:0 0 12px rgba(192,57,43,0.18); }
 #desktopAttackBtn:active { background:#4a1820; border-color:#ff8a78; color:#fff0ec; }
 @media (hover:hover) and (pointer:fine) {
   .joyBase { display:none; }
   #desktopControlsHint { display:block; }
   #desktopAttackBtn { display:flex; align-items:center; justify-content:center; }
-  #skillButtons-left,#skillButtons-right { bottom:18px; width:126px; }
-  #enemyCount { bottom:18px; }
+  #skillButtons-left,#skillButtons-right { bottom:max(18px,env(safe-area-inset-bottom)); width:126px; }
+  #enemyCount { bottom:max(18px,env(safe-area-inset-bottom)); }
 }
 #minimapCanvas { position:absolute; top:50px; right:10px; width:120px; height:90px; z-index:6; border:1px solid #3a342a; border-radius:3px; background:rgba(11,11,16,0.85); pointer-events:none; }
 #pauseOverlay { display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.82); z-index:50; flex-direction:column; align-items:center; justify-content:flex-start; overflow-y:auto; padding:26px 0 30px; box-sizing:border-box; }
@@ -198,19 +198,19 @@ html, body {
 #enemyCount { position:absolute; bottom:160px; left:50%; transform:translateX(-50%); font-size:0.75em; color:#cfc4ae; letter-spacing:0.15em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:4px 12px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #roomInfo { position:absolute; top:50px; left:50%; transform:translateX(-50%); font-size:0.7em; color:#a98f5c; letter-spacing:0.2em; text-transform:uppercase; background:rgba(11,11,16,0.7); padding:3px 10px; border-radius:2px; border:1px solid #3a342a; z-index:5; pointer-events:none; white-space:nowrap; }
 #objectiveInfo { position:absolute; top:74px; left:50%; transform:translateX(-50%); font-size:0.62em; color:#cfc4ae; letter-spacing:0.12em; background:rgba(11,11,16,0.62); padding:3px 10px; border-radius:2px; border:1px solid rgba(58,52,42,0.8); z-index:5; pointer-events:none; white-space:nowrap; max-width:min(92vw,560px); text-overflow:ellipsis; overflow:hidden; }
-#touchAimAssistBadge { position:absolute; top:154px; right:10px; padding:5px 9px; border:1px solid rgba(58,184,232,0.7); border-radius:4px; background:rgba(8,20,28,0.88); color:#b8e8ff; font-size:0.58em; letter-spacing:0.09em; text-transform:uppercase; z-index:12; cursor:pointer; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(58,184,232,0.25); }
+#touchAimAssistBadge { position:absolute; top:154px; right:max(10px,env(safe-area-inset-right)); padding:5px 9px; border:1px solid rgba(58,184,232,0.7); border-radius:4px; background:rgba(8,20,28,0.88); color:#b8e8ff; font-size:0.58em; letter-spacing:0.09em; text-transform:uppercase; z-index:12; cursor:pointer; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(58,184,232,0.25); }
 #touchAimAssistBadge.locked { border-color:#d8a23a; color:#ffd98a; box-shadow:0 0 10px rgba(216,162,58,0.22); }
 #touchAimAssistBadge.off { border-color:#4a4338; color:#8a8170; background:rgba(11,11,16,0.76); }
 #doorStatus { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1em; color:#d8a23a; letter-spacing:0.2em; text-transform:uppercase; text-align:center; z-index:5; pointer-events:none; opacity:0; transition:opacity 0.3s; }
 #doorStatus.doorStatusLocked { top:112px; transform:translateX(-50%); width:min(88vw,560px); padding:6px 12px; color:#ffe6a6; background:rgba(10,8,14,0.9); border:1px solid rgba(216,162,58,0.85); box-shadow:0 3px 12px rgba(0,0,0,0.42); font-size:0.82em; line-height:1.35; letter-spacing:0.14em; text-shadow:0 1px 2px #050509; }
 #doorStatus.visible { opacity:1; }
-#worldRouteBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:210px; min-height:40px; padding:9px 16px; background:rgba(16,14,28,0.95); border:2px solid #8a70b8; border-radius:6px; color:#d8c8f8; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(138,112,184,0.2); }
+#worldRouteBtn { display:none; position:absolute; left:50%; bottom:calc(158px + env(safe-area-inset-bottom)); transform:translateX(-50%); min-width:210px; min-height:40px; padding:9px 16px; background:rgba(16,14,28,0.95); border:2px solid #8a70b8; border-radius:6px; color:#d8c8f8; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(138,112,184,0.2); }
 #worldRouteBtn:active { background:#28213d; border-color:#c8a8f8; }
-#roomRewardBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #b88a42; border-radius:6px; color:#ffe0a0; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(184,138,66,0.18); }
+#roomRewardBtn { display:none; position:absolute; left:50%; bottom:calc(158px + env(safe-area-inset-bottom)); transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #b88a42; border-radius:6px; color:#ffe0a0; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(184,138,66,0.18); }
 #roomRewardBtn:active { background:#332713; border-color:#fff0c8; }
-#roomExitBtn { display:none; position:absolute; left:50%; bottom:158px; transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #d8a23a; border-radius:6px; color:#ffd98a; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(216,162,58,0.18); }
+#roomExitBtn { display:none; position:absolute; left:50%; bottom:calc(158px + env(safe-area-inset-bottom)); transform:translateX(-50%); min-width:190px; min-height:40px; padding:9px 16px; background:rgba(20,16,10,0.94); border:2px solid #d8a23a; border-radius:6px; color:#ffd98a; font:700 0.68em/1.2 Georgia,'Times New Roman',serif; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; z-index:13; touch-action:manipulation; box-shadow:0 0 14px rgba(216,162,58,0.18); }
 #roomExitBtn:active { background:#332713; border-color:#ffe6a6; }
-#moveNudgePad { position:absolute; left:50%; bottom:7px; transform:translateX(-50%); width:96px; height:96px; z-index:11; pointer-events:none; }
+#moveNudgePad { position:absolute; left:50%; bottom:max(7px,env(safe-area-inset-bottom)); transform:translateX(-50%); width:96px; height:96px; z-index:11; pointer-events:none; }
 #moveNudgePad button { position:absolute; width:30px; height:30px; padding:0; border:1px solid rgba(216,192,138,0.72); border-radius:5px; background:rgba(12,14,20,0.78); color:#d8c08a; font:700 0.9em/1 Georgia,serif; cursor:pointer; pointer-events:auto; touch-action:manipulation; box-shadow:0 0 8px rgba(0,0,0,0.22); }
 #moveNudgePad button:active { background:#352c1b; border-color:#ffe6a6; color:#fff0c8; }
 #moveNudgeUp { left:33px; top:0; }
@@ -503,15 +503,15 @@ html, body {
 .cfcConfirmBtn:disabled { opacity:0.4; cursor:not-allowed; }
 .cfcCancelBtn { padding:11px 28px; font-size:0.9em; letter-spacing:0.1em; background:#1c1a22; border:1px solid #4a4338; color:#cfc4ae; border-radius:4px; cursor:pointer; text-transform:uppercase; font-family:Georgia,serif; touch-action:manipulation; }
 .cfcCancelBtn:hover { background:#2a2530; border-color:#8a8170; color:#e8ddc8; }
-.joyBase { position:absolute; bottom:24px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.18); z-index:10; touch-action:none; }
-.joyBase.left { left:20px; }
-.joyBase.right { right:20px; }
+.joyBase { position:absolute; bottom:max(24px,env(safe-area-inset-bottom)); width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.18); z-index:10; touch-action:none; }
+.joyBase.left { left:max(20px,env(safe-area-inset-left)); }
+.joyBase.right { right:max(20px,env(safe-area-inset-right)); }
 .joyKnob { position:absolute; top:50%; left:50%; width:50px; height:50px; margin:-25px 0 0 -25px; border-radius:50%; background:rgba(255,255,255,0.22); border:2px solid rgba(255,255,255,0.35); pointer-events:none; }
 .joyBase.right .joyKnob { background:rgba(192,57,43,0.35); border-color:rgba(231,126,34,0.6); }
 .joyLabel { position:absolute; width:100%; text-align:center; top:-22px; font-size:0.65em; letter-spacing:0.2em; color:#8a8170; text-transform:uppercase; }
 .joyBase.right.rageFull { border-color:rgba(255,69,0,0.9); box-shadow:0 0 14px rgba(255,69,0,0.5); }
-#skillButtons-left { position:absolute; left:10px; bottom:158px; width:140px; z-index:11; pointer-events:none; display:flex; flex-direction:column; gap:8px; }
-#skillButtons-right { position:absolute; right:10px; bottom:158px; width:140px; z-index:11; pointer-events:none; display:flex; flex-direction:column; gap:8px; }
+#skillButtons-left { position:absolute; left:max(10px,env(safe-area-inset-left)); bottom:calc(134px + max(24px,env(safe-area-inset-bottom))); width:140px; z-index:11; pointer-events:none; display:flex; flex-direction:column; gap:8px; }
+#skillButtons-right { position:absolute; right:max(10px,env(safe-area-inset-right)); bottom:calc(134px + max(24px,env(safe-area-inset-bottom))); width:140px; z-index:11; pointer-events:none; display:flex; flex-direction:column; gap:8px; }
 .shb { position:relative; width:100%; border-radius:10px; background:rgba(20,16,30,0.95); border:2px solid #4a4338; color:#cfc4ae; font-size:0.65em; letter-spacing:0.06em; text-align:center; cursor:pointer; touch-action:manipulation; pointer-events:all; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:6px 4px; line-height:1.2; transition:border-color 0.1s, background 0.1s, opacity 0.15s; user-select:none; -webkit-tap-highlight-color:rgba(216,192,138,0.25); box-sizing:border-box; }
 .shb:active { transform:scale(0.92); }
 .shb .shb-icon { font-size:1.8em; line-height:1; margin-bottom:3px; }
@@ -666,7 +666,7 @@ html, body {
   .joyBase.right { right:max(10px,env(safe-area-inset-right)); }
   .joyKnob { width:42px; height:42px; margin:-21px 0 0 -21px; }
   .joyLabel { top:-18px; font-size:0.56em; }
-  #skillButtons-left,#skillButtons-right { bottom:118px; width:100px; gap:5px; }
+  #skillButtons-left,#skillButtons-right { bottom:calc(106px + max(12px,env(safe-area-inset-bottom))); width:100px; gap:5px; }
   #skillButtons-left { left:max(7px,env(safe-area-inset-left)); }
   #skillButtons-right { right:max(7px,env(safe-area-inset-right)); }
   .shb { min-height:52px; padding:4px 3px; border-radius:8px; }
@@ -675,12 +675,12 @@ html, body {
   .shb .shb-cd { min-height:11px; font-size:0.72em; }
   #shb-movement,#shb-core,#potionBtn { height:54px; }
   #shb-ultimate { height:60px; }
-  #enemyCount { bottom:116px; font-size:0.62em; }
-  #autoRushBtn { bottom:116px !important; }
-  #npcInteractBtn { bottom:164px !important; max-width:70vw; overflow:hidden; text-overflow:ellipsis; }
-  #worldRouteBtn { bottom:164px; max-width:78vw; }
-  #roomRewardBtn { bottom:164px; max-width:78vw; }
-  #roomExitBtn { bottom:164px; max-width:78vw; }
+  #enemyCount { bottom:calc(104px + max(12px,env(safe-area-inset-bottom))); font-size:0.62em; }
+  #autoRushBtn { bottom:calc(104px + max(12px,env(safe-area-inset-bottom))) !important; }
+  #npcInteractBtn { bottom:calc(152px + max(12px,env(safe-area-inset-bottom))) !important; max-width:70vw; overflow:hidden; text-overflow:ellipsis; }
+  #worldRouteBtn { bottom:calc(152px + max(12px,env(safe-area-inset-bottom))); max-width:78vw; }
+  #roomRewardBtn { bottom:calc(152px + max(12px,env(safe-area-inset-bottom))); max-width:78vw; }
+  #roomExitBtn { bottom:calc(152px + max(12px,env(safe-area-inset-bottom))); max-width:78vw; }
   #moveNudgePad { bottom:max(7px,env(safe-area-inset-bottom)); }
 }
 @media (max-height:520px) and (max-width:900px) {
@@ -690,11 +690,11 @@ html, body {
   #touchAimAssistBadge { top:116px; }
   .joyBase { width:82px; height:82px; bottom:max(8px,env(safe-area-inset-bottom)); }
   .joyKnob { width:36px; height:36px; margin:-18px 0 0 -18px; }
-  #skillButtons-left,#skillButtons-right { bottom:96px; width:90px; }
+  #skillButtons-left,#skillButtons-right { bottom:calc(88px + max(8px,env(safe-area-inset-bottom))); width:90px; }
   .shb { min-height:44px; }
   #shb-movement,#shb-core,#potionBtn { height:46px; }
   #shb-ultimate { height:50px; }
-  #enemyCount { bottom:92px; }
+  #enemyCount { bottom:calc(84px + max(8px,env(safe-area-inset-bottom))); }
 }
 @media (min-width:601px) and (max-width:1100px) and (orientation:landscape) {
   #objectiveInfo { max-width:calc(100vw - 250px); }
