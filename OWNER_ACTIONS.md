@@ -48,8 +48,9 @@ These are human-only or account/legal actions. The development work should conti
 - Review and approve the optional Learning Support wording; keep claims limited to supporting problem-solving and computational-thinking skills through play.
 - Review and approve the generated app icon/splash set in `ASSET_REGISTER.md`; provide or approve the remaining feature graphic, screenshots, and promotional assets.
 - Perform physical-device testing on representative iPhone/iPad and Android
-  hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Start from the deployed
-  `7b961b9` build and record Runs A-C, including the clean D1-D12 route,
+  hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Start from the
+  currently deployed `b5d701e` build at the configured hostname and record Runs
+  A-C, including the clean D1-D12 route,
   10-30 minute touch session, safe-area, audio, offline, suspension, local-save,
   and (if claimed) transfer results. A Mac/Xcode environment is required to
   produce a signed iOS build.
