@@ -1,5 +1,15 @@
 # Code Quest Lab - Changelog
 
+## Released-route World Atlas foundation (2026-08-12; local QA)
+
+- Added a touch-friendly dashboard atlas for Town and the released route
+  registry, including current location, waypoint discovery, objectives, and
+  honest unlock conditions.
+- Charted destinations reuse the existing difficulty/modifier flow; D13+
+  remains sealed and no new save schema or travel engine was added.
+- The local release gate is now **139/139**. Live deployment remains pending
+  the complete milestone release check; the C1 evidence score is unchanged.
+
 ## Player-following guide regression contract (2026-08-12; local QA)
 
 - Added regression coverage for the steady arrow beside the player: it points

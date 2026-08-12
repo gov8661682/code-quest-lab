@@ -1,6 +1,7 @@
 # Code Quest Lab - Open-World Direction
 
-Status: explicit product direction and architecture target, 2026-08-05
+Status: explicit product direction and architecture target; released-route
+atlas foundation implemented locally, 2026-08-12
 
 ## Direction
 
@@ -77,6 +78,16 @@ WorldState
   worldLocation { type, regionId, landmarkId?, dungeonId?, x, y, facing }
   waypoints { unlocked{} }
 ```
+
+## First atlas slice (2026-08-12; local QA)
+
+The dashboard now includes a touch-friendly World Atlas over the existing
+world seams. It shows Town, the released `REGION_ORDER` routes, the current
+`worldLocation`, discovered waypoint count, real unlock conditions, and the
+current route objective. A charted route opens the existing difficulty and
+modifier flow; the atlas does not create a second travel engine, add save
+fields, or expose D13+ content. This is an open-world foundation milestone,
+not a claim that the full open-world acceptance bar is complete.
 
 Implementation rules:
 

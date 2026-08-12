@@ -5,8 +5,7 @@ Mode: **Replace and consolidate; never append a chronological work log**
 
 ## Purpose
 
-This is the project's single short-term learning memory. It records only the
-current facts and durable lessons needed to choose the next useful action.
+This is the project's single short-term learning memory. It records only the current facts and durable lessons needed to choose the next useful action.
 When a fact changes, edit or remove the old statement in place. Do not add a
   second memory file, daily entry, repeated failure note, or cumulative session
   transcript.
@@ -15,7 +14,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **138/138** tests, static build/package audit,
+- Current verified local gate: **139/139** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): the Town/entrance destination cue
   is a steady world-space arrow beside the player, rotating toward the
@@ -26,14 +25,15 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   Production checks and live 1280x720/600x768 smokes pass with empty browser
   diagnostics. This does not change the **93% / 19%** score: clean-player
   D1-D12 and physical/native-device evidence remain open.
-- Current local QA follow-up (2026-08-12): D13 is protected by three future-
-  content contracts and remains gated; the local release gate is **138/138**.
-  Its Joey-preserving standard reward boundary is now implemented locally:
-  2.0x guardian souls, boss XP/mastery, named defeat statistics, death effects,
-  and completion handoff. D13 is not credited until future-region progression,
-  save, balance, and return work are complete. Joey's complete reference story
-  beats are present and contract-tested; no longer cutscene is invented. No
-  D13-specific loot is invented because Joey's reference does not define one.
+- Current local QA follow-up (2026-08-12): the released-route World Atlas is
+  contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints, and
+  unlock state with no new region/save field; local gate **139/139**. D13 stays
+  gated behind three future-content contracts and outside the atlas. Its
+  Joey-preserving reward boundary is implemented locally: 2.0x guardian souls,
+  boss XP/mastery, named defeat statistics, death effects, and completion
+  handoff. D13 is not credited until future-region progression, save, balance,
+  and return work are complete; its authored story beats are contract-tested
+  and no undefined D13-specific loot is invented.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A

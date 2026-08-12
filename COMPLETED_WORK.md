@@ -7,6 +7,18 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Released-route World Atlas foundation (2026-08-12; local QA)
+
+- Added a dashboard World Atlas using Town, the existing released
+  `REGION_ORDER`, `worldLocation`, waypoint discovery, and dungeon unlock
+  state; no new regions or save fields were introduced.
+- Locked routes show their real unlock conditions, D13+ content remains
+  outside the atlas, and charted destinations reuse the existing
+  difficulty/modifier flow with premium entitlement checks intact.
+- The focused atlas contract and full local release gate pass **139/139**.
+  The runtime hash changed, so deployment remains subject to the complete
+  release check and live verification; no score credit is claimed yet.
+
 ## Player-following guide regression contract (2026-08-12; local QA)
 
 - Added a contract that keeps Town and entrance guidance anchored beside the

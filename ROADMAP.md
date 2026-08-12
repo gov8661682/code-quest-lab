@@ -51,6 +51,21 @@ layers, world-state model, save boundaries, and acceptance bar.
   untestable engine. Every visible destination needs a tested travel, save,
   reward, and return path.
 
+### Completed local slice: released-route World Atlas (2026-08-12)
+
+- [x] Add a dashboard World Atlas that uses Town, `REGION_ORDER`, existing
+  `worldLocation`, waypoint discovery, and dungeon unlock data.
+- [x] Show honest locked-route conditions and keep D13+ content outside the
+  atlas until its complete route, reward, save, balance, and device evidence
+  exists.
+- [x] Route charted destinations through the existing difficulty/modifier
+  flow rather than introducing a second travel engine or save schema.
+- [x] Add regression coverage for atlas navigation, release-route filtering,
+  and premium entitlement gating.
+
+This is a tested open-world foundation slice. It does not claim the full
+open-world acceptance bar or increase the C1 evidence score by itself.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)

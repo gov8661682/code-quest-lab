@@ -180,6 +180,22 @@ test('the player-following portal guide stays steady instead of pulsing on the g
   assert.doesNotMatch(guide, /Math\.sin|Math\.cos|\bnow\b|pulse/i, 'the guide has no time-based pulsing');
 });
 
+test('the World Atlas reuses released routes and existing unlock state', () => {
+  assert.match(SOURCE, /id="worldAtlasScreen"/, 'the atlas has a dedicated screen');
+  assert.match(SOURCE, /id="mainWorldAtlasBtn"/, 'the dashboard exposes the atlas');
+  assert.match(SOURCE, /safeClick\('mainWorldAtlasBtn','World Atlas',function\(\)\{openWorldAtlasScreen\(\);\}\);/);
+  const atlas = extractBetween(
+    'function renderWorldAtlas(){',
+    'function openWorldAtlasScreen(){',
+    'world atlas renderer'
+  );
+  assert.match(atlas, /REGION_ORDER\.filter/, 'the route count comes from the release registry');
+  assert.match(atlas, /REGION_ORDER\.forEach/, 'the atlas renders only registered release routes');
+  assert.match(atlas, /isPremiumDungeon\(did\)&&shouldEnforcePremiumEntitlement\(\)/, 'premium gating remains explicit');
+  assert.match(SOURCE, /function openWorldAtlasDestination\(dungeonId\)\{[\s\S]*?if\(!isReleaseDungeon\(dungeonId\)\|\|!DUNGEON_DEFS\[dungeonId\]\)return;/, 'atlas actions cannot bypass the release route guard');
+  assert.match(SOURCE, /function openWorldAtlasScreen\(\)[\s\S]*?refreshDungeonUnlocks\(\);[\s\S]*?renderWorldAtlas\(\);[\s\S]*?showScreen\('worldAtlasScreen'\)/, 'opening the atlas refreshes current progression before rendering');
+});
+
 test('Town gives the first destination a physical world breadcrumb', () => {
   assert.match(SOURCE, /roadMarker:\{x:cx-inner\.w\*0\.11,y:inner\.y\+inner\.h\*0\.32,name:'North Road',destination:'Forgotten Depths'\}/);
   const townRender = extractBetween('function drawTownWorld(geo){', '// DUNGEON ENTRANCE AREA LAYOUT', 'Town renderer');

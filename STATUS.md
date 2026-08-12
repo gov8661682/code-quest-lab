@@ -6,7 +6,7 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
 ## Current repository and website record (2026-08-12)
 
 - Latest tested local QA commit: `b5be3ec` (`Protect steady player-following guide`),
-  pushed to `origin/main`; local release gate: **138/138**.
+  pushed to `origin/main`; local release gate before the atlas slice: **138/138**.
 - Runtime milestone: `4580631` (`Make entrance guidance follow the player`),
   deployed and live-verified at the configured hostname and preview
   `https://932a4fb6.code-quest-lab.pages.dev/`.
@@ -14,6 +14,17 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
   The local hash is `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`
   because gated D13 reward/story work remains intentionally undeployed.
 - `production:check` passed for both primary and preview on 2026-08-12.
+
+## Released-route World Atlas foundation (2026-08-12; local QA)
+
+- Added a dashboard atlas for Town and the released `REGION_ORDER`, with
+  current location, waypoint discovery, objectives, honest lock conditions,
+  and existing entitlement gating.
+- Charted destinations reuse the existing difficulty/modifier flow; D13+
+  remains sealed and no new save field or travel engine was introduced.
+- The full local release gate is **139/139**, `qa:fast`, static package audit,
+  and native synchronization pass. The runtime hash changed; deployment is
+  pending the complete milestone release check and live verification.
 
 The service-worker contract now proves successful same-origin asset caching
 and later offline reuse in addition to navigation fallback and cross-origin
@@ -832,7 +843,7 @@ intended ending, or the full safe-stop session acceptance lanes.
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
 - Current verified local QA commit: `b5be3ec` (`Protect steady player-following
-  guide`), after the **138/138** release verification, build/package audit,
+  guide`), after the **139/139** release verification, build/package audit,
   native asset sync, GitHub push, and project-control verification. Checkpoint 1
   remains active because clean D1-12 and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.

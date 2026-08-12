@@ -131,6 +131,25 @@ html, body {
 .entitlementActions button { width:100%; margin:0; }
 .entitlementActions button:disabled { opacity:0.42; cursor:not-allowed; }
 .entitlementNote { color:#81796c !important; font-size:0.68em !important; text-align:center; }
+#worldAtlasScreen { background:#0b0b10; justify-content:flex-start; padding:20px 0 30px; overflow-y:auto; }
+#worldAtlasScreen h1 { font-size:1.8em; letter-spacing:0.18em; color:#d8c08a; text-shadow:0 0 12px rgba(216,192,138,0.35); text-transform:uppercase; margin-bottom:4px; }
+.worldAtlasSub { color:#8a8170; font-size:0.74em; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px; text-align:center; }
+.worldAtlasSummary { width:min(92%,520px); box-sizing:border-box; padding:11px 14px; margin-bottom:14px; background:#13111a; border:1px solid #3a342a; border-left:3px solid #8a70b8; border-radius:5px; color:#cfc4ae; font-size:0.76em; line-height:1.55; letter-spacing:0.04em; text-align:left; }
+.worldAtlasGrid { width:min(92%,520px); display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
+.worldAtlasCard { width:100%; min-height:76px; display:grid; grid-template-columns:44px minmax(0,1fr) auto; gap:10px; align-items:center; box-sizing:border-box; padding:11px 13px; background:#171523; border:1px solid #4a3f62; border-top:2px solid #8a70b8; border-radius:6px; color:#cfc4ae; font:inherit; text-align:left; cursor:pointer; touch-action:manipulation; }
+.worldAtlasCard:hover,.worldAtlasCard:focus-visible { border-color:#c8a8f8; background:#211b30; outline:none; }
+.worldAtlasCard.current { border-color:#d8a23a; border-top-color:#ffd98a; background:#211c16; }
+.worldAtlasCard.locked { border-color:#302a32; border-top-color:#4a4338; background:#111016; opacity:0.72; cursor:default; }
+.worldAtlasCard .waIcon { font-size:1.65em; text-align:center; filter:drop-shadow(0 0 7px rgba(200,168,248,0.25)); }
+.worldAtlasCard .waName { display:block; color:#e8ddc8; font-size:0.91em; font-weight:bold; letter-spacing:0.07em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.worldAtlasCard .waMeta { display:block; color:#8a8170; font-size:0.66em; letter-spacing:0.07em; line-height:1.45; margin-top:3px; }
+.worldAtlasCard .waObjective { display:block; color:#b8aa90; font-size:0.65em; line-height:1.4; margin-top:3px; }
+.worldAtlasCard .waStatus { min-width:72px; color:#d8a23a; font-size:0.62em; font-weight:bold; letter-spacing:0.08em; text-align:right; text-transform:uppercase; }
+.worldAtlasCard.locked .waStatus { color:#7a6a70; }
+.worldAtlasConnection { color:#6a5a40; font-size:0.62em; letter-spacing:0.14em; text-align:center; text-transform:uppercase; }
+.worldAtlasNote { width:min(92%,520px); color:#81796c; font-size:0.68em; line-height:1.55; margin:0 0 14px; text-align:center; }
+.worldAtlasActions { width:min(92%,360px); display:flex; flex-direction:column; gap:8px; }
+.worldAtlasActions button { width:100%; margin:0; }
 .menuBtnMastery { margin-top:10px; padding:12px 40px; font-size:0.95em; letter-spacing:0.1em; background:#13111a; border:1px solid #4a3f62; color:#c8a8f8; border-radius:4px; cursor:pointer; text-transform:uppercase; display:block; width:220px; text-align:center; position:relative; z-index:10; touch-action:manipulation; }
 .menuBtnMastery:active { background:#1c1a22; }
 #skillScreen h2 { color:#d8c08a; letter-spacing:0.15em; margin-bottom:6px; text-transform:uppercase; }
@@ -718,6 +737,7 @@ html, body {
       <div class="mmBtnGroup">
       <button class="mmBtn mmBtnPrimary" id="mainNewRunBtn">⚔ Start Adventure</button>
       <button class="mmBtn" id="mainResumeSessionBtn" style="display:none;border-color:#2a5a72;border-top-color:#7fc5e5;color:#b8d8e8;">↩ Resume Session</button>
+      <button class="mmBtn mmBtnMastery" id="mainWorldAtlasBtn">World Atlas</button>
       <div class="mmDungeonLabel" id="menuSelectedDungeonLabel">Module 1 · Foundations</div>
       <div class="mmSectionRule"></div>
       <button class="mmBtn mmBtnMastery" id="mainMasteryBtn">⚔ Progress Tracker</button>
@@ -735,6 +755,17 @@ html, body {
       <a href="./about/">About</a><a href="./education/">Educational Purpose</a><a href="./schools/">School Review</a><a href="./privacy/">Privacy</a><a href="./support/">Support</a><a href="./contact/">Contact</a>
     </nav>
     <div style="height:24px;flex-shrink:0;"></div>
+  </div>
+</div>
+<div id="worldAtlasScreen" class="screen">
+  <h1 role="heading" aria-level="2">World Atlas</h1>
+  <div class="worldAtlasSub">A connected view of the charted adventure</div>
+  <div id="worldAtlasSummary" class="worldAtlasSummary" role="status" aria-live="polite"></div>
+  <div id="worldAtlasGrid" class="worldAtlasGrid" aria-label="Charted world destinations"></div>
+  <div class="worldAtlasNote">The atlas shows Town and released routes only. Locked roads display their real condition; future regions stay sealed until their journeys are complete and tested.</div>
+  <div class="worldAtlasActions">
+    <button class="menuBtn" id="worldAtlasRoutesBtn">Open Adventure Routes</button>
+    <button class="menuBtnSecondary" id="worldAtlasBackBtn">Return to Dashboard</button>
   </div>
 </div>
 
@@ -23242,6 +23273,7 @@ safeClick('stResetBtn','Reset Skill Tree',function(){resetSkillTree();});
 safeClick('pcChoiceAcceptBtn','Accept Pure Corruption Choice',function(){onPureCorruptionChoiceButton('accept');});
 safeClick('pcChoiceDeclineBtn','Decline Pure Corruption Choice',function(){onPureCorruptionChoiceButton('decline');});
 
+safeClick('mainWorldAtlasBtn','World Atlas',function(){openWorldAtlasScreen();});
 safeClick('mainNewRunBtn','New Run',function(){
   openDungeonSelectScreen();
 });
@@ -23269,6 +23301,12 @@ safeClick('discardResumeSessionBtn','Discard Recovered Session',function(){
   discardSavedRun();
 });
 safeClick('dungeonSelectBackBtn','Dungeon Select Back',function(){
+  openMainMenu();
+});
+safeClick('worldAtlasRoutesBtn','World Atlas Routes',function(){
+  openDungeonSelectScreen();
+});
+safeClick('worldAtlasBackBtn','World Atlas Back',function(){
   openMainMenu();
 });
 
@@ -23875,6 +23913,108 @@ function openDungeonSelectScreen(){
   refreshDungeonUnlocks();
   renderDungeonSelectGrid();
   showScreen('dungeonSelectScreen');
+}
+
+// ============================================================
+// WORLD ATLAS — first open-world foundation
+// ============================================================
+// The atlas is intentionally a read-only world-facing view over the existing
+// Town, release-region, unlock, and worldLocation registries. It does not add
+// a parallel travel engine or expose D13+ content: an actionable destination
+// still enters the existing difficulty/modifier flow, while a locked road
+// shows its real unlock condition.
+function getWorldAtlasLocationLabel(){
+  var location=permanentData&&permanentData.worldLocation;
+  if(!location||location.type==='town')return'Town · home region';
+  if((location.type==='entrance'||location.type==='dungeon')&&location.dungeonId&&DUNGEON_DEFS[location.dungeonId]){
+    return(location.type==='entrance'?'Entrance · ':'Dungeon · ')+DUNGEON_DEFS[location.dungeonId].name;
+  }
+  return'Town · home region';
+}
+function getWorldAtlasWaypointCount(){
+  var unlocked=permanentData&&permanentData.waypoints&&permanentData.waypoints.unlocked;
+  return unlocked?Object.keys(unlocked).filter(function(id){return !!unlocked[id];}).length:0;
+}
+function isWorldAtlasCurrentDestination(dungeonId){
+  var location=permanentData&&permanentData.worldLocation;
+  if(dungeonId==='town')return !location||location.type==='town';
+  return !!(location&&(location.type==='entrance'||location.type==='dungeon')&&location.dungeonId===dungeonId);
+}
+function appendWorldAtlasConnection(grid,label){
+  var connection=document.createElement('div');
+  connection.className='worldAtlasConnection';
+  connection.setAttribute('aria-hidden','true');
+  connection.textContent=label;
+  grid.appendChild(connection);
+}
+function appendWorldAtlasCard(grid,entry){
+  var card=document.createElement(entry.action?'button':'div');
+  if(entry.action)card.type='button';
+  card.className='worldAtlasCard'+(entry.current?' current':'')+(entry.locked?' locked':'');
+  if(entry.action)card.setAttribute('aria-label',entry.actionLabel||entry.name);
+  var icon=document.createElement('span');icon.className='waIcon';icon.textContent=entry.icon||'•';
+  var info=document.createElement('span');
+  var name=document.createElement('span');name.className='waName';name.textContent=entry.name;
+  var meta=document.createElement('span');meta.className='waMeta';meta.textContent=entry.meta;
+  var objective=document.createElement('span');objective.className='waObjective';objective.textContent=entry.objective||'';
+  info.appendChild(name);info.appendChild(meta);if(entry.objective)info.appendChild(objective);
+  var status=document.createElement('span');status.className='waStatus';status.textContent=entry.status;
+  card.appendChild(icon);card.appendChild(info);card.appendChild(status);
+  if(entry.action)card.addEventListener('click',entry.action);
+  grid.appendChild(card);
+}
+function openWorldAtlasDestination(dungeonId){
+  permanentData=loadPermanentData();
+  refreshDungeonUnlocks();
+  if(!isReleaseDungeon(dungeonId)||!DUNGEON_DEFS[dungeonId])return;
+  var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[dungeonId]);
+  if(!unlocked){
+    showBanner('ROAD LOCKED',DUNGEON_DEFS[dungeonId].unlockHint||'Complete the previous region first.',2.5);
+    return;
+  }
+  if(!premiumDungeonAccessAllowed(dungeonId)){
+    openEntitlementScreen(dungeonId);
+    return;
+  }
+  permanentData.dungeons.selected=dungeonId;
+  savePermanentData();
+  activeDungeonId=dungeonId;
+  updateMenuSelectedDungeonLabel();
+  openDifficultySelectScreen(dungeonId);
+}
+function renderWorldAtlas(){
+  var summary=document.getElementById('worldAtlasSummary');
+  var grid=document.getElementById('worldAtlasGrid');
+  if(!summary||!grid)return;
+  var unlockedCount=REGION_ORDER.filter(function(did){
+    return !!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
+  }).length;
+  summary.textContent='Current location: '+getWorldAtlasLocationLabel()+' · '+getWorldAtlasWaypointCount()+' waypoint'+(getWorldAtlasWaypointCount()===1?'':'s')+' discovered · '+unlockedCount+'/'+REGION_ORDER.length+' routes charted';
+  grid.innerHTML='';
+  appendWorldAtlasCard(grid,{icon:'⌂',name:'Town',meta:'Home region · safe return point',objective:'Prepare, meet characters, and choose where to go next.',status:isWorldAtlasCurrentDestination('town')?'Current':'Home',current:isWorldAtlasCurrentDestination('town')});
+  REGION_ORDER.forEach(function(did,index){
+    var d=DUNGEON_DEFS[did];if(!d)return;
+    appendWorldAtlasConnection(grid,index===0?'Northern road →':'Connected route →');
+    var unlocked=!!(permanentData.dungeons&&permanentData.dungeons.unlocked&&permanentData.dungeons.unlocked[did]);
+    var premiumLocked=unlocked&&isPremiumDungeon(did)&&shouldEnforcePremiumEntitlement()&&!hasVerifiedPremiumEntitlement();
+    var action=unlocked?(function(routeId){return function(){openWorldAtlasDestination(routeId);};})(did):null;
+    if(premiumLocked)action=(function(routeId){return function(){openWorldAtlasDestination(routeId);};})(did);
+    appendWorldAtlasCard(grid,{
+      icon:d.icon,name:d.name,
+      meta:unlocked?(premiumLocked?'Charted route · parent unlock required':'Charted connection · reachable from Town'):'Locked road · '+(d.unlockHint||'Complete the previous region'),
+      objective:'Goal: '+(d.objective||'Explore this region'),
+      status:premiumLocked?'Unlock':unlocked?'Prepare':'Locked',
+      current:isWorldAtlasCurrentDestination(did),locked:!unlocked,
+      action:action,actionLabel:(premiumLocked?'Open unlock information for ':'Prepare the ')+d.name+' route'
+    });
+  });
+}
+function openWorldAtlasScreen(){
+  if(!activeCharacterId){openCharacterSelectScreen();return;}
+  permanentData=loadPermanentData();
+  refreshDungeonUnlocks();
+  renderWorldAtlas();
+  showScreen('worldAtlasScreen');
 }
 
 function renderDungeonSelectGrid(){

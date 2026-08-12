@@ -25,7 +25,16 @@ The PWA service-worker contract now also covers the successful same-origin
 asset path: a network response is cached and the same asset is served after a
 simulated network loss without retrying the network. This is deterministic
 offline-readiness coverage, not physical-device/offline-soak evidence; the
-local gate is now **138/138** and the **93%** / **19%** score is unchanged.
+local gate was **138/138** before the atlas slice and the **93%** / **19%**
+score is unchanged.
+
+The first open-world foundation slice now adds a touch-friendly World Atlas
+to the dashboard. It uses Town, the released `REGION_ORDER`, existing
+`worldLocation`, waypoint discovery, unlock conditions, and entitlement
+gating; charted destinations continue through the current difficulty/modifier
+flow, and D13+ remains sealed. The focused contract and full local gate pass
+**139/139**. This is not full open-world acceptance or C1 score credit, and the
+runtime milestone awaits the complete release check before deployment.
 
 The D13 preflight lane now closes the Joey-preserving standard reward boundary:
 Realm of Space retains its two-room atmosphere, named Corruption of Space boss,
@@ -35,7 +44,7 @@ outside the release region order and save guard; progression to a future region,
 save/return acceptance, and fresh play evidence are still intentionally gated;
 the complete authored D13 story beats are now regression-protected.
 Three focused future-content contracts pass; the full local gate remains
-**138/138**. No D13 route or C1 score credit is claimed.
+**139/139**. No D13 route or C1 score credit is claimed.
 
 The local transfer matrix now loads checked-in `.txt` fixtures for legacy v1,
 current v2 Mage data with backup and active-run checkpoint, invalid optional
