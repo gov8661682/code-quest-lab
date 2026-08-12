@@ -7,7 +7,7 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
-## Stone Guardian web onboarding budget and player-following guide (2026-08-12; local grouped milestone)
+## Stone Guardian web onboarding budget and player-following guide (2026-08-12; deployed checkpoint)
 
 - Kept Joey's first boss, phase transition, summons, slam, cleave, meteors,
   rewards, and later difficulty pressure intact while adding a Normal D1-only
@@ -25,9 +25,13 @@ documented acceptance-criterion failure. Optional improvements belong in
   Normal boss at `450/450`, cleared it with ordinary attack input under the
   documented QA aid, and unlocked the exit. This is QA-assisted evidence only;
   clean-player D1-D12 and physical/native-device acceptance remain open.
-- GitHub/domain checkpoint publication is the next release action for this
-  grouped, user-visible milestone; no deployment claim is made until the live
-  build and main flow are verified.
+- Commit `6e5812f` is pushed to `origin/main` and deployed on 2026-08-12 to
+  preview `https://ab0fd517.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`. Source hash:
+  `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
+  Both production checks and the live 600x768 Town-to-first-room,
+  pause/finish, and disposable-profile cleanup smoke passed with empty
+  browser diagnostics.
 
 ## Normal D1 onboarding balance correction (2026-08-12; deployed checkpoint)
 

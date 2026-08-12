@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `baaab57` is pushed to `origin/main`; its tested build is deployed to preview `051a6921.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **125/125** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `6e5812f` is pushed to `origin/main`; its tested build is deployed to preview `ab0fd517.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **126/126** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live tablet main-flow smoke all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
@@ -41,9 +41,14 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   `450/450`, the boss cleared, and the exit unlocked. This is QA-assisted
   evidence, not clean-player D1-D12 or physical/native-device acceptance.
   The navigation change remains a steady player-following guide with no
-  directional arrow mounted on the gate. The grouped GitHub/domain checkpoint
-  is pending until this tested local build is committed and live-verified;
-  the evidence score remains **93%** / **19%**.
+  directional arrow mounted on the gate. The grouped checkpoint is now
+  commit `6e5812f`, pushed to `origin/main`, and deployed on 2026-08-12 to
+  preview `https://ab0fd517.code-quest-lab.pages.dev/` and the configured
+  hostname `https://code-quest-lab.gov8661682.com/`. The deployed source hash
+  is `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`;
+  production checks and the live 600x768 Town-to-first-room, pause, and safe
+  dashboard-return smoke passed with empty browser diagnostics. The evidence
+  score remains **93%** / **19%**.
 
 - The level-1 web difficulty wall is now addressed in the release build
   without simplifying Joey's content. Normal D1 ordinary rooms through

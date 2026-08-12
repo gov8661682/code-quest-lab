@@ -73,6 +73,22 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The 2026-08-12 Stone Guardian onboarding and player-following-guide checkpoint
+was published from runtime commit `6e5812f` to the configured Cloudflare Pages
+project `code-quest-lab`. Preview:
+`https://ab0fd517.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9` and the
+deployed service-worker shell is v11.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-12. The
+live 600x768 smoke created a disposable Mage, reached Town, the Forgotten
+Depths gate, Normal, Standard Expedition, and the first D1 combat room,
+paused, finished through the dashboard, and deleted only the disposable
+profile. Browser warning/error diagnostics were empty. The smoke is
+QA-assisted and does not claim clean-player D1-D12 or physical/native-device
+acceptance.
+
 The 2026-08-11 room-entry motion and early Normal D1 onboarding checkpoint
 was published from runtime commit `ae91268` to the configured Cloudflare
 Pages project `code-quest-lab`. Preview:

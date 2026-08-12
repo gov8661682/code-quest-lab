@@ -118,7 +118,7 @@ repositioning across two captures about half a second apart. It is a movement
 fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
 **93%** / **19%**.
 
-### Current follow-up: Stone Guardian onboarding and player-following guide (2026-08-12; checkpoint pending)
+### Completed milestone: Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 - [x] Keep the first Normal D1 Stone Guardian's Joey-authored mechanics and
   rewards while applying a finite web onboarding budget of
@@ -130,12 +130,16 @@ fix checkpoint, not clean-player D1-D12 completion; the evidence score stays
   the player; do not mount or pulse a directional arrow on the gate.
 - [x] Pass the ordered **126/126** release gate, `qa:fast`, static package
   checks, and Capacitor synchronization; verify the 600x768 loopback smoke.
-- [ ] Commit, push, deploy, and live-verify this grouped user-visible
+- [x] Commit, push, deploy, and live-verify this grouped user-visible
   milestone, then record its exact commit, source hash, and deployment date.
 
 The smoke is QA-assisted evidence and does not increase the **93%** / **19%**
-score. Clean-player D1-D12 and physical/native-device acceptance remain the
-next evidence lanes.
+score. Commit `6e5812f` is pushed to `origin/main` and deployed on 2026-08-12
+to preview `https://ab0fd517.code-quest-lab.pages.dev/` and the configured
+hostname `https://code-quest-lab.gov8661682.com/`; source hash
+`800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`. Both
+production checks and the live tablet main-flow smoke passed. Clean-player
+D1-D12 and physical/native-device acceptance remain the next evidence lanes.
 
 ### Current deployed milestone: D4 Normal pacing, player-following exit guide, and route contract (2026-08-12)
 

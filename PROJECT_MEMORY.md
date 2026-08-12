@@ -31,12 +31,14 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`, PWA
   shell v11. This does not change the 93%/19% score: clean-player D1-D12 and
   physical/native-device evidence remain open.
-- Unreleased local follow-up (2026-08-12): the first Normal D1 Stone Guardian
+- Current deployed follow-up (2026-08-12): the first Normal D1 Stone Guardian
   uses a finite `0.60/0.55/0.90/1.40/0.60` onboarding budget plus `4.0s` entry
   grace, while its authored phase, summons, slam, cleave, meteors, identity,
   and rewards remain intact. A 600x768 QA-assisted smoke observed `450/450`,
-  ordinary attack clearing, and exit unlock; this is not deployed and does not
-  change the 93%/19% score.
+  ordinary attack clearing, and exit unlock. Commit `6e5812f` is pushed and
+  deployed to preview `ab0fd517.code-quest-lab.pages.dev` and the configured
+  hostname; source hash is
+  `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
 - Prior input milestone `ae91268` is deployed: the `1.35s` mobile arrival
   window is independent of the opening damage grace, and Joey's roster,
   attack math, and later scaling remain intact. Its **121/121** gate, package

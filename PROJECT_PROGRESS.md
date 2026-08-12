@@ -26,7 +26,12 @@ clean-player D1-D12 or physical/native-device acceptance.
 
 The ordered local gate is now **126/126**, with `qa:fast`, package checks, and
 Capacitor synchronization passing. The grouped GitHub/domain checkpoint is
-pending commit and live verification; the score remains **93%** / **19%**.
+complete: commit `6e5812f` is pushed to `origin/main` and deployed on
+2026-08-12 to preview `https://ab0fd517.code-quest-lab.pages.dev/` and the
+configured hostname `https://code-quest-lab.gov8661682.com/`. The deployed
+source hash is `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`;
+both production checks and the live tablet main-flow smoke passed with empty
+browser diagnostics. The score remains **93%** / **19%**.
 
 The bounded release-route contract generates and walks the released D1-D12
 chain, checks Joey's named finales and forward links, verifies the shared portal

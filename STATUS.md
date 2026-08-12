@@ -3,7 +3,7 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## Local grouped milestone awaiting checkpoint publication
+## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 The first Normal D1 Stone Guardian now has a finite web onboarding budget:
 `0.60/0.55/0.90/1.40/0.60` for HP, damage, speed, attack cadence, and authored
@@ -17,8 +17,13 @@ audit, and Capacitor synchronization. A 600x768 loopback smoke showed the
 Normal boss at `450/450`, cleared it with ordinary attack input under the
 documented session-only QA aid, and unlocked the exit. This is QA-assisted
 evidence only; clean-player D1-D12 and physical/native-device acceptance
-remain open. The grouped GitHub/domain checkpoint is pending commit and live
-verification; the score remains **93%** / **19%**.
+remain open. Commit `6e5812f` is pushed to `origin/main` and deployed on
+2026-08-12 to preview `https://ab0fd517.code-quest-lab.pages.dev/` and the
+configured hostname `https://code-quest-lab.gov8661682.com/`. The deployed
+source hash is `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
+Both production checks and the live 600x768 Town-to-first-room, pause/finish,
+and cleanup smoke passed with empty browser diagnostics. The score remains
+**93%** / **19%**.
 
 ## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 

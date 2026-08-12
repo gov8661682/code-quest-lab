@@ -1,6 +1,6 @@
 # Code Quest Lab - Changelog
 
-## Unreleased local grouped milestone (2026-08-12)
+## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 - Added a Normal D1-only Stone Guardian onboarding budget
   (`0.60/0.55/0.90/1.40/0.60` plus `4.0s` entry grace) so the first full boss
@@ -10,9 +10,12 @@
   removed the gate-mounted directional cue. The first-boss QA aid now also
   suppresses all of the boss's shared hazard paths truthfully.
 - The local release gate passes **126/126**, `qa:fast`, package audit, and
-  Capacitor synchronization. The grouped checkpoint is pending publication
-  and live verification; this remains QA-assisted evidence rather than a
-  clean-player D1-D12 or physical-device claim.
+  Capacitor synchronization. Commit `6e5812f` is pushed to `origin/main` and
+  deployed to `https://ab0fd517.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/` on 2026-08-12. Source hash:
+  `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
+  This remains QA-assisted evidence rather than a clean-player D1-D12 or
+  physical-device claim.
 
 ## Normal D1 onboarding balance correction (2026-08-12; deployed checkpoint)
 
