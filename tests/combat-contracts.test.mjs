@@ -240,6 +240,14 @@ test('desktop movement preserves short key pulses in managed browser surfaces', 
   assert.match(SOURCE, /function desktopMoveVector\(\)[\s\S]*?desktopKeyActive\('arrowup',now\)/, 'movement vector consumes the shared key state');
 });
 
+test('touch joysticks survive browsers without usable pointer capture', () => {
+  assert.match(
+    SOURCE,
+    /Joystick\.prototype\.onStart=function\(e\)\{[\s\S]*?if\(this\.base\.setPointerCapture\)\{try\{this\.base\.setPointerCapture\(e\.pointerId\);\}catch\(err\)\{\}\}[\s\S]*?this\.update\(e\);\};/,
+    'joystick input initializes even when pointer capture is unavailable or rejected'
+  );
+});
+
 test('new sessions clear cross-run movement and ending locks', () => {
   const resetStart = SOURCE.indexOf('totalKills=0;timeSurvived=0;lastFightTimer=0;gameRunning=false;gamePaused=false;');
   const resetEnd = SOURCE.indexOf('runSoulsEarned=0;runMasteryXpEarned=0;', resetStart);

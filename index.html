@@ -27326,7 +27326,7 @@ function Joystick(baseEl,knobEl,onTap){
 // Let the browser finish a short tap into a click fallback; touch-action:none
 // on the base still owns gesture scrolling, while move/release handlers keep
 // the joystick interaction from leaking into the page.
-Joystick.prototype.onStart=function(e){this.active=true;this.clickFallbackEligible=false;this.pointerId=e.pointerId;this.startX=e.clientX;this.startY=e.clientY;this.startTime=performance.now();this.moved=false;this.base.setPointerCapture(e.pointerId);this.update(e);};
+Joystick.prototype.onStart=function(e){this.active=true;this.clickFallbackEligible=false;this.pointerId=e.pointerId;this.startX=e.clientX;this.startY=e.clientY;this.startTime=performance.now();this.moved=false;if(this.base.setPointerCapture){try{this.base.setPointerCapture(e.pointerId);}catch(err){}}this.update(e);};
 Joystick.prototype.onMove=function(e){if(!this.active||e.pointerId!==this.pointerId)return;e.preventDefault();if(Math.abs(e.clientX-this.startX)>18||Math.abs(e.clientY-this.startY)>18)this.moved=true;this.update(e);};
 Joystick.prototype.reset=function(){this.active=false;this.pointerId=null;this.startX=0;this.startY=0;this.startTime=0;this.moved=false;this.dx=0;this.dy=0;this.knob.style.transform='translate(0px,0px)';};
 Joystick.prototype.onEnd=function(e){if(e.pointerId!=null&&e.pointerId!==this.pointerId)return;var wasMoved=this.moved;var wasTap=this.active&&!wasMoved&&(performance.now()-this.startTime<320)&&(e.type==='pointerup'||e.type==='touchend');if(wasTap&&this.onTap){this.onTap();this.lastTapAt=performance.now();}this.clickFallbackEligible=!!this.onTap&&e.type==='pointerleave'&&!wasMoved;this.reset();};
