@@ -22,7 +22,7 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
   the disposable profile was removed and diagnostics were empty. The primary
   hostname served the current release shell without captured browser errors.
-- Documentation record commits `7b98b4a` and `cd97d46`, plus runtime commit
+- Documentation record commits `7b98b4a`, `cd97d46`, and `96cabe2`, plus runtime
   `830ce00`, are pushed to `origin/main`; the first push was delayed by a
   transient GitHub network failure and succeeded after connectivity recovered.
 
@@ -946,8 +946,8 @@ intended ending, or the full safe-stop session acceptance lanes.
 - Current verified local QA runtime commit: `830ce00` (`Harden gameplay
   overlays for safe areas`), after `release:verify` (**143/143**), `qa:fast`,
   package audit, Capacitor synchronization, cache-busted browser smoke, and
-  GitHub push. The control records are being synchronized in the follow-up
-  record commit. Checkpoint 1 remains active because clean D1-12 and device
+  GitHub push. The control records are synchronized in `96cabe2`. Checkpoint 1
+  remains active because clean D1-12 and device
   evidence are not complete; this runtime is pushed but not deployed. The
   preview and configured hostname still serve `b5d701e`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.

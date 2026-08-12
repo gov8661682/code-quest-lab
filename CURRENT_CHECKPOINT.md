@@ -1047,8 +1047,8 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Latest tested local QA runtime commit: `830ce00` (`Harden gameplay overlays
   for safe areas`), pushed to `origin/main` after `release:verify` (**143/143**),
   `qa:fast`, package audit, Capacitor synchronization, and the safe-area
-  compatibility contract. Control records are synchronized in the follow-up
-  record commit; the deployed website remains runtime `b5d701e` at preview
+  compatibility contract. Control records are synchronized in `96cabe2`; the
+  deployed website remains runtime `b5d701e` at preview
   `https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
   Checkpoint 1 remains active.
 
