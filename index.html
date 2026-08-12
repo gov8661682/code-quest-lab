@@ -26600,6 +26600,14 @@ function showBanner(title,sub,duration){
   if(bannerTimeout)clearTimeout(bannerTimeout);
   bannerTimeout=setTimeout(function(){banner.classList.remove('visible');},(duration||2.5)*1000);
 }
+function isTouchFirstSurface(){
+  try{
+    return !!((window.matchMedia&&window.matchMedia('(pointer:coarse)').matches)||((navigator.maxTouchPoints||0)>0));
+  }catch(e){return false;}
+}
+function getCombatIntroHint(){
+  return isTouchFirstSurface()?'Read the room | Center-hold ATTACK to lock + fire | MOVE to dodge':'Read the room | Press ATTACK or click/hold | MOVE to dodge';
+}
 
 // ============================================================
 // XP & LEVELING
@@ -30115,7 +30123,7 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
           if(_isNormalEarlyEliteRoom)playerInvulnTimer=Math.max(playerInvulnTimer,LEVEL1_EARLY_ELITE_TUNING.graceSeconds);
           if(_isFirstCombatIntro){
             combatIntroTimer=COMBAT_INTRO_DURATION;
-            showBanner(typeLabel+' '+def.name,'Read the room - move or attack',COMBAT_INTRO_DURATION);
+            showBanner(typeLabel+' '+def.name,getCombatIntroHint(),COMBAT_INTRO_DURATION);
           }else{
             showBanner(typeLabel+' '+def.name,(effectiveType===RT.COMBAT?'Clear the room':buildCompositionLabel(comp)),2.2);
           }

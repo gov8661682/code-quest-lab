@@ -372,7 +372,9 @@ test('first combat room keeps moving enemies inside a bounded read-and-respond w
   assert.match(SOURCE, /var COMBAT_INTRO_DURATION=10\.0;/, 'combat introduction duration is bounded');
   assert.match(SOURCE, /function updateCombatIntro\(dt\)/, 'combat introduction timer updates');
   assert.match(SOURCE, /activeDungeonId==='dungeon1'&&def\.type===RT\.COMBAT&&roomId===MAIN_PATH\[1\]/, 'only the first Dungeon 1 combat room receives onboarding');
-  assert.match(SOURCE, /Read the room .* move or attack/, 'the onboarding prompt explains the available response');
+  assert.match(SOURCE, /function isTouchFirstSurface\(\)[\s\S]*pointer:coarse[\s\S]*maxTouchPoints/, 'the onboarding detects touch-first surfaces');
+  assert.match(SOURCE, /function getCombatIntroHint\(\)[\s\S]*Center-hold ATTACK to lock \+ fire \| MOVE to dodge[\s\S]*Press ATTACK or click\/hold \| MOVE to dodge/, 'the onboarding explains the available touch and pointer responses');
+  assert.match(SOURCE, /showBanner\(typeLabel\+' '\+def\.name,getCombatIntroHint\(\),COMBAT_INTRO_DURATION\)/, 'the first-room banner uses the adaptive control hint');
   assert.match(SOURCE, /if\(_combatIntroActive\)\{[\s\S]*updateEnemies\(dt,geo\);updateCursedLibrarians\(dt,geo\);[\s\S]*enemyProjectiles=\[\];[\s\S]*\}else\{[\s\S]*updateEnemyProjectiles\(dt,geo\);[\s\S]*updateEnemies\(dt,geo\);/, 'enemies reposition during the prompt while hostile projectiles remain suppressed');
 });
 
