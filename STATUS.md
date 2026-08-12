@@ -3,7 +3,7 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
-## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+## Fine-pointer attack fallback (2026-08-12; deployed checkpoint)
 
 The managed `1280x720` fine-pointer surface now exposes a visible,
 keyboard-accessible `Attack nearest target` button when the touch Attack
@@ -13,8 +13,17 @@ canonical loopback smoke displayed the button in Town and the first D1 combat
 room, clicked it once, and recorded no browser warnings or errors. The ordered
 release gate passes **127/127**, `qa:fast`, the static package audit, and
 Capacitor synchronization. This closes the managed-browser input dead end but
-does not claim clean-player D1-D12 or physical/native-device acceptance; the
-score remains **93%** / **19%** until those acceptance lanes advance.
+does not claim clean-player D1-D12 or physical/native-device acceptance. Commit
+`7f1ea4f` is pushed to `origin/main` and deployed on 2026-08-12 to preview
+`https://c3162cd3.code-quest-lab.pages.dev/` and the configured hostname
+`https://code-quest-lab.gov8661682.com/`. Both production checks, the live
+first-room control smoke, and preview shell load passed with empty browser
+diagnostics. The source hash is
+`EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`; the
+score remains **93%** / **19%** until the open acceptance lanes advance. The
+explicit 600x768 live smoke reached `COMBAT Ashen Pit`, kept the 94x94 Attack
+joystick visible, kept the fine-pointer fallback hidden, and recorded no
+browser warnings/errors; disposable smoke profiles were deleted.
 
 ## Clean-player route audit (2026-08-12; evidence gap remains)
 

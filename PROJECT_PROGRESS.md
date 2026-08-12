@@ -35,12 +35,14 @@ clean-player D1-D12 or physical/native-device acceptance.
 
 The ordered local gate is now **127/127**, with `qa:fast`, package checks, and
 Capacitor synchronization passing. The grouped GitHub/domain checkpoint is
-complete: commit `6e5812f` is pushed to `origin/main` and deployed on
-2026-08-12 to preview `https://ab0fd517.code-quest-lab.pages.dev/` and the
+complete: commit `7f1ea4f` is pushed to `origin/main` and deployed on
+2026-08-12 to preview `https://c3162cd3.code-quest-lab.pages.dev/` and the
 configured hostname `https://code-quest-lab.gov8661682.com/`. The deployed
-source hash is `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`;
-both production checks and the live tablet main-flow smoke passed with empty
-browser diagnostics. The score remains **93%** / **19%**.
+source hash is `EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`;
+both production checks, the live first-room control smoke, and preview shell
+load passed with empty browser diagnostics. A separate 600x768 live smoke
+kept the 94x94 Attack joystick visible and the fine-pointer fallback hidden;
+its browser diagnostics were also empty. The score remains **93%** / **19%**.
 
 The bounded release-route contract generates and walks the released D1-D12
 chain, checks Joey's named finales and forward links, verifies the shared portal

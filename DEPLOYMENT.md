@@ -1,6 +1,6 @@
 # Code Quest Lab - Web Deployment Package
 
-Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-11)
+Status: current checkpoint deployed and verified; future milestone publishes remain owner-approved (2026-08-12)
 
 ## Intended deployment
 
@@ -72,6 +72,25 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 ```
 
 ## Current production audit
+
+The 2026-08-12 fine-pointer attack-affordance checkpoint was published from
+runtime commit `7f1ea4f` to the configured Cloudflare Pages project
+`code-quest-lab`. Preview:
+`https://c3162cd3.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82` and the
+deployed service-worker shell is v11.
+
+`npm.cmd run production:check` passed for both origins on 2026-08-12. A
+fresh 1280x720 configured-host smoke reached the first D1 combat room,
+displayed and clicked `Attack nearest target`, and recorded empty browser
+warning/error logs. A separate 600x768 configured-host smoke reached the
+first D1 combat room with two enemies, kept the 94x94 Attack joystick visible,
+kept the fine-pointer fallback hidden, and recorded empty browser logs. The
+preview loaded the Code Quest Lab shell with the new control in the DOM and
+empty browser logs. Disposable smoke profiles were deleted; retained profiles
+were not modified. These are release-surface checks, not clean-player D1-D12
+or physical/native-device acceptance.
 
 The 2026-08-12 Stone Guardian onboarding and player-following-guide checkpoint
 was published from runtime commit `6e5812f` to the configured Cloudflare Pages

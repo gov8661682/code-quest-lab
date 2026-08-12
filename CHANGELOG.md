@@ -1,6 +1,6 @@
 # Code Quest Lab - Changelog
 
-## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+## Fine-pointer attack fallback (2026-08-12; deployed checkpoint)
 
 - Added a visible, keyboard-accessible `Attack nearest target` control for
   fine-pointer surfaces where the touch Attack joystick is intentionally
@@ -11,7 +11,12 @@
   the control with empty browser warning/error logs.
 - The ordered release gate passes **127/127**, `qa:fast`, package checks, and
   native synchronization. Clean-player D1-D12 and physical/native-device
-  acceptance remain open.
+  acceptance remain open. Commit `7f1ea4f` was pushed to `origin/main` and
+  deployed to `https://c3162cd3.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`; source hash:
+  `EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`.
+  Production checks, live first-room control smoke, and preview shell load
+  passed on 2026-08-12 with empty browser diagnostics.
 
 ## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 

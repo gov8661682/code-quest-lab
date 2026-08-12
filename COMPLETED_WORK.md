@@ -7,7 +7,7 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
-## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+## Fine-pointer attack fallback (2026-08-12; deployed checkpoint)
 
 - Closed the managed-browser fine-pointer combat dead end with a visible,
   keyboard-accessible `Attack nearest target` button. It routes through the
@@ -18,7 +18,12 @@ documented acceptance-criterion failure. Optional improvements belong in
   clicked it once, and recorded no browser warnings/errors. The ordered local
   gate passes **127/127**, `qa:fast`, package audit, and Capacitor sync.
 - Clean-player D1-D12 and physical/native-device acceptance remain open until
-  their named evidence is collected.
+  their named evidence is collected. Commit `7f1ea4f` was pushed to
+  `origin/main` and deployed on 2026-08-12 to preview
+  `https://c3162cd3.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`; source hash:
+  `EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`.
+  Production checks and live smoke verification passed.
 
 ## Stone Guardian web onboarding budget and player-following guide (2026-08-12; deployed checkpoint)
 

@@ -17,20 +17,15 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **127/127** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Current deployed milestone (2026-08-12): Normal D1 onboarding keeps Joey's
-  rosters, rewards, and later pressure while using a finite opening budget:
-  ordinary depths 2-6 `0.68/0.28/0.80/1.80` plus `4.5s` grace, first elite
-  `0.45/0.22/0.75/2.00` plus `5.0s` grace, and first mini-boss
-  `0.60/0.35/0.78/1.60` plus `3.5s` entry grace. D4's authored three-wave
-  event and the steady player-following `NEXT ROOM` arrow remain intact;
-  higher difficulties retain authored pressure. The **125/125** gate,
-  `qa:fast`, package audit, native sync, and live desktop/tablet first-room
-  smokes pass. Runtime commit `baaab57` is pushed to `origin/main` and
-  deployed to preview `051a6921.code-quest-lab.pages.dev` and the configured
-  hostname; source hash is
-  `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`, PWA
-  shell v11. This does not change the 93%/19% score: clean-player D1-D12 and
-  physical/native-device evidence remain open.
+- Current deployed milestone (2026-08-12): fine-pointer surfaces now show a
+  visible, accessible `Attack nearest target` control while touch surfaces
+  retain the Attack joystick, target assist, and canvas mouse path. Commit
+  `7f1ea4f` is pushed to `origin/main` and deployed to preview
+  `c3162cd3.code-quest-lab.pages.dev` and the configured hostname; source hash
+  is `EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`.
+  Both production checks and live first-room smokes pass with empty browser
+  diagnostics. This does not change the **93% / 19%** score: clean-player
+  D1-D12 and physical/native-device evidence remain open.
 - Current deployed follow-up (2026-08-12): the first Normal D1 Stone Guardian
   uses a finite `0.60/0.55/0.90/1.40/0.60` onboarding budget plus `4.0s` entry
   grace, while its authored phase, summons, slam, cleave, meteors, identity,

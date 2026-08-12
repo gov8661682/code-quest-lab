@@ -36,9 +36,16 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   `1280x720` smoke displayed the button with the joystick hidden, clicked it
   in the first D1 combat room, and recorded no browser warning/error logs.
   The ordered release gate is now **127/127** with `qa:fast`, package audit,
-  and Capacitor synchronization passing. This closes the managed-browser
-  control gap but does not claim clean-player D1-D12 or advance the **93%** /
-  **19%** evidence score.
+  and Capacitor synchronization passing. Commit `7f1ea4f` is pushed to
+  `origin/main` and deployed on 2026-08-12 to preview
+  `https://c3162cd3.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. Both production checks, the live
+  first-room control smoke, and preview shell load passed with empty browser
+  diagnostics. A separate 600x768 live smoke reached the first combat room,
+  kept the 94x94 Attack joystick visible, kept the fine-pointer fallback
+  hidden, and recorded no warnings/errors; disposable profiles were deleted.
+  This closes the managed-browser control gap but does not claim clean-player
+  D1-D12 or advance the **93%** / **19%** evidence score.
 
 - A fresh no-aid route audit on the current build reached Dungeon 1's first
   combat room in a new Mage profile, but the managed browser exposed a
