@@ -1,5 +1,15 @@
 # Code Quest Lab - Changelog
 
+## Device acceptance build preflight (2026-08-12; local control)
+
+- Added `npm.cmd run acceptance:preflight` to compare the local runtime,
+  exact source mirror, runbook deployment hash, and PWA shell before an owner
+  device run. It fails closed on identity drift and does not replace live or
+  physical-device evidence.
+- Added project-control coverage and documented the preflight beside the
+  existing non-personal acceptance report generator. The score remains
+  **93% / 19%** and no deployment was created.
+
 ## Device acceptance build-identity guard (2026-08-12; local control)
 
 - Updated `npm.cmd run acceptance:report` so owner/device packets record the

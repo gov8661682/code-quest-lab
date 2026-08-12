@@ -53,7 +53,8 @@ These are human-only or account/legal actions. The development work should conti
   10-30 minute touch session, safe-area, audio, offline, suspension, local-save,
   and (if claimed) transfer results. A Mac/Xcode environment is required to
   produce a signed iOS build.
-- Before the device run, generate the blank evidence packet with
+- Before the device run, run `npm.cmd run acceptance:preflight`, then generate
+  the blank evidence packet with
   `npm.cmd run acceptance:report -- --output .\device-acceptance-reports\cql-device-YYYY-MM-DD.md`;
   replace the date, complete it on the device, and do not include personal data
   or credentials.

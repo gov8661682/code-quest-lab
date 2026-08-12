@@ -21,6 +21,21 @@ the Pages preview:
 - Deployed checkpoint gate: **153/153**; PWA shell: **v12**. Do not enable
   developer controls during Runs A-C.
 
+## Preflight before the device run
+
+From the repository root, verify that the local runtime and exact source mirror
+still match the tested deployment recorded above:
+
+```powershell
+npm.cmd run acceptance:preflight
+npm.cmd run production:check https://code-quest-lab.gov8661682.com
+```
+
+The preflight is local and fails if `index.html`,
+`code-quest-lab-source.txt`, the runbook source hash, or the PWA shell identity
+disagree. The production check verifies the live URL separately. Neither
+command replaces the required physical-device Runs A-C evidence.
+
 ## Generate a fresh report template
 
 From the repository root, create a dated, non-personal report. It records both

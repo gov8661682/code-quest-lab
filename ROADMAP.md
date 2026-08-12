@@ -223,6 +223,9 @@ browser batches.
   with the repository control commit plus tested deployed runtime/source
   identity; contract-test refusal to overwrite an existing report and
   separation from developer QA.
+- [x] Add `npm.cmd run acceptance:preflight` to refuse a device handoff when the
+  local runtime, exact source mirror, runbook deployment hash, or PWA shell
+  identity disagree; keep live production and physical-device checks separate.
 - [ ] Owner supplies a representative physical device or approved lab and
   records the dated Runs A-C packet before C1 score credit can advance.
 

@@ -13,6 +13,7 @@
     "build": "node scripts/build-static.mjs",
     "qa:fast": "node tools/qa/run-fast-qa.mjs",
     "package:check": "node scripts/check-static-package.mjs",
+    "acceptance:preflight": "node scripts/check-device-acceptance-preflight.mjs",
     "acceptance:report": "node scripts/create-device-acceptance-report.mjs",
     "assets:generate": "python scripts/generate-native-assets.py",
     "production:check": "node scripts/check-production.mjs",

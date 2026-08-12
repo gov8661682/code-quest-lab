@@ -7,6 +7,15 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Device acceptance build preflight (2026-08-12; local control; completed)
+
+- Added `npm.cmd run acceptance:preflight`, which compares the local
+  `index.html` and exact `code-quest-lab-source.txt` mirror with the tested
+  deployment source hash and PWA shell recorded in the device runbook.
+- Added executable contract coverage and explicit separation from live
+  production checks and physical-device evidence. This improves owner handoff
+  safety without changing the **93% / 19%** score or creating a deployment.
+
 ## Device report build-identity guard (2026-08-12; local control; completed)
 
 - Updated `npm.cmd run acceptance:report` so the owner packet distinguishes the

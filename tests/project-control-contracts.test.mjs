@@ -95,6 +95,27 @@ test('device acceptance report generator refuses accidental overwrite', () => {
   }
 });
 
+test('device acceptance preflight protects the tested build identity', () => {
+  const packageJson = JSON.parse(read('package.json'));
+  const preflight = read('scripts/check-device-acceptance-preflight.mjs');
+  assert.equal(
+    packageJson.scripts['acceptance:preflight'],
+    'node scripts/check-device-acceptance-preflight.mjs'
+  );
+  assert.match(preflight, /DEVICE_ACCEPTANCE_RUNBOOK\.md/);
+  assert.match(preflight, /code-quest-lab-source\.txt/);
+  assert.match(preflight, /local source does not match tested deployment/);
+  assert.match(preflight, /service worker does not contain the runbook PWA shell/);
+
+  const result = spawnSync(
+    process.execPath,
+    [path.join(ROOT, 'scripts', 'check-device-acceptance-preflight.mjs')],
+    { cwd: ROOT, encoding: 'utf8' }
+  );
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /Device acceptance preflight passed/);
+});
+
 test('release verification prepares generated web and native assets before tests', () => {
   const packageJson = JSON.parse(read('package.json'));
   assert.match(
