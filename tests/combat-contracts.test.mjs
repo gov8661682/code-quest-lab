@@ -388,7 +388,7 @@ test('the first combat room gives melee enemies a readable approach lane', () =>
 });
 
 test('the first real D1 rooms use a bounded onboarding combat budget', () => {
-  assert.match(SOURCE, /var LEVEL1_EARLY_ROUTE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:5,[\s\S]*hpMult:0\.75,[\s\S]*damageMult:0\.35,[\s\S]*speedMult:0\.85,[\s\S]*attackCooldownMult:1\.60,[\s\S]*graceSeconds:3\.5/,
+  assert.match(SOURCE, /var LEVEL1_EARLY_ROUTE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:6,[\s\S]*hpMult:0\.68,[\s\S]*damageMult:0\.28,[\s\S]*speedMult:0\.80,[\s\S]*attackCooldownMult:1\.80,[\s\S]*graceSeconds:4\.5/,
     'the early route tuning is explicit and finite');
   assert.match(SOURCE, /_isEarlyNormalCombatRoom=activeDungeonId==='dungeon1'&&[\s\S]*depth>=2&&depth<=LEVEL1_EARLY_ROUTE_TUNING\.maxDepth[\s\S]*_entryRoomDef\.type===RT\.COMBAT&&!isElite;/,
     'the relief is limited to ordinary early D1 combat rooms');
@@ -399,7 +399,7 @@ test('the first real D1 rooms use a bounded onboarding combat budget', () => {
 });
 
 test('the first D1 mini-boss has a separate bounded onboarding budget', () => {
-  assert.match(SOURCE, /var LEVEL1_EARLY_MINIBOSS_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:6,[\s\S]*hpMult:0\.75,[\s\S]*damageMult:0\.60,[\s\S]*speedMult:0\.90,[\s\S]*attackCooldownMult:1\.25/,
+  assert.match(SOURCE, /var LEVEL1_EARLY_MINIBOSS_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:6,[\s\S]*hpMult:0\.60,[\s\S]*damageMult:0\.35,[\s\S]*speedMult:0\.78,[\s\S]*attackCooldownMult:1\.60,[\s\S]*graceSeconds:3\.5/,
     'the early mini-boss relief is explicit and finite');
   assert.match(SOURCE, /var _isEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&[\s\S]*getRoomDepth\(currentRoomId\)<=LEVEL1_EARLY_MINIBOSS_TUNING\.maxDepth;/,
     'the relief is limited to the first Normal D1 mini-boss depth');
@@ -407,10 +407,12 @@ test('the first D1 mini-boss has a separate bounded onboarding budget', () => {
     'mini-boss health and damage use the shared spawn tuning');
   assert.match(SOURCE, /if\(_isEarlyD1MiniBoss\)\{mb\.speed\*=LEVEL1_EARLY_MINIBOSS_TUNING\.speedMult;mb\.attackCooldown\*=LEVEL1_EARLY_MINIBOSS_TUNING\.attackCooldownMult;\}/,
     'mini-boss movement and cadence are bounded without replacing its mechanics');
+  assert.match(SOURCE, /var _isNormalEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&[\s\S]*getRoomDepth\(roomId\)<=LEVEL1_EARLY_MINIBOSS_TUNING\.maxDepth;[\s\S]*if\(_isNormalEarlyD1MiniBoss\)playerInvulnTimer=Math\.max\(playerInvulnTimer,LEVEL1_EARLY_MINIBOSS_TUNING\.graceSeconds\);/,
+    'the first mini-boss gives a finite entry response window');
 });
 
 test('the first Normal D1 elite has a bounded onboarding budget', () => {
-  assert.match(SOURCE, /var LEVEL1_EARLY_ELITE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:5,[\s\S]*hpMult:0\.60,[\s\S]*damageMult:0\.35,[\s\S]*speedMult:0\.85,[\s\S]*attackCooldownMult:1\.55,[\s\S]*graceSeconds:3\.5/,
+  assert.match(SOURCE, /var LEVEL1_EARLY_ELITE_TUNING=Object\.freeze\(\{[\s\S]*maxDepth:5,[\s\S]*hpMult:0\.45,[\s\S]*damageMult:0\.22,[\s\S]*speedMult:0\.75,[\s\S]*attackCooldownMult:2\.00,[\s\S]*graceSeconds:5\.0/,
     'the early elite tuning is explicit and finite');
   assert.match(SOURCE, /var _isEarlyNormalD1EliteRoom=activeDungeonId==='dungeon1'&&[\s\S]*_entryRoomDef\.type===RT\.ELITE&&isElite;[\s\S]*if\(_isEarlyNormalD1EliteRoom\)\{_hpScale\*=LEVEL1_EARLY_ELITE_TUNING\.hpMult;_eDmgMult\*=LEVEL1_EARLY_ELITE_TUNING\.damageMult;\}/,
     'the relief is limited to early Normal D1 elite spawns');

@@ -29065,34 +29065,42 @@ var LEVEL1_OPENING_TUNING=Object.freeze({
 // warrior/zombie/ghost/archer roster, but ease only this short depth band so a
 // new web player is not erased immediately after the opening grace ends.
 var LEVEL1_EARLY_ROUTE_TUNING=Object.freeze({
-  maxDepth:5,
-  hpMult:0.75,
-  damageMult:0.35,
-  speedMult:0.85,
-  attackCooldownMult:1.60,
-  graceSeconds:3.5
+  // Keep the whole first combat arc forgiving, including the first larger
+  // three-enemy room that can appear before a new web player reaches level
+  // 2. This remains a finite Normal-only onboarding budget; later D1 rooms
+  // and every higher difficulty keep their authored scaling.
+  maxDepth:6,
+  hpMult:0.68,
+  damageMult:0.28,
+  speedMult:0.80,
+  attackCooldownMult:1.80,
+  graceSeconds:4.5
 });
 // Early Elite rooms still use Joey's champion identity and elite modifiers,
 // but their normal 1.6x elite scale can erase a fresh web player before the
 // first route choices have taught movement. Keep the first elite as a pattern
 // lesson with a separate, finite budget; later elites keep their full scale.
 var LEVEL1_EARLY_ELITE_TUNING=Object.freeze({
+  // The first elite can be a three-target room before a new hero has a
+  // damage skill. Keep the champion identity and elite reward, but give the
+  // player enough time to separate targets and learn the warning cadence.
   maxDepth:5,
-  hpMult:0.60,
-  damageMult:0.35,
-  speedMult:0.85,
-  attackCooldownMult:1.55,
-  graceSeconds:3.5
+  hpMult:0.45,
+  damageMult:0.22,
+  speedMult:0.75,
+  attackCooldownMult:2.00,
+  graceSeconds:5.0
 });
 // The first D1 mini-boss is the first authored pattern test, not a gear check.
 // Keep its Bone Champion/roster identity and warning patterns, but give a new
 // Normal player a finite response budget before the route's later encounters.
 var LEVEL1_EARLY_MINIBOSS_TUNING=Object.freeze({
   maxDepth:6,
-  hpMult:0.75,
-  damageMult:0.60,
-  speedMult:0.90,
-  attackCooldownMult:1.25
+  hpMult:0.60,
+  damageMult:0.35,
+  speedMult:0.78,
+  attackCooldownMult:1.60,
+  graceSeconds:3.5
 });
 function updateCombatIntro(dt){
   if(combatIntroTimer>0)combatIntroTimer=Math.max(0,combatIntroTimer-dt);
@@ -29852,6 +29860,9 @@ if(_isFirstVisit&&!rs.potionGranted&&(effType===RT.SHRINE||effType===RT.TREASURE
       var mbType=def.miniBossType||pickMiniBossType();
       def.miniBossType=mbType;
       spawnMiniBoss(geo,mbType);
+      var _isNormalEarlyD1MiniBoss=activeDungeonId==='dungeon1'&&
+        getActiveDifficulty().id==='normal'&&getRoomDepth(roomId)<=LEVEL1_EARLY_MINIBOSS_TUNING.maxDepth;
+      if(_isNormalEarlyD1MiniBoss)playerInvulnTimer=Math.max(playerInvulnTimer,LEVEL1_EARLY_MINIBOSS_TUNING.graceSeconds);
       showBanner('☠ MINI BOSS ⚠','Defeat the '+miniBoss.label+'!',2.5);
     }
 
