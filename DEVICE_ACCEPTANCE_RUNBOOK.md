@@ -8,6 +8,20 @@ uses invincibility, high damage, enemy-free mode, room completion, boss jumps,
 or phase jumps may validate a regression, but it does not count as clean-player
 acceptance.
 
+## Current tested build
+
+Use the configured hostname for Runs A-C unless the owner specifically needs
+the Pages preview:
+
+- Runtime snapshot: `b5d701e` (`Add adaptive first-room control guidance`)
+- Deployment record: `1f0736e` (`Synchronize owner deployment handoff`)
+- Primary: `https://code-quest-lab.gov8661682.com/`
+- Preview: `https://ce226dfb.code-quest-lab.pages.dev/`
+- Source SHA-256:
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`
+- Local release gate before the run: **140/140**; do not enable developer
+  controls during Runs A-C.
+
 ## Required test inputs
 
 - A representative iPad or Android tablet in landscape, plus a phone if the
