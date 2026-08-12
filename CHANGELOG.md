@@ -1,5 +1,14 @@
 # Code Quest Lab - Changelog
 
+## Steady gate landmark polish (2026-08-12; local QA)
+
+- Kept the destination cue attached to the player and aimed at the Town portal
+  or dungeon gate; it no longer becomes a screen-edge or gate-mounted arrow.
+- Removed the remaining time-varying destination glow so the steady arrow is
+  the only directional cue. The full local gate remains **139/139** and the
+  deployed milestone/score are unchanged; this minor visual refinement is
+  grouped for the next meaningful website checkpoint.
+
 ## Released-route World Atlas foundation (2026-08-12; deployed milestone)
 
 - Added a touch-friendly dashboard atlas for Town and the released route

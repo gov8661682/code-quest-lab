@@ -22606,7 +22606,10 @@ function drawTownWorld(geo){
   ctx.fillStyle='#0b0b10';ctx.beginPath();ctx.ellipse(pa.x,pa.y-6,30,42,0,0,Math.PI*2);ctx.fill();
   var portalGlow=ctx.createRadialGradient(pa.x,pa.y-6,0,pa.x,pa.y-6,64);
   portalGlow.addColorStop(0,'rgba(140,100,220,0.55)');portalGlow.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.globalAlpha=0.6+0.15*Math.sin(now*1.6);
+  // Keep the destination readable without turning it into a pulsing quest
+  // marker. Directional guidance belongs to the steady arrow beside the
+  // player, which rotates toward this portal as the player walks.
+  ctx.globalAlpha=0.72;
   ctx.fillStyle=portalGlow;ctx.beginPath();ctx.arc(pa.x,pa.y-6,64,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
   ctx.font='bold 13px Georgia';ctx.fillStyle='#c8a8f8';ctx.textAlign='center';
   ctx.fillText('Starter Dungeon',pa.x,pa.y-70);
@@ -22758,7 +22761,9 @@ function drawEntranceWorld(geo){
   ctx.fillStyle='#0b0b10';ctx.beginPath();ctx.ellipse(g.x,g.y-6,30,42,0,0,Math.PI*2);ctx.fill();
   var gateGlow=ctx.createRadialGradient(g.x,g.y-6,0,g.x,g.y-6,64);
   gateGlow.addColorStop(0,'rgba(140,100,220,0.55)');gateGlow.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.globalAlpha=0.6+0.15*Math.sin(now*1.6);
+  // The gate is a stable landmark. The directional cue is the player-following
+  // arrow, never a pulsing arrow mounted on the gate.
+  ctx.globalAlpha=0.72;
   ctx.fillStyle=gateGlow;ctx.beginPath();ctx.arc(g.x,g.y-6,64,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
   ctx.font='bold 13px Georgia';ctx.fillStyle='#c8a8f8';ctx.textAlign='center';
   ctx.fillText(layout.gateLabel,g.x,g.y-70);
@@ -43094,7 +43099,8 @@ function drawOffscreenEnemyIndicators(){
 // guide is rendered in world space beside the player and rotates toward the
 // gate while the player walks. Rendering in the same camera pass as the player
 // means it follows the character instead of becoming an edge marker. The
-// minimap remains the detailed map.
+// arrow remains steady; only its position and rotation change. The minimap
+// remains the detailed map.
 function drawPlayerFollowingPortalGuide(geo){
   if(!gameRunning||!geo)return;
   var target=null,label='';
