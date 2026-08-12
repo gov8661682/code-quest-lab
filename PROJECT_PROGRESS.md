@@ -464,10 +464,10 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` is clean and synchronized with latest tested local QA/runtime
-  commit `0c5920f` (`Polish steady player-following gate guide`) in the pushed
-  history. The deployed checkpoint remains `7b961b9`; D13+ remains gated from
-  the player-facing atlas and route order.
+- Git state: `main` is clean and synchronized with latest tested local QA
+  commit `0a6e729` (`Make Capacitor sync junction-safe`) and documentation
+  commit `6384772` in the pushed history. The deployed checkpoint remains
+  `7b961b9`; D13+ remains gated from the player-facing atlas and route order.
 - Canonical game: `index.html`, SHA-256
   `8ED9D7DD026EC12852061D1CA2A814B113F49A2CE00F58320191D3AFCB4CAC84`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`

@@ -858,11 +858,12 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA/runtime commit: `0c5920f` (`Polish steady
-  player-following gate guide`), after the **139/139** release verification,
-  build/package audit, native asset sync, GitHub push, and project-control
-  verification. Checkpoint 1 remains active because clean D1-12 and device
-  evidence are not complete; the deployed milestone remains `7b961b9`.
+- Current verified local QA commit: `0a6e729` (`Make Capacitor sync
+  junction-safe`), after the **139/139** release verification, build/package
+  audit, alias-launched native sync, GitHub push, and project-control
+  verification; documentation follow-up is `6384772`. Checkpoint 1 remains
+  active because clean D1-12 and device evidence are not complete; the
+  deployed milestone remains `7b961b9`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
@@ -1045,14 +1046,13 @@ v8 dependency set, and prepared the public web/school-review surface.
 
 ## Next task
 
-Resume the highest-priority clean-profile touch-first attempt through the
-bounded Dungeon 1-8 path, using the now-reproduced attack response before
-changing combat code. The save-portability/readability milestone was
-committed as `9da1d0e`, pushed, deployed, and live-verified on 2026-08-05.
-Continue with dated evidence for room/boss/ending progress, a meaningful
-10-30 minute touch-first session, tablet behavior, and browser diagnostics. Native Android/JDK and
-Mac/Xcode actions remain owner/environment blockers recorded in
-`BLOCKERS.md`.
+When a materially different supported touch or physical surface is available,
+run `DEVICE_ACCEPTANCE_RUNBOOK.md` Runs A-C: the clean D1-D12 route, the
+10-30-minute touch-first session, and device/release-readiness checks. Until
+that evidence surface changes, do not repeat the consumed managed-browser
+route. Continue only independent C1 work such as deterministic regression
+coverage, release preparation, or verified defect fixes; native Android/JDK,
+Mac/Xcode, and owner approvals remain documented in `BLOCKERS.md`.
 
 ## Latest local hardening
 
