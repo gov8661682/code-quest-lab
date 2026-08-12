@@ -14,7 +14,7 @@ Active checkpoint completion: **93%**
 
 Overall project completion: **19%**
 
-Scoring date: 2026-08-11. Overall progress is rounded from one completed
+Scoring date: 2026-08-12. Overall progress is rounded from one completed
 checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 | Acceptance lane | Weight | Earned | Evidence currently credited | Evidence still required |
@@ -24,10 +24,28 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `471cf96` is pushed to `origin/main`; its tested build is deployed to preview `f55bf568.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **125/125** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `baaab57` is pushed to `origin/main`; its tested build is deployed to preview `051a6921.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the **125/125** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
+
+- The level-1 web difficulty wall is now addressed in the release build
+  build without simplifying Joey's content. Normal D1 ordinary rooms through
+  depth 6 use a finite `0.68` health / `0.28` damage / `0.80` speed /
+  `1.80` attack-cooldown budget with `4.5s` response grace; the first elite
+  uses `0.45/0.22/0.75/2.00` with `5.0s` grace; the first mini-boss uses
+  `0.60/0.35/0.78/1.60` plus `3.5s` entry grace. Higher difficulties and
+  later rooms keep their authored pressure. The updated source mirror,
+  static build, Capacitor sync, **125/125** test suite, `qa:fast`, and package
+  checks pass. Fresh no-aid 600x768 local play cleared the opening room and
+  bounded runs reached the first D1 mini-boss; this does not close clean
+  D1-D12 or physical/native-device acceptance. Runtime commit `baaab57` is
+  pushed to `origin/main` and deployed on 2026-08-12 to preview
+  `https://051a6921.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+  `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`;
+  PWA shell v11, production checks, and live desktop/tablet first-room smokes
+  pass.
 
 - The reported D4 Normal Omen Chamber stall is now bounded without removing
   Joey's three-wave structure, enemy identities, or elite finale: Normal uses

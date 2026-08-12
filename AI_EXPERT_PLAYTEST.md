@@ -9,6 +9,26 @@ Profile: fresh Barbarian profile created for this playtest, then deleted
 through the in-game Manage Data confirmation
 Diagnostics: no browser error or warning entries
 
+## Follow-up: Normal D1 level-1 balance correction - 2026-08-12 (deployed)
+
+The clean-play evidence reproduced a second web-platform wall after the first
+opening room: the player could defeat most targets in a larger early room or
+first elite, then lose before the last target. The correction keeps Joey's
+rosters, rewards, and authored encounter mechanics, but extends a finite
+Normal-only onboarding budget through D1 depth 6, lowers the first elite's
+health/damage/cadence budget, and adds a short entry grace window to the first
+mini-boss. Higher difficulties and later rooms are not changed.
+
+The release suite passes **125/125**, `qa:fast`, static package audit, and
+Capacitor sync. Fresh no-aid 600x768 play on the updated shell cleared the
+opening room; a bounded route reached D1's first mini-boss before the browser
+control batch stopped. The latest attempt was stopped at the browser-control
+time boundary rather than counted as a full route. Runtime commit `baaab57`
+was pushed to `origin/main` and deployed to the configured production hostname
+and preview `https://051a6921.code-quest-lab.pages.dev/`; live 1024x768 desktop
+and 600x768 tablet first-room smokes passed. Clean-player D1-D12 and
+physical/native-device acceptance remain open.
+
 ## Follow-up: D4 Normal ambush budget and player-following exit guide - 2026-08-12
 
 The incomplete Normal D4 route identified a real tablet-playability problem:

@@ -1,11 +1,32 @@
 # Code Quest Lab - Completed Work Ledger
 
-Updated: 2026-08-11
+Updated: 2026-08-12
 
 This is the canonical record of work that should not be repeated. Reopen an
 item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
+
+## Normal D1 onboarding balance correction (2026-08-12; deployed checkpoint)
+
+- Kept Joey's D1 enemy roster, first mini-boss identity, rewards, attack math,
+  later rooms, and higher-difficulty pressure intact while extending the
+  finite Normal-only onboarding budget through the first larger combat band.
+  Ordinary depths 2-6 use `0.68/0.28/0.80/1.80` plus `4.5s` grace; the first
+  elite uses `0.45/0.22/0.75/2.00` plus `5.0s` grace; the first mini-boss uses
+  `0.60/0.35/0.78/1.60` plus `3.5s` entry grace.
+- Updated the contract tests, exact text mirror, static build, and Capacitor
+  Android/iOS assets. The local release suite passes **125/125**, with
+  `qa:fast` and package checks passing. A fresh no-aid 600x768 run cleared the
+  opening room; bounded runs reached the first D1 mini-boss. This is not yet
+  full clean-player D1-D12 or physical-device acceptance.
+- Runtime commit `baaab57` is pushed to `origin/main` and deployed to preview
+  `https://051a6921.code-quest-lab.pages.dev/` and the configured hostname
+  `https://code-quest-lab.gov8661682.com/`. Source hash:
+  `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`.
+  Production checks and live 1024x768 desktop / 600x768 tablet first-room
+  smokes passed; full clean-player D1-D12 and physical/native-device evidence
+  remain open.
 
 ## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 

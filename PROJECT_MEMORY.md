@@ -17,32 +17,27 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **125/125** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Current deployed milestone (2026-08-12): D4 Normal's Omen Chamber keeps
-  Joey's three-wave roster and elite finale while using a finite 2/3 target
-  wave budget, `0.78` regular health, `0.85` damage, bounded final-elite
-  relief, and a shorter handoff delay. Higher difficulties retain the authored
-  pressure. Developer invincibility now suppresses shared hazard damage,
-  including cursed circles. Cleared rooms show a steady player-following
-  `NEXT ROOM` arrow aimed at the open forward door; boss rooms keep their
-  separate exit-portal flow. A release-route contract checks all released
-  D1-D12 generated paths, authored finale identities, portal handoff, and the
-  D12 session ending. The **125/125** local gate and a fresh D4 loopback smoke
-  pass with empty browser diagnostics. Runtime commit `471cf96` is pushed to
-  `origin/main` and deployed to preview `f55bf568.code-quest-lab.pages.dev`
-  and the configured hostname; source hash is
-  `BE1349634B3F97983A19FBE2C192056B48778D2916A66CADE4DB6D906F21B34C`, PWA
-  shell v11, and production/desktop/tablet live checks pass. This does not
-  change the 93%/19% score: QA aids were used and clean-player/device evidence
-  remains open.
-- Latest milestone checkpoint (2026-08-11): the first Normal D1
-  combat room keeps the bounded, data-driven approach lane
-  (`132/28/18/84/36`) and now uses a brief `1.35s` mobile arrival window whose
+- Current deployed milestone (2026-08-12): Normal D1 onboarding keeps Joey's
+  rosters, rewards, and later pressure while using a finite opening budget:
+  ordinary depths 2-6 `0.68/0.28/0.80/1.80` plus `4.5s` grace, first elite
+  `0.45/0.22/0.75/2.00` plus `5.0s` grace, and first mini-boss
+  `0.60/0.35/0.78/1.60` plus `3.5s` entry grace. D4's authored three-wave
+  event and the steady player-following `NEXT ROOM` arrow remain intact;
+  higher difficulties retain authored pressure. The **125/125** gate,
+  `qa:fast`, package audit, native sync, and live desktop/tablet first-room
+  smokes pass. Runtime commit `baaab57` is pushed to `origin/main` and
+  deployed to preview `051a6921.code-quest-lab.pages.dev` and the configured
+  hostname; source hash is
+  `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`, PWA
+  shell v11. This does not change the 93%/19% score: clean-player D1-D12 and
+  physical/native-device evidence remain open.
+- Prior input milestone (2026-08-11): the first Normal D1 combat room keeps a
+  bounded, data-driven approach lane and now uses a brief `1.35s` mobile
+  arrival window whose
   tangential drift is independent of the 10-second read-and-respond prompt.
-  The prompt remains a damage grace state, not an enemy movement lock. Early
-  Normal D1 ordinary rooms, the first elite, and the first mini-boss have
-  separate finite onboarding budgets; Joey's roster, attack math, later
-  procedural placement, stationary enemies, and authored modifiers remain
-  intact. Runtime commit `ae91268` is pushed to `origin/main` and deployed to
+  The prompt remains a damage grace state, not an enemy movement lock. Joey's
+  roster, attack math, later procedural placement, stationary enemies, and
+  authored modifiers remain intact. Runtime commit `ae91268` is pushed to
   preview `dfb05e32.code-quest-lab.pages.dev` and the configured hostname. The
   deployed source hash is
   `ECA92EA8A0B4D3CECE61AA107C533425B88B3F485CCDC7F5926F6063023F0094`; the
@@ -59,19 +54,21 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world
   direction are creative constraints, not optional complexity to remove.
-- Level 1 relief is intentionally narrow: fresh Barbarian damage remains
-  `0.75`; only the first Normal D1 combat room uses `0.50` health, `0.45`
-  damage, `0.55` speed, `1.80` attack-cooldown scaling, a close lane, and a
-  10-second read-and-respond grace window. Normal D1 ordinary depths 2-5 use
-  `0.75` health, `0.35` damage, `0.85` speed, `1.60` attack-cooldown scaling,
-  and a `3.5s` grace window; the first Normal D1 elite uses `0.60` health,
-  `0.35` damage, `0.85` speed, `1.55` attack-cooldown scaling, and the same
-  `3.5s` grace. The separate mini-boss budget remains `0.75/0.60/0.90/1.25`.
-  These adjustments are Normal-only and finite; Standard Expedition remains
-  recommended while authored modifiers stay available.
+- Level 1 relief remains narrow and Normal-only: the opening room keeps its
+  `0.50/0.45/0.55/1.80` budget and 10-second read-and-respond grace window;
+  ordinary D1 depths 2-6 now use `0.68` health, `0.28` damage, `0.80` speed,
+  `1.80` attack-cooldown scaling, and `4.5s` grace; the first Normal D1 elite
+  uses `0.45` health, `0.22` damage, `0.75` speed, `2.00` attack-cooldown
+  scaling, and `5.0s` grace; the first D1 mini-boss uses
+  `0.60/0.35/0.78/1.60` plus a `3.5s` entry grace. Joey's rosters and
+  mechanics remain intact; higher difficulties and later rooms retain their
+  authored scaling. Standard Expedition remains recommended.
 - Fast QA models the two-enemy opening with real melee cadence and clears it in
   6.1 simulated seconds without developer aids. Managed D1-D12 Mage coverage
-  remains QA-assisted, not clean-player acceptance.
+  remains QA-assisted, not clean-player acceptance. A fresh current-build
+  600x768 no-aid smoke cleared the opening room; bounded local runs also reached
+  D1's first mini-boss before the browser-control batch stopped. This is progress
+  evidence, not a full D1-D12 acceptance claim.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route
@@ -114,5 +111,4 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Update this file only when a durable fact, blocker, lesson, verified gate, or
   next-action priority changes.
 - Replace stale statements in place and consolidate overlapping lessons.
-- Keep this file under 120 lines. If it grows, merge or delete obsolete detail.
-- Detailed history belongs in `CHANGELOG.md` and `COMPLETED_WORK.md`, not here.
+- Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and `COMPLETED_WORK.md`.

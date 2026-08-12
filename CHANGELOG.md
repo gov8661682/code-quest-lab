@@ -1,5 +1,25 @@
 # Code Quest Lab - Changelog
 
+## Normal D1 onboarding balance correction (2026-08-12; deployed checkpoint)
+
+- Responded to the web-platform level-1 difficulty report without removing
+  Joey's enemy identities, elite rewards, mini-boss patterns, or later route
+  progression. Normal D1 ordinary rooms through depth 6 now use a finite
+  `0.68` health / `0.28` damage / `0.80` speed / `1.80` attack-cooldown budget
+  with `4.5s` response grace; the first elite uses `0.45/0.22/0.75/2.00` with
+  `5.0s` grace; the first mini-boss uses `0.60/0.35/0.78/1.60` plus `3.5s`
+  entry grace. Higher difficulties and later rooms are unchanged.
+- Updated the source mirror and generated web/native surfaces. The release
+  suite passes **125/125**, `qa:fast`, the static package audit, and the
+  Capacitor synchronization check. Fresh no-aid 600x768 local play cleared
+  the opening room and bounded runs reached the first D1 mini-boss; a full
+  clean D1-D12 route and physical/native-device evidence remain open.
+- Runtime commit `baaab57` was pushed to `origin/main` and deployed to
+  `https://051a6921.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/` on 2026-08-12. Source hash:
+  `C937213507EEAC5F837DC7F733EB6DB950142BA8B412B2EA4FEEA9764D8C31C1`.
+  Production checks and live desktop/tablet first-room smokes passed.
+
 ## D4 Normal ambush pacing and player-following exit guide (2026-08-12; deployed checkpoint)
 
 - Kept Joey's Omen Chamber three-wave identity, roster, and elite finale while
