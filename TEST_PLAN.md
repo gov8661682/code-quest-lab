@@ -19,18 +19,24 @@ Updated: 2026-08-12
 - The deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`; both
   production checks pass.
-- Current local runtime `3cce0e0` adds the pointer-capture fallback and shared
-  visual-viewport reflow for touch surfaces; its source/mirror hash is
-  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
-  `npm.cmd test` and `release:verify` pass **142/142**; the deployed runtime
-  remains the previously verified 140-test build because this is a minor
-  compatibility fix, not a major website checkpoint.
+- Current local runtime `830ce00` adds safe-area reservations for lower
+  gameplay overlays after the pointer-capture fallback, visual-viewport reflow,
+  and screen-attached destination guidance. Its source/mirror hash is
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+  `npm.cmd test` and `release:verify` pass **143/143**; the deployed runtime
+  remains the previously verified `b5d701e` build because this is local
+  compatibility hardening, not a major website checkpoint.
 - Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - A fresh managed-browser viewport smoke on `3cce0e0` covered 1280x720,
   1024x768, and 600x800; canvas dimensions matched each viewport, touch
   controls remained visible, and no warnings/errors were captured. This is not
   physical-device, touch-only, or full-route evidence.
+- A cache-busted local browser smoke on `830ce00` reached the first room,
+  displayed the player-following destination guide, safely returned to the
+  dashboard, and captured no warnings/errors. Browser CSS reports zero insets
+  in this environment; the safe-area contract remains required for native and
+  cutout-device validation.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser
   smoke, not by clean-player/device acceptance.

@@ -13,6 +13,18 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The gameplay overlays now reserve the declared `safe-area-inset-*` values for
+desktop guidance, joysticks, skills, movement nudges, target assist, and
+travel/treasure/exit prompts across wide, narrow, and short landscape layouts.
+Runtime `830ce00` is pushed with source/mirror hash
+`124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`; the
+local `release:verify` gate is **143/143**, `qa:fast` still clears all 11
+released finales, and a cache-busted browser smoke reached the first room,
+displayed the player-following guide, returned safely, and captured no
+warnings/errors. This is local tablet/native readiness hardening, not a
+deployment or score change; the deployed runtime remains `b5d701e` and the
+score remains **93%** / **19%**.
+
 The shared touch joystick still treats Pointer Capture as optional, and window
 and `visualViewport` changes now share an active-world reflow handler. During a
 live session the handler refreshes room dimensions, clamps the player, and
@@ -513,16 +525,16 @@ Git history, and current deployment—not only on comments or planning files.
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: the current deployed runtime is `b5d701e` (`Add adaptive first-room
   control guidance`) on `main`, while the current local tested runtime is
-  `3cce0e0` (`Harden mobile viewport reflow`). This checkpoint records the
-  deployment from snapshot `cca39fb`; D13+ remains gated from the player-facing
-  atlas and route order.
+  `830ce00` (`Harden gameplay overlays for safe areas`). This checkpoint records
+  the deployment from snapshot `cca39fb`; D13+ remains gated from the
+  player-facing atlas and route order.
 - Canonical game: `index.html`, SHA-256
-  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passes **142/142**
+- Current local verification: `npm.cmd run release:verify` passes **143/143**
   tests, the 17-file build, the static-package audit, and Capacitor sync;
   `npm.cmd run qa:fast` also passes.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`

@@ -7,6 +7,19 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Gameplay overlay safe-area hardening (2026-08-12; local QA)
+
+- Reserved the declared safe-area insets for desktop guidance, the shared
+  joysticks, skill controls, movement nudges, target assist, and travel,
+  treasure, and exit prompts across wide, narrow, and short landscape layouts.
+- The exact source mirror, generated package, Capacitor synchronization,
+  static package audit, `release:verify` (**143/143**), `qa:fast`, and a
+  cache-busted local browser smoke passed with empty diagnostics. Runtime
+  `830ce00` is pushed with source hash
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- This is local tablet/native readiness hardening, not a major deployment
+  checkpoint or evidence-score change; the deployed runtime remains `b5d701e`.
+
 ## Mobile viewport reflow (2026-08-12; local QA)
 
 - Consolidated window and `visualViewport` resize handling so a live session

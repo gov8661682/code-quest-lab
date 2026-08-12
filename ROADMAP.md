@@ -135,6 +135,22 @@ checkpoint. The deployed `b5d701e` runtime and **93%** / **19%** evidence score
 remain unchanged; owner-run device acceptance is still the next score-bearing
 lane.
 
+### Current local QA: gameplay overlay safe-area hardening (2026-08-12)
+
+- [x] Reserve `safe-area-inset-*` space for desktop guidance, joysticks, skill
+  controls, movement nudges, target assist, and travel/treasure/exit prompts
+  across wide, narrow, and short landscape layouts.
+- [x] Add the focused contract and pass the **143/143** release gate,
+  `qa:fast`, package audit, and Capacitor synchronization; push runtime
+  `830ce00` with source/mirror hash
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- [x] Run a cache-busted local browser smoke through the first room and safe
+  dashboard return with empty diagnostics.
+
+This is local tablet/native readiness hardening rather than a major deployment
+checkpoint. It does not change the **93%** / **19%** score or replace the
+owner-run device acceptance packet; the deployed runtime remains `b5d701e`.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)

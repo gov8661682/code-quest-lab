@@ -24,8 +24,21 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; the current local build also passed a 1280x720 -> 1024x768 -> 600x800 responsive smoke with no browser warnings/errors; no P0/P1 issue was observed during those checks | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b5d701e` is pushed to `origin/main`; current local screen-attached guidance runtime `69a9915` is also pushed, with the **142/142** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and prior primary/preview production checks passing; the deployed source remains the verified `530E64...5EF6EF6` build | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b5d701e` is pushed to `origin/main`; current local safe-area runtime `830ce00` is also pushed, with the **143/143** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and prior primary/preview production checks passing; the deployed source remains the verified `530E64...5EF6EF6` build | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
+
+### Current local QA: gameplay overlay safe-area hardening (2026-08-12)
+
+- Desktop guidance, joysticks, skill controls, movement nudges, target assist,
+  and travel/treasure/exit prompts now reserve `safe-area-inset-*` values in
+  wide, narrow, and short landscape layouts.
+- Runtime `830ce00` passes **143/143**, `qa:fast`, static/package audit, exact
+  source synchronization, and Capacitor synchronization. A cache-busted local
+  browser smoke reached the first room, displayed the player-following guide,
+  returned safely to the dashboard, and captured no warnings/errors.
+- This is local release-readiness hardening; it does not change the **93%** /
+  **19%** score or deploy the website. Owner-run clean-player and physical/
+  native-device acceptance remain the next score-bearing lane.
 
 ### Current local QA: shared mobile viewport reflow (2026-08-12)
 
@@ -1031,16 +1044,22 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA runtime commit: `3cce0e0` (`Harden mobile viewport
-  reflow`), pushed to `origin/main` after `release:verify` (**142/142**),
-  `qa:fast`, package audit, Capacitor synchronization, and the viewport
-  reflow compatibility contract. Control records are synchronized in `4e05065`;
-  the deployed website remains runtime `b5d701e` at preview
+- Latest tested local QA runtime commit: `830ce00` (`Harden gameplay overlays
+  for safe areas`), pushed to `origin/main` after `release:verify` (**143/143**),
+  `qa:fast`, package audit, Capacitor synchronization, and the safe-area
+  compatibility contract. Control records are synchronized in the follow-up
+  record commit; the deployed website remains runtime `b5d701e` at preview
   `https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
   Checkpoint 1 remains active.
 
 Earlier local QA entries below are historical evidence and are retained for
 regression context; they are not the current next-action pointer.
+
+- Historical local QA runtime `3cce0e0` (`Harden mobile viewport reflow`) passed
+  **142/142** and remains retained below for regression context. The deployed
+  website remains runtime `b5d701e` at preview
+  `https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
+  Checkpoint 1 remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full

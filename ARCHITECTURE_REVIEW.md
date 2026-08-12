@@ -3,17 +3,17 @@
 Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
-steady-guide regression, adaptive first-room guidance, and released-route atlas
-slices; `origin/main` is writable and synchronized at tested local QA commit
-`3cce0e0`, with control records in `4e05065`. The deployed runtime remains
+steady-guide regression, adaptive first-room guidance, released-route atlas,
+viewport reflow, and safe-area overlay slices; `origin/main` is writable and
+synchronized at tested local QA commit `830ce00`. The deployed runtime remains
 `b5d701e` at the configured hostname and preview
 `https://ce226dfb.code-quest-lab.pages.dev/`; the local source/mirror hash is
-`659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+`124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **142 passing Node tests**, passing release contracts, a generated static
+has **143 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly
@@ -40,7 +40,7 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **142/142** local
+static build, Capacitor sync, deterministic fast QA, and full **143/143** local
 test suite pass. The current local adaptive first-room hint, pointer-capture
 fallback, and visual-viewport reflow are covered by focused contracts. This remains architecture
 hardening; no checkpoint percentage is
@@ -55,7 +55,7 @@ claimed until the open clean-player/device evidence is completed.
   helpers now drive HUD, recovery, and room-facing messaging for named bosses.
   The contract covers current and source-resident identities; do not reopen this
   as per-boss UI patches unless a regression is reproduced.
-- **No release-breaking defect is currently known.** The full 140-test suite
+- **No release-breaking defect is currently known.** The full 143-test suite
   and release contracts pass, so broad gameplay rewrites are not justified by
   current evidence.
 
@@ -179,6 +179,6 @@ claimed until the open clean-player/device evidence is completed.
   observable, and never serialized/exported.
 - Deterministic representative simulations complete in seconds and fail with
   structured diagnostics if a shared combat invariant regresses.
-- Existing creative behavior and the 135-test baseline remain intact. D13
+- Existing creative behavior and the 143-test baseline remain intact. D13
   reward/story parity is protected but the realm remains correctly gated until
   route, save, return, balance, and device acceptance are complete.

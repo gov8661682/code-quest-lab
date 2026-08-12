@@ -5,15 +5,14 @@ Mode: **Replace and consolidate; never append a chronological work log**
 
 ## Purpose
 
-This is the project's single short-term learning memory; stale facts are edited
-in place. Do not add a second memory file, daily entry, repeated failure note,
-or cumulative session transcript.
+This is the project's single short-term learning memory; edit stale facts in place. Do not add a second memory file, daily entry, repeated failure note, or
+cumulative session transcript.
 ## Current state
 
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **142/142** tests, static build/package audit,
+- Current verified local gate: **143/143** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the guidance and release-readiness
@@ -28,12 +27,13 @@ or cumulative session transcript.
   clean-player D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): touch joysticks tolerate absent or
   rejected Pointer Capture; window/visual-viewport changes share active-world
-  reflow; and Town/entrance/cleared-room destination arrows use the player's
-  screen anchor after the camera pass. Source/mirror, native sync, local gate
-  **142/142**, and a managed-browser 1280x720 -> 1024x768 -> 600x800 smoke with
-  no warnings/errors pass; this is not device evidence.
-  The released-route World Atlas remains contract-tested over Town, `REGION_ORDER`,
-  `worldLocation`, waypoints, and unlock state; D13 stays gated outside the atlas
+  reflow; Town/entrance/cleared-room destination arrows use the player's screen
+  anchor after the camera pass; and lower gameplay overlays reserve declared
+  safe-area insets across wide, narrow, and short landscape layouts. Runtime
+  `830ce00`, source/mirror, native sync, local gate **143/143**, and a
+  cache-busted browser smoke with no warnings/errors pass; this is not device
+  evidence. The released-route World Atlas is contract-tested over Town,
+  `REGION_ORDER`, `worldLocation`, waypoints, and unlock state; D13 stays gated
   until future-region progression, save, balance, return, and device evidence exist.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
@@ -115,5 +115,5 @@ or cumulative session transcript.
 
 - Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `DECISIONS.md`, and `AUTORUN.md` at the start of every cycle.
 - Update this file only when a durable fact, blocker, lesson, verified gate, or next-action priority changes.
-- Replace stale statements in place and consolidate overlapping lessons.
-- Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and `COMPLETED_WORK.md`.
+- Replace stale statements in place and consolidate overlapping lessons. Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and
+  `COMPLETED_WORK.md`.

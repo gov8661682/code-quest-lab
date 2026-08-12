@@ -5,26 +5,39 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local runtime commit: `69a9915` (`Keep destination guides
-  attached to player`), pushed to `origin/main` after the **142/142** release
+- Latest tested local runtime commit: `830ce00` (`Harden gameplay overlays for
+  safe areas`), pushed to `origin/main` after the **143/143** release
   gate, deterministic fast QA, package audit, and alias-launched native
-  synchronization. This is a local screen-attached guidance refinement to the
+  synchronization. This is a local tablet/native readiness refinement to the
   deployed `b5d701e` guidance checkpoint.
 - Runtime milestone: `b5d701e` is deployed and live-verified at the configured
   hostname and preview `https://ce226dfb.code-quest-lab.pages.dev/`.
 - Deployed source hash:
   `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 - Current local source hash:
-  `9C908ECC72B83CC51AE317B78509CF315B334A88E6D25EFB4B74AAA3D033CFE1`.
-- `release:verify` passed **142/142**, `qa:fast` passed all 11 released
+  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+- `release:verify` passed **143/143**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
   2026-08-12. A fresh live preview smoke reached Town, the northern road,
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
   the disposable profile was removed and diagnostics were empty. The primary
   hostname served the current release shell without captured browser errors.
 - Documentation record commits `7b98b4a` and `cd97d46`, plus runtime commit
-  `69a9915`, are pushed to `origin/main`; the first push was delayed by a
+  `830ce00`, are pushed to `origin/main`; the first push was delayed by a
   transient GitHub network failure and succeeded after connectivity recovered.
+
+## Gameplay overlay safe-area hardening (2026-08-12; local QA)
+
+- Desktop guidance, the shared joysticks, skill controls, movement nudges,
+  target assist, and travel/treasure/exit prompts now reserve the declared
+  `safe-area-inset-*` values across wide, narrow, and short landscape layouts.
+- Runtime `830ce00` has the exact source mirror, generated package, **143/143**
+  release gate, `qa:fast`, static/package audit, and Capacitor synchronization.
+  A cache-busted local browser smoke reached the first room and returned safely
+  with empty diagnostics.
+- This is local release-readiness hardening, not a deployment checkpoint or
+  score change; the deployed runtime remains `b5d701e` and the score remains
+  **93% / 19%**.
 
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
@@ -930,12 +943,13 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA runtime commit: `3cce0e0` (`Harden mobile viewport
-  reflow`), after `release:verify` (**142/142**), `qa:fast`, package
-  audit, Capacitor synchronization, browser smoke, and GitHub push. Control
-  records are current in `4e05065`. Checkpoint 1 remains active because clean
-  D1-12 and device evidence are not complete; this runtime is pushed but not
-  deployed. The preview and configured hostname still serve `b5d701e`.
+- Current verified local QA runtime commit: `830ce00` (`Harden gameplay
+  overlays for safe areas`), after `release:verify` (**143/143**), `qa:fast`,
+  package audit, Capacitor synchronization, cache-busted browser smoke, and
+  GitHub push. The control records are being synchronized in the follow-up
+  record commit. Checkpoint 1 remains active because clean D1-12 and device
+  evidence are not complete; this runtime is pushed but not deployed. The
+  preview and configured hostname still serve `b5d701e`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
