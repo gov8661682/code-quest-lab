@@ -5,9 +5,11 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `7b961b9` (`Add released-route World Atlas
-  foundation`), pushed to `origin/main` after the **139/139** release gate,
-  deterministic fast QA, package audit, and native synchronization.
+- Latest tested local QA commit: `0c5920f` (`Polish steady player-following gate
+  guide`), pushed to `origin/main` after the **139/139** release gate,
+  deterministic fast QA, package audit, and native synchronization. The
+  deployed milestone remains `7b961b9`; this minor visual refinement is grouped
+  for the next website checkpoint.
 - Runtime milestone: `7b961b9`, deployed and live-verified at the configured
   hostname and preview `https://79d7af68.code-quest-lab.pages.dev/`.
 - Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
@@ -844,11 +846,11 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA/runtime commit: `7b961b9` (`Add released-route
-  World Atlas foundation`), after the **139/139** release verification,
-  build/package audit, native asset sync, GitHub push, deployment, and
-  project-control verification. Checkpoint 1 remains active because clean
-  D1-12 and device evidence are not complete.
+- Current verified local QA/runtime commit: `0c5920f` (`Polish steady
+  player-following gate guide`), after the **139/139** release verification,
+  build/package audit, native asset sync, GitHub push, and project-control
+  verification. Checkpoint 1 remains active because clean D1-12 and device
+  evidence are not complete; the deployed milestone remains `7b961b9`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.

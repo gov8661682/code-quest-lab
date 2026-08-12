@@ -455,10 +455,11 @@ Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
 - Git state: `main` is clean and synchronized with latest tested local QA/runtime
-  commit `7b961b9` (`Add released-route World Atlas foundation`) in the pushed
-  history. D13+ remains gated from the player-facing atlas and route order.
+  commit `0c5920f` (`Polish steady player-following gate guide`) in the pushed
+  history. The deployed checkpoint remains `7b961b9`; D13+ remains gated from
+  the player-facing atlas and route order.
 - Canonical game: `index.html`, SHA-256
-  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`
+  `8ED9D7DD026EC12852061D1CA2A814B113F49A2CE00F58320191D3AFCB4CAC84`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the

@@ -40,6 +40,10 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   hostname with preview `https://79d7af68.code-quest-lab.pages.dev/`. This is a
   tested open-world foundation slice, not full open-world acceptance or C1
   score credit.
+- Commit `0c5920f` adds the minor steady-guide polish: the Town/entrance arrow
+  remains beside the player while the destination glow is now stable. It was
+  tested locally and pushed to GitHub without creating a separate website
+  checkpoint; the evidence score remains **93%** / **19%**.
 
 ### Latest evidence update (2026-08-12)
 
@@ -988,10 +992,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA/runtime commit: `7b961b9` (`Add released-route World
-  Atlas foundation`), pushed to `origin/main` after the **139/139** release
-  gate, `qa:fast`, build/package audit, native sync, project-control
-  verification, and the deployment checkpoint. Checkpoint 1 remains active.
+- Latest tested local QA/runtime commit: `0c5920f` (`Polish steady
+  player-following gate guide`), pushed to `origin/main` after the **139/139**
+  release gate, `qa:fast`, build/package audit, native sync, and
+  project-control verification. The latest website checkpoint remains
+  `7b961b9`; Checkpoint 1 remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
