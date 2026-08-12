@@ -16,9 +16,9 @@
     "assets:generate": "python scripts/generate-native-assets.py",
     "production:check": "node scripts/check-production.mjs",
     "release:verify": "npm run check && npm run native:sync && npm test && npm run package:check",
-    "native:sync": "npm run build && npx cap sync",
+    "native:sync": "node scripts/native-sync.mjs",
     "native:doctor": "npx cap doctor",
-    "native:android:build": "npm run build && npx cap sync android && npx cap build android"
+    "native:android:build": "node scripts/native-android-build.mjs"
   },
   "dependencies": {
     "@capacitor/android": "8.4.2",

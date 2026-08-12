@@ -52,9 +52,20 @@ test('release verification prepares generated web and native assets before tests
   );
   assert.match(
     packageJson.scripts['native:sync'],
-    /^npm run build && npx cap sync$/,
-    'native:sync must build the web package before Capacitor synchronization'
+    /^node scripts\/native-sync\.mjs$/,
+    'native:sync must use the repository-root-safe Capacitor wrapper'
   );
+  assert.match(
+    packageJson.scripts['native:android:build'],
+    /^node scripts\/native-android-build\.mjs$/,
+    'native:android:build must use the repository-root-safe Capacitor wrapper'
+  );
+  for (const script of ['scripts/native-sync.mjs', 'scripts/native-android-build.mjs']) {
+    const wrapper = read(script);
+    assert.match(wrapper, /fs\.realpathSync\(/, `${script} must resolve junctions to the real repository path`);
+    assert.match(wrapper, /cwd: ROOT/, `${script} must run child commands from the real repository path`);
+    assert.match(wrapper, /run\('npm', \['run', 'build'\]\)/, `${script} must build before native work`);
+  }
 });
 
 test('main checkpoint percentages match the weighted evidence table', () => {
