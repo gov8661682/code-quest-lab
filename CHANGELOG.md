@@ -1,5 +1,23 @@
 # Code Quest Lab - Changelog
 
+## Guidance and release-readiness checkpoint (2026-08-12; deployed)
+
+- Grouped the steady `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues so the arrow
+  follows the character and points toward the destination; removed the
+  gate-mounted pulsing directional arrow. Joey's combat, story, and balance
+  systems are unchanged.
+- Added the adaptive first-room pointer/touch hint and ran the **140/140**
+  release gate, deterministic `qa:fast` for all 11 released finales, static
+  package audit, Capacitor sync, and production checks.
+- Published runtime `b5d701e` from current main snapshot `cca39fb` to preview
+  `https://ce226dfb.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`; deployed source hash:
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- Fresh live preview smoke reached first combat, pause, and safe finish from
+  a disposable profile; cleanup succeeded and diagnostics were empty. The
+  evidence score remains **93% / 19%** because clean-player and device lanes
+  are still open.
+
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
 - The first Normal D1 combat banner now detects touch-first surfaces and tells

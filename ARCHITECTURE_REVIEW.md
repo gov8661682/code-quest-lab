@@ -5,8 +5,9 @@ Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, and released-route atlas
 slices; `origin/main` is writable and synchronized at tested local QA commit
-`b5d701e`, with control records in `4e05065` and the deployed milestone kept
-separate at `7b961b9`.
+`b5d701e`, with control records in `4e05065`. The tested runtime is published
+from current main snapshot `cca39fb` at the configured hostname and preview
+`https://ce226dfb.code-quest-lab.pages.dev/`.
 
 ## Executive result
 

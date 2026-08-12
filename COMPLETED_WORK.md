@@ -7,6 +7,24 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Guidance and release-readiness checkpoint (2026-08-12; deployed)
+
+- The Town, entrance, and cleared-room directional cues now use steady arrows
+  anchored to the player and rotated toward the destination. The gate no
+  longer carries a pulsing directional arrow; the change preserves Joey's
+  authored world, combat, and progression direction.
+- The adaptive first-room pointer/touch hint, exact source mirror, generated
+  package, **140/140** release gate, all-11-finale `qa:fast`, static/package
+  audit, Capacitor synchronization, and both production checks passed.
+- Runtime `b5d701e` was published from current main snapshot `cca39fb` to
+  preview `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
+  hostname. Source hash:
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- A fresh live preview smoke completed the normal profile -> Town -> entrance
+  -> first-combat -> pause/finish path at `1280x720`; the disposable profile
+  was deleted and diagnostics were empty. This does not close clean-player or
+  physical/native-device acceptance, so the score remains **93% / 19%**.
+
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
 - Added a shared first Normal D1 combat hint that detects touch-first versus

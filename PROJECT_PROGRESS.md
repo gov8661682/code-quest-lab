@@ -2,7 +2,7 @@
 
 Reviewed: 2026-08-12
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
-Release status: pre-release hardening; World Atlas milestone deployed and verified; not a Release Candidate
+Release status: pre-release hardening; guidance and release-readiness milestone deployed and verified; not a Release Candidate
 
 Main checkpoint completion: **93%**
 Overall project completion: **19%**
@@ -13,14 +13,19 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
-The first Normal D1 combat instruction is now surface-aware: touch-first users
-see the center-hold Attack lock/fire gesture, while pointer users see the
-nearest-target Attack/click path. This is a bounded onboarding improvement that
-preserves Joey's combat and balance. The canonical mirror, Capacitor package,
-`release:verify` (**140/140**), `qa:fast`, and an isolated first-room browser
-smoke passed with empty diagnostics; the disposable profile was deleted. The
-Commit `b5d701e` is pushed; the **93%** / **19%** evidence score and deployed
-`7b961b9` remain unchanged.
+The player-following guidance checkpoint is now deployed: `TO DEPTHS`, `TO
+GATE`, and `NEXT ROOM` arrows stay anchored to the character and point toward
+the next destination, with no gate-mounted pulsing arrow. The first Normal D1
+instruction remains surface-aware for pointer versus touch controls. Joey's
+combat, story, and balance are unchanged. The canonical mirror, Capacitor
+package, `release:verify` (**140/140**), `qa:fast`, production checks, and a
+fresh live preview smoke through first combat, pause, and safe finish passed;
+the disposable profile was deleted and diagnostics were empty. Runtime
+`b5d701e` was published from current main snapshot `cca39fb` to preview
+`https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname;
+source hash `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+The **93%** / **19%** evidence score remains unchanged because clean-player and
+physical/device acceptance are still open.
 
 The accelerated QA layer now includes a data-driven no-aid mechanics-confidence
 pass for all 11 released finales: D1, D2, and D4-D12. It exercises each named
@@ -482,26 +487,26 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` is clean and synchronized with latest tested local QA
-  commit `0a6e729` (`Make Capacitor sync junction-safe`) and documentation
-  commit `6384772` in the pushed history. The deployed checkpoint remains
-  `7b961b9`; D13+ remains gated from the player-facing atlas and route order.
+- Git state: the current tested runtime is `b5d701e` (`Add adaptive first-room
+  control guidance`) on `main`; this checkpoint records its deployment from
+  snapshot `cca39fb`. D13+ remains gated from the player-facing atlas and
+  route order.
 - Canonical game: `index.html`, SHA-256
-  `8ED9D7DD026EC12852061D1CA2A814B113F49A2CE00F58320191D3AFCB4CAC84`
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passes **139/139**
+- Current local verification: `npm.cmd run release:verify` passes **140/140**
   tests, the 17-file build, the static-package audit, and Capacitor sync;
   `npm.cmd run qa:fast` also passes.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`
   and the matching preview check passed on 2026-08-12; the deployed shell
-  hash is `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
-- Last website checkpoint: runtime commit `7b961b9`, deployed and live-
-  verified on 2026-08-12 at `https://code-quest-lab.gov8661682.com/`; preview
-  `https://79d7af68.code-quest-lab.pages.dev/` also passed the production check
-  and World Atlas UI smoke.
+  hash is `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- Last website checkpoint: runtime `b5d701e`, deployed and live-verified on
+  2026-08-12 at `https://code-quest-lab.gov8661682.com/`; preview
+  `https://ce226dfb.code-quest-lab.pages.dev/` also passed the production
+  check and fresh first-combat/safe-stop smoke.
 - Latest local route evidence: a disposable Mage profile completed the full
   observable Dungeon 1 touch-first slice through the Stone Guardian and exit
   portal, then completed the patched Dungeon 2 Normal route through shrine,
@@ -556,7 +561,7 @@ D1-8 acceptance gates.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-12 released-route World Atlas milestone | Cloudflare Pages project `code-quest-lab`; runtime commit `7b961b9` is pushed, preview `79d7af68` and the configured hostname passed production checks, deployed source hash `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`, and preview World Atlas plus 600x768 route-handoff smokes passed | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
+| Current web deployment checkpoint | Complete for the 2026-08-12 guidance and release-readiness milestone | Cloudflare Pages project `code-quest-lab`; runtime `b5d701e` is pushed, preview `ce226dfb` and the configured hostname passed production checks, deployed source hash `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`, and fresh preview/primary release-shell and first-combat safe-stop smokes passed | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
 | Open-world product and architecture direction | Complete as the staged released-route foundation; full expansion remains post-C1 | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; runtime commit `7b961b9` now ships the Town/released-route World Atlas with honest locks and existing route handoff; `DECISIONS.md` records the explicit owner direction | Add optional landmarks, persistent discovered connections, save migration, and future regions only through complete route/reward/device milestones | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
 | AI expert playtest and first usability fixes | Playtest complete; grouped copy, Town orientation, and readability follow-up are deployed; initial attack response is reproduced; full progression evidence remains open | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy, minimap, lock banner, enemy silhouettes, and HP-bar treatment are live in the checkpoint shell; the D2 elite playthrough reproduced a Corrupted summon escalation and local commit `6423ecb` bounds it with a finite budget | Continue the clean-profile C1 route and complete the touch/tablet lifecycle evidence; keep the local hardening fix under regression coverage before the next deployment | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Re-test the corrected D2 elite room, then continue D1-8 evidence |
 

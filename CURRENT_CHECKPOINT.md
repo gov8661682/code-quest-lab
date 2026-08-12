@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `7b961b9` is pushed to `origin/main`; its tested build is deployed to preview `79d7af68.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **140/140** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and deployed World Atlas UI smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime `b5d701e` is pushed to `origin/main`; its tested build was published from current main snapshot `cca39fb` to preview `ce226dfb.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **140/140** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and fresh live route/safe-stop smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Open-world foundation update (2026-08-12; local QA)
@@ -1011,8 +1011,9 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
   control guidance`), pushed to `origin/main` after `release:verify`
   (**140/140**), `qa:fast`, package audit, Capacitor synchronization, and an
   isolated first-room browser smoke with empty diagnostics. Control records are
-  synchronized in `4e05065`; the latest website checkpoint remains `7b961b9`
-  and Checkpoint 1 remains active.
+  synchronized in `4e05065`; this runtime is now published to preview
+  `https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
+  Checkpoint 1 remains active.
 
 Earlier local QA entries below are historical evidence and are retained for
 regression context; they are not the current next-action pointer.
@@ -1054,32 +1055,31 @@ regression context; they are not the current next-action pointer.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest runtime/website milestone remains `7b961b9`
-  (`Add released-route World Atlas foundation`), while the latest tested local
-  QA runtime is `b5d701e` and the current control record is `4e05065`. The
-  deployed preview is `https://79d7af68.code-quest-lab.pages.dev/` and the
-  configured hostname is `https://code-quest-lab.gov8661682.com/`.
+- Branch: `main`; the latest tested runtime/website milestone is `b5d701e`
+  (`Add adaptive first-room control guidance`), published from current main
+  snapshot `cca39fb`; the current control record is `4e05065`. The deployed
+  preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
+  hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `7b961b9` (`Add released-route World Atlas foundation`)
+- Runtime snapshot: `b5d701e` (`Add adaptive first-room control guidance`),
+  published from current main snapshot `cca39fb`
 - Deployment date: 2026-08-12
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://79d7af68.code-quest-lab.pages.dev/`
+- Preview: `https://ce226dfb.code-quest-lab.pages.dev/`
 - Current production check: passed on 2026-08-12 for primary and preview
-- Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`
+- Deployed source hash: `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`
 
 The verified shell includes the released-route World Atlas with honest locked
-roads and existing route handoff, plus the player-following Town/entrance guide
-with no gate-mounted pulse, cleared-room forward guidance, profile transfer,
-grouped readability fixes, touch target assist, recovery-safe progression, and the
-V1 route surface. Live desktop/tablet main-flow smokes passed with empty
-browser diagnostics. The current local source hash is
-`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`, which
-contains gated D13 reward/story work and the adaptive first-room hint and is
-intentionally not deployed. The next step remains the clean D1-12 route and
-the remaining touch/device session evidence.
+roads and existing route handoff, plus the steady player-following Town/entrance
+guide with no gate-mounted pulse, cleared-room forward guidance, profile
+transfer, grouped readability fixes, touch target assist, recovery-safe
+progression, and the V1 route surface. The live preview smoke used a fresh
+1280x720 pointer surface and reached first combat, pause, and safe finish;
+this is not a touch/device acceptance claim. The next step remains the clean
+D1-12 route and the remaining touch/device session evidence.
 
 ## Exact condition required to advance
 

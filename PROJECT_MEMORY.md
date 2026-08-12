@@ -16,16 +16,16 @@ or cumulative session transcript.
 - Current verified local gate: **140/140** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
-- Current deployed milestone (2026-08-12): the dashboard World Atlas reuses
-  Town, released routes, existing unlocks, and the current difficulty flow;
-  D13+ remains sealed. Commit `7b961b9` is pushed to `origin/main` and
-  deployed to preview `79d7af68.code-quest-lab.pages.dev` and the configured
-  hostname; source hash is
-  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
-  Production checks, preview UI smoke, 600x768 handoff, and browser logs pass.
-  The Town/entrance guide remains a steady player-following arrow with no
-  pulsing or gate-mounted marker. Score stays **93% / 19%**: clean-player
-  D1-D12 and physical/native-device evidence remain open.
+- Current deployed milestone (2026-08-12): the guidance and release-readiness
+  slice keeps the World Atlas/Town route and D13+ sealed, while the Town,
+  entrance, and cleared-room cues remain steady arrows that follow the player;
+  no gate-mounted pulse is used. Runtime `b5d701e` was published from current
+  main snapshot `cca39fb` to preview `ce226dfb.code-quest-lab.pages.dev` and
+  the configured hostname; source hash is
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+  Production checks, 140/140 release verification, deterministic fast QA, and
+  fresh live route/safe-stop smokes pass. Score stays **93% / 19%**:
+  clean-player D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): the released-route World Atlas is
   contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints, and
   unlock state with no new region/save field; local gate **140/140**. D13 stays

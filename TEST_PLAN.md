@@ -13,20 +13,23 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `7b961b9` is the tested/live web build; the source mirror and
-  generated web/native surfaces match its deployed SHA-256 identity.
-- Current local QA runtime `b5d701e` and control record `4e05065` are pushed;
-  the deployed runtime remains the separately recorded `7b961b9` checkpoint.
+- Runtime `b5d701e` is the tested/live web build, published from current main
+  snapshot `cca39fb`; the source mirror and generated web/native surfaces match
+  deployed SHA-256 identity `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- The deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
+  configured hostname is `https://code-quest-lab.gov8661682.com/`; both
+  production checks pass.
 - `npm.cmd test` passes **140/140**; release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser
   smoke, not by clean-player/device acceptance.
-- The deployed preview dashboard smoke opens World Atlas, shows Town plus the
-  released route and honest locked roads, hands off to the existing difficulty
-  screen, and remains usable at 600x768. The configured hostname serves the
-  release shell without captured browser errors. This is short smoke evidence,
-  not a clean full-route or physical-device pass.
+- A fresh live preview smoke at `1280x720` creates a disposable profile, follows
+  Town -> northern road -> entrance -> Normal -> Standard Expedition -> first
+  combat, pauses, finishes safely, deletes the profile through the UI, and
+  leaves empty diagnostics. The configured hostname serves the current release
+  shell without captured browser errors. This is short pointer-surface smoke
+  evidence, not a clean full-route or physical-device pass.
 - The next manual route must use a fresh profile and ordinary controls without
   `CQLI`, encounter accelerators, room completion, enemy-free mode, or high
   damage, and must use the materially different touch-capable/device surface

@@ -70,6 +70,27 @@ layers, world-state model, save boundaries, and acceptance bar.
 This is a tested and deployed open-world foundation slice. It does not claim
 the full open-world acceptance bar or increase the C1 evidence score by itself.
 
+### Completed milestone: guidance and release-readiness checkpoint (2026-08-12; deployed)
+
+- [x] Keep the `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` arrows attached to the
+  character and aimed at the next destination; remove the gate-mounted pulsing
+  directional arrow.
+- [x] Add adaptive first-room pointer/touch guidance without changing Joey's
+  authored combat, story, or balance systems.
+- [x] Run `release:verify` (**140/140**), deterministic `qa:fast` for all 11
+  released finales, static/package audit, Capacitor synchronization, and both
+  production checks.
+- [x] Publish runtime `b5d701e` from current main snapshot `cca39fb` to
+  preview `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
+  hostname; source hash is
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- [x] Verify a fresh live profile through Town, entrance, first combat, pause,
+  safe finish, and UI cleanup with empty diagnostics.
+
+This is a tested release-surface milestone, not a Release Candidate. Clean
+player D1-D12 and physical/native-device evidence remain open, so the score
+stays **93%** / **19%**.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)
@@ -703,16 +724,16 @@ that route to stop and be recorded. `CURRENT_CHECKPOINT.md` is the canonical
 percentage display; percentages are earned from named evidence and do not
 replace acceptance criteria.
 
-Latest verified checkpoint (2026-08-12): runtime milestone `7b961b9` added a
-touch-friendly World Atlas for Town and released routes, with honest locked
-roads, existing unlock/entitlement checks, and the current difficulty handoff;
-the player-following Town/entrance arrow remains steady with no gate-mounted
-pulse. The source is pushed to GitHub and deployed to
-`https://code-quest-lab.gov8661682.com/` with preview
-`https://79d7af68.code-quest-lab.pages.dev/`; both production checks passed
-with deployed shell hash
-`941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`, and the
-preview UI smoke passed at desktop/default and 600x768 tablet size. The active
+Latest verified checkpoint (2026-08-12): runtime `b5d701e` added the grouped
+player-following Town/entrance/cleared-room guidance and adaptive first-room
+input hint on top of the tested World Atlas foundation. The gate has no
+directional pulsing arrow; the release surface was published from current main
+snapshot `cca39fb` and live-verified at preview
+`https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
+The source is pushed to GitHub and deployed with source hash
+`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`; both
+production checks passed, and the fresh preview UI smoke reached first combat,
+pause, and safe finish with empty diagnostics. The active
 next priority is the owner-supplied clean D1-12 route, meaningful touch
 session, and device evidence in `DEVICE_ACCEPTANCE_RUNBOOK.md`. Later
 milestones must repeat the same test, push, deploy, and live-verification

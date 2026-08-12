@@ -5,18 +5,21 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `b5d701e` (`Add adaptive first-room control guidance`),
-  pushed to `origin/main` after the **140/140** release gate, deterministic fast
-  QA, package audit, and alias-launched native synchronization. The deployed
-  milestone remains `7b961b9`; this automated confidence slice does not create
-  a website checkpoint.
-- Runtime milestone: `7b961b9`, deployed and live-verified at the configured
-  hostname and preview `https://79d7af68.code-quest-lab.pages.dev/`.
-- Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
-- `production:check` passed for both primary and preview on 2026-08-12. The
-  preview UI smoke opened the dashboard atlas, handed off to the existing
-  difficulty screen, and remained usable at 600x768; the configured hostname
-  served the release shell with no captured browser errors.
+- Latest tested local runtime commit: `b5d701e` (`Add adaptive first-room
+  control guidance`), pushed to `origin/main` after the **140/140** release
+  gate, deterministic fast QA, package audit, and alias-launched native
+  synchronization. The tested runtime was published from current main snapshot
+  `cca39fb` as a major guidance and release-readiness checkpoint.
+- Runtime milestone: `b5d701e` is deployed and live-verified at the configured
+  hostname and preview `https://ce226dfb.code-quest-lab.pages.dev/`.
+- Deployed source hash:
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
+- `release:verify` passed **140/140**, `qa:fast` passed all 11 released
+  finales, and production checks passed for both primary and preview on
+  2026-08-12. A fresh live preview smoke reached Town, the northern road,
+  entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
+  the disposable profile was removed and diagnostics were empty. The primary
+  hostname served the current release shell without captured browser errors.
 
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
@@ -884,22 +887,22 @@ intended ending, or the full safe-stop session acceptance lanes.
   control guidance`), after `release:verify` (**140/140**), `qa:fast`, package
   audit, Capacitor synchronization, browser smoke, and GitHub push. Control
   records are current in `4e05065`. Checkpoint 1 remains active because clean
-  D1-12 and device evidence are not complete; the deployed milestone remains
-  `7b961b9`.
+  D1-12 and device evidence are not complete; this runtime is now deployed to
+  preview `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
+  hostname.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `7b961b9` (`Add released-route World
-  Atlas foundation`), deployed on 2026-08-12 to the configured Cloudflare
-  Pages project.
-- Checkpoint record: commit `7b961b9`, deployed 2026-08-12 to
+- Latest deployed runtime: `b5d701e` (`Add adaptive first-room control
+  guidance`), published on 2026-08-12 to the configured Cloudflare Pages
+  project from current main snapshot `cca39fb`.
+- Checkpoint record: deployed 2026-08-12 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://79d7af68.code-quest-lab.pages.dev/`), deployed source SHA-256
-  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+  `https://ce226dfb.code-quest-lab.pages.dev/`), deployed source SHA-256
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 - Production verification passed for both the configured hostname and preview;
-  the preview browser smoke opened the World Atlas, handed off to the existing
-  difficulty screen, and remained usable at 600x768. Browser diagnostics were
-  empty, and the configured hostname served the release shell.
+  the fresh preview browser smoke reached first combat, pause, and safe finish
+  with empty diagnostics, and the configured hostname served the release shell.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This remains local recovery evidence; the latest deployed milestone is recorded above.
 - A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
   start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and

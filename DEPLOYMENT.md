@@ -73,27 +73,28 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
-The 2026-08-12 released-route World Atlas milestone was published from
-runtime commit `7b961b9` to the configured Cloudflare Pages project
-`code-quest-lab`. Preview:
-`https://79d7af68.code-quest-lab.pages.dev/`; primary hostname:
+The 2026-08-12 guidance and release-readiness checkpoint was published from
+runtime commit `b5d701e` using current main snapshot `cca39fb` to the
+configured Cloudflare Pages project `code-quest-lab`. Preview:
+`https://ce226dfb.code-quest-lab.pages.dev/`; primary hostname:
 `https://code-quest-lab.gov8661682.com/`. The deployed source hash is
-`941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+`530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 
-The deployed milestone's complete release gate passed with **139/139** tests,
-deterministic `qa:fast`, static package audit, and Android/iOS Capacitor
-synchronization. The current local QA runtime is one controlled follow-up
-commit ahead at `b5d701e`, with a **140/140** gate and an adaptive first-room
-control hint; it is intentionally not deployed because it is a minor usability
-slice rather than a major website checkpoint.
-`npm.cmd run production:check` passed for both origins. A fresh preview UI
-smoke created a disposable Barbarian, returned to the dashboard, opened World
-Atlas, confirmed Town plus the released route and honest locked-road states,
-and handed off to the existing Forgotten Depths difficulty screen. The route
-handoff remained visible at `600x768`; the configured hostname served the
-release shell and the smoke tab captured no browser errors. This is release-
-surface verification, not clean-player D1-D12 or physical/native-device
-acceptance.
+This grouped checkpoint keeps the player-following `TO DEPTHS`, `TO GATE`, and
+`NEXT ROOM` cues steady and anchored to the character; the gate has no
+directional pulsing arrow. It also includes the adaptive first-room
+pointer/touch hint without changing Joey's combat, story, or balance systems.
+The complete release gate passed with **140/140** tests, deterministic
+`qa:fast` passed all 11 released finales, the static package audit and
+Android/iOS Capacitor synchronization passed, and `npm.cmd run
+production:check` passed for both origins.
+
+A fresh live preview smoke used a disposable profile at `1280x720`, followed
+Town -> northern road -> entrance -> Normal -> Standard Expedition -> first
+combat, paused, finished safely, removed the profile through the UI, and left
+empty diagnostics. The primary hostname served the current release shell with
+no captured browser errors. This is release-surface verification, not a
+clean-player D1-D12 or physical/native-device acceptance claim.
 
 The 2026-08-12 player-following entrance-guide refinement was published from
 runtime commit `4580631` to the configured Cloudflare Pages project
