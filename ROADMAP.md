@@ -95,8 +95,10 @@ not expose D13, advance Checkpoint 1, or create a website deployment.
 - [ ] Validate the same transfer matrix on a real second browser/device and
   against a preserved baseline save before claiming cross-device migration.
 
-This closes the local fixture gap without changing the runtime or claiming
-cross-device compatibility. It is not a website deployment checkpoint.
+The alternate-origin browser smoke is now complete, but it does not satisfy
+the physical-device or true cross-device requirement. This closes the local
+fixture gap without changing the runtime or claiming cross-device
+compatibility. It is not a website deployment checkpoint.
 
 ### Completed milestone: Level 1 onboarding balance pass (2026-08-10; deployed)
 

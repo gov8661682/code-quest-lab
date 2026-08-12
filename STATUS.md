@@ -16,6 +16,18 @@ not a claim of cross-device/native-storage or baseline-to-release runtime
 compatibility. No runtime source changed, so no website deployment checkpoint
 was created; the score remains **93%** / **19%**.
 
+## Fresh-origin profile-transfer smoke (2026-08-12; local browser evidence)
+
+Using the real file chooser, a fresh origin at `127.0.0.2:4193` imported the
+current v2 Mage fixture as Level 7 / 42 Souls and opened `SESSION RECOVERED` at
+Dungeon 1 room `d1_room_a`. A separate fresh origin at `127.0.0.3:4193`
+imported the legacy v1 fixture as Level 5 / 17 Souls with highest room 4. The
+two temporary profiles were deleted through Manage Data after verification.
+This adds alternate-origin browser evidence while physical-device,
+true-cross-device, and baseline-to-release runtime evidence remain open. No
+runtime source changed, so no website deployment checkpoint was created and
+the score remains **93%** / **19%**.
+
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 
 Town and dungeon entrances now show a steady arrow beside the character in

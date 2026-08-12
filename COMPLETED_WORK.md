@@ -20,6 +20,18 @@ documented acceptance-criterion failure. Optional improvements belong in
 - The runtime mirror/hash is unchanged, so this local QA slice has no website
   deployment checkpoint and does not change the **93% / 19%** score.
 
+## Fresh-origin profile-transfer smoke (2026-08-12; local browser evidence)
+
+- Imported the current v2 Mage fixture through the real browser file chooser on
+  fresh origin `127.0.0.2:4193`; the game showed Level 7 / 42 Souls and opened
+  `SESSION RECOVERED` at Dungeon 1 room `d1_room_a`.
+- Imported the legacy v1 Barbarian fixture on separate fresh origin
+  `127.0.0.3:4193`; the game showed Level 5 / 17 Souls and highest room 4.
+- Deleted both temporary profiles through Manage Data. This extends evidence
+  to alternate browser origins but does not claim physical-device,
+  true-cross-device, or baseline-to-release compatibility; no deployment was
+  made and the **93% / 19%** score is unchanged.
+
 ## Fresh Mage first-boss diagnostic (2026-08-12; local QA slice)
 
 - Recorded the fourth bounded 600x768 no-aid audit: a touch attack defeated one

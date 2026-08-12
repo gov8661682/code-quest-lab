@@ -32,9 +32,11 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   progression, save, dialogue, and return work are complete.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
-  invalid optional checkpoints, future v3, and unsupported Ranger content.
-  Cross-device/native-storage and baseline-to-release runtime evidence remain
-  open; do not turn this fixture coverage into a cloud-sync claim.
+  invalid optional checkpoints, future v3, and unsupported Ranger content. A
+  real file-chooser smoke imported current v2 on fresh origin `127.0.0.2:4193`
+  and recovered D1 room `d1_room_a` at Level 7/42 Souls; legacy v1 imported on
+  `127.0.0.3:4193` as Level 5/17 Souls. Physical/true-cross-device and
+  baseline-to-release runtime evidence remain open; no cloud-sync claim.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored

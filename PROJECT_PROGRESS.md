@@ -27,6 +27,13 @@ checkpoint data, future v3, and unsupported Ranger content. It adds parser
 coverage only; cross-device/native-storage and baseline-to-release runtime
 evidence remain open, so the **93%** / **19%** score is unchanged.
 
+A fresh-origin browser smoke then imported the current v2 fixture through the
+real file chooser and recovered Dungeon 1 room `d1_room_a` at Level 7 / 42
+Souls. A second origin imported the legacy v1 fixture as Level 5 / 17 Souls
+with highest room 4. The temporary profiles were deleted through Manage Data;
+this is alternate-origin browser evidence, not physical-device or true
+cross-device acceptance, so the score remains unchanged.
+
 A bounded fourth no-aid 600x768 Mage audit reached `Dark Corridor`; the visible
 Attack joystick defeated one enemy, while an attack-only follow-up without
 movement ended in death. The attempt is recorded as input evidence rather than

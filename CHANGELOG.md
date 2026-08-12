@@ -11,6 +11,17 @@
   test/documentation milestone only: no runtime hash changed, no deployment
   was created, and cross-device/native-storage runtime evidence remains open.
 
+## Fresh-origin profile-transfer smoke (2026-08-12; local browser evidence)
+
+- Imported the current v2 fixture through the real browser file chooser on a
+  fresh loopback origin and recovered Dungeon 1 room `d1_room_a` at Level 7 / 42
+  Souls.
+- Imported the legacy v1 fixture on a second fresh loopback origin and observed
+  Level 5 / 17 Souls with highest room 4. Both temporary profiles were deleted
+  through Manage Data. This is alternate-origin browser evidence only; it does
+  not replace physical-device or true cross-device validation, and no website
+  deployment was created because the runtime hash is unchanged.
+
 ## Fresh Mage first-boss QA diagnostic (2026-08-12; local)
 
 - Added a deterministic fresh Normal Mage/Stone Guardian scenario to fast QA.
