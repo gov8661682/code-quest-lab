@@ -30,6 +30,11 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   separately from the deployed runtime/source identity in the device report;
   this prevents a later documentation commit from being mistaken for the
   tested website build. It does not change the evidence score or deployment.
+- A separate fresh Chrome extension route used ordinary no-aid controls through
+  two D1 combat rooms, shrine, treasure, and the Bone Champion mini-boss entry;
+  the long combat batch timed out before completion. It is partial clean-player
+  evidence only, does not change **93% / 19%**, and is not physical-device
+  evidence.
 
 ## World-state and connection registry milestone (2026-08-12; deployed)
 

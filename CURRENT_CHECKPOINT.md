@@ -848,6 +848,14 @@ skip the active C1 route, save, input, and session acceptance criteria.
 
 ## Latest active-checkpoint QA evidence
 
+- On 2026-08-12, a fresh Mage on a separate Chrome extension surface used
+  ordinary controls with no `CQLI`, encounter accelerator, room completion,
+  enemy-free, or high-damage aid. It reached and cleared D1 `Ruined Archway`
+  and `Warden's Gate`, took the shrine blessing and treasure reward, and
+  entered `Tyrant's Keep` against the `Bone Champion`; no warning/error
+  diagnostics were captured before the control channel timed out during a long
+  combat batch. This is partial clean-player evidence, not a completed route or
+  device result; the long-batch Chrome method is now loop-broken.
 - On 2026-08-05, the configured production hostname was tested at 1024x768
   with a fresh Barbarian profile created for this run. The profile reached
   Town, the Dungeon 1 entrance, Normal trial, modifier selection, and three

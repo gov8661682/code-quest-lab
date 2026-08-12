@@ -68,9 +68,9 @@ cumulative session transcript.
   Normal Mage against the first Stone Guardian: one authored summon phase,
   real incoming damage, and victory in 9.15 simulated seconds without any QA
   aid. Managed D1-D12 Mage coverage remains QA-assisted, not clean-player
-  acceptance. First-room guidance now adapts to pointer versus touch controls; the latest fourth 600x768 no-aid audit delivered one attack then
-  died during an attack-only/no-movement follow-up; this is input evidence,
-  not a full D1-D12 acceptance claim or a reason for another global nerf.
+  acceptance. First-room guidance adapts to pointer versus touch controls; a
+  fresh Chrome no-aid route reached two D1 combat rooms, shrine, treasure, and
+  the Bone Champion before timeout; partial evidence only, not a full-route claim or a reason for another global nerf.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route

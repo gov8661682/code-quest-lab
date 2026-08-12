@@ -52,6 +52,12 @@ Updated: 2026-08-12
   damage, and must use the materially different touch-capable/device surface
   specified in `DEVICE_ACCEPTANCE_RUNBOOK.md`; the consumed managed-browser
   route method must not be repeated.
+- A separate Chrome extension smoke on 2026-08-12 used a fresh Mage with no
+  developer aids and cleared two D1 combat rooms, a shrine, and treasure before
+  reaching the Bone Champion mini-boss. The automation channel timed out during
+  a long combat batch; this is partial clean-player evidence only, and that
+  batch strategy must not be repeated without a materially different input
+  method.
 - Native evidence remains owner-environment work: this Windows host has no
   `java`/`JAVA_HOME`, Xcode, or representative hardware.
 
