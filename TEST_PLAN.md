@@ -1,6 +1,6 @@
 # Code Quest Lab - Test Plan
 
-Updated: 2026-08-10
+Updated: 2026-08-12
 
 ## Test rules
 
@@ -10,6 +10,23 @@ Updated: 2026-08-10
 - Record browser, viewport, commit, date, and result for each manual run.
 - Treat 13-17-year-old tablet users as the primary test audience; inspect clarity and tone without adding childish language.
 - Treat the public review pages and deployment package as release surfaces: verify every same-origin route, CSP/permissions headers, HTTPS, and clean-browser rendering.
+
+## Current release checkpoint - 2026-08-12
+
+- Runtime `baaab57` is the tested/live web build; the source mirror and
+  generated web/native surfaces match its SHA-256 identity.
+- `npm.cmd test` passes **125/125**; release contracts, package audit,
+  deterministic `qa:fast`, native synchronization, and production checks pass.
+- Live 1024x768 desktop and 600x768 tablet smokes reach the first Normal combat
+  room with two enemies and visible touch controls. This is short smoke evidence,
+  not a clean full-route or physical-device pass.
+- The next manual route must use a fresh profile and ordinary controls without
+  `CQLI`, encounter accelerators, room completion, enemy-free mode, or high
+  damage. The five-attempt loop boundary is already consumed for the current
+  route method; a future run must use a materially different control strategy
+  and record the first failing room/system rather than repeat the same batch.
+- Native evidence remains owner-environment work: this Windows host has no
+  `java`/`JAVA_HOME`, Xcode, or representative hardware.
 
 ## Rolling project memory - 2026-08-10
 

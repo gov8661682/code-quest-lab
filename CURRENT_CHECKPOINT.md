@@ -30,7 +30,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 ### Latest evidence update (2026-08-12)
 
 - The level-1 web difficulty wall is now addressed in the release build
-  build without simplifying Joey's content. Normal D1 ordinary rooms through
+  without simplifying Joey's content. Normal D1 ordinary rooms through
   depth 6 use a finite `0.68` health / `0.28` damage / `0.80` speed /
   `1.80` attack-cooldown budget with `4.5s` response grace; the first elite
   uses `0.45/0.22/0.75/2.00` with `5.0s` grace; the first mini-boss uses

@@ -86,7 +86,9 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - The invincibility aid is page-session state: `CQLI` idempotently enables it;
   verify the visible banner after each fresh run. Reload resets it; keep it
   outside saves, exports, native builds, and production.
-- Do not retry the same blocked surface without a material state change:
+- Native readiness is still environment-gated: `native:doctor` sees the Android
+  project, but `java`/`JAVA_HOME`, Xcode, and physical devices are unavailable.
+  Do not retry the same blocked surface without a material state change;
   physical-device, native-build, and owner approval gaps remain genuine.
 - Run `npm.cmd run qa:fast` before long combat checks; `release:verify` rebuilds
   and synchronizes generated web/native assets first. New encounter code must

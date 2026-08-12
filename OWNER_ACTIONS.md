@@ -1,6 +1,6 @@
 # Code Quest Lab - Owner Actions
 
-Updated: 2026-08-10
+Updated: 2026-08-12
 
 These are human-only or account/legal actions. The development work should continue around them.
 
@@ -13,12 +13,12 @@ These are human-only or account/legal actions. The development work should conti
 - Git metadata write access is currently resolved: commits `c2c3b39` and
   `692bb65` were created and pushed to `origin/main`. Reopen this action only
   if a later checkpoint again cannot create `.git/index.lock`.
-- The configured site was verified from the current environment after commit
-  `e7871b0`: preview `a89328df.code-quest-lab.pages.dev` and
+- The configured site was verified from the current environment after runtime
+  commit `baaab57`: preview `051a6921.code-quest-lab.pages.dev` and
   `https://code-quest-lab.gov8661682.com` passed production checks, and live
-  desktop/tablet smoke reached D1 combat with no browser diagnostics. Owner
-  review remains appropriate before a future publication checkpoint, but this
-  is no longer an active reachability blocker.
+  1024x768 desktop and 600x768 tablet smoke reached D1 combat. Owner review
+  remains appropriate before a future publication checkpoint, but this is no
+  longer an active reachability blocker.
 
 - Confirm the final product name and obtain professional trademark/name clearance. A preliminary web search on 2026-08-04 did not surface an obvious exact-match game result, but this is not clearance.
 - Confirm the target audience and age-rating position: the current product direction is secondary-school students approximately 13-17, not an automatic Apple Kids-category claim.
@@ -40,6 +40,9 @@ These are human-only or account/legal actions. The development work should conti
 - Review and approve the generated app icon/splash set in `ASSET_REGISTER.md`; provide or approve the remaining feature graphic, screenshots, and promotional assets.
 - Perform physical-device testing on representative iPhone/iPad and Android hardware. A Mac/Xcode environment is required to produce a signed iOS build.
 - Provide a Windows or CI environment with a supported JDK, Android SDK/platform tools, and Gradle access; run `npm.cmd run native:android:build` and record the resulting APK/AAB build evidence.
+- Current native check (2026-08-12): `npm.cmd run native:doctor` reports Android
+  looking great, but `java`/`JAVA_HOME` and Xcode are unavailable here, so the
+  Android build and iOS build remain owner-environment actions.
 - On a Mac, run `npm run native:sync`, open `ios/App/App.xcworkspace` in Xcode, confirm the landscape orientation choice (including whether iPad full-screen orientation locking is acceptable), and perform unsigned/signed device builds as appropriate.
 - The Windows-generated iOS Swift Package manifest points at the local Windows-side `node_modules` path; the Mac-side `native:sync` step must regenerate it before the Xcode build.
 - Review the generated Android manifest's default `INTERNET` declaration during the native permission audit; remove it only after an Android smoke build proves the local Capacitor shell still loads without it.
