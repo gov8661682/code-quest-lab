@@ -13,13 +13,14 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
-A fresh no-aid route audit reached the first Dungeon 1 combat room in a new
-Mage profile, but the current managed browser was a `1280x720` fine-pointer
-surface with the touch Attack joystick hidden. Ordinary CUA gestures produced
-no observable hits and the session ended with `0` enemies defeated; a longer
-burst exceeded the browser-control timeout. This is an input-surface evidence
-gap, not a balance conclusion. The clean-player D1-D12 lane and the **93%** /
-**19%** score remain unchanged.
+The fine-pointer input-surface gap found by a fresh no-aid route audit is now
+addressed by a visible, keyboard-accessible `Attack nearest target` button.
+The button uses the existing shared nearest-target queue; touch surfaces keep
+the Attack joystick and target assist unchanged. A canonical `1280x720` smoke
+displayed the button with the joystick hidden, clicked it in the first D1
+combat room, and recorded no browser warnings/errors. This resolves the
+managed-browser control dead end, but the clean-player D1-D12 lane and the
+**93%** / **19%** score remain unchanged.
 
 The first Normal Dungeon 1 Stone Guardian now uses a finite web onboarding
 budget (`0.60/0.55/0.90/1.40/0.60` for HP, damage, speed, attack cadence, and
@@ -32,7 +33,7 @@ session-only QA aid. The steady player-following guide also remains in place;
 the gate itself has no directional marker. This is QA-assisted evidence, not
 clean-player D1-D12 or physical/native-device acceptance.
 
-The ordered local gate is now **126/126**, with `qa:fast`, package checks, and
+The ordered local gate is now **127/127**, with `qa:fast`, package checks, and
 Capacitor synchronization passing. The grouped GitHub/domain checkpoint is
 complete: commit `6e5812f` is pushed to `origin/main` and deployed on
 2026-08-12 to preview `https://ab0fd517.code-quest-lab.pages.dev/` and the

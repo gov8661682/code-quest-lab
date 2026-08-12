@@ -7,6 +7,19 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+
+- Closed the managed-browser fine-pointer combat dead end with a visible,
+  keyboard-accessible `Attack nearest target` button. It routes through the
+  existing nearest-target attack queue and does not expose developer aids.
+- Kept touch Attack joystick behavior and target assist unchanged; the
+  existing mouse canvas attack path remains available as well.
+- Canonical `1280x720` smoke displayed the control in the first D1 room,
+  clicked it once, and recorded no browser warnings/errors. The ordered local
+  gate passes **127/127**, `qa:fast`, package audit, and Capacitor sync.
+- Clean-player D1-D12 and physical/native-device acceptance remain open until
+  their named evidence is collected.
+
 ## Stone Guardian web onboarding budget and player-following guide (2026-08-12; deployed checkpoint)
 
 - Kept Joey's first boss, phase transition, summons, slam, cleave, meteors,

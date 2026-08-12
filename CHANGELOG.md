@@ -1,5 +1,18 @@
 # Code Quest Lab - Changelog
 
+## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+
+- Added a visible, keyboard-accessible `Attack nearest target` control for
+  fine-pointer surfaces where the touch Attack joystick is intentionally
+  hidden. It uses the existing shared nearest-target queue, so the input
+  behavior remains consistent with touch Attack taps and target assist.
+- Kept the touch layout unchanged and preserved the existing mouse canvas
+  attack path. A canonical `1280x720` first-room smoke displayed and clicked
+  the control with empty browser warning/error logs.
+- The ordered release gate passes **127/127**, `qa:fast`, package checks, and
+  native synchronization. Clean-player D1-D12 and physical/native-device
+  acceptance remain open.
+
 ## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 - Added a Normal D1-only Stone Guardian onboarding budget

@@ -74,6 +74,21 @@ This resolves the current Level 1 scaling blocker without increasing the
 evidence score: full clean-player D1-D12 and physical/native touch evidence
 remain open.
 
+### Completed milestone: fine-pointer attack affordance (2026-08-12; deployment checkpoint pending)
+
+- [x] Add a visible, keyboard-accessible nearest-target Attack control on
+  fine-pointer surfaces where the touch joystick is hidden.
+- [x] Route the control through the existing shared attack queue and preserve
+  the touch joystick, target assist, and canvas mouse paths.
+- [x] Pass the ordered **127/127** release gate, `qa:fast`, package audit, and
+  Capacitor synchronization; verify the control in a canonical `1280x720`
+  first-room smoke with empty browser diagnostics.
+- [ ] Commit, push, deploy, and verify both configured production origins.
+
+This resolves a reproducible managed-browser combat dead end without changing
+Joey's combat design. It does not advance the score until clean-player D1-D12
+and physical/native-device acceptance lanes have named evidence.
+
 ### Completed follow-up: room-entry motion and early D1 onboarding hardening (2026-08-11; deployed checkpoint)
 
 - [x] Shorten mobile enemy arrival to a bounded `1.35s` visible step and

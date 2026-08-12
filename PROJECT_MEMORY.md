@@ -15,7 +15,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **126/126** tests, static build/package audit,
+- Current verified local gate: **127/127** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): Normal D1 onboarding keeps Joey's
   rosters, rewards, and later pressure while using a finite opening budget:
@@ -63,11 +63,13 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   600x768 no-aid smoke cleared the opening room; bounded local runs also reached
   D1's first mini-boss before the browser-control batch stopped. This is progress
   evidence, not a full D1-D12 acceptance claim.
-- Fresh no-aid managed-browser audit (2026-08-12) reached D1's first room but
-  ran at `1280x720` fine-pointer mode with the touch Attack joystick hidden;
-  ordinary CUA gestures produced no observable hits and the run ended with
-  `0` kills. Treat this as an input-surface gap, not a balance diagnosis; use a
-  real touch-capable surface or a bounded visible-input harness next.
+- The fresh `1280x720` fine-pointer audit exposed a hidden-joystick input gap;
+  it is now closed by the visible `Attack nearest target` button, which uses
+  the shared nearest-target queue while touch surfaces keep the Attack joystick
+  unchanged. The canonical smoke displayed the button, clicked it in the
+  first D1 room, and recorded no browser warnings/errors. This improves the
+  managed surface but does not claim a clean-player D1-D12 route or advance
+  the **93% / 19%** score.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route

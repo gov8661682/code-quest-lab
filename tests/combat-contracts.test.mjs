@@ -224,6 +224,14 @@ test('desktop play surface exposes a focusable keyboard target', () => {
   assert.match(SOURCE, /canvas\.addEventListener\('pointerdown',[\s\S]*?canvas\.focus\(\)/, 'pointer input focuses the play surface');
 });
 
+test('fine-pointer play surface exposes a visible nearest-target attack fallback', () => {
+  assert.match(SOURCE, /<button id="desktopAttackBtn" type="button" aria-label="Attack nearest target">Attack<\/button>/, 'fine-pointer surfaces have an accessible ordinary attack control');
+  assert.match(SOURCE, /#desktopAttackBtn \{ display:none;[\s\S]*?touch-action:manipulation/, 'the fallback is hidden by default and remains a touch-safe control');
+  assert.match(SOURCE, /@media \(hover:hover\) and \(pointer:fine\) \{[\s\S]*?#desktopAttackBtn \{ display:flex; align-items:center; justify-content:center; \}/, 'fine-pointer surfaces reveal the fallback');
+  assert.match(SOURCE, /@media \(max-width:600px\) \{[\s\S]*?#desktopAttackBtn \{ display:none; \}/, 'narrow touch layouts keep the Attack joystick as the primary control');
+  assert.match(SOURCE, /safeClick\('desktopAttackBtn','Desktop Attack',function\(\)\{queueNearestAttack\(\);\}\)/, 'the visible control uses the shared nearest-target attack queue');
+});
+
 test('desktop movement preserves short key pulses in managed browser surfaces', () => {
   assert.match(SOURCE, /var desktopInput=\{keys:\{\},tapUntil:\{\}/, 'desktop input stores bounded tap state');
   assert.match(SOURCE, /var DESKTOP_TAP_NUDGE_MS=120;/, 'tap nudge duration is bounded');

@@ -163,9 +163,12 @@ html, body {
 #pauseBtn { position:absolute; top:calc(6px + env(safe-area-inset-top)); right:max(10px,env(safe-area-inset-right)); width:32px; height:32px; background:rgba(20,16,30,0.9); border:1px solid #4a4338; border-radius:4px; color:#cfc4ae; font-size:1.1em; cursor:pointer; z-index:8; display:flex; align-items:center; justify-content:center; touch-action:manipulation; }
 #pauseBtn:active { background:#2a2530; }
 #desktopControlsHint { display:none; position:absolute; left:12px; bottom:12px; z-index:12; padding:7px 10px; border:1px solid rgba(216,192,138,0.45); border-radius:5px; background:rgba(11,11,16,0.78); color:#cfc4ae; font:0.68em/1.4 Georgia,'Times New Roman',serif; pointer-events:none; }
+#desktopAttackBtn { display:none; position:absolute; left:50%; bottom:108px; transform:translateX(-50%); min-width:118px; min-height:42px; padding:8px 18px; border:2px solid #c0392b; border-radius:6px; background:rgba(38,12,16,0.95); color:#ffd0c8; font:700 0.72em/1 Georgia,'Times New Roman',serif; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; z-index:12; touch-action:manipulation; user-select:none; -webkit-tap-highlight-color:rgba(192,57,43,0.28); box-shadow:0 0 12px rgba(192,57,43,0.18); }
+#desktopAttackBtn:active { background:#4a1820; border-color:#ff8a78; color:#fff0ec; }
 @media (hover:hover) and (pointer:fine) {
   .joyBase { display:none; }
   #desktopControlsHint { display:block; }
+  #desktopAttackBtn { display:flex; align-items:center; justify-content:center; }
   #skillButtons-left,#skillButtons-right { bottom:18px; width:126px; }
   #enemyCount { bottom:18px; }
 }
@@ -623,6 +626,7 @@ html, body {
   .screen:not(#gameScreen) { justify-content:flex-start; overflow-y:auto; padding:max(14px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left)); }
   #gameScreen { overflow:hidden; }
   #desktopControlsHint { display:none; }
+  #desktopAttackBtn { display:none; }
   #hud { height:calc(42px + env(safe-area-inset-top)); padding-left:max(6px,env(safe-area-inset-left)); padding-right:max(44px,env(safe-area-inset-right)); gap:4px; }
   #hud .hudSection { gap:3px; min-width:0; }
   #hud .hudSection + .hudSection { margin-left:2px; }
@@ -890,6 +894,7 @@ html, body {
 
 <div id="gameScreen" class="screen">
   <canvas id="gameCanvas" tabindex="0" role="application" aria-label="Code Quest Lab game area"></canvas>
+  <button id="desktopAttackBtn" type="button" aria-label="Attack nearest target">Attack</button>
   <div id="desktopControlsHint">Move: <b>WASD / Arrows</b> &nbsp; Aim/Attack: <b>Mouse click / hold</b><br>Skills: <b>Q</b> Core · <b>E</b> Move · <b>R</b> Ultimate · <b>F</b> Potion · <b>G</b> Interact · <b>Esc</b> Pause</div>
   <canvas id="minimapCanvas" width="120" height="90"></canvas>
 <div id="hud">
@@ -25345,6 +25350,7 @@ safeClick('moveNudgeUp','Move North',function(){queueTouchMoveStep(0,-1);});
 safeClick('moveNudgeLeft','Move West',function(){queueTouchMoveStep(-1,0);});
 safeClick('moveNudgeDown','Move South',function(){queueTouchMoveStep(0,1);});
 safeClick('moveNudgeRight','Move East',function(){queueTouchMoveStep(1,0);});
+safeClick('desktopAttackBtn','Desktop Attack',function(){queueNearestAttack();});
 safeClick('pauseBtn','Pause',function(){openPauseMenu();});
 safeClick('pauseResumeBtn','Resume',function(){closePauseMenu();});
 safeClick('charMenuEquipmentBtn','Char Menu Equipment',function(){_charScreenOpenedFromPauseMenu=true;openEquipmentScreen();});

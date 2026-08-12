@@ -3,6 +3,19 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Fine-pointer attack fallback (2026-08-12; deployment checkpoint pending)
+
+The managed `1280x720` fine-pointer surface now exposes a visible,
+keyboard-accessible `Attack nearest target` button when the touch Attack
+joystick is hidden. It uses the existing shared nearest-target attack queue;
+touch surfaces keep the joystick and target-assist behavior unchanged. A fresh
+canonical loopback smoke displayed the button in Town and the first D1 combat
+room, clicked it once, and recorded no browser warnings or errors. The ordered
+release gate passes **127/127**, `qa:fast`, the static package audit, and
+Capacitor synchronization. This closes the managed-browser input dead end but
+does not claim clean-player D1-D12 or physical/native-device acceptance; the
+score remains **93%** / **19%** until those acceptance lanes advance.
+
 ## Clean-player route audit (2026-08-12; evidence gap remains)
 
 A fresh no-aid route reached the first Dungeon 1 combat room in a new Mage

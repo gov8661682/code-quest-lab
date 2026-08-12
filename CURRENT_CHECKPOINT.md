@@ -29,6 +29,17 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 
 ### Latest evidence update (2026-08-12)
 
+- The fine-pointer input-surface gap from the fresh no-aid audit is now
+  addressed by a visible, keyboard-accessible `Attack nearest target` button.
+  It routes through the existing shared nearest-target attack queue; touch
+  surfaces continue to use the Attack joystick and target assist. A canonical
+  `1280x720` smoke displayed the button with the joystick hidden, clicked it
+  in the first D1 combat room, and recorded no browser warning/error logs.
+  The ordered release gate is now **127/127** with `qa:fast`, package audit,
+  and Capacitor synchronization passing. This closes the managed-browser
+  control gap but does not claim clean-player D1-D12 or advance the **93%** /
+  **19%** evidence score.
+
 - A fresh no-aid route audit on the current build reached Dungeon 1's first
   combat room in a new Mage profile, but the managed browser exposed a
   `1280x720` fine-pointer surface with the touch Attack joystick hidden. The
