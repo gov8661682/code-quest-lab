@@ -26,10 +26,10 @@ or cumulative session transcript.
   Production checks, 140/140 release verification, deterministic fast QA, and
   fresh live route/safe-stop smokes pass. Score stays **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
-- Current local QA follow-up (2026-08-12): the shared touch joysticks now
-  continue initialization when Pointer Capture is unavailable or rejected;
-  source/mirror, native sync, and the local gate **141/141** pass. The released-
-  route World Atlas remains contract-tested over Town, `REGION_ORDER`,
+- Current local QA follow-up (2026-08-12): touch joysticks tolerate absent or
+  rejected Pointer Capture, and window/visual-viewport changes share active-
+  world reflow; source/mirror, native sync, and the local gate **142/142** pass.
+  The released-route World Atlas remains contract-tested over Town, `REGION_ORDER`,
   `worldLocation`, waypoints, and unlock state with no new region/save field.
   D13 stays gated behind its future-content contracts and outside the atlas;
   its Joey-preserving reward/story boundary remains local and uncredited until

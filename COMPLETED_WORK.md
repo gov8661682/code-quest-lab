@@ -7,6 +7,18 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Mobile viewport reflow (2026-08-12; local QA)
+
+- Consolidated window and `visualViewport` resize handling so a live session
+  refreshes world dimensions, clamps the player, and recenters the camera after
+  orientation or browser-chrome changes.
+- The exact source mirror, Capacitor synchronization, static package audit,
+  `release:verify` (**142/142**), and all-11-finale `qa:fast` pass. Runtime
+  `3cce0e0` is pushed with source hash
+  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+- This is minor local tablet compatibility hardening, not a deployment
+  checkpoint or evidence-score change; physical/device acceptance remains open.
+
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
 - Hardened the shared joystick startup path so missing or rejected Pointer

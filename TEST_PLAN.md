@@ -19,10 +19,10 @@ Updated: 2026-08-12
 - The deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`; both
   production checks pass.
-- Current local runtime `72451c3` adds the pointer-capture fallback for shared
-  touch joysticks; its source/mirror hash is
-  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
-  `npm.cmd test` and `release:verify` pass **141/141**; the deployed runtime
+- Current local runtime `3cce0e0` adds the pointer-capture fallback and shared
+  visual-viewport reflow for touch surfaces; its source/mirror hash is
+  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+  `npm.cmd test` and `release:verify` pass **142/142**; the deployed runtime
   remains the previously verified 140-test build because this is a minor
   compatibility fix, not a major website checkpoint.
 - Release contracts, package audit,

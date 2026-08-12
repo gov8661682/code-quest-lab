@@ -104,6 +104,19 @@ This is local tablet-compatibility hardening rather than a major deployment
 checkpoint. It does not change the **93%** / **19%** score or replace the
 owner-run device acceptance packet.
 
+### Current local QA: shared mobile viewport reflow (2026-08-12)
+
+- [x] Route window and `visualViewport` resize events through one active-world
+  handler that refreshes room dimensions, player bounds, and camera position.
+- [x] Add the focused contract and pass the **142/142** release gate,
+  `qa:fast`, package audit, and Capacitor synchronization.
+- [x] Push runtime `3cce0e0` with source/mirror hash
+  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+
+This is local tablet/orientation hardening rather than a major deployment
+checkpoint. It does not change the **93%** / **19%** score or replace the
+owner-run device acceptance packet.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)

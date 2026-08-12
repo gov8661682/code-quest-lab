@@ -1,5 +1,17 @@
 # Code Quest Lab - Changelog
 
+## Mobile viewport reflow (2026-08-12; local QA)
+
+- Window and `visualViewport` resize events now share an active-world reflow
+  handler that refreshes room dimensions, clamps the player, and recenters the
+  camera during a live session. This protects tablet orientation and browser-
+  chrome changes without changing Joey's room, combat, or progression systems.
+- Runtime `3cce0e0` is pushed with source hash
+  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`;
+  `release:verify` passes **142/142** and `qa:fast` clears all 11 finales.
+- This is local compatibility hardening, not a website checkpoint or score
+  change; the deployed runtime remains `b5d701e`.
+
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
 - Shared touch joysticks now feature-detect Pointer Capture and continue

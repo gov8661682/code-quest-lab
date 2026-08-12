@@ -5,18 +5,18 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local runtime commit: `72451c3` (`Harden joystick pointer
-  capture fallback`), pushed to `origin/main` after the **141/141** release
+- Latest tested local runtime commit: `3cce0e0` (`Harden mobile viewport
+  reflow`), pushed to `origin/main` after the **142/142** release
   gate, deterministic fast QA, package audit, and alias-launched native
-  synchronization. This is a local touch-compatibility follow-up to the
+  synchronization. This is a local touch/viewport-compatibility follow-up to the
   deployed `b5d701e` guidance checkpoint.
 - Runtime milestone: `b5d701e` is deployed and live-verified at the configured
   hostname and preview `https://ce226dfb.code-quest-lab.pages.dev/`.
 - Deployed source hash:
   `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 - Current local source hash:
-  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
-- `release:verify` passed **141/141**, `qa:fast` passed all 11 released
+  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+- `release:verify` passed **142/142**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
   2026-08-12. A fresh live preview smoke reached Town, the northern road,
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
@@ -33,6 +33,17 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   `qa:fast`, and static package audit pass. This minor compatibility fix is not
   a website checkpoint; the deployed runtime remains `b5d701e` and the score
   remains **93% / 19%**.
+
+## Mobile viewport reflow (2026-08-12; local QA)
+
+- Window and `visualViewport` resize events now use one handler that resizes
+  the canvas and, during a live session, refreshes world dimensions, clamps the
+  player, and recenters the camera. This keeps orientation/browser-chrome
+  changes from leaving the active room on stale geometry.
+- Runtime `3cce0e0`, exact source mirror, Capacitor package, static audit,
+  `release:verify` (**142/142**), and `qa:fast` pass. This is minor local
+  compatibility hardening; the deployed runtime remains `b5d701e` and the
+  score remains **93% / 19%**.
 
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
@@ -896,8 +907,8 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA runtime commit: `72451c3` (`Harden joystick pointer
-  capture fallback`), after `release:verify` (**141/141**), `qa:fast`, package
+- Current verified local QA runtime commit: `3cce0e0` (`Harden mobile viewport
+  reflow`), after `release:verify` (**142/142**), `qa:fast`, package
   audit, Capacitor synchronization, browser smoke, and GitHub push. Control
   records are current in `4e05065`. Checkpoint 1 remains active because clean
   D1-12 and device evidence are not complete; this runtime is pushed but not

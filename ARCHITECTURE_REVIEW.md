@@ -5,15 +5,15 @@ Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, and released-route atlas
 slices; `origin/main` is writable and synchronized at tested local QA commit
-`72451c3`, with control records in `4e05065`. The deployed runtime remains
+`3cce0e0`, with control records in `4e05065`. The deployed runtime remains
 `b5d701e` at the configured hostname and preview
 `https://ce226dfb.code-quest-lab.pages.dev/`; the local source/mirror hash is
-`DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+`659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **141 passing Node tests**, passing release contracts, a generated static
+has **142 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly
@@ -40,9 +40,9 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **141/141** local
-test suite pass. The current local adaptive first-room hint and pointer-capture
-fallback are covered by focused contracts. This remains architecture
+static build, Capacitor sync, deterministic fast QA, and full **142/142** local
+test suite pass. The current local adaptive first-room hint, pointer-capture
+fallback, and visual-viewport reflow are covered by focused contracts. This remains architecture
 hardening; no checkpoint percentage is
 claimed until the open clean-player/device evidence is completed.
 
