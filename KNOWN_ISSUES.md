@@ -5,10 +5,10 @@ Updated: 2026-08-12
 ## P1 - release blocking
 
 - The current checkpoint's public hostname and Pages preview now serve runtime
-  `80a6562`, including the optional Gameplay Audio feedback layer, steady
-  player-following guides, and safe-area overlay hardening. Both production
-  checks passed on 2026-08-12; repeat them after each later major milestone
-  deployment.
+  `f0ce0e9`, including the migrated WorldState, registry-backed World Atlas,
+  optional Gameplay Audio feedback layer, steady player-following guides, and
+  safe-area overlay hardening. Both production checks passed on 2026-08-12;
+  repeat them after each later major milestone deployment.
 - Android/iOS projects are generated and synced, but no native build evidence exists. `native:android:build` stops because `JAVA_HOME`/`java` are absent; `cap build ios` stops because `xcodebuild` is unavailable. iOS requires Mac/Xcode.
 - The generated iOS Swift Package manifest contains the Windows-side local App-plugin path; rerun `npx cap sync` on the Mac checkout so Capacitor regenerates a valid Mac-side package path before opening Xcode.
 - Live StoreKit/Google Play purchase and restore adapters and sandbox transaction

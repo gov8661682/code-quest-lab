@@ -73,6 +73,25 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The current 2026-08-12 world-state and connection-registry milestone was
+published from runtime commit `f0ce0e9` to the configured Cloudflare Pages
+project `code-quest-lab`. Preview: `https://596095e6.code-quest-lab.pages.dev/`;
+primary hostname: `https://code-quest-lab.gov8661682.com/`. The deployed source
+hash is `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+
+The shipped slice adds backward-compatible `WorldState` normalization and a
+shared `WorldRegion`/`WorldConnection` registry. The live World Atlas shows
+Town plus the 11 released destinations, charted-route progress, honest locks,
+and existing route handoff; D13+ remains sealed. `release:verify` passed
+**151/151** tests, `qa:fast` passed all 11 released finales, the static/package
+audit and Android/iOS Capacitor synchronization passed, and
+`npm.cmd run production:check` passed for both origins. A fresh preview smoke
+created a Mage, reached Town, safely returned to the dashboard, verified the
+Atlas at `1/11 routes charted` with no Dungeon 13 card, removed its disposable
+profile, and the configured hostname served the current shell. This is
+release-surface verification, not a clean-player D1-D12 or physical/native-
+device acceptance claim.
+
 The 2026-08-12 gameplay audio feedback milestone was published from runtime
 commit `80a6562` to the configured Cloudflare Pages project `code-quest-lab`.
 Preview: `https://4aef14a3.code-quest-lab.pages.dev/`; primary hostname:

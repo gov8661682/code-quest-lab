@@ -2,7 +2,7 @@
 
 Reviewed: 2026-08-12
 Active checkpoint: Checkpoint 1 - Core game stability and complete V1 path
-Release status: pre-release hardening; gameplay audio feedback milestone deployed and verified; not a Release Candidate
+Release status: pre-release hardening; world-state/open-world architecture milestone deployed and verified; not a Release Candidate
 
 Main checkpoint completion: **93%**
 Overall project completion: **19%**
@@ -12,6 +12,25 @@ progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
+
+The world-state and connection-registry milestone adds a backward-compatible
+`WORLD_STATE_VERSION=1`, migrates existing unlocks/current location into
+discovered regions and opened connections, and preserves safe future flags.
+The World Atlas now reads shared `WorldRegion`/`WorldConnection` definitions,
+shows Town plus the 11 released destinations and honest route progress, and
+keeps D13+ sealed without introducing a second travel engine. Runtime `f0ce0e9`
+is pushed with source/mirror hash
+`AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`; the
+release gate is **151/151**, `qa:fast` clears all 11 released finales, and the
+static/package/native checks pass. It is deployed at preview
+`https://596095e6.code-quest-lab.pages.dev/` and the configured hostname. A
+fresh preview smoke created a Mage, reached Town, safely returned to the
+dashboard, verified `1/11 routes charted` and no Dungeon 13 card, cleaned the
+disposable profile, and the configured hostname loaded the current shell. The
+score remains **93%** / **19%** because clean-player D1-D12 and physical/native-
+device acceptance are still open.
+
+### Previous delta: gameplay audio feedback
 
 The gameplay audio feedback milestone now adds optional procedural cues for
 attacks, hits, defeats, room clears, doors, level-ups, and boss moments, plus a
@@ -597,8 +616,8 @@ D1-8 acceptance gates.
 | Public review pages, safety boundaries, and local-first architecture | Complete as an implementation foundation | About, Educational Purpose, Privacy, Support, Contact, School Review, same-origin navigation, restrictive headers, no account/chat/analytics/ad runtime, and bounded educational claims are present and tested | Owner/legal review, hosting-log disclosure, school review, and final wording approval | Owner decisions and final hosting configuration | Yes | Keep the surfaces synchronized with the shipped build |
 | Capacitor project scaffold and lifecycle seam | Complete as a scaffold | Android/iOS projects are generated and synced from `dist\`; landscape configuration, App lifecycle/back-button bridge, native entitlement discovery seam, and static native contracts pass | Native builds, hardware QA, Mac-side sync, permission review, and signing | Android JDK/SDK/Gradle; Mac/Xcode; owner accounts | Packaging is required for the stated product, but not complete | Resolve the owner/environment blockers without changing the web game |
 | Entitlement boundary and development adapter | Complete as a non-purchasing core | Product identity validation, verified-source checks, parent gate, restore/revocation handling, fail-closed native discovery, and development adapter matrix pass; development adapter is excluded from `dist\` | Live StoreKit/Google Play adapters, sandbox transactions, pricing, refund flow, and owner approval | Store products, credentials, sandbox accounts, platform builds | Yes for a monetised release; not yet live | Keep the boundary; do not add a browser unlock shortcut |
-| Current web deployment checkpoint | Complete for the 2026-08-12 gameplay audio feedback milestone | Cloudflare Pages project `code-quest-lab`; runtime `80a6562` is pushed, preview `4aef14a3` and the configured hostname passed production checks, deployed source hash `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`, and the fresh live smoke showed the audio setting, first-room attack/defeat, safe finish, cleanup, and empty diagnostics | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
-| Open-world product and architecture direction | Complete as the staged released-route foundation; full expansion remains post-C1 | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; runtime commit `7b961b9` now ships the Town/released-route World Atlas with honest locks and existing route handoff; `DECISIONS.md` records the explicit owner direction | Add optional landmarks, persistent discovered connections, save migration, and future regions only through complete route/reward/device milestones | C1 route completion, save migration design, touch/PWA evidence, and a major milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
+| Current web deployment checkpoint | Complete for the 2026-08-12 world-state/connection-registry milestone | Cloudflare Pages project `code-quest-lab`; runtime `f0ce0e9` is pushed, preview `596095e6` and the configured hostname passed production checks, deployed source hash `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`, and the fresh live smoke showed Town, safe return, the registry-backed Atlas at `1/11 routes charted`, no Dungeon 13 card, cleanup, and empty diagnostics | Repeat the owner-approved publish after the next major tested runtime milestone; full D1-12 clean-player route and physical touch evidence remain separate | Owner-approved hosting access for future publishes | Yes | Finish fresh D1-D12 route and remaining touch/device evidence |
+| Open-world product and architecture direction | Complete as the staged registry-backed foundation; full expansion remains post-C1 | `OPEN_WORLD_DIRECTION.md` defines the connected-world player experience, region/landmark/dungeon layers, `WorldState` target, save boundaries, Joey-content preservation, and acceptance bar; runtime `f0ce0e9` now ships the migrated `WorldState`, shared `WorldRegion`/`WorldConnection` registry, Town/released-route World Atlas, honest locks, and existing route handoff; `DECISIONS.md` records the explicit owner direction | Add optional landmarks, persistent discovered connections beyond the released graph, and future regions only through complete route/reward/device milestones | C1 route completion, touch/PWA evidence, and a major content milestone scope decision | Open-world compatibility is required; full open-world expansion is post-C1 | Preserve the design target while completing C1; do not add untested destinations |
 | AI expert playtest and first usability fixes | Playtest complete; grouped copy, Town orientation, and readability follow-up are deployed; initial attack response is reproduced; full progression evidence remains open | `AI_EXPERT_PLAYTEST.md` records the fresh 1024x768 live journey, zero browser diagnostics, open-world observations, combat readability findings, modifier concern, and prioritized recommendations; onboarding/Town copy, minimap, lock banner, enemy silhouettes, and HP-bar treatment are live in the checkpoint shell; the D2 elite playthrough reproduced a Corrupted summon escalation and local commit `6423ecb` bounds it with a finite budget | Continue the clean-profile C1 route and complete the touch/tablet lifecycle evidence; keep the local hardening fix under regression coverage before the next deployment | Supported browser/device input, C1 combat evidence, and stable build | Yes for release usability; open-world suggestions are staged | Re-test the corrected D2 elite room, then continue D1-8 evidence |
 
 ## Partially completed

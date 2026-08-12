@@ -4,16 +4,17 @@ Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, released-route atlas,
-viewport reflow, safe-area overlay, and gameplay-audio slices; `origin/main`
-is writable and synchronized at tested runtime commit `80a6562`. The deployed
-runtime is the gameplay-audio milestone at the configured hostname and preview
-`https://4aef14a3.code-quest-lab.pages.dev/`; the source/mirror hash is
-`C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+viewport reflow, safe-area overlay, gameplay-audio, and world-state registry
+slices; `origin/main` is writable and synchronized at tested runtime commit
+`f0ce0e9`. The deployed runtime is the world-state/connection-registry
+milestone at the configured hostname and preview
+`https://596095e6.code-quest-lab.pages.dev/`; the source/mirror hash is
+`AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **147 passing Node tests**, passing release contracts, a generated static
+has **151 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly
@@ -40,13 +41,15 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **147/147** local
-test suite pass. The optional procedural gameplay-audio layer and visible local
-toggle are covered by focused contracts while Joey's authored cues remain
-intact. The current local adaptive first-room hint, pointer-capture fallback,
-and visual-viewport reflow are covered by focused contracts. This remains architecture
-hardening; no checkpoint percentage is
-claimed until the open clean-player/device evidence is completed.
+static build, Capacitor sync, deterministic fast QA, and full **151/151** local
+test suite pass. The optional procedural gameplay-audio layer, visible local
+toggle, and the new backward-compatible `WorldState` plus shared
+`WorldRegion`/`WorldConnection` registry are covered by focused contracts while
+Joey's authored cues remain intact. The current local adaptive first-room hint,
+pointer-capture fallback, visual-viewport reflow, and Atlas registry usage are
+covered by focused contracts. This remains architecture hardening; no
+checkpoint percentage is claimed until the open clean-player/device evidence
+is completed.
 
 ## Findings by category
 
@@ -57,7 +60,7 @@ claimed until the open clean-player/device evidence is completed.
   helpers now drive HUD, recovery, and room-facing messaging for named bosses.
   The contract covers current and source-resident identities; do not reopen this
   as per-boss UI patches unless a regression is reproduced.
-- **No release-breaking defect is currently known.** The full 143-test suite
+- **No release-breaking defect is currently known.** The full 151-test suite
   and release contracts pass, so broad gameplay rewrites are not justified by
   current evidence.
 

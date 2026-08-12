@@ -13,25 +13,27 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `80a6562` is the tested/live web build, published to preview
-  `https://4aef14a3.code-quest-lab.pages.dev/` and the configured hostname;
+- Runtime `f0ce0e9` is the tested/live web build, published to preview
+  `https://596095e6.code-quest-lab.pages.dev/` and the configured hostname;
   source/mirror and generated web/native surfaces match deployed SHA-256
-  identity `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
-- The current release also includes optional Gameplay Audio feedback and a
-  visible local toggle, while retaining the pointer-capture fallback,
+  identity `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- The current release also includes the migrated `WorldState`, shared
+  `WorldRegion`/`WorldConnection` registry, optional Gameplay Audio feedback,
+  and a visible local toggle, while retaining the pointer-capture fallback,
   visual-viewport reflow, player-following destination guidance, and safe-area
-  overlay reservations. `npm.cmd test` and `release:verify` pass **147/147**.
+  overlay reservations. `npm.cmd test` and `release:verify` pass **151/151**.
 - Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - A fresh managed-browser viewport smoke on `3cce0e0` covered 1280x720,
   1024x768, and 600x800; canvas dimensions matched each viewport, touch
   controls remained visible, and no warnings/errors were captured. This is not
   physical-device, touch-only, or full-route evidence.
-- A cache-busted local browser smoke on `80a6562` reached the first room,
-  displayed the player-following destination guide, safely returned to the
-  dashboard, and captured no warnings/errors. Browser CSS reports zero insets
-  in this environment; the safe-area contract remains required for native and
-  cutout-device validation.
+- A fresh live preview browser smoke on `f0ce0e9` created a Mage, reached Town,
+  safely returned to the dashboard, displayed the registry-backed Atlas at
+  `1/11 routes charted` with no Dungeon 13 card, cleaned the disposable profile,
+  and captured no warnings/errors. The configured hostname loaded the current
+  profile shell. Browser CSS reports zero insets in this environment; the
+  safe-area contract remains required for native and cutout-device validation.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser
   smoke, not by clean-player/device acceptance.

@@ -13,12 +13,12 @@ acceptance.
 Use the configured hostname for Runs A-C unless the owner specifically needs
 the Pages preview:
 
-- Runtime snapshot: `80a6562` (`Add optional gameplay audio feedback`)
-- Deployment preview: `4aef14a3.code-quest-lab.pages.dev`
+- Runtime snapshot: `f0ce0e9` (`Add data-driven world state registry`)
+- Deployment preview: `596095e6.code-quest-lab.pages.dev`
 - Primary: `https://code-quest-lab.gov8661682.com/`
 - Source SHA-256:
-  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`
-- Local release gate before the run: **147/147**; do not enable developer
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`
+- Local release gate before the run: **151/151**; do not enable developer
   controls during Runs A-C.
 
 ## Required test inputs

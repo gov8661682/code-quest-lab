@@ -5,25 +5,44 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested runtime commit: `80a6562` (`Add optional gameplay audio
-  feedback`), pushed to `origin/main` and published as the gameplay-polish
-  milestone. It retains the tablet-control resilience work and adds optional
-  procedural combat/progression feedback with a local Gameplay Audio toggle.
-- Runtime `80a6562` is deployed and live-verified at the configured hostname;
-  Pages preview: `https://4aef14a3.code-quest-lab.pages.dev/`.
+- Latest tested runtime commit: `f0ce0e9` (`Add data-driven world state
+  registry`), pushed to `origin/main` and published as the world-state/open-
+  world architecture milestone. It retains the tablet-control and audio
+  polish work while adding migrated world progress and a shared route registry.
+- Runtime `f0ce0e9` is deployed and live-verified at the configured hostname;
+  Pages preview: `https://596095e6.code-quest-lab.pages.dev/`.
 - Deployed source hash:
-  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
 - Current local source hash:
-  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
-- `release:verify` passed **147/147**, `qa:fast` passed all 11 released
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- `release:verify` passed **151/151**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
-  2026-08-12. A fresh live smoke confirmed the Gameplay Audio setting,
-  reached first combat, defeated one enemy with a normal attack, safely ended,
-  removed the disposable profile, and captured no warnings/errors. This is not
-  full clean-player D1-D12 or physical-device evidence.
-- Runtime `80a6562` and the current status records are pushed to
+  2026-08-12. A fresh preview smoke created a Mage, reached Town, safely
+  returned to the dashboard, verified the registry-backed Atlas at `1/11
+  routes charted` with no Dungeon 13 card, and removed the disposable profile;
+  the configured hostname loaded the current shell. This is not full
+  clean-player D1-D12 or physical-device evidence.
+- Runtime `f0ce0e9` and the current status records are pushed to
   `origin/main`; the preceding tablet-control milestone remains documented
   below as historical release evidence.
+
+## World-state and connection registry milestone (2026-08-12; deployed)
+
+- Added `WORLD_STATE_VERSION=1` with backward-compatible normalization for
+  existing saves. Town, discovered released routes, opened Town connections,
+  current `worldLocation`, and safe future flags are preserved without
+  expanding the released route boundary.
+- Added shared data-driven `WorldRegion`/`WorldConnection` definitions and
+  moved the World Atlas to that registry. The Atlas shows Town plus the 11
+  released destinations, honest locks, route progress, and existing entitlement
+  and travel handoff; D13+ remains sealed.
+- Runtime `f0ce0e9` passed the exact mirror/build identity, **151/151** release
+  verification, `qa:fast`, package audit, Capacitor sync, and production checks
+  for both public origins. The fresh preview Atlas smoke and configured-domain
+  shell smoke completed with no captured browser error.
+- The evidence score stays **93% / 19%**. This milestone strengthens the
+  open-world and save architecture but does not replace the required clean
+  player route or physical/native-device evidence.
 
 ## Gameplay audio feedback milestone (2026-08-12; deployed)
 
@@ -962,23 +981,25 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified runtime commit: `80a6562` (`Add optional gameplay audio
-  feedback`), after `release:verify` (**147/147**), `qa:fast`, package audit,
-  Capacitor synchronization, live cache-busted browser smoke, GitHub push,
-  and Cloudflare Pages deployment. Checkpoint 1 remains active because clean
-  D1-12 and device evidence are not complete.
+- Current verified runtime commit: `f0ce0e9` (`Add data-driven world state
+  registry`), after `release:verify` (**151/151**), `qa:fast`, package audit,
+  Capacitor synchronization, live Atlas/shell browser smoke, GitHub push, and
+  Cloudflare Pages deployment. Checkpoint 1 remains active because clean D1-12
+  and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed runtime: `80a6562` (`Add optional gameplay audio feedback`),
+- Latest deployed runtime: `f0ce0e9` (`Add data-driven world state registry`),
   published on 2026-08-12 to the configured Cloudflare Pages project.
 - Checkpoint record: deployed 2026-08-12 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://4aef14a3.code-quest-lab.pages.dev/`), deployed source SHA-256
-  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+  `https://596095e6.code-quest-lab.pages.dev/`), deployed source SHA-256
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
 - Production verification passed for both the configured hostname and preview;
-  the fresh preview browser smoke reached first combat, pause, and safe finish
-  with empty diagnostics, and the configured hostname served the release shell.
+  the fresh preview browser smoke reached Town, safely returned to the
+  dashboard, verified the registry-backed Atlas with no Dungeon 13 card, and
+  cleaned its disposable profile; the configured hostname served the release
+  shell.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This remains local recovery evidence; the latest deployed milestone is recorded above.
 - A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
   start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and

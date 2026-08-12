@@ -14,13 +14,13 @@ These are human-only or account/legal actions. The development work should conti
   was created and pushed to `origin/main`. Reopen this action only if a later
   checkpoint again cannot create `.git/index.lock`.
 - The configured site was verified from the current environment after runtime
-  `80a6562`: preview `4aef14a3.code-quest-lab.pages.dev` and
+  `f0ce0e9`: preview `596095e6.code-quest-lab.pages.dev` and
   `https://code-quest-lab.gov8661682.com` passed production checks. The live
-  smoke toggled Gameplay Audio, followed Town to first combat, showed the
-  player-following `TO GATE` arrow, defeated one enemy with ordinary attack
-  input, safely finished, and removed its disposable profile with no captured
-  browser diagnostics. Owner review remains appropriate before a future
-  publication checkpoint, but this is no longer an active reachability blocker.
+  smoke created a Mage, reached Town, safely returned to the dashboard, showed
+  the registry-backed Atlas at `1/11 routes charted` with no Dungeon 13 card,
+  and removed its disposable profile with no captured browser diagnostics.
+  Owner review remains appropriate before a future publication checkpoint, but
+  this is no longer an active reachability blocker.
 
 - Confirm the final product name and obtain professional trademark/name clearance. A preliminary web search on 2026-08-04 did not surface an obvious exact-match game result, but this is not clearance.
 - Confirm the target audience and age-rating position: the current product direction is secondary-school students approximately 13-17, not an automatic Apple Kids-category claim.
@@ -30,8 +30,8 @@ These are human-only or account/legal actions. The development work should conti
 - Approve the final public support URL and privacy-policy URL/text. Draft same-origin Support and Privacy pages are present in the repository, but their final wording and hosting/log disclosures require owner review.
 - Confirm the static web deployment, DNS/HTTPS certificate, hosting/CDN log
   treatment, and clean-host verification for
-  `code-quest-lab.gov8661682.com`. The 2026-08-12 gameplay-audio checkpoint is
-  deployed from runtime `80a6562`; owner approval is still
+  `code-quest-lab.gov8661682.com`. The 2026-08-12 world-state/connection-
+  registry checkpoint is deployed from runtime `f0ce0e9`; owner approval is still
   required for each future milestone publish.
 - For the next substantial, tested milestone, approve publishing the complete
   `dist\` package to the existing Cloudflare Pages project and repeat the
@@ -48,7 +48,7 @@ These are human-only or account/legal actions. The development work should conti
 - Review and approve the generated app icon/splash set in `ASSET_REGISTER.md`; provide or approve the remaining feature graphic, screenshots, and promotional assets.
 - Perform physical-device testing on representative iPhone/iPad and Android
   hardware by following `DEVICE_ACCEPTANCE_RUNBOOK.md`. Start from the
-  currently deployed `80a6562` build at the configured hostname and record Runs
+  currently deployed `f0ce0e9` build at the configured hostname and record Runs
   A-C, including the clean D1-D12 route,
   10-30 minute touch session, safe-area, audio, offline, suspension, local-save,
   and (if claimed) transfer results. A Mac/Xcode environment is required to

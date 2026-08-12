@@ -12,18 +12,20 @@ one. They must not be used to reopen completed work.
   Atlas that shows Town, released destinations, objectives, and honest
   post-release lock conditions. Delivered in runtime commit `7b961b9`; full
   open-world expansion remains staged behind C1 and device evidence.
-- Introduce a data-driven `WorldRegion`/`WorldConnection` registry backed by
-  migrated `WorldState`; connect Town, regional hubs, landmarks, and dungeon
-  instances without creating a second game engine.
+- [x] Introduce a data-driven `WorldRegion`/`WorldConnection` registry backed
+  by migrated `WorldState`; runtime `f0ce0e9` connects Town to the 11 released
+  dungeon destinations without creating a second game engine. Future hubs,
+  landmarks, and dungeon instances remain staged.
 - Add short optional landmarks, NPC threads, gathering, lore, and route-choice
   activities that can be completed or safely abandoned in a 10-30 minute
   session.
 - Make Joey's later classes, D9-16, Bob's wider story, Pure Corruption, and
   the Smelter part of a connected world only after isolated save, balance,
   reward, accessibility, and device milestones.
-- Add world-state regression fixtures for discovered regions, opened
-  connections, cleared landmarks, safe return, migration, corruption recovery,
-  and offline resume.
+- [x] Add world-state regression coverage for discovered regions, opened
+  connections, migration, future-flag preservation, safe save/export, and
+  Atlas registry usage. Cleared-landmark, corruption-recovery, and offline-
+  resume fixtures remain future work as those systems are promoted.
 
 ## Joey creative parity (preserved, not silently simplified)
 

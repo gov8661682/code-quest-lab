@@ -12,26 +12,25 @@ cumulative session transcript.
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **147/147** tests, static build/package audit,
+- Current verified local gate: **151/151** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
-- Current deployed milestone (2026-08-12): the optional gameplay-audio polish
-  layer is live on top of the retained tablet-control foundation. The `TO
-  DEPTHS`, `TO GATE`, and `NEXT ROOM` cues stay beside the character; no
-  gate-mounted pulse is used. Runtime `80a6562` was published to preview
-  `4aef14a3.code-quest-lab.pages.dev` and the configured hostname; source hash
-  is `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
-  Production checks, 147/147 release verification, deterministic fast QA, and
-  a live settings/route/cleanup smoke pass. Score stays **93% / 19%**:
+- Current deployed milestone (2026-08-12): the bounded, save-compatible
+  `WorldState` plus shared `WorldRegion`/`WorldConnection` registry is live on
+  top of the retained open-world/Town, tablet-control, and audio foundations.
+  Runtime `f0ce0e9` was published to preview
+  `596095e6.code-quest-lab.pages.dev` and the configured hostname; source hash
+  is `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+  Production checks, 151/151 release verification, deterministic fast QA, and
+  live Atlas/shell smokes pass. Score stays **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
-- Current verified follow-up (2026-08-12): the exact source/mirror, generated
-  package, native sync, local gate **147/147**, and live browser smoke pass;
-  the smoke toggled Gameplay Audio off/on, reached first combat, defeated one
-  enemy with ordinary attack input, safely finished, removed its disposable
-  profile, and captured no warnings or errors. The released-route World Atlas
-  remains contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints,
-  and unlock state; D13 stays gated until future-region progression, save,
-  balance, return, and device evidence exist.
+- Current verified follow-up (2026-08-12): legacy profiles migrate their
+  discovered routes from existing unlocks and current location; the Atlas
+  renders Town plus the 11 released destinations, honest lock/connection state,
+  and `1/11 routes charted` for a fresh Mage. D13 stays gated until future-
+  region progression, save, balance, return, and device evidence exist. The
+  `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues still stay beside the character;
+  no gate-mounted pulse is used.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A

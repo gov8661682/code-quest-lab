@@ -67,6 +67,27 @@ layers, world-state model, save boundaries, and acceptance bar.
   `7b961b9`, then deploy preview `https://79d7af68.code-quest-lab.pages.dev/`
   and the configured hostname.
 
+### Completed milestone: world-state and connection registry (2026-08-12; deployed)
+
+- [x] Add `WORLD_STATE_VERSION=1` normalization that migrates existing
+  unlocks/current location into discovered regions and opened connections while
+  preserving safe future flags.
+- [x] Add shared data-driven `WorldRegion`/`WorldConnection` definitions and
+  make the World Atlas consume them without introducing a second travel engine
+  or expanding the released D1-D12 route boundary.
+- [x] Add focused registry, migration, save/export, future-flag, and Atlas
+  contracts; pass `release:verify` (**151/151**), `qa:fast`, package audit, and
+  Capacitor synchronization in runtime `f0ce0e9`.
+- [x] Push `f0ce0e9` to `origin/main`, deploy preview
+  `https://596095e6.code-quest-lab.pages.dev/` and the configured hostname, and
+  verify the live Atlas shows Town plus 11 released routes at `1/11 routes
+  charted` for a fresh Mage with no Dungeon 13 card.
+
+This is a tested save/architecture milestone that advances the open-world
+foundation without claiming full open-world completion or increasing the C1
+evidence score. Clean-player D1-D12 and physical/native-device acceptance
+remain the next score-bearing lanes.
+
 This is a tested and deployed open-world foundation slice. It does not claim
 the full open-world acceptance bar or increase the C1 evidence score by itself.
 

@@ -7,6 +7,29 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## World-state and connection registry milestone (2026-08-12; deployed; completed)
+
+- Added a backward-compatible `WORLD_STATE_VERSION=1` migration/normalization
+  seam. Existing profiles derive Town, discovered released routes, opened
+  Town connections, and current `worldLocation` from existing unlocks while
+  safe future flags remain preserved but UI-sealed.
+- Added shared `WorldRegion`/`WorldConnection` registry definitions and moved
+  the World Atlas to that registry. The live Atlas shows Town plus the 11
+  released destinations, route progress, honest locks, and existing travel,
+  difficulty, entitlement, save, and return flows; D13+ remains gated.
+- Added focused save/migration, graph/registry, future-flag, export, and Atlas
+  contracts. Runtime `f0ce0e9` passed exact source/build identity,
+  `release:verify` (**151/151**), `qa:fast`, static/package audit, and
+  Capacitor synchronization.
+- Published preview `https://596095e6.code-quest-lab.pages.dev/` and the
+  configured hostname on 2026-08-12; source hash:
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- Fresh live preview smoke created a Mage, reached Town, safely returned to
+  the dashboard, verified `1/11 routes charted` with no Dungeon 13 card,
+  removed its disposable profile, and the configured hostname loaded the
+  current shell. The score remains **93% / 19%** because clean-player D1-D12
+  and physical/native-device acceptance remain open.
+
 ## Gameplay audio feedback milestone (2026-08-12; deployed; completed)
 
 - Added a fail-safe, optional procedural audio layer for player attacks,

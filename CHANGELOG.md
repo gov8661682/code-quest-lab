@@ -1,5 +1,28 @@
 # Code Quest Lab - Changelog
 
+## World-state and connection registry milestone (2026-08-12; deployed)
+
+- Added a backward-compatible `WORLD_STATE_VERSION=1` normalization layer.
+  Existing saves derive Town, discovered released regions, opened Town routes,
+  and current location from their existing unlock state; safe future flags are
+  preserved without exposing future content.
+- Added shared data-driven `WorldRegion`/`WorldConnection` definitions and
+  moved the World Atlas to that registry. It now shows Town plus the 11
+  released destinations, charted-route progress, honest connection locks, and
+  the existing route/difficulty/entitlement handoff. D13+ remains sealed.
+- Added focused world-state, migration, graph, save/export, and Atlas contracts.
+  Runtime `f0ce0e9` passed `release:verify` (**151/151**), deterministic
+  `qa:fast`, static/package audit, Capacitor sync, and production checks for
+  both public origins.
+- Published preview: `https://596095e6.code-quest-lab.pages.dev/`; the
+  configured hostname serves source hash
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- Fresh live smoke created a Mage, reached Town, safely returned to the
+  dashboard, verified `1/11 routes charted` and no Dungeon 13 card, removed the
+  disposable profile, and recorded no browser errors. The score remains
+  **93% / 19%**; clean-player D1-D12 and physical/native-device evidence remain
+  open.
+
 ## Gameplay audio feedback milestone (2026-08-12; deployed)
 
 - Added an optional, low-volume procedural gameplay-audio layer for attacks,
