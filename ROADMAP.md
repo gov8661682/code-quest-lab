@@ -70,6 +70,19 @@ checkpoint. The next manual route evidence must use a genuinely touch-capable
 surface or another materially different strategy; do not repeat attack-only
 browser batches.
 
+### D13 preflight audit: keep Realm of Space gated (2026-08-12; local)
+
+- [x] Confirm the source-resident two-room route, Corruption of Space identity,
+  authored attack/phase/death sequence, shared exit portal, and purification
+  hook without promoting the region.
+- [x] Confirm and contract-test the missing reward, material, achievement,
+  unlock/progression, dialogue, and release-handoff work in the D13 finalizer.
+- [x] Keep D13 outside `REGION_ORDER`, normal unlock refresh, and active-run
+  recovery until a complete route/save/reward/return milestone exists.
+
+The three guard contracts are local release-readiness coverage only. They do
+not expose D13, advance Checkpoint 1, or create a website deployment.
+
 ### Completed milestone: Level 1 onboarding balance pass (2026-08-10; deployed)
 
 - Reduced the fresh Barbarian starter damage multiplier to `0.75`.

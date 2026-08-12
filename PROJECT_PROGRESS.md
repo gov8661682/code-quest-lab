@@ -13,6 +13,13 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The D13 preflight audit now has a protected boundary: Realm of Space retains
+its two-room atmosphere, named Corruption of Space boss, authored phases and
+death sequence, while its reward/material/achievement/unlock/progression
+finalizer work is explicitly incomplete. D13 remains outside the release
+region order and save guard. Three focused future-content contracts pass; the
+full local gate is now **131/131**. No D13 route or C1 score credit is claimed.
+
 A bounded fourth no-aid 600x768 Mage audit reached `Dark Corridor`; the visible
 Attack joystick defeated one enemy, while an attack-only follow-up without
 movement ended in death. The attempt is recorded as input evidence rather than
@@ -20,7 +27,8 @@ a balance failure, and the disposable profile was removed without touching the
 retained save. The deterministic fast-QA harness now covers the fresh Mage
 Stone Guardian onboarding loop without developer aids: one authored summon
 phase, real incoming damage, and victory in **9.15 simulated seconds**. The
-focused tests, `qa:fast`, and full local release gate pass **128/128**. This
+focused tests, `qa:fast`, and full local release gate pass **128/128** before
+the D13 guard contracts were added. This
 does not advance the **93%** / **19%** evidence score or claim a clean route.
 
 The Town and dungeon-entrance guide now follows the character in world space.

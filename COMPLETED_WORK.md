@@ -18,8 +18,21 @@ documented acceptance-criterion failure. Optional improvements belong in
   crosses the authored one-summon phase, takes real damage, and wins in 9.15
   simulated seconds with no developer aid.
 - Focused tests, `qa:fast`, and the full local release gate pass **128/128**.
-  This local diagnostic does not change the evidence score or trigger a site
-  deployment.
+This local diagnostic does not change the evidence score or trigger a site
+deployment.
+
+## D13 preflight guard (2026-08-12; local)
+
+- Audited Realm of Space as source-resident future content: the two-room route,
+  Corruption of Space identity, authored phases/attacks/death sequence, exit
+  portal, and purification hook are present.
+- Confirmed the release gap in `finalizeCorruptionOfSpaceDefeat`: rewards,
+  materials, achievements, dungeon unlock/progression, dialogue, and a full
+  release handoff remain intentionally absent. D13 stays outside the release
+  region order, unlock refresh, and active-run guard.
+- Added three future-content guard contracts. The current local suite is now
+  **131/131**; no D13 playability, website deployment, or C1 score credit is
+  claimed.
 
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 

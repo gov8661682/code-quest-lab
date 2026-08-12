@@ -12,6 +12,16 @@
 - The full local release gate is now **128/128**; this test-only slice is not a
   deployment checkpoint.
 
+## D13 preflight guard (2026-08-12; local)
+
+- Added three contracts that keep the source-resident Realm of Space outside
+  the V1 release route until its reward, material, achievement,
+  unlock/progression, dialogue, save, and return work is complete.
+- The audit preserves the authored two-room atmosphere, Corruption of Space
+  phases/attacks/death sequence, exit portal, and purification hook. The local
+  suite is now **131/131**; no D13 content was exposed and no site deployment
+  was created.
+
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 
 - Replaced the Town and dungeon-entrance edge cue with a steady arrow rendered

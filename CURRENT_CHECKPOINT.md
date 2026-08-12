@@ -24,10 +24,19 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **128/128** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **131/131** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
+
+- The D13 preflight audit confirms that Realm of Space is source-resident but
+  not release-ready: its two-room route, Corruption of Space identity, and
+  authored phase/attack/death wiring are present, while the defeat handler
+  intentionally omits rewards, materials, achievement updates, dungeon
+  unlock/progression, and release handoff. D13 remains outside `REGION_ORDER`,
+  normal unlock refresh, and active-run recovery. Three future-content guard
+  contracts pass; the current local gate is **131/131**. No score credit is
+  claimed and the evidence score remains **93%** / **19%**.
 
 - The bounded fresh-profile audit is now stopped under the loop-breaker rule.
   A fourth 600x768 no-aid Mage run delivered one ordinary touch attack in
@@ -36,7 +45,8 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   a balance conclusion or clean-route credit. A deterministic fresh-Mage
   Stone Guardian scenario now covers the same intended attack loop, authored
   summon phase, real incoming damage, and victory without developer aids; the
-  current local gate is **128/128**. The score remains **93%** / **19%**.
+  current local gate was **128/128** before the D13 guard contracts. The score
+  remains **93%** / **19%**.
 
 - The Town and dungeon-entrance destination cue is now a steady, world-space
   arrow beside the player. It rotates toward the actual portal/gate, follows

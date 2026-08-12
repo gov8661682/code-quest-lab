@@ -15,7 +15,7 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **128/128** tests, static build/package audit,
+- Current verified local gate: **131/131** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
 - Current deployed milestone (2026-08-12): fine-pointer surfaces now show a
   visible, accessible `Attack nearest target` control while touch surfaces
@@ -38,7 +38,9 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
   bosses/rewards, Veteran unlocks, portal exits, and final summaries. D13-D16
-  remain gated until separately verified.
+  remain gated. D13 preflight confirms the two-room Realm of Space route and
+  named boss are present, but rewards, materials, achievements, unlock/
+  progression, dialogue, and release handoff remain intentionally absent.
 - Canonical runtime: `index.html`; `code-quest-lab-source.txt` must remain an
   exact mirror after every runtime edit.
 - Joey's story, classes, skills, bosses, dialogue, endings, and open-world

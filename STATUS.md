@@ -76,6 +76,22 @@ release gate pass **128/128**. This is diagnostic/release-readiness evidence,
 not clean-player or physical-device acceptance, so the score remains
 **93%** / **19%**.
 
+## D13 preflight audit (2026-08-12; gated future-content finding)
+
+The source audit confirms that Realm of Space is present as a bounded
+`Threshold of the Void` → `The Collapsing Arena` route with the named
+Corruption of Space boss, authored Phase 1-3 attacks, defeat sequence, exit
+portal, and purification hook. It is not release-ready: the defeat finalizer
+explicitly omits rewards, materials, achievement updates, dungeon unlocks,
+progression handoff, and related dialogue. D13 remains excluded from
+`REGION_ORDER`, normal unlock refresh, and active-run recovery, so the V1 guard
+is still truthful and no new content was exposed.
+
+The three future-content guard contracts pass, and the full local release gate
+is now **131/131** after this audit coverage. This is a source/contract finding,
+not D13 playability evidence and not a C1 score increase; the score remains
+**93%** / **19%**.
+
 ## Stone Guardian onboarding and player-following guide (2026-08-12; deployed checkpoint)
 
 The first Normal D1 Stone Guardian now has a finite web onboarding budget:
