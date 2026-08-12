@@ -14,12 +14,12 @@ These are human-only or account/legal actions. The development work should conti
   was created and pushed to `origin/main`. Reopen this action only if a later
   checkpoint again cannot create `.git/index.lock`.
 - The configured site was verified from the current environment after runtime
-  commit `7b961b9`: preview `79d7af68.code-quest-lab.pages.dev` and
+  `b5d701e`: preview `ce226dfb.code-quest-lab.pages.dev` and
   `https://code-quest-lab.gov8661682.com` passed production checks. The live
-  preview smoke opened World Atlas, handed off to the existing route difficulty
-  screen, and remained usable at 600x768 with no captured browser errors. The
+  preview smoke followed Town to first combat, paused, finished safely, and
+  removed its disposable profile with no captured browser diagnostics. The
   deployed source hash is
-  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
   Owner review remains appropriate before a future publication checkpoint, but
   this is no longer an active reachability blocker.
 
@@ -31,11 +31,12 @@ These are human-only or account/legal actions. The development work should conti
 - Approve the final public support URL and privacy-policy URL/text. Draft same-origin Support and Privacy pages are present in the repository, but their final wording and hosting/log disclosures require owner review.
 - Confirm the static web deployment, DNS/HTTPS certificate, hosting/CDN log
   treatment, and clean-host verification for
-  `code-quest-lab.gov8661682.com`. The 2026-08-12 World Atlas checkpoint is
-  deployed from `7b961b9` and `production:check` passed for the primary and
-  preview origins; owner approval is still required for each future milestone
-  publish.
-- For the next substantial, tested milestone, approve publishing the complete `dist\` package to the existing Cloudflare Pages project and repeat the post-deployment checks. Do not treat the current open-world/design review, AI playtest, or incomplete copy/usability fixes as a deployment milestone.
+  `code-quest-lab.gov8661682.com`. The 2026-08-12 guidance and
+  release-readiness checkpoint is deployed from runtime `b5d701e`; owner
+  approval is still required for each future milestone publish.
+- For the next substantial, tested milestone, approve publishing the complete
+  `dist\` package to the existing Cloudflare Pages project and repeat the
+  post-deployment checks. Do not publish a minor fix or incomplete feature.
 - Provide Apple Developer and Google Play Console access when native submission work is ready. Do not put credentials in the repository.
 - Confirm the final application/bundle identifier; the provisional recommendation is `com.gov8661682.codequestlab`.
 - Provide signing certificates, provisioning profiles, Android keystore, and release account configuration.
