@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; the current local build also passed a 1280x720 -> 1024x768 -> 600x800 responsive smoke with no browser warnings/errors; no P0/P1 issue was observed during those checks | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `f0ce0e9` passed **151/151** at the website checkpoint; the current repository control/build gate is **153/153**, with `qa:fast`, package audit, Android/iOS Capacitor sync, and primary/preview production checks passing; deployed source hash is `AA469B...2E611F1` | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b7e70c3` passed **153/153** at the website checkpoint; `qa:fast`, package audit, Android/iOS Capacitor sync, and primary/preview production checks pass; deployed source hash is `AA469B...2E611F1` and the PWA shell is v12 | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Current milestone: world-state and connection registry (2026-08-12; deployed)
@@ -59,15 +59,17 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   preparation only: no runtime source changed, no website deployment was made,
   and the score remains **93% / 19%** until owner/device evidence exists.
 
-### Current local QA: player-following gate guide cache refresh (2026-08-12)
+### Current deployed correction: player-following gate guide cache refresh (2026-08-12)
 
 - Bumped the first-party PWA shell cache from v11 to v12 so a browser already
   controlled by the game refreshes from the old gate cue to the current
   player-following `TO GATE` guide after the worker update.
 - A normal-URL 1280x720 smoke showed the arrow beside the character, pointing
-  toward the gate, with no directional arrow mounted on the gate. The local
-  **153/153** gate and all 11 `qa:fast` finales pass; deployment and physical
-  device evidence remain separate release actions, so the score is unchanged.
+  toward the gate, with no directional arrow mounted on the gate. Runtime
+  `b7e70c3` is deployed at `https://6c9c3107.code-quest-lab.pages.dev/` and
+  `https://code-quest-lab.gov8661682.com/`; the **153/153** gate, all 11
+  `qa:fast` finales, and both production checks pass. Physical-device evidence
+  remains separate, so the score is unchanged.
 
 ### Previous deployed milestone: gameplay audio feedback (2026-08-12)
 
@@ -1082,10 +1084,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested and deployed runtime: `f0ce0e9` (`Add data-driven world state
-  registry`), pushed to `origin/main` after `release:verify` (**151/151**),
-  `qa:fast`, package audit, Capacitor synchronization, world-state contracts,
-  and live Atlas smoke. Preview `https://596095e6.code-quest-lab.pages.dev/`
+- Latest tested and deployed runtime: `b7e70c3` (`Refresh player guidance shell
+  and acceptance workflow`), pushed to `origin/main` after `release:verify`
+  (**153/153**), `qa:fast`, package audit, Capacitor synchronization, and
+  player-following gate smoke. Preview `https://6c9c3107.code-quest-lab.pages.dev/`
   and the configured hostname passed production checks. Checkpoint 1 remains
   active.
 
@@ -1135,20 +1137,20 @@ regression context; they are not the current next-action pointer.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest tested and deployed runtime is `f0ce0e9`
-  (`Add data-driven world state registry`), and the current control record is
+- Branch: `main`; the latest tested and deployed runtime is `b7e70c3`
+  (`Refresh player guidance shell and acceptance workflow`), and the current control record is
   `706d349` (`Advance autorun to owner device evidence`). The deployed preview
-  is `https://596095e6.code-quest-lab.pages.dev/` and the
+  is `https://6c9c3107.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Runtime snapshot: `f0ce0e9` (`Add data-driven world state registry`),
+- Runtime snapshot: `b7e70c3` (`Refresh player guidance shell and acceptance workflow`),
   published from the current main snapshot
 - Deployment date: 2026-08-12
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://596095e6.code-quest-lab.pages.dev/`
+- Preview: `https://6c9c3107.code-quest-lab.pages.dev/`
 - Current production check: passed on 2026-08-12 for primary and preview
 - Deployed source hash: `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`
 
@@ -1157,7 +1159,8 @@ roads and existing route handoff, plus the steady player-following Town/entrance
 guide with no gate-mounted pulse, cleared-room forward guidance, profile
 transfer, grouped readability fixes, touch target assist, recovery-safe
 progression, and the V1 route surface. The live preview smoke used a fresh
-1280x720 pointer surface and reached first combat, pause, and safe finish;
+1280x720 pointer surface, reached the entrance, showed `TO GATE` beside the
+character, and left no gate-mounted arrow;
 this is not a touch/device acceptance claim. The next step remains the clean
 D1-12 route and the remaining touch/device session evidence.
 

@@ -1,15 +1,21 @@
 # Code Quest Lab - Changelog
 
-## Player-following gate guide cache refresh (2026-08-12; local QA)
+## Player-following gate guide cache refresh (2026-08-12; deployed)
 
 - Bumped the first-party PWA shell cache from v11 to v12 so an already-
   controlled browser cannot keep the pre-guide gameplay shell after this
   runtime is published. The source already keeps `TO GATE` beside the player;
   the gate itself has no pulsing directional arrow.
-- A normal-URL reload after the service-worker update was verified at
-  1280x720: the guide remains above the character and rotates toward the gate.
-  The local gate remains **153/153**, `qa:fast` remains green, and the score is
-  unchanged at **93% / 19%** pending deployment and owner device evidence.
+- Runtime `b7e70c3` passed `release:verify` (**153/153**), `qa:fast`, package
+  audit, Capacitor synchronization, and production checks for both origins.
+  Preview: `https://6c9c3107.code-quest-lab.pages.dev/`; primary:
+  `https://code-quest-lab.gov8661682.com/`; source hash remains
+  `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- A fresh preview smoke followed Town to the dungeon entrance and showed the
+  steady `TO GATE` arrow beside the character, aimed at the gate; no pulsing
+  directional arrow is mounted on the gate. Disposable smoke data was removed.
+  The score remains **93% / 19%** because clean-player and device evidence are
+  still open.
 
 ## Device acceptance report workflow (2026-08-12; local control)
 

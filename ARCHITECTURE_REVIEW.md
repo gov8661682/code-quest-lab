@@ -6,15 +6,15 @@ portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, released-route atlas,
 viewport reflow, safe-area overlay, gameplay-audio, and world-state registry
 slices; `origin/main` is writable and synchronized at tested runtime commit
-`f0ce0e9`. The deployed runtime is the world-state/connection-registry
-milestone at the configured hostname and preview
-`https://596095e6.code-quest-lab.pages.dev/`; the source/mirror hash is
+`b7e70c3`. The deployed runtime is the world-state/connection-registry and
+player-guidance cache-refresh milestone at the configured hostname and preview
+`https://6c9c3107.code-quest-lab.pages.dev/`; the source/mirror hash is
 `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **151 passing Node tests**, passing release contracts, a generated static
+has **153 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly

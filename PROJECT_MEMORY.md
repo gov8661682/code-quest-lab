@@ -15,13 +15,14 @@ cumulative session transcript.
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the bounded, save-compatible
-  `WorldState` plus shared `WorldRegion`/`WorldConnection` registry is live on
-  top of the retained open-world/Town, tablet-control, and audio foundations.
-  Runtime `f0ce0e9` was published to preview
-  `596095e6.code-quest-lab.pages.dev` and the configured hostname; source hash
-  is `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
-  Production checks, 151/151 release verification, deterministic fast QA, and
-  live Atlas/shell smokes pass. Score stays **93% / 19%**:
+  `WorldState` plus shared `WorldRegion`/`WorldConnection` registry and the
+  player-guidance shell refresh are live on top of the retained open-world,
+  Town, tablet-control, and audio foundations. Runtime `b7e70c3` was published
+  to preview `6c9c3107.code-quest-lab.pages.dev` and the configured hostname;
+  source hash is `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+  PWA shell v12, production checks, 153/153 release verification,
+  deterministic fast QA, and live gate guidance smoke pass. Score stays
+  **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
 - Current verified follow-up (2026-08-12): legacy profiles migrate their
   discovered routes from existing unlocks and current location; the Atlas
@@ -32,8 +33,8 @@ cumulative session transcript.
   no gate-mounted pulse is used.
 - Owner handoff: `npm.cmd run acceptance:report` seeds a dated report with the
   commit/source hash and refuses overwrite; it is preparation only. The current
-  local gate is **153/153**, while deployed `f0ce0e9` remains **151/151** and
-  physical/device evidence is still required.
+  and deployed gate is **153/153** at runtime `b7e70c3`; physical/device
+  evidence is still required.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A
@@ -98,7 +99,6 @@ cumulative session transcript.
 - A failed method is not progress. After three materially identical technical
   failures, change strategy; never exceed five materially identical gameplay
   attempts. Continue an independent acceptance item when one surface is blocked.
-
 ## Next-action rule
 
 1. Recheck whether a blocker materially changed; do not probe it merely because
@@ -108,7 +108,7 @@ cumulative session transcript.
 3. Finish clean D1-D12 evidence remains the highest score-bearing lane, but the
   managed-browser method is loop-broken and must not be repeated; use the
   `DEVICE_ACCEPTANCE_RUNBOOK.md` packet when a materially different
-  touch-capable/physical surface is available. The `f0ce0e9` world-state
+  touch-capable/physical surface is available. The `b7e70c3` world-state
   milestone is deployed; do not repeat its Atlas smoke or create another
   checkpoint until new route/device evidence exists.
 ## Update protocol

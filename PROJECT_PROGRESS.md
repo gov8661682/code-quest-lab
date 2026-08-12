@@ -30,14 +30,15 @@ disposable profile, and the configured hostname loaded the current shell. The
 score remains **93%** / **19%** because clean-player D1-D12 and physical/native-
 device acceptance are still open.
 
-### Current local correction: player-following gate guide cache refresh
+### Current deployed correction: player-following gate guide cache refresh
 
 The first-party shell cache is now v12, so an existing controlled browser will
-discard the stale pre-guide shell after the worker update. A normal-URL
-1280x720 smoke showed the steady `TO GATE` arrow beside the character and
-pointing toward the gate; the gate itself has no pulsing directional arrow.
-The local gate remains **153/153** and the score remains **93% / 19%** until
-the corrected build is deployed and owner device evidence is recorded.
+discard the stale pre-guide shell after the worker update. Runtime `b7e70c3` is
+deployed at preview `https://6c9c3107.code-quest-lab.pages.dev/` and the
+configured hostname. A normal-URL 1280x720 smoke showed the steady `TO GATE`
+arrow beside the character and pointing toward the gate; the gate itself has no
+pulsing directional arrow. The **153/153** gate and both production checks pass;
+the score remains **93%** / **19%** because owner device evidence is still open.
 
 ### Previous delta: gameplay audio feedback
 

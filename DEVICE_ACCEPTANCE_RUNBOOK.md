@@ -13,13 +13,13 @@ acceptance.
 Use the configured hostname for Runs A-C unless the owner specifically needs
 the Pages preview:
 
-- Runtime snapshot: `f0ce0e9` (`Add data-driven world state registry`)
-- Deployment preview: `596095e6.code-quest-lab.pages.dev`
+- Runtime snapshot: `b7e70c3` (`Refresh player guidance shell and acceptance workflow`)
+- Deployment preview: `6c9c3107.code-quest-lab.pages.dev`
 - Primary: `https://code-quest-lab.gov8661682.com/`
 - Source SHA-256:
   `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`
-- Deployed checkpoint gate: **151/151**; current repository control gate:
-  **153/153**. Do not enable developer controls during Runs A-C.
+- Deployed checkpoint gate: **153/153**; PWA shell: **v12**. Do not enable
+  developer controls during Runs A-C.
 
 ## Generate a fresh report template
 

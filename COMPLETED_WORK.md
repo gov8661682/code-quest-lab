@@ -7,14 +7,18 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
-## Player-following gate guide cache refresh (2026-08-12; local QA; completed)
+## Player-following gate guide cache refresh (2026-08-12; deployed; completed)
 
 - Bumped the first-party PWA shell cache from v11 to v12 so controlled browsers
   receive the current player-following gate guide instead of a stale shell.
-- A normal-URL 1280x720 smoke showed `TO GATE` attached to the character and
-  aimed at the gate; no gate-mounted directional arrow is present. The full
-  **153/153** gate and `qa:fast` pass. Deployment and physical-device evidence
-  remain open, so the **93% / 19%** score is unchanged.
+- Runtime `b7e70c3` was pushed to `origin/main` and deployed to preview
+  `https://6c9c3107.code-quest-lab.pages.dev/` and the configured hostname;
+  source hash is `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
+- The **153/153** gate, `qa:fast`, package audit, Capacitor synchronization,
+  and both production checks pass. A fresh preview smoke showed `TO GATE`
+  attached to the character and aimed at the gate; no gate-mounted directional
+  arrow is present. Physical-device evidence remains open, so the **93% / 19%**
+  score is unchanged.
 
 ## Device acceptance report workflow (2026-08-12; local control; completed)
 

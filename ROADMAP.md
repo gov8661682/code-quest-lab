@@ -229,19 +229,20 @@ This prepares the exact external acceptance action without claiming hardware
 evidence, changing the **93%** / **19%** score, or creating a deployment
 checkpoint. The consumed managed-browser route remains loop-broken.
 
-### PWA cache happy-path regression (2026-08-12; local QA)
+### PWA cache happy-path regression (2026-08-12; deployed correction)
 
 - [x] Contract-test successful same-origin asset caching and later offline
   reuse after simulated network loss.
-- [x] Bump the first-party shell cache to v12 and verify a normal-URL reload
-  shows the steady player-following `TO GATE` arrow instead of the stale
-  gate-mounted cue.
+- [x] Bump the first-party shell cache to v12, deploy the corrected shell, and
+  verify a normal-URL reload shows the steady player-following `TO GATE` arrow
+  instead of the stale gate-mounted cue. Runtime `b7e70c3` is live at preview
+  `https://6c9c3107.code-quest-lab.pages.dev/` and the configured hostname.
 - [ ] Complete deployed-cache update, install/Add to Home Screen, and physical
   offline/forced-close soak in Checkpoint 2 on an approved device surface.
 
-The deterministic contract passes in the **138/138** local gate. It strengthens
-the offline boundary without claiming device evidence or creating a deployment
-checkpoint.
+The deterministic contract and deployed shell refresh pass in the current
+**153/153** gate. This closes the web-side cache update portion without claiming
+the physical install/offline soak that remains in Checkpoint 2.
 
 ### D13 preflight audit: keep Realm of Space gated (2026-08-12; local)
 

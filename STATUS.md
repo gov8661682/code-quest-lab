@@ -5,36 +5,27 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested runtime commit: `f0ce0e9` (`Add data-driven world state
-  registry`), pushed to `origin/main` and published as the world-state/open-
-  world architecture milestone. It retains the tablet-control and audio
-  polish work while adding migrated world progress and a shared route registry.
-- Runtime `f0ce0e9` is deployed and live-verified at the configured hostname;
-  Pages preview: `https://596095e6.code-quest-lab.pages.dev/`.
+- Latest tested runtime commit: `b7e70c3` (`Refresh player guidance shell and
+  acceptance workflow`), pushed to `origin/main` and published as the
+  player-guidance cache-refresh correction on top of the world-state/open-
+  world architecture milestone.
+- Runtime `b7e70c3` is deployed and live-verified at the configured hostname;
+  Pages preview: `https://6c9c3107.code-quest-lab.pages.dev/`.
 - Deployed source hash:
   `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
 - Current local source hash:
   `AA469B00C64FDE728A04BBE088CC92E2F767075E7C590AFC1F044DE4D2E611F1`.
-- `release:verify` passed **151/151**, `qa:fast` passed all 11 released
-  finales, and production checks passed for both primary and preview on
-  2026-08-12. A fresh preview smoke created a Mage, reached Town, safely
-  returned to the dashboard, verified the registry-backed Atlas at `1/11
-  routes charted` with no Dungeon 13 card, and removed the disposable profile;
-  the configured hostname loaded the current shell. This is not full
-  clean-player D1-D12 or physical-device evidence.
-- The current repository after the acceptance-report workflow change passes
-  `release:verify` at **153/153**, `qa:fast`, static/package audit, and native
-  synchronization. The deployed runtime remains unchanged at `f0ce0e9`; no
-  website checkpoint was created for this local control improvement.
-- The current local runtime also bumps the first-party PWA shell cache to v12.
-  This fixes the stale-browser path that could continue showing the old
-  gate-mounted cue; a normal-URL 1280x720 smoke now shows the steady guide
-  beside the character and aimed at the gate. Deployment is still pending for
-  this runtime correction; the score remains **93% / 19%**.
-- Runtime `f0ce0e9` and the current status records are pushed to
-  `origin/main`; control record `706d349` advances the autorun pointer to the
-  owner-supplied device evidence lane. The preceding tablet-control milestone
-  remains documented below as historical release evidence.
+- The deployed shell is v12. `release:verify` passed **153/153**, `qa:fast`
+  passed all 11 released finales, and production checks passed for both primary
+  and preview on 2026-08-12. A fresh preview smoke created a Mage, reached
+  Town, followed the northern road to the entrance, displayed `TO GATE` beside
+  the character, and left no gate-mounted directional arrow. The disposable
+  profile was removed; the score remains **93% / 19%** because clean-player
+  D1-D12 and physical/native-device evidence remain open.
+- Runtime `b7e70c3` and the current status records are pushed to `origin/main`;
+  control record `706d349` advances the autorun pointer to the owner-supplied
+  device evidence lane. The prior world-state and tablet-control milestones
+  remain documented below as historical release evidence.
 
 ## World-state and connection registry milestone (2026-08-12; deployed)
 
