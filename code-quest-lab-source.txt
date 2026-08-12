@@ -26690,8 +26690,13 @@ function resizeCanvas(){
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
 }
 
-window.addEventListener('resize',function(){resizeCanvas();if(gameRunning){initWorldRoom();clampPlayerToRoom(getRoomGeometry());}});
-if(window.visualViewport)window.visualViewport.addEventListener('resize',function(){resizeCanvas();});
+function handleViewportChange(){
+  resizeCanvas();
+  if(gameRunning){initWorldRoom();clampPlayerToRoom(getRoomGeometry());centerCameraOnPlayer();}
+}
+
+window.addEventListener('resize',handleViewportChange);
+if(window.visualViewport)window.visualViewport.addEventListener('resize',handleViewportChange);
 
 // Desktop controls complement the touch joysticks. They are intentionally kept
 // separate so iPad play continues to use the existing pointer controls.

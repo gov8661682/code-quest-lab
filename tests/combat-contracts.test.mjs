@@ -248,6 +248,16 @@ test('touch joysticks survive browsers without usable pointer capture', () => {
   );
 });
 
+test('visual viewport changes reflow the active world instead of only resizing the canvas', () => {
+  assert.match(
+    SOURCE,
+    /function handleViewportChange\(\)\{[\s\S]*?resizeCanvas\(\);[\s\S]*?if\(gameRunning\)\{initWorldRoom\(\);clampPlayerToRoom\(getRoomGeometry\(\)\);centerCameraOnPlayer\(\);\}[\s\S]*?\}/,
+    'viewport changes refresh world dimensions, player bounds, and camera position'
+  );
+  assert.match(SOURCE, /window\.addEventListener\('resize',handleViewportChange\)/, 'window resize uses the shared reflow handler');
+  assert.match(SOURCE, /window\.visualViewport\)window\.visualViewport\.addEventListener\('resize',handleViewportChange\)/, 'visual viewport resize uses the shared reflow handler');
+});
+
 test('new sessions clear cross-run movement and ending locks', () => {
   const resetStart = SOURCE.indexOf('totalKills=0;timeSurvived=0;lastFightTimer=0;gameRunning=false;gamePaused=false;');
   const resetEnd = SOURCE.indexOf('runSoulsEarned=0;runMasteryXpEarned=0;', resetStart);
