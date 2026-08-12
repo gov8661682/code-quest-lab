@@ -1147,8 +1147,9 @@ regression context; they are not the current next-action pointer.
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
 - Branch: `main`; the latest tested and deployed runtime is `b7e70c3`
-  (`Refresh player guidance shell and acceptance workflow`), and the current control record is
-  `706d349` (`Advance autorun to owner device evidence`). The deployed preview
+  (`Refresh player guidance shell and acceptance workflow`), and the latest
+  pushed control record is `4ebc07b` (`Record partial clean-play route
+  evidence`). The deployed preview
   is `https://6c9c3107.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
