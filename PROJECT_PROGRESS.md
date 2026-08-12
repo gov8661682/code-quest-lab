@@ -442,10 +442,11 @@ This report is based on the implementation, executable tests, generated package,
 Git history, and current deployment—not only on comments or planning files.
 
 - Repository: `C:\Users\vlsf\Desktop\Codex\Joey's Game`
-- Git state: `main` is clean and synchronized at control commit `a7b5f2d`
-  (`Prepare device acceptance handoff`), with runtime milestone `4580631`
-  (`Make entrance guidance follow the player`) in the pushed history. The
-  local D13 reward/story follow-up remains intentionally gated and undeployed.
+- Git state: `main` is clean and synchronized with latest tested local QA
+  commit `635dd71` (`Cover offline asset cache reuse`) and runtime milestone
+  `4580631` (`Make entrance guidance follow the player`) in the pushed history.
+  The local D13 reward/story follow-up remains intentionally gated and
+  undeployed.
 - Canonical game: `index.html`, SHA-256
   `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`

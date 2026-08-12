@@ -974,11 +974,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Current repository head: `a7b5f2d` (`Prepare device acceptance handoff`),
-  pushed to `origin/main` after the **136/136** release gate, `qa:fast`, build/
-  package audit, native sync, and project-control verification. This is a
-  control/readiness commit; Checkpoint 1 remains active and the runtime source
-  hash is unchanged from the local gated D13 follow-up.
+- Latest tested local QA commit: `635dd71` (`Cover offline asset cache reuse`),
+  pushed to `origin/main` after the **137/137** release gate, `qa:fast`,
+  build/package audit, native sync, and project-control verification. This is a
+  test/control readiness commit; Checkpoint 1 remains active and the runtime
+  source hash is unchanged from the local gated D13 follow-up.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -1018,8 +1018,8 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
 - Branch: `main`; the latest runtime/website milestone is commit `4580631`
-  (`Make entrance guidance follow the player`), while `a7b5f2d` is the latest
-  pushed control record. The deployed preview is
+  (`Make entrance guidance follow the player`), and the latest tested local QA
+  commit is `635dd71`. The deployed preview is
   `https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname is
   `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
