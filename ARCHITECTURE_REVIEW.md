@@ -4,7 +4,7 @@ Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, and released-route atlas slices; `origin/main` is writable and synchronized
-at tested QA commit `b5be3ec`.
+at tested QA commit `7b961b9`.
 
 ## Executive result
 

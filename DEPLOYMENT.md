@@ -73,6 +73,24 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The 2026-08-12 released-route World Atlas milestone was published from
+runtime commit `7b961b9` to the configured Cloudflare Pages project
+`code-quest-lab`. Preview:
+`https://79d7af68.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+
+The complete release gate passed with **139/139** tests, deterministic
+`qa:fast`, static package audit, and Android/iOS Capacitor synchronization.
+`npm.cmd run production:check` passed for both origins. A fresh preview UI
+smoke created a disposable Barbarian, returned to the dashboard, opened World
+Atlas, confirmed Town plus the released route and honest locked-road states,
+and handed off to the existing Forgotten Depths difficulty screen. The route
+handoff remained visible at `600x768`; the configured hostname served the
+release shell and the smoke tab captured no browser errors. This is release-
+surface verification, not clean-player D1-D12 or physical/native-device
+acceptance.
+
 The 2026-08-12 player-following entrance-guide refinement was published from
 runtime commit `4580631` to the configured Cloudflare Pages project
 `code-quest-lab`. Preview:

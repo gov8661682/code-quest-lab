@@ -13,12 +13,14 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `4580631` is the tested/live web build; the source mirror and
+- Runtime `7b961b9` is the tested/live web build; the source mirror and
   generated web/native surfaces match its deployed SHA-256 identity.
 - `npm.cmd test` passes **139/139**; release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
-- Live 1024x768 desktop and 600x768 tablet smokes reach the first Normal combat
-  room with two enemies and visible touch controls. This is short smoke evidence,
+- The deployed preview dashboard smoke opens World Atlas, shows Town plus the
+  released route and honest locked roads, hands off to the existing difficulty
+  screen, and remains usable at 600x768. The configured hostname serves the
+  release shell without captured browser errors. This is short smoke evidence,
   not a clean full-route or physical-device pass.
 - The next manual route must use a fresh profile and ordinary controls without
   `CQLI`, encounter accelerators, room completion, enemy-free mode, or high

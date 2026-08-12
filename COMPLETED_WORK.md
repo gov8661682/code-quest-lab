@@ -7,7 +7,7 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
-## Released-route World Atlas foundation (2026-08-12; local QA)
+## Released-route World Atlas foundation (2026-08-12; deployed milestone)
 
 - Added a dashboard World Atlas using Town, the existing released
   `REGION_ORDER`, `worldLocation`, waypoint discovery, and dungeon unlock
@@ -16,8 +16,10 @@ documented acceptance-criterion failure. Optional improvements belong in
   outside the atlas, and charted destinations reuse the existing
   difficulty/modifier flow with premium entitlement checks intact.
 - The focused atlas contract and full local release gate pass **139/139**.
-  The runtime hash changed, so deployment remains subject to the complete
-  release check and live verification; no score credit is claimed yet.
+  Commit `7b961b9` is pushed to `origin/main` and deployed to the configured
+  hostname with preview `https://79d7af68.code-quest-lab.pages.dev/` and shell
+  hash `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+  No score credit is claimed.
 
 ## Player-following guide regression contract (2026-08-12; local QA)
 

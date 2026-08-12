@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **139/139** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `7b961b9` is pushed to `origin/main`; its tested build is deployed to preview `79d7af68.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **139/139** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and deployed World Atlas UI smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Open-world foundation update (2026-08-12; local QA)
@@ -35,9 +35,11 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   gating. Charted-route actions reuse the existing difficulty/modifier flow;
   D13+ content remains sealed and no save schema or second travel engine was
   added.
-- The focused atlas contract and full local gate pass **139/139**. This is a
+- The focused atlas contract and full local gate pass **139/139**. The tested
+  milestone is committed as `7b961b9`, pushed, and deployed to the configured
+  hostname with preview `https://79d7af68.code-quest-lab.pages.dev/`. This is a
   tested open-world foundation slice, not full open-world acceptance or C1
-  score credit; deployment awaits the complete milestone release check.
+  score credit.
 
 ### Latest evidence update (2026-08-12)
 
@@ -986,11 +988,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA commit: `b5be3ec` (`Protect steady player-following guide`),
-  pushed to `origin/main` after the **138/138** release gate, `qa:fast`,
-  build/package audit, native sync, and project-control verification. This is a
-  test/control readiness commit; Checkpoint 1 remains active and the runtime
-  source hash is unchanged from the local gated D13 follow-up.
+- Latest tested local QA/runtime commit: `7b961b9` (`Add released-route World
+  Atlas foundation`), pushed to `origin/main` after the **139/139** release
+  gate, `qa:fast`, build/package audit, native sync, project-control
+  verification, and the deployment checkpoint. Checkpoint 1 remains active.
 
 - Current local QA follow-up: `3106820` (`Refresh combat status after final
   enemy defeat`), pushed to `origin/main` on 2026-08-05 after focused and full
@@ -1029,25 +1030,26 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest runtime/website milestone is commit `4580631`
-  (`Make entrance guidance follow the player`), and the latest tested local QA
-  commit is `b5be3ec`. The deployed preview is
-  `https://932a4fb6.code-quest-lab.pages.dev/` and the configured hostname is
+- Branch: `main`; the latest runtime/website milestone and tested local QA
+  commit is `7b961b9` (`Add released-route World Atlas foundation`). The
+  deployed preview is `https://79d7af68.code-quest-lab.pages.dev/` and the
+  configured hostname is
   `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment
 
-- Commit: `4580631` (`Make entrance guidance follow the player`)
+- Commit: `7b961b9` (`Add released-route World Atlas foundation`)
 - Deployment date: 2026-08-12
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://932a4fb6.code-quest-lab.pages.dev/`
+- Preview: `https://79d7af68.code-quest-lab.pages.dev/`
 - Current production check: passed on 2026-08-12 for primary and preview
-- Deployed source hash: `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`
+- Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`
 
-The verified shell includes the player-following Town/entrance guide with no
-gate-mounted pulse, cleared-room forward guidance, profile transfer, grouped
-readability fixes, touch target assist, recovery-safe progression, and the
+The verified shell includes the released-route World Atlas with honest locked
+roads and existing route handoff, plus the player-following Town/entrance guide
+with no gate-mounted pulse, cleared-room forward guidance, profile transfer,
+grouped readability fixes, touch target assist, recovery-safe progression, and the
 V1 route surface. Live desktop/tablet main-flow smokes passed with empty
 browser diagnostics. The current local source hash is
 `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`, which

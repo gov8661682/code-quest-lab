@@ -1,21 +1,22 @@
 # Code Quest Lab - Status
 
 Date: 2026-08-12
-State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
+State: pre-release hardening; D1-12 release surface deployed and verified; not a Release Candidate
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local QA commit: `b5be3ec` (`Protect steady player-following guide`),
-  pushed to `origin/main`; local release gate before the atlas slice: **138/138**.
-- Runtime milestone: `4580631` (`Make entrance guidance follow the player`),
-  deployed and live-verified at the configured hostname and preview
-  `https://932a4fb6.code-quest-lab.pages.dev/`.
-- Deployed source hash: `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
-  The local hash is `9BBC561727C0295701C15F9FAC000C7338823B503F84F1AB69248C42F91C3A3F`
-  because gated D13 reward/story work remains intentionally undeployed.
-- `production:check` passed for both primary and preview on 2026-08-12.
+- Latest tested local QA commit: `7b961b9` (`Add released-route World Atlas
+  foundation`), pushed to `origin/main` after the **139/139** release gate,
+  deterministic fast QA, package audit, and native synchronization.
+- Runtime milestone: `7b961b9`, deployed and live-verified at the configured
+  hostname and preview `https://79d7af68.code-quest-lab.pages.dev/`.
+- Deployed source hash: `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+- `production:check` passed for both primary and preview on 2026-08-12. The
+  preview UI smoke opened the dashboard atlas, handed off to the existing
+  difficulty screen, and remained usable at 600x768; the configured hostname
+  served the release shell with no captured browser errors.
 
-## Released-route World Atlas foundation (2026-08-12; local QA)
+## Released-route World Atlas foundation (2026-08-12; deployment checkpoint)
 
 - Added a dashboard atlas for Town and the released `REGION_ORDER`, with
   current location, waypoint discovery, objectives, honest lock conditions,
@@ -23,8 +24,9 @@ State: pre-release hardening; D1-12 release surface locally verified; not a Rele
 - Charted destinations reuse the existing difficulty/modifier flow; D13+
   remains sealed and no new save field or travel engine was introduced.
 - The full local release gate is **139/139**, `qa:fast`, static package audit,
-  and native synchronization pass. The runtime hash changed; deployment is
-  pending the complete milestone release check and live verification.
+  native synchronization, both production checks, and the deployed UI smoke
+  pass. Commit `7b961b9` is the GitHub/website checkpoint; no score credit is
+  claimed.
 
 The service-worker contract now proves successful same-origin asset caching
 and later offline reuse in addition to navigation fallback and cross-origin
@@ -842,24 +844,25 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA commit: `b5be3ec` (`Protect steady player-following
-  guide`), after the **139/139** release verification, build/package audit,
-  native asset sync, GitHub push, and project-control verification. Checkpoint 1
-  remains active because clean D1-12 and device evidence are not complete.
+- Current verified local QA/runtime commit: `7b961b9` (`Add released-route
+  World Atlas foundation`), after the **139/139** release verification,
+  build/package audit, native asset sync, GitHub push, deployment, and
+  project-control verification. Checkpoint 1 remains active because clean
+  D1-12 and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed milestone runtime: `4580631` (`Make entrance guidance
-  follow the player`), deployed on 2026-08-12 to the configured Cloudflare
-  Pages project. The local gated D13 follow-up is not part of this deployment.
-- Checkpoint record: commit `4580631`, deployed 2026-08-12 to
+- Latest deployed milestone runtime: `7b961b9` (`Add released-route World
+  Atlas foundation`), deployed on 2026-08-12 to the configured Cloudflare
+  Pages project.
+- Checkpoint record: commit `7b961b9`, deployed 2026-08-12 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://932a4fb6.code-quest-lab.pages.dev/`), deployed source SHA-256
-  `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+  `https://79d7af68.code-quest-lab.pages.dev/`), deployed source SHA-256
+  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
 - Production verification passed for both the configured hostname and preview;
-  the live browser smoke reached the profile screen and playable entrance with
-  visible target assist at the default desktop viewport and at 1024x768 tablet
-  landscape. Browser diagnostics were empty on both checks.
+  the preview browser smoke opened the World Atlas, handed off to the existing
+  difficulty screen, and remained usable at 600x768. Browser diagnostics were
+  empty, and the configured hostname served the release shell.
 - Browser blocker `B-007` was cleared for loopback QA on 2026-08-05. A fresh cache-busting local shell reopened the saved Mage level 10 Guardian room, rendered the recovered exit portal, and completed portal travel into the next entrance area without browser diagnostics. This remains local recovery evidence; the latest deployed milestone is recorded above.
 - A bounded local loopback run on 2026-08-07 completed Dungeon 1 from the
   start room through `Burial Hall`, `Ancient Shrine`, `Sunken Treasury`, and

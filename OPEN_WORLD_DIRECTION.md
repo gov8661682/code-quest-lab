@@ -1,7 +1,7 @@
 # Code Quest Lab - Open-World Direction
 
 Status: explicit product direction and architecture target; released-route
-atlas foundation implemented locally, 2026-08-12
+atlas foundation implemented and deployed, 2026-08-12
 
 ## Direction
 

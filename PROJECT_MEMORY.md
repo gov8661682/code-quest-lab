@@ -5,10 +5,9 @@ Mode: **Replace and consolidate; never append a chronological work log**
 
 ## Purpose
 
-This is the project's single short-term learning memory. It records only the current facts and durable lessons needed to choose the next useful action.
-When a fact changes, edit or remove the old statement in place. Do not add a
-  second memory file, daily entry, repeated failure note, or cumulative session
-  transcript.
+This is the project's single short-term learning memory. It records only the current facts and durable lessons needed to choose
+the next useful action; stale facts are edited in place. Do not add a second
+memory file, daily entry, repeated failure note, or cumulative session transcript.
 ## Current state
 
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
@@ -16,14 +15,15 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   must not increase this score without satisfying a named acceptance lane.
 - Current verified local gate: **139/139** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Current deployed milestone (2026-08-12): the Town/entrance destination cue
-  is a steady world-space arrow beside the player, rotating toward the
-  portal/gate and following movement; there is no pulsing or gate-mounted
-  arrow. Commit `4580631` is pushed to `origin/main` and deployed to preview
-  `932a4fb6.code-quest-lab.pages.dev` and the configured hostname; source hash
-  is `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
-  Production checks and live 1280x720/600x768 smokes pass with empty browser
-  diagnostics. This does not change the **93% / 19%** score: clean-player
+- Current deployed milestone (2026-08-12): the dashboard World Atlas reuses
+  Town, released routes, existing unlocks, and the current difficulty flow;
+  D13+ remains sealed. Commit `7b961b9` is pushed to `origin/main` and
+  deployed to preview `79d7af68.code-quest-lab.pages.dev` and the configured
+  hostname; source hash is
+  `941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`.
+  Production checks, preview UI smoke, 600x768 handoff, and browser logs pass.
+  The Town/entrance guide remains a steady player-following arrow with no
+  pulsing or gate-mounted marker. Score stays **93% / 19%**: clean-player
   D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): the released-route World Atlas is
   contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints, and

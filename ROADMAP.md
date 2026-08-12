@@ -62,9 +62,13 @@ layers, world-state model, save boundaries, and acceptance bar.
   flow rather than introducing a second travel engine or save schema.
 - [x] Add regression coverage for atlas navigation, release-route filtering,
   and premium entitlement gating.
+- [x] Run the **139/139** release gate, `qa:fast`, static/package audit,
+  Capacitor sync, production checks, and deployed UI smokes; commit and push
+  `7b961b9`, then deploy preview `https://79d7af68.code-quest-lab.pages.dev/`
+  and the configured hostname.
 
-This is a tested open-world foundation slice. It does not claim the full
-open-world acceptance bar or increase the C1 evidence score by itself.
+This is a tested and deployed open-world foundation slice. It does not claim
+the full open-world acceptance bar or increase the C1 evidence score by itself.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
@@ -697,4 +701,17 @@ that route to stop and be recorded. `CURRENT_CHECKPOINT.md` is the canonical
 percentage display; percentages are earned from named evidence and do not
 replace acceptance criteria.
 
-Latest verified checkpoint (2026-08-12): runtime milestone `4580631` moved Town and entrance guidance into a steady player-following world-space arrow with no gate-mounted pulse, while preserving the cleared-room forward guide and route flow. The source is pushed to GitHub and deployed to `https://code-quest-lab.gov8661682.com/` with preview `https://932a4fb6.code-quest-lab.pages.dev/`; both production checks passed with deployed shell hash `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`. The latest tested local QA commit is `b5be3ec`, pushed after the **138/138** release gate, `qa:fast`, and PWA cache/offline coverage; it is not a runtime deployment. The active next priority is the owner-supplied clean D1-12 route, meaningful touch session, and device evidence in `DEVICE_ACCEPTANCE_RUNBOOK.md`. Later milestones must repeat the same test, push, deploy, and live-verification sequence.
+Latest verified checkpoint (2026-08-12): runtime milestone `7b961b9` added a
+touch-friendly World Atlas for Town and released routes, with honest locked
+roads, existing unlock/entitlement checks, and the current difficulty handoff;
+the player-following Town/entrance arrow remains steady with no gate-mounted
+pulse. The source is pushed to GitHub and deployed to
+`https://code-quest-lab.gov8661682.com/` with preview
+`https://79d7af68.code-quest-lab.pages.dev/`; both production checks passed
+with deployed shell hash
+`941F3BF438D61BBF3FFBC8D904AD06C6CAAD08986ADB5DB2998B6B5DD7A0A4E6`, and the
+preview UI smoke passed at desktop/default and 600x768 tablet size. The active
+next priority is the owner-supplied clean D1-12 route, meaningful touch
+session, and device evidence in `DEVICE_ACCEPTANCE_RUNBOOK.md`. Later
+milestones must repeat the same test, push, deploy, and live-verification
+sequence.
