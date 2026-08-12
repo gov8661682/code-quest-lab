@@ -169,6 +169,17 @@ test('Town and dungeon entrances keep their physical gate discoverable with a pl
   assert.doesNotMatch(SOURCE, /drawTownPortalIndicator\(/, 'the previous edge-marker implementation is not retained');
 });
 
+test('the player-following portal guide stays steady instead of pulsing on the gate', () => {
+  const guide = extractBetween(
+    'function drawPlayerFollowingPortalGuide(geo){',
+    '// After a combat room is cleared',
+    'player-following portal guide'
+  );
+  assert.match(guide, /var arrowX=player\.x,arrowY=/, 'the guide is anchored to the player');
+  assert.match(guide, /ctx\.globalAlpha=0\.98/, 'the guide uses a constant alpha');
+  assert.doesNotMatch(guide, /Math\.sin|Math\.cos|\bnow\b|pulse/i, 'the guide has no time-based pulsing');
+});
+
 test('Town gives the first destination a physical world breadcrumb', () => {
   assert.match(SOURCE, /roadMarker:\{x:cx-inner\.w\*0\.11,y:inner\.y\+inner\.h\*0\.32,name:'North Road',destination:'Forgotten Depths'\}/);
   const townRender = extractBetween('function drawTownWorld(geo){', '// DUNGEON ENTRANCE AREA LAYOUT', 'Town renderer');

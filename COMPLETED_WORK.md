@@ -7,6 +7,15 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Player-following guide regression contract (2026-08-12; local QA)
+
+- Added a contract that keeps Town and entrance guidance anchored beside the
+  moving character with constant visibility and no time-based pulse or
+  gate-mounted marker.
+- The focused guide contracts and full local release gate pass **138/138**.
+  This protects the deployed navigation behavior without changing the runtime
+  hash or creating a deployment checkpoint.
+
 ## Device acceptance handoff (2026-08-12; control/release readiness)
 
 - Added `DEVICE_ACCEPTANCE_RUNBOOK.md` with separate clean-player route,

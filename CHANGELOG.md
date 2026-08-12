@@ -1,5 +1,13 @@
 # Code Quest Lab - Changelog
 
+## Player-following guide regression contract (2026-08-12; local QA)
+
+- Added regression coverage for the steady arrow beside the player: it points
+  toward the Town portal or entrance gate without pulsing or mounting an arrow
+  on the destination.
+- The full local gate is now **138/138**. This is navigation regression
+  protection only; no runtime deployment or score change was created.
+
 ## Device acceptance handoff (2026-08-12; control/release readiness)
 
 - Added `DEVICE_ACCEPTANCE_RUNBOOK.md` for the remaining owner-side clean
