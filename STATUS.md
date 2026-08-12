@@ -22,10 +22,10 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
   the disposable profile was removed and diagnostics were empty. The primary
   hostname served the current release shell without captured browser errors.
-- Documentation record commit `7b98b4a` was created locally after the
-  responsive smoke; its push failed once because `github.com:443` was
-  unreachable. Do not repeat that push until connectivity materially changes;
-  the runtime commits remain pushed and no runtime files are pending.
+- Documentation record commits `7b98b4a` and `cd97d46` are now pushed to
+  `origin/main`; the first push was delayed by a transient GitHub network
+  failure and succeeded after connectivity recovered. No runtime files are
+  pending.
 
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
