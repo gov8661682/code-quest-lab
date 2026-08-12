@@ -66,14 +66,17 @@ test('device acceptance report generator refuses accidental overwrite', () => {
   const scriptPath = path.join(ROOT, 'scripts', 'create-device-acceptance-report.mjs');
 
   try {
-    const first = spawnSync(process.execPath, [scriptPath, '--output', outputPath], {
+  const first = spawnSync(process.execPath, [scriptPath, '--output', outputPath], {
       cwd: ROOT,
       encoding: 'utf8'
     });
     assert.equal(first.status, 0, first.stderr);
     const report = fs.readFileSync(outputPath, 'utf8');
-    assert.match(report, /Runtime commit \| [0-9a-f]+ \|/);
-    assert.match(report, /Source SHA-256 \| [0-9a-f]{64} \|/);
+    assert.match(report, /Repository control commit \| [0-9a-f]+ \|/);
+    assert.match(report, /Tested deployed runtime \| [0-9a-f]+ \|/);
+    assert.match(report, /Local source SHA-256 \| [0-9a-f]{64} \|/);
+    assert.match(report, /Tested deployed source SHA-256 \| [0-9a-fA-F]{64} \|/);
+    assert.match(report, /Tested deployment \| https:\/\/code-quest-lab\.gov8661682\.com/);
     assert.match(report, /Status: DRAFT/);
 
     const second = spawnSync(process.execPath, [scriptPath, '--output', outputPath], {

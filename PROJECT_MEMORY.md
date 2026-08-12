@@ -32,8 +32,9 @@ cumulative session transcript.
   `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues still stay beside the character;
   no gate-mounted pulse is used.
 - Owner handoff: `npm.cmd run acceptance:report` seeds a dated report with the
-  commit/source hash and refuses overwrite; it is preparation only. The current
-  and deployed gate is **153/153** at runtime `b7e70c3`; physical/device
+  repository control commit plus the tested deployed runtime/source identity
+  from the runbook and refuses overwrite; it is preparation only. The current
+  gate is **153/153** at deployed runtime `b7e70c3`; physical/device
   evidence is still required.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
@@ -115,5 +116,4 @@ cumulative session transcript.
 
 - Read this file with `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `DECISIONS.md`, and `AUTORUN.md` at the start of every cycle.
 - Update this file only when a durable fact, blocker, lesson, verified gate, or next-action priority changes.
-- Replace stale statements in place and consolidate overlapping lessons. Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and
-  `COMPLETED_WORK.md`.
+- Replace stale statements in place and consolidate overlapping lessons. Keep this file under 120 lines; detailed history belongs in `CHANGELOG.md` and `COMPLETED_WORK.md`.

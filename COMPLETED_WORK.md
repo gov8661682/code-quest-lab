@@ -7,6 +7,15 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Device report build-identity guard (2026-08-12; local control; completed)
+
+- Updated `npm.cmd run acceptance:report` so the owner packet distinguishes the
+  current repository control commit from the tested deployed runtime, deployed
+  source hash, URL, and PWA shell recorded in the canonical device runbook.
+- Added contracts proving the report carries both identities and still refuses
+  accidental overwrite. This is owner-handoff hardening only; it does not claim
+  physical-device evidence or change the **93% / 19%** score.
+
 ## Player-following gate guide cache refresh (2026-08-12; deployed; completed)
 
 - Bumped the first-party PWA shell cache from v11 to v12 so controlled browsers

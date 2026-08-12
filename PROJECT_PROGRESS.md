@@ -11,6 +11,15 @@ The evidence-scored source is `CURRENT_CHECKPOINT.md`. Autonomous continuation,
 progress-delta requirements, and the three/five-attempt loop breaker are
 defined in `AUTORUN.md` and verified by an executable project-control contract.
 
+### Latest local control improvement: device report build identity
+
+`npm.cmd run acceptance:report` now distinguishes the current repository
+control commit from the tested deployed runtime/source identity recorded in
+`DEVICE_ACCEPTANCE_RUNBOOK.md`. The generated packet also carries the tested
+URLs and PWA shell, refuses accidental overwrite, and remains explicitly
+non-evidence until a device run is completed and reviewed. All eight focused
+project-control contracts pass; the score remains **93%** / **19%**.
+
 ## Latest 2026-08-12 progress delta
 
 The world-state and connection-registry milestone adds a backward-compatible

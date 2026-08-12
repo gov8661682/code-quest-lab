@@ -23,18 +23,22 @@ the Pages preview:
 
 ## Generate a fresh report template
 
-From the repository root, create a dated, non-personal report seeded with the
-current Git commit and canonical source hash:
+From the repository root, create a dated, non-personal report. It records both
+the current repository control commit and the tested deployed runtime snapshot
+from this runbook, so a documentation/control commit cannot be mistaken for
+the build being tested:
 
 ```powershell
 npm.cmd run acceptance:report -- --output .\device-acceptance-reports\cql-device-YYYY-MM-DD.md
 ```
 
 Replace `YYYY-MM-DD` with the actual run date. The command refuses to overwrite
-an existing report. Complete the generated template on the representative
-device, then record its sanitized path in the project control records after
-Runs A-C are finished. Do not commit an incomplete report or include personal
-data, credentials, tokens, school identifiers, or raw device accounts.
+an existing report. Confirm the seeded runtime, source hash, URL, and PWA shell
+against the build opened on the device before starting. Complete the generated
+template on the representative device, then record its sanitized path in the
+project control records after Runs A-C are finished. Do not commit an incomplete
+report or include personal data, credentials, tokens, school identifiers, or raw
+device accounts.
 
 ## Required test inputs
 

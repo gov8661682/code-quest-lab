@@ -1,5 +1,15 @@
 # Code Quest Lab - Changelog
 
+## Device acceptance build-identity guard (2026-08-12; local control)
+
+- Updated `npm.cmd run acceptance:report` so owner/device packets record the
+  current repository control commit separately from the tested deployed
+  runtime, deployed source hash, URLs, and PWA shell read from the canonical
+  acceptance runbook.
+- Added contracts for both identities and retained refusal to overwrite an
+  existing report. This is handoff hardening only; it does not claim physical
+  device evidence, change the **93% / 19%** score, or trigger a deployment.
+
 ## Player-following gate guide cache refresh (2026-08-12; deployed)
 
 - Bumped the first-party PWA shell cache from v11 to v12 so an already-

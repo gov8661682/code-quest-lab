@@ -26,6 +26,10 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   control record `706d349` advances the autorun pointer to the owner-supplied
   device evidence lane. The prior world-state and tablet-control milestones
   remain documented below as historical release evidence.
+- The local acceptance handoff now records the repository control commit
+  separately from the deployed runtime/source identity in the device report;
+  this prevents a later documentation commit from being mistaken for the
+  tested website build. It does not change the evidence score or deployment.
 
 ## World-state and connection registry milestone (2026-08-12; deployed)
 

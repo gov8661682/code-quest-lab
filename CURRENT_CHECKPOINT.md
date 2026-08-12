@@ -51,9 +51,10 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 ### Current local QA: device acceptance report workflow (2026-08-12)
 
 - Added `npm.cmd run acceptance:report`, which creates a dated, non-personal
-  Runs A-C report seeded with the current repository commit and canonical source
-  SHA-256. It refuses to overwrite an existing report and keeps incomplete
-  device evidence out of the repository by default.
+  Runs A-C report seeded with both the current repository control commit and the
+  tested deployed runtime/source identity from `DEVICE_ACCEPTANCE_RUNBOOK.md`.
+  It refuses to overwrite an existing report and keeps incomplete device
+  evidence out of the repository by default.
 - The focused control contracts, full `release:verify`, static/package audit,
   native synchronization, and `qa:fast` now pass **153/153**. This is workflow
   preparation only: no runtime source changed, no website deployment was made,

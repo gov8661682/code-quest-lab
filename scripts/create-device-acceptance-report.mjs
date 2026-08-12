@@ -28,15 +28,38 @@ const sourceSha256 = crypto
   .update(fs.readFileSync(path.join(ROOT, 'index.html')))
   .digest('hex');
 
-let commit = 'unknown';
+let repositoryCommit = 'unknown';
 try {
-  commit = execFileSync('git', ['rev-parse', '--short', 'HEAD'], {
+  repositoryCommit = execFileSync('git', ['rev-parse', '--short', 'HEAD'], {
     cwd: ROOT,
     encoding: 'utf8'
-  }).trim() || commit;
+  }).trim() || repositoryCommit;
 } catch {
   // A copied package can still produce a useful report without Git metadata.
 }
+
+// The repository control commit may be newer than the deployed build while
+// the owner is preparing a device run. Read the tested runtime identity from
+// the canonical runbook instead of mislabelling the current HEAD as the build
+// that is actually being tested.
+const runbookPath = path.join(ROOT, 'DEVICE_ACCEPTANCE_RUNBOOK.md');
+const runbook = fs.existsSync(runbookPath) ? fs.readFileSync(runbookPath, 'utf8') : '';
+function readRunbookCodeField(label) {
+  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = runbook.match(
+    new RegExp('^- ' + escapedLabel + ':\\s*(?:`([^`]+)`|\\r?\\n\\s*`([^`]+)`)', 'm')
+  );
+  return match?.[1] || match?.[2] || 'confirm from the tested build';
+}
+function readRunbookPwaShell() {
+  return runbook.match(/PWA shell:\s*\*\*([^*]+)\*\*/)?.[1] || 'confirm from the tested build';
+}
+
+const deployedRuntime = readRunbookCodeField('Runtime snapshot');
+const deployedSourceSha256 = readRunbookCodeField('Source SHA-256');
+const deployedPreview = readRunbookCodeField('Deployment preview');
+const deployedPrimary = readRunbookCodeField('Primary');
+const deployedPwaShell = readRunbookPwaShell();
 
 if (fs.existsSync(outputPath)) {
   console.error(`Refusing to overwrite existing report: ${path.relative(ROOT, outputPath)}`);
@@ -52,9 +75,12 @@ Status: DRAFT - complete on the representative device; do not include personal d
 | Field | Value |
 |---|---|
 | Report date | ${date} |
-| Runtime commit | ${commit} |
-| Source SHA-256 | ${sourceSha256} |
-| Deployment URL or package | |
+| Repository control commit | ${repositoryCommit} |
+| Tested deployed runtime | ${deployedRuntime} |
+| Local source SHA-256 | ${sourceSha256} |
+| Tested deployed source SHA-256 | ${deployedSourceSha256} |
+| Tested deployment | ${deployedPrimary} (preview: ${deployedPreview}) |
+| Tested PWA shell | ${deployedPwaShell} |
 | Date/time and timezone of device run | |
 | Device model and OS | |
 | Browser/app version | |
@@ -120,4 +146,4 @@ recorded in CURRENT_CHECKPOINT.md, PROJECT_PROGRESS.md, and BLOCKERS.md.
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, report, 'utf8');
 console.log(`Created ${path.relative(ROOT, outputPath)}`);
-console.log(`Runtime ${commit}; source SHA-256 ${sourceSha256}`);
+console.log(`Repository ${repositoryCommit}; tested runtime ${deployedRuntime}; local source SHA-256 ${sourceSha256}`);
