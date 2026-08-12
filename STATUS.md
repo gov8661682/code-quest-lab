@@ -5,28 +5,42 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested runtime commit: `830ce00` (`Harden gameplay overlays for safe
-  areas`), pushed to `origin/main` and published as the tablet-control
-  resilience milestone. The grouped milestone includes pointer-capture
-  fallback, live viewport reflow, player-following destination guides, and
-  safe-area reservations.
-- Runtime `830ce00` is deployed and live-verified at the configured hostname;
-  Pages preview: `https://6dc4ee18.code-quest-lab.pages.dev/`.
+- Latest tested runtime commit: `80a6562` (`Add optional gameplay audio
+  feedback`), pushed to `origin/main` and published as the gameplay-polish
+  milestone. It retains the tablet-control resilience work and adds optional
+  procedural combat/progression feedback with a local Gameplay Audio toggle.
+- Runtime `80a6562` is deployed and live-verified at the configured hostname;
+  Pages preview: `https://4aef14a3.code-quest-lab.pages.dev/`.
 - Deployed source hash:
-  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
 - Current local source hash:
-  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
-- `release:verify` passed **143/143**, `qa:fast` passed all 11 released
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+- `release:verify` passed **147/147**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
-  2026-08-12. A fresh live smoke created a disposable Mage, reached Town, the
-  northern road, entrance, Normal/Standard Expedition, and first combat,
-  displayed the player-following `TO GATE` arrow, defeated one enemy with a
-  normal attack, safely finished, removed the profile, and captured no
-  warnings/errors. This is not full clean-player D1-D12 or physical-device
-  evidence.
-- Documentation record commits `7b98b4a`, `cd97d46`, and `96cabe2`, plus runtime
-  `830ce00`, are pushed to `origin/main`; the first push was delayed by a
-  transient GitHub network failure and succeeded after connectivity recovered.
+  2026-08-12. A fresh live smoke confirmed the Gameplay Audio setting,
+  reached first combat, defeated one enemy with a normal attack, safely ended,
+  removed the disposable profile, and captured no warnings/errors. This is not
+  full clean-player D1-D12 or physical-device evidence.
+- Runtime `80a6562` and the current status records are pushed to
+  `origin/main`; the preceding tablet-control milestone remains documented
+  below as historical release evidence.
+
+## Gameplay audio feedback milestone (2026-08-12; deployed)
+
+- Added a low-volume, procedural Web Audio layer for attacks, hits, defeats,
+  room clears, doors, level-ups, and boss moments. It is lazy/unlock-on-input,
+  rate-limited, local-only, and non-fatal when Web Audio is unavailable.
+- Added a visible Gameplay Audio ON/OFF setting. The preference is local to the
+  browser and does not alter character saves, `.txt` transfer data, developer
+  aids, or Joey's authored story/boss content.
+- Runtime `80a6562` passed **147/147**, static/package audit, Capacitor sync,
+  deterministic `qa:fast`, and production checks for both public origins.
+- Published preview: `https://4aef14a3.code-quest-lab.pages.dev/`; the
+  configured hostname serves the same source hash shown above. Live settings,
+  first-combat attack, safe finish, disposable-profile cleanup, and empty
+  diagnostics were verified.
+- The score remains **93% / 19%** because clean-player D1-D12 and
+  physical/native-device acceptance remain open.
 
 ## Tablet-control resilience milestone (2026-08-12; deployed)
 
@@ -948,20 +962,20 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified runtime commit: `830ce00` (`Harden gameplay overlays for
-  safe areas`), after `release:verify` (**143/143**), `qa:fast`, package audit,
+- Current verified runtime commit: `80a6562` (`Add optional gameplay audio
+  feedback`), after `release:verify` (**147/147**), `qa:fast`, package audit,
   Capacitor synchronization, live cache-busted browser smoke, GitHub push,
   and Cloudflare Pages deployment. Checkpoint 1 remains active because clean
   D1-12 and device evidence are not complete.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
-- Latest deployed runtime: `830ce00` (`Harden gameplay overlays for safe
-  areas`), published on 2026-08-12 to the configured Cloudflare Pages project.
+- Latest deployed runtime: `80a6562` (`Add optional gameplay audio feedback`),
+  published on 2026-08-12 to the configured Cloudflare Pages project.
 - Checkpoint record: deployed 2026-08-12 to
   `https://code-quest-lab.gov8661682.com/` (Pages preview:
-  `https://6dc4ee18.code-quest-lab.pages.dev/`), deployed source SHA-256
-  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+  `https://4aef14a3.code-quest-lab.pages.dev/`), deployed source SHA-256
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
 - Production verification passed for both the configured hostname and preview;
   the fresh preview browser smoke reached first combat, pause, and safe finish
   with empty diagnostics, and the configured hostname served the release shell.

@@ -7,6 +7,26 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Gameplay audio feedback milestone (2026-08-12; deployed; completed)
+
+- Added a fail-safe, optional procedural audio layer for player attacks,
+  enemy hits/critical hits/defeats, incoming damage, doors, room clears, boss
+  moments, and level-ups. Existing Joey-authored boss and ending audio remains
+  intact.
+- Added a visible `Gameplay Audio` toggle stored as a local preference, kept
+  separate from character saves and plain-text profile export/import.
+- Runtime `80a6562` passed exact source/mirror validation, generated package,
+  `release:verify` (**147/147**), `qa:fast`, static/package audit, and
+  Capacitor synchronization.
+- Published preview `https://4aef14a3.code-quest-lab.pages.dev/` and the
+  configured hostname on 2026-08-12; source hash:
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+- Live smoke toggled the setting, reached first combat, defeated one enemy,
+  safely ended, deleted its disposable profile, and captured no browser
+  warnings/errors. This is complete; do not repeat unless a regression is
+  found. The score remains **93% / 19%** because clean-player D1-D12 and
+  physical/native-device acceptance remain open.
+
 ## Tablet-control resilience milestone (2026-08-12; deployed)
 
 - Grouped the pointer-capture fallback, active-world viewport reflow,

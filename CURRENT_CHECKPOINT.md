@@ -24,22 +24,23 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; the current local build also passed a 1280x720 -> 1024x768 -> 600x800 responsive smoke with no browser warnings/errors; no P0/P1 issue was observed during those checks | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `830ce00` is pushed to `origin/main`; the **143/143** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and primary/preview production checks pass; deployed source hash is `124B67...EC14318` | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `80a6562` is pushed to `origin/main`; the **147/147** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and primary/preview production checks pass; deployed source hash is `C76C4F...16FB34A` | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
-### Current milestone: tablet-control resilience (2026-08-12; deployed)
+### Current milestone: gameplay audio feedback (2026-08-12; deployed)
 
-- Desktop guidance, joysticks, skill controls, movement nudges, target assist,
-  and travel/treasure/exit prompts now reserve `safe-area-inset-*` values in
-  wide, narrow, and short landscape layouts.
-- Runtime `830ce00` passes **143/143**, `qa:fast`, static/package audit, exact
+- The runtime now provides optional, procedural combat/progression feedback for
+  attacks, hits, defeats, room clears, doors, level-ups, and boss moments, plus
+  a visible local Gameplay Audio ON/OFF setting. Web Audio is lazy/unlock-on-
+  input and failure-safe; no recordings, network requests, or third-party
+  audio assets were added.
+- Runtime `80a6562` passes **147/147**, `qa:fast`, static/package audit, exact
   source synchronization, and Capacitor synchronization. It is published at
-  `https://6dc4ee18.code-quest-lab.pages.dev/` and the configured hostname.
-- A fresh live smoke displayed the steady player-following `TO GATE` arrow,
-  reached first combat, accepted a normal attack, safely finished, deleted its
-  disposable profile, and captured no warnings/errors. The score remains
-  **93% / 19%**; owner-run clean-player and physical/native-device acceptance
-  remain the next score-bearing lane.
+  `https://4aef14a3.code-quest-lab.pages.dev/` and the configured hostname.
+- A fresh live smoke verified the audio setting, first-combat attack and enemy
+  defeat, safe session end, disposable-profile cleanup, and empty diagnostics.
+  The score remains **93% / 19%**; owner-run clean-player and
+  physical/native-device acceptance remain the next score-bearing lane.
 
 ### Current local QA: shared mobile viewport reflow (2026-08-12)
 
@@ -1045,11 +1046,10 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested and deployed runtime: `830ce00` (`Harden gameplay overlays for
-  safe areas`), pushed to `origin/main` after `release:verify` (**143/143**),
-  `qa:fast`, package audit, Capacitor synchronization, and the safe-area
-  compatibility contract. Preview
-  `https://6dc4ee18.code-quest-lab.pages.dev/` and the configured hostname
+- Latest tested and deployed runtime: `80a6562` (`Add optional gameplay audio
+  feedback`), pushed to `origin/main` after `release:verify` (**147/147**),
+  `qa:fast`, package audit, Capacitor synchronization, and the gameplay-audio
+  contracts. Preview `https://4aef14a3.code-quest-lab.pages.dev/` and the configured hostname
   passed production checks. Checkpoint 1 remains active.
 
 Earlier local QA entries below are historical evidence and are retained for
@@ -1107,13 +1107,13 @@ regression context; they are not the current next-action pointer.
 
 ## Last verified website deployment
 
-- Runtime snapshot: `830ce00` (`Harden gameplay overlays for safe areas`),
+- Runtime snapshot: `80a6562` (`Add optional gameplay audio feedback`),
   published from the current main snapshot
 - Deployment date: 2026-08-12
 - Primary: `https://code-quest-lab.gov8661682.com/`
-- Preview: `https://6dc4ee18.code-quest-lab.pages.dev/`
+- Preview: `https://4aef14a3.code-quest-lab.pages.dev/`
 - Current production check: passed on 2026-08-12 for primary and preview
-- Deployed source hash: `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`
+- Deployed source hash: `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`
 
 The verified shell includes the released-route World Atlas with honest locked
 roads and existing route handoff, plus the steady player-following Town/entrance

@@ -13,20 +13,21 @@ Updated: 2026-08-12
 
 ## Current release checkpoint - 2026-08-12
 
-- Runtime `830ce00` is the tested/live web build, published to preview
-  `https://6dc4ee18.code-quest-lab.pages.dev/` and the configured hostname;
+- Runtime `80a6562` is the tested/live web build, published to preview
+  `https://4aef14a3.code-quest-lab.pages.dev/` and the configured hostname;
   source/mirror and generated web/native surfaces match deployed SHA-256
-  identity `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
-- The grouped tablet-control milestone includes pointer-capture fallback,
+  identity `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+- The current release also includes optional Gameplay Audio feedback and a
+  visible local toggle, while retaining the pointer-capture fallback,
   visual-viewport reflow, player-following destination guidance, and safe-area
-  overlay reservations. `npm.cmd test` and `release:verify` pass **143/143**.
+  overlay reservations. `npm.cmd test` and `release:verify` pass **147/147**.
 - Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - A fresh managed-browser viewport smoke on `3cce0e0` covered 1280x720,
   1024x768, and 600x800; canvas dimensions matched each viewport, touch
   controls remained visible, and no warnings/errors were captured. This is not
   physical-device, touch-only, or full-route evidence.
-- A cache-busted local browser smoke on `830ce00` reached the first room,
+- A cache-busted local browser smoke on `80a6562` reached the first room,
   displayed the player-following destination guide, safely returned to the
   dashboard, and captured no warnings/errors. Browser CSS reports zero insets
   in this environment; the safe-area contract remains required for native and

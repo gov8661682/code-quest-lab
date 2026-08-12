@@ -13,12 +13,12 @@ acceptance.
 Use the configured hostname for Runs A-C unless the owner specifically needs
 the Pages preview:
 
-- Runtime snapshot: `830ce00` (`Harden gameplay overlays for safe areas`)
-- Deployment preview: `6dc4ee18.code-quest-lab.pages.dev`
+- Runtime snapshot: `80a6562` (`Add optional gameplay audio feedback`)
+- Deployment preview: `4aef14a3.code-quest-lab.pages.dev`
 - Primary: `https://code-quest-lab.gov8661682.com/`
 - Source SHA-256:
-  `124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`
-- Local release gate before the run: **143/143**; do not enable developer
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`
+- Local release gate before the run: **147/147**; do not enable developer
   controls during Runs A-C.
 
 ## Required test inputs
@@ -52,7 +52,9 @@ identifiers, or personal data.
 ## Run A - clean-player V1 route
 
 1. Create a fresh profile and choose a currently supported class.
-2. Choose the calm Standard Expedition for the first run.
+2. Open Settings, record the initial `Gameplay Audio` state, and leave it in
+   the intended test state; then choose the calm Standard Expedition for the
+   first run.
 3. Follow the Town objective and the player-following guide to the northern
    gate. Confirm the arrow stays beside the character, points toward the gate,
    and is not mounted on or pulsing at the gate.

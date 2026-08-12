@@ -73,6 +73,22 @@ npm.cmd run production:check -- https://code-quest-lab.gov8661682.com
 
 ## Current production audit
 
+The 2026-08-12 gameplay audio feedback milestone was published from runtime
+commit `80a6562` to the configured Cloudflare Pages project `code-quest-lab`.
+Preview: `https://4aef14a3.code-quest-lab.pages.dev/`; primary hostname:
+`https://code-quest-lab.gov8661682.com/`. The deployed source hash is
+`C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+
+The shipped slice adds local, procedural gameplay feedback and a visible
+Gameplay Audio ON/OFF setting. `release:verify` passed **147/147** tests,
+`qa:fast` passed all 11 released finales, the static/package audit and
+Android/iOS Capacitor synchronization passed, and `npm.cmd run
+production:check` passed for both origins. A fresh live smoke verified the
+setting, Town-to-first-combat flow, ordinary attack/enemy defeat, safe session
+end, disposable-profile cleanup, and empty browser diagnostics. This remains
+release-surface verification, not a clean-player D1-D12 or physical/native-
+device acceptance claim.
+
 The 2026-08-12 tablet-control resilience milestone was published from runtime
 commit `830ce00` using the current main snapshot to the configured Cloudflare
 Pages project `code-quest-lab`. Preview:

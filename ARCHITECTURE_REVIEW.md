@@ -4,16 +4,16 @@ Updated: 2026-08-12
 Scope: current working tree after the boss-identity, QA-simulation, save-
 portability, player-guidance, D13 gated-content, device-handoff, PWA cache,
 steady-guide regression, adaptive first-room guidance, released-route atlas,
-viewport reflow, and safe-area overlay slices; `origin/main` is writable and
-synchronized at tested runtime commit `830ce00`. The deployed runtime is the
-same tablet-control milestone at the configured hostname and preview
-`https://6dc4ee18.code-quest-lab.pages.dev/`; the source/mirror hash is
-`124B67C1F1301212A25224BAFAC5AC06A6E693E23107A50C8A0A5BD50EC14318`.
+viewport reflow, safe-area overlay, and gameplay-audio slices; `origin/main`
+is writable and synchronized at tested runtime commit `80a6562`. The deployed
+runtime is the gameplay-audio milestone at the configured hostname and preview
+`https://4aef14a3.code-quest-lab.pages.dev/`; the source/mirror hash is
+`C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
 
 ## Executive result
 
 The current game is stable enough to improve incrementally: the working tree
-has **143 passing Node tests**, passing release contracts, a generated static
+has **147 passing Node tests**, passing release contracts, a generated static
 package, synchronized Capacitor assets, and an existing central room/enemy/
 difficulty foundation. The largest risk is not a missing feature; it is the
 cost and fragility of validating a very large inline runtime by repeatedly
@@ -40,9 +40,11 @@ messaging for current and source-resident bosses, preventing the old generic
 Stone Guardian label from misrepresenting later encounters. The loopback-only
 QA layer and dependency-free fixed-seed simulator are active and excluded from
 saves, exports, native packages, and production activation. The source mirror,
-static build, Capacitor sync, deterministic fast QA, and full **143/143** local
-test suite pass. The current local adaptive first-room hint, pointer-capture
-fallback, and visual-viewport reflow are covered by focused contracts. This remains architecture
+static build, Capacitor sync, deterministic fast QA, and full **147/147** local
+test suite pass. The optional procedural gameplay-audio layer and visible local
+toggle are covered by focused contracts while Joey's authored cues remain
+intact. The current local adaptive first-room hint, pointer-capture fallback,
+and visual-viewport reflow are covered by focused contracts. This remains architecture
 hardening; no checkpoint percentage is
 claimed until the open clean-player/device evidence is completed.
 

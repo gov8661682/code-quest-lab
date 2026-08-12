@@ -1,5 +1,23 @@
 # Code Quest Lab - Changelog
 
+## Gameplay audio feedback milestone (2026-08-12; deployed)
+
+- Added an optional, low-volume procedural gameplay-audio layer for attacks,
+  hits, criticals, defeats, incoming damage, doors, room clears, boss moments,
+  and level-ups. Joey's authored boss/ending cues remain intact.
+- Added a visible `Gameplay Audio` setting backed by a local preference; it is
+  separate from character saves and does not change `.txt` profile transfer.
+- Runtime `80a6562` passed `release:verify` (**147/147**), deterministic
+  `qa:fast` for all 11 released finales, static/package audit, Capacitor sync,
+  and production checks for both public origins.
+- Published preview: `https://4aef14a3.code-quest-lab.pages.dev/`; the
+  configured hostname serves source hash
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+- Live smoke toggled audio off/on, reached first combat, defeated one enemy
+  with ordinary attack input, safely ended, removed the disposable profile,
+  and recorded no browser warnings/errors. The score remains **93% / 19%**;
+  clean-player D1-D12 and physical/native-device evidence remain open.
+
 ## Tablet-control resilience milestone (2026-08-12; deployed)
 
 - Grouped pointer-capture fallback, active-world viewport reflow,

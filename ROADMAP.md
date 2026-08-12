@@ -153,6 +153,25 @@ acceptance remain open; use the owner-run device acceptance packet next.
 
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
+### Completed milestone: optional gameplay audio feedback (2026-08-12; deployed)
+
+- [x] Add a fail-safe procedural feedback layer for attacks, hits, criticals,
+  defeats, incoming damage, doors, room clears, boss moments, and level-ups
+  without removing Joey's authored cues.
+- [x] Add the visible `Gameplay Audio` local toggle and keep it outside the
+  character save/export schema.
+- [x] Pass `release:verify` (**147/147**), `qa:fast` for all 11 released
+  finales, static/package audit, and Capacitor synchronization; push runtime
+  `80a6562` with source/mirror hash
+  `C76C4F8A11B6BE12ECF4BEDE19FB9A4D9526D20BCF1E559E2E2B3DC7516FB34A`.
+- [x] Publish preview `https://4aef14a3.code-quest-lab.pages.dev/` and the
+  configured hostname; verify settings/audio toggling, first-combat attack
+  and defeat, safe cleanup, and empty live diagnostics.
+
+This is a tested and deployed user-visible polish milestone. It does not
+increase the **93%** / **19%** score because clean-player D1-D12 and
+physical/native-device acceptance remain open.
+
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)
 
 - [x] Stop the repeated no-aid route method under the three/five-attempt loop
