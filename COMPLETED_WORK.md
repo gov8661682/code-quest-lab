@@ -22,6 +22,19 @@ documented acceptance-criterion failure. Optional improvements belong in
 - This is minor local tablet compatibility hardening, not a deployment
   checkpoint or evidence-score change; physical/device acceptance remains open.
 
+## Screen-attached destination guidance (2026-08-12; local QA)
+
+- Moved the Town, entrance, and cleared-room destination cues to the screen-space
+  pass after camera restoration. `getPlayerGuideScreenAnchor()` keeps each steady
+  arrow beside the character even when the camera is clamped or the viewport
+  changes; world-space target calculations still point at the real destination.
+- The exact source mirror, generated package, Capacitor synchronization,
+  `release:verify` (**142/142**), `qa:fast`, and local browser smoke pass with
+  empty diagnostics. Runtime `69a9915` is pushed with source hash
+  `9C908ECC72B83CC51AE317B78509CF315B334A88E6D25EFB4B74AAA3D033CFE1`.
+- This is a minor local usability correction, not a deployment checkpoint or
+  evidence-score change; the deployed runtime remains `b5d701e`.
+
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
 - Hardened the shared joystick startup path so missing or rejected Pointer

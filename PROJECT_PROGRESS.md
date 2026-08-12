@@ -43,6 +43,14 @@ source hash `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 The **93%** / **19%** evidence score remains unchanged because clean-player and
 physical/device acceptance are still open.
 
+The latest local guidance correction is committed as `69a9915`: Town `TO
+DEPTHS`, entrance `TO GATE`, and cleared-room `NEXT ROOM` arrows now render from
+the player's screen anchor after the camera pass, so they remain attached to the
+character while still pointing toward the actual portal, gate, or forward door.
+The exact mirror, `release:verify` (**142/142**), `qa:fast`, static/package audit,
+Capacitor sync, and local browser smoke pass. This is minor local usability
+hardening; the deployed `b5d701e` runtime and **93% / 19%** score are unchanged.
+
 The accelerated QA layer now includes a data-driven no-aid mechanics-confidence
 pass for all 11 released finales: D1, D2, and D4-D12. It exercises each named
 boss's configured phase/add budget with ordinary attack cadence and real

@@ -119,6 +119,22 @@ This is local tablet/orientation hardening rather than a major deployment
 checkpoint. It does not change the **93%** / **19%** score or replace the
 owner-run device acceptance packet.
 
+### Current local QA: screen-attached destination guidance (2026-08-12)
+
+- [x] Render the Town, entrance, and cleared-room destination arrows after the
+  camera pass from the player's current screen anchor.
+- [x] Keep target direction in world space so `TO DEPTHS`, `TO GATE`, and
+  `NEXT ROOM` continue to point at the actual portal, gate, or forward door.
+- [x] Pass the **142/142** release gate, `qa:fast`, package audit, Capacitor
+  synchronization, and a local browser smoke with empty diagnostics; push
+  runtime `69a9915` with source/mirror hash
+  `9C908ECC72B83CC51AE317B78509CF315B334A88E6D25EFB4B74AAA3D033CFE1`.
+
+This is a minor local usability correction rather than a major deployment
+checkpoint. The deployed `b5d701e` runtime and **93%** / **19%** evidence score
+remain unchanged; owner-run device acceptance is still the next score-bearing
+lane.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)

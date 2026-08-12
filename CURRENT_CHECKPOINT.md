@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; the current local build also passed a 1280x720 -> 1024x768 -> 600x800 responsive smoke with no browser warnings/errors; no P0/P1 issue was observed during those checks | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b5d701e` is pushed to `origin/main`; current local touch/viewport-compatibility runtime `3cce0e0` is also pushed, with the **142/142** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and prior primary/preview production checks passing; the deployed source remains the verified `530E64...5EF6EF6` build | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b5d701e` is pushed to `origin/main`; current local screen-attached guidance runtime `69a9915` is also pushed, with the **142/142** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and prior primary/preview production checks passing; the deployed source remains the verified `530E64...5EF6EF6` build | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Current local QA: shared mobile viewport reflow (2026-08-12)
@@ -40,6 +40,16 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   1024x768, and 600x800; canvas dimensions matched each viewport and no
   warnings/errors were captured. This does not count as physical-device or
   touch-only acceptance.
+
+### Current local QA: screen-attached destination guidance (2026-08-12)
+
+- Town `TO DEPTHS`, entrance `TO GATE`, and cleared-room `NEXT ROOM` arrows now
+  render after the camera pass from the player's screen anchor. They stay beside
+  the character at camera edges and viewport changes while their angle still
+  points toward the actual destination.
+- Runtime `69a9915` passes **142/142**, `qa:fast`, static/package audit, and
+  Capacitor synchronization. This is a minor local usability correction; it
+  does not create a website checkpoint or change the **93% / 19%** score.
 
 ### Open-world foundation update (2026-08-12; local QA)
 

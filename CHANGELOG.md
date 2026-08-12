@@ -15,6 +15,21 @@
 - This is local compatibility hardening, not a website checkpoint or score
   change; the deployed runtime remains `b5d701e`.
 
+## Screen-attached destination guidance (2026-08-12; local QA)
+
+- Town `TO DEPTHS`, entrance `TO GATE`, and cleared-room `NEXT ROOM` arrows now
+  render after the camera pass from the player's current screen anchor. They
+  stay beside the character at camera edges and viewport changes while still
+  rotating toward the real destination; no gate-mounted pulse or edge marker
+  was reintroduced.
+- Runtime `69a9915` is pushed with source hash
+  `9C908ECC72B83CC51AE317B78509CF315B334A88E6D25EFB4B74AAA3D033CFE1`.
+  `release:verify` passes **142/142**, `qa:fast` clears all 11 finales, and the
+  local browser smoke has no warnings/errors.
+- This is minor local usability hardening, not a website checkpoint or score
+  change; the deployed runtime remains `b5d701e` and the score remains
+  **93% / 19%**.
+
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
 - Shared touch joysticks now feature-detect Pointer Capture and continue

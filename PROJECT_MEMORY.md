@@ -27,14 +27,14 @@ or cumulative session transcript.
   fresh live route/safe-stop smokes pass. Score stays **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
 - Current local QA follow-up (2026-08-12): touch joysticks tolerate absent or
-  rejected Pointer Capture, and window/visual-viewport changes share active-
-  world reflow; source/mirror, native sync, and the local gate **142/142** pass.
-  A fresh managed-browser 1280x720 -> 1024x768 -> 600x800 smoke matched canvas sizes with no warnings/errors; it is not device evidence.
+  rejected Pointer Capture; window/visual-viewport changes share active-world
+  reflow; and Town/entrance/cleared-room destination arrows use the player's
+  screen anchor after the camera pass. Source/mirror, native sync, local gate
+  **142/142**, and a managed-browser 1280x720 -> 1024x768 -> 600x800 smoke with
+  no warnings/errors pass; this is not device evidence.
   The released-route World Atlas remains contract-tested over Town, `REGION_ORDER`,
-  `worldLocation`, waypoints, and unlock state with no new region/save field.
-  D13 stays gated behind its future-content contracts and outside the atlas;
-  its Joey-preserving reward/story boundary remains local and uncredited until
-  future-region progression, save, balance, return, and device evidence exist.
+  `worldLocation`, waypoints, and unlock state; D13 stays gated outside the atlas
+  until future-region progression, save, balance, return, and device evidence exist.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A

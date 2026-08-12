@@ -5,27 +5,26 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local runtime commit: `3cce0e0` (`Harden mobile viewport
-  reflow`), pushed to `origin/main` after the **142/142** release
+- Latest tested local runtime commit: `69a9915` (`Keep destination guides
+  attached to player`), pushed to `origin/main` after the **142/142** release
   gate, deterministic fast QA, package audit, and alias-launched native
-  synchronization. This is a local touch/viewport-compatibility follow-up to the
+  synchronization. This is a local screen-attached guidance refinement to the
   deployed `b5d701e` guidance checkpoint.
 - Runtime milestone: `b5d701e` is deployed and live-verified at the configured
   hostname and preview `https://ce226dfb.code-quest-lab.pages.dev/`.
 - Deployed source hash:
   `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
 - Current local source hash:
-  `659C4A9A8AC97D7B7F514B778B01686BAD641D7351D03C83D2E3D419939C33C3`.
+  `9C908ECC72B83CC51AE317B78509CF315B334A88E6D25EFB4B74AAA3D033CFE1`.
 - `release:verify` passed **142/142**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
   2026-08-12. A fresh live preview smoke reached Town, the northern road,
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
   the disposable profile was removed and diagnostics were empty. The primary
   hostname served the current release shell without captured browser errors.
-- Documentation record commits `7b98b4a` and `cd97d46` are now pushed to
-  `origin/main`; the first push was delayed by a transient GitHub network
-  failure and succeeded after connectivity recovered. No runtime files are
-  pending.
+- Documentation record commits `7b98b4a` and `cd97d46`, plus runtime commit
+  `69a9915`, are pushed to `origin/main`; the first push was delayed by a
+  transient GitHub network failure and succeeded after connectivity recovered.
 
 ## Touch pointer-capture fallback (2026-08-12; local QA)
 
@@ -57,6 +56,17 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 - The managed-browser console had no warnings or errors. This is responsive
   browser evidence only; it is not physical-device, touch-only, or full-route
   acceptance and does not change the **93% / 19%** score.
+
+## Screen-attached destination guidance (2026-08-12; local QA)
+
+- Town `TO DEPTHS`, entrance `TO GATE`, and cleared-room `NEXT ROOM` arrows now
+  render after the camera pass from `getPlayerGuideScreenAnchor()`. They remain
+  beside the character at camera edges and viewport changes while their angle
+  continues to point toward the real portal, gate, or forward door.
+- Runtime `69a9915` has the exact source mirror, **142/142** release gate,
+  `qa:fast`, static/package audit, and Capacitor synchronization passing. This
+  minor local usability correction does not deploy the website or change the
+  **93% / 19%** score; the deployed runtime remains `b5d701e`.
 
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
