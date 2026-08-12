@@ -23,8 +23,8 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Meaningful 10-30 minute touch-first session | 20 | 16 | Dated touch-first play covered Town, D1 combat rooms, shrine, treasure, elite, boss, target lock, and deliberate portal travel; a current-build managed-browser run also paused, reloaded, resumed the exact combat room, paused again, and finished to the dashboard with the local QA safety aid enabled | One dated 10-30 minute touch-only/device session; the current managed-browser run was shorter and is not physical-device evidence |
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
-| Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; contracts also cover active-run preservation and non-overwrite behavior | Cross-version/device fixtures and future-class migration evidence |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **131/131** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes | Cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime commit `4580631` is pushed to `origin/main`; its tested build is deployed to preview `932a4fb6.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **135/135** local release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and live desktop/tablet main-flow smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Latest evidence update (2026-08-12)
@@ -35,8 +35,17 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
   intentionally omits rewards, materials, achievement updates, dungeon
   unlock/progression, and release handoff. D13 remains outside `REGION_ORDER`,
   normal unlock refresh, and active-run recovery. Three future-content guard
-  contracts pass; the current local gate is **131/131**. No score credit is
+  contracts pass; the current local gate is **135/135**. No score credit is
   claimed and the evidence score remains **93%** / **19%**.
+
+- The plain-text profile transfer now has checked-in, synthetic fixtures for a
+  legacy v1 raw save, current v2 Mage progress with backup and interrupted-run
+  state, invalid optional checkpoint data, a future v3 save, and an unsupported
+  Ranger class. The parser keeps durable progress available where it is safe,
+  rejects unsafe future content, and never overwrites the importing profile.
+  This closes the fixture-coverage gap only; cross-device, native-storage,
+  and baseline-to-release browser runtime evidence remain open. The score
+  remains **93%** / **19%**.
 
 - The bounded fresh-profile audit is now stopped under the loop-breaker rule.
   A fourth 600x768 no-aid Mage run delivered one ordinary touch attack in

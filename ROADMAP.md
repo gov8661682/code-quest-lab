@@ -83,6 +83,21 @@ browser batches.
 The three guard contracts are local release-readiness coverage only. They do
 not expose D13, advance Checkpoint 1, or create a website deployment.
 
+### Plain-text transfer portability fixtures (2026-08-12; local)
+
+- [x] Load checked-in `.txt` fixtures from disk instead of relying only on
+  inline test objects.
+- [x] Cover legacy v1 raw saves, current v2 durable data plus backup and
+  active-run checkpoint, invalid optional checkpoints, future save version 3,
+  and an unsupported future class.
+- [x] Exercise a BOM and Windows line-ending variant while preserving the
+  non-overwrite import contract.
+- [ ] Validate the same transfer matrix on a real second browser/device and
+  against a preserved baseline save before claiming cross-device migration.
+
+This closes the local fixture gap without changing the runtime or claiming
+cross-device compatibility. It is not a website deployment checkpoint.
+
 ### Completed milestone: Level 1 onboarding balance pass (2026-08-10; deployed)
 
 - Reduced the fresh Barbarian starter damage multiplier to `0.75`.

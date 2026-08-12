@@ -7,6 +7,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SOURCE = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+const FIXTURE_ROOT = path.join(ROOT, 'tests', 'fixtures', 'profile-transfer');
+
+function readFixture(name) {
+  return fs.readFileSync(path.join(FIXTURE_ROOT, name), 'utf8');
+}
 
 function loadProfileExportParser() {
   const start = SOURCE.indexOf('var PROFILE_EXPORT_FORMAT=');
@@ -15,7 +20,7 @@ function loadProfileExportParser() {
   assert.notEqual(end, -1, 'profile transfer function boundary is present');
 
   const context = {
-    CLASS_DATA: { barbarian: {}, mage: {} },
+    CLASS_DATA: { barbarian: {}, mage: {}, rogue: {}, druid: {} },
     parseCharacterSave(raw) {
       try {
         const parsed = JSON.parse(raw);
@@ -31,7 +36,15 @@ function loadProfileExportParser() {
       }
     },
     parseRunCheckpoint(value) {
-      return value && value.version === 1 ? value : null;
+      const checkpoint = typeof value === 'string' ? JSON.parse(value) : value;
+      if (!checkpoint || checkpoint.version !== 1 || checkpoint.activeDungeonId !== 'dungeon1') return null;
+      if (typeof checkpoint.currentRoomId !== 'string') return null;
+      if (!Array.isArray(checkpoint.mainPath) || checkpoint.mainPath.length < 1) return null;
+      if (!checkpoint.mainPath.includes(checkpoint.currentRoomId)) return null;
+      if (!checkpoint.roomDefs || typeof checkpoint.roomDefs !== 'object' || Array.isArray(checkpoint.roomDefs)) return null;
+      if (!checkpoint.roomStates || typeof checkpoint.roomStates !== 'object' || Array.isArray(checkpoint.roomStates)) return null;
+      if (checkpoint.mainPath.some((roomId) => !checkpoint.roomDefs[roomId])) return null;
+      return checkpoint;
     }
   };
 
@@ -58,7 +71,14 @@ test('plain-text profile transfer preserves durable data, backup, and run checkp
     worldLocation: { type: 'town' }
   };
   const backup = { ...data, souls: 40 };
-  const checkpoint = { version: 1, activeDungeonId: 'dungeon1', currentRoomId: 'room_start' };
+  const checkpoint = {
+    version: 1,
+    activeDungeonId: 'dungeon1',
+    currentRoomId: 'room_start',
+    mainPath: ['room_start'],
+    roomDefs: { room_start: { id: 'room_start' } },
+    roomStates: { room_start: { cleared: false } }
+  };
   const envelope = {
     format: 'code-quest-lab-profile',
     formatVersion: 1,
@@ -132,4 +152,39 @@ test('plain-text transfer rejects future schemas and unsupported Joey classes sa
   assert.ok(invalidCheckpoint, 'durable data survives an invalid optional checkpoint');
   assert.equal(invalidCheckpoint.className, 'mage');
   assert.equal(invalidCheckpoint.checkpoint, null, 'invalid checkpoint data is not imported as active progress');
+});
+
+test('fixture matrix preserves current Mage progression, backup, and interrupted-run progress', () => {
+  const result = parseProfileExport(readFixture('current-v2-mage-active-run.txt'));
+  assert.ok(result);
+  assert.equal(result.className, 'mage');
+  assert.equal(result.data.saveVersion, 2);
+  assert.equal(result.data.mastery.level, 7);
+  assert.equal(result.data.souls, 42);
+  assert.equal(result.backup.souls, 40);
+  assert.equal(result.checkpoint.activeDungeonId, 'dungeon1');
+  assert.equal(result.checkpoint.currentRoomId, 'd1_room_a');
+  assert.deepEqual(JSON.parse(JSON.stringify(result.checkpoint.mainPath)), ['d1_room_a', 'd1_room_b']);
+});
+
+test('fixture matrix keeps a legacy v1 raw save importable on a different origin', () => {
+  const result = parseProfileExport(`\uFEFF${readFixture('legacy-v1-barbarian.txt').replace(/\n/g, '\r\n')}`);
+  assert.ok(result);
+  assert.equal(result.className, 'barbarian');
+  assert.equal(result.data.saveVersion, 1);
+  assert.equal(result.data.souls, 17);
+  assert.equal(result.checkpoint, null);
+});
+
+test('fixture matrix drops only an invalid optional checkpoint', () => {
+  const result = parseProfileExport(readFixture('current-v2-mage-invalid-checkpoint.txt'));
+  assert.ok(result);
+  assert.equal(result.data.souls, 31);
+  assert.equal(result.data.mastery.level, 6);
+  assert.equal(result.checkpoint, null);
+});
+
+test('fixture matrix rejects future save versions and unsupported future classes', () => {
+  assert.equal(parseProfileExport(readFixture('future-v3-mage.txt')), null);
+  assert.equal(parseProfileExport(readFixture('unsupported-ranger-v2.txt')), null);
 });

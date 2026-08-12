@@ -1,7 +1,7 @@
 # Code Quest Lab - Storage Boundaries
 
-Status: documented; local upload round trip verified; device and cross-version
-evidence remain open (2026-08-07)
+Status: documented; local upload round trip and fixture matrix verified; device
+and baseline-to-release runtime evidence remain open (2026-08-12)
 
 This document describes where the current release stores data. It does not
 claim cloud backup, cross-device sync, or platform-store purchase verification.
@@ -69,8 +69,9 @@ claim cloud backup, cross-device sync, or platform-store purchase verification.
 The current automated and browser evidence covers versioned save parsing, backup
 promotion, unsafe-save fallback, legacy mastery migration, checkpoint
 validation, profile deletion, Return to Main Menu cleanup, Finish for Now
-persistence, native lifecycle callback routing, and a real local `.txt` upload
-round trip. It does not replace:
+persistence, native lifecycle callback routing, a real local `.txt` upload
+round trip, and synthetic fixture loading for legacy v1/current v2/future
+schema/unsupported-class/invalid-checkpoint boundaries. It does not replace:
 
 - cross-version loading from the preserved baseline save through the release
   candidate;

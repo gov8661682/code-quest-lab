@@ -3,6 +3,19 @@
 Date: 2026-08-12
 State: pre-release hardening; D1-12 release surface locally verified; not a Release Candidate
 
+## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
+
+Checked-in, synthetic `.txt` fixtures now exercise the local transfer parser
+across the supported legacy v1 and current v2 save boundaries. The current v2
+fixture preserves Mage durable progress, a valid local backup, and a valid
+Dungeon 1 active-run checkpoint; separate fixtures prove that invalid optional
+checkpoint data is dropped, future save version 3 is rejected, and an
+unsupported Ranger class is rejected rather than remapped. A BOM and Windows
+line-ending variant are also covered. This is device-neutral parser evidence,
+not a claim of cross-device/native-storage or baseline-to-release runtime
+compatibility. No runtime source changed, so no website deployment checkpoint
+was created; the score remains **93%** / **19%**.
+
 ## Player-following entrance guide refinement (2026-08-12; deployed checkpoint)
 
 Town and dungeon entrances now show a steady arrow beside the character in
@@ -88,7 +101,7 @@ progression handoff, and related dialogue. D13 remains excluded from
 is still truthful and no new content was exposed.
 
 The three future-content guard contracts pass, and the full local release gate
-is now **131/131** after this audit coverage. This is a source/contract finding,
+is now **135/135** after the subsequent profile-transfer fixture coverage. This is a source/contract finding,
 not D13 playability evidence and not a C1 score increase; the score remains
 **93%** / **19%**.
 

@@ -1,0 +1,24 @@
+{
+  "saveVersion": 1,
+  "souls": 17,
+  "stats": {
+    "totalRuns": 2,
+    "highestRoom": 4
+  },
+  "mastery": {
+    "level": 5,
+    "xp": 23
+  },
+  "dungeons": {
+    "unlocked": {
+      "dungeon1": true
+    },
+    "selected": "dungeon1"
+  },
+  "selectedClass": "barbarian",
+  "inventory": [
+    {
+      "id": "legacy-axe"
+    }
+  ]
+}

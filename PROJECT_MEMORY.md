@@ -15,25 +15,26 @@ When a fact changes, edit or remove the old statement in place. Do not add a
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **131/131** tests, static build/package audit,
+- Current verified local gate: **135/135** tests, static build/package audit,
   Capacitor Android/iOS synchronization, and deterministic fast QA pass.
-- Current deployed milestone (2026-08-12): fine-pointer surfaces now show a
-  visible, accessible `Attack nearest target` control while touch surfaces
-  retain the Attack joystick, target assist, and canvas mouse path. Commit
-  `7f1ea4f` is pushed to `origin/main` and deployed to preview
-  `c3162cd3.code-quest-lab.pages.dev` and the configured hostname; source hash
-  is `EC14E3B24CFF952F5D38C57E733B8B7C55DF7225EC12B95C03DF25E073856C82`.
-  Both production checks and live first-room smokes pass with empty browser
+- Current deployed milestone (2026-08-12): the Town/entrance destination cue
+  is a steady world-space arrow beside the player, rotating toward the
+  portal/gate and following movement; there is no pulsing or gate-mounted
+  arrow. Commit `4580631` is pushed to `origin/main` and deployed to preview
+  `932a4fb6.code-quest-lab.pages.dev` and the configured hostname; source hash
+  is `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`.
+  Production checks and live 1280x720/600x768 smokes pass with empty browser
   diagnostics. This does not change the **93% / 19%** score: clean-player
   D1-D12 and physical/native-device evidence remain open.
-- Current deployed follow-up (2026-08-12): the first Normal D1 Stone Guardian
-  uses a finite `0.60/0.55/0.90/1.40/0.60` onboarding budget plus `4.0s` entry
-  grace, while its authored phase, summons, slam, cleave, meteors, identity,
-  and rewards remain intact. A 600x768 QA-assisted smoke observed `450/450`,
-  ordinary attack clearing, and exit unlock. Commit `6e5812f` is pushed and
-  deployed to preview `ab0fd517.code-quest-lab.pages.dev` and the configured
-  hostname; source hash is
-  `800B75EA81A332BD2BAA6A51E36390C444FACC507CA0F2F5E29BD2FE453A3DE9`.
+- Current local QA follow-up (2026-08-12): D13 is protected by three future-
+  content contracts and remains gated; the local release gate is **135/135**.
+  The source-resident Realm of Space route is not credited until rewards,
+  progression, save, dialogue, and return work are complete.
+- Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
+  cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
+  invalid optional checkpoints, future v3, and unsupported Ranger content.
+  Cross-device/native-storage and baseline-to-release runtime evidence remain
+  open; do not turn this fixture coverage into a cloud-sync claim.
 - Current release surface: D1, D2, D4-D12. D9 reaches Vow Breaker's Castle,
   D10 reaches The Abandoned Laboratory, D11 reaches Ranger Watchtowers, and
   D12 reaches Necromancer's Stolen Graveyard; promoted routes retain authored
@@ -62,14 +63,6 @@ When a fact changes, edit or remove the old statement in place. Do not add a
   acceptance. The latest fourth 600x768 no-aid audit delivered one attack then
   died during an attack-only/no-movement follow-up; this is input evidence,
   not a full D1-D12 acceptance claim or a reason for another global nerf.
-- The deployed entrance-guide refinement moves the Town/entrance destination
-  cue into the world-space player camera pass: a steady arrow stays beside the
-  character, rotates toward the portal/gate, and disappears at the destination
-  radius; there is no pulsing or gate-mounted arrow. Source, mirror, and dist
-  match SHA `6E6998C32F899B48BC68C06439D213AE8D866B8068F84A29EBF7D5F10B79685A`;
-  **127/127** and `qa:fast` pass, and live 1280x720/600x768 checks are clean.
-  Commit `4580631` is deployed to the configured hostname and preview;
-  disposable live profiles were removed without changing existing saves.
 ## Durable lessons
 
 - The highest-value missing evidence is a fresh normal D1-12 player route

@@ -1,5 +1,16 @@
 # Code Quest Lab - Changelog
 
+## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
+
+- Added synthetic `.txt` fixtures covering legacy v1 raw saves, current v2
+  Mage progress with a valid backup and active-run checkpoint, invalid
+  optional checkpoints, future save version 3, and an unsupported Ranger
+  class.
+- The focused parser contracts load the fixtures from disk and exercise BOM,
+  Windows line-ending, safe-migration, and fail-closed boundaries. This is a
+  test/documentation milestone only: no runtime hash changed, no deployment
+  was created, and cross-device/native-storage runtime evidence remains open.
+
 ## Fresh Mage first-boss QA diagnostic (2026-08-12; local)
 
 - Added a deterministic fresh Normal Mage/Stone Guardian scenario to fast QA.

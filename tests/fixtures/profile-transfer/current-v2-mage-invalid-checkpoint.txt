@@ -1,0 +1,32 @@
+CODE QUEST LAB PROFILE EXPORT
+{
+  "format": "code-quest-lab-profile",
+  "formatVersion": 1,
+  "exportedAt": 1760000000000,
+  "character": {
+    "sourceId": "fixture-v2-mage-invalid-checkpoint",
+    "className": "mage",
+    "data": {
+      "saveVersion": 2,
+      "souls": 31,
+      "stats": {
+        "totalRuns": 2
+      },
+      "mastery": {
+        "level": 6,
+        "xp": 8
+      },
+      "dungeons": {
+        "unlocked": {
+          "dungeon1": true
+        }
+      },
+      "selectedClass": "mage"
+    }
+  },
+  "backup": null,
+  "runCheckpoint": {
+    "version": 2,
+    "activeDungeonId": "dungeon1"
+  }
+}

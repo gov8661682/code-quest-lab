@@ -1,0 +1,115 @@
+CODE QUEST LAB PROFILE EXPORT
+{
+  "format": "code-quest-lab-profile",
+  "formatVersion": 1,
+  "exportedAt": 1760000000000,
+  "character": {
+    "sourceId": "fixture-v2-mage-source",
+    "className": "mage",
+    "index": {
+      "id": "fixture-v2-mage-source",
+      "className": "mage",
+      "level": 7,
+      "souls": 42,
+      "createdAt": 1759000000000,
+      "lastPlayed": 1760000000000
+    },
+    "data": {
+      "saveVersion": 2,
+      "souls": 42,
+      "stats": {
+        "totalRuns": 3
+      },
+      "mastery": {
+        "level": 7,
+        "xp": 23
+      },
+      "dungeons": {
+        "unlocked": {
+          "dungeon1": true
+        }
+      },
+      "selectedClass": "mage",
+      "inventory": [
+        {
+          "id": "starter-wand"
+        }
+      ],
+      "equipped": {
+        "weapon": "starter-wand"
+      },
+      "worldLocation": {
+        "type": "town"
+      }
+    }
+  },
+  "backup": {
+    "saveVersion": 2,
+    "souls": 40,
+    "stats": {
+      "totalRuns": 3
+    },
+    "mastery": {
+      "level": 7,
+      "xp": 19
+    },
+    "dungeons": {
+      "unlocked": {
+        "dungeon1": true
+      }
+    },
+    "selectedClass": "mage",
+    "inventory": [
+      {
+        "id": "starter-wand"
+      }
+    ]
+  },
+  "runCheckpoint": {
+    "version": 1,
+    "savedAt": 1760000000000,
+    "reason": "fixture transfer",
+    "activeDungeonId": "dungeon1",
+    "activeDifficultyId": "normal",
+    "modifierId": null,
+    "currentRoomId": "d1_room_a",
+    "mainPath": [
+      "d1_room_a",
+      "d1_room_b"
+    ],
+    "roomDefs": {
+      "d1_room_a": {
+        "id": "d1_room_a"
+      },
+      "d1_room_b": {
+        "id": "d1_room_b"
+      }
+    },
+    "roomStates": {
+      "d1_room_a": {
+        "cleared": true
+      },
+      "d1_room_b": {
+        "cleared": false
+      }
+    },
+    "player": {
+      "x": 300,
+      "y": 240,
+      "hp": 80,
+      "hpMax": 80,
+      "level": 7
+    },
+    "playerXP": 12,
+    "xpToNextLevel": 100,
+    "totalKills": 8,
+    "timeSurvived": 91,
+    "runSoulsEarned": 6,
+    "runMasteryXpEarned": 10,
+    "runXpEarned": 24,
+    "runEliteKills": 1,
+    "upgrades": {},
+    "runTempBuffs": {},
+    "skillCooldownTimers": {}
+  }
+}

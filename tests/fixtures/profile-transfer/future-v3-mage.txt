@@ -1,0 +1,26 @@
+CODE QUEST LAB PROFILE EXPORT
+{
+  "format": "code-quest-lab-profile",
+  "formatVersion": 1,
+  "exportedAt": 1760000000000,
+  "character": {
+    "sourceId": "fixture-future-v3-mage",
+    "className": "mage",
+    "data": {
+      "saveVersion": 3,
+      "souls": 99,
+      "stats": {},
+      "mastery": {
+        "level": 9
+      },
+      "dungeons": {
+        "unlocked": {
+          "dungeon1": true
+        }
+      },
+      "selectedClass": "mage"
+    }
+  },
+  "backup": null,
+  "runCheckpoint": null
+}

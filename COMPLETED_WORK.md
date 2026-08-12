@@ -7,6 +7,19 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Plain-text profile transfer fixture matrix (2026-08-12; local QA)
+
+- Added synthetic, device-neutral `.txt` fixtures for legacy v1 raw saves,
+  current v2 Mage data with backup and interrupted-run checkpoint, invalid
+  optional checkpoint data, future save version 3, and unsupported Ranger
+  content.
+- The focused transfer contracts load the files from disk, including BOM and
+  Windows line-ending normalization, and verify safe preservation/rejection
+  behavior. This is fixture coverage only; real cross-device, native-storage,
+  and baseline-to-release browser migration evidence remains open.
+- The runtime mirror/hash is unchanged, so this local QA slice has no website
+  deployment checkpoint and does not change the **93% / 19%** score.
+
 ## Fresh Mage first-boss diagnostic (2026-08-12; local QA slice)
 
 - Recorded the fourth bounded 600x768 no-aid audit: a touch attack defeated one
