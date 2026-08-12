@@ -13,7 +13,7 @@ or cumulative session transcript.
 - Active boundary: Checkpoint 1 - Core game stability and complete V1 path.
 - Evidence score: **93% active checkpoint / 19% overall**. Automated work alone
   must not increase this score without satisfying a named acceptance lane.
-- Current verified local gate: **140/140** tests, static build/package audit,
+- Current verified local gate: **141/141** tests, static build/package audit,
   Capacitor Android/iOS synchronization, deterministic fast QA, and a bounded
   no-aid mechanics pass over all 11 released finales.
 - Current deployed milestone (2026-08-12): the guidance and release-readiness
@@ -26,15 +26,14 @@ or cumulative session transcript.
   Production checks, 140/140 release verification, deterministic fast QA, and
   fresh live route/safe-stop smokes pass. Score stays **93% / 19%**:
   clean-player D1-D12 and physical/native-device evidence remain open.
-- Current local QA follow-up (2026-08-12): the released-route World Atlas is
-  contract-tested over Town, `REGION_ORDER`, `worldLocation`, waypoints, and
-  unlock state with no new region/save field; local gate **140/140**. D13 stays
-  gated behind three future-content contracts and outside the atlas. Its
-  Joey-preserving reward boundary is implemented locally: 2.0x guardian souls,
-  boss XP/mastery, named defeat statistics, death effects, and completion
-  handoff. D13 is not credited until future-region progression, save, balance,
-  and return work are complete; its authored story beats are contract-tested
-  and no undefined D13-specific loot is invented.
+- Current local QA follow-up (2026-08-12): the shared touch joysticks now
+  continue initialization when Pointer Capture is unavailable or rejected;
+  source/mirror, native sync, and the local gate **141/141** pass. The released-
+  route World Atlas remains contract-tested over Town, `REGION_ORDER`,
+  `worldLocation`, waypoints, and unlock state with no new region/save field.
+  D13 stays gated behind its future-content contracts and outside the atlas;
+  its Joey-preserving reward/story boundary remains local and uncredited until
+  future-region progression, save, balance, return, and device evidence exist.
 - Current portability QA (2026-08-12): checked-in synthetic `.txt` fixtures
   cover legacy v1, current v2 Mage data with backup and active-run checkpoint,
   invalid optional checkpoints, future v3, and unsupported Ranger content. A

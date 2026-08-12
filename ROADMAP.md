@@ -91,6 +91,19 @@ This is a tested release-surface milestone, not a Release Candidate. Clean
 player D1-D12 and physical/native-device evidence remain open, so the score
 stays **93%** / **19%**.
 
+### Current local QA: touch pointer-capture fallback (2026-08-12)
+
+- [x] Make shared joystick startup tolerate absent or rejected Pointer Capture
+  on browser/webview surfaces before continuing with the normal input update.
+- [x] Add the focused contract and pass the **141/141** release gate,
+  `qa:fast`, package audit, and Capacitor synchronization.
+- [x] Push runtime `72451c3` with source/mirror hash
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+
+This is local tablet-compatibility hardening rather than a major deployment
+checkpoint. It does not change the **93%** / **19%** score or replace the
+owner-run device acceptance packet.
+
 ## Phase 1 - Tablet sessions and core V1 hardening (current)
 
 ### Current local QA follow-up: fresh Mage first-boss diagnostic (2026-08-12)

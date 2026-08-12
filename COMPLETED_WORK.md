@@ -7,6 +7,18 @@ item only for a failing test, confirmed regression, changed dependency, or a
 documented acceptance-criterion failure. Optional improvements belong in
 `BACKLOG.md`.
 
+## Touch pointer-capture fallback (2026-08-12; local QA)
+
+- Hardened the shared joystick startup path so missing or rejected Pointer
+  Capture cannot abort touch movement/attack initialization. The fallback keeps
+  the existing pointer/mouse behavior and all Joey combat systems unchanged.
+- The exact source mirror, Capacitor synchronization, static package audit,
+  `release:verify` (**141/141**), and all-11-finale `qa:fast` pass. Runtime
+  `72451c3` is pushed with source hash
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+- This is a minor local compatibility fix, not a deployment checkpoint or
+  evidence-score change; physical/device acceptance remains open.
+
 ## Guidance and release-readiness checkpoint (2026-08-12; deployed)
 
 - The Town, entrance, and cleared-room directional cues now use steady arrows

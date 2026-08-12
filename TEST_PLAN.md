@@ -19,7 +19,13 @@ Updated: 2026-08-12
 - The deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
   configured hostname is `https://code-quest-lab.gov8661682.com/`; both
   production checks pass.
-- `npm.cmd test` passes **140/140**; release contracts, package audit,
+- Current local runtime `72451c3` adds the pointer-capture fallback for shared
+  touch joysticks; its source/mirror hash is
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+  `npm.cmd test` and `release:verify` pass **141/141**; the deployed runtime
+  remains the previously verified 140-test build because this is a minor
+  compatibility fix, not a major website checkpoint.
+- Release contracts, package audit,
   deterministic `qa:fast`, native synchronization, and production checks pass.
 - The first Normal D1 banner adapts its guidance to pointer versus touch-first
   controls; this is covered by the combat contract and an isolated browser

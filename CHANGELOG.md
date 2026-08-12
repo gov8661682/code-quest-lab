@@ -1,5 +1,17 @@
 # Code Quest Lab - Changelog
 
+## Touch pointer-capture fallback (2026-08-12; local QA)
+
+- Shared touch joysticks now feature-detect Pointer Capture and continue
+  initializing if a browser or webview rejects it. This protects movement and
+  attack startup on mobile surfaces without changing combat math or targeting.
+- The source/mirror, native package, static audit, `release:verify`
+  (**141/141**), and all-11-finale `qa:fast` pass. Runtime `72451c3` is pushed;
+  source hash:
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+- This is local release-readiness hardening, not a website checkpoint or score
+  change; the deployed runtime remains `b5d701e`.
+
 ## Guidance and release-readiness checkpoint (2026-08-12; deployed)
 
 - Grouped the steady `TO DEPTHS`, `TO GATE`, and `NEXT ROOM` cues so the arrow

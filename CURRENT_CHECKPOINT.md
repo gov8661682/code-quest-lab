@@ -24,7 +24,7 @@ checkpoint plus 93% of the active checkpoint across ten checkpoints.
 | Reload, background, forced-close, and deliberate-finish recovery | 15 | 15 | Page-background and lifecycle contracts; same-room and boss-room recovery; real-storage page-close/reopen simulation; recovered Dungeon 1 combat resume, pause, and deliberate Finish For Now | Native/physical-device suspension and cross-device migration evidence remain later release gates |
 | Keyboard/mouse and touch playability with no open P0/P1 defect | 15 | 12 | Input contracts plus a full observable D1 touch route on a tablet-sized managed-browser surface using the visible target lock; no P0/P1 issue was observed during that route | Representative full-route tablet/device evidence with recorded diagnostics and no P0/P1 issue |
 | Versioned plain-text profile transfer | 10 | 10 | Exported the retained Level 4 Barbarian, uploaded the `.txt` through the real browser file chooser, imported a matching Level 4 copy with the same dungeon/room/run/play-time values, and confirmed the original remained unchanged before deleting only the temporary copy; fixture-backed contracts now cover legacy v1, current v2 with backup and active-run state, invalid optional checkpoints, future save versions, and unsupported classes; fresh-origin browser smokes imported current v2 into a recovered Dungeon 1 room and legacy v1 into a Level 5 Barbarian profile | Physical/cross-device and baseline-to-release runtime evidence; future-class migration remains gated until Joey's additional classes are promoted |
-| Tests, current records, GitHub, and website milestone | 10 | 10 | Runtime `b5d701e` is pushed to `origin/main`; its tested build was published from current main snapshot `cca39fb` to preview `ce226dfb.code-quest-lab.pages.dev` and `code-quest-lab.gov8661682.com`; the current **140/140** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, both production checks, and fresh live route/safe-stop smokes all pass | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
+| Tests, current records, GitHub, and website milestone | 10 | 10 | Deployed runtime `b5d701e` is pushed to `origin/main`; current local touch-compatibility runtime `72451c3` is also pushed, with the **141/141** release gate, `qa:fast`, build/package audit, Android/iOS Capacitor sync, and prior primary/preview production checks passing; the deployed source remains the verified `530E64...5EF6EF6` build | Full C1 acceptance remains separate: clean-player D1-12, physical/native-device evidence, and owner-gated release decisions |
 <!-- checkpoint-progress:end -->
 
 ### Open-world foundation update (2026-08-12; local QA)
@@ -1007,11 +1007,11 @@ These blockers do not prevent the browser-side Checkpoint 1 work.
 
 ## Last verified Git commit
 
-- Latest tested local QA runtime commit: `b5d701e` (`Add adaptive first-room
-  control guidance`), pushed to `origin/main` after `release:verify`
-  (**140/140**), `qa:fast`, package audit, Capacitor synchronization, and an
-  isolated first-room browser smoke with empty diagnostics. Control records are
-  synchronized in `4e05065`; this runtime is now published to preview
+- Latest tested local QA runtime commit: `72451c3` (`Harden joystick pointer
+  capture fallback`), pushed to `origin/main` after `release:verify`
+  (**141/141**), `qa:fast`, package audit, Capacitor synchronization, and the
+  pointer-capture compatibility contract. Control records are synchronized in
+  `4e05065`; the deployed website remains runtime `b5d701e` at preview
   `https://ce226dfb.code-quest-lab.pages.dev/` and the configured hostname.
   Checkpoint 1 remains active.
 
@@ -1055,11 +1055,11 @@ regression context; they are not the current next-action pointer.
 - Runtime/milestone: `9c451af` (`Clarify queued level-up choices`)
 - Prior stable runtime: `32d83d0` (`Harden page-background save coverage`)
 - Control record: `194bcc5` (`Record project checkpoint controls and QA gap`)
-- Branch: `main`; the latest tested runtime/website milestone is `b5d701e`
-  (`Add adaptive first-room control guidance`), published from current main
-  snapshot `cca39fb`; the current control record is `4e05065`. The deployed
-  preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
-  hostname is `https://code-quest-lab.gov8661682.com/`.
+- Branch: `main`; the latest tested local runtime is `72451c3`
+  (`Harden joystick pointer capture fallback`), while the latest deployed
+  runtime remains `b5d701e`; the current control record is `4e05065`. The
+  deployed preview is `https://ce226dfb.code-quest-lab.pages.dev/` and the
+  configured hostname is `https://code-quest-lab.gov8661682.com/`.
 - Baseline tag retained: `code-quest-lab-baseline-2026-08-04`
 
 ## Last verified website deployment

@@ -13,6 +13,16 @@ defined in `AUTORUN.md` and verified by an executable project-control contract.
 
 ## Latest 2026-08-12 progress delta
 
+The shared touch joystick now treats Pointer Capture as optional: unsupported
+or rejected capture no longer aborts joystick initialization before the first
+movement/attack update. This preserves the existing touch target assist and
+combat math while improving iOS/Android webview compatibility. Runtime
+`72451c3` is pushed with source/mirror hash
+`DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`; the
+local `release:verify` gate is **141/141** and `qa:fast` still clears all 11
+released finales. It is local release-readiness hardening, not a deployment or
+score change; the deployed runtime remains `b5d701e`.
+
 The player-following guidance checkpoint is now deployed: `TO DEPTHS`, `TO
 GATE`, and `NEXT ROOM` arrows stay anchored to the character and point toward
 the next destination, with no gate-mounted pulsing arrow. The first Normal D1
@@ -34,7 +44,7 @@ incoming damage; D11 stays environment-first and D12 stays horde-and-explore.
 The full local gate is **140/140**, and `qa:fast` reports all finales victorious
 without developer aids. Commit `c1d4ba0` is pushed to `origin/main`. This does
 not replace a clean human route or physical touch evidence, so the **93%** /
-**19%** score and deployed `7b961b9` checkpoint are unchanged.
+**19%** score and deployed `b5d701e` guidance checkpoint are unchanged.
 
 Capacitor native commands are now junction-safe. The `native:sync` and
 `native:android:build` wrappers resolve the real Git repository before running
@@ -492,12 +502,12 @@ Git history, and current deployment—not only on comments or planning files.
   snapshot `cca39fb`. D13+ remains gated from the player-facing atlas and
   route order.
 - Canonical game: `index.html`, SHA-256
-  `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`
 - Download mirror: `code-quest-lab-source.txt` is byte-identical to `index.html`
 - Latest Joey reference audit: `CREATIVE_REFERENCE_AUDIT.md`, reference SHA-256
   `8E8E4B95D06AD7402714208F3EC4E463978D8C928D00E97A793FA34074859CDB`; the
   audit is complete and is not being repeated
-- Current local verification: `npm.cmd run release:verify` passes **140/140**
+- Current local verification: `npm.cmd run release:verify` passes **141/141**
   tests, the 17-file build, the static-package audit, and Capacitor sync;
   `npm.cmd run qa:fast` also passes.
 - Current live verification: `npm.cmd run production:check -- https://code-quest-lab.gov8661682.com`

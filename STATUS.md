@@ -5,21 +5,34 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
 
 ## Current repository and website record (2026-08-12)
 
-- Latest tested local runtime commit: `b5d701e` (`Add adaptive first-room
-  control guidance`), pushed to `origin/main` after the **140/140** release
+- Latest tested local runtime commit: `72451c3` (`Harden joystick pointer
+  capture fallback`), pushed to `origin/main` after the **141/141** release
   gate, deterministic fast QA, package audit, and alias-launched native
-  synchronization. The tested runtime was published from current main snapshot
-  `cca39fb` as a major guidance and release-readiness checkpoint.
+  synchronization. This is a local touch-compatibility follow-up to the
+  deployed `b5d701e` guidance checkpoint.
 - Runtime milestone: `b5d701e` is deployed and live-verified at the configured
   hostname and preview `https://ce226dfb.code-quest-lab.pages.dev/`.
 - Deployed source hash:
   `530E64C00A4DCFEE59BD7B7F4AF2640AD8BB142E54C8B5909BF40A8195EF6EF6`.
-- `release:verify` passed **140/140**, `qa:fast` passed all 11 released
+- Current local source hash:
+  `DB127E831F46778CD6FBD5E7EB0E5C6C403AC2A49BF74B6607FE1865D53CF0EA`.
+- `release:verify` passed **141/141**, `qa:fast` passed all 11 released
   finales, and production checks passed for both primary and preview on
   2026-08-12. A fresh live preview smoke reached Town, the northern road,
   entrance, Normal/Standard Expedition, first combat, pause, and safe finish;
   the disposable profile was removed and diagnostics were empty. The primary
   hostname served the current release shell without captured browser errors.
+
+## Touch pointer-capture fallback (2026-08-12; local QA)
+
+- Shared joystick startup now treats Pointer Capture as optional and catches a
+  browser/webview rejection before continuing to initialize the joystick. This
+  protects touch movement and attack controls on platforms with partial pointer
+  capture support without changing combat, cooldowns, or targeting behavior.
+- The exact source mirror, Capacitor package, `release:verify` (**141/141**),
+  `qa:fast`, and static package audit pass. This minor compatibility fix is not
+  a website checkpoint; the deployed runtime remains `b5d701e` and the score
+  remains **93% / 19%**.
 
 ## Adaptive first-room control guidance (2026-08-12; local QA)
 
@@ -883,13 +896,12 @@ intended ending, or the full safe-stop session acceptance lanes.
   cycle, a strategy change after three materially identical technical
   failures, and a hard stop after five materially identical gameplay/manual
   attempts. Independent checkpoint work continues around external blockers.
-- Current verified local QA runtime commit: `b5d701e` (`Add adaptive first-room
-  control guidance`), after `release:verify` (**140/140**), `qa:fast`, package
+- Current verified local QA runtime commit: `72451c3` (`Harden joystick pointer
+  capture fallback`), after `release:verify` (**141/141**), `qa:fast`, package
   audit, Capacitor synchronization, browser smoke, and GitHub push. Control
   records are current in `4e05065`. Checkpoint 1 remains active because clean
-  D1-12 and device evidence are not complete; this runtime is now deployed to
-  preview `https://ce226dfb.code-quest-lab.pages.dev/` and the configured
-  hostname.
+  D1-12 and device evidence are not complete; this runtime is pushed but not
+  deployed. The preview and configured hostname still serve `b5d701e`.
 - Major-milestone GitHub and website checkpoint protocol: recorded in `ROADMAP.md`.
 - Current checkpoint: Checkpoint 1 - Core game stability and complete V1 path; the creative-reference audit and release-foundation checkpoint are complete and must not be repeated.
 - Control record: `PROJECT_PROGRESS.md`, `CHECKPOINTS.md`, `CURRENT_CHECKPOINT.md`, `COMPLETED_WORK.md`, `BLOCKERS.md`, `DECISIONS.md`, `BACKLOG.md`, and `CHANGELOG.md` are now the canonical progression controls.
