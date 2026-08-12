@@ -8,6 +8,10 @@ import {
   simulateEncounter,
   simulateOpeningRoom
 } from '../tools/qa/fast-combat-sim.mjs';
+import {
+  RELEASED_BOSS_MECHANICS,
+  simulateReleasedBossRoute
+} from '../tools/qa/release-route-sim.mjs';
 
 test('deterministic RNG and representative encounter results are repeatable', () => {
   const rngA = createSeededRng(77);
@@ -102,4 +106,23 @@ test('loss, collision miss, and timeout boundaries remain distinguishable', () =
   assert.equal(miss.status, 'timeout');
   assert.ok(miss.collisionChecks > 0);
   assert.equal(miss.successfulHits, 0);
+});
+
+test('released D1-D12 boss families survive an ordinary no-aid mechanics route', () => {
+  const route = simulateReleasedBossRoute({ seed: 1200 });
+  assert.equal(route.status, 'victory');
+  assert.equal(route.usesDeveloperAids, false);
+  assert.deepEqual(
+    route.entries.map((entry) => entry.dungeonId),
+    RELEASED_BOSS_MECHANICS.map((entry) => entry.dungeonId)
+  );
+  for (const entry of route.entries) {
+    assert.equal(entry.result.status, 'victory', `${entry.dungeonId} should defeat its named finale`);
+    assert.ok(entry.result.damageTaken > 0, `${entry.dungeonId} must receive real incoming damage`);
+    assert.equal(entry.result.events.some((event) => event.type === 'damage-blocked'), false, `${entry.dungeonId} must not use invincibility`);
+    assert.equal(entry.result.summonsRemaining, 0, `${entry.dungeonId} must clear its finite adds`);
+    assert.ok(entry.result.summonsSpawned <= entry.result.summonBudget, `${entry.dungeonId} must stay within its summon budget`);
+  }
+  assert.equal(route.entries.find((entry) => entry.dungeonId === 'dungeon11').contentMode, 'environment-first');
+  assert.equal(route.entries.find((entry) => entry.dungeonId === 'dungeon12').contentMode, 'horde-and-explore');
 });
