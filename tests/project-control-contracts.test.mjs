@@ -72,10 +72,15 @@ test('device acceptance report generator refuses accidental overwrite', () => {
     });
     assert.equal(first.status, 0, first.stderr);
     const report = fs.readFileSync(outputPath, 'utf8');
+    const runbook = read('DEVICE_ACCEPTANCE_RUNBOOK.md');
+    const deployedRuntime = runbook.match(/^- Runtime snapshot: `([^`]+)`/m)?.[1];
+    const deployedSource = runbook.match(/^- Source SHA-256:\s*\r?\n\s*`([^`]+)`/m)?.[1];
+    assert.ok(deployedRuntime, 'runbook has a deployed runtime snapshot');
+    assert.ok(deployedSource, 'runbook has a deployed source hash');
     assert.match(report, /Repository control commit \| [0-9a-f]+ \|/);
-    assert.match(report, /Tested deployed runtime \| [0-9a-f]+ \|/);
+    assert.match(report, new RegExp(`Tested deployed runtime \\| ${deployedRuntime} \\|`));
     assert.match(report, /Local source SHA-256 \| [0-9a-f]{64} \|/);
-    assert.match(report, /Tested deployed source SHA-256 \| [0-9a-fA-F]{64} \|/);
+    assert.match(report, new RegExp(`Tested deployed source SHA-256 \\| ${deployedSource} \\|`));
     assert.match(report, /Tested deployment \| https:\/\/code-quest-lab\.gov8661682\.com/);
     assert.match(report, /Status: DRAFT/);
 

@@ -220,8 +220,9 @@ browser batches.
 - [x] Link the packet from `BLOCKERS.md`, `OWNER_ACTIONS.md`,
   `CURRENT_CHECKPOINT.md`, and `PROJECT_PROGRESS.md`.
 - [x] Add `npm.cmd run acceptance:report` to seed a dated, non-personal report
-  with the current commit and source hash; contract-test refusal to overwrite
-  an existing report and separation from developer QA.
+  with the repository control commit plus tested deployed runtime/source
+  identity; contract-test refusal to overwrite an existing report and
+  separation from developer QA.
 - [ ] Owner supplies a representative physical device or approved lab and
   records the dated Runs A-C packet before C1 score credit can advance.
 

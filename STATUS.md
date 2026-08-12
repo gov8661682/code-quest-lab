@@ -23,7 +23,7 @@ State: pre-release hardening; D1-12 release surface deployed and verified; not a
   profile was removed; the score remains **93% / 19%** because clean-player
   D1-D12 and physical/native-device evidence remain open.
 - Runtime `b7e70c3` and the current status records are pushed to `origin/main`;
-  control record `706d349` advances the autorun pointer to the owner-supplied
+  control record `f238adc` advances the autorun pointer to the owner-supplied
   device evidence lane. The prior world-state and tablet-control milestones
   remain documented below as historical release evidence.
 - The local acceptance handoff now records the repository control commit

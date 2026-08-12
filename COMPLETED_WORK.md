@@ -29,11 +29,11 @@ documented acceptance-criterion failure. Optional improvements belong in
   arrow is present. Physical-device evidence remains open, so the **93% / 19%**
   score is unchanged.
 
-## Device acceptance report workflow (2026-08-12; local control; completed)
+## Initial device acceptance report workflow (2026-08-12; local control; superseded by guard above)
 
-- Added `npm.cmd run acceptance:report` and a safe report generator that seeds
-  the current repository commit/source hash, includes Runs A-C and sanitized
-  evidence fields, and refuses accidental overwrite.
+- Added `npm.cmd run acceptance:report` and a safe report generator with dated
+  Runs A-C and sanitized evidence fields. The build-identity guard above now
+  supersedes its original current-commit/source-only handoff wording.
 - Added focused executable contracts and verified the full **153/153** gate,
   `qa:fast`, package audit, and Capacitor synchronization. No runtime source or
   deployed build changed; this prepares the owner/device handoff but does not
